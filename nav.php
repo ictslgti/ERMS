@@ -64,7 +64,7 @@
                 <a href="#">
                     <i class="fa fa-shopping-cart"></i>
                     <span class="menu-text">Department</span>
-                    <span class="badge badge-pill badge-danger">3</span>
+                    <span class="badge badge-pill badge-danger">6</span>
                 </a>
                 <div class="sidebar-submenu">
                     <ul>
