@@ -55,7 +55,7 @@
                             <a href="#">Lecturers</a>
                         </li>
                         <li>
-                            <a href="#">Srudents</a>
+                            <a href="#">Students</a>
                         </li>
                     </ul>
                 </div>
