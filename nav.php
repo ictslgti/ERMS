@@ -9,10 +9,10 @@
             <img class="img-responsive img-rounded" src="img/user.jpg" alt="User picture">
         </div>
         <div class="user-info">
-            <span class="user-name">Jhon
-                <strong>Smith</strong>
+            <span class="user-name">ICT
+                <strong>Admin</strong>
             </span>
-            <span class="user-role">Administrator</span>
+            <span class="user-role">Achchuthan</span>
             <span class="user-status">
                 <i class="fa fa-circle"></i>
                 <span>Online</span>
@@ -47,15 +47,15 @@
                 <div class="sidebar-submenu">
                     <ul>
                         <li>
-                            <a href="#">Dashboard 1
+                            <a href="#">Admin
                                 <span class="badge badge-pill badge-success">Pro</span>
                             </a>
                         </li>
                         <li>
-                            <a href="#">Dashboard 2</a>
+                            <a href="#">Lecturers</a>
                         </li>
                         <li>
-                            <a href="#">Dashboard 3</a>
+                            <a href="#">Srudents</a>
                         </li>
                     </ul>
                 </div>
@@ -63,21 +63,25 @@
             <li class="sidebar-dropdown">
                 <a href="#">
                     <i class="fa fa-shopping-cart"></i>
-                    <span class="menu-text">E-commerce</span>
+                    <span class="menu-text">Department</span>
                     <span class="badge badge-pill badge-danger">3</span>
                 </a>
                 <div class="sidebar-submenu">
                     <ul>
                         <li>
-                            <a href="#">Products
+                            <a href="#">Department Details
 
                             </a>
                         </li>
                         <li>
-                            <a href="#">Orders</a>
+                            <a href="#">Course Details</a>
+                            <ul>
+                            <li>
+                            <a href="#">Module</a>
+                        </li></ul>
                         </li>
                         <li>
-                            <a href="#">Credit cart</a>
+                            <a href="#">department contact</a>
                         </li>
                     </ul>
                 </div>
@@ -85,24 +89,18 @@
             <li class="sidebar-dropdown">
                 <a href="#">
                     <i class="far fa-gem"></i>
-                    <span class="menu-text">Components</span>
+                    <span class="menu-text">Stafs</span>
                 </a>
                 <div class="sidebar-submenu">
                     <ul>
                         <li>
-                            <a href="#">General</a>
+                            <a href="#">stafs Details</a>
                         </li>
                         <li>
-                            <a href="#">Panels</a>
+                            <a href="#">staf Entrolment</a>
                         </li>
                         <li>
-                            <a href="#">Tables</a>
-                        </li>
-                        <li>
-                            <a href="#">Icons</a>
-                        </li>
-                        <li>
-                            <a href="#">Forms</a>
+                            <a href="#">Staf Exit</a>
                         </li>
                     </ul>
                 </div>
@@ -110,21 +108,21 @@
             <li class="sidebar-dropdown">
                 <a href="#">
                     <i class="fa fa-chart-line"></i>
-                    <span class="menu-text">Charts</span>
+                    <span class="menu-text">Students</span>
                 </a>
                 <div class="sidebar-submenu">
                     <ul>
                         <li>
-                            <a href="#">Pie chart</a>
+                            <a href="#">student Details</a>
                         </li>
                         <li>
-                            <a href="#">Line chart</a>
+                            <a href="#">new Students Entrol</a>
                         </li>
                         <li>
-                            <a href="#">Bar chart</a>
+                            <a href="#">student Report</a>
                         </li>
                         <li>
-                            <a href="#">Histogram</a>
+                            <a href="#">--</a>
                         </li>
                     </ul>
                 </div>
@@ -132,15 +130,52 @@
             <li class="sidebar-dropdown">
                 <a href="#">
                     <i class="fa fa-globe"></i>
-                    <span class="menu-text">Maps</span>
+                    <span class="menu-text">Exams</span>
                 </a>
                 <div class="sidebar-submenu">
                     <ul>
                         <li>
-                            <a href="#">Google maps</a>
+                            <a href="#">Insttitutional Exam</a>
                         </li>
                         <li>
-                            <a href="#">Open street map</a>
+                            <a href="#">TVEC Exma</a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+            <li class="sidebar-dropdown">
+                <a href="#">
+                    <i class="fa fa-globe"></i>
+                    <span class="menu-text">Assesment</span>
+                </a>
+                <div class="sidebar-submenu">
+                    <ul>
+                        <li>
+                            <a href="#">Assesment Details</a>
+                        </li>
+                        <li>
+                            <a href="#">Assesment Report</a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+            <li class="sidebar-dropdown">
+                <a href="#">
+                    <i class="fa fa-globe"></i>
+                    <span class="menu-text">Attendence</span>
+                </a>
+                <div class="sidebar-submenu">
+                    <ul>
+                        <li>
+                            <a href="#">Attendence Details</a>
+                            <ul>
+                            <li>
+                            <a href="#">Attendence Update</a>
+                        </li>
+                        </ul>
+                        </li>
+                        <li>
+                            <a href="#">Attendence Report</a>
                         </li>
                     </ul>
                 </div>
