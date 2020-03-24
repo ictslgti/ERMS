@@ -1,6 +1,6 @@
 <?php
 $title = "Dashboard | Online Examination Result Management System | SLGTI";
-$description = "Online Examination Result  Management System (ERMS)";
+$description = "Online Examination Result  Management System (ERMS)-SLGTI";
 ?>
 <!DOCTYPE html>
 <html lang="en">
