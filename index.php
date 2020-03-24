@@ -20,7 +20,7 @@ $description = "Online Examination Result  Management System (ERMS)";
                 <!-- #1 Insert Your Content-->
                 <div class="row">
                     <div class="form-group col-md-12">
-                        <h2>Pro Sidebar</h2>
+                        <h2>ERMS</h2>
                         <p>This is a responsive sidebar template with dropdown menu based on bootstrap framework.</p>
 
                     </div>
