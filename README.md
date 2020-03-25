@@ -6,5 +6,6 @@ View Depatments
 
 Add Department
 * department.php
+
 View Login Form
 * login.php
