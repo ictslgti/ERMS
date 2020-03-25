@@ -44,7 +44,7 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                      </div>
                     </form>   
                 <!-- 2 row end -->
-                <form method="POST" action="">
+                
                      <div class="row">
                      <div class="col-sm">
                      <div class="input-group mb-3">
