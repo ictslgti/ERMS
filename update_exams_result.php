@@ -51,9 +51,10 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
 <div class="btn-group">
   <button type="button" class="btn btn-primary">RESULT UPDATE</button>
   <button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    <!-- <span class="sr-only">Toggle Dropdown</span> -->
+    <span class="sr-only">Toggle Dropdown</span>
   </button>
   <div class="dropdown-menu">
+      <a class="dropdown-item" href="update_exams_result.php">UPDATE RSULT</a>
     <!-- <a class="dropdown-item" href="#">INSTITUTE EXAMS</a>
     <a class="dropdown-item" href="#">TVEC EXAMS</a>
     <div class="dropdown-divider"></div>
