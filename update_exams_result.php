@@ -19,8 +19,8 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
             <div class="container-fluid p-2">
                 <!-- #1 Insert Your Content-->
 
-                <div class="row col-sm">
-                    <div class="form-group col-md-12 col-sm">
+                 <div class="row">
+                    <div class="form-group col-md-12">
                         <div class="d-flex flex-row bd-highlight mb-3 bg-primary text-white">
                             <!-- Resul Over View Btn -->
                             <div class="btn-group">
@@ -37,14 +37,14 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                                 </div>
                             </div>
                             <!-- Exams Add Btn -->
-                            <div class="btn-group ">
+                            <div class="btn-group">
                                 <button type="button" class="btn btn-primary">EXAMS</button>
                                 <button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split"
                                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     <!-- <span class="sr-only">Toggle Dropdown</span> -->
                                 </button>
-                                <div class="dropdown-menu ">
-                                    <a class="dropdown-item" href="add_exams.php">ADD EXAMS</a>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item" href="#">ADD EXAMS</a>
                                     <a class="dropdown-item" href="#">EDITE EXAMS</a>
                                     <div class="dropdown-divider"></div>
                                     <a class="dropdown-item" href="#">Others</a>
@@ -59,8 +59,7 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                                 </button>
                                 <div class="dropdown-menu">
                                     <a class="dropdown-item" href="update_exams_result.php">UPDATE RSULT</a>
-                                    <!-- <a class="dropdown-item" href="#">INSTITUTE EXAMS</a>
-                                    <a class="dropdown-item" href="#">TVEC EXAMS</a>
+                                    <!-- <a class="dropdown-item" href="#">TVEC EXAMS</a>
                                     <div class="dropdown-divider"></div>
                                     <a class="dropdown-item" href="#">Others</a> -->
                                 </div>
@@ -191,7 +190,7 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                       <div>
               </form>
 
-                    <table class="table  mb-3">
+                    <table class="table mb-3 p-3">
                         <thead>
                             <tr>
                                 <th scope="col">NO</th>
@@ -367,14 +366,14 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                     <!-- #col3 -->
 
 
-                    <div class="row">
-                        
-                        <div class="col-2 mb-3">
-                            <a class="btn btn-primary" href="add_exams.php" role="button">BACK</a>
+                    <div class="row ">
+                      <div class="input-group mb-3 p-3 ">  
+                        <div class="col-2">
+                            <a class="btn btn-primary" href="dashboard.php" role="button">BACK</a>
                             <!-- <button type="button" class="btn btn-primary">BACK</button> -->
                         </div>
                         <div class="col-8 text-wrap text-center text-primary">
-
+                            <h4>LAST EXAMS UPDATES</h4>
                         </div>
                         <div class="col-2">
                             <button type="button" class="btn btn-danger">CANCEL</button>
@@ -383,19 +382,19 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
 
                             <!-- <button type="button" class="btn btn-primary">SAVE</button> -->
                             <!-- Button trigger modal -->
-                            <button type="button" class="btn btn-primary" data-toggle="modal"
+                            <button type="submit" class="btn btn-primary" data-toggle="modal"
                                 data-target="#exampleModal">
                                 SAVE
                             </button>
 
                             <!-- Modal -->
-                            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
+                            <!-- <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
                                 aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 <div class="modal-dialog" role="document">
                                     <div class="modal-content">
                                         <div class="modal-header">
                                             <h5 class="modal-title" id="exampleModalLabel">SAVE</h5>
-                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <button type="submit" class="close" data-dismiss="modal" aria-label="Close">
                                                 <span aria-hidden="true">&times;</span>
                                             </button>
                                         </div>
@@ -405,16 +404,17 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary"
                                                 data-dismiss="modal">Close</button>
-                                            <button type="button" class="btn btn-primary">Save changes</button>
+                                            <button type="submit" class="btn btn-primary">Save changes</button>
                                         </div>
-                                    </div>
+                                    </div> 
                                 </div>
                             </div>
-                        </div>
-
+                        </div>-->
                     </div>
             </div>
-    </div>
+</div>
+            
+    
 
 
     </div>
