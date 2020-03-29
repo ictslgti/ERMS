@@ -43,7 +43,7 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                                     <!-- <span class="sr-only">Toggle Dropdown</span> -->
                                 </button>
                                 <div class="dropdown-menu">
-                                    <a class="dropdown-item" href="#">ADD EXAMS</a>
+                                    <a class="dropdown-item" href="add_exams.php">ADD EXAMS</a>
                                     <a class="dropdown-item" href="#">EDITE EXAMS</a>
                                     <div class="dropdown-divider"></div>
                                     <a class="dropdown-item" href="#">Others</a>
