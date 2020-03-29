@@ -67,57 +67,9 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                             </div>
                         </div>
                     </div>
-
-                <div class="row">
-                    <div class="form-group col-md-12">
-                    <div class="d-flex flex-row bd-highlight mb-3 bg-primary text-white">
-                    <!-- Resul Over View Btn -->
-                    <div class="btn-group">
-  <button type="button" class="btn btn-primary">RESULT OVERVIEW</button>
-  <button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    <!-- <span class="sr-only">Toggle Dropdown</span> -->
-  </button>
-  <div class="dropdown-menu">
-    <a class="dropdown-item" href="#">CHART VIEW RESULT</a>
-    <a class="dropdown-item" href="#">DEPARTMENT VICE</a>
-    <div class="dropdown-divider"></div>
-    <a class="dropdown-item" href="#">Others</a>
-  </div>
-</div>
-                         <!-- Exams Add Btn -->
-<div class="btn-group">
-  <button type="button" class="btn btn-primary">ADD EXAMS</button>
-  <button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    <!-- <span class="sr-only">Toggle Dropdown</span> -->
-  </button>
-  <div class="dropdown-menu">
-    <a class="dropdown-item" href="#">INSTITUTE EXAMS</a>
-    <a class="dropdown-item" href="#">TVEC EXAMS</a>
-    <div class="dropdown-divider"></div>
-    <a class="dropdown-item" href="#">Others</a>
-  </div>
-</div>
-                                                  <!-- Result Update  Btn -->
-<div class="btn-group">
-  <button type="button" class="btn btn-primary">RESULT UPDATE</button>
-  <button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    <span class="sr-only">Toggle Dropdown</span>
-  </button>
-  <div class="dropdown-menu">
-      <a class="dropdown-item" href="update_exams_result.php">UPDATE RSULT</a>
-    <!-- <a class="dropdown-item" href="#">INSTITUTE EXAMS</a>
-    <a class="dropdown-item" href="#">TVEC EXAMS</a>
-    <div class="dropdown-divider"></div>
-    <a class="dropdown-item" href="#">Others</a> -->
-  </div>
-</div>
-                         </div>
-                     </div>
-
                 </div>
-
                 <!-- Heding -->
-                <div class="form-group col-md-12 col-sm">
+                <div class="form-group col-md-12 col-sm ">
                     <div>
                         <div class="text-wrap text-center text-primary">
                             <h4>UPDATE STUDENTS RESULTS</h4>
@@ -129,8 +81,8 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                 <form method="POST" action="">
                     <div class="row">
                         <!-- select Exams Type -->
-                        <div class="col-sm">
-                            <div class="input-group mb-3 ">
+                        <div class="col-sm mb-3">
+                            <div class="input-group mb-3">
                                 <div class="input-group-prepend ">
                                     <label class="input-group-text" for="inputGroupSelect01">Exams Type</label>
                                 </div>
@@ -239,7 +191,7 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                       <div>
               </form>
 
-                    <table class="table">
+                    <table class="table  mb-3">
                         <thead>
                             <tr>
                                 <th scope="col">NO</th>
@@ -416,7 +368,8 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
 
 
                     <div class="row">
-                        <div class="col-2">
+                        
+                        <div class="col-2 mb-3">
                             <a class="btn btn-primary" href="add_exams.php" role="button">BACK</a>
                             <!-- <button type="button" class="btn btn-primary">BACK</button> -->
                         </div>
@@ -458,6 +411,7 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                                 </div>
                             </div>
                         </div>
+
                     </div>
             </div>
     </div>
