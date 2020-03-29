@@ -373,7 +373,7 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                             <!-- <button type="button" class="btn btn-primary">BACK</button> -->
                         </div>
                         <div class="col-8 text-wrap text-center text-primary">
-                            <h4>LAST EXAMS UPDATES</h4>
+                           
                         </div>
                         <div class="col-2">
                             <button type="button" class="btn btn-danger">CANCEL</button>
