@@ -83,6 +83,7 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                     </div>
 <br>
 <!-- <2> -->
+<!-- <3> -->
 
                     <div class="row">
                         <div class="col-sm">
@@ -133,7 +134,7 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                         </div>
                         </div>
                         </div>
-<!-- 2 -->
+<!-- 3 -->
               <br>
                      <div class="row">
                         <div class="col-11 "></div>
