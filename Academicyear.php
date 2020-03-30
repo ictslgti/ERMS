@@ -37,7 +37,7 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                         <div class="input-group-prepend">
                           <label class="input-group-text" for="inputGroupSelect01">Academic Year </label>
                         </div>
-                        <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                        <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" id="validationServer06" required>
                           </div>
                         </div>
                       </div>
@@ -67,7 +67,7 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                               <div class="input-group-prepend">
                                   <span class="input-group-text" id="basic-addon3">Semester1 Start Date</span>
                               </div>
-                              <input type="date" id="birthday" name="Assessment_Date"class="form-control" id="basic-url" aria-describedby="basic-addon3">
+                              <input type="date" id="birthday" name="Assessment_Date"class="form-control" id="basic-url" aria-describedby="basic-addon3" id="validationServer06" required>
                               </div>
                         </div>
                       </div>
@@ -78,11 +78,11 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                               <div class="input-group-prepend">
                                   <span class="input-group-text" id="basic-addon3">Semester1 End Date</span>
                               </div>
-                              <input type="date" id="birthday" name="Assessment_Date"class="form-control" id="basic-url" aria-describedby="basic-addon3">
+                              <input type="date" id="birthday" name="Assessment_Date"class="form-control" id="basic-url" aria-describedby="basic-addon3" id="validationServer06" required>
                               </div>
                         </div>
                       </div>
-                    </div>
+                    
                </div>
                   <br>
 
@@ -93,7 +93,7 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                               <div class="input-group-prepend">
                                   <span class="input-group-text" id="basic-addon3">Semester2 Start Date</span>
                               </div>
-                              <input type="date" id="birthday" name="Assessment_Date"class="form-control" id="basic-url" aria-describedby="basic-addon3">
+                              <input type="date" id="birthday" name="Assessment_Date"class="form-control" id="basic-url" aria-describedby="basic-addon3" id="validationServer06" required>
                               </div>
                         </div>
                       </div>
@@ -104,7 +104,7 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                               <div class="input-group-prepend">
                                   <span class="input-group-text" id="basic-addon3">Semester2 End Date</span>
                               </div>
-                              <input type="date" id="birthday" name="Assessment_Date"class="form-control" id="basic-url" aria-describedby="basic-addon3">
+                              <input type="date" id="birthday" name="Assessment_Date"class="form-control" id="basic-url" aria-describedby="basic-addon3" id="validationServer06" required>
                               </div>
                         </div>
                       </div>
@@ -112,12 +112,15 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
               
                   <br>
 
-
+                  
                   
                 <div class="row">
                     <div class="col-11 "></div>
                     <div class="col-1 ">
-                      <button type="button" class="btn btn-outline-success " >Add</button>
+                    <button type="submit" class="btn btn-outline-success" data-toggle="modal"
+                                data-target="#exampleModal">
+                                Add
+                            </button>
                    </div>
                 </div>
                </form>
