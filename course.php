@@ -139,7 +139,7 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                      <div class="row">
                      <div class="col-10 "></div>
                      <div class="col-2">
-                     <button type="button" class="btn btn-outline-success " >Department</button>
+                     <button type="button" class="btn btn-outline-success " >Add</button>
                      </div>
                      </div>
 </form>
