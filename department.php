@@ -22,7 +22,7 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                 <!-- 1st row start -->
                 <div class="row">
                      <div class="col-sm">
-                     <div class="p-3 mb-2 bg-primary text-white text-center">
+                     <div class="border border-primary rounded p-3 text-center">
                      <h1>Add department</h1>
                      </div>
                     </div>
@@ -34,19 +34,22 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                      <form method="POST" action="">
                      <div class="row">
                      <div class="col-sm">
+                     <div class="form-group">
                      <div class="input-group mb-3">
                          <div class="input-group-prepend">
                          <span class="input-group-text" id="basic-addon1">Department No</span>
                        </div>
                         <input type="text" class="form-control" aria-label="Username" aria-describedby="basic-addon1">
                          </div>
+                         </div>
                      </div>
-                     </div>
-                    </form>   
-                <!-- 2 row end -->
-                <form method="POST" action="">
-                     <div class="row">
+                    
+                       
+                
+                
+                     
                      <div class="col-sm">
+                     <div class="form-group">
                      <div class="input-group mb-3">
                          <div class="input-group-prepend">
                          <span class="input-group-text" id="basic-addon1">Department Name</span>
@@ -55,8 +58,15 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                          </div>
                      </div>
                      </div>
+                     </div>
                      <br>
-                     <button class="btn-primary" type="submit">Add Department</button>
+                     <!-- 2 row end -->
+                     <div class="row">
+                     <div class="col-10 "></div>
+                     <div class="col-2">
+                     <button type="button" class="btn btn-outline-success " >Add Department</button>
+                     </div>
+                     </div>
 </form>
                     
 
