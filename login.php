@@ -40,7 +40,7 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
 				<a href="#">Forgot Password?</a>
 				<div class="button">
 					<input type="submit" class="lbtn" value="Login">
-					<input type="submit" class="sbtn" value="Singin">
+					<input type="submit" class="sbtn" value="Signup">
 				</div>
 				
             </form>
