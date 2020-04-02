@@ -12,7 +12,7 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
 <body>
 <div class="container">
 		<div class="img">
-			<img src="img/cover.svg">
+			<img src="img/main-cover.svg">
 		</div>
 		<div class="login-content">
 			<form action="index.html">
