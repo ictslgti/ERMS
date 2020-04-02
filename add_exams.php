@@ -18,54 +18,106 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
             <div id="overlay" class="overlay"></div>
             <div class="container-fluid p-2">
                 <!-- #1 Insert Your Content-->
-                <div class="row">
-                    <div class="form-group col-md-12">
-                        <div class="d-flex flex-row bd-highlight mb-3 bg-primary text-white">
-                            <!-- Resul Over View Btn -->
-                            <div class="btn-group">
-                                <button type="button" class="btn btn-primary">RESULT OVERVIEW</button>
-                                <button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split"
-                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <!-- <span class="sr-only">Toggle Dropdown</span> -->
-                                </button>
-                                <div class="dropdown-menu">
-                                    <a class="dropdown-item" href="#">CHART VIEW RESULT</a>
-                                    <a class="dropdown-item" href="#">DEPARTMENT VICE</a>
-                                    <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="#">Others</a>
-                                </div>
+                <section class='mb-40 pt-2 mx-auto'>
+                    <div class='container-fluid p-2 '>
+
+                    <div class="row">
+    <div class="col-lg-4 col-md-4 col-sm-4">
+      <h3 class="text-primary"> Welcome </h3>
+    </div>
+    <div class="col-lg-4 col-md-4 col-sm-4 ">
+    <div class="input-group" id="serching">
+   
+    <input type="text" class="form-control primary-input border border-primary border-top-0 border-left-0 border-right-0" placeholder="Search">  
+    </div>
+    </div>
+<div class="col-lg-1 col-md-1 col-sm-1 "></div>
+<div class="col-lg-3 col-md-3 col-sm-3">
+    <div class="col-sm "> <a href="exams_results.php">
+    <div class="text-primary ">
+    <svg class="bi bi-plus-circle-fill" width="3em" height="3em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+  <path fill-rule="evenodd" d="M16 8A8 8 0 110 8a8 8 0 0116 0zM8.5 4a.5.5 0 00-1 0v3.5H4a.5.5 0 000 1h3.5V12a.5.5 0 001 0V8.5H12a.5.5 0 000-1H8.5V4z" clip-rule="evenodd"/>
+</svg>    
+    
+   Add Exams Result</div>
+    </div></a>
+  </div>
+                      
+                        </div>
+                        <br>
+                        <div class='row'>
+                            <div class='col-lg-12'>
                             </div>
-                            <!-- Exams Add Btn -->
-                            <div class="btn-group">
-                                <button type="button" class="btn btn-primary">EXAMS</button>
-                                <button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split"
-                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <!-- <span class="sr-only">Toggle Dropdown</span> -->
-                                </button>
-                                <div class="dropdown-menu">
-                                    <a class="dropdown-item" href="add_exams.php">ADD EXAMS</a>
-                                    <a class="dropdown-item" href="#">EDITE EXAMS</a>
-                                    <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="#">Others</a>
-                                </div>
+                        </div>
+                        <div class='row'>
+
+                        <div class='col-lg-3 col-md-3 col-sm-3 shadow-lg p-3 mb-5 bg-white rounded'>
+                                <a href='#' class='d-block'>
+                                    <div class='white-box single-summery'>
+                                        <div class='d-flex justify-content-between'>
+                                            <div>
+                                                <h3>Student</h3>
+                                                <p class='mb-0'>Total Students</p>
+                                            </div>
+                                            <h1 class='primary'>
+                                                320
+                                            </h1>
+                                        </div>
+                                    </div>
+                                </a>
                             </div>
-                            <!-- Result Update  Btn -->
-                            <div class="btn-group">
-                                <button type="button" class="btn btn-primary">RESULT UPDATE</button>
-                                <button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split"
-                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <span class="sr-only">Toggle Dropdown</span>
-                                </button>
-                                <div class="dropdown-menu">
-                                    <a class="dropdown-item" href="update_exams_result.php">UPDATE RSULT</a>
-                                    <!-- <a class="dropdown-item" href="#">TVEC EXAMS</a>
-                                    <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="#">Others</a> -->
-                                </div>
+                            
+
+                            <div class='col-lg-3 col-md-3 col-sm-3 shadow-lg p-3 mb-5 bg-white rounded'>
+                                <a href='#' class='d-block'>
+                                    <div class='white-box single-summery'>
+                                        <div class='d-flex justify-content-between'>
+                                            <div>
+                                                <h3>Lecturer</h3>
+                                                <p class='mb-0'>Total Lecturer</p>
+                                            </div>
+                                            <h1 class='primary'>
+                                                39
+                                            </h1>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                            
+                            <div class='col-lg-3 col-md-3 col-sm-3 shadow-lg p-3 mb-5 bg-white rounded'>
+                                <a href='#' class='d-block'>
+                                    <div class='white-box single-summery'>
+                                        <div class='d-flex justify-content-between'>
+                                            <div>
+                                                <h3>Department</h3>
+                                                <p class='mb-0'>Total Department</p>
+                                            </div>
+                                            <h1 class='primary'>
+                                                6
+                                            </h1>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                            
+                            <div class='col-lg-3 col-md-3 col-sm-3 shadow-lg p-3 mb-5 bg-white rounded'>
+                                <a href='#' class='d-block'>
+                                    <div class='white-box single-summery'>
+                                        <div class='d-flex justify-content-between'>
+                                            <div>
+                                                <h3>Staffs</h3>
+                                                <p class='mb-0'>Total Staffs</p>
+                                            </div>
+                                            <h1 class='primary'>
+                                                1
+                                            </h1>
+                                        </div>
+                                    </div>
+                                </a>
                             </div>
                         </div>
                     </div>
-                </div>
+                </section>
 
                 <!-- Heding -->
                 <div class="form-group col-md-12 ">
@@ -185,7 +237,7 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                     <div class="row ">
                       <div class="input-group mb-3 ">  
                         <div class="col-2">
-                            <a class="btn btn-primary" href="dashboard.php" role="button">BACK</a>
+                            <a class="btn btn-primary" href="exams_dashbord.php" role="button">BACK</a>
                             <!-- <button type="button" class="btn btn-primary">BACK</button> -->
                         </div>
                         <div class="col-8 text-wrap text-center text-primary">
