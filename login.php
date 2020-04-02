@@ -46,8 +46,9 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
             </form>
         </div>
     </div>
-    
+
     <?php include_once("script.php"); ?>
+    <script type="text/javascript" src="js/login/main.js"></script>
 </body>
 
 </html>
