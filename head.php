@@ -12,3 +12,8 @@
 <link rel="stylesheet" href="css/main.css">
 <link rel="stylesheet" href="css/sidebar-themes.css">
 <link rel="shortcut icon" type="image/png" href="img/favicon.png" />
+
+<!-- #begin "login form online links @k-avin" -->
+<link rel="stylesheet" type="text/css" href="css/main-login.css">
+<link href="https://fonts.googleapis.com/css?family=Poppins:600&display=swap" rel="stylesheet">
+<!-- #end "login form online links @k-avin" -->
