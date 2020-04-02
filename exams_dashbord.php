@@ -67,19 +67,18 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
 <div class="col-lg-2 col-md-2 col-sm-2 "></div>
 <div class="col-lg-2 col-md-2 col-sm-2">
     <div class="col-sm "> 
-        <a href="exams_results.php">
-    <div class="text-primary  dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    <div class="text-primary  dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
     <svg class="bi bi-plus-circle-fill" width="3em" height="3em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
   <path fill-rule="evenodd" d="M16 8A8 8 0 110 8a8 8 0 0116 0zM8.5 4a.5.5 0 00-1 0v3.5H4a.5.5 0 000 1h3.5V12a.5.5 0 001 0V8.5H12a.5.5 0 000-1H8.5V4z" clip-rule="evenodd"/>
-</svg>    
-<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+</svg>   <b>Select</b> </div>
+<div class="dropdown-menu">
     <a class="dropdown-item" href="add_exams.php">Add Exams</a>
     <a class="dropdown-item" href="exams_results.php">Update Results</a>
     <a class="dropdown-item" href="exams_dashbord.php">Home</a>
   </div>
     
-  <b>Select</b> </div>
-    </div></a>
+   
+    </div>
   </div>
                       
                         </div>
