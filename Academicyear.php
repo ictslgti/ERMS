@@ -21,17 +21,19 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
 
                 <div class="container">
                    <div class="row">
-                     <div class="col-sm">
-                        <div class="border border-primary text-center rounded text-primary p-3">
+                     <div class="col-md-11 col-sm-11 col-xs-11">
+                        <div class="text-primary">
                           <h1>SLGTI Academic Year</h1>                  
                         </div>
                     </div>
                  </div>
                     <br>
+                   
+                    <hr>
                     <br>
                   <form method="POST" action="">
                   <div class="row"> 
-                  <div class="col-sm">
+                  <div class="col-md-6 col-sm-6 col-xs-6">
                      <div class="form-group">
                       <div class="input-group mb-3">
                         <div class="input-group-prepend">
@@ -42,7 +44,7 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                         </div>
                       </div>
 
-                      <div class="col-sm">
+                      <div class="col-md-6 col-sm-6 col-xs-6">
                      <div class="form-group">
                       <div class="input-group mb-3">
                         <div class="input-group-prepend">
@@ -61,7 +63,7 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
 
                
                <div class="row">
-               <div class="col-sm">
+               <div class="col-md-6 col-sm-6 col-xs-6">
                       <div class="form-group">
                           <div class="input-group mb-3">
                               <div class="input-group-prepend">
@@ -72,7 +74,7 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                         </div>
                       </div>
     
-                    <div class="col-sm">
+                    <div class="col-md-6 col-sm-6 col-xs-6">
                       <div class="form-group">
                           <div class="input-group mb-3">
                               <div class="input-group-prepend">
@@ -87,7 +89,7 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                   <br>
 
                   <div class="row">
-               <div class="col-sm">
+               <div class="col-md-6 col-sm-6 col-xs-6">
                       <div class="form-group">
                           <div class="input-group mb-3">
                               <div class="input-group-prepend">
@@ -98,7 +100,7 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                         </div>
                       </div>
     
-                    <div class="col-sm">
+                    <div class="col-md-6 col-sm-6 col-xs-6">
                       <div class="form-group">
                           <div class="input-group mb-3">
                               <div class="input-group-prepend">
@@ -115,9 +117,9 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                   
                   
                 <div class="row">
-                    <div class="col-11 "></div>
-                    <div class="col-1 ">
-                    <button type="submit" class="btn btn-outline-success" data-toggle="modal"
+                    <div class="col-md-11 col-sm-11 col-xs-11 "></div>
+                    <div class="col-md-1 col-sm-1 col-xs-1 ">
+                    <button type="submit" class="btn btn-outline-primary" data-toggle="modal"
                                 data-target="#exampleModal">
                                 Add
                             </button>
