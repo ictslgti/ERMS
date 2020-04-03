@@ -23,7 +23,7 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
 		</div>
 		<div class="login-content">
 			<form action="index.html">
-                <h2 class="title">Welcome</h2>	
+                <h2 class="title">Welcome to</h2>	
                 <p class=" text-center mb-4 blockquote-footer">Exam Result Management System</p>			
 				<img class="user-img" src="img/user.jpg">				
            		<div class="input-div one">
