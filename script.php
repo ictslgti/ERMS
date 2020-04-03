@@ -7,8 +7,6 @@
  </script>
 
 
- <!-- login form online icon script @k-avin -->
- <script src="https://kit.fontawesome.com/a81368914c.js"></script>
- <!-- end @k-avin script -->
+
  
  <script src="js/main.js"></script>
