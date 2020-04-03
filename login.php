@@ -7,6 +7,13 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
 
 <head>
     <?php include_once("./head.php"); ?>
+	<!-- #begin "login form online links @k-avin" -->
+	<link rel="stylesheet" type="text/css" href="css/main-login.css">
+	<link href="https://fonts.googleapis.com/css?family=Poppins:600&display=swap" rel="stylesheet">
+	<!-- #end "login form online links @k-avin" -->
+	<!-- login form online icon script @k-avin -->
+	 <script src="https://kit.fontawesome.com/a81368914c.js"></script>
+ 	<!-- end @k-avin script -->
 </head>
 
 <body>
