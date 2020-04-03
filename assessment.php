@@ -23,15 +23,15 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
 <!-- 1 -->
 
                 <div class="row">
-                    <div class="col-sm">
-                     <div class="border border-primary rounded p-3 text-center">
+                    <div class="col-md-11 col-sm-11 col-xs-11">
+                     <div class="text-primary">
                      <h1>Add Assessment</h1>
                      </div>
                     </div>
                     </div>
 
 <!-- 1 -->
-
+                  <hr>
                   <br>
                   <br>
 <!-- 2  -->
@@ -39,7 +39,7 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                     
                      <form name="myForm" action="" onsubmit="return validateForm()" method="post" required>
                      <div class="row">
-                     <div class="col-sm">
+                     <div class="col-md-6 col-sm-6 col-xs-6">
                      <div class="form-group">
                      <div class="input-group mb-3">
                          <div class="input-group-prepend">
@@ -54,7 +54,7 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                          </div>
                      </div>
                      </div>
-                     <div class="col-sm">
+                     <div class="col-md-6 col-sm-6 col-xs-6">
                      <div class="form-group">
                       <div class="input-group mb-3">
                         <div class="input-group-prepend">
@@ -70,23 +70,14 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                         </div>
                       </div>
                          
-                      <div class="col-sm">
-                      <div class="form-group">
-                          <div class="input-group mb-3">
-                              <div class="input-group-prepend">
-                                  <span class="input-group-text" id="basic-addon3">Assessment Date</span>
-                              </div>
-                              <input type="date" id="birthday" name="Assessment_Date"class="form-control" id="basic-url" aria-describedby="basic-addon3" name="date">
-                              </div>
-                        </div>
-                      </div>
+                      
                     </div>
 <br>
 <!-- <2> -->
 <!-- <3> -->
 
                     <div class="row">
-                        <div class="col-sm">
+                        <div class="col-md-6 col-sm-6 col-xs-6">
                         <div class="form-group">
                       <div class="input-group mb-3">
                         <div class="input-group-prepend">
@@ -103,7 +94,7 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
 
 
                         </div>
-                        <div class="col-sm">
+                        <div class="col-md-6 col-sm-6 col-xs-6">
                         <div class="form-group">
                       <div class="input-group mb-3">
                         <div class="input-group-prepend">
@@ -118,7 +109,16 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                           </div>
                         </div>
                         </div>
-                        <div class="col-sm">
+                       
+                        </div>
+<!-- 3 -->
+
+<br>
+
+<!-- <4> -->
+
+                   <div class="row">
+                    <div class="col-md-6 col-sm-6 col-xs-6">
                         <div class="form-group">
                       <div class="input-group mb-3">
                         <div class="input-group-prepend">
@@ -133,13 +133,26 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                           </div>
                         </div>
                         </div>
+                        
+                       <div class="col-md-6 col-sm-6 col-xs-6">
+                      <div class="form-group">
+                          <div class="input-group mb-3">
+                              <div class="input-group-prepend">
+                                  <span class="input-group-text" id="basic-addon3">Assessment Date</span>
+                              </div>
+                              <input type="date" id="birthday" name="Assessment_Date"class="form-control" id="basic-url" aria-describedby="basic-addon3" name="date">
+                              </div>
                         </div>
-<!-- 3 -->
+                      </div>
+                        </div>
+<!-- 4 -->
+
               <br>
+             
                      <div class="row">
-                        <div class="col-11 "></div>
-                        <div class="col-1 ">
-                          <input type="submit"  class="btn btn-outline-success "value="Add">
+                        <div class="col-md-11 col-sm-11 col-xs-11 "></div>
+                        <div class="col-md-1 col-sm-1 col-xs-1 ">
+                          <input type="submit"  class="btn btn-outline-primary "value="Add">
                          </div>
                       </div>
                  </form>
