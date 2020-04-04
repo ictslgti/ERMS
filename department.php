@@ -22,8 +22,9 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                 <!-- 1st row start -->
                 <div class="row">
                      <div class="col-sm">
-                     <div class="border border-primary rounded p-3 text-center">
-                     <h1>Add department</h1>
+                     <div class="text-primary text-center">
+                     
+                     <h1>Add department</h1><hr><br>
                      </div>
                     </div>
                     </div>
