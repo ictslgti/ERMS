@@ -1,5 +1,5 @@
 <?php
-$title = "Add Department | Online Examination Result Management System | SLGTI";
+$title = "Add Course | Online Examination Result Management System | SLGTI";
 $description = "Online Examination Result  Management System (ERMS)-SLGTI";
 ?>
 <!DOCTYPE html>
@@ -22,8 +22,8 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                 <!-- 1st row start -->
                 <div class="row">
                      <div class="col-sm">
-                     <div class="border border-primary rounded p-3 text-center">
-                     <h1>Add Course</h1>
+                     <div class="text-primary text-center">
+                     <h1>Add Course</h1><hr>
                      </div>
                     </div>
                     </div>
