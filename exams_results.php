@@ -8,6 +8,9 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
 <head>
     <?php include_once('./head.php');
     ?>
+    <?php
+    include_once('config.php');
+    ?>
 </head>
 
 <body>
@@ -23,21 +26,21 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
             <div class='container-fluid p-5'>
 
                 <!-- #1 Insert Your Content-->
-                <div class='row'>
-                    <div class='col-md'>
-                        <h3 class='text-primary'> Welcome </h3>
-                    </div>
-                    <div class='col-md'>
+                <!-- <div class = 'row'>
+<div class = 'col-md'>
+<h3 class = 'text-primary'> Welcome </h3>
+</div>
+<div class = 'col-md'>
 
-                    </div>
-                    <div class='col-md-auto pr-0'>
-                        <button type='button' class='btn btn-success btn-group-sm' data-toggle='modal' data-target='.bd-example-modal-xl'>
-                            <svg class='bi bi-plus-circle-fill' width='2em' height='2em' viewBox='0 0 16 16' fill='currentColor' xmlns='http://www.w3.org/2000/svg'>
-                                <path fill-rule='evenodd' d='M16 8A8 8 0 110 8a8 8 0 0116 0zM8.5 4a.5.5 0 00-1 0v3.5H4a.5.5 0 000 1h3.5V12a.5.5 0 001 0V8.5H12a.5.5 0 000-1H8.5V4z' clip-rule='evenodd' />
-                            </svg>
-                            Add Exams</button>
-                    </div>
-                </div>
+</div>
+<div class = 'col-md-auto pr-0'>
+<button type = 'button' class = 'btn btn-success btn-group-sm' data-toggle = 'modal' data-target = '.bd-example-modal-xl'>
+<svg class = 'bi bi-plus-circle-fill' width = '2em' height = '2em' viewBox = '0 0 16 16' fill = 'currentColor' xmlns = 'http://www.w3.org/2000/svg'>
+<path fill-rule = 'evenodd' d = 'M16 8A8 8 0 110 8a8 8 0 0116 0zM8.5 4a.5.5 0 00-1 0v3.5H4a.5.5 0 000 1h3.5V12a.5.5 0 001 0V8.5H12a.5.5 0 000-1H8.5V4z' clip-rule = 'evenodd' />
+</svg>
+Add Exams</button>
+</div>
+</div> -->
                 <!-- modal-->
 
                 <!-- Extra large modal -->
@@ -158,7 +161,6 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
                                     </div>
                                     <br>
 
-
                                     <div class='row '>
                                         <div class='input-group  '>
                                             <div class='col-10'></div>
@@ -187,9 +189,7 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
                 <!-- end modal-->
                 <!-- db coneection-->
                 <!-- add exam sql-->
-                <?php
-                //include_once('config.php');
-                ?>
+
 
                 <?php
                 if (
@@ -253,27 +253,27 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
                 <br> -->
                 <!-- #3 Insert Your Content" -->
                 <form method='POST' action=''>
-                    <div class="row ">
-                        <div class="col-md">
-                            <div class="input-group-sm mb-3">
-                                <div class="input-group-prepend">
-                                    <!-- <label class="input-group-text" for="inputGroupSelect01">Exams type</label> -->
-                                    <label for="exampleInputEmail1">Exams type</label>
+                    <div class='row '>
+                        <div class='col-md'>
+                            <div class='input-group-sm mb-3'>
+                                <div class='input-group-prepend'>
+                                    <!-- <label class = 'input-group-text' for = 'inputGroupSelect01'>Exams type</label> -->
+                                    <label for='exampleInputEmail1'>Exams type</label>
                                 </div>
-                                <select class="custom-select" id="inputGroupSelect01" id="validationServer01" required>
+                                <select class='custom-select' id='inputGroupSelect01' id='validationServer01' required>
                                     <option value=''>Select Exams</option>
                                     <option value='1'>INSTITUTE</option>
                                     <option value='2'>TVEC</option>
                                 </select>
                             </div>
                         </div>
-                        <div class="col-md">
-                            <div class="input-group-sm mb-3">
-                                <div class="input-group-prepend">
-                                    <!-- <label class="input-group-text" for="inputGroupSelect01" id="validationServer02" required>Department</label> -->
-                                    <label for="exampleInputEmail1">Department</label>
+                        <div class='col-md'>
+                            <div class='input-group-sm mb-3'>
+                                <div class='input-group-prepend'>
+                                    <!-- <label class = 'input-group-text' for = 'inputGroupSelect01' id = 'validationServer02' required>Department</label> -->
+                                    <label for='exampleInputEmail1'>Department</label>
                                 </div>
-                                <select class="custom-select" id="inputGroupSelect01">
+                                <select class='custom-select' id='inputGroupSelect01'>
                                     <option value=''>Select Department</option>
                                     <option value='1'>Information Communication Technology</option>
                                     <option value='2'>Automotive & Technology</option>
@@ -284,13 +284,13 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
                                 </select>
                             </div>
                         </div>
-                        <div class="col-md">
-                            <div class="input-group-sm mb-3">
-                                <div class="input-group-prepend">
-                                    <!-- <label class="input-group-text" for="inputGroupSelect01">Course</label> -->
-                                    <label for="exampleInputEmail1">Course</label>
+                        <div class='col-md'>
+                            <div class='input-group-sm mb-3'>
+                                <div class='input-group-prepend'>
+                                    <!-- <label class = 'input-group-text' for = 'inputGroupSelect01'>Course</label> -->
+                                    <label for='exampleInputEmail1'>Course</label>
                                 </div>
-                                <select class="custom-select" id="inputGroupSelect01" id="validationServer02" required>
+                                <select class='custom-select' id='inputGroupSelect01' id='validationServer02' required>
                                     <option value=''>Select Course</option>
                                     <option value='1'>NVQ LEVEL-4</option>
                                     <option value='2'>BRIDGING LEVEL-5</option>
@@ -299,43 +299,43 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
                                 </select>
                             </div>
                         </div>
-                        <div class="col-md">
-                            <div class="input-group-sm mb-3">
-                                <div class="input-group-prepend">
-                                    <!-- <label class="input-group-text" for="inputGroupSelect01">Academic Year</label> -->
-                                    <label for="exampleInputEmail1">Academic Year</label>
+                        <div class='col-md'>
+                            <div class='input-group-sm mb-3'>
+                                <div class='input-group-prepend'>
+                                    <!-- <label class = 'input-group-text' for = 'inputGroupSelect01'>Academic Year</label> -->
+                                    <label for='exampleInputEmail1'>Academic Year</label>
                                 </div>
-                                <select class="custom-select" id="inputGroupSelect01" id="validationServer02" required>
-                                    <option value="">Select Year...</option>
-                                    <option value="1">2016</option>
-                                    <option value="2">2017</option>
-                                    <option value="3">2018</option>
+                                <select class='custom-select' id='inputGroupSelect01' id='validationServer02' required>
+                                    <option value=''>Select Year...</option>
+                                    <option value='1'>2016</option>
+                                    <option value='2'>2017</option>
+                                    <option value='3'>2018</option>
                                 </select>
                             </div>
                         </div>
                     </div>
-                    <div class="row ">
-                        <div class="col-md">
-                            <div class="input-group-sm mb-3">
-                                <div class="input-group-prepend">
-                                    <!-- <label class="input-group-text" for="inputGroupSelect01">betch</label> -->
-                                    <label for="exampleInput">Academic Year</label>
+                    <div class='row '>
+                        <div class='col-md'>
+                            <div class='input-group-sm mb-3'>
+                                <div class='input-group-prepend'>
+                                    <!-- <label class = 'input-group-text' for = 'inputGroupSelect01'>betch</label> -->
+                                    <label for='exampleInput'>Academic Year</label>
                                 </div>
-                                <select class="custom-select" id="inputGroupSelect01" id="validationServer02" required>
+                                <select class='custom-select' id='inputGroupSelect01' id='validationServer02' required>
                                     <option selected>select betch...</option>
-                                    <option value="1">betch 1</option>
-                                    <option value="2">betch 2</option>
-                                    <option value="3">betch 3</option>
+                                    <option value='1'>betch 1</option>
+                                    <option value='2'>betch 2</option>
+                                    <option value='3'>betch 3</option>
                                 </select>
                             </div>
                         </div>
-                        <div class="col-md">
-                            <div class="input-group-sm mb-3">
-                                <div class="input-group-prepend">
-                                    <!-- <label class="input-group-text" for="inputGroupSelect01">semester</label> -->
-                                    <label for="exampleInput">semester</label>
+                        <div class='col-md'>
+                            <div class='input-group-sm mb-3'>
+                                <div class='input-group-prepend'>
+                                    <!-- <label class = 'input-group-text' for = 'inputGroupSelect01'>semester</label> -->
+                                    <label for='exampleInput'>semester</label>
                                 </div>
-                                <select class="custom-select" id="inputGroupSelect01" id="validationServer02" required>
+                                <select class='custom-select' id='inputGroupSelect01' id='validationServer02' required>
                                     <option value=''>Select Semester</option>
                                     <option value='1'>1 st semester</option>
                                     <option value='2'>2 nd semester</option>
@@ -343,13 +343,13 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
                                 </select>
                             </div>
                         </div>
-                        <div class="col-md">
-                            <div class="input-group-sm mb-3">
-                                <div class="input-group-prepend">
-                                    <!-- <label class="input-group-text" for="inputGroupSelect01">Module</label> -->
-                                    <label for="exampleInput">Module</label>
+                        <div class='col-md'>
+                            <div class='input-group-sm mb-3'>
+                                <div class='input-group-prepend'>
+                                    <!-- <label class = 'input-group-text' for = 'inputGroupSelect01'>Module</label> -->
+                                    <label for='exampleInput'>Module</label>
                                 </div>
-                                <select class="custom-select" id="inputGroupSelect01" id="validationServer02" required>
+                                <select class='custom-select' id='inputGroupSelect01' id='validationServer02' required>
                                     <option value=''>Select Module</option>
                                     <option value='1'>EMP-MO1</option>
                                     <option value='2'>EMP-MO2</option>
@@ -362,13 +362,13 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
                                 </select>
                             </div>
                         </div>
-                        <div class="col-md">
-                            <div class="input-group-sm mb-3">
-                                <div class="input-group-prepend">
-                                    <!-- <label class="input-group-text" for="inputGroupSelect01">Type</label> -->
-                                    <label for="exampleInput">Type</label>
+                        <div class='col-md'>
+                            <div class='input-group-sm mb-3'>
+                                <div class='input-group-prepend'>
+                                    <!-- <label class = 'input-group-text' for = 'inputGroupSelect01'>Type</label> -->
+                                    <label for='exampleInput'>Type</label>
                                 </div>
-                                <select class="custom-select" id="inputGroupSelect01" id="validationServer02" required>
+                                <select class='custom-select' id='inputGroupSelect01' id='validationServer02' required>
                                     <option value=''>Select Type</option>
                                     <option value='1'>THEORY</option>
                                     <option value='2'>PRACTICAL</option>
@@ -385,7 +385,7 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
 
                         </div>
                         <div class='col-md-auto pr-0'>
-                            <button type='submit' name="search" class='btn btn-primary'>SEARCH</button>
+                            <button type='submit' name='search' class='btn btn-primary'>SEARCH</button>
                         </div>
                     </div>
                 </form>
