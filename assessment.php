@@ -23,10 +23,14 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
 <!-- 1 -->
 
                 <div class="row">
-                    <div class="col-md-11 col-sm-11 col-xs-11">
+                    <div class="col-md-10 col-sm-10 col-xs-10">
                      <div class="text-primary">
                      <h1>Add Assessment</h1>
                      </div>
+                    </div>
+
+                    <div class="col-md-2 col-sm-2 col-xs-2">
+                    <input type=submit onClick="location.href='assessments.php'" value='view Assessment'class="btn btn-outline-primary">
                     </div>
                     </div>
 
@@ -152,7 +156,7 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                      <div class="row">
                         <div class="col-md-11 col-sm-11 col-xs-11 "></div>
                         <div class="col-md-1 col-sm-1 col-xs-1 ">
-                          <input type="submit"  class="btn btn-outline-primary "value="Add">
+                          <input type="submit"  class="btn btn-outline-success "value="Add">
                          </div>
                       </div>
                  </form>
