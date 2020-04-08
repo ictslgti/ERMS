@@ -69,6 +69,22 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                                 </td>
 
                             </tr>
+                            
+                            <tr>
+                                <th scope='row'>2</th>
+                                <td>Assessment 02</td>
+                                <td>5IT</td>
+                                <td>Web Programming</td>
+                                <td>2019/2020</td>
+                                <td>1</td>
+                                <td>2020.03.27</td>
+                                <td>
+                                <button type='submit' name='add' class="btn btn-outline-success">Add result</button>
+                                <button type='submit' name='view' class="btn btn-outline-danger">Delete assessment</button>
+                                
+                                </td>
+
+                            </tr>
 
                         </tbody>
                     </table>
