@@ -2,7 +2,11 @@
     <!-- sidebar-brand  -->
     <div class="sidebar-item sidebar-brand">
         <a href="#">pro sidebar</a>
+        <div id="close-sidebar">
+          <i class="fas fa-times"></i>
+        </div>
     </div>
+    
     <!-- sidebar-header  -->
     <div class="sidebar-item sidebar-header d-flex flex-nowrap">
         <div class="user-pic">
@@ -13,8 +17,8 @@
                 <strong>Admin</strong>
             </span>
             <span class="user-role">Achchuthan</span>
-            <span class="user-status">
-                <i class="fa fa-circle"></i>
+            <span class="user-status"> 
+            
                 <span>Online</span>
             </span>
         </div>
@@ -135,10 +139,10 @@
                 <div class="sidebar-submenu">
                     <ul>
                         <li>
-                            <a href="#">Insttitutional Exam</a>
+                            <a href="exams.php">ExamS</a>
                         </li>
                         <li>
-                            <a href="#">TVEC Exma</a>
+                            <a href="Exams_results.php">Exams Results</a>
                         </li>
                     </ul>
                 </div>
