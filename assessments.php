@@ -37,6 +37,7 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
 
                 <div class="row">
                     <div class="form-group col-md-12">
+                    <div class="table-responsive">
                     <table class='table align-middle'>
                         <thead class='bg-primary text-light'>
                             <tr>
@@ -71,7 +72,7 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
 
                         </tbody>
                     </table>
-
+                    </div>
                     </div>
                 </div>
                 <!-- #1 Insert Your Content" -->
