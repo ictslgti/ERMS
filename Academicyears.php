@@ -83,33 +83,29 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
 
                             </tr>
                             
-                            <tr>
-                                <th scope='row'>2</th>
-                                <td>Assessment 02</td>
-                                <td>5IT</td>
-                                <td>Web Programming</td>
-                                <td>2019/2020</td>
-                                
-                                <td>2020.03.27</td>
+                            <tr class="table-danger">
+                                <th scope='row'>2017/2018</th>
+                                <td>Completed</td>
+                                <td>2017.02.25</td>
+                                <td>2017.08.25</td>
+                                <td>2017.09.30</td>
+                                <td>2020.03.30</td>
                                 <td>
-                                <button type='submit' name='add' class="btn btn-outline-success">Add result</button>
-                                <button type='submit' name='view' class="btn btn-outline-danger">Delete Assessment</button>
+                                
                                 
                                 </td>
 
                             </tr>
 
-                            <tr class="table-info">
-                                <th scope='row'>3</th>
-                                <td>Assessment 01</td>
-                                <td>5IT</td>
-                                <td>Software Testing</td>
-                                <td>2019/2020</td>
-                                
-                                <td>2020.03.24</td>
+                            <tr class="table-danger">
+                                <th scope='row'>2017/2018</th>
+                                <td>Completed</td>
+                                <td>2017.02.25</td>
+                                <td>2017.08.25</td>
+                                <td>2017.09.30</td>
+                                <td>2020.03.30</td>
                                 <td>
-                                <button type='submit' name='add' class="btn btn-outline-success">Add result</button>
-                                <button type='submit' name='view' class="btn btn-outline-info">View & Edit result</button>
+                                
                                 
                                 </td>
 
