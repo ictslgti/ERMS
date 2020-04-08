@@ -48,7 +48,7 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                                 <th scope='col'>Acemadic year</th>
                                 <th scope='col'>Attempt</th>
                                 <th scope='col'>Date</th>
-                                <th scope='col'>STATUS</th>
+                                <th scope='col'>Options</th>
                                 
 
                             </tr>
