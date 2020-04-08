@@ -47,10 +47,10 @@
         <a class='nav-link active' href='Exams.php'>Exams</a>
       </li>
       <li class='nav-item'>
-        <a class='nav-link' href='Exams_results.php'>Update Results</a>
+        <a class='nav-link' href='exams_results.php'>Update Results</a>
       </li>
       <li class='nav-item'>
-        <a class='nav-link' href='Exams.php'>View Results</a>
+        <a class='nav-link' href='exams.php'>View Results</a>
       </li>
     </ul>
   </div>
