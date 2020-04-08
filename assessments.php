@@ -27,12 +27,28 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                     </div>
 
                     <div class="col-md-2 col-sm-2 col-xs-2">
-                    <input type=submit onClick="location.href='assessment.php'" value='New Assessment'class="btn btn-outline-primary">
+                    <button type=submit onClick="location.href='assessment.php'" class="btn btn-outline-primary">New Assessment</button>
+                    </div>
+                    </div>
+                    <!-- 1111111 -->
+                    <hr>
+                    <div class="row">
+                    <div class="col-md-8 col-sm-8 col-xs-8"></div>
+                    <div class="col-md-4 col-sm-4 col-xs-4">
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" placeholder="Any one search" aria-label="Recipient's username" aria-describedby="button-addon2">
+                        <div class="input-group-append">
+                            <button class="btn btn-primary" type="button" id="button-addon2"><img src="https://img.icons8.com/officel/20/000000/search.png"/></button>
+                        </div>
+                        </div>
                     </div>
                     </div>
                     <!-- 1111111 -->
 
-<hr>
+
+
+
+
 
 
                 <div class="row">
@@ -80,6 +96,22 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                                 <td>
                                 <button type='submit' name='add' class="btn btn-outline-success">Add result</button>
                                 <button type='submit' name='view' class="btn btn-outline-danger">Delete Assessment</button>
+                                
+                                </td>
+
+                            </tr>
+
+                            <tr class="table-info">
+                                <th scope='row'>3</th>
+                                <td>Assessment 01</td>
+                                <td>5IT</td>
+                                <td>Software Testing</td>
+                                <td>2019/2020</td>
+                                
+                                <td>2020.03.24</td>
+                                <td>
+                                <button type='submit' name='add' class="btn btn-outline-success">Add result</button>
+                                <button type='submit' name='view' class="btn btn-outline-info">View & Edit result</button>
                                 
                                 </td>
 
