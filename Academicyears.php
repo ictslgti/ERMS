@@ -73,7 +73,7 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                                 <td>2017.09.30</td>
                                 <td>2020.03.30</td>
                                 <td>
-                                <input type='submit' name='add' class="btn btn-outline-danger"value="View more">
+                                <input type='button' name='add' class="btn btn-outline-danger"value="View more"data-toggle="modal" data-target="#exampleModal">
                                 
                                 </td>
 
@@ -87,7 +87,7 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                                 <td>2017.09.30</td>
                                 <td>2020.03.30</td>
                                 <td>
-                                <input type='submit' name='add' class="btn btn-outline-success" value="Edit details">
+                                <input type='button' name='add' class="btn btn-outline-success" value="Edit details"data-toggle="modal" data-target="#exampleModal">
                                 
                                 </td>
 
@@ -101,7 +101,7 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                                 <td>2017.09.30</td>
                                 <td>2020.03.30</td>
                                 <td>
-                                <input type='submit' name='add' class="btn btn-outline-success" value="Edit details">
+                                <input type='button' name='add' class="btn btn-outline-success" value="Edit details"data-toggle="modal" data-target="#exampleModal">
                                 
                                 </td>
 
@@ -115,7 +115,7 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                                 <td>--</td>
                                 <td>--</td>
                                 <td>
-                                <input type='submit' name='add' class="btn btn-outline-info" value="Edit details">
+                                <input type='button' name='add' class="btn btn-outline-info" value="Edit details"data-toggle="modal" data-target="#exampleModal">
                                 
                                 </td>
 
@@ -125,24 +125,39 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                     </table>
                     
                     </div>
-
-
-
-
-
-
                     </div>
                 </div>
                 </form>
+<?php
+if(isset($_POST['add']))
+{
+    echo '
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            ...
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Save changes</button>
+          </div>
+        </div>
+      </div>
+    </div>';
+}
+
+?>
 
 
-
-                   <?php
-                    if(isset($_POST['add']))
-                    {
-                        echo "sumana";
-                    }
-                    ?>
+                   
 
                 <!-- #1 Insert Your Content" -->
             </div>
