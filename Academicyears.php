@@ -77,14 +77,15 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                                 <td>2017.09.30</td>
                                 <td>2020.03.30</td>
                                 <td>
+                                <button type='submit' name='add' class="btn btn-outline-danger">View more</button>
                                 
                                 </td>
 
                             </tr>
                             
-                            <tr class="table-danger">
+                            <tr class="table-success">
                                 <th scope='row'>2019/2020</th>
-                                <td>Completed</td>
+                                <td>Active</td>
                                 <td>2017.02.25</td>
                                 <td>2017.08.25</td>
                                 <td>2017.09.30</td>
@@ -96,9 +97,9 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
 
                             </tr>
 
-                            <tr class="table-danger">
+                            <tr class="table-success">
                                 <th scope='row'>2020/2021</th>
-                                <td>Completed</td>
+                                <td>Active</td>
                                 <td>2017.02.25</td>
                                 <td>2017.08.25</td>
                                 <td>2017.09.30</td>
