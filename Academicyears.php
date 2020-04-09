@@ -45,15 +45,11 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                     </div>
                     <!-- 1111111 -->
 
-
-
-
-
-
-
+                    <form method="POST">
                 <div class="row">
                     <div class="form-group col-md-12">
                     <div class="table-responsive">
+                    
                     <table class='table align-middle'>
                         <thead class='bg-primary text-light'>
                             <tr>
@@ -77,7 +73,7 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                                 <td>2017.09.30</td>
                                 <td>2020.03.30</td>
                                 <td>
-                                <button type='submit' name='add' class="btn btn-outline-danger">View more</button>
+                                <input type='submit' name='add' class="btn btn-outline-danger"value="View more">
                                 
                                 </td>
 
@@ -91,7 +87,7 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                                 <td>2017.09.30</td>
                                 <td>2020.03.30</td>
                                 <td>
-                                <button type='submit' name='add' class="btn btn-outline-success">Edit details</button>
+                                <input type='submit' name='add' class="btn btn-outline-success" value="Edit details">
                                 
                                 </td>
 
@@ -105,7 +101,7 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                                 <td>2017.09.30</td>
                                 <td>2020.03.30</td>
                                 <td>
-                                <button type='submit' name='add' class="btn btn-outline-success">Edit details</button>
+                                <input type='submit' name='add' class="btn btn-outline-success" value="Edit details">
                                 
                                 </td>
 
@@ -119,7 +115,7 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                                 <td>--</td>
                                 <td>--</td>
                                 <td>
-                                <button type='submit' name='add' class="btn btn-outline-info">Edit details</button>
+                                <input type='submit' name='add' class="btn btn-outline-info" value="Edit details">
                                 
                                 </td>
 
@@ -127,9 +123,27 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
 
                         </tbody>
                     </table>
+                    
                     </div>
+
+
+
+
+
+
                     </div>
                 </div>
+                </form>
+
+
+
+                   <?php
+                    if(isset($_POST['add']))
+                    {
+                        echo "sumana";
+                    }
+                    ?>
+
                 <!-- #1 Insert Your Content" -->
             </div>
         </main>
