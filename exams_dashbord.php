@@ -9,6 +9,7 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
     <?php include_once('./head.php');
     ?>
 </head>
+
 <body>
     <div class='page-wrapper toggled bg2 border-radius-on light-theme'>
         <nav id='sidebar' class='sidebar-wrapper'>
@@ -18,14 +19,16 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
         <main class='page-content pt-2'>
             <?php include_once('exam/nav_bar.php');
             ?>
+            <?php include_once('exam/dash_nav.php');
+            ?>
             <div id='overlay' class='overlay'></div>
             <div class='container-fluid p-2'>
 
                 <!-- #1 Insert Your Content-->
                 <section class='mb-40 pt-2 mx-auto'>
-                    <div class='container-fluid p-2 '>
-                        <div class='row '>
-                            <div class='col-md shadow-lg bg-white rounded'>
+                    <div class='container-fluid p-2 tab-pane active' id="profile">
+                        <div class=' row '>
+                            <div class=' col-md shadow-lg bg-white rounded'>
                                 <a href='#' class='d-block text-decoration-none'>
                                     <div class='white-box single-summery'>
                                         <div class='d-flex justify-content-between'>
