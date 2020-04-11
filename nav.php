@@ -1,12 +1,12 @@
 <div class="sidebar-content">
     <!-- sidebar-brand  -->
     <div class="sidebar-item sidebar-brand">
-        <a href="#">pro sidebar</a>
+        <a href="#">ERMS @ SLGTI</a>
         <div id="close-sidebar">
-          <i class="fas fa-times"></i>
+            <i class="fas fa-times"></i>
         </div>
     </div>
-    
+
     <!-- sidebar-header  -->
     <div class="sidebar-item sidebar-header d-flex flex-nowrap">
         <div class="user-pic">
@@ -17,8 +17,8 @@
                 <strong>Admin</strong>
             </span>
             <span class="user-role">Achchuthan</span>
-            <span class="user-status"> 
-            
+            <span class="user-status">
+
                 <span>Online</span>
             </span>
         </div>
@@ -58,9 +58,9 @@
                         <li>
                             <a href="#">Lecturers</a>
                         </li>
-                        <li>
+                        <!-- <li>
                             <a href="#">Students</a>
-                        </li>
+                        </li> -->
                     </ul>
                 </div>
             </li>
@@ -73,16 +73,17 @@
                 <div class="sidebar-submenu">
                     <ul>
                         <li>
-                            <a href="#">Department Details
+                            <a href="department.php">Department Details
 
                             </a>
                         </li>
                         <li>
-                            <a href="#">Course Details</a>
+                            <a href="module.php">Module</a>
                             <ul>
-                            <li>
-                            <a href="#">Module</a>
-                        </li></ul>
+                                <li>
+                                    <a href="Academicyear.php">Academic Year</a>
+                                </li>
+                            </ul>
                         </li>
                         <li>
                             <a href="#">department contact</a>
@@ -117,10 +118,10 @@
                 <div class="sidebar-submenu">
                     <ul>
                         <li>
-                            <a href="#">student Details</a>
+                            <a href="student.php">student Details</a>
                         </li>
                         <li>
-                            <a href="#">new Students Entrol</a>
+                            <a href="students.php">new Students Entrol</a>
                         </li>
                         <li>
                             <a href="#">student Report</a>
@@ -139,10 +140,10 @@
                 <div class="sidebar-submenu">
                     <ul>
                         <li>
-                            <a href="exams.php">ExamS</a>
+                            <a href="exams_dashbord.php">Exams</a>
                         </li>
                         <li>
-                            <a href="Exams_results.php">Exams Results</a>
+                            <a href="Exam_report.php">Exams Results</a>
                         </li>
                     </ul>
                 </div>
@@ -155,10 +156,13 @@
                 <div class="sidebar-submenu">
                     <ul>
                         <li>
-                            <a href="#">Assesment Details</a>
+                            <a href="assessment.php">Assesment Details</a>
                         </li>
                         <li>
-                            <a href="#">Assesment Report</a>
+                            <a href="assessments.php">Assesments</a>
+                        </li>
+                        <li>
+                            <a href="assessment_type.php">Assesment Type</a>
                         </li>
                     </ul>
                 </div>
@@ -173,10 +177,10 @@
                         <li>
                             <a href="#">Attendence Details</a>
                             <ul>
-                            <li>
-                            <a href="#">Attendence Update</a>
-                        </li>
-                        </ul>
+                                <li>
+                                    <a href="#">Attendence Update</a>
+                                </li>
+                            </ul>
                         </li>
                         <li>
                             <a href="#">Attendence Report</a>

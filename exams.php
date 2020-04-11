@@ -9,7 +9,7 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
     <?php include_once('./head.php');
     ?>
     <?php
-     include_once('config.php');
+    include_once('config.php');
     ?>
 </head>
 
@@ -20,7 +20,8 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
         </nav>
         <main class='page-content pt-2'>
             <?php include_once('exam/nav_bar.php');
-             include_once('exam/add_exam.php');
+            include_once('exam/exams_nav.php');
+            include_once('exam/add_exam.php');
             ?>
             <div class='container-fluid p-5'>
                 <!-- #1 Insert Your Content-->
@@ -91,26 +92,26 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
                 <!--#2 Insert your Content-->
                 <div class="row">
                     <div class="form-group col-md-12 table-responsive">
-                    <table class='table align-middle'>
-                    <thead class='bg-primary text-light'>
-                        <tr>
-                            <th scope='col'>NO</th>
-                            <th scope='col'>Exams</th>
-                            <th scope='col'>DEPARTMENT</th>
-                            <th scope='col'>COURSE</th>
-                            <th scope='col'>SEMESTER</th>
-                            <th scope='col'>MODULE</th>
-                            <th scope='col'>ACTIONS</th>
+                        <table class='table align-middle'>
+                            <thead class='bg-primary text-light'>
+                                <tr>
+                                    <th scope='col'>NO</th>
+                                    <th scope='col'>Exams</th>
+                                    <th scope='col'>DEPARTMENT</th>
+                                    <th scope='col'>COURSE</th>
+                                    <th scope='col'>SEMESTER</th>
+                                    <th scope='col'>MODULE</th>
+                                    <th scope='col'>ACTIONS</th>
 
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php
-                        if (isset($_GET['delete'])) {
-                            $exam_id = $_GET['delete'];
-                            $sql = "DELETE FROM `exams` WHERE `exam_id` = $exam_id";
-                            if (mysqli_query($con, $sql)) {
-                                echo '
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php
+                                if (isset($_GET['delete'])) {
+                                    $exam_id = $_GET['delete'];
+                                    $sql = "DELETE FROM `exams` WHERE `exam_id` = $exam_id";
+                                    if (mysqli_query($con, $sql)) {
+                                        echo '
                   <div class="row">
                   <div class="col-md alert alert-success alert-dismissible fade show " role="alert">
                   Record Was Deleted..........
@@ -123,18 +124,18 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
                   </div>
                   
                   ';
-                            } else {
-                                echo 'Try again';
-                            }
-                        }
-                        ?>
-                        <?php
-                        $sql = "select * from exams";
-                        $result = $con->query($sql);
-                        if ($result->num_rows > 0) {
-                            while ($row = $result->fetch_assoc()) {
+                                    } else {
+                                        echo 'Try again';
+                                    }
+                                }
+                                ?>
+                                <?php
+                                $sql = "select * from exams";
+                                $result = $con->query($sql);
+                                if ($result->num_rows > 0) {
+                                    while ($row = $result->fetch_assoc()) {
 
-                                echo '<tr>
+                                        echo '<tr>
         <td> ', $row['exam_id'], '</td>
         <td> ', $row['exam'], '</td>
         <td> ', $row['dept_name'], '</td>
@@ -147,18 +148,18 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
          <a class = "btn btn-info btn-group-sm" href="?view=', $row['exam_id'], '"> View </a>
          </td>
         </tr>';
-                            }
-                        } else {
-                            echo 'no rows';
-                        }
-                        ?>
+                                    }
+                                } else {
+                                    echo 'no rows';
+                                }
+                                ?>
 
 
 
 
 
-                    </tbody>
-                </table>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
                 <!--#2 Insert your Content-->
