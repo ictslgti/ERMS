@@ -1,5 +1,5 @@
 <?php
-$title = 'Dashboard | Online Examination Result Management System | SLGTI';
+$title = 'Results Report | Online Examination Result Management System | SLGTI';
 $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
 ?>
 <!DOCTYPE html>
@@ -25,8 +25,8 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
             <div id='overlay' class='overlay'></div>
             <div class='container-fluid p-5'>
                 <!-- #1 Insert Your Content-->
-      
-  <!-- #1 Insert Your Content-->
+
+                <!-- #1 Insert Your Content-->
                 <div class="row">
                     <div class="col-md">
                         <h3 class="text-secondary">Exams Resuls Report</h3>
@@ -34,7 +34,7 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
                     <div class="col-md">
 
                     </div>
-    
+
                     <div class="col-md-auto pr-4">
                         <a class="btn btn-warning btn-group btn btn-sm " href="?view=', $row['exam_id'], '">
                             <svg class="bi bi-pencil-square" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -55,26 +55,26 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
 
                 </div>
                 <br>
-                  <!-- #1 Searching bar" -->
+                <!-- #1 Searching bar" -->
                 <div class="row">
-    <div class="col-md">
-      
-    </div>
-    <div class="col-md">
-      
-    </div>
-    <div class="col-md-auto pr-4 sidebar-item sidebar-search ">
-    <div class="input-group input-group-sm mb-3">
-                <input type="text" class="form-control-sm search-menu" id="mySearch" onkeyup="myFunction()" placeholder="Reg No..or Name..." title="Type in a category">
-                <div class="input-group-append">
-                    <span class="input-group-text">
-                        <i class="fa fa-search" aria-hidden="true"></i>
-                    </span>
+                    <div class="col-md">
+
+                    </div>
+                    <div class="col-md">
+
+                    </div>
+                    <div class="col-md-auto pr-4 sidebar-item sidebar-search ">
+                        <div class="input-group input-group-sm mb-3">
+                            <input type="text" class="form-control-sm search-menu" id="mySearch" onkeyup="myFunction()" placeholder="Reg No..or Name..." title="Type in a category">
+                            <div class="input-group-append">
+                                <span class="input-group-text">
+                                    <i class="fa fa-search" aria-hidden="true"></i>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </div>
-    </div>
-  </div>
-               <br>
+                <br>
                 <!-- #1 Insert Your Content" -->
                 <div class="row">
                     <div class="col-md-2 col-sm-4">
