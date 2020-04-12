@@ -1,5 +1,5 @@
 <?php
-$title = 'Dashboard | Online Examination Result Management System | SLGTI';
+$title = 'Exams Home | Online Examination Result Management System | SLGTI';
 $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
 ?>
 <!DOCTYPE html>
@@ -23,10 +23,9 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
             ?>
             <div id='overlay' class='overlay'></div>
             <div class='container-fluid p-2'>
-
                 <!-- #1 Insert Your Content-->
                 <section class='mb-40 pt-2 mx-auto'>
-                    <div class='container-fluid p-2 tab-pane active' id="profile">
+                    <div class='container-fluid '>
                         <div class=' row '>
                             <div class=' col-md shadow-lg bg-white rounded'>
                                 <a href='#' class='d-block text-decoration-none'>
