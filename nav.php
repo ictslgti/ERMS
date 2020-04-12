@@ -46,7 +46,7 @@
                 <a href="#">
                     <i class="fa fa-tachometer-alt"></i>
                     <span class="menu-text">Dashboard</span>
-                    <span class="badge badge-pill badge-warning">New</span>
+                    <!-- <span class="badge badge-pill badge-warning">New</span> -->
                 </a>
                 <div class="sidebar-submenu">
                     <ul>
@@ -66,7 +66,7 @@
             </li>
             <li class="sidebar-dropdown">
                 <a href="#">
-                    <i class="fa fa-shopping-cart"></i>
+                    <i class="fa fa-university"></i>
                     <span class="menu-text">Department</span>
                     <span class="badge badge-pill badge-danger">6</span>
                 </a>
@@ -93,7 +93,7 @@
             </li>
             <li class="sidebar-dropdown">
                 <a href="#">
-                    <i class="far fa-gem"></i>
+                    <i class="far fa-tie"></i>
                     <span class="menu-text">Stafs</span>
                 </a>
                 <div class="sidebar-submenu">
@@ -112,7 +112,7 @@
             </li>
             <li class="sidebar-dropdown">
                 <a href="#">
-                    <i class="fa fa-chart-line"></i>
+                    <i class="fa fa-graduate"></i>
                     <span class="menu-text">Students</span>
                 </a>
                 <div class="sidebar-submenu">
@@ -134,7 +134,7 @@
             </li>
             <li class="sidebar-dropdown">
                 <a href="#">
-                    <i class="fa fa-globe"></i>
+                    <i class="fa fa-book-open"></i>
                     <span class="menu-text">Exams</span>
                 </a>
                 <div class="sidebar-submenu">
@@ -150,7 +150,7 @@
             </li>
             <li class="sidebar-dropdown">
                 <a href="#">
-                    <i class="fa fa-globe"></i>
+                    <i class="fa fa-award"></i>
                     <span class="menu-text">Assesment</span>
                 </a>
                 <div class="sidebar-submenu">
@@ -169,7 +169,7 @@
             </li>
             <li class="sidebar-dropdown">
                 <a href="#">
-                    <i class="fa fa-globe"></i>
+                    <i class="fa fa-chalkboard-teacher"></i>
                     <span class="menu-text">Attendence</span>
                 </a>
                 <div class="sidebar-submenu">
