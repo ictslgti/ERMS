@@ -16,10 +16,10 @@
         </ul>
     </div>
     <div class='col-md-auto pr-4'>
-        <button type='submit'  class='btn btn-success btn-group btn btn-sm ' name="add" data-toggle='modal' data-target='.bd-exams-modal-xl '>
+        <button type='submit' class='btn btn-success btn-group btn btn-sm ' name="add" data-toggle='modal' data-target='#add_exam'>
             <svg class='bi bi-plus-circle-fill' width='1.5em' height='1.5em' viewBox='0 0 16 16' fill='currentColor' xmlns='http://www.w3.org/2000/svg'>
                 <path fill-rule='evenodd' d='M16 8A8 8 0 110 8a8 8 0 0116 0zM8.5 4a.5.5 0 00-1 0v3.5H4a.5.5 0 000 1h3.5V12a.5.5 0 001 0V8.5H12a.5.5 0 000-1H8.5V4z' clip-rule='evenodd' />
             </svg>
-          Exams</button>
+            Exams</button>
     </div>
 </div>
