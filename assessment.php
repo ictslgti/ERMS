@@ -41,19 +41,19 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
 <!-- 2  -->
 
                     
-                     <form name="myForm" action="" onsubmit="return validateForm()" method="post" required>
+                     <form name="myForm" action=""  method="post" required>
                      <div class="row">
                      <div class="col-md-6 col-sm-6 col-xs-6">
                      <div class="form-group">
                      <div class="input-group mb-3">
                          <div class="input-group-prepend">
-                         <span class="input-group-text" id="basic-addon1">Course</span>
+                         <span class="input-group-text" id="basic-addon1">Department</span>
                        </div>
-                       <select class="custom-select" id="inputGroupSelect01" name="course">
-                       <option selected>Choose course</option>
-                            <option value="1">NVQ LEVEL5</option>
-                            <option value="2">NVQ LEVEL5</option>
-                            <option value="3">BRIDGING</option>
+                       <select class="custom-select" id="inputGroupSelect01" name="Department" id="validationCustom04" required>
+                       <option  selected disabled value="">Choose Department</option>
+                            <option value="1">ICT</option>
+                            <option value="2">Mechanical</option>
+                            <option value="3">Food technology</option>
                          </select>
                          </div>
                      </div>
@@ -62,13 +62,13 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                      <div class="form-group">
                       <div class="input-group mb-3">
                         <div class="input-group-prepend">
-                          <label class="input-group-text" for="inputGroupSelect01">Module</label>
+                          <label class="input-group-text" for="inputGroupSelect01">Course</label>
                         </div>
-                          <select class="custom-select" id="inputGroupSelect01" name="module">
-                            <option selected>Choose Module</option>
-                            <option value="1">Emp01</option>
-                            <option value="2">Emp02</option>
-                            <option value="3">Emp03</option>
+                          <select class="custom-select" id="inputGroupSelect01" name="Course"id="validationCustom04" required>
+                            <option  selected disabled value="">Choose Course</option>
+                            <option value="1">NVQ-LEVEL-5</option>
+                            <option value="2">NVQ-LEVEL-4</option>
+                            <option value="3">BRIDGING</option>
                           </select>
                           </div>
                         </div>
@@ -85,13 +85,13 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                         <div class="form-group">
                       <div class="input-group mb-3">
                         <div class="input-group-prepend">
-                          <label class="input-group-text" for="inputGroupSelect01">Assessments</label>
+                          <label class="input-group-text" for="inputGroupSelect01">Module</label>
                         </div>
-                          <select class="custom-select" id="inputGroupSelect01" name="Assess">
-                            <option selected>Choose Assessments</option>
-                            <option value="1">01</option>
-                            <option value="2">02</option>
-                            <option value="3">03</option>
+                          <select class="custom-select" id="inputGroupSelect01" name="Module"id="validationCustom04" required>
+                            <option  selected disabled value="">Choose Module</option>
+                            <option value="1">M01</option>
+                            <option value="2">EMP-02</option>
+                            <option value="3">EMP-01</option>
                           </select>
                           </div>
                         </div>
@@ -102,13 +102,13 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                         <div class="form-group">
                       <div class="input-group mb-3">
                         <div class="input-group-prepend">
-                          <label class="input-group-text" for="inputGroupSelect01">Attempt</label>
+                          <label class="input-group-text" for="inputGroupSelect01">Assessment</label>
                         </div>
-                          <select class="custom-select" id="inputGroupSelect01" name="Attempt">
-                            <option selected>Choose Attempt</option>
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
+                          <select class="custom-select" id="inputGroupSelect01" name="Assessment"id="validationCustom04" required>
+                            <option  selected disabled value="">Choose Assessment</option>
+                            <option value="1">Assessment1</option>
+                            <option value="2">Assessment2</option>
+                            <option value="3">Assessment3</option>
                           </select>
                           </div>
                         </div>
@@ -126,12 +126,12 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                         <div class="form-group">
                       <div class="input-group mb-3">
                         <div class="input-group-prepend">
-                          <label class="input-group-text" for="inputGroupSelect01">Academy Year</label>
+                          <label class="input-group-text" for="inputGroupSelect01">Batch</label>
                         </div>
-                          <select class="custom-select" id="inputGroupSelect01" name="Year">
-                            <option selected>Academy Year</option>
-                            <option value="1">2020/2019</option>
-                            <option value="2">2019/2018</option>
+                          <select class="custom-select" id="inputGroupSelect01" name="Batch"id="validationCustom04" required>
+                            <option  selected disabled value="">Choose Batch</option>
+                            <option value="1">Batch-03</option>
+                            <option value="2">Batch-04</option>
                             
                           </select>
                           </div>
@@ -144,7 +144,7 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                               <div class="input-group-prepend">
                                   <span class="input-group-text" id="basic-addon3">Assessment Date</span>
                               </div>
-                              <input type="date" id="birthday" name="Assessment_Date"class="form-control" id="basic-url" aria-describedby="basic-addon3" name="date">
+                              <input type="date" id="birthday" name="Assessment_Date"class="form-control" id="basic-url" aria-describedby="basic-addon3" name="date"id='validationServer01' required>
                               </div>
                         </div>
                       </div>
@@ -162,41 +162,7 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                  </form>
               </div>
 
-                      <script>
-                        function validateForm() {
-                            var a = document.forms["myForm"]["course"].value;
-                            var b = document.forms["myForm"]["module"].value;
-                            var c = document.forms["myForm"]["Assess"].value;
-                            var d = document.forms["myForm"]["Attempt"].value;
-                            var e = document.forms["myForm"]["Year"].value;
-                                          
-                            if (a == "Choose course") 
-                            {
-                              alert("Choose The Assessment course");
-                              return false;
-                            }
-                            if (b == "Choose Module") 
-                            {
-                              alert("Choose The Assessment Module");
-                              return false;
-                            }
-                            if (c == "Choose Assessments") 
-                            {
-                              alert("Choose Assessment No");
-                              return false;
-                            }
-                            if (d == "Choose Attempt") 
-                            {
-                              alert("Choose Assessment Attempt");
-                              return false;
-                            }
-                            if (e == "Academy Year") 
-                            {
-                              alert("Choose Assessment Academy Year");
-                              return false;
-                            }
-                         }
-                      </script>
+                      
 
 
                 <!-- #1 Insert Your Content" -->
