@@ -1,5 +1,5 @@
 <?php
-$title = 'Dashboard | Online Examination Result Management System | SLGTI';
+$title = 'Exams Results | Online Examination Result Management System | SLGTI';
 $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
 ?>
 <!DOCTYPE html>
@@ -32,25 +32,25 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
                 <!-- sql -->
                 <!-- #2 Insert Your Content" -->
 
-                
+
                 <!-- Heding -->
-       <!-- #3 Insert Your Content" -->
+                <!-- #3 Insert Your Content" -->
                 <div class="row">
-    <div class="col-sm">
-     <h3  class="text-secondary">Updates Exams Results</h3>
-    </div>
-    <div class="col-sm">
-     
-    </div>
-    <div class="col-md-auto pr-4">
-    <button type="button" class="btn btn-primary btn btn-sm" data-toggle="modal" data-target=".bd-example-modal-xl">Search</button>
-    </div>
-  </div>
-  <br>
+                    <div class="col-sm">
+                        <h3 class="text-secondary">Updates Exams Results</h3>
+                    </div>
+                    <div class="col-sm">
+
+                    </div>
+                    <div class="col-md-auto pr-4">
+                        <button type="button" class="btn btn-primary btn btn-sm" data-toggle="modal" data-target="#search_tab">Search</button>
+                    </div>
+                </div>
+                <br>
                 <!-- #1 Insert Your Content-->
                 <div class="row">
                     <div class="col-md-2 col-sm-4">
-                        <h6>Exams  :-</h6>
+                        <h6>Exams :-</h6>
                     </div>
                     <div class="col-md-4 col-sm-4">
                         <h6 class="text-muted">TVEC</h6>
