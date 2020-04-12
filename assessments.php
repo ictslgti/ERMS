@@ -61,7 +61,7 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                                 <th scope='col'>Name</th>
                                 <th scope='col'>Course</th>
                                 <th scope='col'>Module</th>
-                                <th scope='col'>Acemadic year</th>
+                                <th scope='col'>Batch</th>
                                 <th scope='col'>Date</th>
                                 <th scope='col'>Options</th>
                                 
@@ -74,7 +74,7 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                                 <td>Assessment 01</td>
                                 <td>5IT</td>
                                 <td>Web Programming</td>
-                                <td>2019/2020</td>
+                                <td>Batch-1</td>
                                 
                                 <td>2020.03.25</td>
                                 <td>
@@ -90,7 +90,7 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                                 <td>Assessment 02</td>
                                 <td>5IT</td>
                                 <td>Web Programming</td>
-                                <td>2019/2020</td>
+                                <td>Batch-2</td>
                                 
                                 <td>2020.03.27</td>
                                 <td>
@@ -106,7 +106,7 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                                 <td>Assessment 01</td>
                                 <td>5IT</td>
                                 <td>Software Testing</td>
-                                <td>2019/2020</td>
+                                <td>Batch-1</td>
                                 
                                 <td>2020.03.24</td>
                                 <td>
