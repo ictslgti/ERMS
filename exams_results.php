@@ -22,7 +22,7 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
         <main class='page-content pt-2 '>
             <?php include_once('exam/nav_bar.php');
             include_once('exam/exresu_nav.php');
-            include_once('exam/add_exam.php');
+            include_once('exam/search_tab.php')
             ?>
             <div id='overlay' class='overlay'></div>
             <div class='container-fluid p-5'>
@@ -32,152 +32,65 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
                 <!-- sql -->
                 <!-- #2 Insert Your Content" -->
 
-                <br>
+                
                 <!-- Heding -->
-                <!-- <div class="row ">
-                    <div class="col-md">
-                        <h4 class="text-wrap text-center text-primary">UPDATE STUDENTS RESULTS</h4>
+       <!-- #3 Insert Your Content" -->
+                <div class="row">
+    <div class="col-sm">
+     <h3  class="text-secondary">Updates Exams Results</h3>
+    </div>
+    <div class="col-sm">
+     
+    </div>
+    <div class="col-md-auto pr-4">
+    <button type="button" class="btn btn-primary btn btn-sm" data-toggle="modal" data-target=".bd-example-modal-xl">Search</button>
+    </div>
+  </div>
+  <br>
+                <!-- #1 Insert Your Content-->
+                <div class="row">
+                    <div class="col-md-2 col-sm-4">
+                        <h6>Exams  :-</h6>
                     </div>
-                </div>
-                <br> -->
-                <!-- #3 Insert Your Content" -->
-                <form method='POST' action=''>
-                    <div class='row '>
-                        <div class='col-md'>
-                            <div class='input-group-sm mb-3'>
-                                <div class='input-group-prepend'>
-                                    <!-- <label class = 'input-group-text' for = 'inputGroupSelect01'>Exams type</label> -->
-                                    <label for='exampleInputEmail1'>Exams type</label>
-                                </div>
-                                <select class='custom-select' id='inputGroupSelect01' id='validationServer01' required>
-                                    <option value=''>Select Exams</option>
-                                    <option value='1'>INSTITUTE</option>
-                                    <option value='2'>TVEC</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class='col-md'>
-                            <div class='input-group-sm mb-3'>
-                                <div class='input-group-prepend'>
-                                    <!-- <label class = 'input-group-text' for = 'inputGroupSelect01' id = 'validationServer02' required>Department</label> -->
-                                    <label for='exampleInputEmail1'>Department</label>
-                                </div>
-                                <select class='custom-select' id='inputGroupSelect01'>
-                                    <option value=''>Select Department</option>
-                                    <option value='1'>Information Communication Technology</option>
-                                    <option value='2'>Automotive & Technology</option>
-                                    <option value='3'>Construction Technology</option>
-                                    <option value='4'>Electrical Technology</option>
-                                    <option value='5'>Food Technology</option>
-                                    <option value='6'>Mechanical Technology</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class='col-md'>
-                            <div class='input-group-sm mb-3'>
-                                <div class='input-group-prepend'>
-                                    <!-- <label class = 'input-group-text' for = 'inputGroupSelect01'>Course</label> -->
-                                    <label for='exampleInputEmail1'>Course</label>
-                                </div>
-                                <select class='custom-select' id='inputGroupSelect01' id='validationServer02' required>
-                                    <option value=''>Select Course</option>
-                                    <option value='1'>NVQ LEVEL-4</option>
-                                    <option value='2'>BRIDGING LEVEL-5</option>
-                                    <option value='3'>NVQ LEVEL-5</option>
-                                    <option value='4'>NVQ LEVEL-6</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class='col-md'>
-                            <div class='input-group-sm mb-3'>
-                                <div class='input-group-prepend'>
-                                    <!-- <label class = 'input-group-text' for = 'inputGroupSelect01'>Academic Year</label> -->
-                                    <label for='exampleInputEmail1'>Academic Year</label>
-                                </div>
-                                <select class='custom-select' id='inputGroupSelect01' id='validationServer02' required>
-                                    <option value=''>Select Year...</option>
-                                    <option value='1'>2016</option>
-                                    <option value='2'>2017</option>
-                                    <option value='3'>2018</option>
-                                </select>
-                            </div>
-                        </div>
+                    <div class="col-md-4 col-sm-4">
+                        <h6 class="text-muted">TVEC</h6>
                     </div>
-                    <div class='row '>
-                        <div class='col-md'>
-                            <div class='input-group-sm mb-3'>
-                                <div class='input-group-prepend'>
-                                    <!-- <label class = 'input-group-text' for = 'inputGroupSelect01'>betch</label> -->
-                                    <label for='exampleInput'>Betch</label>
-                                </div>
-                                <select class='custom-select' id='inputGroupSelect01' id='validationServer02' required>
-                                    <option selected>select betch...</option>
-                                    <option value='1'>betch 1</option>
-                                    <option value='2'>betch 2</option>
-                                    <option value='3'>betch 3</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class='col-md'>
-                            <div class='input-group-sm mb-3'>
-                                <div class='input-group-prepend'>
-                                    <!-- <label class = 'input-group-text' for = 'inputGroupSelect01'>semester</label> -->
-                                    <label for='exampleInput'>semester</label>
-                                </div>
-                                <select class='custom-select' id='inputGroupSelect01' id='validationServer02' required>
-                                    <option value=''>Select Semester</option>
-                                    <option value='1'>1 st semester</option>
-                                    <option value='2'>2 nd semester</option>
-                                    <option value='3'>3 rd semester</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class='col-md'>
-                            <div class='input-group-sm mb-3'>
-                                <div class='input-group-prepend'>
-                                    <!-- <label class = 'input-group-text' for = 'inputGroupSelect01'>Module</label> -->
-                                    <label for='exampleInput'>Module</label>
-                                </div>
-                                <select class='custom-select' id='inputGroupSelect01' id='validationServer02' required>
-                                    <option value=''>Select Module</option>
-                                    <option value='1'>EMP-MO1</option>
-                                    <option value='2'>EMP-MO2</option>
-                                    <option value='3'>EMP-MO3</option>
-                                    <option value='4'>MO4</option>
-                                    <option value='5'>MO5</option>
-                                    <option value='6'>MO6</option>
-                                    <option value='7'>MO7</option>
-                                    <option value='8'>MO8</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class='col-md'>
-                            <div class='input-group-sm mb-3'>
-                                <div class='input-group-prepend'>
-                                    <!-- <label class = 'input-group-text' for = 'inputGroupSelect01'>Type</label> -->
-                                    <label for='exampleInput'>Type</label>
-                                </div>
-                                <select class='custom-select' id='inputGroupSelect01' id='validationServer02' required>
-                                    <option value=''>Select Type</option>
-                                    <option value='1'>THEORY</option>
-                                    <option value='2'>PRACTICAL</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- button-->
-                    <div class='row '>
-                        <div class='col-md'>
-                            <h3 class='text-primary'></h3>
-                        </div>
-                        <div class='col-md'>
 
-                        </div>
-                        <div class='col-md-auto pr-0'>
-                            <button type='submit' name='search' class='btn btn-primary'>SEARCH</button>
-                        </div>
+                    <div class="col-md-2 col-sm-4">
+                        <h6>Module</h6>
                     </div>
-                </form>
+                    <div class="col-md-4 col-sm-4">
+                        <h6 class="text-muted">MO7<span class="badge badge-dark">Practical</span></h6>
+                    </div>
+
+                    <div class="col-md-2 col-sm-4">
+                        <h6>Betch</h6>
+                    </div>
+                    <div class="col-md-4 col-sm-4">
+                        <h6 class="text-muted">Betch-4 <span class="badge badge-dark">2018/2025</span></h6>
+                    </div>
+
+                    <div class="col-md-2 col-sm-4">
+                        <h6>Date </h6>
+                    </div>
+                    <div class="col-md-4 col-sm-4">
+                        <h6 class="text-muted">00/00/0000</h6>
+                    </div>
+
+                    <!-- <div class="col-md-2 col-sm-4">
+                        <h6>Mobile No.</h6>
+                    </div>
+                    <div class="col-md-4 col-sm-4">
+                        <h6 class="text-muted">0702090100</h6>
+                    </div>
+
+                    <div class="col-md-2 col-sm-4">
+                        <h6>Address</h6>
+                    </div>
+                    <div class="col-md-4 col-sm-4">
+                        <h6 class="text-muted">No-04,Nilaveli,Trincomalee.</h6>
+                    </div> -->
+                </div>
                 <br>
                 <!-- #3 Insert Your Content" -->
                 <form method='POST' action=''>
@@ -213,7 +126,7 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
                                             <input type='text' class='form-control' placeholder='Marks' id='validationServer02' required aria-label='marks' aria-describedby='addon-wrapping' maxlength="5" size="6">
                                         </td>
                                         <td><span class=' badge badge-success'>PASS</span></td>
-                                        <td><button type='button' name='view' class='btn btn-warning btn-sm'>View</button></td>
+                                        <td><button type='button' name='view' class='btn btn-warning btn btn-sm '>View</button></td>
 
                                     </tr>
                                 </tbody>
@@ -227,8 +140,8 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
 
                                 </div>
                                 <div class='col-md-auto'>
-                                    <button type='submit' name='cancel' class='btn btn-danger'>CANCEL</button>
-                                    <button type='submit' name='save' class='btn btn-primary'>SAVE</button>
+                                    <button type='submit' name='cancel' class='btn btn-danger btn btn-sm '>CANCEL</button>
+                                    <button type='submit' name='save' class='btn btn-primary btn btn-sm '>SAVE</button>
                                 </div>
                             </div>
                         </div>
