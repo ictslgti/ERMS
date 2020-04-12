@@ -8,6 +8,7 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
 <head>
     <?php include_once('./head.php');
     ?>
+
 </head>
 
 <body>
@@ -24,21 +25,24 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
             <div id='overlay' class='overlay'></div>
             <div class='container-fluid p-5'>
                 <!-- #1 Insert Your Content-->
+      
+  <!-- #1 Insert Your Content-->
                 <div class="row">
                     <div class="col-md">
-                        <h3><b>Students Deatails</b></h3>
+                        <h3 class="text-secondary">Exams Resuls Report</h3>
                     </div>
                     <div class="col-md">
 
                     </div>
+    
                     <div class="col-md-auto pr-4">
-                        <a class="btn btn-warning btn-group-sm" href="?view=', $row['exam_id'], '">
+                        <a class="btn btn-warning btn-group btn btn-sm " href="?view=', $row['exam_id'], '">
                             <svg class="bi bi-pencil-square" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M15.502 1.94a.5.5 0 010 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 01.707 0l1.293 1.293zm-1.75 2.456l-2-2L4.939 9.21a.5.5 0 00-.121.196l-.805 2.414a.25.25 0 00.316.316l2.414-.805a.5.5 0 00.196-.12l6.813-6.814z" />
                                 <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 002.5 15h11a1.5 1.5 0 001.5-1.5v-6a.5.5 0 00-1 0v6a.5.5 0 01-.5.5h-11a.5.5 0 01-.5-.5v-11a.5.5 0 01.5-.5H9a.5.5 0 000-1H2.5A1.5 1.5 0 001 2.5v11z" clip-rule="evenodd" />
                             </svg>
                             Edit </a>
-                        <button type="button" class="btn btn-info btn-group-sm">
+                        <button type="button" class="btn btn-info btn-group btn btn-sm ">
                             <svg class="bi bi-download" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                 <path fill-rule="evenodd" d="M.5 8a.5.5 0 01.5.5V12a1 1 0 001 1h12a1 1 0 001-1V8.5a.5.5 0 011 0V12a2 2 0 01-2 2H2a2 2 0 01-2-2V8.5A.5.5 0 01.5 8z" clip-rule="evenodd" />
                                 <path fill-rule="evenodd" d="M5 7.5a.5.5 0 01.707 0L8 9.793 10.293 7.5a.5.5 0 11.707.707l-2.646 2.647a.5.5 0 01-.708 0L5 8.207A.5.5 0 015 7.5z" clip-rule="evenodd" />
@@ -51,7 +55,26 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
 
                 </div>
                 <br>
-
+                  <!-- #1 Searching bar" -->
+                <div class="row">
+    <div class="col-md">
+      
+    </div>
+    <div class="col-md">
+      
+    </div>
+    <div class="col-md-auto pr-4 sidebar-item sidebar-search ">
+    <div class="input-group input-group-sm mb-3">
+                <input type="text" class="form-control-sm search-menu" id="mySearch" onkeyup="myFunction()" placeholder="Reg No..or Name..." title="Type in a category">
+                <div class="input-group-append">
+                    <span class="input-group-text">
+                        <i class="fa fa-search" aria-hidden="true"></i>
+                    </span>
+                </div>
+            </div>
+    </div>
+  </div>
+               <br>
                 <!-- #1 Insert Your Content" -->
                 <div class="row">
                     <div class="col-md-2 col-sm-4">
@@ -165,7 +188,7 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
                                         <td>1 St</td>
                                         <td>68</td>
                                         <td><span class=' badge badge-success'>PASS</span> </td>
-                                        <td><a class="btn btn-info btn-group-sm" href=" ?view=', $row[' exam_id'], '"> View </a></td>
+                                        <td><a class="btn btn-info btn-group btn btn-sm " href=" ?view=', $row[' exam_id'], '"> View </a></td>
                                     </tr>
                                 </tbody>
                             </table>
