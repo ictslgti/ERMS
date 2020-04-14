@@ -1,5 +1,5 @@
 <?php
-$title = "Dashboard | Online Examination Result Management System | SLGTI";
+$title = "Attendence | Online Examination Result Management System | SLGTI";
 $description = "Online Examination Result  Management System (ERMS)-SLGTI";
 ?>
 <!DOCTYPE html>
@@ -20,7 +20,7 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                 <!-- #1 Insert Your Content-->
                 <div class="row">
                     <div class="form-group col-md-12">
-                        I am Back
+                        I am start my works
                     </div>
                 </div>
                 <!-- #1 Insert Your Content" -->
