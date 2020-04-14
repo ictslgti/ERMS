@@ -18,18 +18,13 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
             <div id="overlay" class="overlay"></div>
             <div class="container-fluid p-5">
                 <!-- #1 Insert Your Content-->
-
+                <?php include_once('exam/nav_bar.php');
+            
+            ?>
                 <div class="container">
-                   <div class="row">
-                     <div class="col-md-11 col-sm-11 col-xs-11">
-                        <div class="text-primary">
-                          <h1>SLGTI Academic Year</h1>                  
-                        </div>
-                    </div>
-                 </div>
-                    <br>
                    
-                    <hr>
+                   
+                  
                     <br>
                   <form method="POST" action="">
                   <div class="row"> 
