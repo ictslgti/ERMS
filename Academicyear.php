@@ -25,19 +25,28 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
             
             ?>
                 <div class="container">
-                <div class="row">
+                
+
+                  <?php
+                  if(isset($_POST['view']))
+                  {
+                      echo "1";
+                    // header("Location: 'Academicyears.php'");
+                  }
+                  ?> 
+                  
+                    
+                  <form method="POST" action="">
+                  <div class="row">
                     <div class="col-md-11 col-sm-11 col-xs-11 ">
-                             <button type="submit" class="btn btn-outline-primary" data-toggle="modal"
+                             <a name="view" class="btn btn-outline-primary" data-toggle="modal"
                                 data-target="#exampleModal">
                                 view details
-                            </button>
+                            </a>
                     
                     </div>
                 </div>
-                   
-                  
-                    <br>
-                  <form method="POST" action="">
+                <br>
                   <div class="row"> 
                   <div class="col-md-6 col-sm-6 col-xs-6">
                      <div class="form-group">
