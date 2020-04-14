@@ -39,7 +39,7 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                         <div class="input-group-prepend">
                           <label class="input-group-text" for="inputGroupSelect01">Academic Year </label>
                         </div>
-                        <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" id="validationServer06" required>
+                        <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" id="validationServer01" required>
                           </div>
                         </div>
                       </div>
