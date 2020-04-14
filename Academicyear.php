@@ -18,11 +18,22 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
             <div id="overlay" class="overlay"></div>
             <div class="container-fluid p-5">
                 <!-- #1 Insert Your Content-->
-                <?php include_once('exam/nav_bar.php');
+                <?php  
+                  $title ="
+                  <h4 class='text-primary'>ERMS|<span class='text-secondary'>Academic Year</span></h4>";
+                 include_once('exam/nav_bar.php');
             
             ?>
                 <div class="container">
-                   
+                <div class="row">
+                    <div class="col-md-11 col-sm-11 col-xs-11 ">
+                             <button type="submit" class="btn btn-outline-primary" data-toggle="modal"
+                                data-target="#exampleModal">
+                                view details
+                            </button>
+                    
+                    </div>
+                </div>
                    
                   
                     <br>
@@ -45,8 +56,8 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                         <div class="input-group-prepend">
                           <label class="input-group-text" for="inputGroupSelect01"> Year Status</label>
                         </div>
-                          <select class="custom-select" id="inputGroupSelect01">
-                            <option selected>Choose Academic Year Status</option>
+                          <select class="custom-select" id="inputGroupSelect01"id="validationCustom04" required>
+                            <option selected disabled value="">Choose Academic Year Status</option>
                             <option value="1">Completed</option>
                             <option value="2">Active</option>
                           </select>
@@ -114,7 +125,7 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                 <div class="row">
                     <div class="col-md-11 col-sm-11 col-xs-11 "></div>
                     <div class="col-md-1 col-sm-1 col-xs-1 ">
-                    <button type="submit" class="btn btn-outline-primary" data-toggle="modal"
+                    <button type="submit" class="btn btn-outline-success" data-toggle="modal"
                                 data-target="#exampleModal">
                                 Add
                             </button>
