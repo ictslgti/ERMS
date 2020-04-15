@@ -41,6 +41,15 @@
           </div>
         </li>
         <li class="nav-item dropdown dropdown">
+          <a class="nav-link dropdown" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="fas fa-sign-out-alt" style="font-size:25px"></i>
+
+
+
+          </a>
+
+        </li>
+        <li class="nav-item dropdown dropdown">
           <a class="nav-link" href="#" id="navbarDropdown" role="button" aria-haspopup="true" aria-expanded="false">
 
             <b class="px-2">Admin</b><i class="fas fa-user-circle" style="font-size:25px"></i>
