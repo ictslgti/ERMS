@@ -1,5 +1,5 @@
 <?php
-$title = 'Results Report | Online Examination Result Management System | SLGTI';
+$title = 'Results Report | ';
 $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
 ?>
 <!DOCTYPE html>
