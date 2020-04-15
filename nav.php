@@ -81,7 +81,20 @@
                             <a href="department.php"><i class="fas fa-plus"></i>New Department</a>
 
                         </li>
+                        <li>
+                            <a href="Academicyear.php">Betch Deatils</a>
 
+                        </li>
+                        <li>
+                            <a href="Academicyears.php"><i class="fas fa-plus"></i>New Betch</a>
+                        </li>
+                        <li>
+                            <a href="Academicyear.php">Academic year Deatils</a>
+
+                        </li>
+                        <li>
+                            <a href="Academicyears.php"><i class="fas fa-plus"></i>New Academic year</a>
+                        </li>
                     </ul>
                 </div>
             </li>
@@ -109,13 +122,7 @@
                         <li>
                             <a href="#"><i class="fas fa-plus"></i>New Module</a>
                         </li>
-                        <li>
-                            <a href="Academicyear.php">Academic year Deatils</a>
 
-                        </li>
-                        <li>
-                            <a href="Academicyears.php"><i class="fas fa-plus"></i>New Academic year</a>
-                        </li>
                     </ul>
                 </div>
             </li>
