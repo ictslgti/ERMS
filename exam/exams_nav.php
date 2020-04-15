@@ -11,15 +11,26 @@
                 <a class='nav-link ' href='./exams_results.php'>Update Results</a>
             </li>
             <li class='nav-item'>
-                <a class='nav-link ' href='./exam_report.php'>View Results</a>
+                <!-- <a class='nav-link active ' href='./exam_report.php'>View Results</a> -->
+                <div class="dropdown show">
+
+                    <a class="nav-link  dropdown-toggle" href="./exam_report.php" role="button" aria-haspopup="true" aria-expanded="false">
+                        View Results
+                    </a>
+
+                    <!-- <div class="dropdown-menu nav-item" aria-labelledby="dropdownMenuLink">
+                        <a class="dropdown-item" id="academic-tab" data-toggle="tab" href="#academic" role="tab" aria-controls="home" aria-selected="true">Academic Transcript</a>
+                        <a class="dropdown-item nav-link" id="tvec-tab" data-toggle="tab" href="#tvec" role="tab" aria-controls="tvec" aria-selected="false">TVEC Exams Results</a>
+                        <a class="dropdown-item nav-link" id="institute-tab" data-toggle="tab" href="#institute" role="tab" aria-controls="institute" aria-selected="false">INSTITUTE Exams Results</a>
+                        <a class="dropdown-item nav-link" id="student-tab" data-toggle="tab" href="#student" role="tab" aria-controls="student" aria-selected="false">Students Reports</a>
+                    </div> -->
+                </div>
             </li>
         </ul>
     </div>
     <div class='col-md-auto pr-4'>
         <button type='submit' class='btn btn-success btn-group btn btn-sm ' name="add" data-toggle='modal' data-target='#add_exam'>
-            <svg class='bi bi-plus-circle-fill' width='1.5em' height='1.5em' viewBox='0 0 16 16' fill='currentColor' xmlns='http://www.w3.org/2000/svg'>
-                <path fill-rule='evenodd' d='M16 8A8 8 0 110 8a8 8 0 0116 0zM8.5 4a.5.5 0 00-1 0v3.5H4a.5.5 0 000 1h3.5V12a.5.5 0 001 0V8.5H12a.5.5 0 000-1H8.5V4z' clip-rule='evenodd' />
-            </svg>
-            Exams</button>
-    </div>
+            <i class="fas fa-plus" style="font-size: 18px">
+            </i>
+            Exams</button> </div>
 </div>
