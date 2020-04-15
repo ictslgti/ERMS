@@ -32,13 +32,7 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                 </form>
                 </nav>
                 <br>
-                <?php
-                  if(isset($_POST['view']))
-                  {
-                      echo "1";
-                    // header("Location: 'Academicyears.php'");
-                  }
-                  ?> 
+                
                 <div class="container">
 
                   <form method="POST" action="">
