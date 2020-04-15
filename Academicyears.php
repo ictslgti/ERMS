@@ -18,33 +18,23 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
             <div id="overlay" class="overlay"></div>
             <div class="container-fluid p-5">
                 <!-- #1 Insert Your Content-->
-<!-- 111 -->
-                    <div class="row">
-                    <div class="col-md-11 col-sm-11 col-xs-11">
-                     <div class="text-primary">
-                     <h1>Academicyears</h1>
-                     </div>
-                    </div>
+                <?php  
+                  $title ="
+                  <h4 class='text-primary'>ERMS|<span class='text-secondary'>Academic Years</span></h4>";
+                 include_once('exam/nav_bar.php');
+            
+                 ?>
 
-                    <div class="col-md-1 col-sm-1 col-xs-1">
-                    <button type=submit onClick="location.href='Academicyear.php'" class="btn btn-outline-primary">New </button>
-                    </div>
-                    </div>
-                    <!-- 1111111 -->
-                    <hr>
-                    <div class="row">
-                    <div class="col-md-8 col-sm-8 col-xs-8"></div>
-                    <div class="col-md-4 col-sm-4 col-xs-4">
-                    <div class="input-group mb-3">
-                        <input type="text" class="form-control" placeholder="Any one search" aria-label="Recipient's username" aria-describedby="button-addon2">
-                        <div class="input-group-append">
-                            <button class="btn btn-primary" type="button" id="button-addon2"><img src="https://img.icons8.com/officel/20/000000/search.png"/></button>
-                        </div>
-                        </div>
-                    </div>
-                    </div>
-                    <!-- 1111111 -->
+                <nav class="navbar navbar-light bg-light">
+                <a class="navbar-brand"></a>
+                <form class="form-inline">
+                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
+                    <a href="Academicyear.php"  class="btn btn-outline-primary my-2 my-sm-0 m-1">Add new</a>
+                </form>
+                </nav>
 
+<br>
                     <form method="POST">
                 <div class="row">
                     <div class="form-group col-md-12">
@@ -73,7 +63,9 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                                 <td>2017.09.30</td>
                                 <td>2020.03.30</td>
                                 <td>
-                                <input type='button' name='add' class="btn btn-outline-danger"value="View more"data-toggle="modal" data-target="#exampleModal">
+                                <button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#exampleModal">
+                                View details
+                                </button>
                                 
                                 </td>
 
@@ -87,7 +79,9 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                                 <td>2017.09.30</td>
                                 <td>2020.03.30</td>
                                 <td>
-                                <input type='button' name='add' class="btn btn-outline-success" value="Edit details"data-toggle="modal" data-target="#exampleModal">
+                                <button type="button" class="btn btn-outline-success" data-toggle="modal" data-target="#exampleModal">
+                                Edit details
+                                </button>
                                 
                                 </td>
 
@@ -101,7 +95,9 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                                 <td>2017.09.30</td>
                                 <td>2020.03.30</td>
                                 <td>
-                                <input type='button' name='add' class="btn btn-outline-success" value="Edit details"data-toggle="modal" data-target="#exampleModal">
+                                <button type="button" class="btn btn-outline-success" data-toggle="modal" data-target="#exampleModal">
+                                Edit details
+                                </button>
                                 
                                 </td>
 
@@ -115,7 +111,9 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                                 <td>--</td>
                                 <td>--</td>
                                 <td>
-                                <input type='button' name='add' class="btn btn-outline-info" value="Edit details"data-toggle="modal" data-target="#exampleModal">
+                            <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#exampleModal" name="add">
+                           Edit details
+                            </button>
                                 
                                 </td>
 
@@ -128,37 +126,115 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                     </div>
                 </div>
                 </form>
-<?php
-if(isset($_POST['add']))
-{
-    echo '
-    
-    <!-- Modal -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
+ 
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title text-primary" id="exampleModalLabel">Academic Year</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+
+
+      <!-- content -->
+      <form method="POST" action="">
+      <div class="row"> 
+      <div class="col-md-12 col-sm-12 col-xs-12">
+         <div class="form-group">
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <label class="input-group-text" for="inputGroupSelect01">Academic Year </label>
+            </div>
+            <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" id="validationServer01" required>
+              </div>
+            </div>
           </div>
-          <div class="modal-body">
-            ...
+
+          <div class="col-md-12 col-sm-12 col-xs-12">
+         <div class="form-group">
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <label class="input-group-text" for="inputGroupSelect01"> Year Status</label>
+            </div>
+              <select class="custom-select" id="inputGroupSelect01"id="validationCustom04" required>
+                <option selected disabled value="">Choose Academic Year Status</option>
+                <option value="1">Completed</option>
+                <option value="2">Active</option>
+              </select>
+              </div>
+            </div>
           </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Save changes</button>
+          </div>
+          <br>
+
+   
+   <div class="row">
+   <div class="col-md-12 col-sm-12 col-xs-12">
+          <div class="form-group">
+              <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                      <span class="input-group-text" id="basic-addon3">Semester1 Start Date</span>
+                  </div>
+                  <input type="date" id="birthday" name="Assessment_Date"class="form-control" id="basic-url" aria-describedby="basic-addon3" id="validationServer06" required>
+                  </div>
+            </div>
+          </div>
+
+        <div class="col-md-12 col-sm-12 col-xs-12">
+          <div class="form-group">
+              <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                      <span class="input-group-text" id="basic-addon3">Semester1 End Date</span>
+                  </div>
+                  <input type="date" id="birthday" name="Assessment_Date"class="form-control" id="basic-url" aria-describedby="basic-addon3" id="validationServer06" required>
+                  </div>
+            </div>
+          </div>
+        
+   </div>
+      <br>
+
+      <div class="row">
+   <div class="col-md-12 col-sm-12 col-xs-12">
+          <div class="form-group">
+              <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                      <span class="input-group-text" id="basic-addon3">Semester2 Start Date</span>
+                  </div>
+                  <input type="date" id="birthday" name="Assessment_Date"class="form-control" id="basic-url" aria-describedby="basic-addon3" id="validationServer06" required>
+                  </div>
+            </div>
+          </div>
+
+        <div class="col-md-12 col-sm-12 col-xs-12">
+          <div class="form-group">
+              <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                      <span class="input-group-text" id="basic-addon3">Semester2 End Date</span>
+                  </div>
+                  <input type="date" id="birthday" name="Assessment_Date"class="form-control" id="basic-url" aria-describedby="basic-addon3" id="validationServer06" required>
+                  </div>
+            </div>
           </div>
         </div>
+  
+      <br>
+   </form>
+   <!-- contect -->
       </div>
-    </div>';
-}
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save </button>
+      </div>
+    </div>
+  </div>
+</div>
 
-?>
 
-
-                   
 
                 <!-- #1 Insert Your Content" -->
             </div>
