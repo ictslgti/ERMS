@@ -18,32 +18,23 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
             <div id="overlay" class="overlay"></div>
             <div class="container-fluid p-5">
                 <!-- #1 Insert Your Content-->
-<!-- 111 -->
-                    <div class="row">
-                    <div class="col-md-11 col-sm-11 col-xs-11">
-                     <div class="text-primary">
-                     <h1>Assessments</h1>
-                     </div>
-                    </div>
 
-                    <div class="col-md-1 col-sm-1 col-xs-1">
-                    <button type=submit onClick="location.href='assessment.php'" class="btn btn-outline-primary">New </button>
-                    </div>
-                    </div>
-                    <!-- 1111111 -->
-                    <hr>
-                    <div class="row">
-                    <div class="col-md-8 col-sm-8 col-xs-8"></div>
-                    <div class="col-md-4 col-sm-4 col-xs-4">
-                    <div class="input-group mb-3">
-                        <input type="text" class="form-control" placeholder="Any one search" aria-label="Recipient's username" aria-describedby="button-addon2">
-                        <div class="input-group-append">
-                            <button class="btn btn-primary" type="button" id="button-addon2"><img src="https://img.icons8.com/officel/20/000000/search.png"/></button>
-                        </div>
-                        </div>
-                    </div>
-                    </div>
-                    <!-- 1111111 -->
+                <?php  
+                  $title ="
+                  <h4 class='text-primary'>ERMS|<span class='text-secondary'>Assessments</span></h4>";
+                 include_once('exam/nav_bar.php');
+            
+                 ?>
+
+                <nav class="navbar navbar-light bg-light">
+                <a class="navbar-brand"></a>
+                <form class="form-inline">
+                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
+                    <a href="assessment_type.php"  class="btn btn-outline-primary my-2 my-sm-0 m-1">Add new</a>
+                </form>
+                </nav> 
+                    
 
 
 
