@@ -73,27 +73,55 @@
                 <div class="sidebar-submenu">
                     <ul>
                         <li>
-                            <a href="department.php">Department Details
+                            <a href="department.php">Departments
 
                             </a>
                         </li>
                         <li>
-                            <a href="module.php">Module</a>
-                            <ul>
-                                <li>
-                                    <a href="Academicyear.php">Academic Year</a>
-                                </li>
-                            </ul>
+                            <a href="department.php"><i class="fas fa-plus"></i>New Department</a>
+
+                        </li>
+
+                    </ul>
+                </div>
+            </li>
+            <li class="sidebar-dropdown">
+                <a href="#">
+                    <i class="fa fa-book-open"></i>
+                    <span class="menu-text">Course</span>
+
+                </a>
+                <div class="sidebar-submenu">
+                    <ul>
+                        <li>
+                            <a href="course.php">Course Deatils
+
+                            </a>
                         </li>
                         <li>
-                            <a href="#">department contact</a>
+                            <a href="#"><i class="fas fa-plus"></i>New Course</a>
+
+                        </li>
+                        <li>
+                            <a href="module.php">Module Deatils</a>
+
+                        </li>
+                        <li>
+                            <a href="#"><i class="fas fa-plus"></i>New Module</a>
+                        </li>
+                        <li>
+                            <a href="Academicyear.php">Academic year Deatils</a>
+
+                        </li>
+                        <li>
+                            <a href="Academicyears.php"><i class="fas fa-plus"></i>New Academic year</a>
                         </li>
                     </ul>
                 </div>
             </li>
             <li class="sidebar-dropdown">
                 <a href="#">
-                    <i class="far fa-tie"></i>
+                    <i class="fas fa-user-tie"></i>
                     <span class="menu-text">Stafs</span>
                 </a>
                 <div class="sidebar-submenu">
@@ -112,7 +140,7 @@
             </li>
             <li class="sidebar-dropdown">
                 <a href="#">
-                    <i class="fa fa-graduate"></i>
+                    <i class="fas fa-user-graduate"></i>
                     <span class="menu-text">Students</span>
                 </a>
                 <div class="sidebar-submenu">
@@ -121,7 +149,7 @@
                             <a href="student.php">student Details</a>
                         </li>
                         <li>
-                            <a href="students.php">new Students Entrol</a>
+                            <a href="students.php"><i class="fas fa-plus"></i>Students Entrol</a>
                         </li>
                         <li>
                             <a href="#">student Report</a>
@@ -134,7 +162,7 @@
             </li>
             <li class="sidebar-dropdown">
                 <a href="#">
-                    <i class="fa fa-book-open"></i>
+                    <i class="fas fa-pen-square"></i>
                     <span class="menu-text">Exams</span>
                 </a>
                 <div class="sidebar-submenu">
@@ -143,7 +171,7 @@
                             <a href="exams_dashbord.php">Exams</a>
                         </li>
                         <li>
-                            <a href="Exam_report.php">Exams Results</a>
+                            <a href="exam_report.php">Exams Report</a>
                         </li>
                     </ul>
                 </div>
@@ -175,12 +203,10 @@
                 <div class="sidebar-submenu">
                     <ul>
                         <li>
-                            <a href="#">Attendence Details</a>
-                            <ul>
-                                <li>
-                                    <a href="#">Attendence Update</a>
-                                </li>
-                            </ul>
+                            <a href="attendence.php">Attendence Details</a>
+                        </li>
+                        <li>
+                            <a href="#">Attendence Update</a>
                         </li>
                         <li>
                             <a href="#">Attendence Report</a>
@@ -215,7 +241,7 @@
     <!-- sidebar-menu  -->
 </div>
 <!-- sidebar-footer  -->
-<div class="sidebar-footer">
+<!-- <div class="sidebar-footer">
     <div class="dropdown">
 
         <a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -353,4 +379,4 @@
             <i class="fas fa-ellipsis-h"></i>
         </a>
     </div>
-</div>
+</div> -->
