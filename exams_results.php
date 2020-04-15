@@ -43,7 +43,8 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
 
                     </div>
                     <div class="col-md-auto pr-4">
-                        <button type="button" class="btn btn-primary btn btn-sm" data-toggle="modal" data-target="#search_tab">Search</button>
+
+                        <button type=" button" class="btn btn-primary btn btn-sm" data-toggle="modal" data-target="#search_tab">Search</button>
                     </div>
                 </div>
                 <br>
