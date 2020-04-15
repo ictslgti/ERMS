@@ -24,29 +24,24 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                  include_once('exam/nav_bar.php');
             
             ?>
-                <div class="container">
-                
-
-                  <?php
+            <nav class="navbar navbar-light bg-light">
+                <a class="navbar-brand"></a>
+                <form class="form-inline">
+                    <label class=" my-2 my-sm-0 p-2"> <h6 class='text-primary'>Click Here !</h6></label>
+                    <a href="Academicyears.php"  class="btn btn-outline-primary my-2 my-sm-0">Academic Years</a>
+                </form>
+                </nav>
+                <br>
+                <?php
                   if(isset($_POST['view']))
                   {
                       echo "1";
                     // header("Location: 'Academicyears.php'");
                   }
                   ?> 
-                  
-                    
+                <div class="container">
+
                   <form method="POST" action="">
-                  <div class="row">
-                    <div class="col-md-11 col-sm-11 col-xs-11 ">
-                             <a name="view" class="btn btn-outline-primary" data-toggle="modal"
-                                data-target="#exampleModal">
-                                view details
-                            </a>
-                    
-                    </div>
-                </div>
-                <br>
                   <div class="row"> 
                   <div class="col-md-6 col-sm-6 col-xs-6">
                      <div class="form-group">
