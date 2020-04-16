@@ -44,16 +44,20 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
             <div class="container-fluid p-5">
                 <!-- #1 Insert Your Content-->
                    <!-- 1st row start -->
-                    <div class="row">
-                     <div class="col-11">
-                     <div class="text-primary ">
-                     <h1>Add lecturer</h1>
-                     </div>
-                    </div>
-                    <div class="col-1">
-                    <button type="button" class="btn btn-outline-primary">view</button>
-                    </div>
-                    </div>
+                   <?php  
+                  $title ="
+                  <h4 class='text-primary'>ERMS|<span class='text-secondary'>Academic Year</span></h4>";
+                 include_once('exam/nav_bar.php');
+            
+            ?>
+            <nav class="navbar navbar-light bg-light">
+                <a class="navbar-brand"></a>
+                <form class="form-inline">
+                   
+                    <a href="lectures.php" > <h6 class='text-primary'>Click Here View Lecturer</h6></a>
+                </form>
+                </nav>
+                <br>
                 <!-- 1st row end -->
                 <hr>
                 <form method="POST" action="">
@@ -76,7 +80,7 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                          <div class="input-group-prepend">
                          <span class="input-group-text" id="basic-addon1">ID</span>
                        </div>
-                        <input type="text" class="form-control" aria-label="Username" aria-describedby="basic-addon1">
+                       <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" id="validationServer01" required>
                          </div>
                          </div>
                      </div>
@@ -91,7 +95,7 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                          <div class="input-group-prepend">
                          <span class="input-group-text" id="basic-addon1"> Name</span>
                        </div>
-                        <input type="text" class="form-control" aria-label="Username" aria-describedby="basic-addon1">
+                       <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" id="validationServer01" required>
                          </div>
                      </div>
                      </div>
@@ -108,7 +112,7 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                          <div class="input-group-prepend">
                          <span class="input-group-text" id="basic-addon1">DOB</span>
                        </div>
-                        <input type="date" class="form-control" aria-label="Username" aria-describedby="basic-addon1">
+                       <input type="Date" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" id="validationServer01" required>
                          </div>
                          </div>
                      </div>
@@ -123,7 +127,7 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                          <div class="input-group-prepend">
                          <span class="input-group-text" id="basic-addon1"> NIC</span>
                        </div>
-                        <input type="text" class="form-control" aria-label="Username" aria-describedby="basic-addon1">
+                       <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" id="validationServer01" required>
                          </div>
                      </div>
                      </div>
@@ -140,7 +144,7 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                          <div class="input-group-prepend">
                          <span class="input-group-text" id="basic-addon1">Phone No</span>
                        </div>
-                        <input type="text" class="form-control" aria-label="Username" aria-describedby="basic-addon1">
+                       <input type="Number" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" id="validationServer01" required>
                          </div>
                          </div>
                      </div>
@@ -155,7 +159,7 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                          <div class="input-group-prepend">
                          <span class="input-group-text" id="basic-addon1">Email</span>
                        </div>
-                        <input type="email" class="form-control" aria-label="Username" aria-describedby="basic-addon1">
+                       <input type="email" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" id="validationServer01" required>
                          </div>
                      </div>
                      </div>
@@ -172,8 +176,8 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                          <div class="input-group-prepend">
                          <span class="input-group-text" id="basic-addon1">Gender</span>
                        </div>
-                       <select class="custom-select" id="inputGroupSelect01" name="Assess">
-                        
+                       <select class="custom-select" id="inputGroupSelect01"id="validationCustom04" required>
+                       <option value="1" selected disabled>Choose Gender</option>
                         <option value="1">Male</option>
                         <option value="1">Female</option>
                         <option value="1">Other</option>
@@ -192,7 +196,7 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                          <div class="input-group-prepend">
                          <span class="input-group-text" id="basic-addon1">EPF number</span>
                        </div>
-                        <input type="text" class="form-control" aria-label="Username" aria-describedby="basic-addon1">
+                       <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" id="validationServer01" required>
                          </div>
                      </div>
                      </div>
@@ -211,7 +215,7 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                          <div class="input-group-prepend">
                          <span class="input-group-text" id="basic-addon1">Address</span>
                        </div>
-                        <input type="text" class="form-control" aria-label="Username" aria-describedby="basic-addon1">
+                       <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" id="validationServer01" required>
                          </div>
                      </div>
                      </div>
@@ -221,8 +225,8 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                          <div class="input-group-prepend">
                          <span class="input-group-text" id="basic-addon1">Department</span>
                        </div>
-                       <select class="custom-select" id="inputGroupSelect01" name="Assess">
-                       <option value="1" selected>Choose Department</option>
+                       <select class="custom-select" id="inputGroupSelect01"id="validationCustom04" required>
+                       <option value="1" selected disabled>Choose Department</option>
                         <option value="1">ICT</option>
                         <option value="1">FOOD</option>
                         <option value="1">MEGANICAL</option>
@@ -235,7 +239,7 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
 
                 <!-- 3rd row end -->
 
-
+             <br>
                 <!-- 4rd row start -->
                 <div class=row>
                 <div class="col-sm">
@@ -244,7 +248,7 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                          <div class="input-group-prepend">
                          <span class="input-group-text" id="basic-addon1">Join Date</span>
                        </div>
-                        <input type="date" class="form-control" aria-label="Username" aria-describedby="basic-addon1">
+                       <input type="Date" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" id="validationServer01" required>
                          </div>
                      </div>
                      </div>
@@ -254,8 +258,8 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                          <div class="input-group-prepend">
                          <span class="input-group-text" id="basic-addon1">Position</span>
                        </div>
-                       <select class="custom-select" id="inputGroupSelect01" name="Assess">
-                       <option value="1" selected>Choose Position</option>
+                       <select class="custom-select" id="inputGroupSelect01"id="validationCustom04" required>
+                       <option value="1" selected disabled>Choose Position</option>
                         <option value="1">Director</option>
                         <option value="1">Deputy Principal(Academics)</option>
                         <option value="1">Deputy Principal(Industrial)</option>
@@ -290,8 +294,8 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                          <div class="input-group-prepend">
                          <span class="input-group-text" id="basic-addon1">Type</span>
                        </div>
-                       <select class="custom-select" id="inputGroupSelect01" name="Assess">
-                       <option value="1" selected>Choose Type</option>
+                       <select class="custom-select" id="inputGroupSelect01"id="validationCustom04" required>
+                       <option value="1" selected disabled>Choose Type</option>
                         <option value="1">Permanend Staff</option>
                         <option value="1">On Contracd</option>
                         <option value="1">Vicitting Lecture</option>
@@ -305,8 +309,8 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                          <div class="input-group-prepend">
                          <span class="input-group-text" id="basic-addon1">Status</span>
                        </div>
-                       <select class="custom-select" id="inputGroupSelect01" name="Assess">
-                       <option value="1" selected>Choose Status</option>
+                       <select class="custom-select" id="inputGroupSelect01"id="validationCustom04" required>
+                       <option value="1" selected disabled>Choose Status</option>
                         <option value="1">Working Staff</option>
                         <option value="1">Derminated</option>
                         <option value="1">Resigned</option>
@@ -324,8 +328,10 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                 <div class="col-11">
                 </div>
                 <div class="col-1">
-                <button type="button" class="btn btn-outline-success " >Add</button>
-
+                <button type="submit" class="btn btn-outline-success" data-toggle="modal"
+                                data-target="#exampleModal">
+                                Add
+                            </button>
                 </div>
                 </div>
 
