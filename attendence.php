@@ -46,12 +46,6 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                 </ul>
                 </div>
                 </div>
-                <div class='col-3'>
-                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                </div>
-                <div class='col-2'>
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-                </div>
                 </div>
                 </form>
                 
@@ -74,6 +68,11 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                             <td scope='col'>10:30 am</td>
                             <td scope='col'>0</td>
                         </tr>
+                        <table>
+                        <tr>
+                            <p>Average attendance</p>
+                        </tr>
+                    </table>
                     </thead>
                     <tbody>
                     </tbody>
