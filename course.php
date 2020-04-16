@@ -30,7 +30,7 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                 <a class="navbar-brand"></a>
                 <form class="form-inline">
                     
-                    <a href="Course.php"><h6 class="text-primary">Click Here Show Courses</h6></a>
+                    <a href="courses.php"><h6 class="text-primary">Click Here Show Courses</h6></a>
                 </form>
                 </nav>
                 <br>
