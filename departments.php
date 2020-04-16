@@ -20,7 +20,7 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
              
                 <?php  
                   $title ="
-                  <h4 class='text-primary'>ERMS|<span class='text-secondary'>deparments</span></h4>";
+                  <h4 class='text-primary'>ERMS|<span class='text-secondary'>Deparments</span></h4>";
                  include_once('exam/nav_bar.php');
             
                  ?>
