@@ -20,14 +20,20 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                 <!-- #1 Insert Your Content-->
                 <div class="container">
                 <!-- 1st row start -->
-                <div class="row">
-                     <div class="col-sm">
-                     <div class="text-primary text-center">
-                     
-                     <h1>Add department</h1><hr><br>
-                     </div>
-                    </div>
-                    </div>
+                <?php  
+                  $title ="
+                  <h4 class='text-primary'>ERMS|<span class='text-secondary'>Department</span></h4>";
+                 include_once('exam/nav_bar.php');
+            
+            ?>
+            <nav class="navbar navbar-light bg-light">
+                <a class="navbar-brand"></a>
+                <form class="form-inline">
+                    
+                    <a href="departments.php"> <h6 class='text-primary'>Click Here View Department</h6></a>
+                </form>
+                </nav>
+                <br>
                 <!-- 1st row end -->
                   <br>
                     <!-- 2 row start -->
@@ -38,24 +44,21 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                      <div class="form-group">
                      <div class="input-group mb-3">
                          <div class="input-group-prepend">
-                         <span class="input-group-text" id="basic-addon1">Department No</span>
+                         <span class="input-group-text" id="basic-addon1">Code</span>
                        </div>
-                        <input type="text" class="form-control" aria-label="Username" aria-describedby="basic-addon1">
+                       <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" id="validationServer01" required>
                          </div>
                          </div>
                      </div>
                     
-                       
-                
-                
-                     
+
                      <div class="col-sm">
                      <div class="form-group">
                      <div class="input-group mb-3">
                          <div class="input-group-prepend">
-                         <span class="input-group-text" id="basic-addon1">Department Name</span>
+                         <span class="input-group-text" id="basic-addon1">Name</span>
                        </div>
-                        <input type="text" class="form-control" aria-label="Username" aria-describedby="basic-addon1">
+                       <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" id="validationServer01" required>
                          </div>
                      </div>
                      </div>
@@ -63,9 +66,12 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                      <br>
                      <!-- 2 row end -->
                      <div class="row">
-                     <div class="col-10 "></div>
-                     <div class="col-2">
-                     <button type="button" class="btn btn-outline-success " >Add Department</button>
+                     <div class="col-11 "></div>
+                     <div class="col-1">
+                     <button type="submit" class="btn btn-outline-success" data-toggle="modal"
+                                data-target="#exampleModal">
+                                Add
+                            </button>
                      </div>
                      </div>
 </form>
