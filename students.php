@@ -46,7 +46,7 @@ $description = "Online Examination Result Management System (ERMS)-SLGTI";
                 </div>
                 </div>
                 <div class='col-3'>
-                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                <input class="form-control mr-sm-2" type="search" placeholder="Registration No." aria-label="Search">
                 </div>
                 <div class='col-2'>
                 <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
@@ -59,21 +59,27 @@ $description = "Online Examination Result Management System (ERMS)-SLGTI";
                     <table class='table align-middle '>
                     <thead class='thead-dark'>
                         <tr>
-                            <th scope='col'>NO</th>
-                            <th scope='col'>Exams</th>
-                            <th scope='col'>DEPARTMENT</th>
-                            <th scope='col'>COURSE</th>
-                            <th scope='col'>SEMESTER</th>
-                            <th scope='col'>MODULE</th>
+                            <th scope='col'>Registration No</th>
+                            <th scope='col'>Student Name</th>
+                            <th scope='col'>Enrolled Course</th>
+                            <th scope='col'>Batch</th>
+                            <th scope='col'>Contact Number</th>
                             <th scope='col'>ACTIONS</th>
                         </tr>
                         <tr>
-                            <td scope='col'>NO</td>
-                            <td scope='col'>Exams</td>
-                            <td scope='col'>DEPARTMENT</td>
-                            <td scope='col'>COURSE</td>
-                            <td scope='col'>SEMESTER</td>
-                            <td scope='col'>MODULE</td>
+                            <td scope='col'>2018SLGTIBIT04</td>
+                            <td scope='col'>S. Sathursan</td>
+                            <td scope='col'>Information and Communication Technology</td>
+                            <td scope='col'>Batch 04</td>
+                            <td scope='col'>0752859625</td>
+                            <td scope='col'>ACTIONS</td>
+                        </tr>
+                        <tr>
+                            <td scope='col'>Registration No</td>
+                            <td scope='col'>Student Name</td>
+                            <td scope='col'>Enrolled Course</td>
+                            <td scope='col'>Batch</td>
+                            <td scope='col'>Contact Number</td>
                             <td scope='col'>ACTIONS</td>
                         </tr>
                     </thead>
