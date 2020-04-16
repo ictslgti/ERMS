@@ -18,11 +18,70 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
             <div id="overlay" class="overlay"></div>
             <div class="container-fluid p-5">
                 <!-- #1 Insert Your Content-->
+
+                <div class="container">
+
+                <!-- 1st row start -->
                 <div class="row">
-                    <div class="form-group col-md-12">
-                        I am start my works
+                     <div class="col-sm">
+                     <div class="border border-primary rounded text-center">
+                     <h2>Student's Attendence | SLGTI</h2>
+                     </div>
+                    </div>
+                    </div>
+                    <br>
+                <!-- 1st row end -->
+
+                <form method="POST" action="">
+                <div class="row">
+                <div class='col-7'>
+                <div class='form-group col-md'>
+                <ul class='nav nav-tabs'>
+                <li class='nav-item'>
+                <a class='nav-link active' href='./attendence.php'>This Cource</a>
+                </li>
+                <li class='nav-item'>
+                <a class='nav-link' href='./attendence_all.php'>All course</a>
+                </li>
+                </ul>
+                </div>
+                </div>
+                <div class='col-3'>
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                </div>
+                <div class='col-2'>
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                </div>
+                </div>
+                </form>
+                
+                <div class="row">
+                    <div class="form-group col-md-12 table-responsive">
+                    <table class='table align-middle '>
+                    <thead class='thead-dark'>
+                        <tr>
+                            <th scope='col'>DATE</th>
+                            <th scope='col'>TIME</th>
+                            <th scope='col'>STATUS</th>
+                        </tr>
+                        <tr>
+                            <td scope='col'>2020/04/07</td>
+                            <td scope='col'>10:27 am</td>
+                            <td scope='col'>1</td>
+                        </tr>
+                        <tr>
+                            <td scope='col'>2020/04/06</td>
+                            <td scope='col'>10:30 am</td>
+                            <td scope='col'>0</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
                     </div>
                 </div>
+
+
                 <!-- #1 Insert Your Content" -->
             </div>
         </main>
