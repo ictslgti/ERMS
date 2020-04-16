@@ -23,14 +23,14 @@ $description = "Online Examination Result Management System (ERMS)-SLGTI";
 
                 <!-- 1st row start -->
                 <div class="row">
-                     <div class="col-sm">
-                     <div class="border border-primary rounded text-center">
-                     <h2>Student's Registration Form | SLGTI</h2>
-                     </div>
-                    </div>
-                    </div>
-                    <br>
-                    <form method="POST" action="">
+                <div class="col-sm">
+                <div class="border border-primary rounded text-center">
+                <h2>Student's Registration Form | SLGTI</h2>
+                </div>
+                </div>
+                </div><br>
+
+                <form method="POST" action="">
                 <div class="row">
                 <div class='col-7'>
                 <div class='form-group col-md'>
@@ -56,6 +56,7 @@ $description = "Online Examination Result Management System (ERMS)-SLGTI";
                 </div>
                 </div>
                 </div><br>
+
                 <form method="POST" action="">
                 <!-- 1st row start -->
                     <div class="form-row">
@@ -72,12 +73,12 @@ $description = "Online Examination Result Management System (ERMS)-SLGTI";
 
                     <div class="col-7">
                     <label for="fullname"> Full Name: </label>
-                    <input type="text" class="form-control" id="fullname" name="fullname" value="" placeholder="" aria-describedby="fullnamePrepend" required>
+                    <input type="text" class="form-control" id="fullname" name="fullname" value="" placeholder="Sathyaseelan Sathursan" aria-describedby="fullnamePrepend" required>
                     </div>
 
                     <div class="col-3">
                     <label for="ini_name"> Name with Initials: </label>
-                    <input type="text" class="form-control" id="ini_name" name="ini_name" value="" placeholder="" required>
+                    <input type="text" class="form-control" id="ini_name" name="ini_name" value="" placeholder="S.Sathursan" required>
                     </div>
 
                     </div>
@@ -151,7 +152,7 @@ $description = "Online Examination Result Management System (ERMS)-SLGTI";
                     <div class="col-3">
                     <label for="district"> District: </label>
                     <select class="custom-select" name="district" id="district" data-live-search="true" data-width="100%" value="<?php echo $district; ?>" required>
-                    <option value="">Select</option>
+                    <option value=""> Choose District</option>
                     <option value="Ampara"<?php if($district=="Ampara")  echo 'selected';?>> Ampara </option>
                     <option value="Batticalo"<?php if($district=="Batticalo")  echo 'selected';?>> Batticaloa </option>
                     <option value="Trincomalee"<?php if($district=="Trincomalee")  echo 'selected';?>> Trincomalee </option>
@@ -183,7 +184,7 @@ $description = "Online Examination Result Management System (ERMS)-SLGTI";
                     <div class="col-3">
                     <label for="province"> Province: </label>
                     <select name="province" id="province" class="custom-select" value="<?php echo $province; ?>" required>
-                    <option value="">Select</option>
+                    <option value=""> Choose Province</option>
                     <option value="1"<?php if($province=="1")  echo 'selected';?>> Northen </option>
                     <option value="2"<?php if($province=="2")  echo 'selected';?>> Eastern </option>
                     <option value="3"<?php if($province=="3")  echo 'selected';?>> Western </option>
@@ -214,34 +215,159 @@ $description = "Online Examination Result Management System (ERMS)-SLGTI";
 
                 </div>
                 <!-- 5th row end -->
-                </form>   
-                    
-                </div>
+                </form><br>  
                 <!-- 2 row end -->
 
                 <!-- 3 row start -->
-                <br>
                 <div class="row">
                 <div class="col-sm">
                 <div class="border-bottom border-primary">
                 <h3>Enroll Information</h3>
                 </div>
                 </div>
-                    </div><br>
-                    <form method="POST" action="">
-                    <div class="col-md-2 mb-3">
-                    <label for="title"> Title: </label>
-                    <select name="title" id="title" class="custom-select" value="<?php echo $title; ?>" required>
-                    <option selected disabled>Choose Title</option>
-                    <option value="Mr" <?php if($title=="Mr") echo 'selected';?>>Mr</option> 
-                    <option value="Miss" <?php if($title == "Miss") echo 'selected';?>>Miss</option>
-                    <option value="Mrs"<?php if($title=="Mrs") echo 'selected';?>>Mrs</option>
+                </div><br>
+
+                <form method="POST" action="">
+                
+                <div class="form-row">
+
+                    <div class="col-3">
+                    <label for="cid"> Course Name: </label>
+                    <select name="cid" id="cid" class="custom-select" value="<?php echo $coid; ?>" required>
+                    <option selected disabled> Choose Course</option>
+                    <?php 
+                    $sql="SELECT * from course";
+                    $result = mysqli_query($con,$sql);
+                    if(mysqli_num_rows($result)>0)
+                    while($row = mysqli_fetch_assoc($result)) 
+                    {
+                    echo '<option value="'.$row['course_id'].'"';
+                    if ($row["course_id"]==$coid)
+                    {
+                    echo 'selected'; 
+                    }
+                    echo '>'.$row['course_name'].'</option>';
+                    }
+                    ?> 
                     </select>
                     </div>
-                    </form>
-                </div>
 
+                    <div class="col-3">
+                    <label for="ayear"> Academic Year: </label>
+                    <select name="ayear" id="ayear" class="custom-select" data-live-search="true" data-width="100%" value="<?php echo $year; ?>" required>
+                    <option selected disabled> Choose Academic Year</option>
+                    <?php
+                    $sql = "SELECT * FROM `academic` ORDER BY `academic_year` DESC ";
+                    $result = mysqli_query($con, $sql);
+                    if (mysqli_num_rows($result) > 0) 
+                    while($row = mysqli_fetch_assoc($result)){
+                    echo '<option  value="'.$row ['academic_year'].'" data-subtext="'.$row ['academic_year_status'].'"';
+                    if($row ["academic_year"] == $year)
+                    {
+                    echo 'selected';
+                    }
+                    echo '>'.$row ['academic_year'].'</option>';
+                    }
+            
+                    ?> 
+                    </select>
+                    </div>
+
+                    <div class="col-3">
+                    <label for="mode"> Course Mode: </label>
+                    <select name="mode" id="mode" class="custom-select" value="<?php echo $mode; ?>" required>
+                    <option selected disabled> Choose Course Mode </option>
+                    <option value="Full" <?php if($mode=="Full") echo 'selected';?>>Full Time</option> 
+                    <option value="Part" <?php if($mode == "Part") echo 'selected';?>>Part Time</option>
+                    <option value="sort" <?php if($mode == "sort") echo 'selected';?>>Sort Time</option>
+                    </select>
+                    </div>
+
+                    <div class="col-3">
+                    <label for="regno"> Registration No: </label>
+                    <input type="text" name="regno" id="regno" class="form-control" value="" placeholder="2018SLGTIBIT04" required>
+                    </div>
+
+                </div>
+                <!-- 1st row end -->
+
+                <!-- 2nd row start -->
+                <div class="form-row">
+
+                    <div class="col-3">
+                    <label for="status">Status:</label>
+                    <select name="status" id="status" class="custom-select" value="" required>
+                    <option selected disabled>Choose Status</option>
+                    <option value="Following" <?php if($enstatus=="Following")  echo 'selected';?>>Following</option> 
+                    <option value="Completed" <?php if($enstatus == "Completed") echo ' selected';?>>Completed</option>
+                    <option value="Dropout"<?php if($enstatus=="Dropout") echo 'selected';?>>Dropout</option>
+                    <option value="Long Absent"<?php if($enstatus=="Long Absent") echo 'selected';?>>Long Absent</option>
+                    </select>
+                    </div>
+
+                    <div class="col-3">
+                    <label for="enrolldate">Enroll Date:</label>
+                    <input type="date" class="form-control" value="<?php echo $enroll; ?>" id="enrolldate" name="enrolldate" placeholder="" aria-describedby="enrolldatePrepend" required>
+                    </div>
+
+                    <div class="col-3">
+                    <label for="exitdate">Exit Date:</label>
+                    <input type="date" class="form-control" value="<?php echo $exit; ?>" id="exitdate" name="exitdate" placeholder="" aria-describedby="exitdatePrepend" required>
+                    </div> 
+
+                </div>
+                <!-- 2nd row end -->
+                </form><br>
                 <!-- 3 row end -->
+
+                <!-- 4 row start -->
+                <div class="row">
+                <div class="col-sm">
+                <div class="border-bottom border-primary">
+                <h3>Emergency Contact Information</h3>
+                </div>
+                </div>
+                </div><br>
+
+                <form method="POST" action="">
+                
+                <div class="form-row">
+
+                    <div class="col-3">
+                    <label for="gname">Name :</label>
+                    <input type="text" class="form-control" id="gname" name="gname" value="" placeholder="S Sathyaraj"  required>
+                    </div>
+
+                    <div class="col-6">
+                    <label for="gaddress">Address :</label>
+                    <input type="text" class="form-control" id="gaddress" name="gaddress" value="" placeholder="Old Post Office Road, Vinayagapuram 02. Thirukkovil." required>
+                    </div>
+
+                    <div class="col-3">
+                    <label for="gphone">Phone No :</label>
+                    <input type="tel" class="form-control" id="gphon" maxlength="10" minlength="10" name="gphone" value="" placeholder=""  required>
+                    </div>
+
+                </div>
+                <!-- 1st row end -->
+
+                <!-- 2nd row start -->
+                <div class="form-row">
+
+                    <div class="col-3">
+                    <label for="relation">Relationship :</label>
+                    <select name="relation" id="relation" value="<?php echo $erelation; ?>" class="custom-select" >
+                    <option value=""> Choose Relationship</option>
+                    <option value="mother" <?php if($erelation=="mother") echo 'selected' ?>> Mother </option>
+                    <option value="father" <?php if($erelation=="father") echo 'selected' ?>> Father </option>
+                    <option value="guardian" <?php if($erelation=="guardian") echo 'selected' ?>> Guardian </option>
+                    </select>
+                    </div>
+
+                </div>
+                <!-- 2nd row end -->
+                </form><br>
+                <!-- 4 row end -->
 
                 <!-- #1 Insert Your Content" -->
             </div>
