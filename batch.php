@@ -1,5 +1,5 @@
 <?php
-$title = "Dashboard | Online Examination Result Management System | SLGTI";
+$title = "Batch | Online Examination Result Management System | SLGTI";
 $description = "Online Examination Result  Management System (ERMS)-SLGTI";
 ?>
 <!DOCTYPE html>
@@ -27,8 +27,8 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
             <nav class="navbar navbar-light bg-light">
                 <a class="navbar-brand"></a>
                 <form class="form-inline">
-                    <label class=" my-2 my-sm-0 p-2"> <h6 class='text-primary'>Click Here !</h6></label>
-                    <a href="batches.php"  class="btn btn-outline-primary my-2 my-sm-0">View Batches</a>
+                    
+                    <a href="batches.php"  class="btn btn-outline-primary my-2 my-sm-0">Batches info</a>
                 </form>
                 </nav>
                 <br>
@@ -45,6 +45,10 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                             <option selected disabled value="">Choose Department</option>
                             <option value="1">ICT</option>
                             <option value="2">Mechanical</option>
+                            <option value="2">Food Technology</option>
+                            <option value="2">Consruction Technology</option>
+                            <option value="2">Automotive</option>
+                            <option value="2">Electrical </option>
                           </select>
                           </div>
                         </div>
@@ -81,6 +85,7 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                         </div>
                         <select class="custom-select" id="inputGroupSelect01"id="validationCustom04" required>
                             <option selected disabled value="">Choose Academicyear</option>
+                            <option value="1">2017/2018</option>
                             <option value="1">2018/2019</option>
                             <option value="2">2019/2020</option>
                           </select>
