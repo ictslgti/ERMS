@@ -60,70 +60,70 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                                 <th scope='col'>Percentage over taken session</th>
                             </tr>
                             <tr>
-                                <td scope='col'>BAC</td>
-                                <td scope='col'>21</td>
-                                <td scope='col'>20/21</td>
-                                <td scope='col'>95.2%</td>
+                                <td scope='col'>Basic Computer Application</td>
+                                <td scope='col'>00</td>
+                                <td scope='col'>00/00</td>
+                                <td scope='col'>00%</td>
+                            </tr>
+                            <tr>
+                                <td scope='col'>Fundamentals of Software Programming </td>
+                                <td scope='col'>00</td>
+                                <td scope='col'>00/00</td>
+                                <td scope='col'>00%</td>
+                            </tr>
+                            <tr>
+                                <td scope='col'>Communication Skill </td>
+                                <td scope='col'>00</td>
+                                <td scope='col'>00/00</td>
+                                <td scope='col'>00%</td>
+                            </tr>
+                            <tr>
+                                <td scope='col'>Fundamentals of Graphic Design </td>
+                                <td scope='col'>00</td>
+                                <td scope='col'>00/00</td>
+                                <td scope='col'>00%</td>
+                            </tr>
+                            <tr>
+                                <td scope='col'>Fundamentals of Networking</td>
+                                <td scope='col'>00</td>
+                                <td scope='col'>00/00</td>
+                                <td scope='col'>00%</td>
+                            </tr>
+                            <tr>
+                                <td scope='col'>Introduction to Database Systems</td>
+                                <td scope='col'>00</td>
+                                <td scope='col'>00/00</td>
+                                <td scope='col'>00%</td>
+                            </tr>
+                            <tr>
+                                <td scope='col'>Static Web Page Designing</td>
+                                <td scope='col'>00</td>
+                                <td scope='col'>00/00</td>
+                                <td scope='col'>00%</td>
+                            </tr>
+                            <tr>
+                                <td scope='col'>Database Systems I</td>
+                                <td scope='col'>00</td>
+                                <td scope='col'>00/00</td>
+                                <td scope='col'>00%</td>
+                            </tr>
+                            <tr>
+                                <td scope='col'>System Analysis and Design </td>
+                                <td scope='col'>00</td>
+                                <td scope='col'>00/00</td>
+                                <td scope='col'>00%</td>
                             </tr>
                             <tr>
                                 <td scope='col'>BAC</td>
-                                <td scope='col'>21</td>
-                                <td scope='col'>20/21</td>
-                                <td scope='col'>95.2%</td>
-                            </tr>
-                            <tr>
-                                <td scope='col'>BAC</td>
-                                <td scope='col'>21</td>
-                                <td scope='col'>20/21</td>
-                                <td scope='col'>95.2%</td>
-                            </tr>
-                            <tr>
-                                <td scope='col'>BAC</td>
-                                <td scope='col'>21</td>
-                                <td scope='col'>20/21</td>
-                                <td scope='col'>95.2%</td>
-                            </tr>
-                            <tr>
-                                <td scope='col'>BAC</td>
-                                <td scope='col'>21</td>
-                                <td scope='col'>20/21</td>
-                                <td scope='col'>95.2%</td>
-                            </tr>
-                            <tr>
-                                <td scope='col'>BAC</td>
-                                <td scope='col'>21</td>
-                                <td scope='col'>20/21</td>
-                                <td scope='col'>95.2%</td>
-                            </tr>
-                            <tr>
-                                <td scope='col'>BAC</td>
-                                <td scope='col'>21</td>
-                                <td scope='col'>20/21</td>
-                                <td scope='col'>95.2%</td>
-                            </tr>
-                            <tr>
-                                <td scope='col'>BAC</td>
-                                <td scope='col'>21</td>
-                                <td scope='col'>20/21</td>
-                                <td scope='col'>95.2%</td>
-                            </tr>
-                            <tr>
-                                <td scope='col'>BAC</td>
-                                <td scope='col'>21</td>
-                                <td scope='col'>20/21</td>
-                                <td scope='col'>95.2%</td>
-                            </tr>
-                            <tr>
-                                <td scope='col'>BAC</td>
-                                <td scope='col'>21</td>
-                                <td scope='col'>20/21</td>
-                                <td scope='col'>95.2%</td>
+                                <td scope='col'>00</td>
+                                <td scope='col'>00/00</td>
+                                <td scope='col'>00%</td>
                             </tr>
                             <tr>
                                 <td>Average attendance</td>
                                 <td></td>
                                 <td></td>
-                                <td>100%</td>
+                                <td>00%</td>
                             </tr>
                         </thead>
                     <tbody>
