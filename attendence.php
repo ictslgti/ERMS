@@ -43,6 +43,12 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                                     <li class='nav-item'>
                                         <a class='nav-link active' href='./attendence.php'>Selected Cource</a>
                                     </li>
+                                    <li>
+                                        <a>Module</a>
+                                    </li>
+                                    <li>
+                                        <a>MO-07</a>
+                                    </li>
                                 </ul>
                             </div>
                         </div>
