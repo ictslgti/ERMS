@@ -7,6 +7,18 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
 
 <head>
     <?php include_once("./head.php"); ?>
+
+                    <style>
+
+
+                    td.A {
+                        text-align: right;
+                    }
+
+                    th,td {
+                        text-align: center;
+                    }
+                    </style>
 </head>
 
 <body>
@@ -35,13 +47,6 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                 </form>
                 </nav> 
                     
-
-
-
-
-
-
-
                 <div class="row">
                     <div class="form-group col-md-12">
                     <div class="table-responsive">
@@ -68,10 +73,10 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                                 <td>Batch-1</td>
                                 
                                 <td>2020.03.25</td>
-                                <td>
+                                <td class="A">
                                 <button type='submit' name='add' class="btn btn-outline-success">Add result</button>
-                                <button type='submit' name='view' class="btn btn-outline-danger">Delete Assessment </button>
-                                
+                                <button type='submit' name='view' class="btn btn-outline-danger">Delete  </button>
+                                <button type='submit' name='view' class="btn btn-outline-info">Edit </button>
                                 </td>
 
                             </tr>
@@ -84,15 +89,32 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                                 <td>Batch-2</td>
                                 
                                 <td>2020.03.27</td>
-                                <td>
+                                <td class="A">
                                 <button type='submit' name='add' class="btn btn-outline-success">Add result</button>
-                                <button type='submit' name='view' class="btn btn-outline-danger">Delete Assessment</button>
-                                
+                                <button type='submit' name='view' class="btn btn-outline-danger">Delete </button>
+                                <button type='submit' name='view' class="btn btn-outline-info">Edit </button>
                                 </td>
 
                             </tr>
 
                             <tr class="table-info">
+                                <th scope='row'>3</th>
+                                <td>Assessment 02</td>
+                                <td>5IT</td>
+                                <td>Software Testing</td>
+                                <td>Batch-1</td>
+                                
+                                <td>2020.04.24</td>
+                                <td class="A">
+                                <button type='submit' name='add' class="btn btn-outline-success">Add result</button>
+                                <button type='submit' name='view' class="btn btn-outline-danger">Delete </button>
+                                <button type='submit' name='view' class="btn btn-outline-info">Edit </button>
+                                
+                                </td>
+
+                            </tr>
+
+                            <tr class="table-success">
                                 <th scope='row'>3</th>
                                 <td>Assessment 01</td>
                                 <td>5IT</td>
@@ -100,9 +122,10 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                                 <td>Batch-1</td>
                                 
                                 <td>2020.03.24</td>
-                                <td>
-                                <button type='submit' name='add' class="btn btn-outline-success">Add result</button>
-                                <button type='submit' name='view' class="btn btn-outline-info">View & Edit result</button>
+                                <td class="A">
+                                <button type='submit' name='add' class="btn btn-outline-success">Viewmarks</button>
+                                <button type='submit' name='view' class="btn btn-outline-danger" disabled>Delete </button>
+                                <button type='submit' name='view' class="btn btn-outline-info">Edit </button>
                                 
                                 </td>
 
