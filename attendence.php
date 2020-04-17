@@ -52,7 +52,7 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                 <div class="row">
                     <div class="form-group col-md-12 table-responsive">
                     <table class='table align-middle '>
-                        <thead class='thead-dark'>
+                        <thead class='thead-light'>
                             <tr>
                                 <th scope='col'>DATE</th>
                                 <th scope='col'>TIME</th>
@@ -61,57 +61,66 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                             <tr>
                                 <td scope='col'>2020/04/07</td>
                                 <td scope='col'>10:27 am</td>
-                                <td scope='col'>1</td>
+                                <td scope='col'>Present</td>
                             </tr>
                             <tr>
                                 <td scope='col'>2020/04/06</td>
                                 <td scope='col'>10:30 am</td>
-                                <td scope='col'>0</td>
+                                <td scope='col'>Absent</td>
                             </tr>
                             <tr>
                                 <td scope='col'>2020/04/07</td>
                                 <td scope='col'>10:27 am</td>
-                                <td scope='col'>1</td>
+                                <td scope='col'>Present</td>
                             </tr>
                             <tr>
                                 <td scope='col'>2020/04/06</td>
                                 <td scope='col'>10:30 am</td>
-                                <td scope='col'>0</td>
+                                <td scope='col'>Present</td>
                             </tr>
                             <tr>
                                 <td scope='col'>2020/04/07</td>
                                 <td scope='col'>10:27 am</td>
-                                <td scope='col'>1</td>
+                                <td scope='col'>Present</td>
                             </tr>
                             <tr>
                                 <td scope='col'>2020/04/06</td>
                                 <td scope='col'>10:30 am</td>
-                                <td scope='col'>0</td>
+                                <td scope='col'>Present</td>
                             </tr>
                             <tr>
                                 <td scope='col'>2020/04/07</td>
                                 <td scope='col'>10:27 am</td>
-                                <td scope='col'>1</td>
+                                <td scope='col'>Absent</td>
                             </tr>
                             <tr>
                                 <td scope='col'>2020/04/06</td>
                                 <td scope='col'>10:30 am</td>
-                                <td scope='col'>0</td>
+                                <td scope='col'>Present</td>
                             </tr>
                             <tr>
                                 <td scope='col'>2020/04/07</td>
                                 <td scope='col'>10:27 am</td>
-                                <td scope='col'>1</td>
+                                <td scope='col'>Absent</td>
                             </tr>
                             <tr>
                                 <td scope='col'>2020/04/06</td>
                                 <td scope='col'>10:30 am</td>
-                                <td scope='col'>0</td>
+                                <td scope='col'>Absent</td>
                             </tr>
                                 <table>
                                     <tr>
-                                        <p>Average attendance</p>
+                                        <td style="text-align: right">Taken sessions:</td>
+                                        <td>10</td>
                                     </tr>
+                                    <tr>
+                                        <td style="text-align: right">Points over taken sessions:</td>
+                                        <td>10 / 10</td>
+                                    </tr> 
+                                    <tr>
+                                        <td style="text-align: right">Percentage over taken sessions:</td>
+                                        <td>100.0%</td>
+                                    </tr> 
                                 </table>
                         </thead>
                     <tbody>
