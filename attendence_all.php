@@ -51,8 +51,8 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                 
                 <div class="row">
                     <div class="form-group col-md-12 table-responsive">
-                    <table class='table align-middle '>
-                        <thead class='thead-dark'>
+                    <table class="table align-middle">
+                        <thead class='thead-light'>
                             <tr>
                                 <th scope='col'>Course</th>
                                 <th scope='col'>Taken session</th>
@@ -119,11 +119,12 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                                 <td scope='col'>20/21</td>
                                 <td scope='col'>95.2%</td>
                             </tr>
-                                <table>
-                                    <tr>
-                                        <p>Average attendance</p>
-                                    </tr>
-                                </table>
+                            <tr>
+                                <td>Average attendance</td>
+                                <td></td>
+                                <td></td>
+                                <td>100%</td>
+                            </tr>
                         </thead>
                     <tbody>
                      
