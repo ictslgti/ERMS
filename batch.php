@@ -45,6 +45,7 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                             <option selected disabled value="">Choose Department</option>
                             <option value="1">ICT</option>
                             <option value="2">Mechanical</option>
+                            <option value="2">Food Technology</option>
                           </select>
                           </div>
                         </div>
