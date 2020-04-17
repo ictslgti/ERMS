@@ -27,8 +27,8 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
             <nav class="navbar navbar-light bg-light">
                 <a class="navbar-brand"></a>
                 <form class="form-inline">
-                    <label class=" my-2 my-sm-0 p-2"> <h6 class='text-primary'>Click Here !</h6></label>
-                    <a href="batches.php"  class="btn btn-outline-primary my-2 my-sm-0">View Batches</a>
+                    
+                    <a href="batches.php"  class="btn btn-outline-primary my-2 my-sm-0">Batches info</a>
                 </form>
                 </nav>
                 <br>
