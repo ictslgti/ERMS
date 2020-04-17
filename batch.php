@@ -85,6 +85,7 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                         </div>
                         <select class="custom-select" id="inputGroupSelect01"id="validationCustom04" required>
                             <option selected disabled value="">Choose Academicyear</option>
+                            <option value="1">2017/2018</option>
                             <option value="1">2018/2019</option>
                             <option value="2">2019/2020</option>
                           </select>
