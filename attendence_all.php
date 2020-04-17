@@ -24,54 +24,109 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                 <!-- 1st row start -->
                 <div class="row">
                      <div class="col-sm">
-                     <div class="border border-primary rounded text-center">
-                     <h2>Student's Attendence | SLGTI</h2>
-                     </div>
+                        <div class="border border-primary rounded text-center">
+                            <h2>Student's Attendence | SLGTI</h2>
+                        </div>
                     </div>
-                    </div>
+                </div>
                     <br>
                 <!-- 1st row end -->
 
                 <form method="POST" action="">
-                <div class="row">
-                <div class='col-7'>
-                <div class='form-group col-md'>
-                <ul class='nav nav-tabs'>
-                <li class='nav-item'>
-                <a class='nav-link active' href='./attendence_all.php'>ALL Cource</a>
-                </li>
-                <li class='nav-item'>
-                <a class='nav-link' href='./attendence.php'>This course</a>
-                </li>
-                </ul>
-                </div>
-                </div>
-                </div>
+                    <div class="row">
+                        <div class='col-7'>
+                            <div class='form-group col-md'>
+                                <ul class='nav nav-tabs'>
+                                    <li class='nav-item'>
+                                        <a class='nav-link active' href='./attendence_all.php'>ALL Cource</a>
+                                    </li>
+                                    <li class='nav-item'>
+                                        <a class='nav-link' href='./attendence.php'>Selected course</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
                 </form>
                 
                 <div class="row">
                     <div class="form-group col-md-12 table-responsive">
                     <table class='table align-middle '>
-                    <thead class='thead-dark'>
-                        <tr>
-                            <th scope='col'>Course</th>
-                            <th scope='col'>Taken session</th>
-                            <th scope='col'>Points over taken session</th>
-                            <th scope='col'>Percentage over taken session</th>
-                        </tr>
-                        <tr>
-                            <td scope='col'>BAC</td>
-                            <td scope='col'>21</td>
-                            <td scope='col'>20/21</td>
-                            <td scope='col'>95.2%</td>
-                        </tr>
-                    <table>
-                        <tr>
-                            <p>Average attendance</p>
-                        </tr>
-                    </table>
-                    </thead>
+                        <thead class='thead-dark'>
+                            <tr>
+                                <th scope='col'>Course</th>
+                                <th scope='col'>Taken session</th>
+                                <th scope='col'>Points over taken session</th>
+                                <th scope='col'>Percentage over taken session</th>
+                            </tr>
+                            <tr>
+                                <td scope='col'>BAC</td>
+                                <td scope='col'>21</td>
+                                <td scope='col'>20/21</td>
+                                <td scope='col'>95.2%</td>
+                            </tr>
+                            <tr>
+                                <td scope='col'>BAC</td>
+                                <td scope='col'>21</td>
+                                <td scope='col'>20/21</td>
+                                <td scope='col'>95.2%</td>
+                            </tr>
+                            <tr>
+                                <td scope='col'>BAC</td>
+                                <td scope='col'>21</td>
+                                <td scope='col'>20/21</td>
+                                <td scope='col'>95.2%</td>
+                            </tr>
+                            <tr>
+                                <td scope='col'>BAC</td>
+                                <td scope='col'>21</td>
+                                <td scope='col'>20/21</td>
+                                <td scope='col'>95.2%</td>
+                            </tr>
+                            <tr>
+                                <td scope='col'>BAC</td>
+                                <td scope='col'>21</td>
+                                <td scope='col'>20/21</td>
+                                <td scope='col'>95.2%</td>
+                            </tr>
+                            <tr>
+                                <td scope='col'>BAC</td>
+                                <td scope='col'>21</td>
+                                <td scope='col'>20/21</td>
+                                <td scope='col'>95.2%</td>
+                            </tr>
+                            <tr>
+                                <td scope='col'>BAC</td>
+                                <td scope='col'>21</td>
+                                <td scope='col'>20/21</td>
+                                <td scope='col'>95.2%</td>
+                            </tr>
+                            <tr>
+                                <td scope='col'>BAC</td>
+                                <td scope='col'>21</td>
+                                <td scope='col'>20/21</td>
+                                <td scope='col'>95.2%</td>
+                            </tr>
+                            <tr>
+                                <td scope='col'>BAC</td>
+                                <td scope='col'>21</td>
+                                <td scope='col'>20/21</td>
+                                <td scope='col'>95.2%</td>
+                            </tr>
+                            <tr>
+                                <td scope='col'>BAC</td>
+                                <td scope='col'>21</td>
+                                <td scope='col'>20/21</td>
+                                <td scope='col'>95.2%</td>
+                            </tr>
+                                <table>
+                                    <tr>
+                                        <p>Average attendance</p>
+                                    </tr>
+                                </table>
+                        </thead>
                     <tbody>
+                     
                     </tbody>
                 </table>
                     </div>
