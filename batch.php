@@ -48,6 +48,7 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                             <option value="2">Food Technology</option>
                             <option value="2">Consruction Technology</option>
                             <option value="2">Automotieve</option>
+                            <option value="2">Electrical </option>
                           </select>
                           </div>
                         </div>
