@@ -69,8 +69,8 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                                 <th scope='row'>1</th>
                                 <td>Assessment 01</td>
                                 <td>5IT</td>
-                                <td>Web Programming</td>
-                                <td>Batch-1</td>
+                                <td>Web Programming<span class="badge badge-pill badge-dark m-1">M07</span></td>
+                                <td>Batch-1<span class="badge badge-pill badge-dark m-1">2019/2020</span></td>
                                 
                                 <td>2020.03.25</td>
                                 <td class="A">
@@ -85,8 +85,8 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                                 <th scope='row'>2</th>
                                 <td>Assessment 02</td>
                                 <td>5IT</td>
-                                <td>Web Programming</td>
-                                <td>Batch-2</td>
+                                <td>Web Programming<span class="badge badge-pill badge-dark m-1">M07</span></td>
+                                <td>Batch-2<span class="badge badge-pill badge-dark m-1">2019/2020</span></td>
                                 
                                 <td>2020.03.27</td>
                                 <td class="A">
@@ -101,8 +101,8 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                                 <th scope='row'>3</th>
                                 <td>Assessment 02</td>
                                 <td>5IT</td>
-                                <td>Software Testing</td>
-                                <td>Batch-1</td>
+                                <td>Software Testing<span class="badge badge-pill badge-dark m-1">M06</span></td>
+                                <td>Batch-1<span class="badge badge-pill badge-dark m-1">2019/2020</span></td>
                                 
                                 <td>2020.04.24</td>
                                 <td class="A">
@@ -118,8 +118,8 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                                 <th scope='row'>3</th>
                                 <td>Assessment 01</td>
                                 <td>5IT</td>
-                                <td>Software Testing</td>
-                                <td>Batch-1</td>
+                                <td>Software Testing<span class="badge badge-pill badge-dark m-1">M06</span></td>
+                                <td>Batch-1<span class="badge badge-pill badge-dark m-1">2019/2020</span></td>
                                 
                                 <td>2020.03.24</td>
                                 <td class="A">
