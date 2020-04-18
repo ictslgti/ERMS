@@ -7,6 +7,14 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
 
 <head>
     <?php include_once("./head.php"); ?>
+    <style>
+                    td.A {
+                        text-align: right;
+                    }
+                    th,td {
+                        text-align: center;
+                    }
+                    </style>
 </head>
 
 <body>
@@ -55,7 +63,7 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                         <td>01</td>
                         <td>ICT</td>
                         <td>INFORMATION COMMUNICATION & TECHNOLOGY</td>
-                        <td>
+                        <td class="A">
                         <button type="button" class="btn btn-outline-warning" data-toggle="modal" data-target="#exampleModal">
                                 EDIT
                                 </button>
