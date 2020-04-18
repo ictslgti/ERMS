@@ -239,8 +239,8 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
 
 
                      <div class="row">
-                     <div class="col-10 "></div>
-                     <div class="col-2">
+                     <div class="col-11 "></div>
+                     <div class="col-1">
                      <button type="submit" class="btn btn-outline-success" data-toggle="modal"
                                 data-target="#exampleModal">
                                 Add
