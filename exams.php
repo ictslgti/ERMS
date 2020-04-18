@@ -26,18 +26,6 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
             <div class='container-fluid p-5'>
 
                 <!-- #1 Insert Your Content-->
-                <!-- <div class="row">
-                    <div class="col-md">
-                        <h3 class="text-secondary"> Exams Detail</h3>
-                    </div>
-                    <div class="col-md">
-
-                    </div>
-                    <div class="col-md">
-
-                    </div>
-                </div> -->
-
                 <!-- #1 Searching bar" -->
                 <div class="row">
                     <div class="col-md">
@@ -47,7 +35,7 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
                     </div>
                     <div class="col-md-auto pr-4 sidebar-item sidebar-search ">
                         <div class="input-group input-group-sm mb-3">
-                            <input type="text" class="form-control-sm search-menu" id="mySearch" onkeyup="myFunction()" placeholder="Module..." title="Type in a category">
+                            <input type="text" class="form-control search-menu" id="mySearch" onkeyup="myFunction()" placeholder="Module..." title="Type in a category">
                             <div class="input-group-append">
                                 <span class="input-group-text">
                                     <i class="fa fa-search" aria-hidden="true"></i>
@@ -109,7 +97,7 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
                                     <td> ', $row['course'], '</td>
                                     <td> ', $row['semester'], '</td>
                                     <td> ', $row['module'], '<span class = "badge badge-dark">', $row['exam_type'], '</span></td>
-                                    <td class="btn-group " role="group" > 
+                                    <td class="btn-group "role="group" > 
                                     <a class = "btn btn-warning btn-group btn btn-sm " href="insert.php?edit=', $row['exam_id'], '"> Edit </a>
                                     <a class = "btn btn-danger btn-group btn btn-sm " href="?delete=', $row['exam_id'], '"> Delete </a>
                                     <a class = "btn btn-info btn-group btn btn-sm " href="?view=', $row['exam_id'], '"> View </a>
