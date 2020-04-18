@@ -60,9 +60,9 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                         </thead>
                         <tbody>
                         <tr>
-                        <td>01</td>
-                        <td>ICT</td>
-                        <td>INFORMATION COMMUNICATION & TECHNOLOGY</td>
+                        <td><h6>01</h6></td>
+                        <td><h6>ICT</h6></td>
+                        <td><h6>INFORMATION COMMUNICATION & TECHNOLOGY</h6></td>
                         <td class="alig">
                         <button type="button" class="btn btn-outline-warning" data-toggle="modal" data-target="#exampleModal">
                                 EDIT
