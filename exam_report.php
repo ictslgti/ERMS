@@ -62,7 +62,7 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
                             </div>
                             <div class="col-md-auto pr-4 sidebar-item sidebar-search ">
                                 <div class="input-group input-group-sm mb-3">
-                                    <input type="text" class="form-control-sm search-menu" id="mySearch" onkeyup="myFunction()" placeholder="Reg No..or Name..." title="Type in a category">
+                                    <input type="text" class="form-control search-menu" id="mySearch" onkeyup="myFunction()" placeholder="Reg No..or Name..." title="Type in a category">
                                     <div class="input-group-append">
                                         <span class="input-group-text">
                                             <i class="fa fa-search" aria-hidden="true"></i>
@@ -177,7 +177,7 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
                             </div>
                             <div class="col-md-auto pr-4 sidebar-item sidebar-search ">
                                 <div class="input-group input-group-sm mb-3">
-                                    <input type="text" class="form-control-sm search-menu" id="mySearch" onkeyup="myFunction()" placeholder="Reg No..or Name..." title="Type in a category">
+                                    <input type="text" class="form-control search-menu" id="mySearch" onkeyup="myFunction()" placeholder="Reg No..or Name..." title="Type in a category">
                                     <div class="input-group-append">
                                         <span class="input-group-text">
                                             <i class="fa fa-search" aria-hidden="true"></i>
@@ -285,7 +285,7 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
                             </div>
                             <div class="col-md-auto pr-4 sidebar-item sidebar-search ">
                                 <div class="input-group input-group-sm mb-3">
-                                    <input type="text" class="form-control-sm search-menu" id="mySearch" onkeyup="myFunction()" placeholder="Reg No..or Name..." title="Type in a category">
+                                    <input type="text" class="form-control search-menu" id="mySearch" onkeyup="myFunction()" placeholder="Reg No..or Name..." title="Type in a category">
                                     <div class="input-group-append">
                                         <span class="input-group-text">
                                             <i class="fa fa-search" aria-hidden="true"></i>
@@ -393,7 +393,7 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
                             </div>
                             <div class="col-md-auto pr-4 sidebar-item sidebar-search ">
                                 <div class="input-group input-group-sm mb-3">
-                                    <input type="text" class="form-control-sm search-menu" id="mySearch" onkeyup="myFunction()" placeholder="Reg No..or Name..." title="Type in a category">
+                                    <input type="text" class="form-control search-menu" id="mySearch" onkeyup="myFunction()" placeholder="Reg No..or Name..." title="Type in a category">
                                     <div class="input-group-append">
                                         <span class="input-group-text">
                                             <i class="fa fa-search" aria-hidden="true"></i>
@@ -406,10 +406,10 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
                         <!-- #1 Insert Your Content" -->
                         <div class="row">
                             <div class="col-md col-sm">
-                                <h6>Full Name :-</h6>
+                                <h6>Name :-</h6>
                             </div>
                             <div class="col-md col-sm">
-                                <h6 class="text-muted">Mohamed Sakkoor Eashath</h6>
+                                <h6 class="text-muted">M S Eashath</h6>
                             </div>
 
                             <div class="col-md col-sm">
@@ -442,7 +442,7 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
                                 <h6>Department</h6>
                             </div>
                             <div class="col-md col-sm">
-                                <h6 class="text-muted">Information and communication technology</h6>
+                                <h6 class="text-muted">ICT</h6>
                             </div>
 
                             <div class="col-md col-sm">
@@ -488,7 +488,7 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
                                             <tr>
                                                 <th scope='row'>1</th>
                                                 <td>2018ICTBIT14</td>
-                                                <td>MO8<span class=' badge badge-success'>P</span></td>
+                                                <td>MO8 <span class=' badge badge-success'>P</span></td>
                                                 <td>1 St</td>
                                                 <td>68</td>
                                                 <td><span class=' badge badge-success'>PASS</span> </td>
