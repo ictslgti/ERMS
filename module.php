@@ -1,5 +1,5 @@
 <?php
-$title = "Add Department | Online Examination Result Management System | SLGTI";
+$title = "Add Module | Online Examination Result Management System | SLGTI";
 $description = "Online Examination Result  Management System (ERMS)-SLGTI";
 ?>
 <!DOCTYPE html>
