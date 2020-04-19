@@ -58,6 +58,7 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                             <option selected disabled value="">Choose Academic Year Status</option>
                             <option value="1">Completed</option>
                             <option value="2">Active</option>
+                              <option value="3">plan</option>
                           </select>
                           </div>
                         </div>
