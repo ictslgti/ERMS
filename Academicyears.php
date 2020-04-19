@@ -6,6 +6,18 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
 <html lang="en">
 
 <head>
+                    <style>
+                    td.A {
+                        text-align: right;
+                    }
+
+                    td {
+                        text-align: center;
+                    }
+                    .B {
+                        text-align: center;
+                    }
+                    </style>
     <?php include_once("./head.php"); ?>
 </head>
 
@@ -42,82 +54,39 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                     
                     <table class='table align-middle'>
                         <thead class='bg-primary text-light'>
-                            <tr>
+                            <tr class="B">
                                 <th scope='col'>Year</th>
                                 <th scope='col'>Status</th>
-                                <th scope='col'>semi 1 start</th>
-                                <th scope='col'>semi 1 end</th>
-                                <th scope='col'>semi 2 start</th>
-                                <th scope='col'>semi 2 end</th>
+                                <th scope='col'>semister 1 start</th>
+                                <th scope='col'>semister 1 end</th>
+                                <th scope='col'>semister 2 start</th>
+                                <th scope='col'>semister 2 end</th>
                                 <th scope='col'>Options</th>
                                 
 
                             </tr>
                         </thead>
                         <tbody>
-                            <tr class="table-danger">
-                                <th scope='row'>2018/2019</th>
-                                <td>Completed</td>
-                                <td>2017.02.25</td>
-                                <td>2017.08.25</td>
-                                <td>2017.09.30</td>
-                                <td>2020.03.30</td>
-                                <td>
-                                <button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#exampleModal">
-                                View details
-                                </button>
-                                
-                                </td>
-
-                            </tr>
-                            
                             <tr class="table-success">
                                 <th scope='row'>2019/2020</th>
                                 <td>Active</td>
-                                <td>2017.02.25</td>
-                                <td>2017.08.25</td>
-                                <td>2017.09.30</td>
+                                <td>2019.02.25</td>
+                                <td>2019.08.25</td>
+                                <td>2019.09.30</td>
                                 <td>2020.03.30</td>
-                                <td>
+                                <td class="A">
                                 <button type="button" class="btn btn-outline-success" data-toggle="modal" data-target="#exampleModal">
                                 Edit details
                                 </button>
-                                
-                                </td>
-
-                            </tr>
-
-                            <tr class="table-success">
-                                <th scope='row'>2020/2021</th>
-                                <td>Active</td>
-                                <td>2017.02.25</td>
-                                <td>2017.08.25</td>
-                                <td>2017.09.30</td>
-                                <td>2020.03.30</td>
-                                <td>
-                                <button type="button" class="btn btn-outline-success" data-toggle="modal" data-target="#exampleModal">
-                                Edit details
+                                <button type="button" class="btn btn-outline-info " >
+                                View Batches
                                 </button>
                                 
                                 </td>
 
                             </tr>
                             
-                            <tr class="table-info">
-                                <th scope='row'>2020/2021</th>
-                                <td>Plan</td>
-                                <td>--</td>
-                                <td>--</td>
-                                <td>--</td>
-                                <td>--</td>
-                                <td>
-                            <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#exampleModal" name="add">
-                           Edit details
-                            </button>
-                                
-                                </td>
-
-                            </tr>
+                        
 
                         </tbody>
                     </table>
