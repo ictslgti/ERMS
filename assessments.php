@@ -43,7 +43,7 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                 <form class="form-inline">
                     <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
                     <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
-                    <a href="assessment_type.php"  class="btn btn-outline-primary my-2 my-sm-0 m-1">Add new</a>
+                    <a href="assessment.php"  class="btn btn-outline-primary my-2 my-sm-0 m-1">Add new</a>
                 </form>
                 </nav> 
                     
