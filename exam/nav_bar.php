@@ -1,4 +1,7 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a id="toggle-sidebar" class="btn btn-light rounded-0 mr-5 pl-0" href="#">
+    <span class="navbar-toggler-icon"></span>
+  </a>
   <a class="navbar-brand" href=""><?php echo " $title" ?></a>
   <button class=" navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
