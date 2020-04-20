@@ -113,12 +113,12 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
                                                 <th scope='col'>Reg NO</th>
                                                 <th scope='col'>Name</th>
                                                 <th scope='col'>Result %</th>
-                                                <th scope='col'>Emp mo-1 <span class=' badge badge-light'>T</span></th>
-                                                <th scope='col'>Emp mo-2 <span class=' badge badge-light'>T</span></th>
-                                                <th scope='col'>mo-5 <span class=' badge badge-light'>T</span></th>
-                                                <th scope='col'>mo-5 <span class=' badge badge-light'>P</span></th>
-                                                <th scope='col'>mo-7 <span class=' badge badge-light'>P</span></th>
-                                                <th scope='col'>mo-8 <span class=' badge badge-light'>P</span></th>
+                                                <th scope='col' data-toggle="tooltip" data-placement="top" title="Work place managment">Emp MO-1 <span class=' badge badge-dark'>T</span> </th>
+                                                <th scope='col' data-toggle="tooltip" data-placement="top" title="Work place communication">Emp MO-2 <span class=' badge badge-dark'>T</span></th>
+                                                <th scope='col' data-toggle="tooltip" data-placement="top" title="Database I">MO-5 <span class=' badge badge-dark'>T</span></th>
+                                                <th scope='col' data-toggle="tooltip" data-placement="top" title="Database I">MO-5 <span class=' badge badge-dark'>P</span></th>
+                                                <th scope='col' data-toggle="tooltip" data-placement="top" title="Web Programming">MO-7 <span class=' badge badge-dark'>P</span></th>
+                                                <th scope='col' data-toggle="tooltip" data-placement="top" title="I Don't no">MO-8 <span class=' badge badge-dark'>P</span></th>
                                                 <th scope='col'>Action</th>
 
                                             </tr>
@@ -467,6 +467,7 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
                             </div>
 
                         </div>
+                        <br>
                         <!-- #1 Insert Your Content" -->
                         <form method='POST' action=''>
                             <div class="row">
