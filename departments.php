@@ -34,7 +34,7 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                 <a class="navbar-brand"></a>
                 <form class="form-inline">
                     <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
+                    <button class="btn btn-outline-primary my-2 my-sm-0" type="submit"><img src="https://img.icons8.com/android/24/000000/search.png"/>Search</button>
                     <a href="department.php"  class="btn btn-outline-success my-2 my-sm-0 m-1">Add new</a>
                 </form>
                 </nav>
