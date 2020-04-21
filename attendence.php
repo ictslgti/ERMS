@@ -43,12 +43,24 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                                     <li class='nav-item'>
                                         <a class='nav-link active' href='./attendence.php'>Selected Cource</a>
                                     </li>
-                                    <li>
-                                        <a>Module</a>
-                                    </li>
-                                    <li>
-                                        <a>MO-07</a>
-                                    </li>
+                                    <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
+                                        
+                                        <div class="btn-group" role="group">
+                                            <button id="btnGroupDrop1" type="button" class="btn btn-light dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            MODULE
+                                            </button>
+                                            <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                                            <a class="dropdown-item" href="#">MO-01</a>
+                                            <a class="dropdown-item" href="#">MO-02</a>
+                                            <a class="dropdown-item" href="#">MO-03</a>
+                                            <a class="dropdown-item" href="#">MO-04</a>
+                                            <a class="dropdown-item" href="#">MO-05</a>
+                                            <a class="dropdown-item" href="#">MO-06</a>
+                                            <a class="dropdown-item" href="#">MO-07</a>
+                                            <a class="dropdown-item" href="#">MO-08</a>
+                                            </div>
+                                        </div>
+                                        </div>
                                 </ul>
                             </div>
                         </div>
