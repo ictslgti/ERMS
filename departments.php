@@ -50,11 +50,11 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                     
                     <table class='table align-middle'>
                         <thead class='bg-primary text-light'>
-                            <tr>
-                                <th scope='col'>Id</th>
-                                <th scope='col'>Code</th>
-                                <th scope='col'>Name</th>
-                                <th scope='col'>Option</th>
+                            <tr class="h5">
+                                <th scope='col'>ID</th>
+                                <th scope='col'>CODE</th>
+                                <th scope='col'>NAME</th>
+                                <th scope='col'>OPTION</th>
                             </tr>
                             
                         </thead>
@@ -64,16 +64,11 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                         <td><h6>ICT</h6></td>
                         <td><h6>INFORMATION COMMUNICATION & TECHNOLOGY</h6></td>
                         <td class="alig">
-                        <button type="button" class="btn btn-outline-warning" data-toggle="modal" data-target="#exampleModal">
-                                EDIT
-                                </button>
-                        <button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#exampleModal">
-                                DELETE
-                                </button>
-                        
-                        <button type="button" class="btn btn-outline-success" data-toggle="modal" data-target="#exampleModal">
-                               VIEW COURSES
-                        </button></td>
+                        <div class="btn-group" role="group" aria-label="Basic example">
+  <button type="button" class="btn btn-warning"><img src="https://img.icons8.com/android/25/000000/edit.png"/>Edit</button>
+  <button type="button" class="btn btn-danger"><img src="https://img.icons8.com/windows/26/000000/delete-forever.png"/>Delete</button>
+  <button type="button" class="btn btn-success"><img src="https://img.icons8.com/metro/24/000000/view-file.png"/>View Courses</button>
+</div></td>
                         </tbody>
                     </table>
                     
