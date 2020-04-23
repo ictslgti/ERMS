@@ -26,12 +26,10 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
         <nav id="sidebar" class="sidebar-wrapper">
             <?php include_once("nav.php"); ?>
         </nav>
+        
         <main class="page-content pt-2">
             <div id="overlay" class="overlay"></div>
-            <div class="container-fluid p-5">
-                <!-- #1 Insert Your Content-->
-
-                <?php  
+            <?php  
                   $title ="
                   <h4 class='text-primary'>ERMS|<span class='text-secondary'>Assessments</span></h4>";
                  include_once('exam/nav_bar.php');
@@ -46,6 +44,10 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                     <a href="assessment.php"  class="btn btn-outline-primary my-2 my-sm-0 m-1">Add new</a>
                 </form>
                 </nav> 
+            <div class="container-fluid p-5">
+                <!-- #1 Insert Your Content-->
+
+                
                     
                 <div class="row">
                     <div class="form-group col-md-12">
@@ -73,11 +75,12 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                                 <td>Batch-1<span class="badge badge-pill badge-dark m-1">2019/2020</span></td>
                                 
                                 <td>2020.03.25</td>
-                                <td class="A">
-                                <button type='submit' name='add' class="btn btn-outline-success">Add result</button>
-                                <button type='submit' name='view' class="btn btn-outline-danger">Delete  </button>
-                                <button type='submit' name='view' class="btn btn-outline-info">Edit </button>
-                                </td>
+                                <td class="alig">
+                        <div class="btn-group" role="group" aria-label="Basic example">
+                        <button type="button" class="btn btn-warning"><img src="https://img.icons8.com/android/25/000000/edit.png"/></button>
+                        <button type="button" class="btn btn-danger"><img src="https://img.icons8.com/windows/26/000000/delete-forever.png"/></button>
+                        <button type="button" class="btn btn-success">Add result</button>
+                        </div></td>
 
                             </tr>
                             
@@ -89,11 +92,12 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                                 <td>Batch-2<span class="badge badge-pill badge-dark m-1">2019/2020</span></td>
                                 
                                 <td>2020.03.27</td>
-                                <td class="A">
-                                <button type='submit' name='add' class="btn btn-outline-success">Add result</button>
-                                <button type='submit' name='view' class="btn btn-outline-danger">Delete </button>
-                                <button type='submit' name='view' class="btn btn-outline-info">Edit </button>
-                                </td>
+                                <td class="alig">
+                        <div class="btn-group" role="group" aria-label="Basic example">
+                        <button type="button" class="btn btn-warning"><img src="https://img.icons8.com/android/25/000000/edit.png"/></button>
+                        <button type="button" class="btn btn-danger"><img src="https://img.icons8.com/windows/26/000000/delete-forever.png"/></button>
+                        <button type="button" class="btn btn-success">Add result</button>
+                        </div></td>
 
                             </tr>
 
@@ -105,12 +109,12 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                                 <td>Batch-1<span class="badge badge-pill badge-dark m-1">2019/2020</span></td>
                                 
                                 <td>2020.04.24</td>
-                                <td class="A">
-                                <button type='submit' name='add' class="btn btn-outline-success">Add result</button>
-                                <button type='submit' name='view' class="btn btn-outline-danger">Delete </button>
-                                <button type='submit' name='view' class="btn btn-outline-info">Edit </button>
-                                
-                                </td>
+                                <td class="alig">
+                        <div class="btn-group" role="group" aria-label="Basic example">
+                        <button type="button" class="btn btn-warning"><img src="https://img.icons8.com/android/25/000000/edit.png"/></button>
+                        <button type="button" class="btn btn-danger"><img src="https://img.icons8.com/windows/26/000000/delete-forever.png"/></button>
+                        <button type="button" class="btn btn-success">Add result</button>
+                        </div></td>
 
                             </tr>
 
@@ -122,12 +126,12 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                                 <td>Batch-1<span class="badge badge-pill badge-dark m-1">2019/2020</span></td>
                                 
                                 <td>2020.03.24</td>
-                                <td class="A">
-                                <button type='submit' name='add' class="btn btn-outline-success">Viewmarks</button>
-                                <button type='submit' name='view' class="btn btn-outline-danger" disabled>Delete </button>
-                                <button type='submit' name='view' class="btn btn-outline-info">Edit </button>
-                                
-                                </td>
+                                <td class="alig">
+                        <div class="btn-group" role="group" aria-label="Basic example">
+                        <button type="button" class="btn btn-warning"><img src="https://img.icons8.com/android/25/000000/edit.png"/></button>
+                        <button type="button" class="btn btn-danger"><img src="https://img.icons8.com/windows/26/000000/delete-forever.png"/></button>
+                        <button type="button" class="btn btn-success">Add result</button>
+                        </div></td>
 
                             </tr>
 
