@@ -96,7 +96,7 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                         <div class="btn-group" role="group" aria-label="Basic example">
                         <button type="button" class="btn btn-warning"><img src="https://img.icons8.com/android/25/000000/edit.png"/></button>
                         <button type="button" class="btn btn-danger"><img src="https://img.icons8.com/windows/26/000000/delete-forever.png"/></button>
-                        <button type="button" class="btn btn-success">Add result</button>
+                        <button type="button" class="btn btn-success"><a href="assessment_result.php"> Result </a></button>
                         </div></td>
 
                             </tr>
@@ -113,7 +113,7 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                         <div class="btn-group" role="group" aria-label="Basic example">
                         <button type="button" class="btn btn-warning"><img src="https://img.icons8.com/android/25/000000/edit.png"/></button>
                         <button type="button" class="btn btn-danger"><img src="https://img.icons8.com/windows/26/000000/delete-forever.png"/></button>
-                        <button type="button" class="btn btn-success">Add result</button>
+                        <button type="button" class="btn btn-success"><a href="assessment_result.php"> Result </a></button>
                         </div></td>
 
                             </tr>
@@ -130,7 +130,7 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                         <div class="btn-group" role="group" aria-label="Basic example">
                         <button type="button" class="btn btn-warning"><img src="https://img.icons8.com/android/25/000000/edit.png"/></button>
                         <button type="button" class="btn btn-danger"><img src="https://img.icons8.com/windows/26/000000/delete-forever.png"/></button>
-                        <button type="button" class="btn btn-success">Add result</button>
+                        <button type="button" class="btn btn-success"><a href="assessment_result.php"> Result </a></button>
                         </div></td>
 
                             </tr>
