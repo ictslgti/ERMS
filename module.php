@@ -16,10 +16,7 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
         </nav>
         <main class="page-content pt-2">
             <div id="overlay" class="overlay"></div>
-            <div class="container-fluid p-5">
-                <!-- #1 Insert Your Content-->
-                <div class="container">
-                <!-- 1st row start -->
+            <!-- 1st row start -->
                 <?php  
                   $title ="
                   <h4 class='text-primary'>ERMS|<span class='text-secondary'>Module</span></h4>";
@@ -35,9 +32,13 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                 </nav>
                 
                 <!-- 1st row end -->
-                  <br>
+            <div class="container-fluid p-5">
+                <!-- #1 Insert Your Content-->
+                <div class="container">
+                
+                  
                     <!-- 2 row start -->
-                    <br>
+                   
                     
                      <form method="POST" action="">
                      <div class="row">
