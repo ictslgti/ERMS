@@ -16,11 +16,7 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
         </nav>
         <main class="page-content pt-2">
             <div id="overlay" class="overlay"></div>
-            <div class="container-fluid p-5">
-                <!-- #1 Insert Your Content-->
-                <div class="container">
-                <!-- 1st row start -->
-                <?php  
+            <?php  
                   $title ="
                   <h4 class='text-primary'>ERMS|<span class='text-secondary'>Course</span></h4>";
                  include_once('exam/nav_bar.php');
@@ -33,12 +29,12 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                     <a href="courses.php"><h6 class="text-primary">Click Here Show Courses</h6></a>
                 </form>
                 </nav>
-                <br>
-                <!-- 1st row end -->
-                  <br>
+            <div class="container-fluid p-5">
+                <!-- #1 Insert Your Content-->
+                <div class="container">
+                
+                 
                     <!-- 2 row start -->
-                    <br>
-                    
                      <form method="POST" action="">
                      <div class="row">
                      <div class="col-sm">
