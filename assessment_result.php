@@ -100,6 +100,7 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                 <br>
                 <form action=""method="POST">
                 <button class="btn btn-outline-primary btn btn-sm "> <a href="?Add"> Add Result </a></button>
+                <button class="btn btn-outline-primary btn btn-sm "> <a href="?Edit"> Edit Result </a></button>
                 </form>
                 <br>
 
@@ -118,7 +119,7 @@ if(isset($_GET['Add']))
                         <th scope='col'>STUDENT NAME</th>
                         <th scope='col'>MARKS</th>
                         <th scope='col'>ATTEMPT </th>
-                        <th scope='col'>STATUS</th>
+                        
 
                     </tr>
                 </thead>
@@ -136,8 +137,7 @@ if(isset($_GET['Add']))
                                                 <option value='2'>2 nd</option>
                                                 <option value='3'>3 rd</option>
                                         </td>
-                        <td><span class=' badge badge-success'>PASS</span></td>
-                       
+                        
 
                     </tr>
                 </tbody>
@@ -158,6 +158,64 @@ if(isset($_GET['Add']))
         </div>
     </div>
 </form>
+
+<?php
+}
+elseif(isset($_GET['Edit']))
+{
+?>
+
+<form method='POST' action='assessment_result.php'>
+    <div class='row'>
+        <div class='form-group col-md-12 table-responsive'>
+            <table class='table align-middle'>
+                <thead class='bg-primary text-light'>
+                    <tr>
+                        <th scope='col'>NO</th>
+                        <th scope='col'>REG NO</th>
+                        <th scope='col'>STUDENT NAME</th>
+                        <th scope='col'>MARKS</th>
+                        <th scope='col'>ATTEMPT </th>
+                        
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope='row'>1</th>
+                        <td>2018ICTBIT30</td> 
+                        <td>S.Sumanan</td>
+                        <td>
+                            <input type='text' value="65" class='form-control' placeholder='Marks' id='validationServer02' required aria-label='marks' aria-describedby='addon-wrapping' maxlength='5' size='6'>
+                        </td>
+                        <td><select class='custom-select' id='inputGroupSelect01' id='validationServer01' required>
+                                                <option value=''disabled >Select</option>
+                                                <option value='1'selected>1 st</option>
+                                                <option value='2'>2 nd</option>
+                                                <option value='3'>3 rd</option>
+                                        </td>
+                        
+
+                    </tr>
+                </tbody>
+            </table>
+            <!-- button -->
+            <div class='row'>
+                <div class='col-md'>
+                    <h3 class='text-primary'></h3>
+                </div>
+                <div class='col-md'>
+
+                </div>
+                <div class='col-md-auto'>
+                    <button type='submit' name='cancel' class='btn btn-danger btn btn-sm '>CANCEL</button>
+                    <button type='submit' name='save' class='btn btn-primary btn btn-sm '>SAVE</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+    
 <?php
 }
 else
@@ -203,15 +261,16 @@ else
                     </tr>
                 </tbody>
             </table>
-            <!-- button -->
+            
             
         </div>
     </div>
-</form>
-    
+</form>   
 <?php
 }
 ?>
+
+
 
                 <!-- #1 Insert Your Content" -->
 
