@@ -74,14 +74,6 @@ $description = "Online Examination Result Management System (ERMS)-SLGTI";
                             <td scope='col'>0752859625</td>
                             <td scope='col'>ACTIONS</td>
                         </tr>
-                        <tr>
-                            <td scope='col'>Registration No</td>
-                            <td scope='col'>Student Name</td>
-                            <td scope='col'>Enrolled Course</td>
-                            <td scope='col'>Batch</td>
-                            <td scope='col'>Contact Number</td>
-                            <td scope='col'>ACTIONS</td>
-                        </tr>
                     </thead>
                     <tbody>
                     </tbody>
