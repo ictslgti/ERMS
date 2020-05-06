@@ -16,21 +16,21 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
         </nav>
         <main class="page-content pt-2">
             <!-- 1st row start -->
-            <div class="card  mb-3">
-  <div class="card-header">
-  <div class="row">
-  <div class="col"><h4>Department</h4></div>
-  <div class="col-auto"><button type="submit" class="btn btn-outline-primary">
-  Departments 
- </button>
- </div>
- </div>
-  <div class="card-body ">
-    
+            <div class="card  mb-3" >
+                <div class="card-header ">
+                <div class="row">
+                <div class="col"><h4>Department</h4></div>
+                <div class="col-auto">
+                <button type="submit" class="btn btn-outline-primary">Departments</button>
+                </div>
 
-  <div class="card  mb-3">
-  <div class="card-body ">
-    <form method="POST" action="">
+                </div>
+                </div>
+                <div class="card-body ">
+                <div class="card  mb-3">
+                   
+                    <div class="card-body ">
+                    <form method="POST" action="">
                      <div class="row">
                      <div class="col-sm">
                      <div class="form-group">
@@ -57,30 +57,31 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                      </div>
                      <br>
                      <!-- 2 row end -->
-                     <div class="row">
-  </div>
-</div>
-  </div>
-  <div class="card-footer bg-transparent ">  <div class="col-11 "></div>
+                    </div>
+                   
+                    </div>
+
+                    
+                </div>
+                <div class="card-footer "><div class="row">
+                     <div class="col-11 "></div>
                      <div class="col-1">
                      <button type="submit" class="btn btn-outline-success" data-toggle="modal"
                                 data-target="#exampleModal">
                                 Add
                             </button>
-                     </div>
                      </div></div>
-</div>
+                </div>
                 <!-- 1st row end -->
             <div id="overlay" class="overlay"></div>
             <div class="container-fluid p-5">
                 <!-- #1 Insert Your Content-->
                 <div class="container">
-                
-                  
                     <!-- 2 row start -->
                     
                      
-                   
+                     
+                     </div>
 </form>
                     
 
