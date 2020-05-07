@@ -11,11 +11,14 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
 
 <body>
     <div class="page-wrapper toggled bg2 border-radius-on light-theme">
-        <nav id="sidebar" class="sidebar-wrapper">
+        
             <?php include_once("nav.php"); ?>
-        </nav>
-        <main class="page-content pt-2">
+       
+        <!-- <main class="page-content pt-2"> -->
             <!-- 1st row start -->
+
+         <div class="container"> 
+         <form action=""> 
             <div class="card  mb-3" >
                 <div class="card-header ">
                 <div class="row">
@@ -87,7 +90,7 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
             </div>
         </main>
     </div>
-    <?php include_once("script.php"); ?>
+    <?php include_once("../script.php"); ?>
 </body>
 
 </html>
