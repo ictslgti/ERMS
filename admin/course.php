@@ -1,5 +1,5 @@
 <?php
-$title = "Add Course | Online Examination Result Management System | SLGTI";
+$title = "Add Department | Online Examination Result Management System | SLGTI";
 $description = "Online Examination Result  Management System (ERMS)-SLGTI";
 ?>
 <!DOCTYPE html>
@@ -15,27 +15,22 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
             <?php include_once("nav.php"); ?>
         </nav>
         <main class="page-content pt-2">
-            <div id="overlay" class="overlay"></div>
-            <?php  
-                  $title ="
-                  <h4 class='text-primary'>ERMS|<span class='text-secondary'>Course</span></h4>";
-                 include_once('exam/nav_bar.php');
-            
-            ?>
-            <nav class="navbar navbar-light bg-light">
-                <a class="navbar-brand"></a>
-                <form class="form-inline">
-                    
-                    <a href="courses.php"><h6 class="text-primary">Click Here Show Courses</h6></a>
-                </form>
-                </nav>
-            <div class="container-fluid p-5">
-                <!-- #1 Insert Your Content-->
-                <div class="container">
-                
-                 
-                    <!-- 2 row start -->
-                     <form method="POST" action="">
+            <!-- 1st row start -->
+            <div class="card  mb-3">
+  <div class="card-header">
+  <div class="row">
+  <div class="col"><h4>Course</h4></div>
+  <div class="col-auto"><button type="submit" class="btn btn-outline-primary">
+ Courses 
+ </button>
+ </div>
+ </div>
+  <div class="card-body ">
+    
+
+  <div class="card  mb-3">
+  <div class="card-body ">
+    <form method="POST" action="">
                      <div class="row">
                      <div class="col-sm">
                      <div class="form-group">
@@ -48,10 +43,7 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                          </div>
                      </div>
                     
-                       
-                
-                
-                     
+
                      <div class="col-sm">
                      <div class="form-group">
                      <div class="input-group mb-3">
@@ -65,13 +57,10 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                      </div>
                      <br>
                      <!-- 2 row end -->
-
-
-
-
+                     <div class="card  mb-3">
                      
-
-                     <!-- 4 row start -->
+                     <div class="card-body ">
+    <form method="POST" action="">
                      <div class="row">
                      <div class="col-sm">
                      <div class="form-group">
@@ -79,83 +68,75 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                          <div class="input-group-prepend">
                          <span class="input-group-text" id="basic-addon1">Duration Of Course</span>
                        </div>
-                       <input type="Number" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" id="validationServer01" required>
+                       <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" id="validationServer01" required>
                          </div>
                          </div>
                      </div>
+                    
 
-                
-                     
                      <div class="col-sm">
                      <div class="form-group">
                      <div class="input-group mb-3">
                          <div class="input-group-prepend">
-                         <span class="input-group-text" id="basic-addon1">Duration OJT</span>
+                         <span class="input-group-text" id="basic-addon1">Duration Of IJT</span>
                        </div>
-                       <input type="Number" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" id="validationServer01" required>
+                       <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" id="validationServer01" required>
                          </div>
                      </div>
                      </div>
                      </div>
                      <br>
-                     <!-- 4 row end -->
-
                      <form method="POST" action="">
                      <div class="row">
                      <div class="col-sm">
                      <div class="form-group">
                      <div class="input-group mb-3">
                          <div class="input-group-prepend">
-                         <span class="input-group-text" id="basic-addon1">NVQ LEVEL</span>
+                         <span class="input-group-text" id="basic-addon1">NVQ Level</span>
                        </div>
-                       <select class="custom-select" id="inputGroupSelect01"id="validationCustom04" required>
-                        <option selected disabled>Choose NVQ Level</option>
-                        <option value="1">NVQ-3</option>
-                        <option value="1">NVQ-4</option>
-                        <option value="1">BRIDEGING</option>
-                        <option value="1">NVQ-5</option>
-                        <option value="1">NVQ-6</option>
-                        <option value="1">NVQ-7</option>
-
-                        </select>
+                       <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" id="validationServer01" required>
                          </div>
                          </div>
                      </div>
                     
-                       
-                
-                
-                     
+
                      <div class="col-sm">
                      <div class="form-group">
                      <div class="input-group mb-3">
                          <div class="input-group-prepend">
-                         <span class="input-group-text" id="basic-addon1">Department Name</span>
+                         <span class="input-group-text" id="basic-addon1">Department</span>
                        </div>
-                       <select class="custom-select" id="inputGroupSelect01"id="validationCustom04" required>
-                        <option selected disabled>Choose department</option>
-                        <option value="1">ICT</option>
-                        <option value="1">Food Tech</option>
-                        <option value="1">Meganical</option>
-                        </select>
+                       <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" id="validationServer01" required>
                          </div>
                      </div>
                      </div>
                      </div>
-                     <br>
-
-
-
+                     
 
                      <div class="row">
-                     <div class="col-11 "></div>
+  </div>
+</div>
+  </div>
+  <div class="card-footer bg-transparent ">  <div class="col-11 "></div>
                      <div class="col-1">
                      <button type="submit" class="btn btn-outline-success" data-toggle="modal"
                                 data-target="#exampleModal">
                                 Add
                             </button>
                      </div>
-                     </div>
+                     </div> </div>
+</div>
+                <!-- 1st row end -->
+            <div id="overlay" class="overlay"></div>
+            <div class="container-fluid p-5">
+                <!-- #1 Insert Your Content-->
+                <div class="container">
+                
+                  
+                    <!-- 2 row start -->
+                    
+                     
+                   
 </form>
                     
 
