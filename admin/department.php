@@ -33,27 +33,23 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                     <form method="POST" action="">
                      <div class="row">
                      <div class="col-sm">
+                     Code : <br>
                      <div class="form-group">
-                     <div class="input-group mb-3">
-                         <div class="input-group-prepend">
-                         <span class="input-group-text" id="basic-addon1">Code</span>
-                       </div>
-                       <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" id="validationServer01" required>
-                         </div>
+                     <div class="input-group input-group-sm mb-3">
+                        <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm"id="validationServer01" required>
+                        </div>
                          </div>
                      </div>
                     
 
                      <div class="col-sm">
                      <div class="form-group">
-                     <div class="input-group mb-3">
-                         <div class="input-group-prepend">
-                         <span class="input-group-text" id="basic-addon1">Name</span>
-                       </div>
-                       <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" id="validationServer01" required>
+                     Name : <br>
+                     <div class="form-group">
+                     <div class="input-group input-group-sm mb-3">
+                        <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm"id="validationServer01" required>
+                        </div>
                          </div>
-                     </div>
-                     </div>
                      </div>
                      <br>
                      <!-- 2 row end -->
