@@ -15,35 +15,31 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
             <?php include_once("nav.php"); ?>
         </nav>
         <main class="page-content pt-2">
-            <div id="overlay" class="overlay"></div>
-            <div class="container-fluid p-5">
-                <!-- #1 Insert Your Content-->
-                <?php  
-                  $title ="
-                  <h4 class='text-primary'>ERMS|<span class='text-secondary'>Academic Year</span></h4>";
-                 include_once('exam/nav_bar.php');
-            
-            ?>
-            <nav class="navbar navbar-light bg-light">
-                <a class="navbar-brand"></a>
-                <form class="form-inline">
-                    <label class=" my-2 my-sm-0 p-2"> <h6 class='text-primary'>Click Here !</h6></label>
-                    <a href="Academicyears.php"  class="btn btn-outline-primary my-2 my-sm-0">Academic Years</a>
-                </form>
-                </nav>
-                <br>
-                
-                <div class="container">
-
+        <div class="container">
                   <form method="POST" action="">
-                  <div class="row"> 
+        <div class="card  mb-3" >
+            <div class="card-header ">
+            <div class="row">
+            <div class="col"> <h2>Academic Year</h2></div>
+            <div class="col-auto">
+            <button type="submit" class="btn btn-outline-primary">
+           Academic Years</button>
+            </div>
+            </div>
+
+            </div>
+            <div class="card-body ">
+            <div class="card  mb-3" >
+  
+  <div class="card-body">
+  <div class="row"> 
                   <div class="col-md-6 col-sm-6 col-xs-6">
                      <div class="form-group">
                       <div class="input-group mb-3">
                         <div class="input-group-prepend">
                           <label class="input-group-text" for="inputGroupSelect01">Academic Year </label>
                         </div>
-                        <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" id="validationServer01" required>
+                        <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm"id="validationServer06" required>
                           </div>
                         </div>
                       </div>
@@ -118,10 +114,12 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                     </div>
               
                   <br>
-
-                  
-                  
-                <div class="row">
+  </div>
+  
+</div>
+            </div>
+            <div class="card-footer ">
+            <div class="row">
                     <div class="col-md-11 col-sm-11 col-xs-11 "></div>
                     <div class="col-md-1 col-sm-1 col-xs-1 ">
                     <button type="submit" class="btn btn-outline-success" data-toggle="modal"
@@ -130,6 +128,20 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                             </button>
                    </div>
                 </div>
+
+            </div>
+            </div>
+            <div id="overlay" class="overlay"></div>
+            <div class="container-fluid p-5">
+                <!-- #1 Insert Your Content-->
+                
+            
+                
+                  
+
+                  
+                  
+                
                </form>
             </div>
               
