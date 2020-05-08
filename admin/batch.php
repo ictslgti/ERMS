@@ -14,6 +14,7 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
         <?php include_once("nav.php"); ?>
        <!-- card start -->
 <div class="container">
+<form action=""method="post">
 <div class="card  mb-3" >
       <div class="card-header bg-transparent ">
       <div class="row">
@@ -113,7 +114,7 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                      </div>
       </div>
     </div>
-
+    </form>
 </div>
        <!-- card end  -->
     </div>
