@@ -178,7 +178,7 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                      <div class="form-group">
                      EPF no <br>
                      <div class="input-group input-group-sm mb-3">
-                        <input type="email" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm"id="validationServer01" required>
+                        <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm"id="validationServer01" required>
                         </div>
                      </div>
                      </div>
@@ -195,7 +195,7 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                      <div class="form-group">
                      Address <br>
                      <div class="input-group input-group-sm mb-3">
-                        <input type="email" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm"id="validationServer01" required>
+                        <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm"id="validationServer01" required>
                         </div>
                      </div>
                      </div>
