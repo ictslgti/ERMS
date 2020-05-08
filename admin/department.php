@@ -36,7 +36,7 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                     <form method="POST" action="">
                      <div class="row">
                      <div class="col-sm">
-                     Code : <br>
+                     Code  <br>
                      <div class="form-group">
                      <div class="input-group input-group-sm mb-3">
                         <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm"id="validationServer01" required>
@@ -47,7 +47,7 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
 
                      <div class="col-sm">
                      <div class="form-group">
-                     Name : <br>
+                     Name  <br>
                      <div class="form-group">
                      <div class="input-group input-group-sm mb-3">
                         <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm"id="validationServer01" required>
