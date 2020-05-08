@@ -72,10 +72,10 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                      </div></div>
                 </div>
                 <!-- 1st row end -->
-            <div id="overlay" class="overlay"></div>
-            <div class="container-fluid p-5">
+            <!-- <div id="overlay" class="overlay"></div>
+            <div class="container-fluid p-5"> -->
                 <!-- #1 Insert Your Content-->
-                <div class="container">
+                <!-- <div class="container"> -->
                     <!-- 2 row start -->
                     
                      
