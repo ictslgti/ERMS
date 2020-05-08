@@ -19,7 +19,7 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
       <div class="card-header bg-transparent ">
       <div class="row">
       <div class="col"> <h4>Batch</h4> </div>
-      <div class="col-auto"> <a href="" class="btn btn-outline-primary">Batches</a> </div>
+      <div class="col-auto"> <a href="batches.php" class="btn btn-outline-primary">Batches</a> </div>
       </div>
       </div>
       <div class="card-body ">
