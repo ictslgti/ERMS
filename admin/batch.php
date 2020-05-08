@@ -11,36 +11,29 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
 
 <body>
     <div class="page-wrapper toggled bg2 border-radius-on light-theme">
-        <nav id="sidebar" class="sidebar-wrapper">
-            <?php include_once("nav.php"); ?>
-        </nav>
-        <main class="page-content pt-2">
-            <div id="overlay" class="overlay"></div>
-            <div class="container-fluid p-5">
-                <!-- #1 Insert Your Content-->
-                <?php  
-                  $title ="
-                  <h4 class='text-primary'>ERMS|<span class='text-secondary'>Batch</span></h4>";
-                 include_once('exam/nav_bar.php');
-            
-            ?>
-            <nav class="navbar navbar-light bg-light">
-                <a class="navbar-brand"></a>
-                <form class="form-inline">
-                    
-                    <a href="batches.php"  class="btn btn-outline-primary my-2 my-sm-0">Batches info</a>
-                </form>
-                </nav>
-                <br>
-                <form method="POST" action="">
-                <!-- 1st row -->
-                <div class="row"> 
+        <?php include_once("nav.php"); ?>
+       <!-- card start -->
+<div class="container">
+<div class="card  mb-3" >
+      <div class="card-header bg-transparent ">
+      <div class="row">
+      <div class="col"> <h4>Batch</h4> </div>
+      <div class="col-auto"> <a href="" class="btn btn-outline-primary">Batches</a> </div>
+      </div>
+      </div>
+      <div class="card-body ">
+         
+            <div class="card  mb-3" >
+                 
+                  <div class="card-body ">
+                    <!-- 1st row -->
+
+                <div class="row "> 
                   <div class="col-md-6 col-sm-6 col-xs-6">
                      <div class="form-group">
-                      <div class="input-group mb-3">
-                        <div class="input-group-prepend">
-                          <label class="input-group-text" for="inputGroupSelect01">Department</label>
-                        </div>
+                     Department  <br>
+                     <div class="input-group input-group-sm mb-3">
+  
                         <select class="custom-select" id="inputGroupSelect01"id="validationCustom04" required>
                             <option selected disabled value="">Choose Department</option>
                             <option value="1">ICT</option>
@@ -56,11 +49,10 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
 
                       <div class="col-md-6 col-sm-6 col-xs-6">
                      <div class="form-group">
-                      <div class="input-group mb-3">
-                        <div class="input-group-prepend">
-                          <label class="input-group-text" for="inputGroupSelect01"> NVQ Level</label>
-                        </div>
-                          <select class="custom-select" id="inputGroupSelect01"id="validationCustom04" required>
+                     NVQ LEVEL  <br>
+                     <div class="input-group input-group-sm mb-3">
+  
+                        <select class="custom-select" id="inputGroupSelect01"id="validationCustom04" required>
                             <option selected disabled value="">Choose NVQ Level</option>
                             <option value="1">NVQ-04</option>
                             <option value="2">BRIDGING</option>
@@ -72,17 +64,16 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                         </div>
                       </div>
                       </div>
-                      <br>
+                      
                 <!-- 1st row -->
                 
                 <!-- 2nd row -->
                 <div class="row"> 
                   <div class="col-md-6 col-sm-6 col-xs-6">
                      <div class="form-group">
-                      <div class="input-group mb-3">
-                        <div class="input-group-prepend">
-                          <label class="input-group-text" for="inputGroupSelect01">Academicyear</label>
-                        </div>
+                     Academicyear  <br>
+                     <div class="input-group input-group-sm mb-3">
+  
                         <select class="custom-select" id="inputGroupSelect01"id="validationCustom04" required>
                             <option selected disabled value="">Choose Academicyear</option>
                             <option value="1">2017/2018</option>
@@ -94,37 +85,44 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                       </div>
 
                       <div class="col-md-6 col-sm-6 col-xs-6">
+                      Batch no <br>
                      <div class="form-group">
-                      <div class="input-group mb-3">
-                        <div class="input-group-prepend">
-                          <label class="input-group-text" for="inputGroupSelect01"> Batch no</label>
-                        </div>
-                        <input type="number" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" id="validationServer01" required>
+                     <div class="input-group input-group-sm mb-3">
+                        <input type="number" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm"id="validationServer01" required>
                           </div>
                         </div>
                       </div>
                       </div>
-                      <br>
+                    
                 <!-- 2nd row -->
+                  </div>
+                  
+    </div>
 
 
-                <div class="row">
-                    <div class="col-md-11 col-sm-11 col-xs-11 "></div>
-                    <div class="col-md-1 col-sm-1 col-xs-1 ">
-                    <button type="submit" class="btn btn-outline-success" data-toggle="modal"
+      </div>
+      <div class="card-footer">
+      <div class="row">
+                     <div class="col-11 "></div>
+                     <div class="col-1">
+                     <button type="submit" class="btn btn-outline-success" data-toggle="modal"
                                 data-target="#exampleModal">
                                 Add
                             </button>
-                   </div>
-                </div>
-                </form>
-
-
-                <!-- #1 Insert Your Content" -->
-            </div>
-        </main>
+                     </div>
+                     </div>
+      </div>
     </div>
-    <?php include_once("script.php"); ?>
+
+</div>
+       <!-- card end  -->
+    </div>
+    <?php include_once("../script.php"); ?>
 </body>
 
 </html>
+
+
+
+
+
