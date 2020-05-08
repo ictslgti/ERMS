@@ -26,9 +26,7 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
       </div>
       <div class="card-body ">
          
-            <div class="card  mb-3" >
-                 
-                  <div class="card-body ">
+           
                   <a href="batches.php?all" ><h6>view all details</h6></a>
                   <br>
                   <?php
@@ -228,8 +226,7 @@ else
 
                 
       
-      </div>
-    </div>
+     
     </form>
 </div>
        <!-- card end  -->
