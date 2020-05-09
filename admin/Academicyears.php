@@ -6,210 +6,110 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
 <html lang="en">
 
 <head>
-                    <style>
-                    td.A {
-                        text-align: right;
-                    }
-
-                    td {
-                        text-align: center;
-                    }
-                    .B {
-                        text-align: center;
-                    }
-                    </style>
     <?php include_once("./head.php"); ?>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <style>
+tr,th,table{
+    text-align: center;
+    font-weight:bold;
+}
+</style>
 </head>
 
 <body>
     <div class="page-wrapper toggled bg2 border-radius-on light-theme">
-        <nav id="sidebar" class="sidebar-wrapper">
-            <?php include_once("nav.php"); ?>
-        </nav>
-        <main class="page-content pt-2">
-            <div id="overlay" class="overlay"></div>
-            <div class="container-fluid p-5">
-                <!-- #1 Insert Your Content-->
-                <?php  
-                  $title ="
-                  <h4 class='text-primary'>ERMS|<span class='text-secondary'>Academic Years</span></h4>";
-                 include_once('exam/nav_bar.php');
-            
-                 ?>
-
-                <nav class="navbar navbar-light bg-light">
-                <a class="navbar-brand"></a>
-                <form class="form-inline">
-                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
-                    <a href="Academicyear.php"  class="btn btn-outline-primary my-2 my-sm-0 m-1">Add new</a>
-                </form>
-                </nav>
-
-<br>
-                    <form method="POST">
-                <div class="row">
-                    <div class="form-group col-md-12">
-                    <div class="table-responsive">
-                    
-                    <table class='table align-middle'>
-                        <thead class='bg-primary text-light'>
-                            <tr class="B">
-                                <th scope='col'>Year</th>
-                                <th scope='col'>Status</th>
-                                <th scope='col'>semister 1 start</th>
-                                <th scope='col'>semister 1 end</th>
-                                <th scope='col'>semister 2 start</th>
-                                <th scope='col'>semister 2 end</th>
-                                <th scope='col'>Options</th>
-                                
-
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr class="table-success">
-                                <th scope='row'>2019/2020</th>
-                                <td>Active</td>
-                                <td>2019.02.25</td>
-                                <td>2019.08.25</td>
-                                <td>2019.09.30</td>
-                                <td>2020.03.30</td>
-                                <td class="A">
-                                <button type="button" class="btn btn-outline-success" data-toggle="modal" data-target="#exampleModal">
-                                Edit details
-                                </button>
-                                <button type="button" class="btn btn-outline-info " >
-                                View Batches
-                                </button>
-                                
-                                </td>
-
-                            </tr>
-                            
-                        
-
-                        </tbody>
-                    </table>
-                    
-                    </div>
-                    </div>
-                </div>
-                </form>
- 
-<!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title text-primary" id="exampleModalLabel">Academic Year</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-
-
-      <!-- content -->
-      <form method="POST" action="">
-      <div class="row"> 
-      <div class="col-md-12 col-sm-12 col-xs-12">
-         <div class="form-group">
-          <div class="input-group mb-3">
-            <div class="input-group-prepend">
-              <label class="input-group-text" for="inputGroupSelect01">Academic Year </label>
-            </div>
-            <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" id="validationServer01" required>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-md-12 col-sm-12 col-xs-12">
-         <div class="form-group">
-          <div class="input-group mb-3">
-            <div class="input-group-prepend">
-              <label class="input-group-text" for="inputGroupSelect01"> Year Status</label>
-            </div>
-              <select class="custom-select" id="inputGroupSelect01"id="validationCustom04" required>
-                <option selected disabled value="">Choose Academic Year Status</option>
-                <option value="1">Completed</option>
-                <option value="2">Active</option>
-              </select>
-              </div>
-            </div>
-          </div>
-          </div>
-          <br>
-
-   
-   <div class="row">
-   <div class="col-md-12 col-sm-12 col-xs-12">
-          <div class="form-group">
-              <div class="input-group mb-3">
-                  <div class="input-group-prepend">
-                      <span class="input-group-text" id="basic-addon3">Semester1 Start Date</span>
-                  </div>
-                  <input type="date" id="birthday" name="Assessment_Date"class="form-control" id="basic-url" aria-describedby="basic-addon3" id="validationServer06" required>
-                  </div>
-            </div>
-          </div>
-
-        <div class="col-md-12 col-sm-12 col-xs-12">
-          <div class="form-group">
-              <div class="input-group mb-3">
-                  <div class="input-group-prepend">
-                      <span class="input-group-text" id="basic-addon3">Semester1 End Date</span>
-                  </div>
-                  <input type="date" id="birthday" name="Assessment_Date"class="form-control" id="basic-url" aria-describedby="basic-addon3" id="validationServer06" required>
-                  </div>
-            </div>
-          </div>
-        
-   </div>
-      <br>
-
+        <?php include_once("nav.php"); ?>
+       <!-- card start -->
+        <br>
+<div class="container">
+<form action=""method="post">
+<div class="card  mb-3" >
+      <div class="card-header bg-transparent ">
       <div class="row">
-   <div class="col-md-12 col-sm-12 col-xs-12">
-          <div class="form-group">
-              <div class="input-group mb-3">
-                  <div class="input-group-prepend">
-                      <span class="input-group-text" id="basic-addon3">Semester2 Start Date</span>
-                  </div>
-                  <input type="date" id="birthday" name="Assessment_Date"class="form-control" id="basic-url" aria-describedby="basic-addon3" id="validationServer06" required>
-                  </div>
-            </div>
-          </div>
-
-        <div class="col-md-12 col-sm-12 col-xs-12">
-          <div class="form-group">
-              <div class="input-group mb-3">
-                  <div class="input-group-prepend">
-                      <span class="input-group-text" id="basic-addon3">Semester2 End Date</span>
-                  </div>
-                  <input type="date" id="birthday" name="Assessment_Date"class="form-control" id="basic-url" aria-describedby="basic-addon3" id="validationServer06" required>
-                  </div>
-            </div>
-          </div>
-        </div>
-  
-      <br>
-   </form>
-   <!-- contect -->
+      <div class="col"> <h4>Academicyears</h4> </div>
+      <div class="col-auto"> 
+      
+      <a href="Academicyear.php" class="btn btn-outline-primary">New</a> </div>
       </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save </button>
       </div>
-    </div>
+      <div class="card-body ">
+         
+           
+                 
+    
+    <div class="table-responsive-sm">
+    <table class="table ">
+    <thead class="p-3 mb-2 bg-primary text-white">
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Academicyear</th>
+        <th scope="col">Status</th>
+        <th scope="col">options</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">1</th>
+        <td>2019/2020</td>
+        <td>Active</td>
+        <td>
+            <h2></h2>
+            
+            <div class="w3-dropdown-hover">
+                <a class="">...</a>
+                <div class="w3-dropdown-content w3-bar-block w3-border">
+                <a class="dropdown-item" href="#"><img src="https://img.icons8.com/android/18/000000/edit.png"/>  Edit</a>
+                <a class="dropdown-item" href="#"><img src="https://img.icons8.com/windows/18/000000/delete-forever.png"/>Delete</a>
+                </div>
+            </div>
+            </td>
+      </tr>
+      <tr>
+        <th scope="row">2</th>
+        <td>2018/2019</td>
+        <td>Active</td>
+        <td>
+            <h2></h2>
+            
+            <div class="w3-dropdown-hover">
+                <a class="">...</a>
+                <div class="w3-dropdown-content w3-bar-block w3-border">
+                <a class="dropdown-item" href="#"><img src="https://img.icons8.com/android/18/000000/edit.png"/>  Edit</a>
+                <a class="dropdown-item" href="#"><img src="https://img.icons8.com/windows/18/000000/delete-forever.png"/>Delete</a>
+                </div>
+            </div>
+            </td>
+      </tr>
+      <tr>
+        <th scope="row">3</th>
+        <td>2018/2017</td>
+        <td>Completed</td>
+        <td>
+            <h2></h2>
+            
+            <div class="w3-dropdown-hover">
+                <a class="">...</a>
+                <div class="w3-dropdown-content w3-bar-block w3-border">
+                <a class="dropdown-item" href="#"><img src="https://img.icons8.com/android/18/000000/edit.png"/>  Edit</a>
+                <a class="dropdown-item" href="#"><img src="https://img.icons8.com/windows/18/000000/delete-forever.png"/>Delete</a>
+                </div>
+            </div>
+            </td>
+      </tr>
+      
+    </tbody>
+  </table>
   </div>
+    </form>
 </div>
-
-
-
-                <!-- #1 Insert Your Content" -->
-            </div>
-        </main>
+       <!-- card end  -->
     </div>
-    <?php include_once("script.php"); ?>
+    <?php include_once("../script.php"); ?>
 </body>
 
 </html>
+
+
+
+
+
