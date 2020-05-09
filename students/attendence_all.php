@@ -1,25 +1,25 @@
 <?php
-$title = "Attendence | Online Examination Result Management System | SLGTI";
-$description = "Online Examination Result  Management System (ERMS)-SLGTI";
+$title = ' ERMS | SLGTI(page Title)';
+$description = 'Online Examination Result  Management System (ERMS)-SLGTI';
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang='en'>
 
 <head>
-    <?php include_once("./head.php"); ?>
+    <?php include_once('.././head.php');
+    //include_once('../config.php');
+    ?>
 </head>
 
 <body>
-    <div class="page-wrapper toggled bg2 border-radius-on light-theme">
-        <nav id="sidebar" class="sidebar-wrapper">
-            <?php include_once("nav.php"); ?>
-        </nav>
-        <main class="page-content pt-2">
-            <div id="overlay" class="overlay"></div>
-            <div class="container-fluid p-5">
-                <!-- #1 Insert Your Content-->
-
-                <div class="container">
+    <main class='page-content pt-2'>
+        <?php include_once('nav.php');
+        ?>
+        <div id='overlay' class='overlay'></div>
+        <div class='container-fluid p-5'>
+            <!-- #1 Insert Your Content-->
+            
+            <div class="container">
 
                 <!-- 1st row start -->
                 <div class="row">
@@ -120,13 +120,13 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                 </table>
                     </div>
                 </div>
+            
+            <!-- #1 Insert Your Content" -->
+        </div>
+    </main>
 
-
-                <!-- #1 Insert Your Content" -->
-            </div>
-        </main>
-    </div>
-    <?php include_once("script.php"); ?>
+    <?php include_once("../script.php");
+    ?>
 </body>
 
 </html>
