@@ -19,6 +19,7 @@ tr,th,table{
     <div class="page-wrapper toggled bg2 border-radius-on light-theme">
         <?php include_once("nav.php"); ?>
        <!-- card start -->
+        <br>
 <div class="container">
 <form action=""method="post">
 <div class="card  mb-3" >
