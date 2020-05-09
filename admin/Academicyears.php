@@ -52,7 +52,7 @@ tr,th,table{
         <th scope="row">1</th>
         <td>2019/2020</td>
         <td>Active</td>
-        <td><div class="w3-container">
+        <td>
             <h2></h2>
             
             <div class="w3-dropdown-hover">
@@ -62,13 +62,13 @@ tr,th,table{
                 <a class="dropdown-item" href="#"><img src="https://img.icons8.com/windows/18/000000/delete-forever.png"/>Delete</a>
                 </div>
             </div>
-            </div></td>
+            </td>
       </tr>
       <tr>
         <th scope="row">2</th>
         <td>2018/2019</td>
         <td>Active</td>
-        <td><div class="w3-container">
+        <td>
             <h2></h2>
             
             <div class="w3-dropdown-hover">
@@ -78,13 +78,13 @@ tr,th,table{
                 <a class="dropdown-item" href="#"><img src="https://img.icons8.com/windows/18/000000/delete-forever.png"/>Delete</a>
                 </div>
             </div>
-            </div></td>
+            </td>
       </tr>
       <tr>
         <th scope="row">3</th>
         <td>2018/2017</td>
         <td>Completed</td>
-        <td><div class="w3-container">
+        <td>
             <h2></h2>
             
             <div class="w3-dropdown-hover">
@@ -94,7 +94,7 @@ tr,th,table{
                 <a class="dropdown-item" href="#"><img src="https://img.icons8.com/windows/18/000000/delete-forever.png"/>Delete</a>
                 </div>
             </div>
-            </div></td>
+            </td>
       </tr>
       
     </tbody>
