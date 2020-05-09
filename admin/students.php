@@ -6,15 +6,15 @@ $description = "Online Examination Result Management System (ERMS)-SLGTI";
 <html lang="en">
 
 <head>
-    <?php include_once("./head.php"); ?>
+    <?php include_once("../head.php"); ?>
+    <?php include_once('../databases/config.php'); ?>
 </head>
 
 <body>
     <div class="page-wrapper toggled bg2 border-radius-on light-theme">
-        <nav id="sidebar" class="sidebar-wrapper">
             <?php include_once("nav.php"); ?>
-        </nav>
-        <main class="page-content pt-2">
+
+        <main class="">
             <div id="overlay" class="overlay"></div>
             <div class="container-fluid p-5">
                 <!-- #1 Insert Your Content-->
@@ -67,11 +67,91 @@ $description = "Online Examination Result Management System (ERMS)-SLGTI";
                             <th scope='col'>ACTIONS</th>
                         </tr>
                         <tr>
-                            <td scope='col'>2018SLGTIBIT04</td>
-                            <td scope='col'>S. Sathursan</td>
-                            <td scope='col'>Information and Communication Technology</td>
-                            <td scope='col'>Batch 04</td>
-                            <td scope='col'>0752859625</td>
+                            <td scope='col'>
+                            <?php
+                            $sqlstudent = "SELECT id FROM student"; 
+                            $result = mysqli_query($con,$sqlstudent);
+                            if (mysqli_num_rows($result) > 0) 
+                            {  
+                                while($col = mysqli_fetch_assoc($result)) 
+                                {  
+                                    echo $col['id']."<br>";
+                                } 
+                            } 
+                            else 
+                            { 
+                                echo "0 results"; 
+                            }
+                            ?>
+                            </td>
+                            <td scope='col'>
+                            <?php
+                            $sqlstudent = "SELECT full_name FROM student"; 
+                            $result = mysqli_query($con,$sqlstudent);
+                            if (mysqli_num_rows($result) > 0) 
+                            {  
+                                while($col = mysqli_fetch_assoc($result)) 
+                                {  
+                                    echo $col['full_name']."<br>";
+                                } 
+                            } 
+                            else 
+                            { 
+                                echo "0 results"; 
+                            }
+                            ?>
+                            </td>
+                            <td scope='col'>
+                            <?php
+                            $sqlstudent = "SELECT course_id FROM student_enroll"; 
+                            $result = mysqli_query($con,$sqlstudent);
+                            if (mysqli_num_rows($result) > 0) 
+                            {  
+                                while($col = mysqli_fetch_assoc($result)) 
+                                {  
+                                    echo $col['course_id']."<br>";
+                                } 
+                            } 
+                            else 
+                            { 
+                                echo "0 results"; 
+                            }
+                            ?>
+                            </td>
+                            <td scope='col'>
+                            <?php
+                            $sqlstudent = "SELECT course_id FROM student_enroll"; 
+                            $result = mysqli_query($con,$sqlstudent);
+                            if (mysqli_num_rows($result) > 0) 
+                            {  
+                                while($col = mysqli_fetch_assoc($result)) 
+                                {  
+                                    echo $col['course_id']."<br>";
+                                } 
+                            } 
+                            else 
+                            { 
+                                echo "0 results"; 
+                            }
+                            ?>
+                            </td>
+                            <td scope='col'>
+                            <?php
+                            $sqlstudent = "SELECT phone_no FROM student"; 
+                            $result = mysqli_query($con,$sqlstudent);
+                            if (mysqli_num_rows($result) > 0) 
+                            {  
+                                while($col = mysqli_fetch_assoc($result)) 
+                                {  
+                                    echo $col['phone_no']."<br>";
+                                } 
+                            } 
+                            else 
+                            { 
+                                echo "0 results"; 
+                            }
+                            ?>
+                            </td>
                             <td scope='col'>ACTIONS</td>
                         </tr>
                     </thead>
@@ -85,7 +165,7 @@ $description = "Online Examination Result Management System (ERMS)-SLGTI";
             </div>
         </main>
     </div>
-    <?php include_once("script.php"); ?>
+    <?php include_once("../script.php"); ?>
 </body>
 
 </html>
