@@ -7,6 +7,7 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
 
 <head>
     <?php include_once("./head.php"); ?>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <style>
 tr,th,table{
     text-align: center;
@@ -51,49 +52,49 @@ tr,th,table{
         <th scope="row">1</th>
         <td>2019/2020</td>
         <td>Active</td>
-        <td><div class="btn-group">
-        <a type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <h5>...</h5>
-        </a>
-        <div class="dropdown-menu">
-            <a class="dropdown-item" href="#"><img src="https://img.icons8.com/android/18/000000/edit.png"/>  Edit</a>
-            <a class="dropdown-item" href="#"><img src="https://img.icons8.com/windows/18/000000/delete-forever.png"/>Delete</a>
+        <td><div class="w3-container">
+            <h2></h2>
             
-            <div class="dropdown-divider"></div>
-        </div>
-        </div></td>
+            <div class="w3-dropdown-hover">
+                <a class="">...</a>
+                <div class="w3-dropdown-content w3-bar-block w3-border">
+                <a class="dropdown-item" href="#"><img src="https://img.icons8.com/android/18/000000/edit.png"/>  Edit</a>
+                <a class="dropdown-item" href="#"><img src="https://img.icons8.com/windows/18/000000/delete-forever.png"/>Delete</a>
+                </div>
+            </div>
+            </div></td>
       </tr>
       <tr>
         <th scope="row">2</th>
         <td>2018/2019</td>
         <td>Active</td>
-        <td><div class="btn-group">
-        <a type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <h5>...</h5>
-        </a>
-        <div class="dropdown-menu">
-            <a class="dropdown-item" href="#"><img src="https://img.icons8.com/android/18/000000/edit.png"/>  Edit</a>
-            <a class="dropdown-item" href="#"><img src="https://img.icons8.com/windows/18/000000/delete-forever.png"/>Delete</a>
+        <td><div class="w3-container">
+            <h2></h2>
             
-            <div class="dropdown-divider"></div>
-        </div>
-        </div></td>
+            <div class="w3-dropdown-hover">
+                <a class="">...</a>
+                <div class="w3-dropdown-content w3-bar-block w3-border">
+                <a class="dropdown-item" href="#"><img src="https://img.icons8.com/android/18/000000/edit.png"/>  Edit</a>
+                <a class="dropdown-item" href="#"><img src="https://img.icons8.com/windows/18/000000/delete-forever.png"/>Delete</a>
+                </div>
+            </div>
+            </div></td>
       </tr>
       <tr>
         <th scope="row">3</th>
         <td>2018/2017</td>
         <td>Completed</td>
-        <td><div class="btn-group">
-        <a type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <h5>...</h5>
-        </a>
-        <div class="dropdown-menu">
-            <a class="dropdown-item" href="#"><img src="https://img.icons8.com/android/18/000000/edit.png"/>  Edit</a>
-            <a class="dropdown-item" href="#"><img src="https://img.icons8.com/windows/18/000000/delete-forever.png"/>Delete</a>
+        <td><div class="w3-container">
+            <h2></h2>
             
-            <div class="dropdown-divider"></div>
-        </div>
-        </div></td>
+            <div class="w3-dropdown-hover">
+                <a class="">...</a>
+                <div class="w3-dropdown-content w3-bar-block w3-border">
+                <a class="dropdown-item" href="#"><img src="https://img.icons8.com/android/18/000000/edit.png"/>  Edit</a>
+                <a class="dropdown-item" href="#"><img src="https://img.icons8.com/windows/18/000000/delete-forever.png"/>Delete</a>
+                </div>
+            </div>
+            </div></td>
       </tr>
       
     </tbody>
