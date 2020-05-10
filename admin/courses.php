@@ -1,5 +1,5 @@
 <?php
-$title = "courses| Online Examination Result Management System | SLGTI";
+$title = "Add Department | Online Examination Result Management System | SLGTI";
 $description = "Online Examination Result  Management System (ERMS)-SLGTI";
 ?>
 <!DOCTYPE html>
@@ -7,39 +7,34 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
 
 <head>
     <?php include_once("./head.php"); ?>
-    <style>
-                    td.alig {
-                        text-align: right;
-                    }
-                    th,td {
-                        text-align: center;
-                    }
-                    </style>
 </head>
 
 <body>
     <div class="page-wrapper toggled bg2 border-radius-on light-theme">
-        <nav id="sidebar" class="sidebar-wrapper">
-        <?php include_once("nav.php"); ?>
-        </nav>
-        <main class="page-content pt-2">
-            <?php  
-                  $title ="
-                  <h4 class='text-primary'>ERMS|<span class='text-secondary'>Courses</span></h4>";
-                 include_once('exam/nav_bar.php');
-            
-                 ?>
+        
+            <?php include_once("nav.php"); ?>
+       
+        <!-- <main class="page-content pt-2"> -->
+            <!-- 1st row start -->
 
-                <nav class="navbar navbar-light bg-light">
-                <a class="navbar-brand"></a>
-                <form class="form-inline">
-                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-primary my-2 my-sm-0" type="submit"><img src="https://img.icons8.com/android/24/000000/search.png"/>Search</button>
-                    <a href="course.php"  class="btn btn-outline-success my-2 my-sm-0 m-1">Add new</a>
-                </form>
-                </nav>
-            <div id="overlay" class="overlay"></div>
-            <div class="container-fluid p-5">
+         <div class="container"> 
+             <br>
+         <form action=""> 
+            <div class="card  mb-3" >
+                <div class="card-header ">
+                <div class="row">
+                <div class="col"><h4>Course</h4></div>
+                <div class="col-auto">
+                <a href="departments.php" class="btn btn-outline-primary">Courses</a>
+                </div>
+
+                </div>
+                </div>
+                <div class="card-body ">
+                <div class="card  mb-3">
+                   
+                    <div class="card-body ">
+            
              
                 
 
@@ -73,17 +68,81 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
   <button type="button" class="btn btn-danger"><img src="https://img.icons8.com/windows/26/000000/delete-forever.png"/>Delete</button>
   <button type="button" class="btn btn-success"><img src="https://img.icons8.com/metro/24/000000/view-file.png"/>View Modules</button>
 </div></td>
-                        </tbody>
+</tbody>
                     </table>
                     
                     </div>
                     </div>
                 </div>
                 </form>
+                    
+                     </div>
+                     <br>
+                     <!-- 2 row end -->
+                    </div>
+                   
+                    </div>
+
+                    
+                </div>
+                
+                <!-- 1st row end -->
+            <!-- <div id="overlay" class="overlay"></div>
+            <div class="container-fluid p-5"> -->
+                <!-- #1 Insert Your Content-->
+                <!-- <div class="container"> -->
+                    <!-- 2 row start -->
+                    
+                     
+                     
+                     </div>
+</form>
+                    
+
+
+                </div>
+                <!-- #1 Insert Your Content" -->
             </div>
         </main>
     </div>
-    <?php include_once("script.php"); ?>
+    <?php include_once("../script.php"); ?>
 </body>
 
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
