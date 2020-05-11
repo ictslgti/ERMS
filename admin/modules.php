@@ -7,6 +7,7 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
 
 <head>
     <?php include_once("./head.php"); ?>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 </head>
 
 <body>
@@ -68,13 +69,20 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                         <td><h6>M07</h6></td>
                         <td><h6>WEB PROGRAMMING</h6></td>
                         <td><h6>2</h6></td>
-
                         <td class="alig">
-                        <div class="btn-group" role="group" aria-label="Basic example">
-  <button type="button" class="btn btn-warning"><img src="https://img.icons8.com/android/25/000000/edit.png"/>Edit</button>
-  <button type="button" class="btn btn-danger"><img src="https://img.icons8.com/windows/26/000000/delete-forever.png"/>Delete</button>
-  
-</div></td>
+                        <h2></h2>
+            
+            <div class="w3-dropdown-hover">
+                <a class="">...</a>
+                <div class="w3-dropdown-content w3-bar-block w3-border">
+                <a class="dropdown-item" href="#"><img src="https://img.icons8.com/android/18/000000/edit.png"/>  Edit</a>
+                <a class="dropdown-item" href="#"><img src="https://img.icons8.com/windows/18/000000/delete-forever.png"/>Delete</a>
+                </div>
+            </div>
+
+                        
+</div>
+</td>
                         </tbody>
                     </table>
                     
