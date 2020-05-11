@@ -7,6 +7,7 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
 
 <head>
     <?php include_once("./head.php"); ?>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 </head>
 
 <body>
@@ -23,7 +24,7 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
             <div class="card  mb-3" >
                 <div class="card-header ">
                 <div class="row">
-                <div class="col"><h4>Departmesnt</h4></div>
+                <div class="col"><h4>Department</h4></div>
                 <div class="col-auto">
                 <a href="departments.php" class="btn btn-outline-primary">Departments</a>
                 </div>
@@ -54,12 +55,18 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                         <td><h6>01</h6></td>
                         <td><h6>ICT</h6></td>
                         <td><h6>INFORMATION COMMUNICATION & TECHNOLOGY</h6></td>
-                        <td class="alig">
-                        <div class="btn-group" role="group" aria-label="Basic example">
-  <button type="button" class="btn btn-warning"><img src="https://img.icons8.com/android/25/000000/edit.png"/>Edit</button>
-  <button type="button" class="btn btn-danger"><img src="https://img.icons8.com/windows/26/000000/delete-forever.png"/>Delete</button>
-  <button type="button" class="btn btn-success"><img src="https://img.icons8.com/metro/24/000000/view-file.png"/>View Courses</button>
-</div></td>
+
+                 <td class="alig">
+                        <h2></h2>
+            
+            <div class="w3-dropdown-hover">
+                <a class="">...</a>
+                <div class="w3-dropdown-content w3-bar-block w3-border">
+                <a class="dropdown-item" href="#"><img src="https://img.icons8.com/android/18/000000/edit.png"/>  Edit</a>
+                <a class="dropdown-item" href="#"><img src="https://img.icons8.com/windows/18/000000/delete-forever.png"/>Delete</a>
+                </div>
+            </div>
+</td>
                         </tbody>
                     </table>
                     
