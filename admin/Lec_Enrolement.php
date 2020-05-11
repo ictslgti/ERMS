@@ -1,5 +1,5 @@
 <?php
-$title = "Module | Online Examination Result Management System | SLGTI";
+$title = "Lec_Enrolement | Online Examination Result Management System | SLGTI";
 $description = "Online Examination Result  Management System (ERMS)-SLGTI";
 ?>
 <!DOCTYPE html>
@@ -25,7 +25,7 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                 <div class="row">
                 <div class="col"><h4>Module Enrollment</h4></div>
                 <div class="col-auto">
-                <a href="#" class="btn btn-outline-primary">Modules</a>
+                <a href="#" class="btn btn-outline-primary"></a>
                 </div>
 
                 </div>
@@ -54,9 +54,9 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
   
                         <select class="custom-select" id="inputGroupSelect01"id="validationCustom04" required>
                         <option selected disabled value="">Choose  Course </option>
-                            <option value="1">ICT</option>
-                            <option value="2">AUT</option>
-                            <option value="2">CON</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="2">3</option>
                         </select>
                         </div>
                          </div>
@@ -74,7 +74,7 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                      <div class="input-group input-group-sm mb-3">
   
                         <select class="custom-select" id="inputGroupSelect01"id="validationCustom04" required>
-                        <option selected disabled value="">Choose  Course </option>
+                        <option selected disabled value="">Choose  Module </option>
                             <option value="1">1</option>
                             <option value="2">2</option>
                             <option value="2">3</option>
