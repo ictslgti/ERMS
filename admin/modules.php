@@ -22,7 +22,7 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
             <div class="card  mb-3" >
                 <div class="card-header ">
                 <div class="row">
-                <div class="col"><h4>Module</h4></div>
+                <div class="col"><h4>Modules</h4></div>
                 <div class="col-auto">
                 <a href="module.php" class="btn btn-outline-primary">New</a>
                 </div>
@@ -40,7 +40,7 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                     
                     <table class='table align-middle'>
                         <thead class='bg-primary text-light'>
-                            <tr class="h5">
+                            <tr class="h6">
                                 <th scope='col'>ID</th>
                                 <th scope='col'>CODE</th>
                                 <th scope='col'>NAME</th>
