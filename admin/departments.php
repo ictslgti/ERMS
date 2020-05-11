@@ -32,9 +32,7 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                 </div>
                 </div>
                 <div class="card-body ">
-                <div class="card  mb-3">
-                   
-                    <div class="card-body ">
+               
                     <form method="POST">
                 <div class="row">
                     <div class="form-group col-md-12">
@@ -78,9 +76,7 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                      </div>
                      <br>
                      <!-- 2 row end -->
-                    </div>
-                   
-                    </div>
+                    
 
                     
                 </div>
