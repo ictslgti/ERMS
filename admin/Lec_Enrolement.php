@@ -235,7 +235,7 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                     
                      
                      
-                     </div>
+                    
 </form>
                     
 
