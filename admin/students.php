@@ -14,8 +14,24 @@ $description = "Online Examination Result Management System (ERMS)-SLGTI";
     <div class="page-wrapper toggled bg2 border-radius-on light-theme">
             <?php include_once("nav.php"); ?>
 
+            <!-- delete start -->
+            <?php
+                if (isset($_GET['delete'])) {
+                $student_id = $_GET['delete'];
+                $sql_delete = "DELETE FROM `student` WHERE `student`.`id` = '$student_id'";
+                if (mysqli_query($con, $sql_delete)) {
+                echo '<div class="alert alert-success" role="alert">
+                Successfully Deleted!
+                </div>';
+                }
+                else { 
+                    echo "Error deleting record: " . mysqli_error($con); 
+                }
+                }
+                ?>
+                <!-- delete end -->
+
         <main class="">
-            <div id="overlay" class="overlay"></div>
             <div class="container-fluid p-5">
                 <!-- #1 Insert Your Content-->
                 <div class="container">
@@ -31,7 +47,7 @@ $description = "Online Examination Result Management System (ERMS)-SLGTI";
                     <br>
                 <!-- 1st row end -->
 
-                <form method="POST" action="">
+                <form method="POST">
                 <div class="row">
                 <div class='col-7'>
                 <div class='form-group col-md'>
@@ -66,93 +82,41 @@ $description = "Online Examination Result Management System (ERMS)-SLGTI";
                             <th scope='col'>Contact Number</th>
                             <th scope='col'>ACTIONS</th>
                         </tr>
+                        <?php
+                        $sql = "SELECT 
+                        `student`.`id`,`student`.`full_name`,`student_enroll`.`course_id`,
+                        `student_enroll`.`academic_year`,`student`.`phone_no`
+                        FROM student 
+                        LEFT JOIN student_enroll
+                        ON `student`.`id` = `student_enroll`.`id`
+                        ORDER BY `id` ASC";
+                        $result = mysqli_query($con, $sql);
+                        while ($row = mysqli_fetch_assoc($result)) {
+                        ?>
                         <tr>
                             <td scope='col'>
-                            <?php
-                            $sqlstudent = "SELECT id FROM student"; 
-                            $result = mysqli_query($con,$sqlstudent);
-                            if (mysqli_num_rows($result) > 0) 
-                            {  
-                                while($col = mysqli_fetch_assoc($result)) 
-                                {  
-                                    echo $col['id']."<br>";
-                                } 
-                            } 
-                            else 
-                            { 
-                                echo "0 results"; 
-                            }
-                            ?>
+                            <?php echo $row['id']; ?>
                             </td>
                             <td scope='col'>
-                            <?php
-                            $sqlstudent = "SELECT full_name FROM student"; 
-                            $result = mysqli_query($con,$sqlstudent);
-                            if (mysqli_num_rows($result) > 0) 
-                            {  
-                                while($col = mysqli_fetch_assoc($result)) 
-                                {  
-                                    echo $col['full_name']."<br>";
-                                } 
-                            } 
-                            else 
-                            { 
-                                echo "0 results"; 
-                            }
-                            ?>
+                            <?php echo $row['full_name']; ?>
                             </td>
                             <td scope='col'>
-                            <?php
-                            $sqlstudent = "SELECT course_id FROM student_enroll"; 
-                            $result = mysqli_query($con,$sqlstudent);
-                            if (mysqli_num_rows($result) > 0) 
-                            {  
-                                while($col = mysqli_fetch_assoc($result)) 
-                                {  
-                                    echo $col['course_id']."<br>";
-                                } 
-                            } 
-                            else 
-                            { 
-                                echo "0 results"; 
-                            }
-                            ?>
+                            <?php echo $row['course_id']; ?>
                             </td>
                             <td scope='col'>
-                            <?php
-                            $sqlstudent = "SELECT course_id FROM student_enroll"; 
-                            $result = mysqli_query($con,$sqlstudent);
-                            if (mysqli_num_rows($result) > 0) 
-                            {  
-                                while($col = mysqli_fetch_assoc($result)) 
-                                {  
-                                    echo $col['course_id']."<br>";
-                                } 
-                            } 
-                            else 
-                            { 
-                                echo "0 results"; 
-                            }
-                            ?>
+                            <?php echo $row['academic_year']; ?>
                             </td>
                             <td scope='col'>
+                            <?php echo $row['phone_no']; ?>
+                            </td>
+                            <td scope='col'>
+                            <a class="btn btn-info btn-sm" href="?view=<?php echo $row['id']; ?>">Full View</a>
+                            <a class="btn btn-warning btn-sm" href="student.php?edit=<?php echo $row['id']; ?>">Edit</a>
+                            <a class="btn btn-danger btn-sm disabled" href="?delete=<?php echo $row['id']; ?>">Delete</a>
+                            </td>
                             <?php
-                            $sqlstudent = "SELECT phone_no FROM student"; 
-                            $result = mysqli_query($con,$sqlstudent);
-                            if (mysqli_num_rows($result) > 0) 
-                            {  
-                                while($col = mysqli_fetch_assoc($result)) 
-                                {  
-                                    echo $col['phone_no']."<br>";
-                                } 
-                            } 
-                            else 
-                            { 
-                                echo "0 results"; 
                             }
                             ?>
-                            </td>
-                            <td scope='col'>ACTIONS</td>
                         </tr>
                     </thead>
                     <tbody>
