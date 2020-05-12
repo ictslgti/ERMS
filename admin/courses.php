@@ -26,7 +26,7 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                 <div class="row">
                 <div class="col"><h4>Course</h4></div>
                 <div class="col-auto">
-                <a href="departments.php" class="btn btn-outline-primary">Courses</a>
+                <a href="course.php" class="btn btn-outline-primary">New</a>
                 </div>
 
                 </div>
