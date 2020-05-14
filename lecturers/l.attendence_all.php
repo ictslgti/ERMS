@@ -38,11 +38,7 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
                     <div class="row">
                         <div class='col-7'>
                             <div class='form-group col-md'>
-                                <ul class='nav nav-tabs'>
-                                    <li class='nav-item'>
-                                        <a class='nav-link active' href='./l.attendence_all.php'>ALL Students</a>
-                                    </li>
-                                </ul>
+                                <h4>ALL Students</h4>
                             </div>
                         </div>
                     </div>
