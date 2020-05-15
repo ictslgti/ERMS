@@ -104,7 +104,7 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
                                 <td scope='col'>00%</td>
                             </tr>
                             <tr>
-                                <td scope='col'>BAC</td>
+                                <td scope='col'>Web Programming</td>
                                 <td scope='col'>00/00</td>
                                 <td scope='col'>00%</td>
                             </tr>
