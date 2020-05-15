@@ -128,8 +128,6 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
                             </tr>
                                 <table>
                                     <tr>
-                                        <td style="text-align: right">Taken sessions:</td>
-                                        <td>10</td>
                                     </tr>
                                     <tr>
                                         <td style="text-align: right">Points over taken sessions:</td>
