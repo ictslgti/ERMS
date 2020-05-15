@@ -38,7 +38,7 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
                             <div class='form-group col-md'>
                                 <ul class='nav nav-tabs'>
                                     <li class='nav-item'>
-                                        <a class='nav-link' href='./attendence_all.php'>All course</a>
+                                        <a class='nav-link' href='./attendence_all.php'>All Courses</a>
                                     </li>
                                     <li class='nav-item'>
                                         <a class='nav-link active' href='./attendence.php'>Selected Cource</a>
