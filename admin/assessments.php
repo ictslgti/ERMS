@@ -73,7 +73,7 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                                 <div class="w3-dropdown-content w3-bar-block w3-border">
                                 <a class="dropdown-item" href="#"><img src="https://img.icons8.com/android/18/000000/edit.png"/>  Edit</a>
                                 <a class="dropdown-item" href="#"><img src="https://img.icons8.com/windows/18/000000/delete-forever.png"/>Delete</a>
-                                <a class="dropdown-item" href="#">Add result</a>
+                                <a class="dropdown-item" href="assessment_result.php">Add result</a>
                                 </div>
                             </div>
                 </td>
@@ -96,7 +96,7 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                             <div class="w3-dropdown-content w3-bar-block w3-border">
                             <a class="dropdown-item" href="#"><img src="https://img.icons8.com/android/18/000000/edit.png"/>  Edit</a>
                             <a class="dropdown-item" href="#"><img src="https://img.icons8.com/windows/18/000000/delete-forever.png"/>Delete</a>
-                            <a class="dropdown-item" href="#">Add result</a>
+                            <a class="dropdown-item" href="assessment_result.php">Add result</a>
                             </div>
                         </div>
             </td>
@@ -119,7 +119,7 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                                     <div class="w3-dropdown-content w3-bar-block w3-border">
                                     <a class="dropdown-item" href="#"><img src="https://img.icons8.com/android/18/000000/edit.png"/>  Edit</a>
                                     <a class="dropdown-item" href="#"><img src="https://img.icons8.com/windows/18/000000/delete-forever.png"/>Delete</a>
-                                    <a class="dropdown-item" href="#">Add result</a>
+                                    <a class="dropdown-item" href="assessment_result.php">Add result</a>
                                     </div>
                                 </div>
                                  </td>
@@ -142,7 +142,7 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                             <div class="w3-dropdown-content w3-bar-block w3-border">
                             <a class="dropdown-item" href="#"><img src="https://img.icons8.com/android/18/000000/edit.png"/>  Edit</a>
                             <a class="dropdown-item" href="#"><img src="https://img.icons8.com/windows/18/000000/delete-forever.png"/>Delete</a>
-                            <a class="dropdown-item" href="#">Add result</a>
+                            <a class="dropdown-item" href="assessment_result.php">Add result</a>
                             </div>
                         </div>
                         </td>
