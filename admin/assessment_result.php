@@ -23,101 +23,103 @@ tr,th,table{
         <br>
 <div class="container">
 <form action=""method="post">
-<div class="card  mb-3" >
+<div class="card  mb-1" >
       <div class="card-header bg-transparent ">
       <div class="row">
-      <div class="col"> <h4>Academicyears</h4> </div>
+      <div class="col"> <h4>Assessment_Result</h4> </div>
       <div class="col-auto"> 
       
-      <a href="Academicyear.php" class="btn btn-outline-primary">New</a> </div>
+      <a href="assessments.php" class="btn btn-outline-primary">Assessments</a> </div>
       </div>
       </div>
       <div class="card-body ">
 
-      <div class="card  mb-3" >  
+      <div class="card mb-1" >  
       <div class="card-body "> 
-      <div class="container-fluid p-5">
+      <div class="container-fluid p-2">
                 <!-- #1 Insert Your Content-->
                 <div class="row">
-                    <div class="col-md-2 col-sm-4">
+                    <div class="col-md-2 col-sm-12">
                         <h6>Assessment</h6>
                     </div>
-                    <div class="col-md-4 col-sm-4">
+                    <div class="col-md-4 col-sm-12">
                         <h6 class="text-muted">01</h6>
                     </div>
 
-                    <div class="col-md-2 col-sm-4">
+                    <div class="col-md-2 col-sm-12">
                         <h6>Module</h6>
                     </div>
-                    <div class="col-md-4 col-sm-4">
+                    <div class="col-md-4 col-sm-12">
                         <h6 class="text-muted">MO7<span class="badge badge-dark">Practical</span></h6>
                     </div>
 
-                    <div class="col-md-2 col-sm-4">
+                    <div class="col-md-2 col-sm-12">
                         <h6>Batch</h6>
                     </div>
-                    <div class="col-md-4 col-sm-4">
+                    <div class="col-md-4 col-sm-12">
                         <h6 class="text-muted">Batch-4 <span class="badge badge-dark">2018/2025</span></h6>
                     </div>
 
-                    <div class="col-md-2 col-sm-4">
+                    <div class="col-md-2 col-sm-12">
                         <h6>Course </h6>
                     </div>
-                    <div class="col-md-4 col-sm-4">
+                    <div class="col-md-4 col-sm-12">
                         <h6 class="text-muted">5it</h6>
                     </div>
 
-                    <div class="col-md-2 col-sm-4">
+                    <div class="col-md-2 col-sm-12">
                         <h6>Attempt </h6>
                     </div>
-                    <div class="col-md-4 col-sm-4">
+                    <div class="col-md-4 col-sm-12">
                         <h6 class="text-muted">01</h6>
                     </div>
 
-                    <div class="col-md-2 col-sm-4">
+                    <div class="col-md-2 col-sm-12">
                         <h6>Date </h6>
                     </div>
-                    <div class="col-md-4 col-sm-4">
+                    <div class="col-md-4 col-sm-12">
                         <h6 class="text-muted"><input type='date'disabled value="2020-02-02"></h6>
                     </div>
 
-                    <div class="col-md-2 col-sm-4">
+                    <div class="col-md-2 col-sm-12">
                         <h6>Attempt </h6>
                     </div>
-                    <div class="col-md-4 col-sm-4">
+                    <div class="col-md-4 col-sm-12">
                         <h6 class="text-muted">02</h6>
                     </div>
 
-                    <div class="col-md-2 col-sm-4">
+                    <div class="col-md-2 col-sm-12">
                         <h6>Date </h6>
                     </div>
-                    <div class="col-md-4 col-sm-4">
+                    <div class="col-md-4 col-sm-12">
                         <h6 class="text-muted"><input type='date'disabled value="2020-02-15"></h6>
                     </div>
-                    <div class="col-md-2 col-sm-4">
+                    <div class="col-md-2 col-sm-12">
                         <h6>Attempt </h6>
                     </div>
-                    <div class="col-md-4 col-sm-4">
+                    <div class="col-md-4 col-sm-12">
                         <h6 class="text-muted">03</h6>
                     </div>
 
-                    <div class="col-md-2 col-sm-4">
+                    <div class="col-md-2 col-sm-12">
                         <h6>Date </h6>
                     </div>
-                    <div class="col-md-4 col-sm-4">
+                    <div class="col-md-4 col-sm-12">
                         <h6 class="text-muted"><input type='date'></h6>
                     </div>
                 </div>
-                <br>
-                <form action=""method="POST">
-                <button class="btn btn-outline-primary btn btn-sm "> <a href="?Add"> Add Result </a></button>
-                <button class="btn btn-outline-primary btn btn-sm "> <a href="?Edit"> Edit Result </a></button>
-                </form>
-                <br>
+                
+                
+                
 </div>
 </div>
 </div>
 <br>
+              <form action=""method="POST">
+                <button class="btn btn-outline-primary btn btn-sm "> <a href="?Add"> Add Result </a></button>
+                <button class="btn btn-outline-primary btn btn-sm "> <a href="?Edit"> Edit Result </a></button>
+                </form>
+                <br>
 <?php
 if(isset($_GET['Add']))
 {
