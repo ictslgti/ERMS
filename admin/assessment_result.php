@@ -1,5 +1,5 @@
 <?php
-$title = "Add Assessment | Online Examination Result Management System | SLGTI";
+$title = "Academicyear | Online Examination Result Management System | SLGTI";
 $description = "Online Examination Result  Management System (ERMS)-SLGTI";
 ?>
 <!DOCTYPE html>
@@ -7,25 +7,36 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
 
 <head>
     <?php include_once("./head.php"); ?>
-    
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <style>
+tr,th,table{
+    text-align: center;
+    font-weight:bold;
+}
+</style>
 </head>
 
 <body>
     <div class="page-wrapper toggled bg2 border-radius-on light-theme">
-        <nav id="sidebar" class="sidebar-wrapper">
-            <?php include_once("nav.php"); ?>
-        </nav>
-        <main class="page-content pt-2">
-            <div id="overlay" class="overlay"></div>
-            <?php  
-                  $title ="
-                  <h4 class='text-primary'>ERMS|<span class='text-secondary'>Assessments Result</span></h4>";
-                 include_once('exam/nav_bar.php');
-            
-                 ?>
+        <?php include_once("nav.php"); ?>
+       <!-- card start -->
+        <br>
+<div class="container">
+<form action=""method="post">
+<div class="card  mb-3" >
+      <div class="card-header bg-transparent ">
+      <div class="row">
+      <div class="col"> <h4>Academicyears</h4> </div>
+      <div class="col-auto"> 
+      
+      <a href="Academicyear.php" class="btn btn-outline-primary">New</a> </div>
+      </div>
+      </div>
+      <div class="card-body ">
 
-                
-            <div class="container-fluid p-5">
+      <div class="card  mb-3" >  
+      <div class="card-body "> 
+      <div class="container-fluid p-5">
                 <!-- #1 Insert Your Content-->
                 <div class="row">
                     <div class="col-md-2 col-sm-4">
@@ -103,7 +114,10 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                 <button class="btn btn-outline-primary btn btn-sm "> <a href="?Edit"> Edit Result </a></button>
                 </form>
                 <br>
-
+</div>
+</div>
+</div>
+<br>
 <?php
 if(isset($_GET['Add']))
 {
@@ -269,15 +283,13 @@ else
 <?php
 }
 ?>
-
-
-
-                <!-- #1 Insert Your Content" -->
-
-            </div>
-        </main>
+                 
+    
+    
+</div>
+       <!-- card end  -->
     </div>
-    <?php include_once("script.php"); ?>
+    <?php include_once("../script.php"); ?>
 </body>
 
 </html>
