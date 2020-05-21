@@ -60,7 +60,7 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
                         </div>
                          </div>
                      </div>
-                           </dive> 
+                           </div> 
                         </div>
                     </div>
                 </div>
@@ -97,7 +97,7 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
                         </div>
                          </div>
                      </div>
-                           </dive> 
+                           </div> 
                         </div>
                     </div>
                     <div class="card-footer "><div class="row">
