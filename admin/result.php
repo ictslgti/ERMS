@@ -61,23 +61,18 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
                          </div>
                      </div>
                            </div> 
-                        </div>
-                    </div>
-                </div>
-
-
-
-                <div class="row">
+                        
+                           <div class="row">
                             <div class="col-sm">
                      <div class="form-group">
-                     Module  <br>
+                     module  <br>
                      <div class="input-group input-group-sm mb-3">
   
                         <select class="custom-select" id="inputGroupSelect01"id="validationCustom04" required>
-                        <option selected disabled value="">Choose  Module  </option>
-                            <option value="1">EMP</option>
-                            <option value="2">M02</option>
+                        <option selected disabled value="">Choose  module  </option>
+                            <option value="1">M07</option>
                             <option value="2">M03</option>
+                            <option value="2">M02</option>
                         </select>
                         </div>
                          </div>
@@ -91,15 +86,20 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
   
                         <select class="custom-select" id="inputGroupSelect01"id="validationCustom04" required>
                         <option selected disabled value="">Choose  Batch  </option>
-                            <option value="1">Batch04</option>
-                            <option value="2">Batch05</option>
+                            <option value="1">Batch01</option>
+                            <option value="2">Batch03</option>
                         </select>
                         </div>
                          </div>
                      </div>
                            </div> 
-                        </div>
-                    </div>
+
+                        
+                   
+
+
+
+               
                     <div class="card-footer "><div class="row">
                      <div class="col "></div>
                      <div class="col-auto">
