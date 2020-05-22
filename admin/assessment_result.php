@@ -260,13 +260,7 @@ else
                         <td><span class=' badge badge-success p-2'>PASS</span></td>
                     </tr>
 
-                    <tr>
-                        <th scope='row'>2</th>
-                        <td>2018ICTBIT05</td>
-                        <td>R.Kogila</td>
-                        <td><h6>80 <span class="badge badge-dark">Attempt-1</span></h6></td>
-                        <td><span class=' badge badge-success p-2'>PASS</span></td>
-                    </tr>
+                    
 
                     <tr>
                         <th scope='row'>3</th>
