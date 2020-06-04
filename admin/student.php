@@ -13,7 +13,8 @@ $description = "Online Examination Result Management System (ERMS)-SLGTI";
 
 <body>
     <div class="page-wrapper toggled bg2 border-radius-on light-theme">
-            <?php include_once("nav.php"); ?>
+    <?php include_once("nav.php"); ?>
+
             <!-- insert  start-->
             <?php
             if(
@@ -41,7 +42,7 @@ $description = "Online Examination Result Management System (ERMS)-SLGTI";
             )
             {
                 $regno = $_POST['regno'];
-                $title = $_POST['title'];
+                $stitle = $_POST['title'];
                 $fullname = $_POST['fullname'];
                 $ini_name = $_POST['ini_name'];
                 $gender = $_POST['gender'];
@@ -64,7 +65,7 @@ $description = "Online Examination Result Management System (ERMS)-SLGTI";
                 $sqlstudent = "INSERT INTO student (id, title, full_name, name_with_initials, gender, civil_status, email, nic, date_of_birth, 
                 phone_no, address, divisional_secretariat, district, province, zip_code, blood_group, guardian_name, guardian_address, guardian_phone_no,
                 guardian_relationship) VALUES 
-                ('$regno','$title','$fullname','$ini_name','$gender','$civil','$email','$nic','$dob','$phone',
+                ('$regno','$stitle','$fullname','$ini_name','$gender','$civil','$email','$nic','$dob','$phone',
                 '$address','$ds','$district','$province','$zip','$blood','$gname','$gaddress','$gphone','$grelation')";
 
             if (mysqli_query($con,$sqlstudent)) 
@@ -116,7 +117,7 @@ $description = "Online Examination Result Management System (ERMS)-SLGTI";
 
             <!-- edit  start -->
             <?php
-            $student_id = $title = $full_name = $ini_name = $gender = $civil = $email = $nic = $dob = $phone = $address = $ds = 
+            $student_id = $stitle = $full_name = $ini_name = $gender = $civil = $email = $nic = $dob = $phone = $address = $ds = 
             $district = $province = $zip = $blood = $gname = $gaddress = $gphone = $grelation = $regno = $cid = $ayear = 
             $mode = $status = $enrolldate = $exitdate = null;
             if (isset($_GET['edit'])) {
@@ -127,7 +128,7 @@ $description = "Online Examination Result Management System (ERMS)-SLGTI";
                 $result_student = mysqli_query($con, $sql_student);
                 $row = mysqli_fetch_assoc($result_student);
                 if (mysqli_num_rows($result_student) == 1 ) {
-                    $title = $row['title'];
+                    $stitle = $row['title'];
                     $full_name = $row['full_name'];
                     $ini_name = $row['name_with_initials'];
                     $gender = $row['gender'];
@@ -157,7 +158,7 @@ $description = "Online Examination Result Management System (ERMS)-SLGTI";
             }
             //update
             if (isset($_POST['update']) 
-                && !empty($_POST['title'])
+                && !empty($_POST['stitle'])
                 && !empty($_POST['fullname'])
                 && !empty($_POST['ini_name']) 
                 && !empty($_POST['gender']) 
@@ -177,7 +178,7 @@ $description = "Online Examination Result Management System (ERMS)-SLGTI";
                 && !empty($_POST['gphone']) 
                 && !empty($_POST['grelation'])) 
                 {
-                    $title = $_POST['title'];
+                    $stitle = $_POST['stitle'];
                     $fullname = $_POST['fullname'];
                     $ini_name = $_POST['ini_name'];
                     $gender = $_POST['gender'];
@@ -197,7 +198,7 @@ $description = "Online Examination Result Management System (ERMS)-SLGTI";
                     $gphone = $_POST['gphone'];
                     $grelation = $_POST['grelation'];
 
-                    $sql_student = "UPDATE `student` SET `title` = '$title', full_name = '$fullname', 
+                    $sql_student = "UPDATE `student` SET `title` = '$stitle', full_name = '$fullname', 
                     name_with_initials = '$ini_name', gender ='$gender', civil_status = '$civil', email = '$email', 
                     nic = '$nic', date_of_birth = '$dob', phone_no = '$phone', address = '$address', 
                     divisional_secretariat = '$ds', district = '$district', province = '$province', 
@@ -219,28 +220,19 @@ $description = "Online Examination Result Management System (ERMS)-SLGTI";
                 <div class="container">
 
                 <!-- 1st row start -->
+                <div class="card">
+                <div class="card-header">
                 <div class="row">
-                <div class="col-sm">
-                <div class="border border-primary rounded text-center">
-                <h2>Student's Registration Form | SLGTI</h2>
+                <h5 class="col-8"><?php echo "$title" ?></h5>
+                <div class="col-3"></div>
+                <a class='btn btn-outline-primary col-1' href='./students.php'>ALL</a>
                 </div>
                 </div>
-                </div><br>
-
-                <div class="row">
-                <div class='col-7'>
-                <div class='form-group col-md'>
-                <ul class='nav nav-tabs'>
-                <li class='nav-item'>
-                <a class='nav-link' href='./students.php'>ALL</a>
-                </li>
-                <li class='nav-item'>
-                <a class='nav-link active' href='./student.php'>Add New</a>
-                </li>
-                </ul>
-                </div>
-                </div>
-                </div>
+                <div class="card-body">
+                <h6 class="card-title">
+                
+                </h6>
+                
                 <!-- 1st row end -->
 
                 <form method="POST" action="student.php">
@@ -257,12 +249,12 @@ $description = "Online Examination Result Management System (ERMS)-SLGTI";
                     <div class="form-row">
 
                     <div class="col-2">
-                    <label for="title"> Title: </label>
-                    <select name="title" class="custom-select" value="<?php echo $title; ?>" required>
+                    <label for="stitle"> Title: </label>
+                    <select name="stitle" class="custom-select" value="<?php echo $stitle; ?>" required>
                     <option selected disabled>Choose</option>
-                    <option value="Mr" <?php if($title=="Mr") echo 'selected';?>>Mr</option> 
-                    <option value="Miss" <?php if($title == "Miss") echo 'selected';?>>Miss</option>
-                    <option value="Mrs" <?php if($title=="Mrs") echo 'selected';?>>Mrs</option>
+                    <option value="Mr" <?php if($stitle=="Mr") echo 'selected';?>>Mr</option> 
+                    <option value="Miss" <?php if($stitle == "Miss") echo 'selected';?>>Miss</option>
+                    <option value="Mrs" <?php if($stitle=="Mrs") echo 'selected';?>>Mrs</option>
                     </select>
                     </div>
 
@@ -572,6 +564,12 @@ $description = "Online Examination Result Management System (ERMS)-SLGTI";
                 <!-- 2nd row end -->
                 </form><br>
                 <!-- 4 row end -->
+
+                </div>
+                <div class="card-footer text-muted">
+                    
+                </div>
+                </div>
 
                 <!-- #1 Insert Your Content" -->
             </div>
