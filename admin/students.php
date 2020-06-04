@@ -37,39 +37,22 @@ $description = "Online Examination Result Management System (ERMS)-SLGTI";
                 <div class="container">
 
                 <!-- 1st row start -->
+                <div class="card">
+                <div class="card-header">
                 <div class="row">
-                     <div class="col-sm">
-                     <div class="border border-primary rounded text-center">
-                     <h2>Student's Information | SLGTI</h2>
-                     </div>
-                    </div>
-                    </div>
-                    <br>
-                <!-- 1st row end -->
-
-                <form method="POST">
-                <div class="row">
-                <div class='col-7'>
-                <div class='form-group col-md'>
-                <ul class='nav nav-tabs'>
-                <li class='nav-item'>
-                <a class='nav-link active' href='./students.php'>ALL</a>
-                </li>
-                <li class='nav-item'>
-                <a class='nav-link' href='./student.php'>Add New</a>
-                </li>
-                </ul>
-                </div>
-                </div>
-                <div class='col-3'>
-                <input class="form-control mr-sm-2" type="search" placeholder="Registration No." aria-label="Search">
-                </div>
+                <h5 class="col-8"><?php echo "$title" ?></h5>
+                <a class='btn btn-outline-primary col-1-sm' href='./student.php'>Add New</a>
                 <div class='col-2'>
-                <button class="btn btn-outline-success" type="submit">Search</button>
+                <input class="form-control" type="search" placeholder="Registration No." aria-label="Search">
+                </div>
+                <button class="btn btn-outline-success col-1-sm" type="submit">Search</button>
                 </div>
                 </div>
-                </form>
+                <div class="card-body">
+                <h6 class="card-title">
                 
+                </h6>
+
                 <div class="row">
                     <div class="form-group col-md-12 table-responsive">
                     <table class='table align-middle '>
@@ -124,6 +107,11 @@ $description = "Online Examination Result Management System (ERMS)-SLGTI";
                 </table>
                     </div>
                 </div>
+                </div>
+                <div class="card-footer text-muted">
+                </div>
+                </div>
+                <!-- 1st row end -->
 
                 <!-- #1 Insert Your Content" -->
             </div>
