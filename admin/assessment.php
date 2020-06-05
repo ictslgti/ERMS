@@ -27,7 +27,7 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                     +"<tr><td>01</td><td>Assessment 01</td><td>Practical</td><td>20</td></tr>"
                     +"<tr><td>02</td><td>Assessment 02</td><td>Theroy</td><td>25</td></tr>"
                     +"</table><br>"
-                    +"<a href='assessments.php'  class='btn btn-outline-primary my-2 my-sm-0'>seemore</a>"
+                    
                     document.getElementById("demo").innerHTML = z;
                   }
                   else
@@ -40,7 +40,7 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                     +"<tr><td>04</td><td>Assessment 04</td><td>Practical</td><td>20</td></tr>"
                     +"<tr><td>05</td><td>Assessment 05</td><td>Theroy</td><td>20</td></tr>"
                     +"</table> <br>"
-                    +"<a href='assessments.php'  class='btn btn-outline-primary my-2 my-sm-0'>seemore</a>"
+                    
                     document.getElementById("demo").innerHTML = z;
                   }
                 }
