@@ -7,6 +7,16 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
 
 <head>
     <?php include_once("./head.php"); ?>
+    <?php include_once("./head.php"); ?>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+    <style>
+   .test:after {
+  content: '\2807';
+  font-size: 18px;
+  font-weight:bold;
+  }
+    </style>
 </head>
 
 <body>
@@ -50,102 +60,108 @@ if(isset($_GET['all']))
         <td>NVQ-05</td>
         <td>2019/2020</td>
         <td>4</td>
-        <td><div class="btn-group">
-        <a type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <h5>...</h5>
-        </a>
-        <div class="dropdown-menu">
-            <a class="dropdown-item" href="#"><img src="https://img.icons8.com/android/18/000000/edit.png"/>  Edit</a>
-            <a class="dropdown-item" href="#"><img src="https://img.icons8.com/windows/18/000000/delete-forever.png"/>Delete</a>
-            
-            <div class="dropdown-divider"></div>
-        </div>
-        </div></td>
+        <td class="alig">
+                        <h2></h2>
+                        
+                        <div class="w3-dropdown-hover">
+                            <a class=""><div class="test"></div></a>
+                            <div class="w3-dropdown-content w3-bar-block w3-border">
+                            <a class="dropdown-item" href="#"><img src="https://img.icons8.com/android/18/000000/edit.png"/>  Edit</a>
+                            <a class="dropdown-item" href="#"><img src="https://img.icons8.com/windows/18/000000/delete-forever.png"/>Delete</a>
+                            
+                            </div>
+                        </div>
+            </td>
       </tr>
       <tr>
         <th scope="row">ICT</th>
         <td>NVQ-05</td>
         <td>2019/2020</td>
         <td>5</td>
-        <td><div class="btn-group">
-        <a type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <h5>...</h5>
-        </a>
-        <div class="dropdown-menu">
-            <a class="dropdown-item" href="#"><img src="https://img.icons8.com/android/18/000000/edit.png"/>  Edit</a>
-            <a class="dropdown-item" href="#"><img src="https://img.icons8.com/windows/18/000000/delete-forever.png"/>Delete</a>
-            
-            <div class="dropdown-divider"></div>
-        </div>
-        </div></td>
+        <td class="alig">
+                        <h2></h2>
+                        
+                        <div class="w3-dropdown-hover">
+                            <a class=""><div class="test"></div></a>
+                            <div class="w3-dropdown-content w3-bar-block w3-border">
+                            <a class="dropdown-item" href="#"><img src="https://img.icons8.com/android/18/000000/edit.png"/>  Edit</a>
+                            <a class="dropdown-item" href="#"><img src="https://img.icons8.com/windows/18/000000/delete-forever.png"/>Delete</a>
+                            
+                            </div>
+                        </div>
+            </td>
       </tr>
       <tr>
         <th scope="row">ICT</th>
         <td>Bridging</td>
         <td>2019/2020</td>
         <td>3</td>
-        <td><div class="btn-group">
-        <a type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <h5>...</h5>
-        </a>
-        <div class="dropdown-menu">
+        <td class="alig">
+        <h2></h2>
+        
+        <div class="w3-dropdown-hover">
+            <a class=""><div class="test"></div></a>
+            <div class="w3-dropdown-content w3-bar-block w3-border">
             <a class="dropdown-item" href="#"><img src="https://img.icons8.com/android/18/000000/edit.png"/>  Edit</a>
             <a class="dropdown-item" href="#"><img src="https://img.icons8.com/windows/18/000000/delete-forever.png"/>Delete</a>
             
-            <div class="dropdown-divider"></div>
+            </div>
         </div>
-        </div></td>
+</td>
       </tr>
       <tr>
         <th scope="row">ICT</th>
         <td>NVQ-05</td>
         <td>2018/2019</td>
         <td>3</td>
-        <td><div class="btn-group">
-        <a type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <h5>...</h5>
-        </a>
-        <div class="dropdown-menu">
-            <a class="dropdown-item" href="#"><img src="https://img.icons8.com/android/18/000000/edit.png"/>  Edit</a>
-            <a class="dropdown-item" href="#"><img src="https://img.icons8.com/windows/18/000000/delete-forever.png"/>Delete</a>
-            
-            <div class="dropdown-divider"></div>
-        </div>
-        </div></td>
+        <td class="alig">
+                        <h2></h2>
+                        
+                        <div class="w3-dropdown-hover">
+                            <a class=""><div class="test"></div></a>
+                            <div class="w3-dropdown-content w3-bar-block w3-border">
+                            <a class="dropdown-item" href="#"><img src="https://img.icons8.com/android/18/000000/edit.png"/>  Edit</a>
+                            <a class="dropdown-item" href="#"><img src="https://img.icons8.com/windows/18/000000/delete-forever.png"/>Delete</a>
+                            
+                            </div>
+                        </div>
+            </td>
       </tr>
       <tr>
         <th scope="row">ICT</th>
         <td>Bridging</td>
         <td>2018/2019</td>
         <td>3</td>
-        <td><div class="btn-group">
-        <a type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <h5>...</h5>
-        </a>
-        <div class="dropdown-menu">
-            <a class="dropdown-item" href="#"><img src="https://img.icons8.com/android/18/000000/edit.png"/>  Edit</a>
-            <a class="dropdown-item" href="#"><img src="https://img.icons8.com/windows/18/000000/delete-forever.png"/>Delete</a>
-            
-            <div class="dropdown-divider"></div>
-        </div>
-        </div></td>
+        <td class="alig">
+                        <h2></h2>
+                        
+                        <div class="w3-dropdown-hover">
+                            <a class=""><div class="test"></div></a>
+                            <div class="w3-dropdown-content w3-bar-block w3-border">
+                            <a class="dropdown-item" href="#"><img src="https://img.icons8.com/android/18/000000/edit.png"/>  Edit</a>
+                            <a class="dropdown-item" href="#"><img src="https://img.icons8.com/windows/18/000000/delete-forever.png"/>Delete</a>
+                            
+                            </div>
+                        </div>
+            </td>
       </tr>
       <tr>
       <th scope="row">Mechanical</th>
       <td>NVQ-05</td>
       <td>2018/2019</td>
       <td>3</td>
-      <td><div class="btn-group">
-      <a type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          <h5>...</h5>
-      </a>
-      <div class="dropdown-menu">
-          <a class="dropdown-item" href="#"><img src="https://img.icons8.com/android/18/000000/edit.png"/>  Edit</a>
-          <a class="dropdown-item" href="#"><img src="https://img.icons8.com/windows/18/000000/delete-forever.png"/>Delete</a>
-          
-          <div class="dropdown-divider"></div>
-      </div>
-      </div></td>
+      <td class="alig">
+                        <h2></h2>
+                        
+                        <div class="w3-dropdown-hover">
+                            <a class=""><div class="test"></div></a>
+                            <div class="w3-dropdown-content w3-bar-block w3-border">
+                            <a class="dropdown-item" href="#"><img src="https://img.icons8.com/android/18/000000/edit.png"/>  Edit</a>
+                            <a class="dropdown-item" href="#"><img src="https://img.icons8.com/windows/18/000000/delete-forever.png"/>Delete</a>
+                            
+                            </div>
+                        </div>
+            </td>
       </tr>
     </tbody>
   </table>
@@ -171,51 +187,54 @@ else
         <td>NVQ-05</td>
         <td>2019/2020</td>
         <td>4</td>
-        <td><div class="btn-group">
-        <a type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <h5>...</h5>
-        </a>
-        <div class="dropdown-menu">
-            <a class="dropdown-item" href="#"><img src="https://img.icons8.com/android/18/000000/edit.png"/>  Edit</a>
-            <a class="dropdown-item" href="#"><img src="https://img.icons8.com/windows/18/000000/delete-forever.png"/>Delete</a>
-            
-            <div class="dropdown-divider"></div>
-        </div>
-        </div></td>
+        <td class="alig">
+                        <h2></h2>
+                        
+                        <div class="w3-dropdown-hover">
+                            <a class=""><div class="test"></div></a>
+                            <div class="w3-dropdown-content w3-bar-block w3-border">
+                            <a class="dropdown-item" href="#"><img src="https://img.icons8.com/android/18/000000/edit.png"/>  Edit</a>
+                            <a class="dropdown-item" href="#"><img src="https://img.icons8.com/windows/18/000000/delete-forever.png"/>Delete</a>
+                            
+                            </div>
+                        </div>
+            </td>
       </tr>
       <tr>
         <th scope="row">ICT</th>
         <td>NVQ-05</td>
         <td>2019/2020</td>
         <td>5</td>
-        <td><div class="btn-group">
-        <a type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <h5>...</h5>
-        </a>
-        <div class="dropdown-menu">
-            <a class="dropdown-item" href="#"><img src="https://img.icons8.com/android/18/000000/edit.png"/>  Edit</a>
-            <a class="dropdown-item" href="#"><img src="https://img.icons8.com/windows/18/000000/delete-forever.png"/>Delete</a>
-            
-            <div class="dropdown-divider"></div>
-        </div>
-        </div></td>
+        <td class="alig">
+                        <h2></h2>
+                        
+                        <div class="w3-dropdown-hover">
+                            <a class=""><div class="test"></div></a>
+                            <div class="w3-dropdown-content w3-bar-block w3-border">
+                            <a class="dropdown-item" href="#"><img src="https://img.icons8.com/android/18/000000/edit.png"/>  Edit</a>
+                            <a class="dropdown-item" href="#"><img src="https://img.icons8.com/windows/18/000000/delete-forever.png"/>Delete</a>
+                            
+                            </div>
+                        </div>
+            </td>
       </tr>
       <tr>
         <th scope="row">ICT</th>
         <td>Bridging</td>
         <td>2019/2020</td>
         <td>3</td>
-        <td><div class="btn-group">
-        <a type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <h5>...</h5>
-        </a>
-        <div class="dropdown-menu">
-            <a class="dropdown-item" href="#"><img src="https://img.icons8.com/android/18/000000/edit.png"/>  Edit</a>
-            <a class="dropdown-item" href="#"><img src="https://img.icons8.com/windows/18/000000/delete-forever.png"/>Delete</a>
-            
-            <div class="dropdown-divider"></div>
-        </div>
-        </div></td>
+        <td class="alig">
+                        <h2></h2>
+                        
+                        <div class="w3-dropdown-hover">
+                            <a class=""><div class="test"></div></a>
+                            <div class="w3-dropdown-content w3-bar-block w3-border">
+                            <a class="dropdown-item" href="#"><img src="https://img.icons8.com/android/18/000000/edit.png"/>  Edit</a>
+                            <a class="dropdown-item" href="#"><img src="https://img.icons8.com/windows/18/000000/delete-forever.png"/>Delete</a>
+                            
+                            </div>
+                        </div>
+            </td>
       </tr>
       
     </tbody>
