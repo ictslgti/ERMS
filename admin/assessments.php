@@ -59,7 +59,7 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                         <tbody>
                             <tr>
                                 <th scope='row'>1</th>
-                                <td>Assessment 01</td>
+                                <td>Assessment 01 <img src="https://img.icons8.com/cute-clipart/30/000000/delete-sign.png"/></td>
                                 
                                 <td>Web Programming<span class="badge badge-pill badge-dark m-1">M07</span></td>
                                 <td>Batch-1<span class="badge badge-pill badge-dark m-1">2019/2020</span></td>
@@ -82,7 +82,7 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                             
                             <tr>
                                 <th scope='row'>2</th>
-                                <td>Assessment 02</td>
+                                <td>Assessment 02 <img src="https://img.icons8.com/cute-clipart/30/000000/delete-sign.png"/></td>
                                 
                                 <td>Web Programming<span class="badge badge-pill badge-dark m-1">M07</span></td>
                                 <td>Batch-2<span class="badge badge-pill badge-dark m-1">2019/2020</span></td>
@@ -103,9 +103,9 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
 
                             </tr>
 
-                            <tr class="table-info">
+                            <tr >
                                 <th scope='row'>3</th>
-                                <td>Assessment 02</td>
+                                <td>Assessment 02 <img src="https://img.icons8.com/color/30/000000/checked-2.png"/></td>
                                 
                                 <td>Software Testing<span class="badge badge-pill badge-dark m-1">M06</span></td>
                                 <td>Batch-1<span class="badge badge-pill badge-dark m-1">2019/2020</span></td>
@@ -126,9 +126,9 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
 
                             </tr>
 
-                            <tr class="table-success">
+                            <tr >
                                 <th scope='row'>3</th>
-                                <td>Assessment 01</td>
+                                <td>Assessment 01 <img src="https://img.icons8.com/color/30/000000/checked-2.png"/></td>
                                
                                 <td>Software Testing<span class="badge badge-pill badge-dark m-1">M06</span></td>
                                 <td>Batch-1<span class="badge badge-pill badge-dark m-1">2019/2020</span></td>
@@ -152,8 +152,22 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                         </tbody>
                     </table>
                     </div>
+                    
                     </div>
+                    
                    
+                </div>
+                <div class="card-footer ">
+                <div class="row">
+                     <div class="col-2 ">
+                     <img src="https://img.icons8.com/color/30/000000/checked-2.png"/>Results submit
+                     
+                     </div>
+                     <div class="col-4 ">
+                     
+                     <img src="https://img.icons8.com/cute-clipart/30/000000/delete-sign.png"/>Results not submit
+                     </div>
+                     </div>
                 </div>
                 <!-- #1 Insert Your Content" -->
             </div>
