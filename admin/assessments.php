@@ -160,11 +160,11 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                 <div class="card-footer ">
                 <div class="row">
                      <div class="col">
-                     <img src="https://img.icons8.com/color/30/000000/checked-2.png"/>Results submit
                      
+                         <h1></h1>
                      </div>
-                     <div class="col">
-                     
+                     <div class="col-auto">
+                     <img src="https://img.icons8.com/color/30/000000/checked-2.png"/>Results submit
                      <img src="https://img.icons8.com/cute-clipart/30/000000/delete-sign.png"/>Results not submit
                      </div>
                      </div>
