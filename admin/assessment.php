@@ -1,6 +1,6 @@
 
 <?php
-$title = "Add Assessment| Online Examination Result Management System | SLGTI";
+$title = " Assessment| Online Examination Result Management System | SLGTI";
 $description = "Online Examination Result  Management System (ERMS)-SLGTI";
 ?>
 <!DOCTYPE html>
