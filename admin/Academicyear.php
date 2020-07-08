@@ -56,11 +56,18 @@ if(
        <div class='alert alert-success' role='alert'>
        insert success fully 
        <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
-    <span aria-hidden='true'>&times;</span>
-  </button>
+           <span aria-hidden='true'>&times;</span>
+        </button>
       </div>";
    } else {
-       echo "This academic_year alredy submit";
+       
+       echo "
+       <div class='alert alert-danger' role='alert'>
+       This academic_year alredy submit 
+       <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+           <span aria-hidden='true'>&times;</span>
+        </button>
+      </div>";
    }
 }       
 ?>
@@ -81,7 +88,7 @@ if(
                 <div class="card-body ">
                     <div class="card  mb-3">
                         <div class="card-body ">
-                            <form method="POST" action="Academicyear.php">
+                            <form method="POST" action="">
 
                                 <div class="row">
                                     <div class="col-sm">
