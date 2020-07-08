@@ -24,6 +24,47 @@ include_once('../config.php');
 
         <div class="container">
 
+        <!-- insert stat -->
+        <?php
+if(
+    isset($_POST['submit'])  
+    && !empty($_POST['academicyear'])
+    && !empty($_POST['status'])
+    && !empty($_POST['semi1start'])
+    && !empty($_POST['semi1end'])
+    && !empty($_POST['semi2start'])
+    && !empty($_POST['semi2end'])
+    
+){
+    
+    $year = $_POST['academicyear'];
+    $status=$_POST['status'];
+    $semi1start = $_POST['semi1start'];
+    $semi1end = $_POST['semi1end'];
+    $semi2start = $_POST['semi2start'];
+    $semi2end = $_POST['semi2end'];
+
+    $sql = "INSERT INTO academic_year (academic_year,academic_year_status, 1semi_startdate, 1semi_enddate,2semi_startdate,2semi_enddate)
+    VALUES 
+    ('$year','$status', 
+    '$semi1start', 
+    '$semi1end','$semi2start','$semi2end')
+    ";
+
+   if (mysqli_query($con, $sql)) {
+       echo "
+       <div class='alert alert-success' role='alert'>
+       insert success fully 
+       <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+    <span aria-hidden='true'>&times;</span>
+  </button>
+      </div>";
+   } else {
+       echo "This academic_year alredy submit";
+   }
+}       
+?>
+        <!-- insert end -->
             <br>
             <div class="card  mb-3">
                 <div class="card-header ">
@@ -47,7 +88,7 @@ include_once('../config.php');
                                         Academicyear <br>
                                         <div class="form-group">
                                             <div class="input-group input-group-sm mb-3">
-                                                <input type="text" name="academicyear" class="form-control"
+                                                <input type="text" name="academicyear" placeholder="2019/2020" class="form-control"
                                                     aria-label="Sizing example input"
                                                     aria-describedby="inputGroup-sizing-sm" id="validationServer01"
                                                     required>
@@ -160,40 +201,6 @@ include_once('../config.php');
 
                 </div>
                 </form>
-
-                <?php
-if(
-    isset($_POST['submit'])  
-    && !empty($_POST['academicyear'])
-    && !empty($_POST['status'])
-    && !empty($_POST['semi1start'])
-    && !empty($_POST['semi1end'])
-    && !empty($_POST['semi2start'])
-    && !empty($_POST['semi2end'])
-    
-){
-    
-    $year = $_POST['academicyear'];
-    $status=$_POST['status'];
-    $semi1start = $_POST['semi1start'];
-    $semi1end = $_POST['semi1end'];
-    $semi2start = $_POST['semi2start'];
-    $semi2end = $_POST['semi2end'];
-
-    $sql = "INSERT INTO academic_year (academic_year,academic_year_status, 1semi_startdate, 1semi_enddate,2semi_startdate,2semi_enddate)
-    VALUES 
-    ('$year','$status', 
-    '$semi1start', 
-    '$semi1end','$semi2start','$semi2end')
-    ";
-
-   if (mysqli_query($con, $sql)) {
-       echo "New record created successfully";
-   } else {
-       echo "This academic_year alredy submit";
-   }
-}       
-?>
 
             </div>
             <!-- #1 Insert Your Content" -->
