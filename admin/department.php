@@ -7,9 +7,11 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
 
 <head>
     <?php include_once("./head.php"); ?>
+    <?php include_once("../config.php"); ?>
 </head>
 
 <body>
+
     <div class="page-wrapper toggled bg2 border-radius-on light-theme">
         
             <?php include_once("nav.php"); ?>
@@ -19,7 +21,7 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
 
          <div class="container"> 
              <br>
-         <form action=""> 
+         
             <div class="card  mb-3" >
                 <div class="card-header ">
                 <div class="row">
@@ -40,7 +42,7 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                      Code  <br>
                      <div class="form-group">
                      <div class="input-group input-group-sm mb-3">
-                        <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm"id="validationServer01" required>
+                        <input type="text" name="code" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm"id="validationServer01" required>
                         </div>
                          </div>
                      </div>
@@ -51,7 +53,7 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                      Name  <br>
                      <div class="form-group">
                      <div class="input-group input-group-sm mb-3">
-                        <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm"id="validationServer01" required>
+                        <input type="text" name="d_name" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm"id="validationServer01" required>
                         </div>
                          </div>
                      </div>
@@ -66,7 +68,7 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                 <div class="card-footer "><div class="row">
                      <div class="col-11 "></div>
                      <div class="col-1">
-                     <button type="submit" class="btn btn-outline-success" data-toggle="modal"
+                     <button type="submit" name="submit" class="btn btn-outline-success" data-toggle="modal"
                                 data-target="#exampleModal">
                                 Add
                             </button>
@@ -85,6 +87,48 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
 </form>
                     
 
+<!-- insert  -->
+<?php
+$code = null;
+$d_name = null;
+if(
+    isset($_POST['submit'])  
+    && !empty($_POST['code'])
+    && !empty($_POST['d_name'])
+){
+    $code = $_POST['code'];
+    $d_name = $_POST['d_name'];
+    
+
+    $sql = "INSERT INTO departments (department_code,department_name)
+    VALUES 
+    ('$code', 
+    '$d_name' 
+    )
+    ";
+
+   if (mysqli_query($con, $sql)) {
+    echo "
+    <div class='alert alert-success' role='alert'>
+    insert success fully 
+    <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+        <span aria-hidden='true'>&times;</span>
+     </button>
+   </div>";
+   } else {
+    echo "
+    <div class='alert alert-danger' role='alert'>
+    This academic_year alredy submit 
+    <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+        <span aria-hidden='true'>&times;</span>
+     </button>
+   </div>";
+   }
+}
+
+?>
+
+<!-- insert  -->
 
                 </div>
                 <!-- #1 Insert Your Content" -->
