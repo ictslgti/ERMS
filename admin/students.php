@@ -1,5 +1,5 @@
 <?php
-$title = "View Student | Online Examination Result Management System | SLGTI";
+$title = "View Students | Online Examination Result Management System | SLGTI";
 $description = "Online Examination Result Management System (ERMS)-SLGTI";
 ?>
 <!DOCTYPE html>
@@ -12,7 +12,7 @@ $description = "Online Examination Result Management System (ERMS)-SLGTI";
 
 <body>
     <div class="page-wrapper toggled bg2 border-radius-on light-theme">
-            <?php include_once("nav.php"); ?>
+    <?php include_once("nav.php"); ?>
 
             <!-- delete start -->
             <?php
@@ -29,7 +29,7 @@ $description = "Online Examination Result Management System (ERMS)-SLGTI";
                 }
                 }
                 ?>
-                <!-- delete end -->
+            <!-- delete end -->
 
         <main class="">
             <div class="container-fluid p-5">
@@ -38,19 +38,26 @@ $description = "Online Examination Result Management System (ERMS)-SLGTI";
 
                 <!-- 1st row start -->
                 <div class="card">
+
                 <div class="card-header">
                 <div class="row">
-                <h5 class="col-8"><?php echo "$title" ?></h5>
-                <a class='btn btn-outline-primary col-1-sm' href='./student.php'>Add New</a>
+                <div class='col-8'>
+                <h5><?php echo "$title" ?></h5>
+                </div>
+                <div class='col-1-sm'>
+                <a class='btn btn-outline-primary' href='./student.php'>Add New</a>
+                </div>
                 <div class='col-2'>
                 <input class="form-control" type="search" placeholder="Registration No." aria-label="Search">
                 </div>
-                <button class="btn btn-outline-success col-1-sm" type="submit">Search</button>
+                <div class='col-1-sm'>
+                </div>
+                <button class="btn btn-outline-success" type="submit">Search</button>
                 </div>
                 </div>
+
                 <div class="card-body">
                 <h6 class="card-title">
-                
                 </h6>
 
                 <div class="row">
@@ -93,9 +100,9 @@ $description = "Online Examination Result Management System (ERMS)-SLGTI";
                             <?php echo $row['phone_no']; ?>
                             </td>
                             <td scope='col'>
-                            <a class="btn btn-info btn-sm" href="?view=<?php echo $row['id']; ?>">Full View</a>
-                            <a class="btn btn-warning btn-sm" href="student.php?edit=<?php echo $row['id']; ?>">Edit</a>
-                            <a class="btn btn-danger btn-sm disabled" href="?delete=<?php echo $row['id']; ?>">Delete</a>
+                            <a class="btn btn-outline-info btn-sm" href="studentview.php?view=<?php echo $row['id']; ?>">Full View</a>
+                            <a class="btn btn-outline-warning btn-sm" href="student.php?edit=<?php echo $row['id']; ?>">Edit</a>
+                            <a class="btn btn-outline-danger btn-sm disabled" href="?delete=<?php echo $row['id']; ?>">Delete</a>
                             </td>
                             <?php
                             }

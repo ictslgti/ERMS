@@ -221,16 +221,22 @@ $description = "Online Examination Result Management System (ERMS)-SLGTI";
 
                 <!-- 1st row start -->
                 <div class="card">
+
                 <div class="card-header">
                 <div class="row">
-                <h5 class="col-8"><?php echo "$title" ?></h5>
-                <div class="col-3"></div>
-                <a class='btn btn-outline-primary col-1' href='./students.php'>ALL</a>
+                <div class='col-8'>
+                <h5><?php echo "$title" ?></h5>
+                </div>
+                <div class="col-3">
+                </div>
+                <div class='col-1'>
+                <a class='btn btn-outline-primary' href='./students.php'>ALL</a>
                 </div>
                 </div>
+                </div>
+
                 <div class="card-body">
                 <h6 class="card-title">
-                
                 </h6>
                 
                 <!-- 1st row end -->
