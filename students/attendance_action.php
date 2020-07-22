@@ -33,17 +33,94 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
     </div>
    <div class="card-body">
     <div class="table-responsive">
-        <table class="table table-striped table-bordered" id="attendance_table">
-          <thead>
-            <tr>
-              <th>Student Name</th>
-              <th>Roll Number</th>
-              <th>Grade</th>
-              <th>Attendance Status</th>
-              <th>Attendance Date</th>
-              <th>Teacher</th>
-            </tr>
-          </thead>
+    <table class="table align-middle">
+                        <thead class='thead-light'>
+                            <tr>
+                                <th scope='col'>Course</th>
+                                <th scope='col'>Date</th>
+                                <th scope='col'>Taken sessions</th>
+                                <th scope='col'>Points</th>
+                                <th ccrop='col'>Remarks</th>
+                            </tr>
+                            <tr>
+                                <td scope='col'>Basic Computer Application</td>
+                                <td scope='col'> Thu 9 Jul 2020</td>
+                                <td scope='col'>12</td>
+                                <td scope='col'>12/10</td>
+                                <td scope='col'>85.0%</td>
+                            </tr>
+                            <tr>
+                                <td scope='col'>Fundamentals of Software Programming </td>
+                                <td scope='col'> Thu 9 Jul 2020</td>
+                                <td scope='col'>25</td>
+                                <td scope='col'>25/23</td>
+                                <td scope='col'>87.0%</td>
+                            </tr>
+                            <tr>
+                                <td scope='col'>Communication Skill </td>
+                                <td scope='col'> Thu 9 Jul 2020</td>
+                                <td scope='col'>45</td>
+                                <td scope='col'>45/37</td>
+                                <td scope='col'>85.8%</td>
+                            </tr>
+                            <tr>
+                                <td scope='col'>Fundamentals of Graphic Design </td>
+                                <td scope='col'> Thu 9 Jul 2020</td>
+                                <td scope='col'>17</td>
+                                <td scope='col'>17/17</td>
+                                <td scope='col'>100%</td>
+                            </tr>
+                            <tr>
+                                <td scope='col'>Fundamentals of Networking</td>
+                                <td scope='col'> Thu 9 Jul 2020</td>
+                                <td scope='col'>96</td>
+                                <td scope='col'>96/83</td>
+                                <td scope='col'>100%</td>
+                            </tr>
+                            <tr>
+                                <td scope='col'>Introduction to Database Systems</td>
+                                <td scope='col'> Thu 9 Jul 2020</td>
+                                <td scope='col'>24</td>
+                                <td scope='col'>24/20</td>
+                                <td scope='col'>85.7%</td>
+                            </tr>
+                            <tr>
+                                <td scope='col'>Static Web Page Designing</td>
+                                <td scope='col'> Thu 9 Jul 2020</td>
+                                <td scope='col'>81</td>
+                                <td scope='col'>81/75</td>
+                                <td scope='col'>91.0%</td>
+                            </tr>
+                            <tr>
+                                <td scope='col'>Database Systems I</td>
+                                <td scope='col'> Thu 9 Jul 2020</td>
+                                <td scope='col'>81</td>
+                                <td scope='col'>81/75</td>
+                                <td scope='col'>87.4%</td>
+                            </tr>
+                            <tr>
+                                <td scope='col'>System Analysis and Design </td>
+                                <td scope='col'> Thu 9 Jul 2020</td>
+                                <td scope='col'>45</td>
+                                <td scope='col'>45/40</td>
+                                <td scope='col'>89.5%</td>
+                            </tr>
+                            <tr>
+                                <td scope='col'>Web Programming</td>
+                                <td scope='col'> Thu 9 Jul 2020</td>
+                                <td scope='col'>33</td>
+                                <td scope='col'>33/28</td>
+                                <td scope='col'>90.0%</td>
+                            </tr>
+                            <tr>
+                                <td>Average attendance</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td >90.9%</td>
+                            </tr>
+                        </thead>
+                    <tbody>
           <tbody>
 
           </tbody>
