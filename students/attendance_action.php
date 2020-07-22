@@ -113,18 +113,17 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
                                 <td scope='col'>90.0%</td>
                             </tr>
                             <tr>
-                                <td>Average attendance</td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td >90.9%</td>
+                                <th>Average attendance</th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th >90.9%</th>
                             </tr>
                         </thead>
                     <tbody>
-          <tbody>
-
-          </tbody>
-        </table>
+                        <tbody>
+                        </tbody>
+                     </table>
     </div>
    </div>
   </div>
