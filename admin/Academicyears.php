@@ -7,6 +7,7 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
 
 <head>
     <?php include_once("./head.php"); ?>
+    <?php include_once("../config.php"); ?>
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <style>
 tr,th,table{
@@ -17,11 +18,39 @@ tr,th,table{
 </head>
 
 <body>
+
+
+
+
+
+
     <div class="page-wrapper toggled bg2 border-radius-on light-theme">
         <?php include_once("nav.php"); ?>
        <!-- card start -->
         <br>
 <div class="container">
+<!-- delete -->
+<?php
+
+
+
+if(isset($_GET['delete'])){
+    $id = $_GET['delete'];
+    $sql = "DELETE FROM `academic_year` WHERE `academic_year`.`academic_year` = '$id'";
+    if(mysqli_query($con,$sql)){
+      echo "
+      <div class='alert alert-danger' role='alert'>
+      record delete ! 
+      <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+          <span aria-hidden='true'>&times;</span>
+       </button>
+     </div>";
+    }else{
+        echo 'Try again';
+    }
+}
+?>     
+<!-- delete -->
 <form action=""method="post">
 <div class="card  mb-3" >
       <div class="card-header bg-transparent ">
@@ -41,66 +70,56 @@ tr,th,table{
     <table class="table ">
     <thead class="p-3 mb-2 bg-primary text-white">
       <tr>
-        <th scope="col">ID</th>
         <th scope="col">Academicyear</th>
         <th scope="col">Status</th>
-        <th scope="col">options</th>
+        <th scope="col">1semi_startdate</th>
+        <th scope="col">1semi_enddate</th>
+        <th scope="col">2semi_startdate</th>
+        <th scope="col">2semi_enddate</th>
+        <th scope="col">Options</th>
+
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <th scope="row">1</th>
-        <td>2019/2020</td>
-        <td>Active</td>
-        <td>
+    <?php
+$sql = 'SELECT * FROM `academic_year` ORDER BY `academic_year_status` DESC';
+$result = mysqli_query($con,$sql);
+if(mysqli_num_rows($result)>0){
+    while($row = mysqli_fetch_assoc($result)){
+        echo '<tr>
+            <td>',$row['academic_year'],'</td>
+            <td>',$row['academic_year_status'],'</td>
+            <td>',$row['1semi_startdate'],'</td>
+            <td>',$row['1semi_enddate'],'</td>
+            <td>',$row['2semi_startdate'],'</td>
+            <td>',$row['2semi_enddate'],'</td>
+            <td>
             <h2></h2>
             
             <div class="w3-dropdown-hover">
                 <a class="">...</a>
                 <div class="w3-dropdown-content w3-bar-block w3-border">
-                <a class="dropdown-item" href="#"><img src="https://img.icons8.com/android/18/000000/edit.png"/>  Edit</a>
-                <a class="dropdown-item" href="#"><img src="https://img.icons8.com/windows/18/000000/delete-forever.png"/>Delete</a>
+                <a class="dropdown-item" href="insert.php?edit=',$row['academic_year'],'"><img src="https://img.icons8.com/android/18/000000/edit.png"/>  Edit</a>
+                <a class="dropdown-item" href="?delete=',$row['academic_year'],'"><img src="https://img.icons8.com/windows/18/000000/delete-forever.png"/>Delete</a>
                 </div>
             </div>
             </td>
-      </tr>
-      <tr>
-        <th scope="row">2</th>
-        <td>2018/2019</td>
-        <td>Active</td>
-        <td>
-            <h2></h2>
-            
-            <div class="w3-dropdown-hover">
-                <a class="">...</a>
-                <div class="w3-dropdown-content w3-bar-block w3-border">
-                <a class="dropdown-item" href="#"><img src="https://img.icons8.com/android/18/000000/edit.png"/>  Edit</a>
-                <a class="dropdown-item" href="#"><img src="https://img.icons8.com/windows/18/000000/delete-forever.png"/>Delete</a>
-                </div>
-            </div>
-            </td>
-      </tr>
-      <tr>
-        <th scope="row">3</th>
-        <td>2018/2017</td>
-        <td>Completed</td>
-        <td>
-            <h2></h2>
-            
-            <div class="w3-dropdown-hover">
-                <a class="">...</a>
-                <div class="w3-dropdown-content w3-bar-block w3-border">
-                <a class="dropdown-item" href="#"><img src="https://img.icons8.com/android/18/000000/edit.png"/>  Edit</a>
-                <a class="dropdown-item" href="#"><img src="https://img.icons8.com/windows/18/000000/delete-forever.png"/>Delete</a>
-                </div>
-            </div>
-            </td>
-      </tr>
+        </tr>';
+    }
+}
+else{
+    echo 'no rows';
+}
+?>  
+
+
+ 
       
     </tbody>
   </table>
   </div>
     </form>
+    
 </div>
        <!-- card end  -->
     </div>
