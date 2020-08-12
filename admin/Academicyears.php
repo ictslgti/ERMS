@@ -86,7 +86,7 @@ if(mysqli_num_rows($result)>0){
             <td>',$row['2semi_enddate'],'</td>
             <td>
             <div class="btn-group btn-sm" role="group" aria-label="Basic example">
-            <a href="?edit=',$row['academic_year'],'" class="btn btn-warning" > Edit </a> 
+            <a href="Academicyear.php?edit=',$row['academic_year'],'" class="btn btn-warning" > Edit </a> 
             <a href="?delete=',$row['academic_year'],'" class="btn btn-danger"> Delete </a>
             
           </div>
