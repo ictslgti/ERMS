@@ -18,39 +18,30 @@ tr,th,table{
 </head>
 
 <body>
-
-
-
-
-
-
     <div class="page-wrapper toggled bg2 border-radius-on light-theme">
         <?php include_once("nav.php"); ?>
        <!-- card start -->
         <br>
 <div class="container">
+
 <!-- delete -->
 <?php
-
-
-
 if(isset($_GET['delete'])){
     $id = $_GET['delete'];
     $sql = "DELETE FROM `academic_year` WHERE `academic_year`.`academic_year` = '$id'";
     if(mysqli_query($con,$sql)){
-      echo "
-      <div class='alert alert-danger' role='alert'>
-      record delete ! 
-      <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
-          <span aria-hidden='true'>&times;</span>
-       </button>
-     </div>";
+        echo 'Record was deleted';
     }else{
         echo 'Try again';
     }
 }
-?>     
+?>
 <!-- delete -->
+
+
+
+
+
 <form action=""method="post">
 <div class="card  mb-3" >
       <div class="card-header bg-transparent ">
@@ -82,7 +73,7 @@ if(isset($_GET['delete'])){
     </thead>
     <tbody>
     <?php
-$sql = 'SELECT * FROM `academic_year` ORDER BY `academic_year_status` DESC';
+$sql = 'SELECT * FROM `academic_year`';
 $result = mysqli_query($con,$sql);
 if(mysqli_num_rows($result)>0){
     while($row = mysqli_fetch_assoc($result)){
@@ -94,15 +85,11 @@ if(mysqli_num_rows($result)>0){
             <td>',$row['2semi_startdate'],'</td>
             <td>',$row['2semi_enddate'],'</td>
             <td>
-            <h2></h2>
+            <div class="btn-group btn-sm" role="group" aria-label="Basic example">
+            <a href="?edit=',$row['academic_year'],'" class="btn btn-warning" > Edit </a> 
+            <a href="?delete=',$row['academic_year'],'" class="btn btn-danger"> Delete </a>
             
-            <div class="w3-dropdown-hover">
-                <a class="">...</a>
-                <div class="w3-dropdown-content w3-bar-block w3-border">
-                <a class="dropdown-item" href="insert.php?edit=',$row['academic_year'],'"><img src="https://img.icons8.com/android/18/000000/edit.png"/>  Edit</a>
-                <a class="dropdown-item" href="?delete=',$row['academic_year'],'"><img src="https://img.icons8.com/windows/18/000000/delete-forever.png"/>Delete</a>
-                </div>
-            </div>
+          </div>
             </td>
         </tr>';
     }
@@ -111,15 +98,12 @@ else{
     echo 'no rows';
 }
 ?>  
-
-
- 
+      
       
     </tbody>
   </table>
   </div>
     </form>
-    
 </div>
        <!-- card end  -->
     </div>
