@@ -26,6 +26,32 @@ include_once('../config.php');
 
         <!-- insert stat -->
         <?php
+
+$year=$status=$semi1start=$semi1end=$semi2start=$semi2end=null;
+if(isset($_GET['edit'])){
+    $id = $_GET['edit'];
+    
+    $sql = "SELECT * FROM `academic_year` WHERE `academic_year`= '$id' ";
+    $result = mysqli_query($con,$sql);
+    if(mysqli_num_rows($result)==1){
+        $row = mysqli_fetch_assoc($result);
+        $year = $row['academic_year'];
+        $status = $row['academic_year_status'];
+        $semi1start = $row['1semi_startdate'];
+        $semi1end = $row['1semi_enddate'];
+        $semi2start = $row['2semi_startdate'];
+        $semi2end = $row['2semi_enddate'];
+
+
+    }
+}
+
+
+
+
+
+
+
 if(
     isset($_POST['submit'])  
     && !empty($_POST['academicyear'])
@@ -95,7 +121,7 @@ if(
                                         Academicyear <br>
                                         <div class="form-group">
                                             <div class="input-group input-group-sm mb-3">
-                                                <input type="text" name="academicyear" placeholder="2019/2020" class="form-control"
+                                                <input type="text" value="<?php echo $year;?>" name="academicyear" placeholder="2019/2020" class="form-control" 
                                                     aria-label="Sizing example input"
                                                     aria-describedby="inputGroup-sizing-sm" id="validationServer01"
                                                     required>
@@ -129,7 +155,7 @@ if(
                                         Semester1 Start Date <br>
                                         <div class="form-group">
                                             <div class="input-group input-group-sm mb-3">
-                                                <input type="date" name="semi1start" class="form-control"
+                                                <input type="date" name="semi1start" class="form-control" value="<?php echo $semi1start;?>"
                                                     aria-label="Sizing example input"
                                                     aria-describedby="inputGroup-sizing-sm" id="validationServer01"
                                                     required>
@@ -142,7 +168,7 @@ if(
                                         <div class="form-group">
                                             Semester1 End Date <br>
                                             <div class="input-group input-group-sm mb-3">
-                                                <input type="date" name="semi1end" class="form-control"
+                                                <input type="date" name="semi1end" class="form-control" value="<?php echo $semi1end;?>"
                                                     aria-label="Sizing example input"
                                                     aria-describedby="inputGroup-sizing-sm" id="validationServer01"
                                                     required>
@@ -160,7 +186,7 @@ if(
                                         Semester2 Start Date <br>
                                         <div class="form-group">
                                             <div class="input-group input-group-sm mb-3">
-                                                <input type="date" name="semi2start" class="form-control"
+                                                <input type="date" name="semi2start" class="form-control" value="<?php echo $semi2start;?>"
                                                     aria-label="Sizing example input"
                                                     aria-describedby="inputGroup-sizing-sm" id="validationServer01"
                                                     required>
@@ -173,7 +199,7 @@ if(
                                         <div class="form-group">
                                             Semester2 End Date <br>
                                             <div class="input-group input-group-sm mb-3">
-                                                <input type="date" name="semi2end" class="form-control"
+                                                <input type="date" name="semi2end" class="form-control" value="<?php echo $semi2end;?>"
                                                     aria-label="Sizing example input"
                                                     aria-describedby="inputGroup-sizing-sm" id="validationServer01"
                                                     required>
@@ -191,17 +217,44 @@ if(
 
 
                     </div>
-                    <div class="card-footer ">
-                        <div class="row">
-                            <div class="col-11 "></div>
-                            <div class="col-1">
-                                <button type="submit" name="submit" class="btn btn-outline-success" data-toggle="modal"
-                                    data-target="#exampleModal">
-                                    Add
-                                </button>
-                            </div>
-                        </div>
-                    </div>
+
+<?php
+if(isset($_GET['edit']))
+{
+    echo '
+    <div class="card-footer ">
+    <div class="row">
+        <div class="col-11 "></div>
+        <div class="col-1">
+            <button type="submit" name="submit" class="btn btn-outline-primary" data-toggle="modal"
+                data-target="#exampleModal">
+                Save
+            </button>
+        </div>
+    </div>
+</div>
+    ';
+}
+
+else{
+    echo '
+    <div class="card-footer ">
+    <div class="row">
+        <div class="col-11 "></div>
+        <div class="col-1">
+            <button type="submit" name="submit" class="btn btn-outline-success" data-toggle="modal"
+                data-target="#exampleModal">
+                Add
+            </button>
+        </div>
+    </div>
+</div>
+    ';
+}
+
+?>
+
+                   
 
 
 
