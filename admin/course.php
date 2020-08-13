@@ -153,6 +153,7 @@ $Duration_Of_Course = null;
 $Duration_Of_OJT = null;
 $NVQ_Level = null;
 $Department = null
+
 if(
     isset($_POST['submit'])  
     && !empty($_POST['code'])
