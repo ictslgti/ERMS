@@ -318,7 +318,7 @@ if(
     $semi2start = $_POST['semi2start'];
     $semi2end = $_POST['semi2end'];
 
-    $sql = "";
+    $sql = "UPDATE `academic_year` SET `academic_year_status` = '$status' WHERE `academic_year`.`academic_year` = '$year';";
 
    if (mysqli_query($con, $sql)) {
        echo "
