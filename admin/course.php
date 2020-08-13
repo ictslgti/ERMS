@@ -19,7 +19,7 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
             <!-- 1st row start -->
 
          <div class="container"> 
-         <form action=""> 
+         <form action="" method="POST"> 
          <br>
             <div class="card  mb-3" >
                 <div class="card-header ">
@@ -133,7 +133,7 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                 <div class="card-footer "><div class="row">
                      <div class="col-11 "></div>
                      <div class="col-1">
-                     <button type="submit" class="btn btn-outline-success" data-toggle="modal"
+                     <button type="submit" name="submit" class="btn btn-outline-success" data-toggle="modal"
                                 data-target="#exampleModal">
                                 Add
                             </button>
@@ -154,7 +154,7 @@ $Duration_Of_OJT = null;
 $NVQ_Level = null;
 $Department = null
 
-if(
+if (
     isset($_POST['submit'])  
     && !empty($_POST['code'])
     && !empty($_POST['name'])
