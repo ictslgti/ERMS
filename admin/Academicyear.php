@@ -137,10 +137,52 @@ if(
 
                                                 <select class="custom-select" name="status" id="inputGroupSelect01"
                                                     id="validationCustom04" required>
-                                                    <option selected disabled value="">Choose Year Status </option>
-                                                    <option value="Active">Active</option>
-                                                    <option value="Completed">Completed</option>
-                                                    <option value="plan">plan</option>
+                                                    <?php 
+                                                    if(isset($_GET['edit']))
+                                                    {
+                                                        
+                                                    
+                                                    if($status="Active")
+                                                    {
+                                                        echo '
+                                                        <option disabled value="">Choose Year Status </option>
+                                                        <option selected value="Active">Active</option>
+                                                        <option value="Completed">Completed</option>
+                                                        <option value="plan">plan</option>
+                                                        ';
+                                                    }
+
+                                                    if($status="Completed")
+                                                    {
+                                                        echo '
+                                                        <option disabled value="">Choose Year Status </option>
+                                                        <option value="Active">Active</option>
+                                                        <option selected value="Completed">Completed</option>
+                                                        <option value="plan">plan</option>
+                                                        ';
+                                                    }
+
+                                                    if($status="plan")
+                                                    {
+                                                        echo '
+                                                        <option disabled value="">Choose Year Status </option>
+                                                        <option value="Active">Active</option>
+                                                        <option value="Completed">Completed</option>
+                                                        <option selected value="plan">plan</option>
+                                                        ';
+                                                    }
+                                                }
+                                                else {
+                                                    echo '
+                                                        <option selected disabled value="">Choose Year Status </option>
+                                                        <option value="Active">Active</option>
+                                                        <option value="Completed">Completed</option>
+                                                        <option value="plan">plan</option>
+                                                        ';
+                                                }
+                                                    ?>
+                                                    
+                                                    
                                                 </select>
                                             </div>
                                         </div>
@@ -226,7 +268,7 @@ if(isset($_GET['edit']))
     <div class="row">
         <div class="col-11 "></div>
         <div class="col-1">
-            <button type="submit" name="submit" class="btn btn-outline-primary" data-toggle="modal"
+            <button type="submit" name="save" class="btn btn-outline-primary" data-toggle="modal"
                 data-target="#exampleModal">
                 Save
             </button>
@@ -254,6 +296,50 @@ else{
 
 ?>
 
+
+
+<?php
+
+if(
+    isset($_POST['save'])  
+    && !empty($_POST['academicyear'])
+    && !empty($_POST['status'])
+    && !empty($_POST['semi1start'])
+    && !empty($_POST['semi1end'])
+    && !empty($_POST['semi2start'])
+    && !empty($_POST['semi2end'])
+    
+){
+    
+    $year = $_POST['academicyear'];
+    $status=$_POST['status'];
+    $semi1start = $_POST['semi1start'];
+    $semi1end = $_POST['semi1end'];
+    $semi2start = $_POST['semi2start'];
+    $semi2end = $_POST['semi2end'];
+
+    $sql = "";
+
+   if (mysqli_query($con, $sql)) {
+       echo "
+       <div class='alert alert-success' role='alert'>
+       insert success fully 
+       <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+           <span aria-hidden='true'>&times;</span>
+        </button>
+      </div>";
+   } else {
+       
+       echo "
+       <div class='alert alert-danger' role='alert'>
+       This academic_year alredy submit 
+       <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+           <span aria-hidden='true'>&times;</span>
+        </button>
+      </div>";
+   }
+}   
+?>
                    
 
 
