@@ -7,6 +7,7 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
 
 <head>
     <?php include_once("./head.php"); ?>
+    <?php include_once("../config.php"); ?>
 </head>
 
 <body>
@@ -37,12 +38,14 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
   
                         <select class="custom-select" id="inputGroupSelect01"id="validationCustom04" required>
                             <option selected disabled value="">Choose Department</option>
-                            <option value="1">ICT</option>
-                            <option value="2">Mechanical</option>
-                            <option value="2">Food Technology</option>
-                            <option value="2">Consruction Technology</option>
-                            <option value="2">Automotive</option>
-                            <option value="2">Electrical </option>
+                            <?php
+                            $result = $con->query("SELECT `department_code` FROM `departments` ORDER BY `departments`.`department_code` ASC");
+                            while ($row = $result->fetch_assoc()) {
+                              unset($dno);
+                              $dno = $row['department_code'];
+                              echo '<option value=" '.$dno.'"  >'.$dno.'</option>';
+                          }
+                            ?>
                           </select>
                           </div>
                         </div>
@@ -77,9 +80,14 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
   
                         <select class="custom-select" id="inputGroupSelect01"id="validationCustom04" required>
                             <option selected disabled value="">Choose Academicyear</option>
-                            <option value="1">2017/2018</option>
-                            <option value="1">2018/2019</option>
-                            <option value="2">2019/2020</option>
+                            <?php
+                            $result = $con->query("SELECT `academic_year` FROM `academic_year` ORDER BY `academic_year`.`academic_year` ASC");
+                            while ($row = $result->fetch_assoc()) {
+                              unset($year);
+                              $year = $row['academic_year'];
+                              echo '<option value=" '.$year.'"  >'.$year.'</option>';
+                          }
+                            ?>
                           </select>
                           </div>
                         </div>
