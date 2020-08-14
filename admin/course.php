@@ -19,7 +19,69 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
             <!-- 1st row start -->
 
          <div class="container"> 
-         <form action="" method="POST"> 
+         
+
+        <!-- insert -->
+
+        <?php
+        $code = null;
+        $name = null;
+        $Duration_Of_Course = null;
+        $Duration_Of_OJT = null;
+        $NVQ_Level = null;
+        $Department = null;
+
+
+        if(isset($_POST['submit'])
+        && !empty($_POST['code'])
+        && !empty($_POST['name'])
+        && !empty($_POST['Duration_Of_Course'])
+        && !empty($_POST['Duration_Of_OJT'])
+        && !empty($_POST['NVQ_Level'])
+        && !empty($_POST['Department'])
+        ){
+            
+            $code = $_POST['code'];  
+            $name = $_POST['name'];
+            $Duration_Of_Course =$_POST['Duration_Of_Course'];
+            $Duration_Of_OJT  =$_POST['Duration_Of_OJT'];
+            $NVQ_Level=$_POST['NVQ_Level'];
+            $Department   =$_POST['Department'];
+            
+            $sql = "INSERT INTO `courses` (`code`, `name`, `Duration_Of_Course`, `Duration_Of_OJT`, `NVQ_Level`, `Department`)
+            VALUES 
+            ('$code', 
+            '$name', 
+            $Duration_Of_Course,
+            $Duration_Of_OJT,
+            '$NVQ_Level',
+            '$Department '
+            )
+            ";
+
+        if (mysqli_query($con, $sql)) {
+            echo "
+            <div class='alert alert-success' role='alert'>
+            insert success fully 
+            <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+                <span aria-hidden='true'>&times;</span>
+            </button>
+        </div>";
+        } else {
+            echo "
+            <div class='alert alert-danger' role='alert'>
+            This academic_year alredy submit 
+            <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+                <span aria-hidden='true'>&times;</span>
+            </button>
+        </div>";
+        }
+
+        }
+?>
+
+
+        <!-- insert -->
          <br>
             <div class="card  mb-3" >
                 <div class="card-header ">
@@ -65,7 +127,7 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                      Duration Of Course  <br>
                      <div class="form-group">
                      <div class="input-group input-group-sm mb-3">
-                        <input type="text" name="duration of course" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm"id="validationServer01" required>
+                        <input type="text" name="Duration_Of_Course" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm"id="validationServer01" required>
                         </div>
                          </div>
                      </div>
@@ -75,7 +137,7 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                      <div class="form-group">
                      Duration Of OJT  <br>
                      <div class="input-group input-group-sm mb-3">
-                        <input type="text" name="Duration Of OJT"  class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm"id="validationServer01" required>
+                        <input type="text" name="Duration_Of_OJT"  class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm"id="validationServer01" required>
                         </div>
                          </div>
                      </div>
@@ -93,11 +155,11 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
   
                         <select name="NVQ_Level"class="custom-select" id="inputGroupSelect01"id="validationCustom04" required>
                         <option selected disabled value="">Choose NVQ Level </option>
-                            <option value="1">NVQ-04</option>
-                            <option value="1">NVQ-05 Bridging</option>
-                            <option value="1">NVQ-05</option>
-                            <option value="1">NVQ-06</option>
-                            <option value="1">NVQ-07</option>
+                            <option value="NVQ-04">NVQ-04</option>
+                            <option value="NVQ-05 Bridging">NVQ-05 Bridging</option>
+                            <option value="NVQ-05">NVQ-05</option>
+                            <option value="NVQ-06">NVQ-06</option>
+                            <option value="NVQ-07">NVQ-07</option>
                             
                         </select>
                         </div>
@@ -110,11 +172,11 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                      Department  <br>
                      <div class="input-group input-group-sm mb-3">
   
-                        <select name=" Department" class="custom-select" id="inputGroupSelect01"id="validationCustom04" required>
+                        <select name="Department" class="custom-select" id="inputGroupSelect01"id="validationCustom04" required>
                         <option selected disabled value="">Choose  Department  </option>
-                            <option value="1">ICT</option>
-                            <option value="2">AUT</option>
-                            <option value="3">CON</option>
+                            <option value="ICT">ICT</option>
+                            <option value="AUT">AUT</option>
+                            <option value="CON">CON</option>
                         </select>
                         </div>
                          </div>
@@ -144,64 +206,13 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                      
                      
                      </div>
+
+
+
+
 </form>
-<!-- insert  -->
-<?php
-$code = null;
-$name = null;
-$Duration_Of_Course = null;
-$Duration_Of_OJT = null;
-$NVQ_Level = null;
-$Department = null
 
-if (
-    isset($_POST['submit'])  
-    && !empty($_POST['code'])
-    && !empty($_POST['name'])
-    && !empty($_POST['Duration_Of_Course'])
-    && !empty($_POST['Duration_Of_OJT'])
-    && !empty($_POST['NVQ_Level'])
-    && !empty($_POST['Department '])
-){
-    $code = $_POST['code'];  
-    $name = $_POST['name'];
-    $Duration_Of_Course =$_POST['Duration_Of_Course'];
-    $Duration_Of_OJT  =$_POST['Duration_Of_OJT '];
-    $NVQ_Level=$_POST['NVQ_Level'];
-    $Department   =$_POST['Department'];
 
-    $sql = "INSERT INTO departments (department_code,department_name,Duration_Of_Course,Duration_Of_OJT,NVQ_Level,Department)
-    VALUES 
-    ('$code', 
-    '$name' 
-    '$Duration_Of_Course'
-    $Duration_Of_OJT'
-    '$NVQ_Level'
-    $Department '
-
-    )
-    ";
-
-   if (mysqli_query($con, $sql)) {
-    echo "
-    <div class='alert alert-success' role='alert'>
-    insert success fully 
-    <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
-        <span aria-hidden='true'>&times;</span>
-     </button>
-   </div>";
-   } else {
-    echo "
-    <div class='alert alert-danger' role='alert'>
-    This academic_year alredy submit 
-    <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
-        <span aria-hidden='true'>&times;</span>
-     </button>
-   </div>";
-   }
-}
-
-?>
                     
 
 
