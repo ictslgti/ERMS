@@ -99,7 +99,7 @@ $description = "Online Examination Result Management System (ERMS)-SLGTI";
 
                                     <div style='text-align:center; margin:0 auto; padding:0px;'>
                                         <img style='width:230px;height: 260px;border: 1px solid black;' id="simg">
-                                        <input type="file" accept="image/*" onchange="preview_image(event)"><br>
+                                        <!-- <input type="file" accept="image/*" onchange="preview_image(event)"><br> -->
                                     </div>
 
                                 </div>
