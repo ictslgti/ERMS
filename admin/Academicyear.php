@@ -158,7 +158,11 @@ if(
                 <div class="card-body ">
                     <div class="card  mb-3">
                         <div class="card-body ">
-                            <form method="POST" action="Academicyear.php">
+                            <form action="Academicyear.php" method="POST">
+                            <?php
+                            if(isset($_GET['edit']))
+                            {
+                            ?>
 
                                 <div class="row">
                                     <div class="col-sm">
@@ -281,12 +285,146 @@ if(
 
 
                     </div>
+                    <?php
+                            }
+
+
+                            else
+
+                            {
+
+                            ?>
+                           <div class="row">
+                                    <div class="col-sm">
+                                        Academicyear <br>
+                                        <div class="form-group">
+                                            <div class="input-group input-group-sm mb-3">
+                                                <input type="text"  name="academicyear" placeholder="2019/2020" class="form-control" 
+                                                    aria-label="Sizing example input"
+                                                    aria-describedby="inputGroup-sizing-sm" id="validationServer01"
+                                                    required>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="col-sm">
+                                        <div class="form-group">
+                                            Year Status <br>
+                                            <div class="input-group input-group-sm mb-3">
+
+                                                <select class="custom-select" name="status" id="inputGroupSelect01"
+                                                    id="validationCustom04" required>
+                                                    <?php 
+                                                    if(isset($_GET['edit']))
+                                                    {
+                                                     ?>   
+                                                        
+                                                        <option disabled value="">Choose Year Status </option>
+                                                        <option value="Active">Active</option>
+                                                        <option value="Completed">Completed</option>
+                                                        <option value="plan">plan</option>
+                                                     <?php   
+                                                    }
+
+                                                    else
+                                                    {
+                                                        echo '
+                                                        <option disabled selected value="">Choose Year Status </option>
+                                                        <option value="Active">Active</option>
+                                                        <option value="Completed">Completed</option>
+                                                        <option value="plan">plan</option>
+                                                        ';
+                                                    }
+                                                    ?>
+                                                    
+                                                    
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <br>
+                                </div>
+                                <!-- 2 row end -->
+
+
+                                <div class="row">
+                                    <div class="col-sm">
+                                        Semester1 Start Date <br>
+                                        <div class="form-group">
+                                            <div class="input-group input-group-sm mb-3">
+                                                <input type="date" name="semi1start" class="form-control" 
+                                                    aria-label="Sizing example input"
+                                                    aria-describedby="inputGroup-sizing-sm" id="validationServer01"
+                                                    required>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="col-sm">
+                                        <div class="form-group">
+                                            Semester1 End Date <br>
+                                            <div class="input-group input-group-sm mb-3">
+                                                <input type="date" name="semi1end" class="form-control" 
+                                                    aria-label="Sizing example input"
+                                                    aria-describedby="inputGroup-sizing-sm" id="validationServer01"
+                                                    required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <br>
+
+                                </div>
+                                <!-- 3 row end -->
+
+
+                                <div class="row">
+                                    <div class="col-sm">
+                                        Semester2 Start Date <br>
+                                        <div class="form-group">
+                                            <div class="input-group input-group-sm mb-3">
+                                                <input type="date" name="semi2start" class="form-control" 
+                                                    aria-label="Sizing example input"
+                                                    aria-describedby="inputGroup-sizing-sm" id="validationServer01"
+                                                    required>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="col-sm">
+                                        <div class="form-group">
+                                            Semester2 End Date <br>
+                                            <div class="input-group input-group-sm mb-3">
+                                                <input type="date" name="semi2end" class="form-control" 
+                                                    aria-label="Sizing example input"
+                                                    aria-describedby="inputGroup-sizing-sm" id="validationServer01"
+                                                    required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <br>
+
+                                </div>
+
+
+
+
+                        </div>
+
+
+                    </div>
+
+                            <?php
+                            }
+                            ?>
 
 <?php
 
 if(isset($_GET['edit']))
 {
-    echo '
+    ?>
     <div class="card-footer ">
     <div class="row">
         <div class="col-11 "></div>
@@ -298,16 +436,16 @@ if(isset($_GET['edit']))
         </div>
     </div>
 </div>
-    ';
+    <?php
 }
 
 else{
-    echo '
+    ?>
     <div class="card-footer ">
     <div class="row">
         <div class="col-10 "></div>
         <div class="col-2">
-        <a href="Academicyear.php">Reset</a>
+           <a href="Academicyear.php" class="btn btn-outline-info">Reset</a>
             <button type="submit" name="submit" class="btn btn-outline-success" data-toggle="modal"
                 data-target="#exampleModal">
                 Add
@@ -315,7 +453,7 @@ else{
         </div>
     </div>
 </div>
-    ';
+    <?php
 }
 
 ?>
