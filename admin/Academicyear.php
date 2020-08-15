@@ -24,10 +24,59 @@ include_once('../config.php');
 
         <div class="container">
 
+<!-- update -->
+<?php
+
+if(
+    isset($_POST['save'])  
+    && !empty($_POST['academicyear'])
+    && !empty($_POST['status'])
+    && !empty($_POST['semi1start'])
+    && !empty($_POST['semi1end'])
+    && !empty($_POST['semi2start'])
+    && !empty($_POST['semi2end'])
+    
+){
+    
+    $year = $_POST['academicyear'];
+    $status=$_POST['status'];
+    $semi1start = $_POST['semi1start'];
+    $semi1end = $_POST['semi1end'];
+    $semi2start = $_POST['semi2start'];
+    $semi2end = $_POST['semi2end'];
+
+    $sql = "UPDATE `academic_year` SET `academic_year_status` = '$status' WHERE `academic_year`.`academic_year` = '$year';";
+
+   if (mysqli_query($con, $sql)) {
+       echo "
+       <div class='alert alert-success' role='alert'>
+       update success fully 
+       <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+           <span aria-hidden='true'>&times;</span>
+        </button>
+      </div>";
+   } else {
+       
+       echo "
+       <div class='alert alert-danger' role='alert'>
+       This academic_year alredy submit 
+       <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+           <span aria-hidden='true'>&times;</span>
+        </button>
+      </div>";
+   }
+}   
+?>
+<!-- update -->
+
+
+
+
         <!-- insert stat -->
         <?php
 
 $year=$status=$semi1start=$semi1end=$semi2start=$semi2end=null;
+
 if(isset($_GET['edit'])){
     $id = $_GET['edit'];
     
@@ -45,11 +94,6 @@ if(isset($_GET['edit'])){
 
     }
 }
-
-
-
-
-
 
 
 if(
@@ -114,7 +158,7 @@ if(
                 <div class="card-body ">
                     <div class="card  mb-3">
                         <div class="card-body ">
-                            <form method="POST" action="">
+                            <form method="POST" action="Academicyear.php">
 
                                 <div class="row">
                                     <div class="col-sm">
@@ -140,46 +184,24 @@ if(
                                                     <?php 
                                                     if(isset($_GET['edit']))
                                                     {
-                                                        
-                                                    
-                                                    if($status="Active")
-                                                    {
-                                                        echo '
+                                                     ?>   
+                                                        <option selected value="<?php echo $status;?>"><?php echo $status;?></option>
                                                         <option disabled value="">Choose Year Status </option>
-                                                        <option selected value="Active">Active</option>
+                                                        <option value="Active">Active</option>
                                                         <option value="Completed">Completed</option>
                                                         <option value="plan">plan</option>
-                                                        ';
+                                                     <?php   
                                                     }
 
-                                                    if($status="Completed")
+                                                    else
                                                     {
                                                         echo '
-                                                        <option disabled value="">Choose Year Status </option>
-                                                        <option value="Active">Active</option>
-                                                        <option selected value="Completed">Completed</option>
-                                                        <option value="plan">plan</option>
-                                                        ';
-                                                    }
-
-                                                    if($status="plan")
-                                                    {
-                                                        echo '
-                                                        <option disabled value="">Choose Year Status </option>
-                                                        <option value="Active">Active</option>
-                                                        <option value="Completed">Completed</option>
-                                                        <option selected value="plan">plan</option>
-                                                        ';
-                                                    }
-                                                }
-                                                else {
-                                                    echo '
-                                                        <option selected disabled value="">Choose Year Status </option>
+                                                        <option disabled selected value="">Choose Year Status </option>
                                                         <option value="Active">Active</option>
                                                         <option value="Completed">Completed</option>
                                                         <option value="plan">plan</option>
                                                         ';
-                                                }
+                                                    }
                                                     ?>
                                                     
                                                     
@@ -261,6 +283,7 @@ if(
                     </div>
 
 <?php
+
 if(isset($_GET['edit']))
 {
     echo '
@@ -282,8 +305,9 @@ else{
     echo '
     <div class="card-footer ">
     <div class="row">
-        <div class="col-11 "></div>
-        <div class="col-1">
+        <div class="col-10 "></div>
+        <div class="col-2">
+        <a href="Academicyear.php">Reset</a>
             <button type="submit" name="submit" class="btn btn-outline-success" data-toggle="modal"
                 data-target="#exampleModal">
                 Add
@@ -295,55 +319,6 @@ else{
 }
 
 ?>
-
-
-
-<?php
-
-if(
-    isset($_POST['save'])  
-    && !empty($_POST['academicyear'])
-    && !empty($_POST['status'])
-    && !empty($_POST['semi1start'])
-    && !empty($_POST['semi1end'])
-    && !empty($_POST['semi2start'])
-    && !empty($_POST['semi2end'])
-    
-){
-    
-    $year = $_POST['academicyear'];
-    $status=$_POST['status'];
-    $semi1start = $_POST['semi1start'];
-    $semi1end = $_POST['semi1end'];
-    $semi2start = $_POST['semi2start'];
-    $semi2end = $_POST['semi2end'];
-
-    $sql = "UPDATE `academic_year` SET `academic_year_status` = '$status' WHERE `academic_year`.`academic_year` = '$year';";
-
-   if (mysqli_query($con, $sql)) {
-       echo "
-       <div class='alert alert-success' role='alert'>
-       insert success fully 
-       <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
-           <span aria-hidden='true'>&times;</span>
-        </button>
-      </div>";
-   } else {
-       
-       echo "
-       <div class='alert alert-danger' role='alert'>
-       This academic_year alredy submit 
-       <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
-           <span aria-hidden='true'>&times;</span>
-        </button>
-      </div>";
-   }
-}   
-?>
-                   
-
-
-
 
                 </div>
                 </form>
