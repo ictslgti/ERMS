@@ -24,6 +24,25 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
         <?php include_once("nav.php"); ?>
        <!-- card start -->
 <div class="container">
+<!-- delete -->
+<?php
+if(isset($_GET['delete'])){
+    $id = $_GET['delete'];
+    $sql = "DELETE FROM `batch` WHERE `batch`.`batch_no` = '$id'";
+    if(mysqli_query($con,$sql)){
+        echo "
+       <div class='alert alert-success' role='alert'>
+       delete success fully 
+       <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+           <span aria-hidden='true'>&times;</span>
+        </button>
+      </div>";
+    }else{
+        echo "Error: " . $sql . "<br>" . mysqli_error($con);
+    }
+}
+?>
+<!-- delete -->
 <form action=""method="post">
 <div class="card  mb-3" >
       <div class="card-header bg-transparent ">
