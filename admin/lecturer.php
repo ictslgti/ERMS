@@ -296,9 +296,9 @@ if(isset($_POST['submit'])
   
                         <select class="custom-select" name="department" id="inputGroupSelect01"id="validationCustom04" required>
                         <option selected disabled value="">Choose  Department  </option>
-                            <option value="1">ICT</option>
-                            <option value="2">CON</option>
-                            <option value="2">MEC</option>
+                            <option value="ICT">ICT</option>
+                            <option value="CON">CON</option>
+                            <option value="MEC">MEC</option>
                         </select>
                         </div>
                      </div>
@@ -326,10 +326,10 @@ if(isset($_POST['submit'])
   
                         <select class="custom-select" name="position" id="inputGroupSelect01"id="validationCustom04" required>
                         <option selected disabled value="">Choose  Poisition  </option>
-                            <option value="1">Admin</option>
-                            <option value="2">HOD </option>
-                            <option value="2">Lecturer</option>
-                            <option value="2">Traniee</option>
+                            <option value="Admin">Admin</option>
+                            <option value="HOD">HOD </option>
+                            <option value="Lecturer">Lecturer</option>
+                            <option value="Traniee">Traniee</option>
                         </select>
                         </div>
                      </div>
@@ -349,10 +349,10 @@ if(isset($_POST['submit'])
   
                         <select class="custom-select" name="type" id="inputGroupSelect01"id="validationCustom04" required>
                         <option selected disabled value="">Choose  Type  </option>
-                            <option value="1">Permanend staff</option>
-                            <option value="2">Visiting staff </option>
-                            <option value="2">On contracted staff</option>
-                            <
+                            <option value="Permanend staff">Permanend staff</option>
+                            <option value="Visiting staff">Visiting staff </option>
+                            <option value="On contracted staff">On contracted staff</option>
+                            
                         </select>
                         </div>
                      </div>
@@ -364,9 +364,9 @@ if(isset($_POST['submit'])
   
                         <select class="custom-select" name="status" id="inputGroupSelect01"id="validationCustom04" required>
                         <option selected disabled value="">Choose  status  </option>
-                            <option value="1">Working staff</option>
-                            <option value="2">Derminated </option>
-                            <option value="2">Resigned</option>
+                            <option value="Working staff">Working staff</option>
+                            <option value=">Derminated">Derminated </option>
+                            <option value="Resigned">Resigned</option>
                             
                         </select>
                         </div>
