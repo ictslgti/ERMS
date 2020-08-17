@@ -19,8 +19,8 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
         <div id='overlay' class='overlay'></div>
         <div class='container-fluid p-5'>
             <!-- #1 Insert Your Content-->
-
-<div class="container" style="margin-top:30px">
+            
+<div class="container" style="margin-top:10px">
   <div class="card">
    <div class="card-header">
       <div class="row">
@@ -126,9 +126,6 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
                      </table>
     </div>
    </div>
-  </div>
-</div>
-
 </body>
 </html>
 
