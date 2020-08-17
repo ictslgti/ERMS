@@ -7,6 +7,7 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
 
 <head>
     <?php include_once("./head.php"); ?>
+    <?php include_once("../config.php");?>            
 </head>
 
 <body>
@@ -18,8 +19,82 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
             <!-- 1st row start -->
 
          <div class="container"> 
-             <br>
-         <form action=""> 
+         <!-- insert -->
+
+         <?php
+        $code = null;
+        $Name = null;
+        $Semester_Id = null;
+        $Course_Name = null;
+        $Learning_Hours = null;
+        $Lecture_Hours = null;
+        $Self_Study_Hours = null;
+        $AIM = null;
+        $Learn = null;
+        $Resources = null;
+        $References = null;
+
+        if(isset($_POST['submit'])
+        && !empty($_POST['code'])
+        && !empty($_POST['name'])
+        && !empty($_POST['Semester_Id'])
+        && !empty($_POST['Course_Name'])
+        && !empty($_POST['Learning_Hours'])
+        && !empty($_POST['Lecture_Hours'])
+        && !empty($_POST['Self_Study_Hours'])
+        && !empty($_POST['AIM'])
+        && !empty($_POST['Learn'])
+        && !empty($_POST['Resources'])
+        && !empty($_POST['References'])
+       
+)
+{
+    $code = $_POST['code'];  
+            $Name = $_POST['name'];
+            $Semester_Id =$_POST['Semester_Id'];
+            $Course_Name  =$_POST['Course_Name'];
+            $Learning_Hours=$_POST['Learning_Hours'];
+            $Lecture_Hours=$_POST['Lecture_Hours'];
+            $Self_Study_Hours=$_POST['Self_Study_Hours'];
+            $AIM =$_POST['AIM'];
+            $Learn=$_POST['Learn'];
+            $Resources=$_POST['Resources'];
+            $References=$_POST['References'];
+    
+            $sql = "INSERT INTO `modules` (`code`, `Name`, `Semester_Id`, `Course_Name`, `Learning_Hours`, `Lecture_Hours`, `Self_Study_Hours`, `AIM`, `Learn`, `Resources`, `References`) 
+            VALUES ('$code', '$Name', '$Semester_Id', '$Course_Name', '$Learning_Hours', '$Lecture_Hours', '$Self_Study_Hours', '$AIM', '$Learn', '$Resources', '$References'); "
+           ;
+
+        if (mysqli_query($con, $sql)) {
+            echo "
+            <div class='alert alert-success' role='alert'>
+            insert success fully 
+            <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+                <span aria-hidden='true'>&times;</span>
+            </button>
+        </div>";
+        } else {
+            echo "
+       <div class='alert alert-danger' role='alert'>
+       This module alredy submit 
+       <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+           <span aria-hidden='true'>&times;</span>
+        </button>
+      </div>";
+        }
+
+
+}
+
+       
+
+
+        
+?>
+
+
+
+         
             <div class="card  mb-3" >
                 <div class="card-header ">
                 <div class="row">
@@ -40,7 +115,7 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                      Code  <br>
                      <div class="form-group">
                      <div class="input-group input-group-sm mb-3">
-                        <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm"id="validationServer01" required>
+                        <input type="text" name="code" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm"id="validationServer01" required>
                         </div>
                          </div>
                      </div>
@@ -51,7 +126,7 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                      Name  <br>
                      <div class="form-group">
                      <div class="input-group input-group-sm mb-3">
-                        <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm"id="validationServer01" required>
+                        <input type="text" name="name" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm"id="validationServer01" required>
                         </div>
                          </div>
                      </div>
@@ -64,7 +139,7 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                      <div class="form-group">
                      <div class="input-group input-group-sm mb-3">
   
-                        <select class="custom-select" id="inputGroupSelect01"id="validationCustom04" required>
+                        <select name="Semester_Id" class="custom-select" id="inputGroupSelect01"id="validationCustom04" required>
                         <option selected disabled value="">Choose  Semester Id  </option>
                             <option value="1">Semester 01</option>
                             <option value="2">Semester 02</option>
@@ -81,7 +156,7 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                      <div class="form-group">
                      <div class="input-group input-group-sm mb-3">
   
-                        <select class="custom-select" id="inputGroupSelect01"id="validationCustom04" required>
+                        <select name=" Course_Name"  class="custom-select" id="inputGroupSelect01"id="validationCustom04" required>
                         <option selected disabled value="">Choose  Course </option>
                             <option value="1">ICT</option>
                             <option value="2">AUT</option>
@@ -104,7 +179,7 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                      Learning Hours <br>
                      <div class="form-group">
                      <div class="input-group input-group-sm mb-3">
-                        <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm"id="validationServer01" required>
+                        <input type="number" name="Learning_Hours"   class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm"id="validationServer01" required>
                         </div>
                          </div>
                      </div>
@@ -115,7 +190,7 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                      Lecture Hours  <br>
                      <div class="form-group">
                      <div class="input-group input-group-sm mb-3">
-                        <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm"id="validationServer01" required>
+                        <input type="number" name="Lecture_Hours" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm"id="validationServer01" required>
                         </div>
                          </div>
                      </div>
@@ -134,7 +209,7 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                      Practical Hours <br>
                      <div class="form-group">
                      <div class="input-group input-group-sm mb-3">
-                        <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm"id="validationServer01" required>
+                        <input type="number" name="Practical_Hours" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm"id="validationServer01" required>
                         </div>
                          </div>
                      </div>
@@ -145,7 +220,7 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                      Self Study Hours <br>
                      <div class="form-group">
                      <div class="input-group input-group-sm mb-3">
-                        <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm"id="validationServer01" required>
+                        <input type="number" name="Self_Study_Hours" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm"id="validationServer01" required>
                         </div>
                          </div>
                      </div>
@@ -163,7 +238,7 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                     Module_aim
                      <div class="form-group">
                      <div class="input-group mb-3">
-                         <textarea name="AIM" id="" cols="30" rows="10"></textarea>
+                         <textarea name="AIM"  id="" cols="30" rows="10"></textarea>
                          </div>
                          </div>
                      </div>
@@ -200,7 +275,7 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                 <div class="card-footer "><div class="row">
                      <div class="col-11 "></div>
                      <div class="col-1">
-                     <button type="submit" class="btn btn-outline-success" data-toggle="modal"
+                     <button type="submit" name="submit" class="btn btn-outline-success" data-toggle="modal"
                                 data-target="#exampleModal">
                                 Add
                             </button>
