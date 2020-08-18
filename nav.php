@@ -216,7 +216,7 @@
                             <a href="#">Attendence Update</a>
                         </li>
                         <li>
-                            <a href="#">Attendence Report</a>
+                            <a href=attendance_action.php>Attendence Report</a>
                         </li>
                     </ul>
                 </div>

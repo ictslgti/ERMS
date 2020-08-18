@@ -6,7 +6,8 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
 <html lang="en">
 
 <head>
-    <?php include_once("./head.php"); ?>
+    <?php include_once("../head.php"); ?>
+    <?php include_once("../config.php"); ?>
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto'>
@@ -36,8 +37,6 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
       <div class="row">
       <div class="col">  </div>
       <div class="col-auto"> 
-      
-      <a href="#" class="btn btn-outline-primary">Edit</a> </div>
       </div>
       </div>
       <div class="card-body ">
@@ -48,21 +47,27 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
       <div class="w3-third">
       <div class="w3-white w3-text-grey w3-card-4">
         <div class="w3-display-container">
-          <img src="img/aaa.jpg" style="width:100%" alt="slgti">
-          <div class="p-3 mb-2 bg-info text-white">Thangaraj Achchuthan</div>
+        <?php
+        if(isset($_GET['edit'])){
+            $id = $_GET['edit'];
+          $result = $con->query("SELECT * FROM `lecturer` WHERE id = $id"); 
+        ?>
+        <?php if($result->num_rows > 0){ 
+            while($row = $result->fetch_assoc()){
+
+            ?>
+
+
+          <img src="data:image/jpg;charset=utf8;base64,<?php echo base64_encode($row['image']); ?>" style="width:100%;" /> 
+          <div class="p-3 mb-2 bg-info text-white"><?php echo ($row['first_name']); ?> <?php echo ($row['last_name']); ?></div>
         </div>
         <div class="w3-container">
        
-          <br><p><i class="fa fa-briefcase fa-fw w3-margin-right w3-large w3-text-teal"></i>Head of Department</p>
-          <p><i class="fa fa-home fa-fw w3-margin-right w3-large w3-text-teal"></i>Nelliyady ,Ealuthumattum vaal</p>
-          <p><i class="fa fa-envelope fa-fw w3-margin-right w3-large w3-text-teal"></i>Acchu@mail.com</p>
-          <p><i class="fa fa-phone fa-fw w3-margin-right w3-large w3-text-teal"></i>07720201500</p>
+          <br><p><i class="fa fa-briefcase fa-fw w3-margin-right w3-large w3-text-teal"></i><?php echo ($row['position']); ?></p>
+          <p><i class="fa fa-home fa-fw w3-margin-right w3-large w3-text-teal"></i><?php echo ($row['Address']); ?></p>
+          <p><i class="fa fa-envelope fa-fw w3-margin-right w3-large w3-text-teal"></i><?php echo ($row['email']); ?></p>
+          <p><i class="fa fa-phone fa-fw w3-margin-right w3-large w3-text-teal"></i><?php echo ($row['telephone']); ?></p>
           <hr>
-
-          
-          
-
-          
           <br>
         </div>
       </div><br>
@@ -81,7 +86,7 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
                                 <label>Staff_ID</label>
                             </div>
                             <div class="col">
-                                <p>L001</p>
+                                <p><?php echo ($row['id']); ?></p>
                             </div>
                         </div>
                         <div class="row w3-text-grey w3-padding-10">
@@ -89,7 +94,7 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
                                 <label>Staff_Name</label>
                             </div>
                             <div class="col">
-                                <p>Thangaraj Achchuthan</p>
+                                <p><?php echo ($row['first_name']); ?> <?php echo ($row['last_name']); ?></p>
                             </div>
                         </div>
 
@@ -98,7 +103,7 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
                                 <label>Department</label>
                             </div>
                             <div class="col">
-                                <p>Information communication technology</p>
+                                <p><?php echo ($row['department_code']); ?></p>
                             </div>
                         </div>
                         <div class="row w3-text-grey w3-padding-10">
@@ -106,7 +111,7 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
                                 <label>Address</label>
                             </div>
                             <div class="col">
-                                <p>Ealuthumattum Vaal</p>
+                                <p><?php echo ($row['Address']); ?></p>
                             </div>
                         </div>
 
@@ -115,7 +120,7 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
                                 <label>Date_of_birth</label>
                             </div>
                             <div class="col">
-                                <p>1990.03.13</p>
+                                <p><?php echo ($row['dob']); ?></p>
                             </div>
                         </div>
                         <div class="row w3-text-grey w3-padding-10">
@@ -123,7 +128,7 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
                                 <label>NIC</label>
                             </div>
                             <div class="col">
-                                <p>900726598V</p>
+                                <p><?php echo ($row['nic']); ?></p>
                             </div>
                         </div>
 
@@ -133,7 +138,7 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
                                 <label>Email</label>
                             </div>
                             <div class="col">
-                                <p>Achchuthan@slgti.com</p>
+                                <p><?php echo ($row['email']); ?></p>
                             </div>
                         </div>
                     </div>
@@ -145,7 +150,7 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
                                 <label>phone no</label>
                             </div>
                             <div class="col">
-                                <p>07720201500</p>
+                                <p><?php echo ($row['telephone']); ?></p>
                             </div>
                         </div>
 
@@ -154,7 +159,7 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
                                 <label>Date_of_Join</label>
                             </div>
                             <div class="col">
-                                <p>2015.10.25</p>
+                                <p><?php echo ($row['date_of_join']); ?></p>
                             </div>
                         </div>
 
@@ -163,7 +168,7 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
                                 <label>Gender</label>
                             </div>
                             <div class="col">
-                                <p>Male</p>
+                                <p><?php echo ($row['gender']); ?></p>
                             </div>
                         </div>
 
@@ -172,7 +177,7 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
                                 <label>EPF NO</label>
                             </div>
                             <div class="col">
-                                <p>04545</p>
+                                <p><?php echo ($row['epf_no']); ?>5</p>
                             </div>
                         </div>
 
@@ -181,7 +186,7 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
                                 <label>Position</label>
                             </div>
                             <div class="col">
-                                <p>HOD</p>
+                                <p><?php echo ($row['position']); ?></p>
                             </div>
                         </div>
 
@@ -190,7 +195,7 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
                                 <label>Type</label>
                             </div>
                             <div class="col">
-                                <p>Temporary staff</p>
+                                <p><?php echo ($row['type']); ?></p>
                             </div>
                         </div>
 
@@ -199,13 +204,17 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
                                 <label>Status</label>
                             </div>
                             <div class="col">
-                                <p>working staff</p>
+                                <p><?php echo ($row['status']); ?></p>
                             </div>
                         </div>
         
       </div>
 
-      
+      <?php
+            }
+        }
+    }
+      ?>
 
     
     </div>
