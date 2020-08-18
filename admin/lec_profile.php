@@ -6,7 +6,8 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
 <html lang="en">
 
 <head>
-    <?php include_once("./head.php"); ?>
+    <?php include_once("../head.php"); ?>
+    <?php include_once("../config.php"); ?>
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto'>
@@ -36,8 +37,6 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
       <div class="row">
       <div class="col">  </div>
       <div class="col-auto"> 
-      
-      <a href="#" class="btn btn-outline-primary">Edit</a> </div>
       </div>
       </div>
       <div class="card-body ">
@@ -48,21 +47,25 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
       <div class="w3-third">
       <div class="w3-white w3-text-grey w3-card-4">
         <div class="w3-display-container">
-          <img src="img/aaa.jpg" style="width:100%" alt="slgti">
-          <div class="p-3 mb-2 bg-info text-white">Thangaraj Achchuthan</div>
+        <?php
+          $result = $con->query("SELECT * FROM lecturer "); 
+        ?>
+        <?php if($result->num_rows > 0){ 
+            while($row = $result->fetch_assoc()){
+
+            ?>
+
+
+          <img src="data:image/jpg;charset=utf8;base64,<?php echo base64_encode($row['image']); ?>" style="width:100%;" /> 
+          <div class="p-3 mb-2 bg-info text-white"><?php echo ($row['first_name']); ?> <?php echo ($row['last_name']); ?></div>
         </div>
         <div class="w3-container">
        
-          <br><p><i class="fa fa-briefcase fa-fw w3-margin-right w3-large w3-text-teal"></i>Head of Department</p>
-          <p><i class="fa fa-home fa-fw w3-margin-right w3-large w3-text-teal"></i>Nelliyady ,Ealuthumattum vaal</p>
-          <p><i class="fa fa-envelope fa-fw w3-margin-right w3-large w3-text-teal"></i>Acchu@mail.com</p>
+          <br><p><i class="fa fa-briefcase fa-fw w3-margin-right w3-large w3-text-teal"></i><?php echo ($row['position']); ?></p>
+          <p><i class="fa fa-home fa-fw w3-margin-right w3-large w3-text-teal"></i><?php echo ($row['address']); ?></p>
+          <p><i class="fa fa-envelope fa-fw w3-margin-right w3-large w3-text-teal"></i><?php echo ($row['email']); ?></p>
           <p><i class="fa fa-phone fa-fw w3-margin-right w3-large w3-text-teal"></i>07720201500</p>
           <hr>
-
-          
-          
-
-          
           <br>
         </div>
       </div><br>
@@ -205,7 +208,10 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
         
       </div>
 
-      
+      <?php
+            }
+        }
+      ?>
 
     
     </div>
