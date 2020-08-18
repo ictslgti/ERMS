@@ -18,6 +18,7 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
         <div id='overlay' class='overlay'></div>
         <div class='container-fluid p-5'>
             <!-- #1 Insert Your Content-->
+            <div class='container'>
             <div class='row'>
                 <div class="col">
                     <div class="card">
@@ -127,7 +128,10 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
                         </div>
                     </div> -->
 
-                    <!-- button-->
+                   
+
+                            </h1>
+                             <!-- button-->
                     <div class='row '>
                         <div class='col-md'>
                             <h3 class='text-primary'></h3>
@@ -139,12 +143,11 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
                             <button type='submit' name='search' class='btn btn-primary btn btn-sm '>SEARCH</button>
                         </div>
                     </div>
-
-                            </h1><!-- #1 Insert Your Content-->
                         </div>
                     </div>
                 </div>
             </div> <!-- #1 Insert Your Content" -->
+        </div>
         </div>
     </main>
 
