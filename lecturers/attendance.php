@@ -35,8 +35,18 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
         <div class="col-md-9">Attendance List</div>
         <div class="col-md-3" align="right">
           <button type="button" id="chart_button" class="btn btn-primary btn-sm">Chart</button>
-          <button type="button" id="report_button" class="btn btn-danger btn-sm">Report</button>
-        </div>
+          <button type="button" id="report_button" class="btn btn-danger btn-sm">Print</button>
+          </div>
+          <div class="dropdown">
+  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Attendance Review
+  </button>
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+    <a class="dropdown-item" href="#">Month-wise</a>
+    <a class="dropdown-item" href="#">semester-wise</a>
+  </div>
+</div>
+        
       </div>
     </div>
    <div class="card-body">
