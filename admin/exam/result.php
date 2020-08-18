@@ -48,7 +48,7 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
 
                             <label for='exampleInputEmail1'>Exams type</label>
                                 </div>
-                                <select class='custom-select' id='inputGroupSelect01' id='validationServer01' required>
+                                <select class='custom-select' id='inputGroupSelect01' id='validationServer0' required>
                                     <option value=''>Select Exams</option>
                                     <option value='1'>INSTITUTE</option>
                                     <option value='2'>TVEC</option>
@@ -58,9 +58,9 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
                         <div class='col-md'>
                             <div class='input-group-sm mb-3'>
                                 <div class='input-group-prepend'>
-                                    <label for='exampleInputEmail1'>Department</label>
+                                    <label for='exampleInput'>Department</label>
                                 </div>
-                                <select class='custom-select' id='inputGroupSelect01'>
+                                 <select class='custom-select' id='inputGroupSelect01' id='validationServer02' required>
                                     <option value=''>Select Department</option>
                                     <option value='1'>Information Communication Technology</option>
                                     <option value='2'>Automotive & Technology</option>
