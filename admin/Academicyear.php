@@ -24,10 +24,59 @@ include_once('../config.php');
 
         <div class="container">
 
+<!-- update -->
+<?php
+
+if(
+    isset($_POST['save'])  
+    && !empty($_POST['academicyear'])
+    && !empty($_POST['status'])
+    && !empty($_POST['semi1start'])
+    && !empty($_POST['semi1end'])
+    && !empty($_POST['semi2start'])
+    && !empty($_POST['semi2end'])
+    
+){
+    
+    $year = $_POST['academicyear'];
+    $status=$_POST['status'];
+    $semi1start = $_POST['semi1start'];
+    $semi1end = $_POST['semi1end'];
+    $semi2start = $_POST['semi2start'];
+    $semi2end = $_POST['semi2end'];
+
+    $sql = "UPDATE `academic_year` SET `academic_year_status` = '$status' WHERE `academic_year`.`academic_year` = '$year';";
+
+   if (mysqli_query($con, $sql)) {
+       echo "
+       <div class='alert alert-success' role='alert'>
+       update success fully 
+       <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+           <span aria-hidden='true'>&times;</span>
+        </button>
+      </div>";
+   } else {
+       
+       echo "
+       <div class='alert alert-danger' role='alert'>
+       This academic_year alredy submit 
+       <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+           <span aria-hidden='true'>&times;</span>
+        </button>
+      </div>";
+   }
+}   
+?>
+<!-- update -->
+
+
+
+
         <!-- insert stat -->
         <?php
 
 $year=$status=$semi1start=$semi1end=$semi2start=$semi2end=null;
+
 if(isset($_GET['edit'])){
     $id = $_GET['edit'];
     
@@ -45,11 +94,6 @@ if(isset($_GET['edit'])){
 
     }
 }
-
-
-
-
-
 
 
 if(
@@ -114,7 +158,11 @@ if(
                 <div class="card-body ">
                     <div class="card  mb-3">
                         <div class="card-body ">
-                            <form method="POST" action="">
+                            <form action="Academicyear.php" method="POST">
+                            <?php
+                            if(isset($_GET['edit']))
+                            {
+                            ?>
 
                                 <div class="row">
                                     <div class="col-sm">
@@ -140,46 +188,24 @@ if(
                                                     <?php 
                                                     if(isset($_GET['edit']))
                                                     {
-                                                        
-                                                    
-                                                    if($status="Active")
-                                                    {
-                                                        echo '
+                                                     ?>   
+                                                        <option selected value="<?php echo $status;?>"><?php echo $status;?></option>
                                                         <option disabled value="">Choose Year Status </option>
-                                                        <option selected value="Active">Active</option>
+                                                        <option value="Active">Active</option>
                                                         <option value="Completed">Completed</option>
                                                         <option value="plan">plan</option>
-                                                        ';
+                                                     <?php   
                                                     }
 
-                                                    if($status="Completed")
+                                                    else
                                                     {
                                                         echo '
-                                                        <option disabled value="">Choose Year Status </option>
-                                                        <option value="Active">Active</option>
-                                                        <option selected value="Completed">Completed</option>
-                                                        <option value="plan">plan</option>
-                                                        ';
-                                                    }
-
-                                                    if($status="plan")
-                                                    {
-                                                        echo '
-                                                        <option disabled value="">Choose Year Status </option>
-                                                        <option value="Active">Active</option>
-                                                        <option value="Completed">Completed</option>
-                                                        <option selected value="plan">plan</option>
-                                                        ';
-                                                    }
-                                                }
-                                                else {
-                                                    echo '
-                                                        <option selected disabled value="">Choose Year Status </option>
+                                                        <option disabled selected value="">Choose Year Status </option>
                                                         <option value="Active">Active</option>
                                                         <option value="Completed">Completed</option>
                                                         <option value="plan">plan</option>
                                                         ';
-                                                }
+                                                    }
                                                     ?>
                                                     
                                                     
@@ -259,11 +285,146 @@ if(
 
 
                     </div>
+                    <?php
+                            }
+
+
+                            else
+
+                            {
+
+                            ?>
+                           <div class="row">
+                                    <div class="col-sm">
+                                        Academicyear <br>
+                                        <div class="form-group">
+                                            <div class="input-group input-group-sm mb-3">
+                                                <input type="text"  name="academicyear" placeholder="2019/2020" class="form-control" 
+                                                    aria-label="Sizing example input"
+                                                    aria-describedby="inputGroup-sizing-sm" id="validationServer01"
+                                                    required>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="col-sm">
+                                        <div class="form-group">
+                                            Year Status <br>
+                                            <div class="input-group input-group-sm mb-3">
+
+                                                <select class="custom-select" name="status" id="inputGroupSelect01"
+                                                    id="validationCustom04" required>
+                                                    <?php 
+                                                    if(isset($_GET['edit']))
+                                                    {
+                                                     ?>   
+                                                        
+                                                        <option disabled value="">Choose Year Status </option>
+                                                        <option value="Active">Active</option>
+                                                        <option value="Completed">Completed</option>
+                                                        <option value="plan">plan</option>
+                                                     <?php   
+                                                    }
+
+                                                    else
+                                                    {
+                                                        echo '
+                                                        <option disabled selected value="">Choose Year Status </option>
+                                                        <option value="Active">Active</option>
+                                                        <option value="Completed">Completed</option>
+                                                        <option value="plan">plan</option>
+                                                        ';
+                                                    }
+                                                    ?>
+                                                    
+                                                    
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <br>
+                                </div>
+                                <!-- 2 row end -->
+
+
+                                <div class="row">
+                                    <div class="col-sm">
+                                        Semester1 Start Date <br>
+                                        <div class="form-group">
+                                            <div class="input-group input-group-sm mb-3">
+                                                <input type="date" name="semi1start" class="form-control" 
+                                                    aria-label="Sizing example input"
+                                                    aria-describedby="inputGroup-sizing-sm" id="validationServer01"
+                                                    required>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="col-sm">
+                                        <div class="form-group">
+                                            Semester1 End Date <br>
+                                            <div class="input-group input-group-sm mb-3">
+                                                <input type="date" name="semi1end" class="form-control" 
+                                                    aria-label="Sizing example input"
+                                                    aria-describedby="inputGroup-sizing-sm" id="validationServer01"
+                                                    required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <br>
+
+                                </div>
+                                <!-- 3 row end -->
+
+
+                                <div class="row">
+                                    <div class="col-sm">
+                                        Semester2 Start Date <br>
+                                        <div class="form-group">
+                                            <div class="input-group input-group-sm mb-3">
+                                                <input type="date" name="semi2start" class="form-control" 
+                                                    aria-label="Sizing example input"
+                                                    aria-describedby="inputGroup-sizing-sm" id="validationServer01"
+                                                    required>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="col-sm">
+                                        <div class="form-group">
+                                            Semester2 End Date <br>
+                                            <div class="input-group input-group-sm mb-3">
+                                                <input type="date" name="semi2end" class="form-control" 
+                                                    aria-label="Sizing example input"
+                                                    aria-describedby="inputGroup-sizing-sm" id="validationServer01"
+                                                    required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <br>
+
+                                </div>
+
+
+
+
+                        </div>
+
+
+                    </div>
+
+                            <?php
+                            }
+                            ?>
 
 <?php
+
 if(isset($_GET['edit']))
 {
-    echo '
+    ?>
     <div class="card-footer ">
     <div class="row">
         <div class="col-11 "></div>
@@ -275,15 +436,16 @@ if(isset($_GET['edit']))
         </div>
     </div>
 </div>
-    ';
+    <?php
 }
 
 else{
-    echo '
+    ?>
     <div class="card-footer ">
     <div class="row">
-        <div class="col-11 "></div>
-        <div class="col-1">
+        <div class="col-10 "></div>
+        <div class="col-2">
+           <a href="Academicyear.php" class="btn btn-outline-info">Reset</a>
             <button type="submit" name="submit" class="btn btn-outline-success" data-toggle="modal"
                 data-target="#exampleModal">
                 Add
@@ -291,59 +453,10 @@ else{
         </div>
     </div>
 </div>
-    ';
+    <?php
 }
 
 ?>
-
-
-
-<?php
-
-if(
-    isset($_POST['save'])  
-    && !empty($_POST['academicyear'])
-    && !empty($_POST['status'])
-    && !empty($_POST['semi1start'])
-    && !empty($_POST['semi1end'])
-    && !empty($_POST['semi2start'])
-    && !empty($_POST['semi2end'])
-    
-){
-    
-    $year = $_POST['academicyear'];
-    $status=$_POST['status'];
-    $semi1start = $_POST['semi1start'];
-    $semi1end = $_POST['semi1end'];
-    $semi2start = $_POST['semi2start'];
-    $semi2end = $_POST['semi2end'];
-
-    $sql = "UPDATE `academic_year` SET `academic_year_status` = '$status' WHERE `academic_year`.`academic_year` = '$year';";
-
-   if (mysqli_query($con, $sql)) {
-       echo "
-       <div class='alert alert-success' role='alert'>
-       insert success fully 
-       <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
-           <span aria-hidden='true'>&times;</span>
-        </button>
-      </div>";
-   } else {
-       
-       echo "
-       <div class='alert alert-danger' role='alert'>
-       This academic_year alredy submit 
-       <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
-           <span aria-hidden='true'>&times;</span>
-        </button>
-      </div>";
-   }
-}   
-?>
-                   
-
-
-
 
                 </div>
                 </form>

@@ -6,7 +6,8 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
 <html lang="en">
 
 <head>
-    <?php include_once("./head.php"); ?>
+    <?php include_once("../head.php"); ?>
+    <?php include_once("../config.php"); ?>
     <script type='text/javascript'>
         function preview_image(event) {
             var reader = new FileReader();
@@ -42,8 +43,97 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
             <!-- 1st row start -->
 
          <div class="container"> 
+
+
+<!-- insert -->
+<?php
+$first=null;
+$last=null;
+$dob=null;
+$nic=null;
+$phoneno=null;
+$email=null;
+$gender=null;
+$epf=null;
+$address=null;
+$department=null;
+$join=null;
+$position=null;
+$type=null;
+$status=null;
+$image=null;
+if(isset($_POST['submit'])
+&& !empty($_POST['first'])
+&& !empty($_POST['last'])
+)
+{
+    
+    $first = $_POST['first']; 
+    $last = $_POST['last']; 
+    $dob = $_POST['dob'];
+    $nic = $_POST['nic'];  
+    $phoneno=$_POST['phoneno'];
+    $email = $_POST['email']; 
+    $gender = $_POST['gender']; 
+    $epf = $_POST['epf']; 
+    $address = $_POST['address']; 
+    $department = $_POST['department'];
+    $join = $_POST['join']; 
+    $position = $_POST['position'];
+    $type = $_POST['type'];  
+    $status = $_POST['status']; 
+    $sta = $statusMsg = ''; 
+    $sta = 'error'; 
+
+
+   
+    if(!empty($_FILES["image"]["name"])) { 
+        // Get file info 
+        $fileName = basename($_FILES["image"]["name"]); 
+        $fileType = pathinfo($fileName, PATHINFO_EXTENSION); 
+         
+        // Allow certain file formats 
+        $allowTypes = array('jpg','png','jpeg','gif'); 
+        if(in_array($fileType, $allowTypes)){ 
+            $image = $_FILES['image']['tmp_name']; 
+            $imgContent = addslashes(file_get_contents($image)); 
+           $sql = "INSERT INTO lecturer (department_code,first_name,last_name,address,
+           dob,nic,email,telephone,date_of_join,gender,epf_no,position,type,status,image)
+    VALUES 
+    ('$department','$first','$last','$address','$dob','$nic','$email','$phoneno','$join','$gender','$epf', 
+    '$position','$type','$status','$imgContent')";
+
+   if (mysqli_query($con, $sql)) {
+       echo "
+       <div class='alert alert-success' role='alert'>
+       insert success fully 
+       <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+           <span aria-hidden='true'>&times;</span>
+        </button>
+      </div>";
+   } else {
+       
+       echo "
+       <div class='alert alert-danger' role='alert'>
+       This academic_year alredy submit 
+       <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+           <span aria-hidden='true'>&times;</span>
+        </button>
+      </div>";
+   }
+            
+             
+        }else{ 
+            $statusMsg = 'Sorry, only JPG, JPEG, PNG, & GIF files are allowed to upload.'; 
+        } 
+    }else{ 
+        $statusMsg = 'Please select an image file to upload.'; 
+    }       
+}
+?>
+<!-- insert -->
              <br>
-         <form action=""> 
+         <form action="" method="POST" enctype="multipart/form-data"> 
             <div class="card  mb-3" >
                 <div class="card-header ">
                 <div class="row">
@@ -63,7 +153,7 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                      <div class=col-2>
                             <div id="wrapper">
                                 <img id="output_image" />
-                                <input type="file" accept="image/*" onchange="preview_image(event)"><br>
+                                <input type="file" name="image" accept="image/*" onchange="preview_image(event)"><br>
                             </div>
                      </div>
                      <div class=col-1></div>
@@ -73,9 +163,9 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                      <div class="row">
                      <div class="col-sm">
                      <div class="form-group">
-                     ID <br>
+                     First name <br>
                      <div class="input-group input-group-sm mb-3">
-                        <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm"id="validationServer01" required>
+                        <input type="text" name="first"  class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm"id="validationServer01" required>
                         </div>
                          </div>
                      </div>
@@ -86,9 +176,9 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                      
                      <div class="col-sm">
                      <div class="form-group">
-                     Name <br>
+                     Last name <br>
                      <div class="input-group input-group-sm mb-3">
-                        <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm"id="validationServer01" required>
+                        <input type="text" name="last" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm"id="validationServer01" required>
                         </div>
                      </div>
                      </div>
@@ -103,7 +193,7 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                      <div class="form-group">
                      DOB<br>
                      <div class="input-group input-group-sm mb-3">
-                        <input type="date" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm"id="validationServer01" required>
+                        <input type="date" name="dob" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm"id="validationServer01" required>
                         </div>
                          </div>
                      </div>
@@ -116,7 +206,7 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                      <div class="form-group">
                      NIC <br>
                      <div class="input-group input-group-sm mb-3">
-                        <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm"id="validationServer01" required>
+                        <input type="text" name="nic" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm"id="validationServer01" required>
                         </div>
                      </div>
                      </div>
@@ -131,7 +221,7 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                      <div class="form-group">
                      Phone number <br>
                      <div class="input-group input-group-sm mb-3">
-                        <input type="number" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm"id="validationServer01" required>
+                        <input type="number" name="phoneno" class="form-control"  aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm"id="validationServer01" required>
                         </div>
                          </div>
                      </div>
@@ -144,7 +234,7 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                      <div class="form-group">
                      Email <br>
                      <div class="input-group input-group-sm mb-3">
-                        <input type="email" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm"id="validationServer01" required>
+                        <input type="email" name="email" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm"id="validationServer01" required>
                         </div>
                      </div>
                      </div>
@@ -160,11 +250,11 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                      Gender  <br>
                      <div class="input-group input-group-sm mb-3">
   
-                        <select class="custom-select" id="inputGroupSelect01"id="validationCustom04" required>
+                        <select class="custom-select" name="gender" id="inputGroupSelect01"id="validationCustom04" required>
                         <option selected disabled value="">Choose  Gender  </option>
-                            <option value="1">Male</option>
-                            <option value="2">Female</option>
-                            <option value="2">Others</option>
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                            <option value="Others">Others</option>
                         </select>
                         </div>
                          </div>
@@ -178,7 +268,7 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                      <div class="form-group">
                      EPF no <br>
                      <div class="input-group input-group-sm mb-3">
-                        <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm"id="validationServer01" required>
+                        <input type="text" name="epf" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm"id="validationServer01" required>
                         </div>
                      </div>
                      </div>
@@ -195,7 +285,7 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                      <div class="form-group">
                      Address <br>
                      <div class="input-group input-group-sm mb-3">
-                        <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm"id="validationServer01" required>
+                        <input type="text" name="address" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm"id="validationServer01" required>
                         </div>
                      </div>
                      </div>
@@ -204,11 +294,11 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                      Department  <br>
                      <div class="input-group input-group-sm mb-3">
   
-                        <select class="custom-select" id="inputGroupSelect01"id="validationCustom04" required>
+                        <select class="custom-select" name="department" id="inputGroupSelect01"id="validationCustom04" required>
                         <option selected disabled value="">Choose  Department  </option>
-                            <option value="1">ICT</option>
-                            <option value="2">CON</option>
-                            <option value="2">MEC</option>
+                            <option value="ICT">ICT</option>
+                            <option value="CON">CON</option>
+                            <option value="MEC">MEC</option>
                         </select>
                         </div>
                      </div>
@@ -225,7 +315,7 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                      <div class="form-group">
                      Join date<br>
                      <div class="input-group input-group-sm mb-3">
-                        <input type="date" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm"id="validationServer01" required>
+                        <input type="date" name="join" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm"id="validationServer01" required>
                         </div>
                      </div>
                      </div>
@@ -234,12 +324,12 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                      Poisition  <br>
                      <div class="input-group input-group-sm mb-3">
   
-                        <select class="custom-select" id="inputGroupSelect01"id="validationCustom04" required>
+                        <select class="custom-select" name="position" id="inputGroupSelect01"id="validationCustom04" required>
                         <option selected disabled value="">Choose  Poisition  </option>
-                            <option value="1">Admin</option>
-                            <option value="2">HOD </option>
-                            <option value="2">Lecturer</option>
-                            <option value="2">Traniee</option>
+                            <option value="Admin">Admin</option>
+                            <option value="HOD">HOD </option>
+                            <option value="Lecturer">Lecturer</option>
+                            <option value="Traniee">Traniee</option>
                         </select>
                         </div>
                      </div>
@@ -257,12 +347,12 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                      Type  <br>
                      <div class="input-group input-group-sm mb-3">
   
-                        <select class="custom-select" id="inputGroupSelect01"id="validationCustom04" required>
+                        <select class="custom-select" name="type" id="inputGroupSelect01"id="validationCustom04" required>
                         <option selected disabled value="">Choose  Type  </option>
-                            <option value="1">Permanend staff</option>
-                            <option value="2">Visiting staff </option>
-                            <option value="2">On contracted staff</option>
-                            <
+                            <option value="Permanend staff">Permanend staff</option>
+                            <option value="Visiting staff">Visiting staff </option>
+                            <option value="On contracted staff">On contracted staff</option>
+                            
                         </select>
                         </div>
                      </div>
@@ -272,11 +362,11 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                      Status  <br>
                      <div class="input-group input-group-sm mb-3">
   
-                        <select class="custom-select" id="inputGroupSelect01"id="validationCustom04" required>
+                        <select class="custom-select" name="status" id="inputGroupSelect01"id="validationCustom04" required>
                         <option selected disabled value="">Choose  status  </option>
-                            <option value="1">Working staff</option>
-                            <option value="2">Derminated </option>
-                            <option value="2">Resigned</option>
+                            <option value="Working staff">Working staff</option>
+                            <option value=">Derminated">Derminated </option>
+                            <option value="Resigned">Resigned</option>
                             
                         </select>
                         </div>
@@ -289,7 +379,7 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                     <div class="card-footer "><div class="row">
                      <div class="col-11 "></div>
                      <div class="col-1">
-                     <button type="submit" class="btn btn-outline-success" data-toggle="modal"
+                     <button type="submit" name="submit" class="btn btn-outline-success" data-toggle="modal"
                                 data-target="#exampleModal">
                                 Add
                             </button>
