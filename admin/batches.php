@@ -73,7 +73,7 @@ $result = mysqli_query($con,$sql);
 if(mysqli_num_rows($result)>0){
     while($row = mysqli_fetch_assoc($result)){
         echo '<tr>
-            <td>',$row['batch_no'],'</td>
+            <td>',"batch".$row['batch_no'],'</td>
             <td>',$row['department_code'],'</td>
             <td>',$row['NVQ_level'],'</td>
             <td>',$row['Academic_year'],'</td>
@@ -102,7 +102,7 @@ else{
                 
       
      
-    
+
     </div>
        <!-- card end  -->
     </div>

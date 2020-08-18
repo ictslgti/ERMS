@@ -7,7 +7,7 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
 
 <head>
     <?php include_once('.././head.php');
-    //include_once('../config.php');
+    include_once('../config.php');
     ?>
 </head>
 
@@ -38,10 +38,10 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
                             <div class='form-group col-md'>
                                 <ul class='nav nav-tabs'>
                                     <li class='nav-item'>
-                                        <a class='nav-link' href='./attendence_all.php'>All Courses</a>
+                                        <a class='nav-link' href='./attendance_all.php'>All Courses</a>
                                     </li>
                                     <li class='nav-item'>
-                                        <a class='nav-link active' href='./attendence.php'>Selected Cource</a>
+                                        <a class='nav-link active' href='./attendance.php'>Selected Cource</a>
                                     </li>
                                     <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
                                         
