@@ -56,6 +56,24 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
             <!-- 1st row start -->
 
          <div class="container"> 
+        
+        <!-- php insert start -->
+
+         
+
+
+
+
+        <!--php insert end -->
+
+
+
+
+
+
+
+
+
              <br>
           
             <div class="card  mb-3" >
