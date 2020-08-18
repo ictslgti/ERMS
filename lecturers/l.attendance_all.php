@@ -56,7 +56,21 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
                                             <a class="dropdown-item" href="#">BATCH 08</a>
                                             </div>
                                         </div>
-                                        </div>
+                                </div>
+                                <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
+                                <h5>CHOOSE LEVEL</h5>
+                                        <div class="btn-group" role="group">
+                                            <button id="btnGroupDrop1" type="button" class="btn btn-light dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            LEVEL
+                                            </button>
+                                            <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                                            <a class="dropdown-item" href="#">LEVEL 04</a>
+                                            <a class="dropdown-item" href="#">LEVEL 05</a>
+                                            <a class="dropdown-item" href="#">LEVEL 06</a>
+                                            
+                                            </div>
+                                   	    </div>
+				                </div>
                             </div>
                             <div class='form-group col-md'>
                                 <h4>ALL Students</h4>
