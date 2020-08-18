@@ -45,7 +45,11 @@ $result = $con->query("SELECT * FROM lecturer");
     
     <h6 class="card-text"><?php echo ($row['first_name']); ?> <?php echo ($row['last_name']); ?></h6>
     <p class="card-text"><?php echo ($row['position']); ?> of <?php echo ($row['department_code']); ?></p>
-    <a href="#" class="btn btn-primary">See more details</a>
+
+    <?php
+    $id=$row['id'];
+    ?>
+    <a href="lec_profile.php?edit=<?php echo ("$id"); ?>" class="btn btn-primary">See more details</a>
   </div>
 </div>
         <?php } ?> 
