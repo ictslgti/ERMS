@@ -15,7 +15,7 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
         <?php include_once("nav.php"); ?>
        <!-- card start -->
 <div class="container">
-<!-- insert stat -->
+<!-- insert start -->
 <?php
 
 $department=null;
@@ -98,7 +98,7 @@ if(
   $year = $_POST['year'];
   $batchno = $_POST['batchno'];
 
-    $sql = "UPDATE `batch` SET `department_code` = '$department',`Academic_year` = '$year' WHERE `batch`.`batch_no` = '$batchno';";
+    $sql = "UPDATE `batch` SET `department_code` = '$department',`Academic_year` = '$year',`NVQ_level` = '$nvq' WHERE `batch`.`batch_no` = '$batchno';";
   
    if (mysqli_query($con, $sql)) {
        echo "
