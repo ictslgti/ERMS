@@ -88,14 +88,15 @@ $description = "Online Examination Result Management System (ERMS)-SLGTI";
         ) {
             $regno = $_POST['regno'];
             $cid = $_POST['cid'];
+            $bid = $_POST['bid'];
             $ayear = $_POST['ayear'];
             $mode = $_POST['mode'];
             $status = $_POST['status'];
             $enrolldate = $_POST['enrolldate'];
             $exitdate = $_POST['exitdate'];
 
-            $sqlenroll = "INSERT INTO student_enroll (id, course_id, academic_year, course_mode, student_status,
-                    enroll_date, exit_date) VALUES ('$regno','$cid','$ayear','$mode','$status','$enrolldate','$exitdate')";
+            $sqlenroll = "INSERT INTO student_enroll (id, course_id, batch_no, academic_year, course_mode, student_status,
+                    enroll_date, exit_date) VALUES ('$regno','$cid','$bid','$ayear','$mode','$status','$enrolldate','$exitdate')";
 
             if (mysqli_query($con, $sqlenroll)) {
                 // echo '<div class="alert alert-success" role="alert">
@@ -142,6 +143,7 @@ $description = "Online Examination Result Management System (ERMS)-SLGTI";
                 $grelation = $row['guardian_relationship'];
                 $regno = $row['id'];
                 $cid = $row['course_id'];
+                $bid = $row['batch_no'];
                 $ayear = $row['academic_year'];
                 $mode = $row['course_mode'];
                 $status = $row['student_status'];
@@ -192,23 +194,56 @@ $description = "Online Examination Result Management System (ERMS)-SLGTI";
             $gphone = $_POST['gphone'];
             $grelation = $_POST['grelation'];
 
-            $sql_students = "UPDATE `student` SET `title` = '$stitle', full_name = '$fullname', 
-                    name_with_initials = '$ini_name', gender ='$gender', civil_status = '$civil', email = '$email', 
-                    nic = '$nic', date_of_birth = '$dob', phone_no = '$phone', address = '$address', 
-                    divisional_secretariat = '$ds', district = '$district', province = '$province', 
-                    zip_code = '$zip', blood_group = '$blood', guardian_name = '$gname', 
-                    guardian_address = '$gaddress', guardian_phone_no = '$gphone', guardian_relationship = '$grelation'
+            $sql_students = "UPDATE `student` SET `title` = '$stitle', `full_name` = '$fullname', 
+                    `name_with_initials` = '$ini_name', `gender` ='$gender', `civil_status` = '$civil', `email` = '$email', 
+                    `nic` = '$nic', `date_of_birth` = '$dob', `phone_no` = '$phone', `address` = '$address', 
+                    `divisional_secretariat` = '$ds', `district` = '$district', `province` = '$province', 
+                    `zip_code` = '$zip', `blood_group` = '$blood', `guardian_name` = '$gname', 
+                    `guardian_address` = '$gaddress', `guardian_phone_no` = '$gphone', `guardian_relationship` = '$grelation'
                     WHERE `student`.`id` = '$student_id'";
 
             if (mysqli_query($con, $sql_students)) {
-                echo '<div class="alert alert-success" role="alert">
+                echo $sql_students . '<div class="alert alert-success" role="alert">
                                     Successfully Updated!
                                 </div>';
             } else {
-                echo ' <div class="alert alert-warning" role="alert"> Error updating record: </div>'
+                echo ' <div class="alert alert-warning" role="alert"> Error updating record: </div>' . $sql_students
                     . mysqli_error($con);
             }
         }
+
+        if (
+            isset($_POST['update'])
+            && !empty($_POST['cid'])
+            && !empty($_POST['bid'])
+            && !empty($_POST['ayear'])
+            && !empty($_POST['mode'])
+            && !empty($_POST['status'])
+            && !empty($_POST['enrolldate'])
+            && !empty($_POST['exitdate'])
+        ) {
+            $cid = $_POST['cid'];
+            $bid = $_POST['bid'];
+            $ayear = $_POST['ayear'];
+            $mode = $_POST['mode'];
+            $status = $_POST['status'];
+            $enrolldate = $_POST['enrolldate'];
+            $exitdate = $_POST['exitdate'];
+
+            $sqlenrolls = "UPDATE `student_enroll` SET `course_id` = '$cid', `batch_no` = '$bid', `academic_year` = '$ayear', `course_mode` = '$mode',
+            `student_status` = '$status', `enroll_date` = '$enrolldate', `exit_date` = '$exitdate'  WHERE `student_enroll`.`id` = '$student_id'";
+
+            if (mysqli_query($con, $sqlenrolls)) {
+                // echo '<div class="alert alert-success" role="alert">
+                // Record Insert Successfully
+                // </div>';
+                echo $sqlenrolls;
+
+            } else {
+                echo "Error: " . $sqlenrolls . "<br>" . mysqli_error($con);
+            }
+        }
+
         ?>
         <!-- edit  end -->
 
@@ -447,6 +482,17 @@ $description = "Online Examination Result Management System (ERMS)-SLGTI";
                                     </div>
 
                                     <div class="col-3">
+                                        <label for="bid"> Batch No: </label>
+                                        <select name="bid" class="custom-select" value="<?php echo $bid; ?>" required>
+                                            <option selected disabled> Choose</option>
+                                            <option value="01" <?php if ($bid == "01") echo 'selected'; ?>> 01 </option>
+                                            <option value="02" <?php if ($bid == "02") echo 'selected'; ?>> 02 </option>
+                                            <option value="03" <?php if ($bid == "03") echo 'selected'; ?>> 03 </option>
+
+                                        </select>
+                                    </div>
+
+                                    <div class="col-3">
                                         <label for="ayear"> Academic Year: </label>
                                         <select name="ayear" class="custom-select" data-live-search="true" data-width="100%" value="<?php echo $ayear; ?>" required>
                                             <option selected disabled> Choose</option>
@@ -465,11 +511,6 @@ $description = "Online Examination Result Management System (ERMS)-SLGTI";
                                             <option value="Part" <?php if ($mode == "Part") echo 'selected'; ?>>Part Time</option>
                                             <option value="sort" <?php if ($mode == "Sort") echo 'selected'; ?>>Sort Time</option>
                                         </select>
-                                    </div>
-
-                                    <div class="col-3">
-                                        <label for="regno"> Registration No: </label>
-                                        <input type="text" name="regno" class="form-control" placeholder="2018SLGTIBIT04" value="<?php echo $regno; ?>" required>
                                     </div>
 
                                 </div>
@@ -496,7 +537,12 @@ $description = "Online Examination Result Management System (ERMS)-SLGTI";
 
                                     <div class="col-3">
                                         <label for="exitdate"> Exit Date:</label>
-                                        <input type="date" class="form-control" name="exitdate" value="<?php echo $exitdate; ?>" required>
+                                        <input type="date" class="form-control" name="exitdate" value="<?php echo $exitdate; ?>">
+                                    </div>
+
+                                    <div class="col-3">
+                                        <label for="regno"> Registration No: </label>
+                                        <input type="text" name="regno" class="form-control" placeholder="2018SLGTIBIT04" value="<?php echo $regno; ?>" required>
                                     </div>
 
                                 </div>
