@@ -7,6 +7,7 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
 
 <head>
     <?php include_once("./head.php"); ?>
+    <?php include_once("../config.php"); ?>
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 </head>
 
@@ -41,15 +42,57 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                     <table class='table align-middle'>
                         <thead class='bg-primary text-light'>
                             <tr class="h6">
-                                <th scope='col'>ID</th>
-                                <th scope='col'>CODE</th>
-                                <th scope='col'>NAME</th>
-                                <th scope='col'>SEMESTER</th>
-                                <th scope='col'>OPTION</th>
+                                <th scope='col'>code</th>
+                                <th scope='col'>Name</th>
+                                <th scope='col'>Semester_Id</th>
+                                <th scope='col'>Course_Name</th>
+                                <th scope='col'>Learning_Hours</th>
+                                <th scope='col'>Lecture_Hours</th>
+                                <th scope='col'>Self_Study_Hours</th>
+                                <th scope='col'>AIM</th>
+                                <th scope='col'>Learn</th>
+                                <th scope='col'>Resources</th>
+                                <th scope='col'>References</th>
+
                             </tr>
                             
                         </thead>
                         <tbody>
+                        <?php
+$sql = 'SELECT * FROM `modules`';
+$result = mysqli_query($con,$sql);
+if(mysqli_num_rows($result)>0){
+    while($row = mysqli_fetch_assoc($result)){
+        echo '<tr>
+            <td>',$row['code'],'</td>
+            <td>',$row['Name'],'</td>
+            <td>',$row['Semester_Id'],'</td>
+            <td>',$row['Course_Name'],'</td>
+            <td>',$row['Learning_Hours'],'</td>
+            <td>',$row['Lecture_Hours'],'</td>
+            <td>',$row['Self_Study_Hours'],'</td>
+            <td>',$row['AIM'],'</td>
+            <td>',$row['Learn'],'</td>
+            <td>',$row['Resources'],'</td>
+            <td>',$row['References'],'</td>
+
+            
+            <td>
+            <div class="btn-group btn-sm" role="group" aria-label="Basic example">
+            <a href="modules.php?edit=',$row['batch_no'],'" class="btn btn-warning" > Edit </a> 
+            <a href="?delete=',$row['batch_no'],'" class="btn btn-danger"> Delete </a>
+            
+          </div>
+            </td>
+        </tr>';
+    }
+}
+else{
+    echo 'no rows';
+}
+?>  
+
+
                         <tr>
                         <td><h6>01</h6></td>
                         <td><h6>M07</h6></td>
