@@ -7,6 +7,8 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
 
 <head>
     <?php include_once("./head.php"); ?>
+    <?php include_once("../config.php"); ?>
+
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 </head>
 
@@ -47,23 +49,56 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                     <table class='table align-middle'>
                         <thead class='bg-primary text-light'>
                             <tr class="h5">
-                                <th scope='col'>ID</th>
-                                <th scope='col'>CODE</th>
-                                <th scope='col'>NAME</th>
-                                <th scope='col'>NVQ LEVEL</th>
-                                <th scope='col'>OPTION</th>
+                                <th scope='col'>code</th>
+                                <th scope='col'>name</th>
+                                <th scope='col'>Duration_Of_Course</th>
+                                <th scope='col'>Duration_Of_OJT</th>
+                                <th scope='col'>NVQ_Level</th>
+                                <th scope='col'>Department</th>
                             </tr>
                             
                         </thead>
                         <tbody>
-                        <tr>
+                        <!-- <tr>
                         <td><h6>01</h6></td>
                         <td><h6>5IT</h6></td>
                         <td><h6>INFORMATION COMMUNICATION & TECHNOLOGY<span class="badge badge-pill badge-dark m-1">ICT</span></h6></td>
                         <td><h6>NVQ5</h6></td>
                         <td class="alig">
-                        <h2></h2>
+                        <h2></h2> -->
             
+
+                        <?php
+$sql = 'SELECT * FROM `courses`';
+$result = mysqli_query($con,$sql);
+if(mysqli_num_rows($result)>0){
+    while($row = mysqli_fetch_assoc($result)){
+        echo '<tr>
+            <td>',$row['code'],'</td>
+            <td>',$row['name'],'</td>
+            <td>',$row['Duration_Of_Course'],'</td>
+            <td>',$row['Duration_Of_OJT'],'</td>
+            <td>',$row['NVQ_Level'],'</td>
+            <td>',$row['Department'],'</td>
+            
+            
+            <td>
+            <div class="btn-group btn-sm" role="group" aria-label="Basic example">
+            <a href="courses.php?edit=',$row['batch_no'],'" class="btn btn-warning" > Edit </a> 
+            <a href="?delete=',$row['batch_no'],'" class="btn btn-danger"> Delete </a>
+            
+          </div>
+            </td>
+        </tr>';
+    }
+}
+else{
+    echo 'no rows';
+}
+?>  
+
+
+
             <div class="w3-dropdown-hover">
                 <a class="">...</a>
                 <div class="w3-dropdown-content w3-bar-block w3-border">
