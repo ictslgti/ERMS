@@ -39,25 +39,11 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
                         <div class='col-7'>
                             <div class='form-group col-md'>
                                 
-                                <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
-                                <h5>CHOOSE BATCH</h5>
-                                        <div class="btn-group" role="group">
-                                            <button id="btnGroupDrop1" type="button" class="btn btn-light dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            BATCH
-                                            </button>
-                                            <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-                                            <a class="dropdown-item" href="#">BATCH 01</a>
-                                            <a class="dropdown-item" href="#">BATCH 02</a>
-                                            <a class="dropdown-item" href="#">BATCH 03</a>
-                                            <a class="dropdown-item" href="#">BATCH 04</a>
-                                            <a class="dropdown-item" href="#">BATCH 05</a>
-                                            <a class="dropdown-item" href="#">BATCH 06</a>
-                                            <a class="dropdown-item" href="#">BATCH 07</a>
-                                            <a class="dropdown-item" href="#">BATCH 08</a>
-                                            </div>
-                                        </div>
-                                </div>
-                                <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
+                            <div class='form-group col-md'>
+                                <h4>ALL Students</h4>
+                            </div>
+
+                            <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
                                 <h5>CHOOSE LEVEL</h5>
                                         <div class="btn-group" role="group">
                                             <button id="btnGroupDrop1" type="button" class="btn btn-light dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -69,12 +55,31 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
                                             <a class="dropdown-item" href="#">LEVEL 06</a>
                                             
                                             </div>
-                                   	    </div>
-				                </div>
+                                        </div>
                             </div>
-                            <div class='form-group col-md'>
-                                <h4>ALL Students</h4>
+                            <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
+                                
+                                    <h5>CHOOSE BATCH</h5>
+                                            <div class="btn-group" role="group">
+                                                <button id="btnGroupDrop1" type="button" class="btn btn-light dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                BATCH
+                                                </button>
+                                                <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                                                <a class="dropdown-item" href="#">BATCH 01</a>
+                                                <a class="dropdown-item" href="#">BATCH 02</a>
+                                                <a class="dropdown-item" href="#">BATCH 03</a>
+                                                <a class="dropdown-item" href="#">BATCH 04</a>
+                                                <a class="dropdown-item" href="#">BATCH 05</a>
+                                                <a class="dropdown-item" href="#">BATCH 06</a>
+                                                <a class="dropdown-item" href="#">BATCH 07</a>
+                                                <a class="dropdown-item" href="#">BATCH 08</a>
+                                                </div>
+                                            </div>
+                                            
+                                        
+                                    </div>
                             </div>
+                            
                         </div>
                     </div>
                 </form>
