@@ -38,10 +38,10 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
                             <div class='form-group col-md'>
                                 <ul class='nav nav-tabs'>
                                     <li class='nav-item'>
-                                        <a class='nav-link active' href='./attendance_all.php'>ALL Courses</a>
+                                        <a class='nav-link active' href='./attendance_all.php'>ALL Moduels</a>
                                     </li>
                                     <li class='nav-item'>
-                                        <a class='nav-link' href='./attendance.php'>Selected Course</a>
+                                        <a class='nav-link' href='./attendance.php'>Selected Moduel</a>
                                     </li>
                                 </ul>
                             </div>
@@ -54,7 +54,7 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
                     <table class="table align-middle">
                         <thead class='thead-light'>
                             <tr>
-                                <th scope='col'>Course</th>
+                                <th scope='col'>Moduels</th>
                                 <th scope='col'>Points over taken session</th>
                                 <th scope='col'>Percentage over taken session</th>
                             </tr>
