@@ -99,9 +99,9 @@ $description = "Online Examination Result Management System (ERMS)-SLGTI";
                     enroll_date, exit_date) VALUES ('$regno','$cid','$bid','$ayear','$mode','$status','$enrolldate','$exitdate')";
 
             if (mysqli_query($con, $sqlenroll)) {
-                // echo '<div class="alert alert-success" role="alert">
-                // Record Insert Successfully
-                // </div>';
+                echo '<div class="alert alert-success" role="alert">
+                And Insert Successfully
+                </div>';
             } else {
                 echo "Error: " . $sqlenroll . "<br>" . mysqli_error($con);
             }
@@ -112,7 +112,7 @@ $description = "Online Examination Result Management System (ERMS)-SLGTI";
         <!-- edit  start -->
         <?php
         $student_id = $stitle = $full_name = $ini_name = $gender = $civil = $email = $nic = $dob = $phone = $address = $ds =
-            $district = $province = $zip = $blood = $gname = $gaddress = $gphone = $grelation = $regno = $cid = $ayear =
+            $district = $province = $zip = $blood = $gname = $gaddress = $gphone = $grelation = $regno = $bid = $cid = $ayear =
             $mode = $status = $enrolldate = $exitdate = null;
         if (isset($_GET['edit'])) {
             $student_id = $_GET['edit'];
@@ -203,11 +203,11 @@ $description = "Online Examination Result Management System (ERMS)-SLGTI";
                     WHERE `student`.`id` = '$student_id'";
 
             if (mysqli_query($con, $sql_students)) {
-                echo $sql_students . '<div class="alert alert-success" role="alert">
+                echo '<div class="alert alert-success" role="alert">
                                     Successfully Updated!
                                 </div>';
             } else {
-                echo ' <div class="alert alert-warning" role="alert"> Error updating record: </div>' . $sql_students
+                echo '<div class="alert alert-warning" role="alert"> Error updating record: </div>' . $sql_students
                     . mysqli_error($con);
             }
         }
@@ -234,13 +234,13 @@ $description = "Online Examination Result Management System (ERMS)-SLGTI";
             `student_status` = '$status', `enroll_date` = '$enrolldate', `exit_date` = '$exitdate'  WHERE `student_enroll`.`id` = '$student_id'";
 
             if (mysqli_query($con, $sqlenrolls)) {
-                // echo '<div class="alert alert-success" role="alert">
-                // Record Insert Successfully
+                // echo $sqlenrolls.'<div class="alert alert-success" role="alert">
+                // And Insert Successfully
                 // </div>';
-                echo $sqlenrolls;
 
             } else {
-                echo "Error: " . $sqlenrolls . "<br>" . mysqli_error($con);
+                echo '<div class="alert alert-warning" role="alert"> And Failed: </div>'. $sqlenrolls
+                    . mysqli_error($con);
             }
         }
 
@@ -274,7 +274,7 @@ $description = "Online Examination Result Management System (ERMS)-SLGTI";
 
                             <!-- 1st row end -->
 
-                            <form method="POST" action="student.php">
+                            <form method="POST" action="">
                                 <!-- 2 row start -->
                                 <div class="row">
                                     <div class="col-sm">
@@ -439,7 +439,7 @@ $description = "Online Examination Result Management System (ERMS)-SLGTI";
                                             <option value="AB+" <?php if ($blood == "AB+")  echo 'selected'; ?>> AB+ </option>
                                             <option value="AB-" <?php if ($blood == "AB-")  echo 'selected'; ?>> AB- </option>
                                             <option value="O+" <?php if ($blood == "O+")  echo 'selected'; ?>> O+ </option>
-                                            <option value="O-" <?php if ($blood == "O+")  echo 'selected'; ?>> O- </option>
+                                            <option value="O-" <?php if ($blood == "O-")  echo 'selected'; ?>> O- </option>
 
                                         </select>
                                     </div>
@@ -483,7 +483,7 @@ $description = "Online Examination Result Management System (ERMS)-SLGTI";
 
                                     <div class="col-3">
                                         <label for="bid"> Batch No: </label>
-                                        <select name="bid" class="custom-select" value="<?php echo $bid; ?>" required>
+                                        <select name="bid" class="custom-select" value="<?php echo $cid; ?>" required>
                                             <option selected disabled> Choose</option>
                                             <option value="01" <?php if ($bid == "01") echo 'selected'; ?>> 01 </option>
                                             <option value="02" <?php if ($bid == "02") echo 'selected'; ?>> 02 </option>
