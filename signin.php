@@ -21,12 +21,7 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
 </head>
 
 <body>
-    <div class="container">
-        <div class="img">
-            <img src="img/main-cover.svg">
-        </div>
-        <div class="login-content">    
-            <?php
+<?php
             if(isset($_POST['signin'])){
                 $username = $_POST['username'];
                 $password = $_POST['password'];
@@ -49,6 +44,12 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                 }
             }
             ?>
+    <div class="container">
+        <div class="img">
+            <img src="img/main-cover.svg">
+        </div>
+        <div class="login-content">    
+           
 
 
             <form method="post">
@@ -76,11 +77,83 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                 <a href="#">Forgot Password?</a>
                 <div class="button">
                     <input type="submit" class="lbtn" value="Signin" name="signin">
-                    <input type="submit" class="sbtn" value="Signup">
+                    <input type="button" class="sbtn" value="Signup" class="btn btn-primary" data-toggle="modal" data-target="#staticBackdrop">
                 </div>
                 <p>All Rights Reserved. Designed and Developed by Department of Information and Communication
-                    Technology,
-            </form>
+                    Technology,          
+                <!-- Modal -->
+                <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1"
+                    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered modal-md">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="staticBackdropLabel">Signup</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">    
+                                    <div class="form-row"> 
+                                    <div class="form-group col-md-10">                                        
+                                        <input type="text" class="form-control" id="inputAddress2"
+                                            placeholder="Nic number / Registration No">
+                                    </div>  
+                                    <div class="form-group col-md-2">                                           
+                                            <input type="submit" value="Find" class="btn btn-primary">
+                                        </div>     
+                                    </div>           
+                                    <div class="form-row">
+                                        <div class="form-group col-md-6">                                            
+                                            <input type="text" class="form-control" id="inputEmail4"
+                                                placeholder="First name">
+                                        </div>
+                                        <div class="form-group col-md-6">                                           
+                                            <input type="text" class="form-control" id="inputPassword4"
+                                                placeholder="Last name">
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="form-group">                                        
+                                        <input type="email" class="form-control" id="inputAddress"
+                                            placeholder="Email">
+                                    </div>
+                                    <div class="form-group">                                        
+                                        <input type="text" class="form-control" id="inputAddress2"
+                                            placeholder="Registration No">
+                                    </div>
+                                    <div class="form-group">                                        
+                                        <input type="text" class="form-control" id="inputAddress2"
+                                            placeholder="Nic number">
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group col-md-6">                                            
+                                            <input type="text" class="form-control" id="inputCity">
+                                        </div>
+                                        <div class="form-group col-md-4">                                            
+                                            <select id="inputState" class="form-control">
+                                                <option selected>Choose...</option>
+                                                <option>...</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group col-md-2">                                            
+                                            <input type="text" class="form-control" id="inputZip">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="gridCheck">
+                                            <label class="form-check-label" for="gridCheck">
+                                                Check me out
+                                            </label>
+                                        </div>
+                                    </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                        <button type="submit" class="btn btn-primary">Sign in</button>
+                                    </div>
+                                </div>
+                                </form>
 
             </p>
         </div>
