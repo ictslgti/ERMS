@@ -21,6 +21,25 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
             <!-- 1st row start -->
 
          <div class="container"> 
+                  <!-- delete -->
+<?php
+if(isset($_GET['delete'])){
+    $id = $_GET['delete'];
+    $sql = "DELETE FROM `courses` WHERE `courses`.`code` = '$code'";
+    if(mysqli_query($con,$sql)){
+        echo "
+       <div class='alert alert-success' role='alert'>
+       delete success fully 
+       <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+           <span aria-hidden='true'>&times;</span>
+        </button>
+      </div>";
+    }else{
+        echo "Error: " . $sql . "<br>" . mysqli_error($con);
+    }
+}
+?>
+<!-- delete -->
              <br>
          <form action=""> 
             <div class="card  mb-3" >
@@ -59,13 +78,7 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                             
                         </thead>
                         <tbody>
-                        <!-- <tr>
-                        <td><h6>01</h6></td>
-                        <td><h6>5IT</h6></td>
-                        <td><h6>INFORMATION COMMUNICATION & TECHNOLOGY<span class="badge badge-pill badge-dark m-1">ICT</span></h6></td>
-                        <td><h6>NVQ5</h6></td>
-                        <td class="alig">
-                        <h2></h2> -->
+                        
             
 
                         <?php
@@ -84,8 +97,8 @@ if(mysqli_num_rows($result)>0){
             
             <td>
             <div class="btn-group btn-sm" role="group" aria-label="Basic example">
-            <a href="courses.php?edit=',$row['batch_no'],'" class="btn btn-warning" > Edit </a> 
-            <a href="?delete=',$row['batch_no'],'" class="btn btn-danger"> Delete </a>
+            <a href="course.php?edit=',$row['code'],'" class="btn btn-warning" > Edit </a> 
+            <a href="?delete=',$row['code'],'" class="btn btn-danger"> Delete </a>
             
           </div>
             </td>
