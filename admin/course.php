@@ -85,7 +85,9 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
          <br>
             <div class="card  mb-3" >
                 <div class="card-header ">
-                <div class="row">
+                <div class="row"> 
+
+                      
                 <div class="col"><h4>Course</h4></div>
                 <div class="col-auto">
                 <a href="courses.php" class="btn btn-outline-primary">Courses</a>
