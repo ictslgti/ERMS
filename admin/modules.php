@@ -46,13 +46,7 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                                 <th scope='col'>Name</th>
                                 <th scope='col'>Semester_Id</th>
                                 <th scope='col'>Course_Name</th>
-                                <th scope='col'>Learning_Hours</th>
-                                <th scope='col'>Lecture_Hours</th>
-                                <th scope='col'>Self_Study_Hours</th>
-                                <th scope='col'>AIM</th>
-                                <th scope='col'>Learn</th>
-                                <th scope='col'>Resources</th>
-                                <th scope='col'>References</th>
+                                <th scope='col'>Options</th>
 
                             </tr>
                             
@@ -68,13 +62,7 @@ if(mysqli_num_rows($result)>0){
             <td>',$row['Name'],'</td>
             <td>',$row['Semester_Id'],'</td>
             <td>',$row['Course_Name'],'</td>
-            <td>',$row['Learning_Hours'],'</td>
-            <td>',$row['Lecture_Hours'],'</td>
-            <td>',$row['Self_Study_Hours'],'</td>
-            <td>',$row['AIM'],'</td>
-            <td>',$row['Learn'],'</td>
-            <td>',$row['Resources'],'</td>
-            <td>',$row['References'],'</td>
+            
 
             
             <td>
