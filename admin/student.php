@@ -69,10 +69,9 @@ $description = "Online Examination Result Management System (ERMS)-SLGTI";
 
             if (mysqli_query($con, $sqlstudent)) {
                 echo '<div class="alert alert-success" role="alert">
-                New record created successfully
-                </div>';
+                New record created successfully';
             } else {
-                echo "Error: " . $sqlstudent . "<br>" . mysqli_error($con);
+                echo '<div class="alert alert-warning" role="alert">insert  ' . $sqlstudent . "<br>" . mysqli_error($con);
             }
         }
 
@@ -80,6 +79,7 @@ $description = "Online Examination Result Management System (ERMS)-SLGTI";
             isset($_POST['add'])
             && !empty($_POST['regno'])
             && !empty($_POST['cid'])
+            && !empty($_POST['bid'])
             && !empty($_POST['ayear'])
             && !empty($_POST['mode'])
             && !empty($_POST['status'])
@@ -99,11 +99,10 @@ $description = "Online Examination Result Management System (ERMS)-SLGTI";
                     enroll_date, exit_date) VALUES ('$regno','$cid','$bid','$ayear','$mode','$status','$enrolldate','$exitdate')";
 
             if (mysqli_query($con, $sqlenroll)) {
-                echo '<div class="alert alert-success" role="alert">
-                And Insert Successfully
-                </div>';
+                echo 'And Insert Successfully
+                    </div>';
             } else {
-                echo "Error: " . $sqlenroll . "<br>" . mysqli_error($con);
+                echo 'Error: </div>' . $sqlenroll . "<br>" . mysqli_error($con);
             }
         }
         ?>
@@ -207,7 +206,7 @@ $description = "Online Examination Result Management System (ERMS)-SLGTI";
                                     Successfully Updated!
                                 </div>';
             } else {
-                echo '<div class="alert alert-warning" role="alert"> Error updating record: </div>' . $sql_students
+                echo '<div class="alert alert-warning" role="alert"> Error updating record:' . $sql_students
                     . mysqli_error($con);
             }
         }
@@ -239,7 +238,7 @@ $description = "Online Examination Result Management System (ERMS)-SLGTI";
                 // </div>';
 
             } else {
-                echo '<div class="alert alert-warning" role="alert"> And Failed: </div>'. $sqlenrolls
+                echo ' And Failed: </div>' . $sqlenrolls
                     . mysqli_error($con);
             }
         }
@@ -381,7 +380,7 @@ $description = "Online Examination Result Management System (ERMS)-SLGTI";
                                             <option value=""> Choose</option>
                                             <option value="Central" <?php if ($province == "Central")  echo 'selected'; ?>> Central </option>
                                             <option value="Eastern" <?php if ($province == "Eastern")  echo 'selected'; ?>> Eastern </option>
-                                            <option value="Northen" <?php if ($province == "Northen")  echo 'selected'; ?>> Northen </option>
+                                            <option value="Northern" <?php if ($province == "Northen")  echo 'selected'; ?>> Northen </option>
                                             <option value="Southern" <?php if ($province == "Southern")  echo 'selected'; ?>> Southern </option>
                                             <option value="Western" <?php if ($province == "Western")  echo 'selected'; ?>> Western </option>
                                             <option value="North Western" <?php if ($province == "North Western")  echo 'selected'; ?>> North Western </option>
