@@ -20,7 +20,48 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
             <!-- 1st row start -->
 
          <div class="container"> 
-             <br>
+             <!-- insert  -->
+<?php
+$code = null;
+$d_name = null;
+if(
+    isset($_POST['submit'])  
+    && !empty($_POST['code'])
+    && !empty($_POST['d_name'])
+){
+    $code = $_POST['code'];
+    $d_name = $_POST['d_name'];
+    
+
+    $sql = "INSERT INTO departments (department_code,department_name)
+    VALUES 
+    ('$code', 
+    '$d_name' 
+    )
+    ";
+
+   if (mysqli_query($con, $sql)) {
+    echo "
+    <div class='alert alert-success' role='alert'>
+    insert success fully 
+    <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+        <span aria-hidden='true'>&times;</span>
+     </button>
+   </div>";
+   } else {
+    echo "
+    <div class='alert alert-danger' role='alert'>
+    This academic_year alredy submit 
+    <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+        <span aria-hidden='true'>&times;</span>
+     </button>
+   </div>";
+   }
+}
+
+?>
+ 
+<!-- insert  -->
          
             <div class="card  mb-3" >
                 <div class="card-header ">
@@ -85,51 +126,6 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                      
                      </div>
 </form>
-                    
-
-<!-- insert  -->
-<?php
-$code = null;
-$d_name = null;
-if(
-    isset($_POST['submit'])  
-    && !empty($_POST['code'])
-    && !empty($_POST['d_name'])
-){
-    $code = $_POST['code'];
-    $d_name = $_POST['d_name'];
-    
-
-    $sql = "INSERT INTO departments (department_code,department_name)
-    VALUES 
-    ('$code', 
-    '$d_name' 
-    )
-    ";
-
-   if (mysqli_query($con, $sql)) {
-    echo "
-    <div class='alert alert-success' role='alert'>
-    insert success fully 
-    <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
-        <span aria-hidden='true'>&times;</span>
-     </button>
-   </div>";
-   } else {
-    echo "
-    <div class='alert alert-danger' role='alert'>
-    This academic_year alredy submit 
-    <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
-        <span aria-hidden='true'>&times;</span>
-     </button>
-   </div>";
-   }
-}
-
-?>
- 
-<!-- insert  -->
-
                 </div>
                 <!-- #1 Insert Your Content" -->
             </div>
