@@ -1,4 +1,3 @@
-
 <?php
 $title = ' ERMS | SLGTI(page Title)';
 $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
@@ -19,7 +18,17 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
         <div id='overlay' class='overlay'></div>
         <div class='container-fluid p-5'>
             <!-- #1 Insert Your Content-->
-            
+            <div class='row'>
+                <div class="col">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3> <?php echo " $title" ?></h3>
+                        </div>
+                        <div class="card-body">
+
+                            <!-- #1 Insert Your Content-->
+
+                                                               
 <div class="container" style="margin-top:10px">
   <div class="card">
    <div class="card-header">
@@ -27,21 +36,17 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
         <div class="col-md-9">Attendance List</div>
         <div class="col-md-3" align="right">
           <button type="button" id="chart_button" class="btn btn-primary btn-sm">Chart</button>
-          <button type="button" id="report_button" class="btn btn-danger btn-sm">Print</button>
-        </div>
-        </div>
+          </div>
           <div class="dropdown">
   <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
     Attendance Review
   </button>
   <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+  <a class="dropdown-item" href="#">Module-wise</a>
     <a class="dropdown-item" href="#">Month-wise</a>
-    <a class="dropdown-item" href="#">semester-wise</a>0
+    <a class="dropdown-item" href="#">Semester-wise</a>
   </div>
-</div>
-        
-      </div>
-    </div>
+</div>  
       </div>
     </div>
    <div class="card-body">
@@ -142,99 +147,11 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
 </body>
 </html>
 
-<script type="text/javascript" src="../js/bootstrap-datepicker.js"></script>
-<link rel="stylesheet" href="../css/datepicker.css" />
-
-<style>
-    .datepicker
-    {
-      z-index: 1600 !important; /* has to be larger than 1050 */
-    }
-</style>
-
-<div class="modal" id="reportModal">
-  <div class="modal-dialog">
-    <div class="modal-content">
-
-      <!-- Modal Header -->
-      <div class="modal-header">
-        <h4 class="modal-title">Make Report</h4>
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-      </div>
-
-      <!-- Modal body -->
-      <div class="modal-body">
-        <div class="form-group">
-          <select name="grade_id" id="grade_id" class="form-control">
-            <option value="">Select Grade</option>
-            <?php
-            echo load_grade_list($connect);
-            ?>
-          </select>
-          <span id="error_grade_id" class="text-danger"></span>
-        </div>
-        <div class="form-group">
-          <div class="input-daterange">
-            <input type="text" name="from_date" id="from_date" class="form-control" placeholder="From Date" readonly />
-            <span id="error_from_date" class="text-danger"></span>
-            <br />
-            <input type="text" name="to_date" id="to_date" class="form-control" placeholder="To Date" readonly />
-            <span id="error_to_date" class="text-danger"></span>
-          </div>
-        </div>
-      </div>
-      <!-- Modal footer -->
-      <div class="modal-footer">
-        <button type="button" name="create_report" id="create_report" class="btn btn-success btn-sm">Create Report</button>
-        <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal">Close</button>
-      </div>
-
-    </div>
-  </div>
-</div>
-
-<div class="modal" id="chartModal">
-  <div class="modal-dialog">
-    <div class="modal-content">
-
-      <!-- Modal Header -->
-      <div class="modal-header">
-        <h4 class="modal-title">Create Grade Attandance Chart</h4>
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-      </div>
-
-      <!-- Modal body -->
-      <div class="modal-body">
-        <div class="form-group">
-          <select name="chart_grade_id" id="chart_grade_id" class="form-control">
-            <option value="">Select Grade</option>
-            <?php
-            echo load_grade_list($connect);
-            ?>
-          </select>
-          <span id="error_chart_grade_id" class="text-danger"></span>
-        </div>
-        <div class="form-group">
-          <div class="input-daterange">
-            <input type="text" name="attendance_date" id="attendance_date" class="form-control" placeholder="Select Date" readonly />
-            <span id="error_attendance_date" class="text-danger"></span>
-          </div>
-        </div>
-      </div>
-      <!-- Modal footer -->
-      <div class="modal-footer">
-        <button type="button" name="create_chart" id="create_chart" class="btn btn-success btn-sm">Create Chart</button>
-        <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal">Close</button>
-      </div>
-
-    </div>
-  </div>
-</div>
-
-});
-</script>
-?>
-             <!-- #1 Insert Your Content" -->
+                            <!-- #1 Insert Your Content-->
+                        </div>
+                    </div>
+                </div>
+            </div> <!-- #1 Insert Your Content" -->
         </div>
     </main>
 
@@ -243,5 +160,3 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
 </body>
 
 </html>
-
-

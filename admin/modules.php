@@ -18,6 +18,26 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
        
         
             <div class="container"> 
+                     <!-- delete -->
+<?php
+
+if(isset($_GET['delete'])){
+    $id = $_GET['delete'];
+    $sql = "DELETE FROM `modules` WHERE `modules`.`code` = $id";
+    if(mysqli_query($con,$sql)){
+        echo "
+       <div class='alert alert-success' role='alert'>
+       delete success fully 
+       <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+           <span aria-hidden='true'>&times;</span>
+        </button>
+      </div>";
+    }else{
+        echo "Error: " . $sql . "<br>" . mysqli_error($con);
+    }
+}
+?>
+<!-- delete -->
              <br>
          <form action=""> 
             <div class="card  mb-3" >
@@ -46,13 +66,7 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                                 <th scope='col'>Name</th>
                                 <th scope='col'>Semester_Id</th>
                                 <th scope='col'>Course_Name</th>
-                                <th scope='col'>Learning_Hours</th>
-                                <th scope='col'>Lecture_Hours</th>
-                                <th scope='col'>Self_Study_Hours</th>
-                                <th scope='col'>AIM</th>
-                                <th scope='col'>Learn</th>
-                                <th scope='col'>Resources</th>
-                                <th scope='col'>References</th>
+                                <th scope='col'>Options</th>
 
                             </tr>
                             
@@ -68,19 +82,13 @@ if(mysqli_num_rows($result)>0){
             <td>',$row['Name'],'</td>
             <td>',$row['Semester_Id'],'</td>
             <td>',$row['Course_Name'],'</td>
-            <td>',$row['Learning_Hours'],'</td>
-            <td>',$row['Lecture_Hours'],'</td>
-            <td>',$row['Self_Study_Hours'],'</td>
-            <td>',$row['AIM'],'</td>
-            <td>',$row['Learn'],'</td>
-            <td>',$row['Resources'],'</td>
-            <td>',$row['References'],'</td>
+            
 
             
             <td>
             <div class="btn-group btn-sm" role="group" aria-label="Basic example">
-            <a href="modules.php?edit=',$row['batch_no'],'" class="btn btn-warning" > Edit </a> 
-            <a href="?delete=',$row['batch_no'],'" class="btn btn-danger"> Delete </a>
+            <a href="module.php?edit=',$row['code'],'" class="btn btn-warning" > Edit </a> 
+            <a href="?delete=',$row['code'],'" class="btn btn-danger"> Delete </a>
             
           </div>
             </td>
@@ -93,21 +101,9 @@ else{
 ?>  
 
 
-                        <tr>
-                        <td><h6>01</h6></td>
-                        <td><h6>M07</h6></td>
-                        <td><h6>WEB PROGRAMMING</h6></td>
-                        <td><h6>2</h6></td>
-                        <td class="alig">
-                        <h2></h2>
+                       
             
-            <div class="w3-dropdown-hover">
-                <a class="">...</a>
-                <div class="w3-dropdown-content w3-bar-block w3-border">
-                <a class="dropdown-item" href="#"><img src="https://img.icons8.com/android/18/000000/edit.png"/>  Edit</a>
-                <a class="dropdown-item" href="#"><img src="https://img.icons8.com/windows/18/000000/delete-forever.png"/>Delete</a>
-                </div>
-            </div>
+           
 
                         
 </div>

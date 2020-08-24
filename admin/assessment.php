@@ -8,7 +8,7 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
 
 <head>
     <?php include_once("./head.php"); ?>
-
+    <?php include_once("../config.php"); ?>
     <style>
                 table, th, td {
                   padding:5px;
@@ -56,6 +56,9 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
             <!-- 1st row start -->
 
          <div class="container"> 
+         <?php
+         $name=null;
+         ?>
         
         <!-- php insert start -->
 
@@ -90,7 +93,7 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                 <div class="card  mb-3">
                    
                     <div class="card-body ">
-                    <form action="">
+                    <form action="" method="POST">
                     <div class="row">
                  
                  <div class="col-md-6 col-sm-6 col-xs-6">
@@ -98,11 +101,40 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                      Department  <br>
                      <div class="input-group input-group-sm mb-3">
   
-                        <select class="custom-select" id="inputGroupSelect01"id="validationCustom04" required>
-                        <option selected disabled value="">Choose  Department  </option>
-                            <option value="1">ICT</option>
-                            <option value="2">AUT</option>
-                            <option value="2">CON</option>
+                        <select  class="custom-select" name="name" id="inputGroupSelect01"id="validationCustom04" required>
+                        <?php
+                           if(isset($_GET['edit']))
+                           {
+                             ?>
+                                                    <option selected value="<?php echo $name;?>"><?php echo $name;?>
+                                                    </option>
+                                                    <option disabled value="">Choose Academicyear</option>
+                                                    <?php
+                            $result = $con->query("SELECT `department_code` FROM `departments`");
+                            while ($row = $result->fetch_assoc()) {
+                              unset($name);
+                              $name = $row['department_code'];
+                              echo '<option value=" '.$name.'"  >'.$name.'</option>';
+                          }
+                            ?>
+                                                    <?php
+                           }
+                           else{
+                             ?>
+                                                    <option selected disabled value="">Choose Academicyear</option>
+                                                    <?php
+                            $result = $con->query("SELECT `department_code` FROM `departments`");
+                            while ($row = $result->fetch_assoc()) {
+                              unset($name);
+                              $name = $row['department_code'];
+                              echo '<option value=" '.$name.'"  >'.$name.'</option>';
+                          }
+                            ?>
+
+                                                    <?php
+                           }
+                           ?>
+
                         </select>
                         </div>
                         </div>
@@ -114,7 +146,7 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                       Course  <br>
                      <div class="input-group input-group-sm mb-3">
   
-                        <select class="custom-select" id="inputGroupSelect01"id="validationCustom04" required>
+                        <select class="custom-select" name="course" id="inputGroupSelect01"id="validationCustom04" required>
                         <option selected disabled value="">Choose  course </option>
                             <option value="1">5it</option>
                             
@@ -135,7 +167,7 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                      Batch  <br>
                      <div class="input-group input-group-sm mb-3">
   
-                        <select class="custom-select" id="inputGroupSelect01"id="validationCustom04" required>
+                        <select class="custom-select" name="batch" id="inputGroupSelect01"id="validationCustom04" required>
                         <option selected disabled value="">Choose  Batch  </option>
                             <option value="1">Batch 01</option>
                             <option value="2">Batch 02</option>
@@ -150,7 +182,7 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                       Module  <br>
                      <div class="input-group input-group-sm mb-3">
   
-                        <select class="custom-select"  id="mySelect" id="inputGroupSelect01"id="validationCustom04" onchange="myFunction()" required >
+                        <select class="custom-select" name="module"  id="mySelect" id="inputGroupSelect01"id="validationCustom04" onchange="myFunction()" required >
                         <option selected disabled value="">Choose  module  </option>
                             <option value="1">web programming</option>
                             <option value="2">Database II</option>
@@ -171,7 +203,7 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                      Type  <br>
                      <div class="input-group input-group-sm mb-3">
   
-                        <select class="custom-select" id="inputGroupSelect01"id="validationCustom04" required>
+                        <select class="custom-select" name="type" id="inputGroupSelect01"id="validationCustom04" required>
                         <option selected disabled value="">Choose  Type  </option>
                             <option value="1">Practical</option>
                             <option value="2">Theroy</option>
@@ -186,7 +218,7 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                       Percentage  <br>
                      <div class="form-group">
                      <div class="input-group input-group-sm mb-3">
-                        <input type="number" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm"id="validationServer01" required>
+                        <input type="number" name="per" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm"id="validationServer01" required>
                         </div>
                          </div>
                       </div>
@@ -195,7 +227,7 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                         <div class="card-footer "><div class="row">
                      <div class="col-11 "></div>
                      <div class="col-1">
-                     <button type="submit" class="btn btn-outline-success" data-toggle="modal"
+                     <button type="submit" name="submit" class="btn btn-outline-success" data-toggle="modal"
                                 data-target="#exampleModal">
                                 Add
                             </button>

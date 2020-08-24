@@ -20,6 +20,25 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
             <!-- 1st row start -->
 
          <div class="container"> 
+         <!-- delete -->
+<?php
+if(isset($_GET['delete'])){
+    $id = $_GET['delete'];
+    $sql = "DELETE FROM `departments` WHERE `departments`.`id` = '$id'";
+    if(mysqli_query($con,$sql)){
+        echo "
+       <div class='alert alert-success' role='alert'>
+       delete success fully 
+       <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+           <span aria-hidden='true'>&times;</span>
+        </button>
+      </div>";
+    }else{
+        echo "Error: " . $sql . "<br>" . mysqli_error($con);
+    }
+}
+?>
+<!-- delete -->
              <br>
          <form action=""> 
             <div class="card  mb-3" >
@@ -60,8 +79,8 @@ if(mysqli_num_rows($result)>0){
             
             <td>
             <div class="btn-group btn-sm" role="group" aria-label="Basic example">
-            <a href="batch.php?edit=',$row['batch_no'],'" class="btn btn-warning" > Edit </a> 
-            <a href="?delete=',$row['batch_no'],'" class="btn btn-danger"> Delete </a>
+            <a href="department.php?edit=',$row['id'],'" class="btn btn-warning" > Edit </a> 
+            <a href="?delete=',$row['id'],'" class="btn btn-danger"> Delete </a>
             
           </div>
             </td>

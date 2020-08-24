@@ -43,11 +43,11 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
   </button>
   <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
   <a class="dropdown-item" href="#">Class-wise</a>
+  <a class="dropdown-item" href="#">Module-wise</a>
     <a class="dropdown-item" href="#">Month-wise</a>
-    <a class="dropdown-item" href="#">semester-wise</a>
+    <a class="dropdown-item" href="#">Semester-wise</a>
   </div>
-</div>
-        
+</div>  
       </div>
     </div>
    <div class="card-body">
@@ -147,10 +147,6 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
    </div>
 </body>
 </html>
-
-</script>
-
-
                             <!-- #1 Insert Your Content-->
                         </div>
                     </div>

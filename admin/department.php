@@ -20,77 +20,28 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
             <!-- 1st row start -->
 
          <div class="container"> 
-             <br>
-         
-            <div class="card  mb-3" >
-                <div class="card-header ">
-                <div class="row">
-                <div class="col"><h4>Department</h4></div>
-                <div class="col-auto">
-                <a href="departments.php" class="btn btn-outline-primary">Departments</a>
-                </div>
+         <?php
+         $id=null;
 
-                </div>
-                </div>
-                <div class="card-body ">
-                <div class="card  mb-3">
-                   
-                    <div class="card-body ">
-                    <form method="POST" action="">
-                     <div class="row">
-                     <div class="col-sm">
-                     Code  <br>
-                     <div class="form-group">
-                     <div class="input-group input-group-sm mb-3">
-                        <input type="text" name="code" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm"id="validationServer01" required>
-                        </div>
-                         </div>
-                     </div>
-                    
+         $code = null;
+         $d_name = null;
+         if(isset($_GET['edit'])){
+            $id = $_GET['edit'];
+            
+            $sql = "SELECT * FROM `departments` WHERE `id`= '$id' ";
+            $result = mysqli_query($con,$sql);
+            if(mysqli_num_rows($result)==1){
+                $row = mysqli_fetch_assoc($result);
+                $code = $row['department_code'];
+                $d_name = $row['department_name'];
+                
+            }
+        }
+         ?>
 
-                     <div class="col-sm">
-                     <div class="form-group">
-                     Name  <br>
-                     <div class="form-group">
-                     <div class="input-group input-group-sm mb-3">
-                        <input type="text" name="d_name" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm"id="validationServer01" required>
-                        </div>
-                         </div>
-                     </div>
-                     <br>
-                     <!-- 2 row end -->
-                    </div>
-                   
-                    </div>
-
-                    
-                </div>
-                <div class="card-footer "><div class="row">
-                     <div class="col-11 "></div>
-                     <div class="col-1">
-                     <button type="submit" name="submit" class="btn btn-outline-success" data-toggle="modal"
-                                data-target="#exampleModal">
-                                Add
-                            </button>
-                     </div></div>
-                </div>
-                <!-- 1st row end -->
-            <!-- <div id="overlay" class="overlay"></div>
-            <div class="container-fluid p-5"> -->
-                <!-- #1 Insert Your Content-->
-                <!-- <div class="container"> -->
-                    <!-- 2 row start -->
-                    
-                     
-                     
-                     </div>
-</form>
-                    
-
-<!-- insert  -->
+             <!-- insert  -->
 <?php
-$code = null;
-$d_name = null;
+
 if(
     isset($_POST['submit'])  
     && !empty($_POST['code'])
@@ -130,6 +81,124 @@ if(
  
 <!-- insert  -->
 
+
+
+<!-- update -->
+<?php
+
+if(
+    isset($_POST['save'])  
+    && !empty($_POST['code'])
+    && !empty($_POST['d_name'])
+    
+){
+    
+    $code = $_POST['code'];
+    $d_name = $_POST['d_name'];
+
+    $sql = "UPDATE `departments` SET `department_code` = '$code',`department_name` = '$d_name' WHERE `departments`.`id` = '$id';";
+  
+   if (mysqli_query($con, $sql)) {
+       echo "
+       <div class='alert alert-success' role='alert'>
+       update success fully 
+       <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+           <span aria-hidden='true'>&times;</span>
+        </button>
+      </div>";
+   } else {
+       
+       echo "
+       <div class='alert alert-danger' role='alert'>
+       This academic_year alredy submit 
+       <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+           <span aria-hidden='true'>&times;</span>
+        </button>
+      </div>";
+   }
+}   
+?>
+            <!-- update -->
+         
+            <div class="card  mb-3" >
+                <div class="card-header ">
+                <div class="row">
+                <div class="col"><h4>Department</h4></div>
+                <div class="col-auto">
+                <a href="departments.php" class="btn btn-outline-primary">Departments</a>
+                </div>
+
+                </div>
+                </div>
+                <div class="card-body ">
+                <div class="card  mb-3">
+                   
+                    <div class="card-body ">
+                    <form method="POST" action="">
+                     <div class="row">
+                     <div class="col-sm">
+                     Code  <br>
+                     <div class="form-group">
+                     <div class="input-group input-group-sm mb-3">
+                        <input type="text" name="code" value="<?php echo $code;?>" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm"id="validationServer01" required>
+                        </div>
+                         </div>
+                     </div>
+                    
+
+                     <div class="col-sm">
+                     <div class="form-group">
+                     Name  <br>
+                     <div class="form-group">
+                     <div class="input-group input-group-sm mb-3">
+                        <input type="text" name="d_name" value="<?php echo $d_name;?>" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm"id="validationServer01" required>
+                        </div>
+                         </div>
+                     </div>
+                     <br>
+                     <!-- 2 row end -->
+                    </div>
+                   
+                    </div>
+
+                    
+                </div>
+                <div class="card-footer "><div class="row">
+                     <div class="col-11 "></div>
+                     <div class="col-1">
+                    <?php
+                    if(isset($_GET['edit']))
+                    {
+                        ?>
+                        <button type="submit" name="save" class="btn btn-outline-success" data-toggle="modal"
+                                                    data-target="#exampleModal">
+                                                    save
+                                                </button>
+                        <?php
+                    }
+                    else
+                    {
+                        ?>
+                    <button type="submit" name="submit" class="btn btn-outline-success" data-toggle="modal"
+                                                    data-target="#exampleModal">
+                                                    Add
+                                                </button>
+                        <?php
+                    }
+                    ?>
+                     </div></div>
+                </div>
+                <!-- 1st row end -->
+            <!-- <div id="overlay" class="overlay"></div>
+            <div class="container-fluid p-5"> -->
+                <!-- #1 Insert Your Content-->
+                <!-- <div class="container"> -->
+                    <!-- 2 row start -->
+                    
+                     
+                     
+                     </div>
+</form>
                 </div>
                 <!-- #1 Insert Your Content" -->
             </div>
