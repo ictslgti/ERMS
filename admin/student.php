@@ -9,6 +9,12 @@ $description = "Online Examination Result Management System (ERMS)-SLGTI";
 <head>
     <?php include_once("../head.php"); ?>
     <?php include_once('../databases/config.php'); ?>
+
+    <!-- for province ditrict filter-->
+    <script src="/scripts/snippet-javascript-console.min.js?v=1"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <!-- for province ditrict filter-->
+
 </head>
 
 <body>
@@ -376,11 +382,11 @@ $description = "Online Examination Result Management System (ERMS)-SLGTI";
 
                                     <div class="col-3">
                                         <label for="province"> Province: </label>
-                                        <select name="province" class="custom-select" value="<?php echo $province; ?>" required>
+                                        <select name="province" id="province" class="custom-select" value="<?php echo $province; ?>" required>
                                             <option value=""> Choose</option>
                                             <option value="Central" <?php if ($province == "Central")  echo 'selected'; ?>> Central </option>
                                             <option value="Eastern" <?php if ($province == "Eastern")  echo 'selected'; ?>> Eastern </option>
-                                            <option value="Northern" <?php if ($province == "Northen")  echo 'selected'; ?>> Northen </option>
+                                            <option value="Northern" <?php if ($province == "Northen")  echo 'selected'; ?>> Northern </option>
                                             <option value="Southern" <?php if ($province == "Southern")  echo 'selected'; ?>> Southern </option>
                                             <option value="Western" <?php if ($province == "Western")  echo 'selected'; ?>> Western </option>
                                             <option value="North Western" <?php if ($province == "North Western")  echo 'selected'; ?>> North Western </option>
@@ -392,35 +398,58 @@ $description = "Online Examination Result Management System (ERMS)-SLGTI";
 
                                     <div class="col-3">
                                         <label for="district"> District: </label>
-                                        <select class="custom-select" name="district" data-live-search="true" data-width="100%" value="<?php echo $district; ?>" required>
+                                        <select class="custom-select" name="district" id="district" data-live-search="true" data-width="100%" value="<?php echo $district; ?>" required>
                                             <option value=""> Choose</option>
-                                            <option value="Ampara" <?php if ($district == "Ampara")  echo 'selected'; ?>> Ampara </option>
-                                            <option value="Batticalo" <?php if ($district == "Batticalo")  echo 'selected'; ?>> Batticalo </option>
-                                            <option value="Trincomalee" <?php if ($district == "Trincomalee")  echo 'selected'; ?>> Trincomalee </option>
-                                            <option value="Jaffna" <?php if ($district == "Jaffna")  echo 'selected'; ?>> Jaffna </option>
-                                            <option value="Vavuniya" <?php if ($district == "Vavuniya")  echo 'selected'; ?>> Vavuniya </option>
-                                            <option value="Killinochchi" <?php if ($district == "Killinochchi")  echo 'selected'; ?>> Killinochchi </option>
-                                            <option value="Mullaitivu" <?php if ($district == "Mullaitivu")  echo 'selected'; ?>> Mullaitivu </option>
-                                            <option value="Mannar" <?php if ($district == "Mannar")  echo 'selected'; ?>> Mannar </option>
-                                            <option value="Puttalam" <?php if ($district == "Puttalam")  echo 'selected'; ?>> Puttalam </option>
-                                            <option value="Kurunegala" <?php if ($district == "Kurunegala")  echo 'selected'; ?>> Kurunegala </option>
-                                            <option value="Gampaha" <?php if ($district == "Gampaha")  echo 'selected'; ?>> Gampaha </option>
-                                            <option value="Colombo" <?php if ($district == "Colombo")  echo 'selected'; ?>> Colombo </option>
-                                            <option value="Kalutara" <?php if ($district == "Kalutara")  echo 'selected'; ?>> Kalutara </option>
-                                            <option value="Anuradhapura" <?php if ($district == "Anuradhapura")  echo 'selected'; ?>> Anuradhapura </option>
-                                            <option value="Polonnaruwa" <?php if ($district == "Polonnaruwa")  echo 'selected'; ?>> Polonnaruwa </option>
-                                            <option value="Matale" <?php if ($district == "Matale")  echo 'selected'; ?>> Matale </option>
-                                            <option value="Kandy" <?php if ($district == "Kandy")  echo 'selected'; ?>> Kandy </option>
-                                            <option value="Nuwara Eliya" <?php if ($district == "Nuwara Eliya")  echo 'selected'; ?>> Nuwara Eliya </option>
-                                            <option value="Kegalle" <?php if ($district == "Kegalle")  echo 'selected'; ?>> Kegalle </option>
-                                            <option value="Ratnapura" <?php if ($district == "Ratnapura")  echo 'selected'; ?>> Ratnapura </option>
-                                            <option value="Badulla" <?php if ($district == "Badulla")  echo 'selected'; ?>> Badulla </option>
-                                            <option value="Monaragala" <?php if ($district == "Monaragala")  echo 'selected'; ?>> Monaragala </option>
-                                            <option value="Hambantota" <?php if ($district == "Hambantota")  echo 'selected'; ?>> Hambantota </option>
-                                            <option value="Matara" <?php if ($district == "Matara")  echo 'selected'; ?>> Matara </option>
-                                            <option value="Galle" <?php if ($district == "Galle")  echo 'selected'; ?>> Galle </option>
+                                            <option value="Ampara" data-val="Eastern" <?php if ($district == "Ampara")  echo 'selected'; ?>> Ampara </option>
+                                            <option value="Batticalo" data-val="Eastern" <?php if ($district == "Batticalo")  echo 'selected'; ?>> Batticalo </option>
+                                            <option value="Trincomalee" data-val="Eastern" <?php if ($district == "Trincomalee")  echo 'selected'; ?>> Trincomalee </option>
+                                            <option value="Jaffna" data-val="Northern" <?php if ($district == "Jaffna")  echo 'selected'; ?>> Jaffna </option>
+                                            <option value="Vavuniya" data-val="Northern" <?php if ($district == "Vavuniya")  echo 'selected'; ?>> Vavuniya </option>
+                                            <option value="Killinochchi" data-val="Northern" <?php if ($district == "Killinochchi")  echo 'selected'; ?>> Killinochchi </option>
+                                            <option value="Mullaitivu" data-val="Northern" <?php if ($district == "Mullaitivu")  echo 'selected'; ?>> Mullaitivu </option>
+                                            <option value="Mannar" data-val="Northern" <?php if ($district == "Mannar")  echo 'selected'; ?>> Mannar </option>
+                                            <option value="Puttalam" data-val="North Western" <?php if ($district == "Puttalam")  echo 'selected'; ?>> Puttalam </option>
+                                            <option value="Kurunegala" data-val="North Western" <?php if ($district == "Kurunegala")  echo 'selected'; ?>> Kurunegala </option>
+                                            <option value="Gampaha" data-val="Western" <?php if ($district == "Gampaha")  echo 'selected'; ?>> Gampaha </option>
+                                            <option value="Colombo" data-val="Western" <?php if ($district == "Colombo")  echo 'selected'; ?>> Colombo </option>
+                                            <option value="Kalutara" data-val="Western" <?php if ($district == "Kalutara")  echo 'selected'; ?>> Kalutara </option>
+                                            <option value="Anuradhapura" data-val="North Central" <?php if ($district == "Anuradhapura")  echo 'selected'; ?>> Anuradhapura </option>
+                                            <option value="Polonnaruwa" data-val="North Central" <?php if ($district == "Polonnaruwa")  echo 'selected'; ?>> Polonnaruwa </option>
+                                            <option value="Matale" data-val="Central" <?php if ($district == "Matale")  echo 'selected'; ?>> Matale </option>
+                                            <option value="Kandy" data-val="Central" <?php if ($district == "Kandy")  echo 'selected'; ?>> Kandy </option>
+                                            <option value="Nuwara Eliya" data-val="Central" <?php if ($district == "Nuwara Eliya")  echo 'selected'; ?>> Nuwara Eliya </option>
+                                            <option value="Kegalle" data-val="Sabaragamuwa" <?php if ($district == "Kegalle")  echo 'selected'; ?>> Kegalle </option>
+                                            <option value="Ratnapura" data-val="Sabaragamuwa" <?php if ($district == "Ratnapura")  echo 'selected'; ?>> Ratnapura </option>
+                                            <option value="Badulla" data-val="Uva" <?php if ($district == "Badulla")  echo 'selected'; ?>> Badulla </option>
+                                            <option value="Monaragala" data-val="Uva" <?php if ($district == "Monaragala")  echo 'selected'; ?>> Monaragala </option>
+                                            <option value="Hambantota" data-val="Southern" <?php if ($district == "Hambantota")  echo 'selected'; ?>> Hambantota </option>
+                                            <option value="Matara" data-val="Southern" <?php if ($district == "Matara")  echo 'selected'; ?>> Matara </option>
+                                            <option value="Galle" data-val="Southern" <?php if ($district == "Galle")  echo 'selected'; ?>> Galle </option>
                                         </select>
                                     </div>
+                                    
+                                    <!-- for province ditrict filter-->
+                                    <script type="text/javascript">
+                                        // get first dropdown and bind change event handler
+                                        $('#province').change(function() {
+                                            // get optios of second dropdown and cache it
+                                            var $options = $('#district')
+                                                // update the dropdown value if necessary
+                                                .val('')
+                                                // get options
+                                                .find('option')
+                                                // show all of the initially
+                                                .show();
+                                            // check current value is not 0
+                                            if (this.value != '0')
+                                                $options
+                                                // filter out options which is not corresponds to the first option
+                                                .not('[data-val="' + this.value + '"],[data-val=""]')
+                                                // hide them
+                                                .hide();
+                                        })
+                                    </script>
+                                    <!-- for province ditrict filter-->
 
                                     <div class="col-2">
                                         <label for="zip"> ZIP-Code:</label>
