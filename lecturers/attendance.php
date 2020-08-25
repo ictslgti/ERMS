@@ -147,7 +147,6 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
    </div>
 </body>
 </html>
-                            <!-- #1 Insert Your Content-->
                         </div>
                     </div>
                 </div>
