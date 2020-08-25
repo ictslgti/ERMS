@@ -76,16 +76,19 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
                                 <th scope='col'>TIME</th>
                                 <th scope='col'>STATUS</th>
                             </tr>
-                            <tr>
-                                <td scope='col'>2020/04/07</td>
-                                <td scope='col'>10:27 am</td>
-                                <td scope='col'>Present</td>
+                            <?php
+                            $sql = " select count(status) as take_session,module,all_session from attendance where student_id='2018ICTBIT01' group by module";
+                                            $result = mysqli_query($con, $sql);
+                                            while ($row = mysqli_fetch_assoc($result)) {
+                                 ?>
                             
-                            </tr>
                             <tr>
-                                <td scope='col'>2020/04/06</td>
-                                <td scope='col'>10:30 am</td>
-                                <td scope='col'>Absent</td>
+                                <td scope='col'><?php echo $row['module'];?></td>
+                                <td scope='col'><?php echo $row['module'];?></td>
+                                <td scope='col'><?php echo $row['module'];?></td>
+                                <?php
+                                            }
+                                ?>
                             </tr>
                                 <table>
                                     <tr>

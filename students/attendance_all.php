@@ -80,17 +80,17 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
                                 <td scope='col'><?php echo $row['all_session'];?></td>
                                 <td scope="col"><?php echo (($row['take_session']/$row['all_session'])*100)."%"; ?></td>
                                 
-                                
-                            <!-- </tr>
-                            <tr> -->
-                                <td scope='col'>Average attendance</td>
-                                <td scope='col'></td>
-                                <td scope='col'></td>
-                                <td scope='col'><?php echo $row['all_session'."%"]; ?></td>
-                                
                                 <?php
                                     }
                                 ?>
+                            </tr>
+                            <tr>
+                                <td scope='col'>Average attendance</td>
+                                <td scope='col'></td>
+                                <td scope='col'></td>
+                                <td scope='col'></td>
+                                
+                                
                             </tr>
                             
                         </thead>
