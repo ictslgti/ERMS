@@ -48,7 +48,7 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
                         </div>
                     </div>
                 </form>
-                
+
                 <div class="row">
                     <div class="form-group col-md-12 table-responsive">
                     <table class="table align-middle">
@@ -56,63 +56,31 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
                             <tr>
                                 <th scope='col'>Moduels</th>
                                 <th scope='col'>Points over taken session</th>
+                                <th scope='col'>All session</th>
                                 <th scope='col'>Percentage over taken session</th>
+                                <th ></th>
+                            </tr>
+                            <?php
+                            $sql = "SELECT * FROM attendance";
+                                            $result = mysqli_query($con, $sql);
+                                            while ($row = mysqli_fetch_assoc($result)) {
+                ?>
+                            <tr>
+                                <td scope='col'><?php echo $row['module'];?></td>
+                                <td scope='col'><?php echo $row['taken_session'];?></td>
+                                <td scope='col'><?php echo $row['all_session'];?></td>
+                                <td scope="col"><?php echo (($row['taken_session']/$row['all_session'])*100)."%"; ?></td>
+                                <?php
+                                    }?>
+
                             </tr>
                             <tr>
-                                <td scope='col'>Basic Computer Application</td>
-                                <td scope='col'>00/00</td>
+                                <td scope='col'>Average attendance</td>
+                                <td scope='col'></td>
+                                <td scope='col'></td>
                                 <td scope='col'>00%</td>
                             </tr>
-                            <tr>
-                                <td scope='col'>Fundamentals of Software Programming </td>
-                                <td scope='col'>00/00</td>
-                                <td scope='col'>00%</td>
-                            </tr>
-                            <tr>
-                                <td scope='col'>Communication Skill </td>
-                                <td scope='col'>00/00</td>
-                                <td scope='col'>00%</td>
-                            </tr>
-                            <tr>
-                                <td scope='col'>Fundamentals of Graphic Design </td>
-                                <td scope='col'>00/00</td>
-                                <td scope='col'>00%</td>
-                            </tr>
-                            <tr>
-                                <td scope='col'>Fundamentals of Networking</td>
-                                <td scope='col'>00/00</td>
-                                <td scope='col'>00%</td>
-                            </tr>
-                            <tr>
-                                <td scope='col'>Introduction to Database Systems</td>
-                                <td scope='col'>00/00</td>
-                                <td scope='col'>00%</td>
-                            </tr>
-                            <tr>
-                                <td scope='col'>Static Web Page Designing</td>
-                                <td scope='col'>00/00</td>
-                                <td scope='col'>00%</td>
-                            </tr>
-                            <tr>
-                                <td scope='col'>Database Systems I</td>
-                                <td scope='col'>00/00</td>
-                                <td scope='col'>00%</td>
-                            </tr>
-                            <tr>
-                                <td scope='col'>System Analysis and Design </td>
-                                <td scope='col'>00/00</td>
-                                <td scope='col'>00%</td>
-                            </tr>
-                            <tr>
-                                <td scope='col'>Web Programming</td>
-                                <td scope='col'>00/00</td>
-                                <td scope='col'>00%</td>
-                            </tr>
-                            <tr>
-                                <td>Average attendance</td>
-                                <td></td>
-                                <td>00%</td>
-                            </tr>
+                            
                         </thead>
                     <tbody>
                      
