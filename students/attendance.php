@@ -80,46 +80,7 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
                                 <td scope='col'>2020/04/07</td>
                                 <td scope='col'>10:27 am</td>
                                 <td scope='col'>Present</td>
-                            </tr>
-                            <tr>
-                                <td scope='col'>2020/04/06</td>
-                                <td scope='col'>10:30 am</td>
-                                <td scope='col'>Absent</td>
-                            </tr>
-                            <tr>
-                                <td scope='col'>2020/04/07</td>
-                                <td scope='col'>10:27 am</td>
-                                <td scope='col'>Present</td>
-                            </tr>
-                            <tr>
-                                <td scope='col'>2020/04/06</td>
-                                <td scope='col'>10:30 am</td>
-                                <td scope='col'>Present</td>
-                            </tr>
-                            <tr>
-                                <td scope='col'>2020/04/07</td>
-                                <td scope='col'>10:27 am</td>
-                                <td scope='col'>Present</td>
-                            </tr>
-                            <tr>
-                                <td scope='col'>2020/04/06</td>
-                                <td scope='col'>10:30 am</td>
-                                <td scope='col'>Present</td>
-                            </tr>
-                            <tr>
-                                <td scope='col'>2020/04/07</td>
-                                <td scope='col'>10:27 am</td>
-                                <td scope='col'>Absent</td>
-                            </tr>
-                            <tr>
-                                <td scope='col'>2020/04/06</td>
-                                <td scope='col'>10:30 am</td>
-                                <td scope='col'>Present</td>
-                            </tr>
-                            <tr>
-                                <td scope='col'>2020/04/07</td>
-                                <td scope='col'>10:27 am</td>
-                                <td scope='col'>Absent</td>
+                            
                             </tr>
                             <tr>
                                 <td scope='col'>2020/04/06</td>
