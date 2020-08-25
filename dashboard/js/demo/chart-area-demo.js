@@ -119,10 +119,6 @@ function number_format(number, decimals, dec_point, thousands_sep) {
 // });
 
 $(document).ready(function () {
-
-  /**
-   * call the data.php file to fetch the result from db table.
-   */
   $.ajax({
     url: "http://localhost/erms/databases/chart.php",
     type: "GET",
