@@ -60,25 +60,37 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
                                 <th scope='col'>Percentage over taken session</th>
                                 <th ></th>
                             </tr>
+
+                            <?php        
+                                // if (isset($_GET['id'])) {
+                                // $id = $_GET['id'];
+                                // $query1 = mysql_query("select * from employee where employee_id=$id", $connection);
+                                // while ($row1 = mysql_fetch_array($query1)) {
+                            ?>
+
+
                             <?php
-                            $sql = "SELECT * FROM attendance";
+                            $sql = " select count(status) as take_session,module,all_session from attendance where student_id='2018ICTBIT01' group by module";
                                             $result = mysqli_query($con, $sql);
                                             while ($row = mysqli_fetch_assoc($result)) {
-                ?>
+                                 ?>
                             <tr>
                                 <td scope='col'><?php echo $row['module'];?></td>
-                                <td scope='col'><?php echo $row['taken_session'];?></td>
+                                <td scope='col'><?php echo $row['take_session'];?></td>
                                 <td scope='col'><?php echo $row['all_session'];?></td>
-                                <td scope="col"><?php echo (($row['taken_session']/$row['all_session'])*100)."%"; ?></td>
-                                <?php
-                                    }?>
-
-                            </tr>
-                            <tr>
+                                <td scope="col"><?php echo (($row['take_session']/$row['all_session'])*100)."%"; ?></td>
+                                
+                                
+                            <!-- </tr>
+                            <tr> -->
                                 <td scope='col'>Average attendance</td>
                                 <td scope='col'></td>
                                 <td scope='col'></td>
-                                <td scope='col'>00%</td>
+                                <td scope='col'><?php echo $row['all_session'."%"]; ?></td>
+                                
+                                <?php
+                                    }
+                                ?>
                             </tr>
                             
                         </thead>
