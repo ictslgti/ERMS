@@ -160,100 +160,14 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
                                     </div>
                                 </div>
 
-                                <!-- Progress Bar -->
-                                <!-- <div class="col-xl-4 col-lg-4">
-                                    <div class="card shadow mb-4"> -->
-                                <!-- Card Header - Dropdown -->
-                                <!-- <div
-                                            class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                                            <h6 class="m-0 font-weight-bold text-primary">Revenue Sources</h6>
-                                            <div class="dropdown no-arrow">
-                                                <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
-                                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                    <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
-                                                </a>
-                                                <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
-                                                    aria-labelledby="dropdownMenuLink">
-                                                    <div class="dropdown-header">Dropdown Header:</div>
-                                                    <a class="dropdown-item" href="#">Action</a>
-                                                    <a class="dropdown-item" href="#">Another action</a>
-                                                    <div class="dropdown-divider"></div>
-                                                    <a class="dropdown-item" href="#">Something else here</a>
-                                                </div>
-                                            </div>
-                                        </div> -->
-                                <!-- Card Body -->
-                                <!-- <div class="card-body">
-                                            <div class="chart-pie pt-4 pb-2">
-                                                <canvas id="myPieChart"></canvas>
-                                            </div>
-                                            <div class="mt-4 text-center small">
-                                                <span class="mr-2">
-                                                    <i class="fas fa-circle text-primary"></i> Direct
-                                                </span>
-                                                <span class="mr-2">
-                                                    <i class="fas fa-circle text-success"></i> Social
-                                                </span>
-                                                <span class="mr-2">
-                                                    <i class="fas fa-circle text-info"></i> Referral
-                                                </span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div> -->
-                                <!-- <div class="col-lg-6 mb-4"> -->
-                                <!-- Project Card Example -->
-                                <!-- <div class="card shadow mb-4"> -->
-                                <!-- <div class="card-header py-3"> -->
-                                <!-- <h6 class="m-0 font-weight-bold text-primary">Projects</h6> -->
-                                <!-- </div> -->
-                                <!-- <div class="text mb-4"> </div>
-                                        <div class="card-body">
-                                            <h4 class="small font-weight-bold">Server Migration <span
-                                                    class="float-right">29%</span></h4>
-                                            <div class="progress mb-4">
-                                                <div class="progress-bar bg-danger" role="progressbar"
-                                                    style="width: 20%" aria-valuenow="20" aria-valuemin="0"
-                                                    aria-valuemax="100"></div>
-                                            </div>
-                                            <h4 class="small font-weight-bold">Sales Tracking <span
-                                                    class="float-right">40%</span></h4>
-                                            <div class="progress mb-4">
-                                                <div class="progress-bar bg-warning" role="progressbar"
-                                                    style="width: 40%" aria-valuenow="40" aria-valuemin="0"
-                                                    aria-valuemax="100"></div>
-                                            </div>
-                                            <h4 class="small font-weight-bold">Customer Database <span
-                                                    class="float-right">60%</span></h4>
-                                            <div class="progress mb-4">
-                                                <div class="progress-bar" role="progressbar" style="width: 60%"
-                                                    aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
-                                            </div>
-                                            <h4 class="small font-weight-bold">Payout Details <span
-                                                    class="float-right">80%</span></h4>
-                                            <div class="progress mb-4">
-                                                <div class="progress-bar bg-info" role="progressbar" style="width: 80%"
-                                                    aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
-                                            </div>
-                                            <h4 class="small font-weight-bold">Account Setup <span
-                                                    class="float-right">Complete!</span></h4>
-                                            <div class="progress">
-                                                <div class="progress-bar bg-success" role="progressbar"
-                                                    style="width: 100%" aria-valuenow="100" aria-valuemin="0"
-                                                    aria-valuemax="100"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div> -->
-
                                 <!-- Progress Bar 3 -->
                                 <div class="col-xl-3 col-lg-4">
                                     <div class="card shadow mb-4">
                                         <!-- Card Header - Dropdown -->
                                         <div
                                             class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                                            <h6 class="m-0 font-weight-bold text-primary">Revenue Sources</h6>
+                                            <h6 class="m-0 font-weight-bold text-primary">TVEC Exam Pass / Fail
+                                                Rating(by Department)</h6>
                                             <div class="dropdown no-arrow">
                                                 <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
                                                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -277,7 +191,7 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="card-body">                                            
+                                        <div class="card-body">
                                             <!-- Card content -->
                                             <h4 class="card-title font-weight-bold mb-2">Exam</h4>
                                             <!-- <p class="card-text mb-4">NYSE: AZHC • Oct 16, 1:45PM</p> -->
@@ -293,11 +207,11 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
                                                     role="tabpanel">
                                                     <canvas id="lineChart-ict" height="250px"></canvas>
                                                 </div>
-                                                <div class="tab-pane fade" id="panel1002" role="tabpanel">
+                                                <div class="tab-pane fade" id="panel1002" role="tabpanel">                                                    
                                                     <canvas id="lineChart-construction" height="250px"></canvas>
                                                 </div>
                                                 <div class="tab-pane fade" id="panel1003" role="tabpanel">
-                                                    <canvas id="lineChart-auto mobile" height="250px"></canvas>
+                                                    <canvas id="lineChart-automobile" height="250px"></canvas>
                                                 </div>
                                                 <div class="tab-pane fade" id="panel1004" role="tabpanel">
                                                     <canvas id="lineChart-electronic" height="250px"></canvas>
