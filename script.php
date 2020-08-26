@@ -27,8 +27,13 @@
   <!-- Page level custom scripts -->
   <script src="dashboard/js/demo/chart-area-demo.js"></script>
   <script src="dashboard/js/demo/chart-pie-demo.js"></script>
+  <script src="dashboard/js/demo/card-chart-ict.js"></script>
+  <script src="dashboard/js/demo/card-chart-construction.js"></script>
+  <!-- <script src="dashboard/js/demo/card-line-chart.js"></script>
   <script src="dashboard/js/demo/card-line-chart.js"></script>
+  <script src="dashboard/js/demo/card-line-chart.js"></script>
+  <script src="dashboard/js/demo/card-line-chart.js"></script> -->
 
-
+  
  <!-- Dashboard script end -->
  <!-- kavi scripts end -->
