@@ -62,7 +62,7 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                         </thead>
                         <tbody>
                             <?php
-$sql = ' select a.id,a.name,a.module,m.name,a.batch,b.academic_year from batch b,assessments a,modules m where b.batch_no=a.batch and a.module=m.code;';
+$sql = ' SELECT * FROM `assessments`';
 $result = mysqli_query($con,$sql);
 if(mysqli_num_rows($result)>0){
     while($row = mysqli_fetch_assoc($result)){
