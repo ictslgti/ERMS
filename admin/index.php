@@ -261,18 +261,18 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
                                                 </a>
                                                 <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
                                                     aria-labelledby="dropdownMenuLink">
-                                                    <div class="dropdown-header">Departments:</div>
-                                                    <a class="dropdown-item" data-toggle="tab" href="#panel1001"
+                                                    <div class="nav-link disabled">Departments:</div>
+                                                    <a class="nav-link waves-light" data-toggle="tab" href="#panel1001"
                                                         role="tab">Ict</a>
-                                                    <a class="dropdown-item" data-toggle="tab" href="#panel1002"
+                                                    <a class="nav-link waves-light" data-toggle="tab" href="#panel1002"
                                                         role="tab">Construction</a>
-                                                    <a class="dropdown-item" data-toggle="tab" href="#panel1003"
+                                                    <a class="nav-link waves-light" data-toggle="tab" href="#panel1003"
                                                         role="tab">Auto mobile</a>
-                                                    <a class="dropdown-item" data-toggle="tab" href="#panel1004"
+                                                    <a class="nav-link waves-light" data-toggle="tab" href="#panel1004"
                                                         role="tab">Electronic</a>
-                                                    <a class="dropdown-item" data-toggle="tab" href="#panel1005"
+                                                    <a class="nav-link waves-light" data-toggle="tab" href="#panel1005"
                                                         role="tab">Mechanical</a>
-                                                    <a class="dropdown-item" data-toggle="tab" href="#panel1006"
+                                                    <a class="nav-link waves-light" data-toggle="tab" href="#panel1006"
                                                         role="tab">Foot</a>
                                                 </div>
                                             </div>
