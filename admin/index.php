@@ -7,7 +7,8 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
 
 <head>
     <?php include_once('.././head.php');
-    include_once('dashboard/dash-cdn.php');    
+    include_once('dashboard/dash-cdn.php');  
+    
     // include_once('../config.php');
     ?>
 
@@ -260,19 +261,23 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
                                                 </a>
                                                 <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
                                                     aria-labelledby="dropdownMenuLink">
-                                                    <div class="dropdown-header">Dropdown Header:</div>
-                                                    <a class="dropdown-item" href="#panel1001">Action</a>
-                                                    <a class="dropdown-item" href="#">Another action</a>
-                                                    <div class="dropdown-divider"></div>
-                                                    <a class="dropdown-item" href="#">Something else here</a>
+                                                    <div class="dropdown-header">Departments:</div>
+                                                    <a class="dropdown-item" data-toggle="tab" href="#panel1001"
+                                                        role="tab">Ict</a>
+                                                    <a class="dropdown-item" data-toggle="tab" href="#panel1002"
+                                                        role="tab">Construction</a>
+                                                    <a class="dropdown-item" data-toggle="tab" href="#panel1003"
+                                                        role="tab">Auto mobile</a>
+                                                    <a class="dropdown-item" data-toggle="tab" href="#panel1004"
+                                                        role="tab">Electronic</a>
+                                                    <a class="dropdown-item" data-toggle="tab" href="#panel1005"
+                                                        role="tab">Mechanical</a>
+                                                    <a class="dropdown-item" data-toggle="tab" href="#panel1006"
+                                                        role="tab">Foot</a>
                                                 </div>
                                             </div>
                                         </div>
-
-
-                                        <div class="card-body">
-
-
+                                        <div class="card-body">                                            
                                             <!-- Card content -->
                                             <h4 class="card-title font-weight-bold mb-2">Exam</h4>
                                             <!-- <p class="card-text mb-4">NYSE: AZHC • Oct 16, 1:45PM</p> -->
@@ -283,52 +288,25 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
                                         </div>
                                         <!-- Classic tabs -->
                                         <div class="classic-tabs">
-                                            <!-- <ul class="nav tabs-white nav-fill " role="tablist">
-                                                <li class="nav-item">
-                                                    <a class="nav-link waves-light active" data-toggle="tab"
-                                                        href="#panel1001" role="tab">Ict</a>
-                                                </li>
-                                                <li class="nav-item">
-                                                    <a class="nav-link waves-light" data-toggle="tab" href="#panel1002"
-                                                        role="tab">Foot</a>
-                                                </li>
-                                                <li class="nav-item">
-                                                    <a class="nav-link waves-light" data-toggle="tab" href="#panel1003"
-                                                        role="tab">Consruction</a>
-                                                </li>
-                                                <li class="nav-item">
-                                                    <a class="nav-link waves-light" data-toggle="tab" href="#panel1004"
-                                                        role="tab">Auto mobilr</a>
-                                                </li>
-                                                <li class="nav-item">
-                                                    <a class="nav-link waves-light" data-toggle="tab" href="#panel1005"
-                                                        role="tab">Electronic</a>
-                                                </li>
-                                                <li class="nav-item">
-                                                    <a class="nav-link waves-light" data-toggle="tab" href="#panel1005"
-                                                        role="tab">Macanical</a>
-                                                </li>
-                                            </ul> -->
-
                                             <div class="tab-content rounded-bottom">
                                                 <div class="tab-pane fade in show active" id="panel1001"
                                                     role="tabpanel">
-                                                    <canvas id="lineChart" height="250px"></canvas>
+                                                    <canvas id="lineChart-ict" height="250px"></canvas>
                                                 </div>
                                                 <div class="tab-pane fade" id="panel1002" role="tabpanel">
-                                                    <canvas id="lineChart" height="250px"></canvas>
+                                                    <canvas id="lineChart-construction" height="250px"></canvas>
                                                 </div>
                                                 <div class="tab-pane fade" id="panel1003" role="tabpanel">
-                                                    <canvas id="lineChart" height="250px"></canvas>
+                                                    <canvas id="lineChart-auto mobile" height="250px"></canvas>
                                                 </div>
                                                 <div class="tab-pane fade" id="panel1004" role="tabpanel">
-                                                    <canvas id="lineChart" height="250px"></canvas>
+                                                    <canvas id="lineChart-electronic" height="250px"></canvas>
                                                 </div>
                                                 <div class="tab-pane fade" id="panel1005" role="tabpanel">
-                                                    <canvas id="lineChart" height="250px"></canvas>
+                                                    <canvas id="lineChart-mechanical" height="250px"></canvas>
                                                 </div>
                                                 <div class="tab-pane fade" id="panel1006" role="tabpanel">
-                                                    <canvas id="lineChart" height="250px"></canvas>
+                                                    <canvas id="lineChart-foot" height="250px"></canvas>
                                                 </div>
                                             </div>
                                         </div>
@@ -526,12 +504,8 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
                                 <span>Copyright &copy; Srilanka German Trannig Insitutue 2020</span>
                             </div>
                         </div>
-                    </footer>
-                    <!-- End of Footer -->
-
+                    </footer><!-- End of Footer -->
                 </div>
-                <!-- End of Content Wrapper -->
-
         </div>
         <!-- End of Page Wrapper -->
 
