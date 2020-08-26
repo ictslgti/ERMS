@@ -7,9 +7,10 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
 
 <head>
     <?php include_once('.././head.php');
-    include_once('dashboard/dash-cdn.php');
+    include_once('dashboard/dash-cdn.php');    
     // include_once('../config.php');
     ?>
+    
 </head>
 
 <body>
@@ -121,6 +122,7 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
                                 </div>
                             </div>
 
+                            
                             <!-- Content Row -->
 
                             <div class="row">
@@ -147,6 +149,7 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
                                                 </div>
                                             </div>
                                         </div>
+                                        <div class="mb-5"></div>
                                         <!-- Card Body -->
                                         <div class="card-body">
                                             <div class="chart-area">
@@ -244,7 +247,7 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
                                 </div> -->
 
                                 <!-- Progress Bar 3 -->
-                                <div class="col-xl-2 col-lg-4">
+                                <div class="col-xl-3 col-lg-4">
                                     <div class="card shadow mb-4">
                                         <!-- Card Header - Dropdown -->
                                         <div
@@ -258,7 +261,7 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
                                                 <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
                                                     aria-labelledby="dropdownMenuLink">
                                                     <div class="dropdown-header">Dropdown Header:</div>
-                                                    <a class="dropdown-item" href="#">Action</a>
+                                                    <a class="dropdown-item" href="#panel1001">Action</a>
                                                     <a class="dropdown-item" href="#">Another action</a>
                                                     <div class="dropdown-divider"></div>
                                                     <a class="dropdown-item" href="#">Something else here</a>
@@ -268,31 +271,44 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
 
 
                                         <div class="card-body">
+                                 
 
                                             <!-- Card content -->
-                                            <h4 class="card-title font-weight-bold">Semister 01</h4>
+                                            <h4 class="card-title font-weight-bold mb-2">Exam</h4>
                                             <!-- <p class="card-text mb-4">NYSE: AZHC • Oct 16, 1:45PM</p> -->
                                             <div class="d-flex justify-content-between">
-                                                <p class="display-4 align-self-end">887.32</p>
+                                                <p class="display-4 align-self-end mb-0">887.32</p>
                                                 <!-- <p class="align-self-end pb-2">887.02 (.03%)</p> -->
                                             </div>
                                         </div>
                                         <!-- Classic tabs -->
                                         <div class="classic-tabs">
-                                            <ul class="nav tabs-white nav-fill" role="tablist">
-                                                <li class="nav-item ml-0">
+                                            <!-- <ul class="nav tabs-white nav-fill " role="tablist">
+                                                <li class="nav-item">
                                                     <a class="nav-link waves-light active" data-toggle="tab"
-                                                        href="#panel1001" role="tab">Profile</a>
+                                                        href="#panel1001" role="tab">Ict</a>
                                                 </li>
                                                 <li class="nav-item">
                                                     <a class="nav-link waves-light" data-toggle="tab" href="#panel1002"
-                                                        role="tab">Follow</a>
+                                                        role="tab">Foot</a>
                                                 </li>
                                                 <li class="nav-item">
                                                     <a class="nav-link waves-light" data-toggle="tab" href="#panel1003"
-                                                        role="tab">Contact</a>
+                                                        role="tab">Consruction</a>
                                                 </li>
-                                            </ul>
+                                                <li class="nav-item">
+                                                    <a class="nav-link waves-light" data-toggle="tab" href="#panel1004"
+                                                        role="tab">Auto mobilr</a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a class="nav-link waves-light" data-toggle="tab" href="#panel1005"
+                                                        role="tab">Electronic</a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a class="nav-link waves-light" data-toggle="tab" href="#panel1005"
+                                                        role="tab">Macanical</a>
+                                                </li>
+                                            </ul> -->
 
                                             <div class="tab-content rounded-bottom">
                                                 <div class="tab-pane fade in show active" id="panel1001"
@@ -300,25 +316,19 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
                                                     <canvas id="lineChart" height="250px"></canvas>
                                                 </div>
                                                 <div class="tab-pane fade" id="panel1002" role="tabpanel">
-                                                    <p align="justify" class="font-small text-muted mx-1">
-                                                        Lorem
-                                                        ipsum dolor sit amet, consectetur
-                                                        adipisicing elit. Nihil odit magnam minima, soluta
-                                                    </p>
-                                                    <p align="justify" class="font-small text-muted mx-1">
-                                                        Lorem
-                                                        ipsum dolor sit amet, consectetur
-                                                        adipisicing elit. Nihil odit magnam minima, soluta
-                                                    </p>
+                                                    <canvas id="lineChart" height="250px"></canvas>
                                                 </div>
                                                 <div class="tab-pane fade" id="panel1003" role="tabpanel">
-                                                    <img class="img-fluid z-depth-1 rounded mb-3" alt="sample image"
-                                                        src="https://mdbootstrap.com/img/Photos/Others/intro1.jpg">
-                                                    <p align="justify" class="font-small text-muted mx-1">
-                                                        Lorem
-                                                        ipsum dolor sit amet, consectetur
-                                                        adipisicing elit. Nihil odit magnam minima, soluta
-                                                    </p>
+                                                    <canvas id="lineChart" height="250px"></canvas>
+                                                </div>
+                                                <div class="tab-pane fade" id="panel1004" role="tabpanel">
+                                                    <canvas id="lineChart" height="250px"></canvas>
+                                                </div>
+                                                <div class="tab-pane fade" id="panel1005" role="tabpanel">
+                                                    <canvas id="lineChart" height="250px"></canvas>
+                                                </div>
+                                                <div class="tab-pane fade" id="panel1006" role="tabpanel">
+                                                    <canvas id="lineChart" height="250px"></canvas>
                                                 </div>
                                             </div>
                                         </div>
@@ -326,7 +336,7 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
                                 </div>
 
                                 <!-- Progress Bar 3 -->
-                                <div class="col-xl-2 col-lg-4">
+                                <div class="col-xl-3 col-lg-4">
                                     <div class="card shadow mb-4">
                                         <!-- Card Header - Dropdown -->
                                         <div
@@ -350,76 +360,51 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
 
 
                                         <div class="card-body">
+                                            <!-- Content Column -->
 
-                                            <!-- Card content -->
-                                            <h4 class="card-title font-weight-bold">Semister 02</h4>
-                                            <!-- <p class="card-text mb-4">NYSE: AZHC • Oct 16, 1:45PM</p> -->
-                                            <div class="d-flex justify-content-between">
-                                                <p class="display-4 align-self-end">887.32</p>
-                                                <!-- <p class="align-self-end pb-2">887.02 (.03%)</p> -->
+
+                                            <!-- Project Card Example -->
+
+
+
+                                            <h4 class="small font-weight-bold">Server Migration <span
+                                                    class="float-right">29%</span></h4>
+                                            <div class="progress mb-4">
+                                                <div class="progress-bar bg-danger" role="progressbar"
+                                                    style="width: 20%" aria-valuenow="20" aria-valuemin="0"
+                                                    aria-valuemax="100"></div>
+                                            </div>
+                                            <h4 class="small font-weight-bold">Sales Tracking <span
+                                                    class="float-right">40%</span></h4>
+                                            <div class="progress mb-4">
+                                                <div class="progress-bar bg-warning" role="progressbar"
+                                                    style="width: 40%" aria-valuenow="40" aria-valuemin="0"
+                                                    aria-valuemax="100"></div>
+                                            </div>
+                                            <h4 class="small font-weight-bold">Customer Database <span
+                                                    class="float-right">60%</span></h4>
+                                            <div class="progress mb-4">
+                                                <div class="progress-bar" role="progressbar" style="width: 60%"
+                                                    aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
+                                            </div>
+                                            <h4 class="small font-weight-bold">Payout Details <span
+                                                    class="float-right">80%</span></h4>
+                                            <div class="progress mb-4">
+                                                <div class="progress-bar bg-info" role="progressbar" style="width: 80%"
+                                                    aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
+                                            </div>
+                                            <h4 class="small font-weight-bold">Account Setup <span
+                                                    class="float-right">Complete!</span></h4>
+                                            <div class="progress">
+                                                <div class="progress-bar bg-success" role="progressbar"
+                                                    style="width: 100%" aria-valuenow="100" aria-valuemin="0"
+                                                    aria-valuemax="100"></div>
                                             </div>
                                         </div>
-                                        <!-- Classic tabs -->
-                                        <div class="classic-tabs">
-                                            <ul class="nav tabs-white nav-fill" role="tablist">
-                                                <li class="nav-item ml-0">
-                                                    <a class="nav-link waves-light active" data-toggle="tab"
-                                                        href="#panel1001" role="tab">Profile</a>
-                                                </li>
-                                                <li class="nav-item">
-                                                    <a class="nav-link waves-light" data-toggle="tab" href="#panel1002"
-                                                        role="tab">Follow</a>
-                                                </li>
-                                                <li class="nav-item">
-                                                    <a class="nav-link waves-light" data-toggle="tab" href="#panel1003"
-                                                        role="tab">Contact</a>
-                                                </li>
-                                            </ul>
 
-                                            <div class="tab-content rounded-bottom">
-                                                <div class="tab-pane fade in show active" id="panel1001"
-                                                    role="tabpanel">
-                                                    <canvas id="lineChart" height="250px"></canvas>
-                                                </div>
-                                                <div class="tab-pane fade" id="panel1002" role="tabpanel">
-                                                    <p align="justify" class="font-small text-muted mx-1">
-                                                        Lorem
-                                                        ipsum dolor sit amet, consectetur
-                                                        adipisicing elit. Nihil odit magnam minima, soluta
-                                                        doloribus reiciendis molestiae placeat
-                                                        unde
-                                                        eos molestias. Quisquam aperiam, pariatur. Tempora,
-                                                        placeat ratione porro voluptate odit
-                                                        minima.
-                                                    </p>
-                                                    <p align="justify" class="font-small text-muted mx-1">
-                                                        Lorem
-                                                        ipsum dolor sit amet, consectetur
-                                                        adipisicing elit. Nihil odit magnam minima, soluta
-                                                        doloribus reiciendis molestiae placeat
-                                                        unde
-                                                        eos molestias. Quisquam aperiam, pariatur. Tempora,
-                                                        placeat ratione porro voluptate odit
-                                                        minima.
-                                                    </p>
-                                                </div>
-                                                <div class="tab-pane fade" id="panel1003" role="tabpanel">
-                                                    <img class="img-fluid z-depth-1 rounded mb-3" alt="sample image"
-                                                        src="https://mdbootstrap.com/img/Photos/Others/intro1.jpg">
-                                                    <p align="justify" class="font-small text-muted mx-1">
-                                                        Lorem
-                                                        ipsum dolor sit amet, consectetur
-                                                        adipisicing elit. Nihil odit magnam minima, soluta
-                                                        doloribus reiciendis molestiae placeat
-                                                        unde
-                                                        eos molestias. Quisquam aperiam, pariatur. Tempora,
-                                                        placeat ratione porro voluptate odit
-                                                        minima
-                                                        at ipsum sit amet.</p>
-                                                </div>
-                                            </div>
-                                        </div>
+
                                     </div>
+                                </div>
                                 </div>
 
                                 <!-- Content Row -->
@@ -471,7 +456,7 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
                                             </div>
                                         </div>
 
-                                      
+
 
                                     </div>
 
