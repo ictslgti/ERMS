@@ -9,6 +9,7 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
     <?php include_once('.././head.php');
           include_once('dashboard/dash-cdn.php');    
     //    include_once('../config.php');
+    //    include_once('../config.php');
     ?>
     <style>
     .skill-bar {
