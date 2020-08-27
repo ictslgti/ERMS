@@ -7,17 +7,48 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
 
 <head>
     <?php include_once('.././head.php');
-    include_once('dashboard/dash-cdn.php');  
-    
-    // include_once('../config.php');
+          include_once('dashboard/dash-cdn.php');    
+    //    include_once('../config.php');
+    //    include_once('../config.php');
     ?>
+    <style>
+    .skill-bar {
+        height: 16px;
+        background: #E9ECEF;
+        border-radius: 5px;
+        margin: 12px;
+    }
+
+    .skill-per {
+        height: 20px;
+        background-color: #5377E0;
+        /* border-radius: 5px; */
+        width: 0;
+        transition: 0.5s linear;
+        position: relative;
+    }
+
+    .skill-per::before {
+        content: attr(per);
+        position: absolute;
+        padding: 4px 6px;
+        background-color: #000;
+        color: #fff;
+        font-size: 12px;
+        /* border-radius: 3px; */
+        top: -35px;
+        right: 0;
+        transform: translateX(50%);
+    }
+    </style>
+
 
 </head>
 
 <body>
     <main class='page-content pt-2'>
         <?php include_once('nav.php');
-        ?>
+        ?>       
         <div id='overlay' class='overlay'></div>
         <div class='container-fluid p-1'>
             <!-- #1 Insert Your Content-->
@@ -207,7 +238,7 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
                                                     role="tabpanel">
                                                     <canvas id="lineChart-ict" height="250px"></canvas>
                                                 </div>
-                                                <div class="tab-pane fade" id="panel1002" role="tabpanel">                                                    
+                                                <div class="tab-pane fade" id="panel1002" role="tabpanel">
                                                     <canvas id="lineChart-construction" height="250px"></canvas>
                                                 </div>
                                                 <div class="tab-pane fade" id="panel1003" role="tabpanel">
@@ -233,7 +264,7 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
                                         <!-- Card Header - Dropdown -->
                                         <div
                                             class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                                            <h6 class="m-0 font-weight-bold text-primary">Revenue Sources</h6>
+                                            <h6 class="m-0 font-weight-bold text-primary">Cource Duriation</h6>
                                             <div class="dropdown no-arrow">
                                                 <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
                                                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -250,64 +281,69 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
                                             </div>
                                         </div>
 
-
                                         <div class="card-body">
                                             <!-- Content Column -->
-
-
                                             <!-- Project Card Example -->
-
-
-
-                                            <h4 class="small font-weight-bold">Server Migration <span
-                                                    class="float-right">29%</span></h4>
-                                            <div class="progress mb-4">
-                                                <div class="progress-bar bg-danger" role="progressbar"
-                                                    style="width: 20%" aria-valuenow="20" aria-valuemin="0"
-                                                    aria-valuemax="100"></div>
+                                            <div class="skill-name small font-weight-bold">Payout Details<span
+                                                    class="float-right">30%</span></div>
+                                            <div class="skill-bar progress-bar">
+                                                <div class="skill-per" per="30"></div>
                                             </div>
-                                            <h4 class="small font-weight-bold">Sales Tracking <span
-                                                    class="float-right">40%</span></h4>
-                                            <div class="progress mb-4">
-                                                <div class="progress-bar bg-warning" role="progressbar"
-                                                    style="width: 40%" aria-valuenow="40" aria-valuemin="0"
-                                                    aria-valuemax="100"></div>
+                                            <div class="skill-name small font-weight-bold">Payout Details<span
+                                                    class="float-right">10%</span></div>
+                                            <div class="skill-bar progress-bar">
+                                                <div class="skill-per" per="10"></div>
                                             </div>
-                                            <h4 class="small font-weight-bold">Customer Database <span
-                                                    class="float-right">60%</span></h4>
-                                            <div class="progress mb-4">
-                                                <div class="progress-bar" role="progressbar" style="width: 60%"
-                                                    aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
+                                            <div class="skill-name small font-weight-bold">Payout Details<span
+                                                    class="float-right">20%</span></div>
+                                            <div class="skill-bar progress-bar">
+                                                <div class="skill-per" per="20"></div>
                                             </div>
-                                            <h4 class="small font-weight-bold">Payout Details <span
-                                                    class="float-right">80%</span></h4>
-                                            <div class="progress mb-4">
-                                                <div class="progress-bar bg-info" role="progressbar" style="width: 80%"
-                                                    aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
+                                            <div class="skill-name small font-weight-bold">Payout Details<span
+                                                    class="float-right">90%</span></div>
+                                            <div class="skill-bar progress-bar">
+                                                <div class="skill-per" per="90"></div>
                                             </div>
-                                            <h4 class="small font-weight-bold">Payout Details <span
-                                                    class="float-right">80%</span></h4>
-                                            <div class="progress mb-4">
-                                                <div class="progress-bar bg-info" role="progressbar" style="width: 80%"
-                                                    aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
+                                            <div class="skill-name small font-weight-bold">Payout Details<span
+                                                    class="float-right">80%</span></div>
+                                            <div class="skill-bar progress-bar">
+                                                <div class="skill-per" per="80"></div>
+                                            </div>
+                                            <div class="skill-name small font-weight-bold">Payout Details<span
+                                                    class="float-right">50%</span></div>
+                                            <div class="skill-bar progress-bar">
+                                                <div class="skill-per" per="50"></div>
                                             </div>
 
-                                            <h4 class="small font-weight-bold">Account Setup <span
-                                                    class="float-right">Complete!</span></h4>
-                                            <div class="progress">
-                                                <div class="progress-bar bg-success" role="progressbar"
-                                                    style="width: 100%" aria-valuenow="100" aria-valuemin="0"
-                                                    aria-valuemax="100"></div>
-                                            </div>
+                                            <script>
+                                            $('.skill-per').each(function() {
+                                                var $this = $(this);
+                                                var per = $this.attr('per');
+                                                $this.css("width", per + '%');
+                                                $({
+                                                    animatedValue: 0
+                                                }).animate({
+                                                    animatedValue: per
+                                                }, {
+                                                    duration: 1000,
+                                                    step: function() {
+                                                        $this.attr('per', Math.floor(this
+                                                            .animatedValue) + '%');
+                                                    },
+                                                    complete: function() {
+                                                        $this.attr('per', Math.floor(this
+                                                            .animatedValue) + '%');
+                                                    }
+                                                });
+                                            });
+                                            </script>
+                                            
                                         </div>
-
-
                                     </div>
                                 </div>
                             </div>
-
                             <!-- Content Row -->
-                            <div class="row">
+                            <div class="row">   
 
                                 <!-- Content Column -->
                                 <div class="col-lg-6 mb-4">
@@ -321,14 +357,14 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
                                             <h4 class="small font-weight-bold">Server Migration <span
                                                     class="float-right">29%</span></h4>
                                             <div class="progress mb-4">
-                                                <div class="progress-bar bg-danger" role="progressbar"
+                                                <div class="progress-bar bg-danger " role="progressbar"
                                                     style="width: 20%" aria-valuenow="20" aria-valuemin="0"
                                                     aria-valuemax="100"></div>
                                             </div>
                                             <h4 class="small font-weight-bold">Sales Tracking <span
                                                     class="float-right">40%</span></h4>
                                             <div class="progress mb-4">
-                                                <div class="progress-bar bg-warning" role="progressbar"
+                                                <div class="progress-bar skill-per bg-warning" role="progressbar"
                                                     style="width: 40%" aria-valuenow="40" aria-valuemin="0"
                                                     aria-valuemax="100"></div>
                                             </div>
@@ -402,11 +438,6 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
                         </div>
                         <!-- /.container-fluid -->
 
-
-
-
-
-
                         <!-- /.container-fluid -->
                     </div>
                     <!-- End of Main Content -->
@@ -450,15 +481,15 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
         </div>
         </div>
         </div>
-        <!-- #1 Insert Your Content" -->
-
+        <!-- #1 Insert Your Content" -->        
     </main>
     </div>
     </div>
     </main>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/js/mdb.min.js">
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/js/mdb.min.js">    
     </script>
     <?php include_once("..\script.php");
+         
     ?>
 </body>
 
