@@ -7,6 +7,7 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
 
 <head>
     <?php include_once("./head.php"); ?>
+    <?php include_once("../config.php"); ?>
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <style>
 tr,th,table{
@@ -22,6 +23,39 @@ tr,th,table{
        <!-- card start -->
         <br>
 <div class="container">
+<?php 
+$id=$_GET['id'];
+$s_id=null;
+$name=null;
+$batch=null;
+$year=null;
+$course=null;
+$module=null;
+if(isset($_GET['id'])){
+    $id = $_GET['id'];
+    
+    $sql = "SELECT s.id, s.name_with_initials, se.batch_no, b.academic_year, se.course_id, ae.module
+    FROM student s
+    INNER JOIN student_enroll se ON s.id = se.id
+    INNER JOIN batch b ON b.batch_no = se.batch_no
+    INNER JOIN assessments ae ON ae.batch = se.batch_no
+    WHERE ae.id =$id ;";
+    $result = mysqli_query($con,$sql);
+    if(mysqli_num_rows($result)==1){
+        $row = mysqli_fetch_assoc($result);
+        $s_id = $row['id'];
+        $name = $row['name_with_initials'];
+        $batch = $row['batch_no'];
+        $year = $row['academic_year'];
+        $course = $row['course_id'];
+        $module = $row['module'];
+        
+    }
+}
+?>
+
+
+
 <form action=""method="post">
 <div class="card  mb-1" >
       <div class="card-header bg-transparent ">
@@ -50,21 +84,21 @@ tr,th,table{
                         <h6>Module</h6>
                     </div>
                     <div class="col-md-4 col-sm-12">
-                        <h6 class="text-muted">MO7<span class="badge badge-dark">Practical</span></h6>
+                        <h6 class="text-muted"><?php echo $module;?><span class="badge badge-dark">Practical</span></h6>
                     </div>
 
                     <div class="col-md-2 col-sm-12">
                         <h6>Batch</h6>
                     </div>
                     <div class="col-md-4 col-sm-12">
-                        <h6 class="text-muted">Batch-4 <span class="badge badge-dark">2018/2025</span></h6>
+                        <h6 class="text-muted"><?php echo $batch;?> <span class="badge badge-dark">2018/2025</span></h6>
                     </div>
 
                     <div class="col-md-2 col-sm-12">
                         <h6>Course </h6>
                     </div>
                     <div class="col-md-4 col-sm-12">
-                        <h6 class="text-muted">5it</h6>
+                        <h6 class="text-muted"><?php echo $course;?></h6>
                     </div>
 
                     <div class="col-md-2 col-sm-12">
@@ -121,7 +155,7 @@ tr,th,table{
                 </form>
                 <br>
 <?php
-if(isset($_GET['Add']))
+if(isset($_GET['id']))
 {
   ?>  
     <form method='POST' action='assessment_result.php'>
@@ -130,7 +164,6 @@ if(isset($_GET['Add']))
             <table class='table align-middle'>
                 <thead class='bg-primary text-light'>
                     <tr>
-                        <th scope='col'>NO</th>
                         <th scope='col'>REG NO</th>
                         <th scope='col'>STUDENT NAME</th>
                         <th scope='col'>MARKS</th>
@@ -141,10 +174,22 @@ if(isset($_GET['Add']))
                 </thead>
                 <tbody>
                     <tr>
-                        <th scope='row'>1</th>
-                        <td>2018ICTBIT30</td> 
-                        <td>S.Sumanan</td>
-                        <td>
+                    <?php
+                    echo $id;
+$sql = "SELECT s.id, s.name_with_initials, se.batch_no, b.academic_year, se.course_id, ae.module
+FROM student s
+INNER JOIN student_enroll se ON s.id = se.id
+INNER JOIN batch b ON b.batch_no = se.batch_no
+INNER JOIN assessments ae ON ae.batch = se.batch_no
+WHERE ae.id =$id;";
+$result = mysqli_query($con,$sql);
+if(mysqli_num_rows($result)>0){
+    while($row = mysqli_fetch_assoc($result)){
+        echo '<tr>
+            <td>',$row['id'],'</td>
+            <td>',$row['name_with_initials'],'</td>';
+           ?>
+                   <td>
                             <input type='text' class='form-control' placeholder='Marks' id='validationServer02' required aria-label='marks' aria-describedby='addon-wrapping' maxlength='5' size='6'>
                         </td>
                         <td><select class='custom-select' id='inputGroupSelect01' id='validationServer01' required>
@@ -154,8 +199,18 @@ if(isset($_GET['Add']))
                                                 <option value='3'>3 rd</option>
                                         </td>
                         
-
+                                       
                     </tr>
+           <?php 
+    }
+}
+else
+{
+    echo "sumanan";
+}
+?>
+
+                        
                 </tbody>
             </table>
             <!-- button -->
@@ -197,22 +252,7 @@ elseif(isset($_GET['Edit']))
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <th scope='row'>1</th>
-                        <td>2018ICTBIT30</td> 
-                        <td>S.Sumanan</td>
-                        <td>
-                            <input type='text' value="65" class='form-control' placeholder='Marks' id='validationServer02' required aria-label='marks' aria-describedby='addon-wrapping' maxlength='5' size='6'>
-                        </td>
-                        <td><select class='custom-select' id='inputGroupSelect01' id='validationServer01' required>
-                                                <option value=''disabled >Select</option>
-                                                <option value='1'selected>1 st</option>
-                                                <option value='2'>2 nd</option>
-                                                <option value='3'>3 rd</option>
-                                        </td>
-                        
-
-                    </tr>
+                    
                 </tbody>
             </table>
             <!-- button -->
@@ -252,23 +292,7 @@ else
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <th scope='row'>1</th>
-                        <td>2018ICTBIT30</td>
-                        <td>S.Sumanan</td>
-                        <td><h6>65 <span class="badge badge-dark">Attempt-1</span></h6></td>
-                        <td><span class=' badge badge-success p-2'>PASS</span></td>
-                    </tr>
-
                     
-
-                    <tr>
-                        <th scope='row'>3</th>
-                        <td>2018ICTBIT05</td>
-                        <td>R.Kodvin</td>
-                        <td> <h6>75 <span class="badge badge-dark">Attempt-2</span></h6></td>
-                        <td><span class=' badge badge-success p-2'>PASS</span></td>
-                    </tr>
                 </tbody>
             </table>
             
