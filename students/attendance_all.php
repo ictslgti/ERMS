@@ -84,13 +84,23 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
                                     }
                                 ?>
                             </tr>
+
+                            <?php
+                            $sql = " select count(status) as take_session,all_session from attendance where student_id='2018ICTBIT01'";
+                                            $result = mysqli_query($con, $sql);
+                                            while ($row = mysqli_fetch_assoc($result)) {
+                                 ?>
+
                             <tr>
                                 <td scope='col'>Average attendance</td>
                                 <td scope='col'></td>
                                 <td scope='col'></td>
-                                <td scope='col'></td>
+                                <td scope='col'><?php echo (($row['take_session']/$row['all_session'])*100)."%"; ?></td>
                                 
-                                
+                                <?php
+                                    }
+                                ?>
+
                             </tr>
                             
                         </thead>
