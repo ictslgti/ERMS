@@ -8,6 +8,7 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
 <head>
     <?php include_once("./head.php"); ?>
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <?php include_once("../config.php"); ?>
 
     <style>
    .test:after {
@@ -28,6 +29,10 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
 
          <div class="container"> 
              <br>
+
+
+
+             
          <form action=""> 
             <div class="card  mb-3" >
                 <div class="card-header ">
@@ -46,9 +51,8 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                     <table class='table align-middle'>
                         <thead class='bg-primary text-light'>
                             <tr>
-                                <th scope='col'>ID</th>
+                            
                                 <th scope='col'>Name</th>
-                                
                                 <th scope='col'>Module</th>
                                 <th scope='col'>Batch</th>
                                 <th scope='col'>Options</th>
@@ -57,97 +61,30 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <th scope='row'>1</th>
-                                <td>Assessment 01 <img src="https://img.icons8.com/cute-clipart/30/000000/delete-sign.png"/></td>
-                                
-                                <td>Web Programming<span class="badge badge-pill badge-dark m-1">M07</span></td>
-                                <td>Batch-1<span class="badge badge-pill badge-dark m-1">2019/2020</span></td>
-                                
-                                
-                                <td class="alig">
-                        <h2></h2>
-                            
-                            <div class="w3-dropdown-hover">
-                                <a class=""><div class="test"></div></a>
-                                <div class="w3-dropdown-content w3-bar-block w3-border">
-                                <a class="dropdown-item" href="#"><img src="https://img.icons8.com/android/18/000000/edit.png"/>  Edit</a>
-                                <a class="dropdown-item" href="#"><img src="https://img.icons8.com/windows/18/000000/delete-forever.png"/>Delete</a>
-                                <a class="dropdown-item" href="assessment_result.php">Add result</a>
-                                </div>
-                            </div>
-                </td>
-
-                            </tr>
-                            
-                            <tr>
-                                <th scope='row'>2</th>
-                                <td>Assessment 02 <img src="https://img.icons8.com/cute-clipart/30/000000/delete-sign.png"/></td>
-                                
-                                <td>Web Programming<span class="badge badge-pill badge-dark m-1">M07</span></td>
-                                <td>Batch-2<span class="badge badge-pill badge-dark m-1">2019/2020</span></td>
-                                
-                               
-                                <td class="alig">
-                        <h2></h2>
-                        
-                        <div class="w3-dropdown-hover">
-                            <a class=""><div class="test"></div></a>
-                            <div class="w3-dropdown-content w3-bar-block w3-border">
-                            <a class="dropdown-item" href="#"><img src="https://img.icons8.com/android/18/000000/edit.png"/>  Edit</a>
-                            <a class="dropdown-item" href="#"><img src="https://img.icons8.com/windows/18/000000/delete-forever.png"/>Delete</a>
-                            <a class="dropdown-item" href="assessment_result.php">Add result</a>
-                            </div>
-                        </div>
-            </td>
-
-                            </tr>
-
-                            <tr >
-                                <th scope='row'>3</th>
-                                <td>Assessment 02 <img src="https://img.icons8.com/color/30/000000/checked-2.png"/></td>
-                                
-                                <td>Software Testing<span class="badge badge-pill badge-dark m-1">M06</span></td>
-                                <td>Batch-1<span class="badge badge-pill badge-dark m-1">2019/2020</span></td>
-                                
-                                
-                                <td class="alig">
-                              <h2></h2>
-                                
-                                <div class="w3-dropdown-hover">
-                                    <a class=""><div class="test"></div></a>
-                                    <div class="w3-dropdown-content w3-bar-block w3-border">
-                                    <a class="dropdown-item" href="#"><img src="https://img.icons8.com/android/18/000000/edit.png"/>  Edit</a>
-                                    <a class="dropdown-item" href="#"><img src="https://img.icons8.com/windows/18/000000/delete-forever.png"/>Delete</a>
-                                    <a class="dropdown-item" href="assessment_result.php">Add result</a>
-                                    </div>
-                                </div>
-                                 </td>
-
-                            </tr>
-
-                            <tr >
-                                <th scope='row'>3</th>
-                                <td>Assessment 01 <img src="https://img.icons8.com/color/30/000000/checked-2.png"/></td>
-                               
-                                <td>Software Testing<span class="badge badge-pill badge-dark m-1">M06</span></td>
-                                <td>Batch-1<span class="badge badge-pill badge-dark m-1">2019/2020</span></td>
-                                
-                               
-                                <td class="alig">
-                          <h2></h2>
+                            <?php
+$sql = ' SELECT * FROM `assessments`';
+$result = mysqli_query($con,$sql);
+if(mysqli_num_rows($result)>0){
+    while($row = mysqli_fetch_assoc($result)){
+        echo '<tr>
+            <td>',$row['name'],'</td>
+            <td>',$row['module'],'</td>
+            <td>',$row['batch'],'</td>
             
-                        <div class="w3-dropdown-hover">
-                            <a class=""><div class="test"></div></a>
-                            <div class="w3-dropdown-content w3-bar-block w3-border">
-                            <a class="dropdown-item" href="#"><img src="https://img.icons8.com/android/18/000000/edit.png"/>  Edit</a>
-                            <a class="dropdown-item" href="#"><img src="https://img.icons8.com/windows/18/000000/delete-forever.png"/>Delete</a>
-                            <a class="dropdown-item" href="assessment_result.php">Add result</a>
-                            </div>
-                        </div>
-                        </td>
-
-                            </tr>
+            <td>
+            <div class="btn-group btn-sm" role="group" aria-label="Basic example">
+            <a href="batch.php?edit=',$row['id'],'" class="btn btn-warning" > Edit </a> 
+            <a href="?delete=',$row['id'],'" class="btn btn-danger"> Delete </a>
+            <a href="assessment_result.php?id=',$row['id'],'" class="btn btn-success"> Add result </a>
+          </div>
+            </td>
+        </tr>';
+    }
+}
+else{
+    echo 'no rows';
+}
+?>  
 
                         </tbody>
                     </table>
@@ -164,8 +101,7 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                          <h1></h1>
                      </div>
                      <div class="col-auto">
-                     <img src="https://img.icons8.com/color/30/000000/checked-2.png"/>Results submit
-                     <img src="https://img.icons8.com/cute-clipart/30/000000/delete-sign.png"/>Results not submit
+                     
                      </div>
                      </div>
                 </div>

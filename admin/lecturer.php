@@ -151,7 +151,7 @@ if(isset($_POST['submit'])
 <!-- 2nd start -->
 <div class="row">
                      <div class=col-2>
-                            <div id="wrapper">
+                            <div >
                                 <img id="output_image" />
                                 <input type="file" name="image" accept="image/*" onchange="preview_image(event)"><br>
                             </div>
