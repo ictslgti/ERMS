@@ -8,6 +8,7 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
 <head>
     <?php include_once('.././head.php');
     include_once('../config.php');
+    $dat=null;
     ?>
 </head>
 
@@ -35,10 +36,19 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
         <div class="col-md-3" align="right">
           <button type="button" id="add_button" class="btn btn-info btn-sm">Chart</button>
         </div>
+
+        
+
       </div>
+      <form action="" method="POST">
+      <input type="date" name="prese_date"><input type="submit" value="show details" name="show_date">
+      </form>
     </div>
+    
   	<div class="card-body">
+    
   		<div class="table-responsive">
+       
         <span id="message_operation"></span>
         <table class="table table-striped table-bordered" id="attendance_table">
           <thead>
@@ -50,8 +60,22 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
               <th>Attendance Date</th>
             </tr>
             <tr>
-                    <?php 
-                    $sql="select  DISTINCT s.student_id,s.student_name,s.student_batch,a.status,a.attendance_date from student s inner join attendance a on s.student_id=a.student_id inner join batch b on s.student_batch=b.Batch_id;";
+              
+            
+              
+              <?php 
+                        if(isset($_POST['show_date']))
+                        {
+                        $dat=$_POST['prese_date'];
+                        echo $dat."-"."attendance details";
+                        $sql="select  DISTINCT s.student_id,s.student_name,s.student_batch,a.status,date(a.attendance_date) as attendance_date from student s inner join 
+                        attendance a on s.student_id=a.student_id inner join batch b on s.student_batch=b.Batch_id and attendance_date='$dat';";
+                        }  
+                        else{
+                          $sql="select  DISTINCT s.student_id,s.student_name,s.student_batch,a.status,date(a.attendance_date) as attendance_date from student s inner join attendance a on s.student_id=a.student_id 
+                          inner join batch b on s.student_batch=b.Batch_id and attendance_date=curdate();";
+                        }
+                    
 
                     $result = mysqli_query($con, $sql);
                     while ($row = mysqli_fetch_assoc($result)) {
@@ -75,6 +99,11 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
                     <?php 
                     }
                     ?>
+
+              
+            
+            
+                    
                   </tr>
           </thead>
           <tbody>
