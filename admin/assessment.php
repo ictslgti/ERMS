@@ -76,7 +76,7 @@ if(
     $percen=$_POST['per'];
     $assess=$_POST['assess'];
 
-    $sql = "INSERT INTO assessments (name,department_code,course_code,batch,module,type,Percentage)
+    $sql = "INSERT INTO assessments (name,department_code,course,batch,module,type,Percentage)
     VALUES 
     ('$assess','$department', '$course', '$batchno','$module','$type','$percen')
     ";
@@ -90,7 +90,7 @@ if(
         </button>
       </div>";
    } else {
-       
+       echo "Error: " . $sql . "<br>" . mysqli_error($con);
        echo "
        <div class='alert alert-danger' role='alert'>
        This academic_year alredy submit 
