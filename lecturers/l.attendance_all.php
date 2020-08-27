@@ -66,13 +66,7 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
                                                 </button>
                                                 <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
                                                 <a class="dropdown-item" href="#">BATCH 01</a>
-                                                <a class="dropdown-item" href="#">BATCH 02</a>
-                                                <a class="dropdown-item" href="#">BATCH 03</a>
-                                                <a class="dropdown-item" href="#">BATCH 04</a>
-                                                <a class="dropdown-item" href="#">BATCH 05</a>
-                                                <a class="dropdown-item" href="#">BATCH 06</a>
-                                                <a class="dropdown-item" href="#">BATCH 07</a>
-                                                <a class="dropdown-item" href="#">BATCH 08</a>
+                                                
                                                 </div>
                                             </div>
                                             
@@ -88,8 +82,10 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
                     <div class="form-group col-md-12 table-responsive">
                     <table class="table align-middle">
                         <thead class='thead-light'>
+
+                       
                             <tr>
-                                <th scope='col'>No.</th>
+                              
                                 <th scope='col'>Reg No.</th>
                                 <th scope='col'>1st Lec</th>
                                 <th scope='col'>2nd Lec</th>
@@ -113,131 +109,20 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
                                 <th scope='col'>20th Lec</th>
                                 <th scope='col'>Total Lec</th>
                             </tr>
+                            <?php
+                            $sql = " select student_id,status from attendance ";
+                                            $result = mysqli_query($con, $sql);
+                                            while ($row = mysqli_fetch_assoc($result)) {
+                                 ?>
                             <tr>
-                                <td scope='col'>01</td>
-                                <td scope='col'>2018slgtibit01</td>
-                                <td scope='col'>1</td>
-                                <td scope='col'>1</td>
-                                <td scope='col'>0</td>
-                                <td scope='col'>1</td>
-                                <td scope='col'>1</td>
-                                <td scope='col'>1</td>
-                                <td scope='col'>1</td>
-                                <td scope='col'>1</td>
-                                <td scope='col'>1</td>
-                                <td scope='col'>1</td>
-                                <td scope='col'>0</td>
-                                <td scope='col'>1</td>
-                                <td scope='col'>1</td>
-                                <td scope='col'>1</td>
-                                <td scope='col'>1</td>
-                                <td scope='col'>1</td>
-                                <td scope='col'>1</td>
-                                <td scope='col'>1</td>
-                                <td scope='col'>1</td>
-                                <td scope='col'>1</td>
-                                <td scope='col'>18</td>
+                               <td><?php echo $row['student_id'] ?></td>
+                               <td><?php echo $row['status'] ?></td>
+                                
+                               <?php
+                                            }
+                               ?>
                             </tr>
-                            <tr>
-                                <td scope='col'>02</td>
-                                <td scope='col'>2018slgtibit02</td>
-                                <td scope='col'>1</td>
-                                <td scope='col'>0</td>
-                                <td scope='col'>0</td>
-                                <td scope='col'>1</td>
-                                <td scope='col'>1</td>
-                                <td scope='col'>1</td>
-                                <td scope='col'>0</td>
-                                <td scope='col'>1</td>
-                                <td scope='col'>1</td>
-                                <td scope='col'>1</td>
-                                <td scope='col'>0</td>
-                                <td scope='col'>1</td>
-                                <td scope='col'>1</td>
-                                <td scope='col'>1</td>
-                                <td scope='col'>0</td>
-                                <td scope='col'>1</td>
-                                <td scope='col'>1</td>
-                                <td scope='col'>1</td>
-                                <td scope='col'>1</td>
-                                <td scope='col'>1</td>
-                                <td scope='col'>15</td>
-                            </tr>
-                            <tr>
-                                <td scope='col'>03</td>
-                                <td scope='col'>2018slgtibit05</td>
-                                <td scope='col'>1</td>
-                                <td scope='col'>1</td>
-                                <td scope='col'>0</td>
-                                <td scope='col'>1</td>
-                                <td scope='col'>1</td>
-                                <td scope='col'>0</td>
-                                <td scope='col'>1</td>
-                                <td scope='col'>1</td>
-                                <td scope='col'>1</td>
-                                <td scope='col'>1</td>
-                                <td scope='col'>0</td>
-                                <td scope='col'>1</td>
-                                <td scope='col'>1</td>
-                                <td scope='col'>1</td>
-                                <td scope='col'>0</td>
-                                <td scope='col'>1</td>
-                                <td scope='col'>1</td>
-                                <td scope='col'>1</td>
-                                <td scope='col'>1</td>
-                                <td scope='col'>1</td>
-                                <td scope='col'>16</td>
-                            </tr>
-                            <tr>
-                                <td scope='col'>04</td>
-                                <td scope='col'>2018slgtibit06</td>
-                                <td scope='col'>1</td>
-                                <td scope='col'>1</td>
-                                <td scope='col'>1</td>
-                                <td scope='col'>1</td>
-                                <td scope='col'>0</td>
-                                <td scope='col'>1</td>
-                                <td scope='col'>1</td>
-                                <td scope='col'>0</td>
-                                <td scope='col'>1</td>
-                                <td scope='col'>1</td>
-                                <td scope='col'>0</td>
-                                <td scope='col'>1</td>
-                                <td scope='col'>1</td>
-                                <td scope='col'>1</td>
-                                <td scope='col'>1</td>
-                                <td scope='col'>1</td>
-                                <td scope='col'>1</td>
-                                <td scope='col'>0</td>
-                                <td scope='col'>1</td>
-                                <td scope='col'>1</td>
-                                <td scope='col'>16</td>
-                            </tr>
-                            <tr>
-                                <td scope='col'>05</td>
-                                <td scope='col'>2018slgtibit07</td>
-                                <td scope='col'>1</td>
-                                <td scope='col'>1</td>
-                                <td scope='col'>0</td>
-                                <td scope='col'>1</td>
-                                <td scope='col'>1</td>
-                                <td scope='col'>1</td>
-                                <td scope='col'>1</td>
-                                <td scope='col'>1</td>
-                                <td scope='col'>1</td>
-                                <td scope='col'>1</td>
-                                <td scope='col'>0</td>
-                                <td scope='col'>1</td>
-                                <td scope='col'>1</td>
-                                <td scope='col'>1</td>
-                                <td scope='col'>1</td>
-                                <td scope='col'>1</td>
-                                <td scope='col'>1</td>
-                                <td scope='col'>1</td>
-                                <td scope='col'>1</td>
-                                <td scope='col'>1</td>
-                                <td scope='col'>18</td>
-                            </tr>
+                           
                             
                             <tr>
                                 <td colspan="2">Total attendance</td>
