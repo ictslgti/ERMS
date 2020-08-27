@@ -174,6 +174,7 @@ $description = "Online Examination Result Management System (ERMS)-SLGTI";
             && !empty($_POST['province'])
             && !empty($_POST['zip'])
             && !empty($_POST['blood'])
+            && !empty($_POST['img'])
             && !empty($_POST['gname'])
             && !empty($_POST['gaddress'])
             && !empty($_POST['gphone'])
@@ -194,6 +195,7 @@ $description = "Online Examination Result Management System (ERMS)-SLGTI";
             $province = $_POST['province'];
             $zip = $_POST['zip'];
             $blood = $_POST['blood'];
+            $img = $_POST['img'];
             $gname = $_POST['gname'];
             $gaddress = $_POST['gaddress'];
             $gphone = $_POST['gphone'];
@@ -427,7 +429,7 @@ $description = "Online Examination Result Management System (ERMS)-SLGTI";
                                             <option value="Galle" data-val="Southern" <?php if ($district == "Galle")  echo 'selected'; ?>> Galle </option>
                                         </select>
                                     </div>
-                                    
+
                                     <!-- for province ditrict filter-->
                                     <script type="text/javascript">
                                         // get first dropdown and bind change event handler
@@ -468,20 +470,20 @@ $description = "Online Examination Result Management System (ERMS)-SLGTI";
                                             <option value="AB-" <?php if ($blood == "AB-")  echo 'selected'; ?>> AB- </option>
                                             <option value="O+" <?php if ($blood == "O+")  echo 'selected'; ?>> O+ </option>
                                             <option value="O-" <?php if ($blood == "O-")  echo 'selected'; ?>> O- </option>
-
                                         </select>
+                                    </div>
+
+                                    <div class="col-2">
+                                        <label for="img"> Image: </label>
+                                        <div class="custom-file">
+                                            <input type="file" name="img" class="custom-file-input" id="customFile">
+                                            <label class="custom-file-label" for="customFile"> Choose</label>
+                                        </div>
                                     </div>
 
                                 </div>
                                 <!-- 4th row end -->
 
-                                <!-- 5th row start -->
-                                <div class="form-row">
-
-
-
-                                </div>
-                                <!-- 5th row end -->
                                 <br>
                                 <!-- 2 row end -->
 
