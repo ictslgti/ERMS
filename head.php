@@ -11,6 +11,4 @@
     integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
 <link rel="stylesheet" href="css/main.css">
 <link rel="stylesheet" href="css/sidebar-themes.css">
-<link rel="shortcut icon" type="image/png" href="img/favicon.png" />
-
-  
+<link rel="shortcut icon" type="image/png" href="img/favicon.png"/>
