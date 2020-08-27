@@ -45,21 +45,26 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
                                     </li>
                                     <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
                                         
-                                        <div class="btn-group" role="group">
+                                         <div class="btn-group" role="group">
                                             <button id="btnGroupDrop1" type="button" class="btn btn-light dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                             MODULE
-                                            </button>
-                                            <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-                                            <a class="dropdown-item" href="#">MO-01</a>
-                                            <a class="dropdown-item" href="#">MO-02</a>
-                                            <a class="dropdown-item" href="#">MO-03</a>
-                                            <a class="dropdown-item" href="#">MO-04</a>
-                                            <a class="dropdown-item" href="#">MO-05</a>
-                                            <a class="dropdown-item" href="#">MO-06</a>
-                                            <a class="dropdown-item" href="#">MO-07</a>
-                                            <a class="dropdown-item" href="#">MO-08</a>
+                                            </button> 
+                                            <?php
+                                                $sql = " select module from attendance where student_id='2018ICTBIT01'";
+                                                $result = mysqli_query($con, $sql);
+                                                while ($row = mysqli_fetch_assoc($result)) {
+                                            ?>
+                                           
+
+                                             <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                                            <a class="dropdown-item" href="#"> <?php echo $row['module'];?> </a>
+
+                                            <?php
+                                                }
+                                            ?>
+                                            
                                             </div>
-                                        </div>
+                                        </div> 
                                         </div>
                                 </ul>
                             </div>
@@ -77,29 +82,54 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
                                 <th scope='col'>STATUS</th>
                             </tr>
                             <?php
-                            $sql = " select count(status) as take_session,module,all_session from attendance where student_id='2018ICTBIT01' group by module";
+                            $sql = " select date(date),time(date),status from attendance where student_id='2018ICTBIT01'";
                                             $result = mysqli_query($con, $sql);
                                             while ($row = mysqli_fetch_assoc($result)) {
                                  ?>
-                            
+                                 
+                                 
                             <tr>
-                                <td scope='col'><?php echo $row['module'];?></td>
-                                <td scope='col'><?php echo $row['module'];?></td>
-                                <td scope='col'><?php echo $row['module'];?></td>
+                                <td scope='col'><?php echo $row['date(date)'];?></td>
+                                <td scope='col'><?php echo $row['time(date)'];?></td>
+                                <td scope='col'><?php echo $row['status'];?></td>
+                                
                                 <?php
-                                            }
+                                     }
                                 ?>
+                                
+
                             </tr>
                                 <table>
-                                    <tr>
-                                    </tr>
+                                <?php
+                            $sql = " select count(status) as take_session,all_session from attendance where student_id='2018ICTBIT01'";
+                                            $result = mysqli_query($con, $sql);
+                                            while ($row = mysqli_fetch_assoc($result)) {
+                                                $per = $row['take_session']; + $row['all_session'];
+
+                                 ?>
                                     <tr>
                                         <td style="text-align: right">Points over taken sessions:</td>
-                                        <td>10 / 10</td>
+                                        <td> <?php echo $row['take_session'];?><?php echo"/";?> <?php echo $row['all_session'];?></td>
+
+                                        <?php
+                                            }
+                                        ?>
                                     </tr> 
+                                    <?php
+                            $sql = " select count(status) as take_session,all_session from attendance where student_id='2018ICTBIT01' group by module";
+                                            $result = mysqli_query($con, $sql);
+                                            while ($row = mysqli_fetch_assoc($result)) {
+
+                                    $per = (($row['take_session']/$row['all_session'])*100)."%";
+                                 ?>
                                     <tr>
                                         <td style="text-align: right">Percentage over taken sessions:</td>
-                                        <td>100.0%</td>
+
+                                        <td><?php echo ($per ); ?></td>
+
+                                        <?php
+                                            }
+                                        ?>
                                     </tr> 
                                 </table>
                         </thead>
