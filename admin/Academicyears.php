@@ -28,12 +28,27 @@ tr,th,table{
 <?php
 if(isset($_GET['delete'])){
     $id = $_GET['delete'];
+    $sql = "select Academic_year from batch where Academic_year='$id';";
+    $result = mysqli_query($con,$sql);
+    if(mysqli_num_rows($result)>0)
+    {
+        ?>
+       <div class='alert alert-warning' role='alert'>
+       This academic_year already allocate batches so not delete this academic_year.
+       <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+           <span aria-hidden='true'>&times;</span>
+        </button>
+      </div>
+        <?php
+    }
+    else{
     $sql = "DELETE FROM `academic_year` WHERE `academic_year`.`academic_year` = '$id'";
     if(mysqli_query($con,$sql)){
         echo 'Record was deleted';
     }else{
         echo 'Try again';
     }
+}
 }
 ?>
 <!-- delete -->
