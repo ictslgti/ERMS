@@ -50,11 +50,11 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
                                             MODULE
                                             </button> 
                                             <?php
-                                                $sql = " select module from attendance where student_id='2018ICTBIT01'";
+                                                $sql = " select module from attendance ";
                                                 $result = mysqli_query($con, $sql);
                                                 while ($row = mysqli_fetch_assoc($result)) {
                                             ?>
-                                           
+                                            
 
                                              <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
                                             <a class="dropdown-item" href="#"> <?php echo $row['module'];?> </a>
@@ -101,26 +101,26 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
                             </tr>
                                 <table>
                                 <?php
-                            $sql = " select count(status) as take_session,all_session from attendance where student_id='2018ICTBIT01'";
+                            $sql = " select count(status) as take_session,session from attendance where student_id='2018ICTBIT01'";
                                             $result = mysqli_query($con, $sql);
                                             while ($row = mysqli_fetch_assoc($result)) {
-                                                $per = $row['take_session']; + $row['all_session'];
+                                                $per = $row['take_session']; + $row['session'];
 
                                  ?>
                                     <tr>
                                         <td style="text-align: right">Points over taken sessions:</td>
-                                        <td> <?php echo $row['take_session'];?><?php echo"/";?> <?php echo $row['all_session'];?></td>
+                                        <td> <?php echo $row['take_session'];?><?php echo"/";?> <?php echo $row['session'];?></td>
 
                                         <?php
                                             }
                                         ?>
                                     </tr> 
                                     <?php
-                            $sql = " select count(status) as take_session,all_session from attendance where student_id='2018ICTBIT01' group by module";
+                            $sql = " select count(status) as take_session,session from attendance where student_id='2018ICTBIT01' group by module";
                                             $result = mysqli_query($con, $sql);
                                             while ($row = mysqli_fetch_assoc($result)) {
 
-                                    $per = (($row['take_session']/$row['all_session'])*100)."%";
+                                    $per = (($row['take_session']/$row['session'])*100)."%";
                                  ?>
                                     <tr>
                                         <td style="text-align: right">Percentage over taken sessions:</td>
