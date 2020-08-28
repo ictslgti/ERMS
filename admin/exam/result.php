@@ -6,9 +6,31 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
 <html lang='en'>
 
 <head>
-    <?php include_once('.././head.php');
+    <?php 
+    $index =null;
+    $name= null;
+    $nic=null;
+    include_once('.././head.php');
+    include_once('../../config.php');
     // include_once('../config.php');
     ?>
+    <style>
+    th{
+    text-align: center;
+    font-size:15px;
+    background-color:black;
+    color:white;
+}
+tr{
+    text-align: center;
+    font-size:16px;}
+
+
+.si{
+    margin-left:10%;
+    margin-right:10%;
+}
+    </style>
 </head>
 
 <body>
@@ -16,9 +38,9 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
         <?php include_once('../nav.php');
         ?>
         <div id='overlay' class='overlay'></div>
-        <div class='container-fluid p-5'>
+        
             <!-- #1 Insert Your Content-->
-            <div class='container'>
+            <div class='si'>
             <div class='row'>
                 <div class="col">
                     <div class="card">
@@ -127,22 +149,55 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
                             </div>
                         </div>
                     </div> -->
+                        <div class="table-responsive-sm">
+                        <table class="table">
+                        <thead class="table-bordered ">
+                            <tr>
+                            <th>Index no</th>
+                            <th>Name</th>
+                            <th>NIC</th>
+                            <?php
+                        $sql = 'select s.id,s.name_with_initials,s.nic,e.module_name,e.status from student s inner join exams_result e on s.id=e.student_id;';
+                        $result = mysqli_query($con,$sql);
+                        if(mysqli_num_rows($result)>0){
+                            while($row = mysqli_fetch_assoc($result)){
+                                echo '<th>',$row['module_name'],'</th>';
+                                $index = $row['id'];
+                                $name = $row['name_with_initials'];
+                                $nic=$row['nic'];
+                            }
+                        }
+                        else{
+                            echo 'no rows';
+                        }
+                        ?> 
+                            </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td><?php echo $index;?></td>
+                            <td><?php echo $name;?></td>
+                            <td><?php echo $nic;?></td>
+                            <?php
+                        $sql = 'select s.id,s.name_with_initials,s.nic,e.module_name,e.status from student s inner join exams_result e on s.id=e.student_id;';
+                        $result = mysqli_query($con,$sql);
+                        if(mysqli_num_rows($result)>0){
+                            while($row = mysqli_fetch_assoc($result)){
+                                echo '<td>',$row['status'],'</td>';
+                                
+                            }
+                        }
+                        else{
+                            echo 'no rows';
+                        }
+                        ?> 
+                            </tr>
+                        </tbody>
 
-                   
-
-                            </h1>
+                        </table>
+                        </div>
                              <!-- button-->
-                    <div class='row '>
-                        <div class='col-md'>
-                            <h3 class='text-primary'></h3>
-                        </div>
-                        <div class='col-md'>
-
-                        </div>
-                        <div class='col-md-auto modal-footer'>
-                            <button type='submit' name='search' class='btn btn-primary btn btn-sm '>SEARCH</button>
-                        </div>
-                    </div>
+                    
                         </div>
                     </div>
                 </div>
