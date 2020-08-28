@@ -52,11 +52,6 @@ if(isset($_GET['delete'])){
 }
 ?>
 <!-- delete -->
-
-
-
-
-
 <form action=""method="post">
 <div class="card  mb-3" >
       <div class="card-header bg-transparent ">
