@@ -99,10 +99,6 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
                     <?php 
                     }
                     ?>
-
-              
-            
-            
                     
                   </tr>
           </thead>
