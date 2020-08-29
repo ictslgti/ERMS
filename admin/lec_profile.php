@@ -64,7 +64,7 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
         <div class="w3-container">
        
           <br><p><i class="fa fa-briefcase fa-fw w3-margin-right w3-large w3-text-teal"></i><?php echo ($row['position']); ?></p>
-          <p><i class="fa fa-home fa-fw w3-margin-right w3-large w3-text-teal"></i><?php echo ($row['Address']); ?></p>
+          <p><i class="fa fa-home fa-fw w3-margin-right w3-large w3-text-teal"></i><?php echo ($row['address']); ?></p>
           <p><i class="fa fa-envelope fa-fw w3-margin-right w3-large w3-text-teal"></i><?php echo ($row['email']); ?></p>
           <p><i class="fa fa-phone fa-fw w3-margin-right w3-large w3-text-teal"></i><?php echo ($row['telephone']); ?></p>
           <hr>
@@ -111,7 +111,7 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
                                 <label>Address</label>
                             </div>
                             <div class="col">
-                                <p><?php echo ($row['Address']); ?></p>
+                                <p><?php echo ($row['address']); ?></p>
                             </div>
                         </div>
 
@@ -225,9 +225,9 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
 </div>
 
 <footer >
-<div class=" row p-3 mb-2 bg-primary text-white  h4">
+<div class=" row p-3 mb-2 bg-primary text-white  h6">
  <div class="col">Powered by Srinlanka German Training Institue</div> 
- <div class="col-auto"><img src="slgt.png" alt="" height="50px;"> </div> 
+ <div class="col-auto"> </div> 
  </div>
 </footer>
 </div>          
