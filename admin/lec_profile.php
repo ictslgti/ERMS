@@ -37,6 +37,8 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
       <div class="row">
       <div class="col">  </div>
       <div class="col-auto"> 
+      <a href="lecturer.php" class="btn btn-outline-primary">Edit</a>
+      <a href="lecturers.php" class="btn btn-outline-primary">View lecturers</a>
       </div>
       </div>
       <div class="card-body ">
