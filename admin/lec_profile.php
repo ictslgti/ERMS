@@ -26,13 +26,19 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
 <style>
     img {
     width: 100%;
-    height: 30vw;
+    height: 25vw;
     object-fit: cover;
 }
     </style>
 </head>
 
 <body class="w3-light-grey">
+        <?php
+        if($_GET['edit'])
+        {
+            $id = $_GET['edit'];
+        }
+        ?>
     <div class="page-wrapper toggled bg2 border-radius-on light-theme">
         <?php include_once("nav.php"); ?>
      
@@ -44,7 +50,7 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
       <div class="row">
       <div class="col">  </div>
       <div class="col-auto"> 
-      <a href="lecturer.php" class="btn btn-outline-primary">Edit</a>
+      <a href="lecturer.php?edit=<?php echo $id;?> " class="btn btn-outline-info" > Edit </a> 
       <a href="lecturers.php" class="btn btn-outline-primary">View lecturers</a>
       </div>
       </div>
