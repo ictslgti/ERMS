@@ -10,6 +10,26 @@ $description = "Online Examination Result Management System (ERMS)-SLGTI";
     <?php include_once("../head.php"); ?>
     <?php include_once('../databases/config.php'); ?>
 
+    <!-- Image-->
+    <script type='text/javascript'>
+        function preview_image(event) {
+            var reader = new FileReader();
+            reader.onload = function() {
+                var output = document.getElementById('output_image');
+                output.src = reader.result;
+            }
+            reader.readAsDataURL(event.target.files[0]);
+        }
+    </script>
+    <style>
+        #output_image {
+            width: 0px;
+            height: 0px;
+            border: 0px solid black;
+        }
+    </style>
+    <!-- Image-->
+
     <!-- for province ditrict filter-->
     <script src="/scripts/snippet-javascript-console.min.js?v=1"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
@@ -106,11 +126,53 @@ $description = "Online Examination Result Management System (ERMS)-SLGTI";
 
             if (mysqli_query($con, $sqlenroll)) {
                 echo 'And Insert Successfully
-                    </div>';
+                    </div><button type="button" class="close" href="student.php" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                 </button>';
             } else {
-                echo 'Error: </div>' . $sqlenroll . "<br>" . mysqli_error($con);
+                echo 'Error: </div> <button type="button" class="close" href="student.php" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+             </button></div>' . $sqlenroll . "<br>" . mysqli_error($con);
             }
         }
+
+        $id = null;
+        $image = null;
+        if (
+            isset($_POST['add'])
+            && !empty($_POST['regno'])
+        ) {
+
+            $regno = $_POST['regno'];
+            $sta = $statusMsg = '';
+            $sta = 'error';
+
+            if (!empty($_FILES["image"]["name"])) {
+                // Get file info 
+                $fileName = basename($_FILES["image"]["name"]);
+                $fileType = pathinfo($fileName, PATHINFO_EXTENSION);
+
+                // Allow certain file formats 
+                $allowTypes = array('jpg', 'png', 'jpeg', 'gif');
+                if (in_array($fileType, $allowTypes)) {
+                    $image = $_FILES['image']['tmp_name'];
+                    $imgContent = addslashes(file_get_contents($image));
+                    $sql = "INSERT INTO images (id,image) VALUES ('$id','$imgContent')";
+
+                    if (mysqli_query($con, $sql)) {
+                        echo "";
+                    } else {
+
+                        echo "";
+                    }
+                } else {
+                    $statusMsg = 'Sorry, only JPG, JPEG, PNG, & GIF files are allowed to upload.';
+                }
+            } else {
+                $statusMsg = 'Please select an image file to upload.';
+            }
+        }
+
         ?>
         <!-- insert  end -->
 
@@ -212,7 +274,9 @@ $description = "Online Examination Result Management System (ERMS)-SLGTI";
             if (mysqli_query($con, $sql_students)) {
                 echo '<div class="alert alert-success" role="alert">
                                     Successfully Updated!
-                                </div>';
+                                    </div> <button type="button" class="close" href="student.php" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                 </button></div>';
             } else {
                 echo '<div class="alert alert-warning" role="alert"> Error updating record:' . $sql_students
                     . mysqli_error($con);
@@ -474,14 +538,15 @@ $description = "Online Examination Result Management System (ERMS)-SLGTI";
                                     </div>
 
                                     <div class="col-2">
-                                        <label for="img"> Image: </label>
+                                        <label for="image"> Image: </label>
                                         <div class="custom-file">
-                                            <input type="file" name="img" class="custom-file-input" id="customFile">
+                                            <input type="file" name="image" class="custom-file-input" id="customFile" accept="image/*" onchange="preview_image(event)">
                                             <label class="custom-file-label" for="customFile"> Choose</label>
+                                            <img id="output_image" />
                                         </div>
                                     </div>
-
                                 </div>
+                                
                                 <!-- 4th row end -->
 
                                 <br>
