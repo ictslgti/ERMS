@@ -87,7 +87,7 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
                             </tr>
 
                             <?php
-                            $sql = " select count(status) as take_session,session from attendance where student_id='2018ICTBIT01'";
+                            $sql = " select count(DISTINCT module) as module,count(status) as take_session,session from attendance where student_id='2018ICTBIT01'";
                                             $result = mysqli_query($con, $sql);
                                             while ($row = mysqli_fetch_assoc($result)) {
                                  ?>
@@ -101,6 +101,7 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
                                 <?php
                                     }
                                 ?>
+                                
 
                             </tr>
                             
