@@ -47,26 +47,18 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
                                         <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" name="module" aria-expanded="false">Module</a>
                                         <div class="dropdown-menu">
                                             <?php
-                                            $sql = "select * from attendance GROUP BY module ";
-                                            $result = $con->query($sql);
-                                            if ($result->num_rows > 0) {
-                                                while ($row = $result->fetch_assoc()) {
+                                                $sql = "select * from attendance GROUP BY module ";
+                                                $result = $con->query($sql);
+                                                if ($result->num_rows > 0) {
+                                                    while ($row = $result->fetch_assoc()) {
 
-                                                    echo '<a class="dropdown-item" href="#">', $row['module'], '</a>';
+                                                        echo '<a class="dropdown-item" href="#">', $row['module'], '</a>';
+                                                    }
+                                                } else {
+                                                    echo 'no rows';
                                                 }
-                                            } else {
-                                                echo 'no rows';
-                                            }
                                             ?>
-                                            <?php
-                                                $sql = " select module from attendance where student_id='2018ICTBIT01'";
-                                                $result = mysqli_query($con, $sql);
-                                                while ($row = mysqli_fetch_assoc($result)) {
-
-                                                    $per = $module;
                                             
-                                                }
-                                            ?>
 
                                         </div>
                                     </li>
@@ -114,7 +106,7 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
                                         ?>
                                             <tr>
                                                 <td style="text-align: right">Points over taken sessions:</td>
-                                                <td> <?php echo $row['take_session']; ?><?php echo "/"; ?> <?php echo $row['session']; ?></td>
+                                                <td> <?php echo $row['session']; ?><?php echo "/"; ?> <?php echo $row['take_session']; ?></td>
 
                                             <?php
                                         }
