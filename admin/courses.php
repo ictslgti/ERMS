@@ -25,7 +25,7 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
 <?php
 if(isset($_GET['delete'])){
     $id = $_GET['delete'];
-    $sql = "DELETE FROM `courses` WHERE `courses`.`code` = '$code'";
+    $sql = "DELETE FROM `courses` WHERE `courses`.`code` = '$id'";
     if(mysqli_query($con,$sql)){
         echo "
        <div class='alert alert-success' role='alert'>
@@ -55,11 +55,6 @@ if(isset($_GET['delete'])){
                 
                    
                     <div class="card-body ">
-            
-             
-                
-
-
                     <form method="POST">
                 <div class="row">
                     <div class="form-group col-md-12">
@@ -70,10 +65,9 @@ if(isset($_GET['delete'])){
                             <tr class="h5">
                                 <th scope='col'>code</th>
                                 <th scope='col'>name</th>
-                                <th scope='col'>Duration_Of_Course</th>
-                                <th scope='col'>Duration_Of_OJT</th>
-                                <th scope='col'>NVQ_Level</th>
+                                <th scope='col'>Level</th>
                                 <th scope='col'>Department</th>
+                                <th scope='col'>Options</th>
                             </tr>
                             
                         </thead>
@@ -81,25 +75,32 @@ if(isset($_GET['delete'])){
                         
             
 
-                        <?php
-$sql = 'SELECT * FROM `courses`';
+<?php
+
+if(isset($_GET['view']))
+{
+    $view=$_GET['view'];
+    $sql = 'SELECT * FROM `courses` where  ';
+}
+else
+{
+    $sql = 'SELECT * FROM `courses`';
+}
 $result = mysqli_query($con,$sql);
 if(mysqli_num_rows($result)>0){
     while($row = mysqli_fetch_assoc($result)){
         echo '<tr>
             <td>',$row['code'],'</td>
             <td>',$row['name'],'</td>
-            <td>',$row['Duration_Of_Course'],'</td>
-            <td>',$row['Duration_Of_OJT'],'</td>
             <td>',$row['NVQ_Level'],'</td>
             <td>',$row['Department'],'</td>
             
             
             <td>
             <div class="btn-group btn-sm" role="group" aria-label="Basic example">
-            <a href="course.php?edit=',$row['code'],'" class="btn btn-warning" > Edit </a> 
-            <a href="?delete=',$row['code'],'" class="btn btn-danger"> Delete </a>
-            
+            <a href="course.php?edit=',$row['code'],'" class="btn btn-warning" > <img src="https://img.icons8.com/android/18/000000/edit.png"/> </a> 
+            <a href="?delete=  ',$row['code'],'" class="btn btn-danger"> <img src="https://img.icons8.com/windows/18/000000/delete-forever.png"/> </a>
+            <a href="modules.php?view=',$row['id'],'" class="btn btn-success"><b>view modules</b> </a>
           </div>
             </td>
         </tr>';
@@ -110,16 +111,6 @@ else{
 }
 ?>  
 
-
-
-            <div class="w3-dropdown-hover">
-                <a class="">...</a>
-                <div class="w3-dropdown-content w3-bar-block w3-border">
-                <a class="dropdown-item" href="#"><img src="https://img.icons8.com/android/18/000000/edit.png"/>  Edit</a>
-                <a class="dropdown-item" href="#"><img src="https://img.icons8.com/windows/18/000000/delete-forever.png"/>Delete</a>
-                </div>
-            </div>
-</td>
 </tbody>
                     </table>
                     
