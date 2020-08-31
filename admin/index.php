@@ -208,19 +208,41 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
                                                     <canvas id="lineChart-ict" height="250px"></canvas>
                                                 </div>
                                                 <div class="tab-pane fade" id="panel1002" role="tabpanel">
-                                                    <canvas id="lineChart-construction" height="250px"></canvas>
+
+                                                    <ul class="list-group list-group-flush">
+                                                        <li class="list-group-item">Semistor #01 <spam class="float-right">25</spam></li>
+                                                        <li class="list-group-item">Semistor #02 <spam class="float-right">15</spam></li>
+                                                        <li class="list-group-item">Semistor #03 <spam class="float-right">30</spam></li>
+                                                    </ul>
+
                                                 </div>
                                                 <div class="tab-pane fade" id="panel1003" role="tabpanel">
-                                                    <canvas id="lineChart-automobile" height="250px"></canvas>
+                                                    <p>Friends in Low Places
+                                                        The High Cost of Loving
+                                                        Every Heart Should Have One
+                                                        Can't Teach My Old Heart New Tricks
+                                                        You're Gonna Love Yourself in the Morning </p>
                                                 </div>
                                                 <div class="tab-pane fade" id="panel1004" role="tabpanel">
-                                                    <canvas id="lineChart-electronic" height="250px"></canvas>
+                                                    <p>Friends in Low Places
+                                                        The High Cost of Loving
+                                                        Every Heart Should Have One
+                                                        Can't Teach My Old Heart New Tricks
+                                                        You're Gonna Love Yourself in the Morning </p>
                                                 </div>
                                                 <div class="tab-pane fade" id="panel1005" role="tabpanel">
-                                                    <canvas id="lineChart-mechanical" height="250px"></canvas>
+                                                    <p>Friends in Low Places
+                                                        The High Cost of Loving
+                                                        Every Heart Should Have One
+                                                        Can't Teach My Old Heart New Tricks
+                                                        You're Gonna Love Yourself in the Morning </p>
                                                 </div>
                                                 <div class="tab-pane fade" id="panel1006" role="tabpanel">
-                                                    <canvas id="lineChart-foot" height="250px"></canvas>
+                                                    <p>Friends in Low Places
+                                                        The High Cost of Loving
+                                                        Every Heart Should Have One
+                                                        Can't Teach My Old Heart New Tricks
+                                                        You're Gonna Love Yourself in the Morning </p>
                                                 </div>
                                             </div>
                                         </div>
@@ -262,53 +284,53 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
                                             <!-- Content Column -->
                                             <!-- Project Card Example -->
                                             <div class="classic-tabs">
-                                            <div class="tab-content rounded-bottom">
-                                            <div class="tab-pane fade in show active" id="1001" role="tabpanel">
-                                                <div class="skill-name small font-weight-bold">Payout Details<span
-                                                        class="float-right">20%</span></div>
-                                                <div class="skill-bar progress-bar">
-                                                    <div class="skill-per" per="20"></div>
-                                                </div>
-                                            </div>
+                                                <div class="tab-content rounded-bottom">
+                                                    <div class="tab-pane fade in show active" id="1001" role="tabpanel">
+                                                        <div class="skill-name small font-weight-bold">Payout
+                                                            Details<span class="float-right">20%</span></div>
+                                                        <div class="skill-bar progress-bar">
+                                                            <div class="skill-per" per="20"></div>
+                                                        </div>
+                                                    </div>
 
-                                            <div class="tab-pane fade in show active" id="1002" role="tabpanel">
-                                                <div class="skill-name small font-weight-bold">Payout Details<span
-                                                        class="float-right">90%</span></div>
-                                                <div class="skill-bar progress-bar">
-                                                    <div class="skill-per" per="90"></div>
-                                                </div>
-                                            </div>
+                                                    <div class="tab-pane fade in show active" id="1002" role="tabpanel">
+                                                        <div class="skill-name small font-weight-bold">Payout
+                                                            Details<span class="float-right">90%</span></div>
+                                                        <div class="skill-bar progress-bar">
+                                                            <div class="skill-per" per="90"></div>
+                                                        </div>
+                                                    </div>
 
-                                            <div class="tab-pane fade in show active" id="1003" role="tabpanel">
-                                                <div class="skill-name small font-weight-bold">Payout Details<span
-                                                        class="float-right">50%</span></div>
-                                                <div class="skill-bar progress-bar">
-                                                    <div class="skill-per" per="50"></div>
+                                                    <div class="tab-pane fade in show active" id="1003" role="tabpanel">
+                                                        <div class="skill-name small font-weight-bold">Payout
+                                                            Details<span class="float-right">50%</span></div>
+                                                        <div class="skill-bar progress-bar">
+                                                            <div class="skill-per" per="50"></div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="tab-pane fade in show active" id="1004" role="tabpanel">
+                                                        <div class="skill-name small font-weight-bold">Payout
+                                                            Details<span class="float-right">60%</span></div>
+                                                        <div class="skill-bar progress-bar">
+                                                            <div class="skill-per" per="60"></div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="tab-pane fade in show active" id="1005" role="tabpanel">
+                                                        <div class="skill-name small font-weight-bold">Payout
+                                                            Details<span class="float-right">95%</span></div>
+                                                        <div class="skill-bar progress-bar">
+                                                            <div class="skill-per" per="95"></div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="tab-pane fade in show active" id="1006" role="tabpanel">
+                                                        <div class="skill-name small font-weight-bold">Payout
+                                                            Details<span class="float-right">25%</span></div>
+                                                        <div class="skill-bar progress-bar">
+                                                            <div class="skill-per" per="25"></div>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
-                                            <div class="tab-pane fade in show active" id="1004" role="tabpanel">
-                                                <div class="skill-name small font-weight-bold">Payout Details<span
-                                                        class="float-right">60%</span></div>
-                                                <div class="skill-bar progress-bar">
-                                                    <div class="skill-per" per="60"></div>
-                                                </div>
-                                            </div>
-                                            <div class="tab-pane fade in show active" id="1005" role="tabpanel">
-                                                <div class="skill-name small font-weight-bold">Payout Details<span
-                                                        class="float-right">95%</span></div>
-                                                <div class="skill-bar progress-bar">
-                                                    <div class="skill-per" per="95"></div>
-                                                </div>
-                                            </div>
-                                            <div class="tab-pane fade in show active" id="1006" role="tabpanel">
-                                                <div class="skill-name small font-weight-bold">Payout Details<span
-                                                        class="float-right">25%</span></div>
-                                                <div class="skill-bar progress-bar">
-                                                    <div class="skill-per" per="25"></div>
-                                                </div>
-                                            </div>
-</div>
-</div>
                                             <script>
                                             $('.skill-per').each(function() {
                                                 var $this = $(this);
