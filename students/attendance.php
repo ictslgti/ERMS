@@ -52,7 +52,7 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
                                                 if ($result->num_rows > 0) {
                                                     while ($row = $result->fetch_assoc()) {
 
-                                                        echo '<a class="dropdown-item" href="#">', $row['module'], '</a>';
+                                                        echo '<a class="dropdown-item" href="view.php?profile_id='.$row['date'];.'">', $row['module'], '</a>';
                                                     }
                                                 } else {
                                                     echo 'no rows';
@@ -113,7 +113,7 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
                                             ?>
                                             </tr>
                                             <?php
-                                            $sql = " select count(status) as take_session,session from attendance where student_id='2018ICTBIT01' group by module";
+                                            $sql = " select count(status) as take_session,session from attendance where student_id='2018ICTBIT01' order by module";
                                             $result = mysqli_query($con, $sql);
                                             while ($row = mysqli_fetch_assoc($result)) {
 
