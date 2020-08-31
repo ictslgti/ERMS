@@ -226,11 +226,13 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
                                                     
                                                 </div>
                                                 <div class="tab-pane fade" id="panel1004" role="tabpanel">
-                                                    <p>Friends in Low Places
-                                                        The High Cost of Loving
-                                                        Every Heart Should Have One
-                                                        Can't Teach My Old Heart New Tricks
-                                                        You're Gonna Love Yourself in the Morning </p>
+
+                                                <ul class="list-group list-group-flush">
+                                                    <strong><li class="list-group-item text-primary">Semistor #01 <spam class="float-right text-info">25</spam></li></strong>
+                                                    <strong><li class="list-group-item text-primary">Semistor #02 <spam class="float-right text-info">15</spam></li></strong>
+                                                    <strong><li class="list-group-item text-primary">Semistor #03 <spam class="float-right text-info">30</spam></li></strong>
+                                                    </ul>
+                                                    
                                                 </div>
                                                 <div class="tab-pane fade" id="panel1005" role="tabpanel">
                                                     <p>Friends in Low Places
