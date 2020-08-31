@@ -124,7 +124,7 @@ if(
                 <div class="card-header ">
                 <div class="row">
                 <div class="col"><h4>Department</h4></div>
-                <div class="col-auto">
+                <div class="col-auto">    
                 <a href="departments.php" class="btn btn-outline-primary">Departments</a>
                 </div>
 
@@ -134,13 +134,13 @@ if(
                 <div class="card  mb-3">
                    
                     <div class="card-body ">
-                    <form method="POST" action="">
+                    <form method="POST" action="department.php">
                      <div class="row">
                      <div class="col-sm">
                      Code  <br>
                      <div class="form-group">
                      <div class="input-group input-group-sm mb-3">
-                        <input type="text" name="code" value="<?php echo $code;?>" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm"id="validationServer01" required>
+                        <input type="text" name="code" placeholder="ICT" value="<?php echo $code;?>" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm"id="validationServer01" required>
                         </div>
                          </div>
                      </div>
@@ -151,7 +151,7 @@ if(
                      Name  <br>
                      <div class="form-group">
                      <div class="input-group input-group-sm mb-3">
-                        <input type="text" name="d_name" value="<?php echo $d_name;?>" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm"id="validationServer01" required>
+                        <input type="text" name="d_name" placeholder="Inotormation communication technology" value="<?php echo $d_name;?>" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm"id="validationServer01" required>
                         </div>
                          </div>
                      </div>
