@@ -210,9 +210,9 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
                                                 <div class="tab-pane fade" id="panel1002" role="tabpanel">
 
                                                     <ul class="list-group list-group-flush">
-                                                        <li class="list-group-item">Semistor #01 <spam class="float-right">25</spam></li>
-                                                        <li class="list-group-item">Semistor #02 <spam class="float-right">15</spam></li>
-                                                        <li class="list-group-item">Semistor #03 <spam class="float-right">30</spam></li>
+                                                        <li class="list-group-item text-primary">Semistor #01 <spam class="float-right text-info">25</spam></li>
+                                                        <li class="list-group-item text-primary">Semistor #02 <spam class="float-right text-info">15</spam></li>
+                                                        <li class="list-group-item text-primary">Semistor #03 <spam class="float-right text-info">30</spam></li>
                                                     </ul>
 
                                                 </div>
