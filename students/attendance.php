@@ -22,14 +22,14 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
             <div class="container">
 
                 <!-- 1st row start -->
-                    <div class="row">
-                        <div class="col-sm">
-                            <div class="border border-primary rounded text-center">
+                <div class="row">
+                    <div class="col-sm">
+                        <div class="border border-primary rounded text-center">
                             <h2>Student's Attendence | SLGTI</h2>
-                            </div>
                         </div>
                     </div>
-                    <br>
+                </div>
+                <br>
                 <!-- 1st row end -->
 
                 <form method="POST" action="">
@@ -43,78 +43,106 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
                                     <li class='nav-item'>
                                         <a class='nav-link active' href='./attendance.php'>Selected Moduel</a>
                                     </li>
-                                    <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
-                                        
-                                        <div class="btn-group" role="group">
-                                            <button id="btnGroupDrop1" type="button" class="btn btn-light dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            MODULE
-                                            </button>
-                                            <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-                                            <a class="dropdown-item" href="#">MO-01</a>
-                                            <a class="dropdown-item" href="#">MO-02</a>
-                                            <a class="dropdown-item" href="#">MO-03</a>
-                                            <a class="dropdown-item" href="#">MO-04</a>
-                                            <a class="dropdown-item" href="#">MO-05</a>
-                                            <a class="dropdown-item" href="#">MO-06</a>
-                                            <a class="dropdown-item" href="#">MO-07</a>
-                                            <a class="dropdown-item" href="#">MO-08</a>
-                                            </div>
+                                    <li class="nav-item dropdown">
+                                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" name="module" aria-expanded="false">Module</a>
+                                        <div class="dropdown-menu">
+                                            <?php
+                                                $sql = "select * from attendance GROUP BY module ";
+                                                $result = $con->query($sql);
+                                                if ($result->num_rows > 0) {
+                                                    while ($row = $result->fetch_assoc()) {
+
+                                                        echo '<a class="dropdown-item" href="#">', $row['module'], '</a>';
+                                                    }
+                                                } else {
+                                                    echo 'no rows';
+                                                }
+                                            ?>
+                                            
+
                                         </div>
-                                        </div>
+                                    </li>
+
                                 </ul>
                             </div>
                         </div>
                     </div>
                 </form>
-                
+
                 <div class="row">
                     <div class="form-group col-md-12 table-responsive">
-                    <table class='table align-middle '>
-                        <thead class='thead-light'>
-                            <tr>
-                                <th scope='col'>DATE</th>
-                                <th scope='col'>TIME</th>
-                                <th scope='col'>STATUS</th>
-                            </tr>
-                            <?php
-                            $sql = " select count(status) as take_session,module,all_session from attendance where student_id='2018ICTBIT01' group by module";
+                        <table class='table align-middle '>
+                            <thead class='thead-light'>
+                                <tr>
+                                    <th scope='col'>DATE</th>
+                                    <th scope='col'>TIME</th>
+                                    <th scope='col'>STATUS</th>
+                                </tr>
+                                <?php
+                                $sql = " select date(date),time(date),status from attendance where student_id='2018ICTBIT01'";
+                                $result = mysqli_query($con, $sql);
+                                while ($row = mysqli_fetch_assoc($result)) {
+                                ?>
+
+
+                                    <tr>
+                                        <td scope='col'><?php echo $row['date(date)']; ?></td>
+                                        <td scope='col'><?php echo $row['time(date)']; ?></td>
+                                        <td scope='col'><?php echo $row['status']; ?></td>
+
+                                    <?php
+                                }
+                                    ?>
+
+
+                                    </tr>
+                                    <table>
+                                        <?php
+                                        $sql = " select count(status) as take_session,session from attendance where student_id='2018ICTBIT01'";
+                                        $result = mysqli_query($con, $sql);
+                                        while ($row = mysqli_fetch_assoc($result)) {
+                                            $per = $row['take_session']; + $row['session'];
+
+                                        ?>
+                                            <tr>
+                                                <td style="text-align: right">Points over taken sessions:</td>
+                                                <td> <?php echo $row['session']; ?><?php echo "/"; ?> <?php echo $row['take_session']; ?></td>
+
+                                            <?php
+                                        }
+                                            ?>
+                                            </tr>
+                                            <?php
+                                            $sql = " select count(status) as take_session,session from attendance where student_id='2018ICTBIT01' group by module";
                                             $result = mysqli_query($con, $sql);
                                             while ($row = mysqli_fetch_assoc($result)) {
-                                 ?>
-                            
-                            <tr>
-                                <td scope='col'><?php echo $row['module'];?></td>
-                                <td scope='col'><?php echo $row['module'];?></td>
-                                <td scope='col'><?php echo $row['module'];?></td>
-                                <?php
+
+                                                $per = (($row['take_session'] / $row['session']) * 100) . "%";
+                                            ?>
+                                                <tr>
+                                                    <td style="text-align: right">Percentage over taken sessions:</td>
+
+                                                    <td><?php echo ($per); ?></td>
+
+                                                <?php
                                             }
-                                ?>
-                            </tr>
-                                <table>
-                                    <tr>
-                                    </tr>
-                                    <tr>
-                                        <td style="text-align: right">Points over taken sessions:</td>
-                                        <td>10 / 10</td>
-                                    </tr> 
-                                    <tr>
-                                        <td style="text-align: right">Percentage over taken sessions:</td>
-                                        <td>100.0%</td>
-                                    </tr> 
-                                </table>
-                        </thead>
-                    <tbody>
-                    
-                    </tbody>
-                </table>
+                                                ?>
+                                                </tr>
+                                    </table>
+                            </thead>
+                            <tbody>
+
+                            </tbody>
+                        </table>
                     </div>
                 </div>
 
-            <!-- #1 Insert Your Content" -->
-        </div>
+                <!-- #1 Insert Your Content" -->
+            </div>
     </main>
 
     <?php include_once("../script.php");
     ?>
 </body>
-</html>         
+
+</html>

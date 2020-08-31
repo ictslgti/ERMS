@@ -7,6 +7,13 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
 
 <head>
     <?php include_once("./head.php"); ?>
+    <style>
+    .card-img-top {
+    width: 100%;
+    height: 20vw;
+    object-fit: cover;
+}
+    </style>
 </head>
 
 <body>
@@ -32,15 +39,21 @@ $result = $con->query("SELECT * FROM lecturer");
 
                 <div class="card border-secondary mb-3 ">
   <div class="card-header bg-transparent border-secondary">
-
-  <h1> Lecturers </h1>
+<div class="row">
+<div class="col"><h1> Lecturers </h1></div>
+<div class="col-auto">
+<a href="lecturer.php" class="btn btn-outline-primary">New</a>
+</div>
+</div>
+  
   </div>
   <div class="card-body text-secondary">
+  
   <?php if($result->num_rows > 0){ ?> 
     <div class="row"> 
         <?php while($row = $result->fetch_assoc()){ ?> 
-            <div class="card col-3" style="margin-bottom: 10px; margin-top: 10px;">
-            <img src="data:image/jpg;charset=utf8;base64,<?php echo base64_encode($row['image']); ?>" style="width:100%; height:66%;" /> 
+            <div class="card col-3">
+            <img src="data:image/jpg;charset=utf8;base64,<?php echo base64_encode($row['image']); ?>" class="card-img-top img-fluid" /> 
   <div class="card-body">
     
     <h6 class="card-text"><?php echo ($row['first_name']); ?> <?php echo ($row['last_name']); ?></h6>
