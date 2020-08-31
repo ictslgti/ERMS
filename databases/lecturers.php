@@ -1,0 +1,18 @@
+CREATE TABLE `lecturer` (
+  `id` int(11) NOT NULL,
+  `department_code` varchar(20) NOT NULL,
+  `first_name` varchar(50) NOT NULL,
+  `last_name` varchar(50) NOT NULL,
+  `Address` varchar(100) NOT NULL,
+  `dob` date NOT NULL,
+  `nic` varchar(15) NOT NULL,
+  `email` varchar(50) NOT NULL,
+  `telephone` int(12) NOT NULL,
+  `date_of_join` date NOT NULL,
+  `gender` varchar(15) NOT NULL,
+  `epf_no` varchar(15) NOT NULL,
+  `position` varchar(30) NOT NULL,
+  `type` varchar(30) NOT NULL,
+  `status` varchar(30) NOT NULL,
+  `image` longblob NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;

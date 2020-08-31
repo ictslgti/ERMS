@@ -48,7 +48,7 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
                         </div>
                     </div>
                 </form>
-                
+
                 <div class="row">
                     <div class="form-group col-md-12 table-responsive">
                     <table class="table align-middle">
@@ -56,63 +56,55 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
                             <tr>
                                 <th scope='col'>Moduels</th>
                                 <th scope='col'>Points over taken session</th>
+                                <th scope='col'>All session</th>
                                 <th scope='col'>Percentage over taken session</th>
+                                <th ></th>
                             </tr>
+
+                            <?php        
+                                // if (isset($_GET['id'])) {
+                                // $id = $_GET['id'];
+                                // $query1 = mysql_query("select * from employee where employee_id=$id", $connection);
+                                // while ($row1 = mysql_fetch_array($query1)) {
+                            ?>
+
+
+                            <?php
+                            // $sql = " select count(status) as take_session,module from attendance where student_id='2018ICTBIT01' group by module";
+                                $sql = "select count(status) as take_session,module,session  FROM attendance WHERE status=1 AND student_id='2018ictbit01' group by module";
+                                            $result = mysqli_query($con, $sql);
+                                            while ($row = mysqli_fetch_assoc($result)) {
+                                 ?>
                             <tr>
-                                <td scope='col'>Basic Computer Application</td>
-                                <td scope='col'>00/00</td>
-                                <td scope='col'>00%</td>
+                                <td scope='col'><?php echo $row['module'];?></td>
+                                <td scope='col'><?php echo $row['take_session'];?></td>
+                                <td scope='col'><?php echo $row['session'];?></td>
+                                <td scope="col"><?php echo (($row['take_session']/$row['session'])*100)."%"; ?></td>
+                                
+                                <?php
+                                    }
+                                ?>
                             </tr>
+
+                            <?php
+                            $sql = " select count(DISTINCT module) as module,count(status) as take_session,session from attendance where student_id='2018ICTBIT01'";
+                                            $result = mysqli_query($con, $sql);
+                                            while ($row = mysqli_fetch_assoc($result)) {
+                                 ?>
+
                             <tr>
-                                <td scope='col'>Fundamentals of Software Programming </td>
-                                <td scope='col'>00/00</td>
-                                <td scope='col'>00%</td>
+                                <td scope='col'>Average attendance</td>
+                                <td scope='col'></td>
+                                <td scope='col'></td>
+                                <td scope='col'><?php echo (($row['take_session']/$row['session'])*100)."%"; ?></td>
+                                
+                                <?php
+                                    }
+                                ?>
+                                
+
                             </tr>
-                            <tr>
-                                <td scope='col'>Communication Skill </td>
-                                <td scope='col'>00/00</td>
-                                <td scope='col'>00%</td>
-                            </tr>
-                            <tr>
-                                <td scope='col'>Fundamentals of Graphic Design </td>
-                                <td scope='col'>00/00</td>
-                                <td scope='col'>00%</td>
-                            </tr>
-                            <tr>
-                                <td scope='col'>Fundamentals of Networking</td>
-                                <td scope='col'>00/00</td>
-                                <td scope='col'>00%</td>
-                            </tr>
-                            <tr>
-                                <td scope='col'>Introduction to Database Systems</td>
-                                <td scope='col'>00/00</td>
-                                <td scope='col'>00%</td>
-                            </tr>
-                            <tr>
-                                <td scope='col'>Static Web Page Designing</td>
-                                <td scope='col'>00/00</td>
-                                <td scope='col'>00%</td>
-                            </tr>
-                            <tr>
-                                <td scope='col'>Database Systems I</td>
-                                <td scope='col'>00/00</td>
-                                <td scope='col'>00%</td>
-                            </tr>
-                            <tr>
-                                <td scope='col'>System Analysis and Design </td>
-                                <td scope='col'>00/00</td>
-                                <td scope='col'>00%</td>
-                            </tr>
-                            <tr>
-                                <td scope='col'>Web Programming</td>
-                                <td scope='col'>00/00</td>
-                                <td scope='col'>00%</td>
-                            </tr>
-                            <tr>
-                                <td>Average attendance</td>
-                                <td></td>
-                                <td>00%</td>
-                            </tr>
+                            
                         </thead>
                     <tbody>
                      
