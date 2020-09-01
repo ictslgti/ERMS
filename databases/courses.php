@@ -4,7 +4,8 @@ CREATE TABLE `courses` (
   `name` varchar(50) NOT NULL,
   `Duration_Of_Course` int(11) NOT NULL,
   `ojt_duration` int(11) NOT NULL,
-  `nvq_level` varchar(10) NOT NULL
+  `nvq_level` varchar(10) NOT NULL,
+   `department` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
