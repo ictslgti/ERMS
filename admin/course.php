@@ -47,7 +47,7 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                 $Duration_Of_Course = $row['Duration_Of_Course'];
                 $Duration_Of_OJT = $row['Duration_Of_OJT'];
                 $NVQ_Level = $row['NVQ_Level'];
-                $Department= $row['Department'];
+                $Department= $row['department'];
                 
             }
         }
