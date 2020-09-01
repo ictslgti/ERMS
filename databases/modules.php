@@ -1,7 +1,7 @@
 CREATE TABLE `modules` (
   `id` int(3) NOT NULL,
   `code` varchar(10) NOT NULL,
-  `course_id` varchar(10) NOT NULL,
+  `course_name` varchar(10) NOT NULL,
   `name` varchar(60) NOT NULL,
   `learning_hours` int(3) NOT NULL,
   `semester` varchar(20) NOT NULL,
