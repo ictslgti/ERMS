@@ -80,7 +80,7 @@ if(isset($_GET['delete'])){
 if(isset($_GET['view']))
 {
     $view=$_GET['view'];
-    $sql = 'SELECT * FROM `courses` where  ';
+    $sql = "select * from courses where department=(select department_code from departments where id=$view);";
 }
 else
 {
@@ -93,14 +93,14 @@ if(mysqli_num_rows($result)>0){
             <td>',$row['code'],'</td>
             <td>',$row['name'],'</td>
             <td>',$row['NVQ_Level'],'</td>
-            <td>',$row['Department'],'</td>
+            <td>',$row['department'],'</td>
             
             
             <td>
             <div class="btn-group btn-sm" role="group" aria-label="Basic example">
             <a href="course.php?edit=',$row['code'],'" class="btn btn-warning" > <img src="https://img.icons8.com/android/18/000000/edit.png"/> </a> 
             <a href="?delete=  ',$row['code'],'" class="btn btn-danger"> <img src="https://img.icons8.com/windows/18/000000/delete-forever.png"/> </a>
-            <a href="modules.php?view=',$row['id'],'" class="btn btn-success"><b>view modules</b> </a>
+            <a href="modules.php?view=',$row['code'],'" class="btn btn-success"><b>view modules</b> </a>
           </div>
             </td>
         </tr>';
