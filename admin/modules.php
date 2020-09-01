@@ -73,7 +73,15 @@ if(isset($_GET['delete'])){
                         </thead>
                         <tbody>
                         <?php
-$sql = 'SELECT * FROM `modules`';
+if(isset($_GET['view']))
+{
+    $view=$_GET['view'];
+    $sql = "select * from modules where course_name=(select code from courses where id=$view);";
+}
+else
+{
+    $sql = 'SELECT * FROM `modules`';
+}
 $result = mysqli_query($con,$sql);
 if(mysqli_num_rows($result)>0){
     while($row = mysqli_fetch_assoc($result)){
