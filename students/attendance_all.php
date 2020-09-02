@@ -7,7 +7,7 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
 
 <head>
     <?php include_once('.././head.php');
-    //include_once('../config.php');
+    include_once('../config.php');
     ?>
 </head>
 
@@ -38,81 +38,75 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
                             <div class='form-group col-md'>
                                 <ul class='nav nav-tabs'>
                                     <li class='nav-item'>
-                                        <a class='nav-link active' href='./attendence_all.php'>ALL Courses</a>
+                                        <a class='nav-link active' href='./attendance_all.php'>ALL Moduels</a>
                                     </li>
                                     <li class='nav-item'>
-                                        <a class='nav-link' href='./attendence.php'>Selected Course</a>
+                                        <a class='nav-link' href='./attendance.php'>Selected Moduel</a>
                                     </li>
                                 </ul>
                             </div>
                         </div>
                     </div>
                 </form>
-                
+
                 <div class="row">
                     <div class="form-group col-md-12 table-responsive">
                     <table class="table align-middle">
                         <thead class='thead-light'>
                             <tr>
-                                <th scope='col'>Course</th>
+                                <th scope='col'>Moduels</th>
                                 <th scope='col'>Points over taken session</th>
+                                <th scope='col'>All session</th>
                                 <th scope='col'>Percentage over taken session</th>
+                                <th ></th>
                             </tr>
+
+                            <?php        
+                                // if (isset($_GET['id'])) {
+                                // $id = $_GET['id'];
+                                // $query1 = mysql_query("select * from employee where employee_id=$id", $connection);
+                                // while ($row1 = mysql_fetch_array($query1)) {
+                            ?>
+
+
+                            <?php
+                                $sql = "select count(status) as take_session,module,session  FROM attendance WHERE status=1 AND student_id='2018ictbit01' group by module";
+                                            $result = mysqli_query($con, $sql);
+                                            while ($row = mysqli_fetch_assoc($result)) {
+                                        $row1 = (($row['take_session']/$row['session'])*100)
+                                 ?>
                             <tr>
-                                <td scope='col'>Basic Computer Application</td>
-                                <td scope='col'>00/00</td>
-                                <td scope='col'>00%</td>
+                                <td scope='col'><?php echo $row['module'];?></td>
+                                <td scope='col'><?php echo $row['take_session'];?></td>
+                                <td scope='col'><?php echo $row['session'];?></td>
+                                <td scope="col"><?php echo $row1."%"; ?></td>
+                                
+                                <?php
+                                    }
+                                ?>
                             </tr>
+                            <?php
+                                $sql = "select count(status) as take_session,count(DISTINCT module) as module,session  FROM attendance WHERE student_id='2018ictbit01' order by module";
+                                            $result = mysqli_query($con, $sql);
+                                            while ($row = mysqli_fetch_assoc($result)) {
+
+                                        
+                                        $row1 = (($row['take_session']/$row['session'])*100)
+                                 ?>
+                            
                             <tr>
-                                <td scope='col'>Fundamentals of Software Programming </td>
-                                <td scope='col'>00/00</td>
-                                <td scope='col'>00%</td>
+                                <td scope='col'>Average attendance</td>
+                                <td scope='col'></td>
+                                <td scope='col'><?php echo $row['module'] ?></td>
+                                <td scope='col'><?php echo $row1.'%' ?></td>
+                                
+                                
+                                <?php
+                                    }
+                                ?>
+
                             </tr>
-                            <tr>
-                                <td scope='col'>Communication Skill </td>
-                                <td scope='col'>00/00</td>
-                                <td scope='col'>00%</td>
-                            </tr>
-                            <tr>
-                                <td scope='col'>Fundamentals of Graphic Design </td>
-                                <td scope='col'>00/00</td>
-                                <td scope='col'>00%</td>
-                            </tr>
-                            <tr>
-                                <td scope='col'>Fundamentals of Networking</td>
-                                <td scope='col'>00/00</td>
-                                <td scope='col'>00%</td>
-                            </tr>
-                            <tr>
-                                <td scope='col'>Introduction to Database Systems</td>
-                                <td scope='col'>00/00</td>
-                                <td scope='col'>00%</td>
-                            </tr>
-                            <tr>
-                                <td scope='col'>Static Web Page Designing</td>
-                                <td scope='col'>00/00</td>
-                                <td scope='col'>00%</td>
-                            </tr>
-                            <tr>
-                                <td scope='col'>Database Systems I</td>
-                                <td scope='col'>00/00</td>
-                                <td scope='col'>00%</td>
-                            </tr>
-                            <tr>
-                                <td scope='col'>System Analysis and Design </td>
-                                <td scope='col'>00/00</td>
-                                <td scope='col'>00%</td>
-                            </tr>
-                            <tr>
-                                <td scope='col'>Web Programming</td>
-                                <td scope='col'>00/00</td>
-                                <td scope='col'>00%</td>
-                            </tr>
-                            <tr>
-                                <td>Average attendance</td>
-                                <td></td>
-                                <td>00%</td>
-                            </tr>
+                            
                         </thead>
                     <tbody>
                      

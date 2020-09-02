@@ -28,6 +28,20 @@ tr,th,table{
 <?php
 if(isset($_GET['delete'])){
     $id = $_GET['delete'];
+    $sql = "select Academic_year from batch where Academic_year='$id';";
+    $result = mysqli_query($con,$sql);
+    if(mysqli_num_rows($result)>0)
+    {
+        ?>
+       <div class='alert alert-warning' role='alert'>
+       This academic_year already allocate batches so not delete this academic_year.
+       <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+           <span aria-hidden='true'>&times;</span>
+        </button>
+      </div>
+        <?php
+    }
+    else{
     $sql = "DELETE FROM `academic_year` WHERE `academic_year`.`academic_year` = '$id'";
     if(mysqli_query($con,$sql)){
         echo 'Record was deleted';
@@ -35,13 +49,9 @@ if(isset($_GET['delete'])){
         echo 'Try again';
     }
 }
+}
 ?>
 <!-- delete -->
-
-
-
-
-
 <form action=""method="post">
 <div class="card  mb-3" >
       <div class="card-header bg-transparent ">
@@ -86,9 +96,9 @@ if(mysqli_num_rows($result)>0){
             <td>',$row['2semi_enddate'],'</td>
             <td>
             <div class="btn-group btn-sm" role="group" aria-label="Basic example">
-            <a href="Academicyear.php?edit=',$row['academic_year'],'" class="btn btn-warning" > Edit </a> 
-            <a href="?delete=',$row['academic_year'],'" class="btn btn-danger"> Delete </a>
-            
+            <a href="Academicyear.php?edit=',$row['academic_year'],'" class="btn btn-warning" ><img src="https://img.icons8.com/android/18/000000/edit.png"/ ></a> 
+            <a href="?delete=',$row['academic_year'],'" class="btn btn-danger"><img src="https://img.icons8.com/windows/18/000000/delete-forever.png"/></a>
+            <a href="batches.php?batch=',$row['academic_year'],'" class="btn btn-success">batches</a>
           </div>
             </td>
         </tr>';

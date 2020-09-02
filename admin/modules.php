@@ -7,6 +7,7 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
 
 <head>
     <?php include_once("./head.php"); ?>
+    <?php include_once("../config.php"); ?>
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 </head>
 
@@ -17,6 +18,26 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
        
         
             <div class="container"> 
+                     <!-- delete -->
+<?php
+
+if(isset($_GET['delete'])){
+    $id = $_GET['delete'];
+    $sql = "DELETE FROM `modules` WHERE `modules`.`code` = $id";
+    if(mysqli_query($con,$sql)){
+        echo "
+       <div class='alert alert-success' role='alert'>
+       delete success fully 
+       <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+           <span aria-hidden='true'>&times;</span>
+        </button>
+      </div>";
+    }else{
+        echo "Error: " . $sql . "<br>" . mysqli_error($con);
+    }
+}
+?>
+<!-- delete -->
              <br>
          <form action=""> 
             <div class="card  mb-3" >
@@ -41,30 +62,56 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                     <table class='table align-middle'>
                         <thead class='bg-primary text-light'>
                             <tr class="h6">
-                                <th scope='col'>ID</th>
-                                <th scope='col'>CODE</th>
-                                <th scope='col'>NAME</th>
-                                <th scope='col'>SEMESTER</th>
-                                <th scope='col'>OPTION</th>
+                                <th scope='col'>code</th>
+                                <th scope='col'>Name</th>
+                                <th scope='col'>Semester_Id</th>
+                                <th scope='col'>Course_Name</th>
+                                <th scope='col'>Options</th>
+
                             </tr>
                             
                         </thead>
                         <tbody>
-                        <tr>
-                        <td><h6>01</h6></td>
-                        <td><h6>M07</h6></td>
-                        <td><h6>WEB PROGRAMMING</h6></td>
-                        <td><h6>2</h6></td>
-                        <td class="alig">
-                        <h2></h2>
+                        <?php
+if(isset($_GET['view']))
+{
+    $view=$_GET['view'];
+    $sql = "select * from modules where course_name=(select code from courses where id=$view);";
+}
+else
+{
+    $sql = 'SELECT * FROM `modules`';
+}
+$result = mysqli_query($con,$sql);
+if(mysqli_num_rows($result)>0){
+    while($row = mysqli_fetch_assoc($result)){
+        echo '<tr>
+            <td>',$row['code'],'</td>
+            <td>',$row['Name'],'</td>
+            <td>',$row['Semester_Id'],'</td>
+            <td>',$row['Course_Name'],'</td>
             
-            <div class="w3-dropdown-hover">
-                <a class="">...</a>
-                <div class="w3-dropdown-content w3-bar-block w3-border">
-                <a class="dropdown-item" href="#"><img src="https://img.icons8.com/android/18/000000/edit.png"/>  Edit</a>
-                <a class="dropdown-item" href="#"><img src="https://img.icons8.com/windows/18/000000/delete-forever.png"/>Delete</a>
-                </div>
-            </div>
+
+            
+            <td>
+            <div class="btn-group btn-sm" role="group" aria-label="Basic example">
+            <a href="module.php?edit=',$row['code'],'" class="btn btn-warning" > Edit </a> 
+            <a href="?delete=',$row['code'],'" class="btn btn-danger"> Delete </a>
+            
+          </div>
+            </td>
+        </tr>';
+    }
+}
+else{
+    echo 'no rows';
+}
+?>  
+
+
+                       
+            
+           
 
                         
 </div>

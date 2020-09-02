@@ -7,6 +7,8 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
 
 <head>
     <?php include_once("./head.php"); ?>
+    <?php include_once("../config.php"); ?>
+
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 </head>
 
@@ -19,6 +21,25 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
             <!-- 1st row start -->
 
          <div class="container"> 
+                  <!-- delete -->
+<?php
+if(isset($_GET['delete'])){
+    $id = $_GET['delete'];
+    $sql = "DELETE FROM `courses` WHERE `courses`.`code` = '$id'";
+    if(mysqli_query($con,$sql)){
+        echo "
+       <div class='alert alert-success' role='alert'>
+       delete success fully 
+       <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+           <span aria-hidden='true'>&times;</span>
+        </button>
+      </div>";
+    }else{
+        echo "Error: " . $sql . "<br>" . mysqli_error($con);
+    }
+}
+?>
+<!-- delete -->
              <br>
          <form action=""> 
             <div class="card  mb-3" >
@@ -34,11 +55,6 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                 
                    
                     <div class="card-body ">
-            
-             
-                
-
-
                     <form method="POST">
                 <div class="row">
                     <div class="form-group col-md-12">
@@ -47,31 +63,54 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                     <table class='table align-middle'>
                         <thead class='bg-primary text-light'>
                             <tr class="h5">
-                                <th scope='col'>ID</th>
-                                <th scope='col'>CODE</th>
-                                <th scope='col'>NAME</th>
-                                <th scope='col'>NVQ LEVEL</th>
-                                <th scope='col'>OPTION</th>
+                                <th scope='col'>code</th>
+                                <th scope='col'>name</th>
+                                <th scope='col'>Level</th>
+                                <th scope='col'>Department</th>
+                                <th scope='col'>Options</th>
                             </tr>
                             
                         </thead>
                         <tbody>
-                        <tr>
-                        <td><h6>01</h6></td>
-                        <td><h6>5IT</h6></td>
-                        <td><h6>INFORMATION COMMUNICATION & TECHNOLOGY<span class="badge badge-pill badge-dark m-1">ICT</span></h6></td>
-                        <td><h6>NVQ5</h6></td>
-                        <td class="alig">
-                        <h2></h2>
+                        
             
-            <div class="w3-dropdown-hover">
-                <a class="">...</a>
-                <div class="w3-dropdown-content w3-bar-block w3-border">
-                <a class="dropdown-item" href="#"><img src="https://img.icons8.com/android/18/000000/edit.png"/>  Edit</a>
-                <a class="dropdown-item" href="#"><img src="https://img.icons8.com/windows/18/000000/delete-forever.png"/>Delete</a>
-                </div>
-            </div>
-</td>
+
+<?php
+
+if(isset($_GET['view']))
+{
+    $view=$_GET['view'];
+    $sql = "select * from courses where department=(select department_code from departments where id=$view);";
+}
+else
+{
+    $sql = 'SELECT * FROM `courses`';
+}
+$result = mysqli_query($con,$sql);
+if(mysqli_num_rows($result)>0){
+    while($row = mysqli_fetch_assoc($result)){
+        echo '<tr>
+            <td>',$row['code'],'</td>
+            <td>',$row['name'],'</td>
+            <td>',$row['NVQ_Level'],'</td>
+            <td>',$row['department'],'</td>
+            
+            
+            <td>
+            <div class="btn-group btn-sm" role="group" aria-label="Basic example">
+            <a href="course.php?edit=',$row['code'],'" class="btn btn-warning" > <img src="https://img.icons8.com/android/18/000000/edit.png"/> </a> 
+            <a href="?delete=  ',$row['code'],'" class="btn btn-danger"> <img src="https://img.icons8.com/windows/18/000000/delete-forever.png"/> </a>
+            <a href="modules.php?view=',$row['code'],'" class="btn btn-success"><b>view modules</b> </a>
+          </div>
+            </td>
+        </tr>';
+    }
+}
+else{
+    echo 'no rows';
+}
+?>  
+
 </tbody>
                     </table>
                     

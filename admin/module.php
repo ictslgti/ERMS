@@ -19,21 +19,48 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
             <!-- 1st row start -->
 
          <div class="container"> 
+
+         <?php
+         
+
+         $code = null;
+         $Name  = null;
+         $Course_Name = null;
+         $Learning_Hours  = null;
+         $Lecture_Hours = null;
+         $Self_Study_Hours   = null;
+         $AIM  = null;
+         $Learn = null;
+         $Resources   = null;
+         $References   = null;
+
+
+         
+         if(isset($_GET['edit'])){
+            $id = $_GET['edit'];
+            $sql = "SELECT * FROM `modules` WHERE `code`= '$id' ";
+            $result = mysqli_query($con,$sql);
+            if(mysqli_num_rows($result)==1){
+                $row = mysqli_fetch_assoc($result);
+                $code = $row['code'];
+                $Name = $row['Name'];
+                $Course_Name = $row['Course_Name'];
+                $Learning_Hours = $row['Learning_Hours'];
+                $Lecture_Hours = $row['Lecture_Hours'];
+                $Self_Study_Hours = $row['Self_Study_Hours'];
+                $AIM = $row['AIM'];
+                $Learn = $row['Learn'];
+                $Resources = $row['Resources'];
+                $Reference = $row['References'];
+
+
+                
+            }
+        }
+         ?>
          <!-- insert -->
 
          <?php
-        $code = null;
-        $Name = null;
-        $Semester_Id = null;
-        $Course_Name = null;
-        $Learning_Hours = null;
-        $Lecture_Hours = null;
-        $Self_Study_Hours = null;
-        $AIM = null;
-        $Learn = null;
-        $Resources = null;
-        $References = null;
-
         if(isset($_POST['submit'])
         && !empty($_POST['code'])
         && !empty($_POST['name'])
@@ -49,7 +76,8 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
        
 )
 {
-    $code = $_POST['code'];  
+            $code = $_POST['code']; 
+            echo $code; 
             $Name = $_POST['name'];
             $Semester_Id =$_POST['Semester_Id'];
             $Course_Name  =$_POST['Course_Name'];
@@ -91,6 +119,62 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
 
         
 ?>
+<!-- update -->
+<?php
+
+if(
+     isset($_POST['save'])  
+    && !empty($_POST['code'])
+    && !empty($_POST['name'])
+    && !empty($_POST['Semester_Id'])
+    && !empty($_POST['Course_Name'])
+    && !empty($_POST['Learning_Hours'])
+    && !empty($_POST['Lecture_Hours'])
+    && !empty($_POST['Self_Study_Hours'])
+    && !empty($_POST['AIM'])
+    && !empty($_POST['Learn'])
+    && !empty($_POST['Resources'])
+    && !empty($_POST['References'])
+
+    
+){
+    
+    
+    $code = $_POST['code'];  
+    $Name = $_POST['name'];
+    $Semester_Id =$_POST['Semester_Id'];
+    $Course_Name  =$_POST['Course_Name'];
+    $Learning_Hours=$_POST['Learning_Hours'];
+    $Lecture_Hours=$_POST['Lecture_Hours'];
+    $Self_Study_Hours=$_POST['Self_Study_Hours'];
+    $AIM =$_POST['AIM'];
+    $Learn=$_POST['Learn'];
+    $Resources=$_POST['Resources'];
+    $References=$_POST['References'];
+    
+    $sql = "UPDATE `moduless` SET `code` = '$code',`Name` = '$Name' WHERE `modules`.`code` = '$code';";
+  
+   if (mysqli_query($con, $sql)) {
+       echo "
+       <div class='alert alert-success' role='alert'>
+       update success fully 
+       <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+           <span aria-hidden='true'>&times;</span>
+        </button>
+      </div>";
+   } else {
+       
+       echo "
+       <div class='alert alert-danger' role='alert'>
+       This academic_year alredy submit 
+       <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+           <span aria-hidden='true'>&times;</span>
+        </button>
+      </div>";
+   }
+}   
+?>
+            <!-- update -->
 
 
 
@@ -115,7 +199,7 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                      Code  <br>
                      <div class="form-group">
                      <div class="input-group input-group-sm mb-3">
-                        <input type="text" name="code" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm"id="validationServer01" required>
+                        <input type="text"  placeholder="M02" value="<?php echo $code;?>"  name="code" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm"id="validationServer01" required>
                         </div>
                          </div>
                      </div>
@@ -126,7 +210,7 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                      Name  <br>
                      <div class="form-group">
                      <div class="input-group input-group-sm mb-3">
-                        <input type="text" name="name" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm"id="validationServer01" required>
+                        <input type="text" placeholder="Webprogramming" value="<?php echo $Name;?>"  name="name" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm"id="validationServer01" required>
                         </div>
                          </div>
                      </div>
@@ -157,10 +241,34 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                      <div class="input-group input-group-sm mb-3">
   
                         <select name=" Course_Name"  class="custom-select" id="inputGroupSelect01"id="validationCustom04" required>
-                        <option selected disabled value="">Choose  Course </option>
-                            <option value="1">ICT</option>
-                            <option value="2">AUT</option>
-                            <option value="2">CON</option>
+                        <?php
+                            if(isset($_GET['edit']))
+                            {
+                              ?>
+                                                    <option selected value="<?php echo $department;?>">
+                                                        <?php echo $department;?></option>
+                                                    <option disabled value="">Choose Module</option>
+                                                    <?php
+                            $result = $con->query("SELECT * FROM `courses`  ");
+                            while ($row = $result->fetch_assoc()) {
+                              unset($dno);
+                              $dno = $row['code'];
+                              echo '<option value=" '.$dno.'"  >'.$dno.'</option>';
+                            }
+                          }
+                          else
+                          {
+                            ?>
+                                                    <option selected disabled value="">Choose Module</option>
+                                                    <?php
+                          $result = $con->query("SELECT * FROM `courses` ");
+                          while ($row = $result->fetch_assoc()) {
+                            unset($dno);
+                            $dno = $row['code'];
+                            echo '<option value=" '.$dno.'"  >'.$dno.'</option>';
+                          }
+                            }
+                            ?>
                         </select>
                         </div>
                          </div>
@@ -179,7 +287,10 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                      Learning Hours <br>
                      <div class="form-group">
                      <div class="input-group input-group-sm mb-3">
-                        <input type="number" name="Learning_Hours"   class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm"id="validationServer01" required>
+                        <input type="number" placeholder="10" name="Learning_Hours"   class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm"id="validationServer01" required>
+                        <div class="input-group-prepend">
+    <span class="input-group-text" id="basic-addon1">hours</span>
+  </div>
                         </div>
                          </div>
                      </div>
@@ -190,7 +301,10 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                      Lecture Hours  <br>
                      <div class="form-group">
                      <div class="input-group input-group-sm mb-3">
-                        <input type="number" name="Lecture_Hours" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm"id="validationServer01" required>
+                        <input type="number" placeholder="10" name="Lecture_Hours" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm"id="validationServer01" required>
+                        <div class="input-group-prepend">
+    <span class="input-group-text" id="basic-addon1">hours</span>
+  </div>
                         </div>
                          </div>
                      </div>
@@ -209,7 +323,10 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                      Practical Hours <br>
                      <div class="form-group">
                      <div class="input-group input-group-sm mb-3">
-                        <input type="number" name="Practical_Hours" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm"id="validationServer01" required>
+                        <input type="number" placeholder="10" name="Practical_Hours" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm"id="validationServer01" required>
+                        <div class="input-group-prepend">
+    <span class="input-group-text" id="basic-addon1">hours</span>
+  </div>
                         </div>
                          </div>
                      </div>
@@ -220,7 +337,10 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                      Self Study Hours <br>
                      <div class="form-group">
                      <div class="input-group input-group-sm mb-3">
-                        <input type="number" name="Self_Study_Hours" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm"id="validationServer01" required>
+                        <input type="number" placeholder="10" name="Self_Study_Hours" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm"id="validationServer01" required>
+                        <div class="input-group-prepend">
+    <span class="input-group-text" id="basic-addon1">hours</span>
+  </div>
                         </div>
                          </div>
                      </div>

@@ -13,16 +13,16 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
 <body>
     <div class="page-wrapper toggled bg2 border-radius-on light-theme">
         <?php include_once("nav.php"); ?>
-       <!-- card start -->
-<div class="container">
-<!-- insert stat -->
-<?php
+        <!-- card start -->
+        <div class="container">
+            <!-- insert start -->
+            <?php
 
 $department=null;
 $year=null;
 $batchno=null;
 $nvq=null;
-
+$id=null;
 if(isset($_GET['edit'])){
     $id = $_GET['edit'];
     
@@ -79,10 +79,10 @@ if(
    }
 }       
 ?>
-        <!-- insert end -->
+            <!-- insert end -->
 
-<!-- update -->
-<?php
+            <!-- update -->
+            <?php
 
 if(
     isset($_POST['save'])  
@@ -98,7 +98,7 @@ if(
   $year = $_POST['year'];
   $batchno = $_POST['batchno'];
 
-    $sql = "UPDATE `batch` SET `department_code` = '$department',`Academic_year` = '$year' WHERE `batch`.`batch_no` = '$batchno';";
+    $sql = "UPDATE `batch` SET `department_code` = '$department',`Academic_year` = '$year',`NVQ_level` = '$nvq' WHERE `batch`.`batch_no` = '$id';";
   
    if (mysqli_query($con, $sql)) {
        echo "
@@ -120,40 +120,45 @@ if(
    }
 }   
 ?>
-<!-- update -->
+            <!-- update -->
 
 
 
 
-<form action=""method="post">
-<div class="card  mb-3" >
-      <div class="card-header bg-transparent ">
-      <div class="row">
-      <div class="col"> <h4>Batch</h4> </div>
-      <div class="col-auto"> <a href="batches.php" class="btn btn-outline-primary">Batches</a> </div>
-      </div>
-      </div>
-      <div class="card-body ">
-         
-            <div class="card  mb-3" >
-                 
-                  <div class="card-body ">
-                    <!-- 1st row -->
+            <form action="" method="post">
+                <div class="card  mb-3">
+                    <div class="card-header bg-transparent ">
+                        <div class="row">
+                            <div class="col">
+                                <h4>Batch</h4>
+                            </div>
+                            <div class="col-auto"> <a href="batches.php" class="btn btn-outline-primary">Batches</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body ">
 
-                <div class="row "> 
-                  <div class="col-md-6 col-sm-6 col-xs-6">
-                     <div class="form-group">
-                     Department  <br>
-                     <div class="input-group input-group-sm mb-3">
-  
-                        <select class="custom-select" name="department" id="inputGroupSelect01"id="validationCustom04" required>
-                            <?php
+                        <div class="card  mb-3">
+
+                            <div class="card-body ">
+                                <!-- 1st row -->
+
+                                <div class="row ">
+                                    <div class="col-md-6 col-sm-6 col-xs-6">
+                                        <div class="form-group">
+                                            Department <br>
+                                            <div class="input-group input-group-sm mb-3">
+
+                                                <select class="custom-select" name="department" id="inputGroupSelect01"
+                                                    id="validationCustom04" required>
+                                                    <?php
                             if(isset($_GET['edit']))
                             {
                               ?>
-                             <option selected value="<?php echo $department;?>"><?php echo $department;?></option>
-                            <option  disabled value="">Choose Department</option>
-                            <?php
+                                                    <option selected value="<?php echo $department;?>">
+                                                        <?php echo $department;?></option>
+                                                    <option disabled value="">Choose Department</option>
+                                                    <?php
                             $result = $con->query("SELECT `department_code` FROM `departments` ORDER BY `departments`.`department_code` ASC");
                             while ($row = $result->fetch_assoc()) {
                               unset($dno);
@@ -164,8 +169,8 @@ if(
                           else
                           {
                             ?>
-                            <option selected disabled value="">Choose Department</option>
-                             <?php
+                                                    <option selected disabled value="">Choose Department</option>
+                                                    <?php
                           $result = $con->query("SELECT `department_code` FROM `departments` ORDER BY `departments`.`department_code` ASC");
                           while ($row = $result->fetch_assoc()) {
                             unset($dno);
@@ -175,66 +180,70 @@ if(
                             }
                             ?>
 
-                            
-                          </select>
-                          </div>
-                        </div>
-                      </div>
 
-                      <div class="col-md-6 col-sm-6 col-xs-6">
-                     <div class="form-group">
-                     NVQ LEVEL  <br>
-                     <div class="input-group input-group-sm mb-3">
-  
-                        <select class="custom-select" name="nvq" id="inputGroupSelect01"id="validationCustom04" required>
-                           <?php
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6 col-sm-6 col-xs-6">
+                                        <div class="form-group">
+                                            NVQ LEVEL <br>
+                                            <div class="input-group input-group-sm mb-3">
+
+                                                <select class="custom-select" name="nvq" id="inputGroupSelect01"
+                                                    id="validationCustom04" required>
+                                                    <?php
                            if(isset($_GET['edit']))
                            {
                             ?>
-                            <option selected value="<?php echo $nvq;?>"><?php echo $nvq;?></option>
-                            <option disabled value="">Choose NVQ Level</option>
-                            <option value="NVQ-04">NVQ-04</option>
-                            <option value="BRIDGING">BRIDGING</option>
-                            <option value="NVQ-05">NVQ-05</option>
-                            <option value="NVQ-06">NVQ-06</option>
-                            <option value="NVQ-07">NVQ-07</option>
-                            <?php
+                                                    <option selected value="<?php echo $nvq;?>"><?php echo $nvq;?>
+                                                    </option>
+                                                    <option disabled value="">Choose NVQ Level</option>
+                                                    <option value="NVQ-04">NVQ-04</option>
+                                                    <option value="BRIDGING">BRIDGING</option>
+                                                    <option value="NVQ-05">NVQ-05</option>
+                                                    <option value="NVQ-06">NVQ-06</option>
+                                                    <option value="NVQ-07">NVQ-07</option>
+                                                    <?php
                            }
                            else
                            {
                              ?>
-                            <option selected disabled value="">Choose NVQ Level</option>
-                            <option value="NVQ-04">NVQ-04</option>
-                            <option value="BRIDGING">BRIDGING</option>
-                            <option value="NVQ-05">NVQ-05</option>
-                            <option value="NVQ-06">NVQ-06</option>
-                            <option value="NVQ-07">NVQ-07</option>
-                              <?php
+                                                    <option selected disabled value="">Choose NVQ Level</option>
+                                                    <option value="NVQ-04">NVQ-04</option>
+                                                    <option value="BRIDGING">BRIDGING</option>
+                                                    <option value="NVQ-05">NVQ-05</option>
+                                                    <option value="NVQ-06">NVQ-06</option>
+                                                    <option value="NVQ-07">NVQ-07</option>
+                                                    <?php
                            }
                            ?>
-                          </select>
-                          </div>
-                        </div>
-                      </div>
-                      </div>
-                      
-                <!-- 1st row -->
-                
-                <!-- 2nd row -->
-                <div class="row"> 
-                  <div class="col-md-6 col-sm-6 col-xs-6">
-                     <div class="form-group">
-                     Academicyear  <br>
-                     <div class="input-group input-group-sm mb-3">
-  
-                        <select class="custom-select" name="year" id="inputGroupSelect01"id="validationCustom04" required>
-                           <?php
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- 1st row -->
+
+                                <!-- 2nd row -->
+                                <div class="row">
+                                    <div class="col-md-6 col-sm-6 col-xs-6">
+                                        <div class="form-group">
+                                            Academicyear <br>
+                                            <div class="input-group input-group-sm mb-3">
+
+                                                <select class="custom-select" name="year" id="inputGroupSelect01"
+                                                    id="validationCustom04" required>
+                                                    <?php
                            if(isset($_GET['edit']))
                            {
                              ?>
-                            <option selected value="<?php echo $year;?>"><?php echo $year;?></option>
-                            <option disabled value="">Choose Academicyear</option>
-                            <?php
+                                                    <option selected value="<?php echo $year;?>"><?php echo $year;?>
+                                                    </option>
+                                                    <option disabled value="">Choose Academicyear</option>
+                                                    <?php
                             $result = $con->query("SELECT `academic_year` FROM `academic_year` ORDER BY `academic_year`.`academic_year` ASC");
                             while ($row = $result->fetch_assoc()) {
                               unset($year);
@@ -242,12 +251,12 @@ if(
                               echo '<option value=" '.$year.'"  >'.$year.'</option>';
                           }
                             ?>
-                             <?php
+                                                    <?php
                            }
                            else{
                              ?>
-                            <option selected disabled value="">Choose Academicyear</option>
-                            <?php
+                                                    <option selected disabled value="">Choose Academicyear</option>
+                                                    <?php
                             $result = $con->query("SELECT `academic_year` FROM `academic_year` ORDER BY `academic_year`.`academic_year` ASC");
                             while ($row = $result->fetch_assoc()) {
                               unset($year);
@@ -256,75 +265,90 @@ if(
                           }
                             ?>
 
-                             <?php
+                                                    <?php
                            }
                            ?>
-                           
-                           
-                           
-                            
-                          </select>
-                          </div>
+
+
+
+
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6 col-sm-6 col-xs-6">
+                                        Batch no <br>
+                                        <div class="form-group">
+                                            <div class="input-group input-group-sm mb-3">
+                                                <?php
+                        if(isset($_GET['edit']))
+                        {
+                          ?>
+                                                <input type="number" readonly name="batchno" class="form-control"
+                                                    value="<?php echo $batchno;?>" aria-label="Sizing example input"
+                                                    aria-describedby="inputGroup-sizing-sm" id="validationServer01"
+                                                    required>
+                                                <?php
+                        }
+                        else
+                        {
+                          ?>
+                                                <input type="number" name="batchno" class="form-control"
+                                                    value="<?php echo $batchno;?>" aria-label="Sizing example input"
+                                                    aria-describedby="inputGroup-sizing-sm" id="validationServer01"
+                                                    required>
+                                                <?php
+                        }
+                        ?>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- 2nd row -->
+                            </div>
+
                         </div>
-                      </div>
-
-                      <div class="col-md-6 col-sm-6 col-xs-6">
-                      Batch no <br>
-                     <div class="form-group">
-                     <div class="input-group input-group-sm mb-3">
-                        <input type="number" name="batchno" class="form-control" value="<?php echo $batchno;?>" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm"id="validationServer01" required>
-                          </div>
-                        </div>
-                      </div>
-                      </div>
-                    
-                <!-- 2nd row -->
-                  </div>
-                  
-    </div>
 
 
-      </div>
-      <div class="card-footer">
-      <div class="row">
-                     <div class="col-11 "></div>
-                     <div class="col-1">
-                     <?php
+                    </div>
+                    <div class="card-footer">
+                        <div class="row">
+                            <div class="col-11 "></div>
+                            <div class="col-1">
+                                <?php
                      if(isset($_GET['edit']))
                      {
                        ?>
-                          <button type="submit" name="save" class="btn btn-outline-info" data-toggle="modal"
-                                data-target="#exampleModal">
-                                Save
-                            </button>
-                       <?php
+                                <button type="submit" name="save" class="btn btn-outline-info" data-toggle="modal"
+                                    data-target="#exampleModal">
+                                    Save
+                                </button>
+                                <?php
                      }
                      else
                      {
                        ?>
-                            <button type="submit" name="submit" class="btn btn-outline-success" data-toggle="modal"
-                                data-target="#exampleModal">
-                                Add
-                            </button>
+                                <button type="submit" name="submit" class="btn btn-outline-success" data-toggle="modal"
+                                    data-target="#exampleModal">
+                                    Add
+                                </button>
 
-                       <?php
+                                <?php
                      }
                      ?>
-                     
-                     </div>
-                     </div>
-      </div>
-    </div>
-    </form>
-</div>
-       <!-- card end  -->
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <!-- card end  -->
     </div>
     <?php include_once("../script.php"); ?>
 </body>
 
 </html>
-
-
-
-
-

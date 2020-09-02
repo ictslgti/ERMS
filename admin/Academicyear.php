@@ -12,6 +12,21 @@ include_once('../config.php');
 
 <head>
     <?php include_once("./head.php"); ?>
+    <script>
+    $(".myselect").change(function(){
+  var res = $(".myselect").find(":selected").map(function () {
+    if($(this).val()!="")
+      return $(this).text();
+    else
+      return "";
+   }).get().join(" ");
+  
+   $("#inputid").val(res);
+
+ });
+
+    </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 </head>
 
 <body>
@@ -99,6 +114,7 @@ if(isset($_GET['edit'])){
 if(
     isset($_POST['submit'])  
     && !empty($_POST['academicyear'])
+    && !empty($_POST['academicyear1'])
     && !empty($_POST['status'])
     && !empty($_POST['semi1start'])
     && !empty($_POST['semi1end'])
@@ -108,6 +124,7 @@ if(
 ){
     
     $year = $_POST['academicyear'];
+    $year1 = $_POST['academicyear1'];
     $status=$_POST['status'];
     $semi1start = $_POST['semi1start'];
     $semi1end = $_POST['semi1end'];
@@ -116,7 +133,7 @@ if(
 
     $sql = "INSERT INTO academic_year (academic_year,academic_year_status, 1semi_startdate, 1semi_enddate,2semi_startdate,2semi_enddate)
     VALUES 
-    ('$year','$status', 
+    ('$year/$year1','$status', 
     '$semi1start', 
     '$semi1end','$semi2start','$semi2end')
     ";
@@ -169,6 +186,7 @@ if(
                                         Academicyear <br>
                                         <div class="form-group">
                                             <div class="input-group input-group-sm mb-3">
+                                            
                                                 <input type="text" value="<?php echo $year;?>" name="academicyear" placeholder="2019/2020" class="form-control" 
                                                     aria-label="Sizing example input"
                                                     aria-describedby="inputGroup-sizing-sm" id="validationServer01"
@@ -294,17 +312,28 @@ if(
                             {
 
                             ?>
+
+
+
+
                            <div class="row">
                                     <div class="col-sm">
                                         Academicyear <br>
                                         <div class="form-group">
                                             <div class="input-group input-group-sm mb-3">
-                                                <input type="text"  name="academicyear" placeholder="2019/2020" class="form-control" 
+                                                <input type="text"  name="academicyear" placeholder="Start year" class="form-control" 
+                                                    aria-label="Sizing example input"
+                                                    aria-describedby="inputGroup-sizing-sm" id="validationServer01"
+                                                    required>
+                                                    <input type="text"  name="academicyear1" placeholder="End year" class="form-control" 
                                                     aria-label="Sizing example input"
                                                     aria-describedby="inputGroup-sizing-sm" id="validationServer01"
                                                     required>
                                             </div>
+
+                                            
                                         </div>
+                                        
                                     </div>
 
 

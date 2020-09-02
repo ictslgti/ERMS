@@ -9,6 +9,32 @@ $description = "Online Examination Result Management System (ERMS)-SLGTI";
 <head>
     <?php include_once("../head.php"); ?>
     <?php include_once('../databases/config.php'); ?>
+
+    <!-- Image-->
+    <script type='text/javascript'>
+        function preview_image(event) {
+            var reader = new FileReader();
+            reader.onload = function() {
+                var output = document.getElementById('output_image');
+                output.src = reader.result;
+            }
+            reader.readAsDataURL(event.target.files[0]);
+        }
+    </script>
+    <style>
+        #output_image {
+            width: 0px;
+            height: 0px;
+            border: 0px solid black;
+        }
+    </style>
+    <!-- Image-->
+
+    <!-- for province ditrict filter-->
+    <script src="/scripts/snippet-javascript-console.min.js?v=1"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <!-- for province ditrict filter-->
+
 </head>
 
 <body>
@@ -69,10 +95,9 @@ $description = "Online Examination Result Management System (ERMS)-SLGTI";
 
             if (mysqli_query($con, $sqlstudent)) {
                 echo '<div class="alert alert-success" role="alert">
-                New record created successfully
-                </div>';
+                New record created successfully';
             } else {
-                echo "Error: " . $sqlstudent . "<br>" . mysqli_error($con);
+                echo '<div class="alert alert-warning" role="alert">insert  ' . $sqlstudent . "<br>" . mysqli_error($con);
             }
         }
 
@@ -80,6 +105,7 @@ $description = "Online Examination Result Management System (ERMS)-SLGTI";
             isset($_POST['add'])
             && !empty($_POST['regno'])
             && !empty($_POST['cid'])
+            && !empty($_POST['bid'])
             && !empty($_POST['ayear'])
             && !empty($_POST['mode'])
             && !empty($_POST['status'])
@@ -88,30 +114,72 @@ $description = "Online Examination Result Management System (ERMS)-SLGTI";
         ) {
             $regno = $_POST['regno'];
             $cid = $_POST['cid'];
+            $bid = $_POST['bid'];
             $ayear = $_POST['ayear'];
             $mode = $_POST['mode'];
             $status = $_POST['status'];
             $enrolldate = $_POST['enrolldate'];
             $exitdate = $_POST['exitdate'];
 
-            $sqlenroll = "INSERT INTO student_enroll (id, course_id, academic_year, course_mode, student_status,
-                    enroll_date, exit_date) VALUES ('$regno','$cid','$ayear','$mode','$status','$enrolldate','$exitdate')";
+            $sqlenroll = "INSERT INTO student_enroll (id, course_id, batch_no, academic_year, course_mode, student_status,
+                    enroll_date, exit_date) VALUES ('$regno','$cid','$bid','$ayear','$mode','$status','$enrolldate','$exitdate')";
 
             if (mysqli_query($con, $sqlenroll)) {
-                // echo '<div class="alert alert-success" role="alert">
-                // Record Insert Successfully
-                // </div>';
+                echo 'And Insert Successfully
+                    </div><button type="button" class="close" href="student.php" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                 </button>';
             } else {
-                echo "Error: " . $sqlenroll . "<br>" . mysqli_error($con);
+                echo 'Error: </div> <button type="button" class="close" href="student.php" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+             </button></div>' . $sqlenroll . "<br>" . mysqli_error($con);
             }
         }
+
+        $id = null;
+        $image = null;
+        if (
+            isset($_POST['add'])
+            && !empty($_POST['regno'])
+        ) {
+
+            $regno = $_POST['regno'];
+            $sta = $statusMsg = '';
+            $sta = 'error';
+
+            if (!empty($_FILES["image"]["name"])) {
+                // Get file info 
+                $fileName = basename($_FILES["image"]["name"]);
+                $fileType = pathinfo($fileName, PATHINFO_EXTENSION);
+
+                // Allow certain file formats 
+                $allowTypes = array('jpg', 'png', 'jpeg', 'gif');
+                if (in_array($fileType, $allowTypes)) {
+                    $image = $_FILES['image']['tmp_name'];
+                    $imgContent = addslashes(file_get_contents($image));
+                    $sql = "INSERT INTO images (id,image) VALUES ('$id','$imgContent')";
+
+                    if (mysqli_query($con, $sql)) {
+                        echo "";
+                    } else {
+
+                        echo "";
+                    }
+                } else {
+                    $statusMsg = 'Sorry, only JPG, JPEG, PNG, & GIF files are allowed to upload.';
+                }
+            } else {
+                $statusMsg = 'Please select an image file to upload.';
+            }
+        }
+
         ?>
         <!-- insert  end -->
 
         <!-- edit  start -->
         <?php
         $student_id = $stitle = $full_name = $ini_name = $gender = $civil = $email = $nic = $dob = $phone = $address = $ds =
-            $district = $province = $zip = $blood = $gname = $gaddress = $gphone = $grelation = $regno = $cid = $ayear =
+            $district = $province = $zip = $blood = $gname = $gaddress = $gphone = $grelation = $regno = $bid = $cid = $ayear =
             $mode = $status = $enrolldate = $exitdate = null;
         if (isset($_GET['edit'])) {
             $student_id = $_GET['edit'];
@@ -142,6 +210,7 @@ $description = "Online Examination Result Management System (ERMS)-SLGTI";
                 $grelation = $row['guardian_relationship'];
                 $regno = $row['id'];
                 $cid = $row['course_id'];
+                $bid = $row['batch_no'];
                 $ayear = $row['academic_year'];
                 $mode = $row['course_mode'];
                 $status = $row['student_status'];
@@ -167,6 +236,7 @@ $description = "Online Examination Result Management System (ERMS)-SLGTI";
             && !empty($_POST['province'])
             && !empty($_POST['zip'])
             && !empty($_POST['blood'])
+            && !empty($_POST['img'])
             && !empty($_POST['gname'])
             && !empty($_POST['gaddress'])
             && !empty($_POST['gphone'])
@@ -187,28 +257,64 @@ $description = "Online Examination Result Management System (ERMS)-SLGTI";
             $province = $_POST['province'];
             $zip = $_POST['zip'];
             $blood = $_POST['blood'];
+            $img = $_POST['img'];
             $gname = $_POST['gname'];
             $gaddress = $_POST['gaddress'];
             $gphone = $_POST['gphone'];
             $grelation = $_POST['grelation'];
 
-            $sql_students = "UPDATE `student` SET `title` = '$stitle', full_name = '$fullname', 
-                    name_with_initials = '$ini_name', gender ='$gender', civil_status = '$civil', email = '$email', 
-                    nic = '$nic', date_of_birth = '$dob', phone_no = '$phone', address = '$address', 
-                    divisional_secretariat = '$ds', district = '$district', province = '$province', 
-                    zip_code = '$zip', blood_group = '$blood', guardian_name = '$gname', 
-                    guardian_address = '$gaddress', guardian_phone_no = '$gphone', guardian_relationship = '$grelation'
+            $sql_students = "UPDATE `student` SET `title` = '$stitle', `full_name` = '$fullname', 
+                    `name_with_initials` = '$ini_name', `gender` ='$gender', `civil_status` = '$civil', `email` = '$email', 
+                    `nic` = '$nic', `date_of_birth` = '$dob', `phone_no` = '$phone', `address` = '$address', 
+                    `divisional_secretariat` = '$ds', `district` = '$district', `province` = '$province', 
+                    `zip_code` = '$zip', `blood_group` = '$blood', `guardian_name` = '$gname', 
+                    `guardian_address` = '$gaddress', `guardian_phone_no` = '$gphone', `guardian_relationship` = '$grelation'
                     WHERE `student`.`id` = '$student_id'";
 
             if (mysqli_query($con, $sql_students)) {
                 echo '<div class="alert alert-success" role="alert">
                                     Successfully Updated!
-                                </div>';
+                                    </div> <button type="button" class="close" href="student.php" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                 </button></div>';
             } else {
-                echo ' <div class="alert alert-warning" role="alert"> Error updating record: </div>'
+                echo '<div class="alert alert-warning" role="alert"> Error updating record:' . $sql_students
                     . mysqli_error($con);
             }
         }
+
+        if (
+            isset($_POST['update'])
+            && !empty($_POST['cid'])
+            && !empty($_POST['bid'])
+            && !empty($_POST['ayear'])
+            && !empty($_POST['mode'])
+            && !empty($_POST['status'])
+            && !empty($_POST['enrolldate'])
+            && !empty($_POST['exitdate'])
+        ) {
+            $cid = $_POST['cid'];
+            $bid = $_POST['bid'];
+            $ayear = $_POST['ayear'];
+            $mode = $_POST['mode'];
+            $status = $_POST['status'];
+            $enrolldate = $_POST['enrolldate'];
+            $exitdate = $_POST['exitdate'];
+
+            $sqlenrolls = "UPDATE `student_enroll` SET `course_id` = '$cid', `batch_no` = '$bid', `academic_year` = '$ayear', `course_mode` = '$mode',
+            `student_status` = '$status', `enroll_date` = '$enrolldate', `exit_date` = '$exitdate'  WHERE `student_enroll`.`id` = '$student_id'";
+
+            if (mysqli_query($con, $sqlenrolls)) {
+                // echo $sqlenrolls.'<div class="alert alert-success" role="alert">
+                // And Insert Successfully
+                // </div>';
+
+            } else {
+                echo ' And Failed: </div>' . $sqlenrolls
+                    . mysqli_error($con);
+            }
+        }
+
         ?>
         <!-- edit  end -->
 
@@ -239,7 +345,7 @@ $description = "Online Examination Result Management System (ERMS)-SLGTI";
 
                             <!-- 1st row end -->
 
-                            <form method="POST" action="student.php">
+                            <form method="POST" action="">
                                 <!-- 2 row start -->
                                 <div class="row">
                                     <div class="col-sm">
@@ -342,11 +448,11 @@ $description = "Online Examination Result Management System (ERMS)-SLGTI";
 
                                     <div class="col-3">
                                         <label for="province"> Province: </label>
-                                        <select name="province" class="custom-select" value="<?php echo $province; ?>" required>
+                                        <select name="province" id="province" class="custom-select" value="<?php echo $province; ?>" required>
                                             <option value=""> Choose</option>
                                             <option value="Central" <?php if ($province == "Central")  echo 'selected'; ?>> Central </option>
                                             <option value="Eastern" <?php if ($province == "Eastern")  echo 'selected'; ?>> Eastern </option>
-                                            <option value="Northen" <?php if ($province == "Northen")  echo 'selected'; ?>> Northen </option>
+                                            <option value="Northern" <?php if ($province == "Northen")  echo 'selected'; ?>> Northern </option>
                                             <option value="Southern" <?php if ($province == "Southern")  echo 'selected'; ?>> Southern </option>
                                             <option value="Western" <?php if ($province == "Western")  echo 'selected'; ?>> Western </option>
                                             <option value="North Western" <?php if ($province == "North Western")  echo 'selected'; ?>> North Western </option>
@@ -358,35 +464,58 @@ $description = "Online Examination Result Management System (ERMS)-SLGTI";
 
                                     <div class="col-3">
                                         <label for="district"> District: </label>
-                                        <select class="custom-select" name="district" data-live-search="true" data-width="100%" value="<?php echo $district; ?>" required>
+                                        <select class="custom-select" name="district" id="district" data-live-search="true" data-width="100%" value="<?php echo $district; ?>" required>
                                             <option value=""> Choose</option>
-                                            <option value="Ampara" <?php if ($district == "Ampara")  echo 'selected'; ?>> Ampara </option>
-                                            <option value="Batticalo" <?php if ($district == "Batticalo")  echo 'selected'; ?>> Batticalo </option>
-                                            <option value="Trincomalee" <?php if ($district == "Trincomalee")  echo 'selected'; ?>> Trincomalee </option>
-                                            <option value="Jaffna" <?php if ($district == "Jaffna")  echo 'selected'; ?>> Jaffna </option>
-                                            <option value="Vavuniya" <?php if ($district == "Vavuniya")  echo 'selected'; ?>> Vavuniya </option>
-                                            <option value="Killinochchi" <?php if ($district == "Killinochchi")  echo 'selected'; ?>> Killinochchi </option>
-                                            <option value="Mullaitivu" <?php if ($district == "Mullaitivu")  echo 'selected'; ?>> Mullaitivu </option>
-                                            <option value="Mannar" <?php if ($district == "Mannar")  echo 'selected'; ?>> Mannar </option>
-                                            <option value="Puttalam" <?php if ($district == "Puttalam")  echo 'selected'; ?>> Puttalam </option>
-                                            <option value="Kurunegala" <?php if ($district == "Kurunegala")  echo 'selected'; ?>> Kurunegala </option>
-                                            <option value="Gampaha" <?php if ($district == "Gampaha")  echo 'selected'; ?>> Gampaha </option>
-                                            <option value="Colombo" <?php if ($district == "Colombo")  echo 'selected'; ?>> Colombo </option>
-                                            <option value="Kalutara" <?php if ($district == "Kalutara")  echo 'selected'; ?>> Kalutara </option>
-                                            <option value="Anuradhapura" <?php if ($district == "Anuradhapura")  echo 'selected'; ?>> Anuradhapura </option>
-                                            <option value="Polonnaruwa" <?php if ($district == "Polonnaruwa")  echo 'selected'; ?>> Polonnaruwa </option>
-                                            <option value="Matale" <?php if ($district == "Matale")  echo 'selected'; ?>> Matale </option>
-                                            <option value="Kandy" <?php if ($district == "Kandy")  echo 'selected'; ?>> Kandy </option>
-                                            <option value="Nuwara Eliya" <?php if ($district == "Nuwara Eliya")  echo 'selected'; ?>> Nuwara Eliya </option>
-                                            <option value="Kegalle" <?php if ($district == "Kegalle")  echo 'selected'; ?>> Kegalle </option>
-                                            <option value="Ratnapura" <?php if ($district == "Ratnapura")  echo 'selected'; ?>> Ratnapura </option>
-                                            <option value="Badulla" <?php if ($district == "Badulla")  echo 'selected'; ?>> Badulla </option>
-                                            <option value="Monaragala" <?php if ($district == "Monaragala")  echo 'selected'; ?>> Monaragala </option>
-                                            <option value="Hambantota" <?php if ($district == "Hambantota")  echo 'selected'; ?>> Hambantota </option>
-                                            <option value="Matara" <?php if ($district == "Matara")  echo 'selected'; ?>> Matara </option>
-                                            <option value="Galle" <?php if ($district == "Galle")  echo 'selected'; ?>> Galle </option>
+                                            <option value="Ampara" data-val="Eastern" <?php if ($district == "Ampara")  echo 'selected'; ?>> Ampara </option>
+                                            <option value="Batticalo" data-val="Eastern" <?php if ($district == "Batticalo")  echo 'selected'; ?>> Batticalo </option>
+                                            <option value="Trincomalee" data-val="Eastern" <?php if ($district == "Trincomalee")  echo 'selected'; ?>> Trincomalee </option>
+                                            <option value="Jaffna" data-val="Northern" <?php if ($district == "Jaffna")  echo 'selected'; ?>> Jaffna </option>
+                                            <option value="Vavuniya" data-val="Northern" <?php if ($district == "Vavuniya")  echo 'selected'; ?>> Vavuniya </option>
+                                            <option value="Killinochchi" data-val="Northern" <?php if ($district == "Killinochchi")  echo 'selected'; ?>> Killinochchi </option>
+                                            <option value="Mullaitivu" data-val="Northern" <?php if ($district == "Mullaitivu")  echo 'selected'; ?>> Mullaitivu </option>
+                                            <option value="Mannar" data-val="Northern" <?php if ($district == "Mannar")  echo 'selected'; ?>> Mannar </option>
+                                            <option value="Puttalam" data-val="North Western" <?php if ($district == "Puttalam")  echo 'selected'; ?>> Puttalam </option>
+                                            <option value="Kurunegala" data-val="North Western" <?php if ($district == "Kurunegala")  echo 'selected'; ?>> Kurunegala </option>
+                                            <option value="Gampaha" data-val="Western" <?php if ($district == "Gampaha")  echo 'selected'; ?>> Gampaha </option>
+                                            <option value="Colombo" data-val="Western" <?php if ($district == "Colombo")  echo 'selected'; ?>> Colombo </option>
+                                            <option value="Kalutara" data-val="Western" <?php if ($district == "Kalutara")  echo 'selected'; ?>> Kalutara </option>
+                                            <option value="Anuradhapura" data-val="North Central" <?php if ($district == "Anuradhapura")  echo 'selected'; ?>> Anuradhapura </option>
+                                            <option value="Polonnaruwa" data-val="North Central" <?php if ($district == "Polonnaruwa")  echo 'selected'; ?>> Polonnaruwa </option>
+                                            <option value="Matale" data-val="Central" <?php if ($district == "Matale")  echo 'selected'; ?>> Matale </option>
+                                            <option value="Kandy" data-val="Central" <?php if ($district == "Kandy")  echo 'selected'; ?>> Kandy </option>
+                                            <option value="Nuwara Eliya" data-val="Central" <?php if ($district == "Nuwara Eliya")  echo 'selected'; ?>> Nuwara Eliya </option>
+                                            <option value="Kegalle" data-val="Sabaragamuwa" <?php if ($district == "Kegalle")  echo 'selected'; ?>> Kegalle </option>
+                                            <option value="Ratnapura" data-val="Sabaragamuwa" <?php if ($district == "Ratnapura")  echo 'selected'; ?>> Ratnapura </option>
+                                            <option value="Badulla" data-val="Uva" <?php if ($district == "Badulla")  echo 'selected'; ?>> Badulla </option>
+                                            <option value="Monaragala" data-val="Uva" <?php if ($district == "Monaragala")  echo 'selected'; ?>> Monaragala </option>
+                                            <option value="Hambantota" data-val="Southern" <?php if ($district == "Hambantota")  echo 'selected'; ?>> Hambantota </option>
+                                            <option value="Matara" data-val="Southern" <?php if ($district == "Matara")  echo 'selected'; ?>> Matara </option>
+                                            <option value="Galle" data-val="Southern" <?php if ($district == "Galle")  echo 'selected'; ?>> Galle </option>
                                         </select>
                                     </div>
+
+                                    <!-- for province ditrict filter-->
+                                    <script type="text/javascript">
+                                        // get first dropdown and bind change event handler
+                                        $('#province').change(function() {
+                                            // get optios of second dropdown and cache it
+                                            var $options = $('#district')
+                                                // update the dropdown value if necessary
+                                                .val('')
+                                                // get options
+                                                .find('option')
+                                                // show all of the initially
+                                                .show();
+                                            // check current value is not 0
+                                            if (this.value != '0')
+                                                $options
+                                                // filter out options which is not corresponds to the first option
+                                                .not('[data-val="' + this.value + '"],[data-val=""]')
+                                                // hide them
+                                                .hide();
+                                        })
+                                    </script>
+                                    <!-- for province ditrict filter-->
 
                                     <div class="col-2">
                                         <label for="zip"> ZIP-Code:</label>
@@ -404,21 +533,22 @@ $description = "Online Examination Result Management System (ERMS)-SLGTI";
                                             <option value="AB+" <?php if ($blood == "AB+")  echo 'selected'; ?>> AB+ </option>
                                             <option value="AB-" <?php if ($blood == "AB-")  echo 'selected'; ?>> AB- </option>
                                             <option value="O+" <?php if ($blood == "O+")  echo 'selected'; ?>> O+ </option>
-                                            <option value="O-" <?php if ($blood == "O+")  echo 'selected'; ?>> O- </option>
-
+                                            <option value="O-" <?php if ($blood == "O-")  echo 'selected'; ?>> O- </option>
                                         </select>
                                     </div>
 
+                                    <div class="col-2">
+                                        <label for="image"> Image: </label>
+                                        <div class="custom-file">
+                                            <input type="file" name="image" class="custom-file-input" id="customFile" accept="image/*" onchange="preview_image(event)">
+                                            <label class="custom-file-label" for="customFile"> Choose</label>
+                                            <img id="output_image" />
+                                        </div>
+                                    </div>
                                 </div>
+                                
                                 <!-- 4th row end -->
 
-                                <!-- 5th row start -->
-                                <div class="form-row">
-
-
-
-                                </div>
-                                <!-- 5th row end -->
                                 <br>
                                 <!-- 2 row end -->
 
@@ -447,6 +577,17 @@ $description = "Online Examination Result Management System (ERMS)-SLGTI";
                                     </div>
 
                                     <div class="col-3">
+                                        <label for="bid"> Batch No: </label>
+                                        <select name="bid" class="custom-select" value="<?php echo $cid; ?>" required>
+                                            <option selected disabled> Choose</option>
+                                            <option value="01" <?php if ($bid == "01") echo 'selected'; ?>> 01 </option>
+                                            <option value="02" <?php if ($bid == "02") echo 'selected'; ?>> 02 </option>
+                                            <option value="03" <?php if ($bid == "03") echo 'selected'; ?>> 03 </option>
+
+                                        </select>
+                                    </div>
+
+                                    <div class="col-3">
                                         <label for="ayear"> Academic Year: </label>
                                         <select name="ayear" class="custom-select" data-live-search="true" data-width="100%" value="<?php echo $ayear; ?>" required>
                                             <option selected disabled> Choose</option>
@@ -465,11 +606,6 @@ $description = "Online Examination Result Management System (ERMS)-SLGTI";
                                             <option value="Part" <?php if ($mode == "Part") echo 'selected'; ?>>Part Time</option>
                                             <option value="sort" <?php if ($mode == "Sort") echo 'selected'; ?>>Sort Time</option>
                                         </select>
-                                    </div>
-
-                                    <div class="col-3">
-                                        <label for="regno"> Registration No: </label>
-                                        <input type="text" name="regno" class="form-control" placeholder="2018SLGTIBIT04" value="<?php echo $regno; ?>" required>
                                     </div>
 
                                 </div>
@@ -496,7 +632,12 @@ $description = "Online Examination Result Management System (ERMS)-SLGTI";
 
                                     <div class="col-3">
                                         <label for="exitdate"> Exit Date:</label>
-                                        <input type="date" class="form-control" name="exitdate" value="<?php echo $exitdate; ?>" required>
+                                        <input type="date" class="form-control" name="exitdate" value="<?php echo $exitdate; ?>">
+                                    </div>
+
+                                    <div class="col-3">
+                                        <label for="regno"> Registration No: </label>
+                                        <input type="text" name="regno" class="form-control" placeholder="2018SLGTIBIT04" value="<?php echo $regno; ?>" required>
                                     </div>
 
                                 </div>

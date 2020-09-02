@@ -1,0 +1,15 @@
+CREATE TABLE `modules` (
+  `id` int(3) NOT NULL,
+  `code` varchar(10) NOT NULL,
+  `course_name` varchar(10) NOT NULL,
+  `name` varchar(60) NOT NULL,
+  `learning_hours` int(3) NOT NULL,
+  `semester` varchar(20) NOT NULL,
+  `selfstudy_hours` int(3) NOT NULL,
+  `practical_hours` int(3) NOT NULL,
+  `lecture_hours` int(3) NOT NULL,
+  `aim` varchar(200) NOT NULL,
+  `learning_outcomes` varchar(200) NOT NULL,
+  `resources` varchar(200) NOT NULL,
+  `references` varchar(200) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
