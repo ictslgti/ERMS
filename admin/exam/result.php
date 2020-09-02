@@ -17,7 +17,7 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
     <style>
     th{
     text-align: center;
-    font-size:15px;
+    font-size:10px;
     background-color:black;
     color:white;
 }
@@ -147,8 +147,8 @@ tr{
                                     <option value='2'>PRACTICAL</option>
                                 </select>
                             </div>
-                        </div>
-                    </div> -->
+                        </div>-->
+                    </div> 
                         <div class="table-responsive-sm">
                         <table class="table">
                         <thead class="table-bordered ">
@@ -157,14 +157,11 @@ tr{
                             <th>Name</th>
                             <th>NIC</th>
                             <?php
-                        $sql = 'select s.id,s.name_with_initials,s.nic,e.module_name,e.status from student s inner join exams_result e on s.id=e.student_id;';
+                        $sql = 'select DISTINCT module_name from exam_result; ';
                         $result = mysqli_query($con,$sql);
                         if(mysqli_num_rows($result)>0){
                             while($row = mysqli_fetch_assoc($result)){
                                 echo '<th>',$row['module_name'],'</th>';
-                                $index = $row['id'];
-                                $name = $row['name_with_initials'];
-                                $nic=$row['nic'];
                             }
                         }
                         else{
@@ -178,19 +175,7 @@ tr{
                             <td><?php echo $index;?></td>
                             <td><?php echo $name;?></td>
                             <td><?php echo $nic;?></td>
-                            <?php
-                        $sql = 'select s.id,s.name_with_initials,s.nic,e.module_name,e.status from student s inner join exams_result e on s.id=e.student_id;';
-                        $result = mysqli_query($con,$sql);
-                        if(mysqli_num_rows($result)>0){
-                            while($row = mysqli_fetch_assoc($result)){
-                                echo '<td>',$row['status'],'</td>';
-                                
-                            }
-                        }
-                        else{
-                            echo 'no rows';
-                        }
-                        ?> 
+                            
                             </tr>
                         </tbody>
 

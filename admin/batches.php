@@ -79,9 +79,9 @@ if(mysqli_num_rows($result)>0){
             <td>',$row['Academic_year'],'</td>
             <td>
             <div class="btn-group btn-sm" role="group" aria-label="Basic example">
-            <a href="batch.php?edit=',$row['batch_no'],'" class="btn btn-warning" > Edit </a> 
-            <a href="?delete=',$row['batch_no'],'" class="btn btn-danger"> Delete </a>
-            
+            <a href="batch.php?edit=',$row['batch_no'],'" class="btn btn-warning" > <img src="https://img.icons8.com/android/18/000000/edit.png"/> </a> 
+            <a href="?delete=',$row['batch_no'],'" class="btn btn-danger"> <img src="https://img.icons8.com/windows/18/000000/delete-forever.png"/> </a>
+            <a href="students.php?view=',$row['batch_no'],'" class="btn btn-success"> view studnts </a>
           </div>
             </td>
         </tr>';

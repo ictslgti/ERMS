@@ -70,38 +70,40 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
 
 
                             <?php
-                            // $sql = " select count(status) as take_session,module from attendance where student_id='2018ICTBIT01' group by module";
                                 $sql = "select count(status) as take_session,module,session  FROM attendance WHERE status=1 AND student_id='2018ictbit01' group by module";
                                             $result = mysqli_query($con, $sql);
                                             while ($row = mysqli_fetch_assoc($result)) {
+                                        $row1 = (($row['take_session']/$row['session'])*100)
                                  ?>
                             <tr>
                                 <td scope='col'><?php echo $row['module'];?></td>
                                 <td scope='col'><?php echo $row['take_session'];?></td>
                                 <td scope='col'><?php echo $row['session'];?></td>
-                                <td scope="col"><?php echo (($row['take_session']/$row['session'])*100)."%"; ?></td>
+                                <td scope="col"><?php echo $row1."%"; ?></td>
                                 
                                 <?php
                                     }
                                 ?>
                             </tr>
-
                             <?php
-                            $sql = " select count(DISTINCT module) as module,count(status) as take_session,session from attendance where student_id='2018ICTBIT01'";
+                                $sql = "select count(status) as take_session,count(DISTINCT module) as module,session  FROM attendance WHERE student_id='2018ictbit01' order by module";
                                             $result = mysqli_query($con, $sql);
                                             while ($row = mysqli_fetch_assoc($result)) {
-                                 ?>
 
+                                        
+                                        $row1 = (($row['take_session']/$row['session'])*100)
+                                 ?>
+                            
                             <tr>
                                 <td scope='col'>Average attendance</td>
                                 <td scope='col'></td>
-                                <td scope='col'></td>
-                                <td scope='col'><?php echo (($row['take_session']/$row['session'])*100)."%"; ?></td>
+                                <td scope='col'><?php echo $row['module'] ?></td>
+                                <td scope='col'><?php echo $row1.'%' ?></td>
+                                
                                 
                                 <?php
                                     }
                                 ?>
-                                
 
                             </tr>
                             

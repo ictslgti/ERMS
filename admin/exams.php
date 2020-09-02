@@ -9,6 +9,7 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
     <?php
     include_once('.././head.php');
     include_once('../config.php');
+
     ?>
 </head>
 
@@ -383,11 +384,19 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
                                     <td> ', $row['module'], '<span class = "badge badge-dark">', $row['exam_type'], '</span></td>
                                     <td> ', $row['date'], '</td>
                                     <td class="btn-group "role="group" > 
+<<<<<<< HEAD
+                                    <a href="edit_exam.php?edit=', $row['exam_id'], '" class = "btn btn-warning btn-group btn btn-sm " >   
+                                    Edit
+                                     </a>
+                                    <a class = "btn btn-danger btn-group btn btn-sm " href="?delete=', $row['exam_id'], '"> Delete </a>
+                                    <a class = "btn btn-info btn-group btn btn-sm " href="exams_results.php?view=', $row['exam_id'], '"> View </a>
+=======
                                     <a href="?View=', $row['exam_id'], '" class = "btn btn-warning btn-group btn btn-sm " >   
                                     View
                                      </a>
                                     <a class = "btn btn-danger btn-group btn btn-sm " href="?delete=', $row['exam_id'], '"> Delete </a>
                                     <a class = "btn btn-info btn-group btn btn-sm " href="exams_results.php?Results=', $row['exam_id'], '"> Results </a>
+>>>>>>> c84cec3e03d088aaed735bc83c114dc4fdaedd2f
                                     </td>
                                     </tr>';
                                                 }

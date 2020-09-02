@@ -79,9 +79,9 @@ if(mysqli_num_rows($result)>0){
             
             <td>
             <div class="btn-group btn-sm" role="group" aria-label="Basic example">
-            <a href="department.php?edit=',$row['id'],'" class="btn btn-warning" > Edit </a> 
-            <a href="?delete=',$row['id'],'" class="btn btn-danger"> Delete </a>
-            
+            <a href="department.php?edit=',$row['id'],'" class="btn btn-warning" > <img src="https://img.icons8.com/android/18/000000/edit.png"/> </a> 
+            <a href="?delete=',$row['id'],'" class="btn btn-danger"><img src="https://img.icons8.com/windows/18/000000/delete-forever.png"/> </a>
+            <a href="courses.php?view=',$row['id'],'" class="btn btn-success"><b>view courses</b> </a>
           </div>
             </td>
         </tr>';
