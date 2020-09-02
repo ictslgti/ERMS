@@ -149,6 +149,10 @@ tr{
                             </div>
                         </div>-->
                     </div> 
+
+                    <button type="button" class="btn btn-primary btn-sm">Serch</button>
+
+                    
                         <div class="table-responsive-sm">
                         <table class="table">
                         <thead class="table-bordered ">
@@ -180,6 +184,7 @@ tr{
                         </tbody>
 
                         </table>
+                        <button onclick="window.print();" class="btn btn-primary" id="print-btn">Print</button>
                         </div>
                              <!-- button-->
                     
