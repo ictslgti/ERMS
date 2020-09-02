@@ -1,0 +1,28 @@
+.skill-bar {
+    height: 16px;
+    background: #E9ECEF;
+    border-radius: 5px;
+    margin: 12px;
+}
+
+.skill-per {
+    height: 20px;
+    background-color: #007BFF;
+    /* border-radius: 5px; */
+    width: 0;
+    transition: 0.5s linear;
+    position: relative;
+}
+
+.skill-per::before {
+    content: attr(per);
+    position: absolute;
+    padding: 4px 6px;
+    background-color: #000;
+    color: #fff;
+    font-size: 12px;
+    /* border-radius: 3px; */
+    top: -35px;
+    right: 0;
+    transform: translateX(50%);
+}
