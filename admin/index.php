@@ -354,45 +354,39 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
                                             <div class="classic-tabs">
                                                 <div class="tab-content rounded-bottom">
                                                     <div class="tab-pane fade in show active" id="1001" role="tabpanel">
-                                                        <div class="skill-name small font-weight-bold">Payout
-                                                            Details<span class="float-right">20%</span></div>
+                                                        <div class="skill-name small font-weight-bold">Testing<span class="float-right">20%</span></div>
                                                         <div class="skill-bar progress-bar">
                                                             <div class="skill-per" per="20"></div>
                                                         </div>
                                                     </div>
 
                                                     <div class="tab-pane fade in show active" id="1002" role="tabpanel">
-                                                        <div class="skill-name small font-weight-bold">Payout
-                                                            Details<span class="float-right">90%</span></div>
+                                                        <div class="skill-name small font-weight-bold">Database II<span class="float-right">90%</span></div>
                                                         <div class="skill-bar progress-bar">
                                                             <div class="skill-per" per="90"></div>
                                                         </div>
                                                     </div>
 
                                                     <div class="tab-pane fade in show active" id="1003" role="tabpanel">
-                                                        <div class="skill-name small font-weight-bold">Payout
-                                                            Details<span class="float-right">50%</span></div>
+                                                        <div class="skill-name small font-weight-bold">Web programmig<span class="float-right">50%</span></div>
                                                         <div class="skill-bar progress-bar">
                                                             <div class="skill-per" per="50"></div>
                                                         </div>
                                                     </div>
                                                     <div class="tab-pane fade in show active" id="1004" role="tabpanel">
-                                                        <div class="skill-name small font-weight-bold">Payout
-                                                            Details<span class="float-right">60%</span></div>
+                                                        <div class="skill-name small font-weight-bold">Software Testing<span class="float-right">60%</span></div>
                                                         <div class="skill-bar progress-bar">
                                                             <div class="skill-per" per="60"></div>
                                                         </div>
                                                     </div>
                                                     <div class="tab-pane fade in show active" id="1005" role="tabpanel">
-                                                        <div class="skill-name small font-weight-bold">Payout
-                                                            Details<span class="float-right">95%</span></div>
+                                                        <div class="skill-name small font-weight-bold">Network LAN<span class="float-right">95%</span></div>
                                                         <div class="skill-bar progress-bar">
                                                             <div class="skill-per" per="95"></div>
                                                         </div>
                                                     </div>
                                                     <div class="tab-pane fade in show active" id="1006" role="tabpanel">
-                                                        <div class="skill-name small font-weight-bold">Payout
-                                                            Details<span class="float-right">25%</span></div>
+                                                        <div class="skill-name small font-weight-bold">Commiunication<span class="float-right">25%</span></div>
                                                         <div class="skill-bar progress-bar">
                                                             <div class="skill-per" per="25"></div>
                                                         </div>
