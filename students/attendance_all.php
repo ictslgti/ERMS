@@ -70,15 +70,15 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
 
 
                             <?php
-                                $sql = "select count(status) as take_session,module,session  FROM attendance WHERE status=1 AND student_id='2018ictbit01' group by module";
+                                $sql = "select count(status) as take_session,module,status  FROM attendance WHERE student_id='2018ictbit01' group by module";
                                             $result = mysqli_query($con, $sql);
                                             while ($row = mysqli_fetch_assoc($result)) {
-                                        $row1 = (($row['take_session']/$row['session'])*100)
+                                        $row1 = (($row['take_session']/$row['status'])*100)
                                  ?>
                             <tr>
                                 <td scope='col'><?php echo $row['module'];?></td>
                                 <td scope='col'><?php echo $row['take_session'];?></td>
-                                <td scope='col'><?php echo $row['session'];?></td>
+                                <td scope='col'><?php echo $row['status'];?></td>
                                 <td scope="col"><?php echo $row1."%"; ?></td>
                                 
                                 <?php
@@ -86,12 +86,12 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
                                 ?>
                             </tr>
                             <?php
-                                $sql = "select count(status) as take_session,count(DISTINCT module) as module,session  FROM attendance WHERE student_id='2018ictbit01' order by module";
+                                $sql = "select count(status) as take_session,count(DISTINCT module) as module,status  FROM attendance WHERE student_id='2018ictbit01' order by module";
                                             $result = mysqli_query($con, $sql);
                                             while ($row = mysqli_fetch_assoc($result)) {
 
                                         
-                                        $row1 = (($row['take_session']/$row['session'])*100)
+                                        $row1 = (($row['take_session']/$row['status'])*100)
                                  ?>
                             
                             <tr>
