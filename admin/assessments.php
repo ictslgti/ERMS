@@ -62,13 +62,13 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                         </thead>
                         <tbody>
                             <?php
-$sql = ' SELECT * FROM `assessments`';
-$result = mysqli_query($con,$sql);
-if(mysqli_num_rows($result)>0){
-    while($row = mysqli_fetch_assoc($result)){
-        echo '<tr>
+            $sql = ' SELECT * FROM `assessments`';
+            $result = mysqli_query($con,$sql);
+            if(mysqli_num_rows($result)>0){
+                while($row = mysqli_fetch_assoc($result)){
+            echo '<tr>
             <td>',$row['name'],'</td>
-            <td>',$row['module_id'],'</td>
+            <td>',$row['module'],'</td>
             <td>',$row['batch'],'</td>
             
             <td>
