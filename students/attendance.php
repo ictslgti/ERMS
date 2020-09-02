@@ -52,7 +52,7 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
                                                 if ($result->num_rows > 0) {
                                                     while ($row = $result->fetch_assoc()) {
 
-                                                        echo '<a class="dropdown-item" href="view.php?profile_id='.$row['date'];.'">', $row['module'], '</a>';
+                                                        echo '<a class="dropdown-item" href="#">', $row['module'], '</a>';
                                                     }
                                                 } else {
                                                     echo 'no rows';
