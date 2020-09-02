@@ -76,7 +76,8 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
        
 )
 {
-            $code = $_POST['code'];  
+            $code = $_POST['code']; 
+            echo $code; 
             $Name = $_POST['name'];
             $Semester_Id =$_POST['Semester_Id'];
             $Course_Name  =$_POST['Course_Name'];
@@ -198,7 +199,7 @@ if(
                      Code  <br>
                      <div class="form-group">
                      <div class="input-group input-group-sm mb-3">
-                        <input type="text" value="<?php echo $code;?>"  name="code" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm"id="validationServer01" required>
+                        <input type="text"  placeholder="M02" value="<?php echo $code;?>"  name="code" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm"id="validationServer01" required>
                         </div>
                          </div>
                      </div>
@@ -209,7 +210,7 @@ if(
                      Name  <br>
                      <div class="form-group">
                      <div class="input-group input-group-sm mb-3">
-                        <input type="text" value="<?php echo $Name;?>"  name="name" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm"id="validationServer01" required>
+                        <input type="text" placeholder="Webprogramming" value="<?php echo $Name;?>"  name="name" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm"id="validationServer01" required>
                         </div>
                          </div>
                      </div>
@@ -240,10 +241,34 @@ if(
                      <div class="input-group input-group-sm mb-3">
   
                         <select name=" Course_Name"  class="custom-select" id="inputGroupSelect01"id="validationCustom04" required>
-                        <option selected disabled value="">Choose  Course </option>
-                            <option value="1">ICT</option>
-                            <option value="2">AUT</option>
-                            <option value="2">CON</option>
+                        <?php
+                            if(isset($_GET['edit']))
+                            {
+                              ?>
+                                                    <option selected value="<?php echo $department;?>">
+                                                        <?php echo $department;?></option>
+                                                    <option disabled value="">Choose Module</option>
+                                                    <?php
+                            $result = $con->query("SELECT * FROM `courses`  ");
+                            while ($row = $result->fetch_assoc()) {
+                              unset($dno);
+                              $dno = $row['code'];
+                              echo '<option value=" '.$dno.'"  >'.$dno.'</option>';
+                            }
+                          }
+                          else
+                          {
+                            ?>
+                                                    <option selected disabled value="">Choose Module</option>
+                                                    <?php
+                          $result = $con->query("SELECT * FROM `courses` ");
+                          while ($row = $result->fetch_assoc()) {
+                            unset($dno);
+                            $dno = $row['code'];
+                            echo '<option value=" '.$dno.'"  >'.$dno.'</option>';
+                          }
+                            }
+                            ?>
                         </select>
                         </div>
                          </div>
@@ -262,7 +287,10 @@ if(
                      Learning Hours <br>
                      <div class="form-group">
                      <div class="input-group input-group-sm mb-3">
-                        <input type="number" name="Learning_Hours"   class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm"id="validationServer01" required>
+                        <input type="number" placeholder="10" name="Learning_Hours"   class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm"id="validationServer01" required>
+                        <div class="input-group-prepend">
+    <span class="input-group-text" id="basic-addon1">hours</span>
+  </div>
                         </div>
                          </div>
                      </div>
@@ -273,7 +301,10 @@ if(
                      Lecture Hours  <br>
                      <div class="form-group">
                      <div class="input-group input-group-sm mb-3">
-                        <input type="number" name="Lecture_Hours" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm"id="validationServer01" required>
+                        <input type="number" placeholder="10" name="Lecture_Hours" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm"id="validationServer01" required>
+                        <div class="input-group-prepend">
+    <span class="input-group-text" id="basic-addon1">hours</span>
+  </div>
                         </div>
                          </div>
                      </div>
@@ -292,7 +323,10 @@ if(
                      Practical Hours <br>
                      <div class="form-group">
                      <div class="input-group input-group-sm mb-3">
-                        <input type="number" name="Practical_Hours" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm"id="validationServer01" required>
+                        <input type="number" placeholder="10" name="Practical_Hours" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm"id="validationServer01" required>
+                        <div class="input-group-prepend">
+    <span class="input-group-text" id="basic-addon1">hours</span>
+  </div>
                         </div>
                          </div>
                      </div>
@@ -303,7 +337,10 @@ if(
                      Self Study Hours <br>
                      <div class="form-group">
                      <div class="input-group input-group-sm mb-3">
-                        <input type="number" name="Self_Study_Hours" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm"id="validationServer01" required>
+                        <input type="number" placeholder="10" name="Self_Study_Hours" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm"id="validationServer01" required>
+                        <div class="input-group-prepend">
+    <span class="input-group-text" id="basic-addon1">hours</span>
+  </div>
                         </div>
                          </div>
                      </div>

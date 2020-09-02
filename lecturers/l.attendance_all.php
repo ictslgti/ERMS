@@ -110,22 +110,23 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
                                 <th scope='col'>Total Lec</th>
                             </tr>
                             <?php
-                            $sql = " select student_id,status from attendance ";
+                            $sql = " select student_id,status from attendance group by student_id";
                                             $result = mysqli_query($con, $sql);
                                             while ($row = mysqli_fetch_assoc($result)) {
                                  ?>
-                            <tr>
-                               <td><?php echo $row['student_id'] ?></td>
+                                    <tr>
+                                    <td><?php echo $row['student_id'] ?></td>
+                               
                                <td><?php echo $row['status'] ?></td>
                                 
                                <?php
-                                            }
+                                    }
                                ?>
                             </tr>
                            
                             
                             <tr>
-                                <td colspan="2">Total attendance</td>
+                                <td>Total attendance</td>
                                 <td>05</td>
                                 <td>04</td>
                                 <td>01</td>
@@ -146,7 +147,7 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
                                 <td>04</td>
                                 <td>05</td>
                                 <td>05</td>
-                                <td></td>
+                                <td>25</td>
                             </tr>
                         </thead>
                     <tbody>

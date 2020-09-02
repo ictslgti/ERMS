@@ -11,44 +11,13 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
     //    include_once('../config.php');
     //    include_once('../config.php');
     ?>
-    <style>
-    .skill-bar {
-        height: 16px;
-        background: #E9ECEF;
-        border-radius: 5px;
-        margin: 12px;
-    }
-
-    .skill-per {
-        height: 20px;
-        background-color: #5377E0;
-        /* border-radius: 5px; */
-        width: 0;
-        transition: 0.5s linear;
-        position: relative;
-    }
-
-    .skill-per::before {
-        content: attr(per);
-        position: absolute;
-        padding: 4px 6px;
-        background-color: #000;
-        color: #fff;
-        font-size: 12px;
-        /* border-radius: 3px; */
-        top: -35px;
-        right: 0;
-        transform: translateX(50%);
-    }
-    </style>
-
-
+    <link rel="stylesheet" href="dashboard/css/prograss-bar-main.css">
 </head>
 
 <body>
     <main class='page-content pt-2'>
         <?php include_once('nav.php');
-        ?>       
+        ?>
         <div id='overlay' class='overlay'></div>
         <div class='container-fluid p-1'>
             <!-- #1 Insert Your Content-->
@@ -239,19 +208,109 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
                                                     <canvas id="lineChart-ict" height="250px"></canvas>
                                                 </div>
                                                 <div class="tab-pane fade" id="panel1002" role="tabpanel">
-                                                    <canvas id="lineChart-construction" height="250px"></canvas>
+
+                                                    <ul class="list-group list-group-flush">
+                                                        <strong>
+                                                            <li class="list-group-item text-primary">Semistor #01 <spam
+                                                                    class="float-right text-info">25</spam>
+                                                            </li>
+                                                        </strong>
+                                                        <strong>
+                                                            <li class="list-group-item text-primary">Semistor #02 <spam
+                                                                    class="float-right text-info">15</spam>
+                                                            </li>
+                                                        </strong>
+                                                        <strong>
+                                                            <li class="list-group-item text-primary">Semistor #03 <spam
+                                                                    class="float-right text-info">30</spam>
+                                                            </li>
+                                                        </strong>
+                                                    </ul>
+
                                                 </div>
                                                 <div class="tab-pane fade" id="panel1003" role="tabpanel">
-                                                    <canvas id="lineChart-automobile" height="250px"></canvas>
+
+                                                    <ul class="list-group list-group-flush">
+                                                        <strong>
+                                                            <li class="list-group-item text-primary">Semistor #01 <spam
+                                                                    class="float-right text-info">25</spam>
+                                                            </li>
+                                                        </strong>
+                                                        <strong>
+                                                            <li class="list-group-item text-primary">Semistor #02 <spam
+                                                                    class="float-right text-info">15</spam>
+                                                            </li>
+                                                        </strong>
+                                                        <strong>
+                                                            <li class="list-group-item text-primary">Semistor #03 <spam
+                                                                    class="float-right text-info">30</spam>
+                                                            </li>
+                                                        </strong>
+                                                    </ul>
+
                                                 </div>
                                                 <div class="tab-pane fade" id="panel1004" role="tabpanel">
-                                                    <canvas id="lineChart-electronic" height="250px"></canvas>
+
+                                                    <ul class="list-group list-group-flush">
+                                                        <strong>
+                                                            <li class="list-group-item text-primary">Semistor #01 <spam
+                                                                    class="float-right text-info">25</spam>
+                                                            </li>
+                                                        </strong>
+                                                        <strong>
+                                                            <li class="list-group-item text-primary">Semistor #02 <spam
+                                                                    class="float-right text-info">15</spam>
+                                                            </li>
+                                                        </strong>
+                                                        <strong>
+                                                            <li class="list-group-item text-primary">Semistor #03 <spam
+                                                                    class="float-right text-info">30</spam>
+                                                            </li>
+                                                        </strong>
+                                                    </ul>
+
                                                 </div>
                                                 <div class="tab-pane fade" id="panel1005" role="tabpanel">
-                                                    <canvas id="lineChart-mechanical" height="250px"></canvas>
+                                                    <ul class="list-group list-group-flush">
+
+                                                        <strong>
+                                                            <li class="list-group-item text-primary">Semistor #01 <spam
+                                                                    class="float-right text-info">25</spam>
+                                                            </li>
+                                                        </strong>
+                                                        <strong>
+                                                            <li class="list-group-item text-primary">Semistor #02 <spam
+                                                                    class="float-right text-info">15</spam>
+                                                            </li>
+                                                        </strong>
+                                                        <strong>
+                                                            <li class="list-group-item text-primary">Semistor #03 <spam
+                                                                    class="float-right text-info">30</spam>
+                                                            </li>
+                                                        </strong>
+                                                    </ul>
+
                                                 </div>
                                                 <div class="tab-pane fade" id="panel1006" role="tabpanel">
-                                                    <canvas id="lineChart-foot" height="250px"></canvas>
+
+                                                    <ul class="list-group list-group-flush">
+                                                        <strong>
+                                                            <li class="list-group-item text-primary">Semistor #01 <spam
+                                                                    class="float-right text-info">25</spam>
+                                                            </li>
+                                                        </strong>
+                                                        <strong>
+                                                            <li class="list-group-item text-primary">Semistor #02 <spam
+                                                                    class="float-right text-info">15</spam>
+                                                            </li>
+                                                        </strong>
+                                                        <strong>
+                                                            <li class="list-group-item text-primary">Semistor #03 <spam
+                                                                    class="float-right text-info">30</spam>
+                                                            </li>
+                                                        </strong>
+                                                    </ul>
+
                                                 </div>
                                             </div>
                                         </div>
@@ -272,11 +331,19 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
                                                 </a>
                                                 <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
                                                     aria-labelledby="dropdownMenuLink">
-                                                    <div class="dropdown-header">Dropdown Header:</div>
-                                                    <a class="dropdown-item" href="#">Action</a>
-                                                    <a class="dropdown-item" href="#">Another action</a>
-                                                    <div class="dropdown-divider"></div>
-                                                    <a class="dropdown-item" href="#">Something else here</a>
+                                                    <div class="nav-link disabled">Departments:</div>
+                                                    <a class="nav-link waves-light" data-toggle="tab" href="#1001"
+                                                        role="tab">Ict</a>
+                                                    <a class="nav-link waves-light" data-toggle="tab" href="#1002"
+                                                        role="tab">Construction</a>
+                                                    <a class="nav-link waves-light" data-toggle="tab" href="#1003"
+                                                        role="tab">Auto mobile</a>
+                                                    <a class="nav-link waves-light" data-toggle="tab" href="#1004"
+                                                        role="tab">Electronic</a>
+                                                    <a class="nav-link waves-light" data-toggle="tab" href="#1005"
+                                                        role="tab">Mechanical</a>
+                                                    <a class="nav-link waves-light" data-toggle="tab" href="#1006"
+                                                        role="tab">Foot</a>
                                                 </div>
                                             </div>
                                         </div>
@@ -284,37 +351,48 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
                                         <div class="card-body">
                                             <!-- Content Column -->
                                             <!-- Project Card Example -->
-                                            <div class="skill-name small font-weight-bold">Payout Details<span
-                                                    class="float-right">30%</span></div>
-                                            <div class="skill-bar progress-bar">
-                                                <div class="skill-per" per="30"></div>
-                                            </div>
-                                            <div class="skill-name small font-weight-bold">Payout Details<span
-                                                    class="float-right">10%</span></div>
-                                            <div class="skill-bar progress-bar">
-                                                <div class="skill-per" per="10"></div>
-                                            </div>
-                                            <div class="skill-name small font-weight-bold">Payout Details<span
-                                                    class="float-right">20%</span></div>
-                                            <div class="skill-bar progress-bar">
-                                                <div class="skill-per" per="20"></div>
-                                            </div>
-                                            <div class="skill-name small font-weight-bold">Payout Details<span
-                                                    class="float-right">90%</span></div>
-                                            <div class="skill-bar progress-bar">
-                                                <div class="skill-per" per="90"></div>
-                                            </div>
-                                            <div class="skill-name small font-weight-bold">Payout Details<span
-                                                    class="float-right">80%</span></div>
-                                            <div class="skill-bar progress-bar">
-                                                <div class="skill-per" per="80"></div>
-                                            </div>
-                                            <div class="skill-name small font-weight-bold">Payout Details<span
-                                                    class="float-right">50%</span></div>
-                                            <div class="skill-bar progress-bar">
-                                                <div class="skill-per" per="50"></div>
-                                            </div>
+                                            <div class="classic-tabs">
+                                                <div class="tab-content rounded-bottom">
+                                                    <div class="tab-pane fade in show active" id="1001" role="tabpanel">
+                                                        <div class="skill-name small font-weight-bold">Testing<span class="float-right">20%</span></div>
+                                                        <div class="skill-bar progress-bar">
+                                                            <div class="skill-per" per="20"></div>
+                                                        </div>
+                                                    </div>
 
+                                                    <div class="tab-pane fade in show active" id="1002" role="tabpanel">
+                                                        <div class="skill-name small font-weight-bold">Database II<span class="float-right">90%</span></div>
+                                                        <div class="skill-bar progress-bar">
+                                                            <div class="skill-per" per="90"></div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="tab-pane fade in show active" id="1003" role="tabpanel">
+                                                        <div class="skill-name small font-weight-bold">Web programmig<span class="float-right">50%</span></div>
+                                                        <div class="skill-bar progress-bar">
+                                                            <div class="skill-per" per="50"></div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="tab-pane fade in show active" id="1004" role="tabpanel">
+                                                        <div class="skill-name small font-weight-bold">Software Testing<span class="float-right">60%</span></div>
+                                                        <div class="skill-bar progress-bar">
+                                                            <div class="skill-per" per="60"></div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="tab-pane fade in show active" id="1005" role="tabpanel">
+                                                        <div class="skill-name small font-weight-bold">Network LAN<span class="float-right">95%</span></div>
+                                                        <div class="skill-bar progress-bar">
+                                                            <div class="skill-per" per="95"></div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="tab-pane fade in show active" id="1006" role="tabpanel">
+                                                        <div class="skill-name small font-weight-bold">Commiunication<span class="float-right">25%</span></div>
+                                                        <div class="skill-bar progress-bar">
+                                                            <div class="skill-per" per="25"></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                             <script>
                                             $('.skill-per').each(function() {
                                                 var $this = $(this);
@@ -337,13 +415,13 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
                                                 });
                                             });
                                             </script>
-                                            
+
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <!-- Content Row -->
-                            <div class="row">   
+                            <div class="row">
 
                                 <!-- Content Column -->
                                 <div class="col-lg-6 mb-4">
@@ -374,19 +452,6 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
                                                 <div class="progress-bar" role="progressbar" style="width: 60%"
                                                     aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
                                             </div>
-                                            <h4 class="small font-weight-bold">Payout Details <span
-                                                    class="float-right">80%</span></h4>
-                                            <div class="progress mb-4">
-                                                <div class="progress-bar bg-info" role="progressbar" style="width: 80%"
-                                                    aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
-                                            </div>
-                                            <h4 class="small font-weight-bold">Account Setup <span
-                                                    class="float-right">Complete!</span></h4>
-                                            <div class="progress">
-                                                <div class="progress-bar bg-success" role="progressbar"
-                                                    style="width: 100%" aria-valuenow="100" aria-valuemin="0"
-                                                    aria-valuemax="100"></div>
-                                            </div>
                                         </div>
                                     </div>
 
@@ -399,39 +464,29 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
                                     <!-- Illustrations -->
                                     <div class="card shadow mb-4">
                                         <div class="card-header py-3">
-                                            <h6 class="m-0 font-weight-bold text-primary">Illustrations</h6>
+                                            <h6 class="m-0 font-weight-bold text-primary">About</h6>
                                         </div>
                                         <div class="card-body">
                                             <div class="text-center">
-                                                <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 25rem;"
-                                                    src="img/undraw_posting_photo.svg" alt="">
                                             </div>
-                                            <p>Add some quality, svg illustrations to your project courtesy of <a
-                                                    target="_blank" rel="nofollow" href="https://undraw.co/">unDraw</a>,
-                                                a constantly updated
-                                                collection of beautiful svg images that you can use completely free
-                                                and without attribution!</p>
-                                            <a target="_blank" rel="nofollow" href="https://undraw.co/">Browse
-                                                Illustrations on unDraw &rarr;</a>
+                                            <p>Exam & Result Management System (ERMS) is an easy online application that
+                                                automates and digitizes a lot of processes which involve student result
+                                                processing. These processes range from students’ registration,
+                                                examination, papers marking, approval of results, producing of students
+                                                result reports, summary and charts, result notification and publishing,
+                                                transcript processing as well as customized result analysis to produce a
+                                                performance analysis of courses, students, lecturers, departments or
+                                                even faculties. <br>
+
+                                                Allows students, faculty, and all non-academic staff to manage tasks
+                                                with the flexibility of time and place. Real-time updates and
+                                                information exchange. Student performance analysis within a few clicks.
+                                                Dynamic teachers, parents & students collaboration through mobile apps
+                                                and respective portals</P>
+                                            <a target="_blank" rel="nofollow" href="http://slgti.com/">Browse Other
+                                                Details on slgti.com &rarr;</a>
                                         </div>
                                     </div>
-
-                                    <!-- Approach -->
-                                    <div class="card shadow mb-4">
-                                        <div class="card-header py-3">
-                                            <h6 class="m-0 font-weight-bold text-primary">Development Approach</h6>
-                                        </div>
-                                        <div class="card-body">
-                                            <p>SB Admin 2 makes extensive use of Bootstrap 4 utility classes in
-                                                order to reduce CSS bloat and poor page performance. Custom CSS
-                                                classes are used to create custom components and custom utility
-                                                classes.</p>
-                                            <p class="mb-0">Before working with this theme, you should become
-                                                familiar with the Bootstrap framework, especially the utility
-                                                classes.</p>
-                                        </div>
-                                    </div>
-
                                 </div>
                             </div>
 
@@ -481,12 +536,12 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
         </div>
         </div>
         </div>
-        <!-- #1 Insert Your Content" -->        
+        <!-- #1 Insert Your Content" -->
     </main>
     </div>
     </div>
     </main>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/js/mdb.min.js">    
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/js/mdb.min.js">
     </script>
     <?php include_once("..\script.php");
          

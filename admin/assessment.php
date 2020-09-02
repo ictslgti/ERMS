@@ -16,7 +16,7 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                 }
                 </style>
 
-                 
+   
 </head>
 
 <body>
@@ -67,7 +67,20 @@ if(
     && !empty($_POST['type'])
     && !empty($_POST['per'])
 ){
-    
+  $sql = 'select sum(percentage) from assessments where module_id="M02" and batch=2 ;';
+    $result = mysqli_query($con,$sql);
+    if(mysqli_num_rows($result)==1){
+        $row = mysqli_fetch_assoc($result);
+        $per = $row['sum(percentage)'];
+    }
+    if($per<100)
+    {
+      ?>
+      <script type='text/javascript'>alert('this module assessment are 100% completed so go to edit and recreate ');</script>
+      <?php
+    }
+    else
+    {
     $department = $_POST['name'];
     $batchno = $_POST['batch'];
     $type=$_POST['type'];
@@ -76,7 +89,7 @@ if(
     $percen=$_POST['per'];
     $assess=$_POST['assess'];
 
-    $sql = "INSERT INTO assessments (name,department_code,course,batch,module,type,Percentage)
+    $sql = "INSERT INTO assessments (name,department_code,course,batch,module_id,type,Percentage)
     VALUES 
     ('$assess','$department', '$course', '$batchno','$module','$type','$percen')
     ";
@@ -99,20 +112,11 @@ if(
         </button>
       </div>";
    }
+  }
 }       
 ?>
             <!-- insert end -->
 
-
-
-
-
-
-
-
-
-             
-          
             <div class="card  mb-3" >
                 <div class="card-header ">
                 <div class="row">
