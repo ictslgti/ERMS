@@ -46,13 +46,15 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
 
                                             </div>
 
-                                            <div class="col-3">
-                                                <label for="month"> Semester: </label>
-                                                <select class="custom-select" name="month" id="month" data-live-search="true" data-width="100%" value="" required>
-                                                    <option value=""> Choose</option>
-                                                    <option value=""> 1st Semester </option>
-                                                    <option value=""> 2nd Semester </option>
-                                                </select>
+                                            <div class="dropdown">
+                                                <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" value="show details" name="show_date">
+                                                Semester:
+                                                </button>
+                                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                                    <a class="dropdown-item" href="#">Choose</a>
+                                                    <a class="dropdown-item" href="#">1 st Semester </a>
+                                                    <a class="dropdown-item" href="#">2 nd Semester</a>
+                                                </div>
                                             </div>
 
                                             <div class="col-3"></div>
