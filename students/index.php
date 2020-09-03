@@ -325,7 +325,7 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
     </div>
     </div>
     </main>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/js/mdb.min.js">
+    <!-- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/js/mdb.min.js"> -->
     </script>
     <?php include_once("..\script.php");
          

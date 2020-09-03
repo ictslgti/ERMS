@@ -10,25 +10,45 @@
  <script src="js/main.js"></script>
 
  <!-- kavi scripts -->
+
  <!-- Dashboard script -->
- <!-- Bootstrap core JavaScript-->
+
+  <!-- ADMIN-Scripts-Tables -->
+
+  <!-- Bootstrap core JavaScript-->
+  
  <script src="dashboard/vendor/jquery/jquery.min.js"></script>
+
   <script src="dashboard/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
   <!-- Core plugin JavaScript-->
+
   <script src="dashboard/vendor/jquery-easing/jquery.easing.min.js"></script>
 
   <!-- Custom scripts for all pages-->
+
   <script src="dashboard/js/sb-admin-2.min.js"></script>
 
   <!-- Page level plugins -->
-  <script src="dashboard/vendor/chart.js/Chart.min.js"></script>
 
+  <script src="dashboard/vendor/chart.js/Chart.min.js"></script>
   <!-- Page level custom scripts -->
+  
+
+
   <script src="dashboard/js/demo/chart-area-demo.js"></script>
   <script src="dashboard/js/demo/chart-pie-demo.js"></script>
   <script src="dashboard/js/demo/card-chart-ict.js"></script>
   <script src="dashboard/js/demo/card-chart-construction.js"></script>
+  <!-- END ADMIN-Scripts-Tables -->
+
+  <!-- Lecturers-Scripts-Tables -->
+  <script src="../admin/dashboard/js/demo/chart-area-demo.js"></script>
+  <script src="../admin/dashboard/js/demo/chart-pie-demo.js"></script>
+  <script src="../admin/dashboard/js/demo/card-chart-ict.js"></script>
+  <script src="../admin/dashboard/js/demo/card-chart-construction.js"></script>
+  <!-- END Lecturers-Scripts-Tables -->
+
   <!-- <script src="dashboard/js/demo/card-line-chart.js"></script>
   <script src="dashboard/js/demo/card-line-chart.js"></script>
   <script src="dashboard/js/demo/card-line-chart.js"></script>

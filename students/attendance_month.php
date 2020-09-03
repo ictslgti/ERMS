@@ -46,25 +46,26 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
 
                                             </div>
 
-                                            <div class="col-3">
-                                                <label for="month"> Month: </label>
-                                                <select class="custom-select" name="month" id="month" data-live-search="true" data-width="100%" value="" required>
-                                                    <option value=""> Choose</option>
-                                                    <option value=""> January </option>
-                                                    <option value=""> February </option>
-                                                    <option value=""> March </option>
-                                                    <option value=""> April </option>
-                                                    <option value=""> May </option>
-                                                    <option value=""> June </option>
-                                                    <option value=""> July </option>
-                                                    <option value=""> August </option>
-                                                    <option value=""> September </option>
-                                                    <option value=""> October </option>
-                                                    <option value=""> November </option>
-                                                    <option value=""> December </option>
-                                                </select>
+                                            <div class="dropdown">
+                                                <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" value="show details" name="show_date">
+                                                    Month:
+                                                </button>
+                                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                                    <a class="dropdown-item" href="#">Choose</a>
+                                                    <a class="dropdown-item" href="#">January</a>
+                                                    <a class="dropdown-item" href="#">February</a>
+                                                    <a class="dropdown-item" href="#">March</a>
+                                                    <a class="dropdown-item" href="#">April</a>
+                                                    <a class="dropdown-item" href="#">May</a>
+                                                    <a class="dropdown-item" href="#">June</a>
+                                                    <a class="dropdown-item" href="#">July</a>
+                                                    <a class="dropdown-item" href="#">August</a>
+                                                    <a class="dropdown-item" href="#">September</a>
+                                                    <a class="dropdown-item" href="#">October</a>
+                                                    <a class="dropdown-item" href="#">November</a>
+                                                    <a class="dropdown-item" href="#">December</a>
+                                                </div>
                                             </div>
-
                                             <div class="col-3"></div>
 
                                             <div class="col-3" align="right">
@@ -87,6 +88,7 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
                                                         <th>remarks</th>
                                                         <th>Attendance Date</th>
                                                     </tr>
+
 
                                                     <?php
                                                     if (isset($_POST['show_date'])) {
