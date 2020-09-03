@@ -22,6 +22,7 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
 </head>
 
 <body>
+    
     <?php
     $d_id = null;
     $nvq = null;
@@ -121,7 +122,7 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
             </tbody>
         </table>
 
-
+        <button onclick="window.print();" class="btn btn-primary" id="print-btn">Print</button>
 
     </div>
     <?php include_once("../../script.php"); ?>
