@@ -22,6 +22,7 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
 </head>
 
 <body>
+    
     <?php
     $d_id = null;
     $nvq = null;
@@ -32,10 +33,10 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
         $nvq = $_GET['nvq'];
         $type = $_GET['type'];
         $batch = $_GET['batch'];
-        echo $d_id . "<br>";
-        echo $nvq . "<br>";
-        echo $batch . "<br>";
-        echo $type . "<br>";
+        // echo $d_id . "<br>";
+        // echo $nvq . "<br>";
+        // echo $batch . "<br>";
+        // echo $type . "<br>";
     }
     ?>
     <div class="page-wrapper toggled bg2 border-radius-on light-theme">
@@ -49,7 +50,7 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
             $s_ids[] = $row['student_id'];
         }
         foreach ($s_ids as $idss) {
-            echo "$idss";
+            // echo "$idss";
         }
         ?>
         <!-- id array  -->
@@ -83,9 +84,9 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                     <?php
 
                     $length = count($s_ids);
-                    echo $length;
+                    // echo $length;
                     $length1 = count($subjects);
-                    echo $length1;
+                    // echo $length1;
                     for ($i = 0; $i < $length; $i++) {
                         $s_ids_val = $s_ids[$i];
                         $sql4 = " select id,name_with_initials,nic from student where id='$s_ids_val';";
@@ -121,7 +122,7 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
             </tbody>
         </table>
 
-
+        <button onclick="window.print();" class="btn btn-primary" id="print-btn">Print</button>
 
     </div>
     <?php include_once("../../script.php"); ?>
