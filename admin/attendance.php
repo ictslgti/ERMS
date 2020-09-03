@@ -7,7 +7,7 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
 
 <head>
     <?php include_once("../head.php"); ?>
-
+    <?php include_once("../config.php"); ?>
 </head>
 
 <body>
@@ -21,128 +21,216 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
             <div class="container-fluid p-5">
                 <!-- #1 Insert Your Content-->
                 <div class="container">
-                    <div class="card border-success mb-3">
-                        <div class="card-header bg-transparent border-success">Header</div>
-                        <div class="card-body text-success">
+
+
+
+                    <?php
+                    $deparment = null;
+                    $course = null;
+                    $module = null;
+                    $lecturer = null;
+                    $batch = null;
+                    $hour = null;
+                    $date = null;
+                    $min = null;
+                    $week = null;
+                    if (isset($_POST['submit'])) {
+                        $date = $_POST['date'];
+                        $week = $_POST['week'];
+                        $lecturer = $_POST['lecturer'];
+                        $module = $_POST['module'];
+                        $hour = $_POST['hour'];
+                        $min = $_POST['min'];
+                        $course = $_POST['course'];
+
+                        $sql = "INSERT INTO attendance (module_id,Lecturer_id,date,time,batch,course)
+                        VALUES 
+                        ('$module','$lecturer', 
+                        '$date', 
+                        '$hour|$min','$batch','$course')
+                        ";
+
+                        if (mysqli_query($con, $sql)) {
+                            echo "
+                        <div class='alert alert-success' role='alert'>
+                        insert success fully 
+                        <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+                            <span aria-hidden='true'>&times;</span>
+                         </button>
+                       </div>";
+                        } else {
+                            echo "Error: " . $sql . "<br>" . mysqli_error($con);
+                            echo "
+                        <div class='alert alert-danger' role='alert'>
+                        This academic_year alredy submit 
+                        <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+                            <span aria-hidden='true'>&times;</span>
+                         </button>
+                       </div>";
+                        }
+                    }
+
+
+                    for ($y = 1; $y <= $week; $y++) {
+                        $date1 = date('Y-m-d', strtotime('+7 day', strtotime($date)));
+                        $sql = "INSERT INTO attendance (module_id,Lecturer_id,date,time,batch,course)
+                        VALUES 
+                        ('$module','$lecturer', 
+                        '$date', 
+                        '$hour|$min','$batch','$course')
+                        ";
+
+                        if (mysqli_query($con, $sql)) {
+                            echo "";
+                        }
+                        $date = $date1;
+                    }
+
+                    ?>
+
+
+                    <div class="">
+                        <div class="card-header ">
+                            <h2>Attendance</h2>
+                        </div>
+                        <div class="card-body ">
                             <!-- content -->
                             <form action="" method="POST">
                                 <div class="row">
                                     <div class="col">
                                         <div class="input-group input-group-sm mb-3">
 
-                                            <select class="custom-select" id="inputGroupSelect01">
-                                                <option selected>Choose Batch...</option>
-                                                <option value="1">Batch-01</option>
-                                                <option value="2">Batch-02</option>
-                                                <option value="3">Batch-03</option>
-                                                <option value="3">Batch-04</option>
-                                                <option value="3">Batch-05</option>
+                                            <select class="custom-select" id="inputGroupSelect01" name="department">
+                                                <option selected disabled value="">Choose Department</option>
+                                                <?php
+                                                $result = $con->query("SELECT `department_code` FROM `departments` ORDER BY `departments`.`department_code` ASC");
+                                                while ($row = $result->fetch_assoc()) {
+                                                    unset($dno);
+                                                    $dno = $row['department_code'];
+                                                    echo '<option value=" ' . $dno . '"  >' . $dno . '</option>';
+                                                }
+                                                ?>
                                             </select>
                                         </div>
                                     </div>
                                     <div class="col">
                                         <div class="input-group input-group-sm mb-3">
 
-                                            <input type="date" name="a" id="a" class="form-control" placeholder="" aria-label="Example text with two button addons" aria-describedby="button-addon3">
+                                            <select class="custom-select" id="inputGroupSelect01" name="course">
+                                                <option selected disabled value="">Choose Course</option>
+                                                <?php
+                                                $result = $con->query("SELECT `code` FROM `courses` ORDER BY `courses`.`code` ASC");
+                                                while ($row = $result->fetch_assoc()) {
+                                                    unset($dno);
+                                                    $dno = $row['code'];
+                                                    echo '<option value=" ' . $dno . '"  >' . $dno . '</option>';
+                                                }
+                                                ?>
+                                            </select>
                                         </div>
                                     </div>
                                 </div>
+                                <br>
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="input-group input-group-sm mb-3">
+
+                                            <select class="custom-select" id="inputGroupSelect01" name="module">
+                                                <option selected disabled value="">Choose Module</option>
+                                                <?php
+                                                $result = $con->query("SELECT `code` FROM `modules` ORDER BY `modules`.`code` ASC");
+                                                while ($row = $result->fetch_assoc()) {
+                                                    unset($dno);
+                                                    $dno = $row['code'];
+                                                    echo '<option value=" ' . $dno . '"  >' . $dno . '</option>';
+                                                }
+                                                ?>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="input-group input-group-sm mb-3">
+
+                                            <select class="custom-select" id="inputGroupSelect01" name="batch">
+                                                <option selected disabled value="">Choose batch</option>
+                                                <?php
+                                                $result = $con->query("SELECT `batch_no` FROM `batch` ORDER BY `batch`.`batch_no` DESC");
+                                                while ($row = $result->fetch_assoc()) {
+                                                    unset($dno);
+                                                    $dno = $row['batch_no'];
+                                                    echo '<option value=" ' . $dno . '"  >' . $dno . '</option>';
+                                                }
+                                                ?>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <br>
 
                                 <div class="row">
                                     <div class="col">
                                         <div class="input-group input-group-sm mb-3">
 
-                                            <select class="custom-select" id="inputGroupSelect01">
-                                                <option selected>Choose Batch...</option>
-                                                <option value="1">Batch-01</option>
-                                                <option value="2">Batch-02</option>
-                                                <option value="3">Batch-03</option>
-                                                <option value="3">Batch-04</option>
-                                                <option value="3">Batch-05</option>
+                                            <select class="custom-select" id="inputGroupSelect01" name="lecturer">
+                                                <option selected disabled value="">Choose lecturer</option>
+                                                <?php
+                                                $result = $con->query("SELECT `id` FROM `lecturer` ");
+                                                while ($row = $result->fetch_assoc()) {
+                                                    unset($dno);
+                                                    $dno = $row['id'];
+                                                    echo '<option value=" ' . $dno . '"  >' . $dno . '</option>';
+                                                }
+                                                ?>
                                             </select>
                                         </div>
                                     </div>
                                     <div class="col">
                                         <div class="input-group input-group-sm mb-3">
+                                            <input type="date" class="form-control" name=date aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" id="validationServer01" required>
+                                            <select class="custom-select" id="inputGroupSelect01" name="hour">
+                                                <option selected disabled value="">Choose hour</option>
+                                                <?php
+                                                for ($x = 0; $x < 13; $x++) {
+                                                ?>
+                                                    <option value="<?php echo $x; ?>"><?php echo $x; ?></option>
+                                                <?php
+                                                }
+                                                ?>
+                                            </select>
 
-                                            <input type="date" name="b" id="b" class="form-control" placeholder="" aria-label="Example text with two button addons" aria-describedby="button-addon3">
+                                            <select class="custom-select" id="inputGroupSelect01" name="min">
+                                                <option selected disabled value="">Choose mintue</option>
+                                                <?php
+                                                for ($x = 0; $x < 61; $x++) {
+                                                ?>
+                                                    <option value="<?php echo $x; ?>"><?php echo $x; ?></option>
+                                                <?php
+                                                }
+                                                ?>
+                                            </select>
+                                            <input type="text" name="week" placeholder="weeks" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" id="validationServer01" required>
                                         </div>
                                     </div>
                                 </div>
-                                <script>
-                                    function add(a, b) {
-                                        var startDate = new Date(a); //YYYY-MM-DD
-                                        var endDate = new Date(b); //YYYY-MM-DD
 
-                                        var getDateArray = function(start, end) {
-                                            var arr = new Array();
-                                            var dt = new Date(start);
-                                            while (dt <= end) {
-                                                arr.push(new Date(dt));
-                                                dt.setDate(dt.getDate() + 1);
-                                            }
-                                            return arr;
-                                            document.getElementById("demo").innerHTML = arr;
-                                        }
-
-                                        var dateArr = getDateArray(startDate, endDate);
-
-                                        // Output
-                                        document.write("<p>Start Date: " + startDate + "</p>");
-                                        document.write("<p>End Date: " + endDate + "</p>");
-                                        document.write("<p>Date Array</p>")
-                                        for (var i = 0; i < dateArr.length; i++) {
-                                            const birthday = new Date(dateArr[i]);
-                                            const day1 = birthday.getDay();
-
-                                            if (day1 == 1 || day1 == 2 || day1 == 3 || day1 == 4 || day1 == 5) {
-                                               
-                                                document.write("<p name='date'>" + dateArr[i] + "</p>");
-                                            }
-                                        }
-                                        document.write("<p>" + dateArr[1] + "</p>");
-                                    }
-                                </script>
-
-
-
-                                <div class="row">
-                                    <div class="col">
-                                        <div class="input-group input-group-sm mb-3">
-
-                                            <select class="custom-select" id="inputGroupSelect01">
-                                                <option selected>Choose Chemister...</option>
-                                                <option value="1">Chemister-01</option>
-                                                <option value="2">Chemister-02</option>
-
-
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="col">
-                                        <div class="input-group input-group-sm mb-3">
-
-                                            <select class="custom-select" id="inputGroupSelect01">
-                                                <option selected>Choose...</option>
-                                                <option value="1">One</option>
-                                                <option value="2">Two</option>
-                                                <option value="3">Three</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
-                            </form>
-                            <!-- content -->
+                                <!-- content -->
                         </div>
-                        <div class="card-footer bg-transparent border-success">
-                            <button onclick="add(document.getElementById('a').value,document.getElementById('b').value)">Add</button>
+                        <div class="card-footer ">
+                            <div class="row">
+                                <div class="col"></div>
+                                <div class="col-auto">
+                                    <input type="submit" name="submit" class="btn btn-primary" value="ADD ">
+                                </div>
+                            </div>
                         </div>
                     </div>
 
+                    </form>
 
 
 
-                    
                 </div>
                 <!-- #1 Insert Your Content" -->
             </div>
