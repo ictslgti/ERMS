@@ -1,198 +1,147 @@
 <?php
 $title = ' ERMS | Result Sheet';
-$description = 'Online Examination Result  Management System (ERMS)-SLGTI';
+$description = "Online Examination Result  Management System (ERMS)-SLGTI";
 ?>
 <!DOCTYPE html>
-<html lang='en'>
+<html lang="en">
 
 <head>
-    <?php 
-    $index =null;
-    $name= null;
-    $nic=null;
-    include_once('.././head.php');
-    include_once('../../config.php');
-    // include_once('../config.php');
-    ?>
-    <style>
-    th{
-    text-align: center;
-    font-size:10px;
-    background-color:black;
-    color:white;
-}
-tr{
-    text-align: center;
-    font-size:16px;}
-
-
-.si{
-    margin-left:10%;
-    margin-right:10%;
-}
-    </style>
+    <?php include_once("../../head.php"); ?>
+    <?php include_once("../../config.php"); ?>
+    <?php include_once("../nav.php"); ?>
 </head>
 
 <body>
-    <main class='page-content pt-2'>
-        <?php include_once('../nav.php');
-        ?>
-        <div id='overlay' class='overlay'></div>
-        
-            <!-- #1 Insert Your Content-->
-            <div class='si'>
-            <div class='row'>
-                <div class="col">
-                    <div class="card">
-                        <div class="card-header">
-                            <h3> <?php echo " $title" ?></h3>
-                        </div>
-                        <div class="card-body">
+    <div class="container">
+        <?php
+        if (isset($_POST['submit'])) {
+            ?>
+           <div class='alert alert-success' role='alert'>
+       Details available
+       <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+           <span aria-hidden='true'>&times;</span>
+        </button>
+      </div>
+        <?php
+    }
+    ?>
+        <div class="card border-light mb-3">
+            <div class="card-header">
+                <h3> <?php echo " $title" ?></h3>
+            </div>
+            <div class="card-body s">
 
-                            <!-- #1 Insert Your Content-->
-                            <h1>
-                            <div class="row">
-                        <div class="col-sm">
-                            <div class="border border-primary rounded text-center">
-                            <h2>Student's Results Sheet</h2>
-                            </div>
-                        </div>
-                    </div>
-                    <br>
-                <!-- 1st row end -->
-                <div class='modal-body'>
 
-                <form method='POST' action=''>
-                    <div class='row '>
-                        <div class='col-md'>
-                            <div class='input-group-sm mb-3'>
-                                <div class='input-group-prepend'>
+                <?php
+                if (isset($_POST['submit'])) {
+                    $department = $_POST['department'];
+                    $nvq = $_POST['nvq'];
+                    $type = $_POST['type'];
+                    $batch = $_POST['batch'];
+                }
+                ?>
 
-                            <label for='exampleInputEmail1'>Exams type</label>
-                                </div>
-                                <select class='custom-select' id='inputGroupSelect01' id='validationServer0' required>
-                                    <option value=''>Select Exams</option>
-                                    <option value='1'>INSTITUTE</option>
-                                    <option value='2'>TVEC</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class='col-md'>
+                <!-- 1st row -->
+                <form action="" method="POST">
+                    <div class="row">
+                        <div class="col">
                             <div class='input-group-sm mb-3'>
                                 <div class='input-group-prepend'>
                                     <label for='exampleInput'>Department</label>
                                 </div>
-                                 <select class='custom-select' id='inputGroupSelect01' id='validationServer02' required>
-                                    <option value=''>Select Department</option>
-                                    <option value='1'>Information Communication Technology</option>
-                                    <option value='2'>Automotive & Technology</option>
-                                    <option value='3'>Construction Technology</option>
-                                    <option value='4'>Electrical Technology</option>
-                                    <option value='5'>Food Technology</option>
-                                    <option value='6'>Mechanical Technology</option>
-                                </select>
-                            </div>
-                        </div>
-                       
-                        <div class='col-md'>
-                            <div class='input-group-sm mb-3'>
-                                <div class='input-group-prepend'>
-                                    <label for='exampleInput'>Batch</label>
-                                </div>
-                                <select class='custom-select' id='inputGroupSelect01' id='validationServer02' required>
-                                    <option selected>select batch...</option>
-                                    <option value='1'>batch 1</option>
-                                    <option value='2'>batch 2</option>
-                                    <option value='3'>batch 3</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                    <div class='row '>
+                                <select class='custom-select' name="department" id='inputGroupSelect01' id='validationServer02' required>
 
-                        <div class='col-md'>
-                            <div class='input-group-sm mb-3'>
-                                <div class='input-group-prepend'>
-                                    <label for='exampleInput'>semester</label>
-                                </div>
-                                <select class='custom-select' id='inputGroupSelect01' id='validationServer02' required>
-                                    <option value=''>Select Semester</option>
-                                    <option value='1'>1 st semester</option>
-                                    <option value='2'>2 nd semester</option>
-                                    <option value='3'>3 rd semester</option>
+                                    <option selected disabled value="">Choose Department</option>
+                                    <?php
+                                    $result = $con->query("SELECT `dept_id` FROM `departments`");
+                                    while ($row = $result->fetch_assoc()) {
+                                        unset($dno);
+                                        $dno = $row['dept_id'];
+                                        echo '<option value=" ' . $dno . '"  >' . $dno . '</option>';
+                                    }
+
+                                    ?>
                                 </select>
                             </div>
                         </div>
-                        <div class='col-md'>
+                        <div class="col">
                             <div class='input-group-sm mb-3'>
                                 <div class='input-group-prepend'>
                                     <label for='exampleInput'>NVQ Level</label>
                                 </div>
-                                <select class='custom-select' id='inputGroupSelect01' id='validationServer02' required>
-                                    <option value=''>Select Level</option>
-                                    <option value='1'>NVQ Level-4</option>
-                                    <option value='2'>NVQ Level-5</option>
-                                    <option value='3'>Bridging</option>
+                                <select class='custom-select' name="nvq" id='inputGroupSelect01' id='validationServer02' required>
+                                    <option selected disabled value="">Choose NVQ Level</option>
+                                    <option value="NVQ LEVEL 4">NVQ LEVEL 4</option>
+                                    <option value="BRIDGING LEVEL 5">BRIDGING LEVEL 5</option>
+                                    <option value="NVQ LEVEL 5">NVQ LEVEL 5</option>
+                                    <option value="NVQ LEVEL 6">NVQ LEVEL 6</option>
+                                    <option value="NVQ LEVEL 7">NVQ LEVEL 7</option>
                                 </select>
                             </div>
-                        </div>
-                        <!-- <div class='col-md'>
-                            <div class='input-group-sm mb-3'>
-                                <div class='input-group-prepend'>
-                                    <label for='exampleInput'>Type</label>
-                                </div>
-                                <select class='custom-select' id='inputGroupSelect01' id='validationServer02' required>
-                                    <option value=''>Select Type</option>
-                                    <option value='1'>THEORY</option>
-                                    <option value='2'>PRACTICAL</option>
-                                </select>
-                            </div>
-                        </div>-->
-                    </div> 
-                        <div class="table-responsive-sm">
-                        <table class="table">
-                        <thead class="table-bordered ">
-                            <tr>
-                            <th>Index no</th>
-                            <th>Name</th>
-                            <th>NIC</th>
-                            <?php
-                        $sql = 'select DISTINCT module_name from exam_result; ';
-                        $result = mysqli_query($con,$sql);
-                        if(mysqli_num_rows($result)>0){
-                            while($row = mysqli_fetch_assoc($result)){
-                                echo '<th>',$row['module_name'],'</th>';
-                            }
-                        }
-                        else{
-                            echo 'no rows';
-                        }
-                        ?> 
-                            </tr>
-                        </thead>
-                        <tbody>
-                        <tr>
-                            <td><?php echo $index;?></td>
-                            <td><?php echo $name;?></td>
-                            <td><?php echo $nic;?></td>
-                            
-                            </tr>
-                        </tbody>
-
-                        </table>
-                        </div>
-                             <!-- button-->
-                    
                         </div>
                     </div>
-                </div>
-            </div> <!-- #1 Insert Your Content" -->
-        </div>
-        </div>
-    </main>
+                    <!-- 1st row -->
 
-    <?php include_once("../../script.php");
-    ?>
+                    <!-- 2nd row -->
+                    <div class="row">
+                        <div class="col">
+                            <div class='input-group-sm mb-3'>
+                                <div class='input-group-prepend'>
+
+                                    <label for='exampleInputEmail1'>Exams type</label>
+                                </div>
+                                <select class='custom-select' name="type" id='inputGroupSelect01' id='validationServer0' required>
+                                    <option selected disabled>Select Exams</option>
+                                    <option value='INSTITUT'>INSTITUT</option>
+                                    <option value='TVEC'>TVEC</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class='input-group-sm mb-3'>
+                                <div class='input-group-prepend'>
+                                    <label for='exampleInput'>Batch</label>
+                                </div>
+                                <select class='custom-select' name="batch" id='inputGroupSelect01' id='validationServer02' required>
+                                    <option selected disabled value="">Choose Batch</option>
+                                    <?php
+                                    $result = $con->query("select DISTINCT batch_no from student_enroll;");
+                                    while ($row = $result->fetch_assoc()) {
+                                        unset($dno);
+                                        $dno = $row['batch_no'];
+                                        echo '<option value=" ' . $dno . '"  >' . $dno . '</option>';
+                                    }
+                                    ?>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 2nd row -->
+            </div>
+            <div class="card-footer">
+                <div class="row">
+                    <div class="col"></div>
+                    <div class="col-auto">
+                        <?php
+                        if (isset($_POST['submit'])) {
+                            ?>
+                            <a href="resultsheet.php?dno=<?php echo ("$department"); ?>& nvq=<?php echo ("$nvq"); ?> & type=<?php echo ("$type"); ?> & batch=<?php echo ("$batch"); ?>" 
+                            class="btn btn-primary">View Result</a>
+                        <?php
+                    } else {
+                        ?>
+                            <button type="submit" name="submit" class="btn btn-primary">Check Details </button>
+                        <?php
+                    }
+                    ?>
+
+                    </div>
+                </div>
+            </div>
+            </form>
+        </div>
+
+        <?php include_once("../../script.php"); ?>
 </body>
 
 </html>

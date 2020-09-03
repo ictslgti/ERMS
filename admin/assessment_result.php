@@ -34,12 +34,7 @@ $module=null;
 if(isset($_GET['id'])){
     $id = $_GET['id'];
     
-    $sql = "SELECT s.id, s.name_with_initials, se.batch_no, b.academic_year, se.course_id, ae.module
-    FROM student s
-    INNER JOIN student_enroll se ON s.id = se.id
-    INNER JOIN batch b ON b.batch_no = se.batch_no
-    INNER JOIN assessments ae ON ae.batch = se.batch_no
-    WHERE ae.id =$id ;";
+    $sql = "SELECT id, name_with_initials FROM STUDENT;";
     $result = mysqli_query($con,$sql);
     if(mysqli_num_rows($result)==1){
         $row = mysqli_fetch_assoc($result);
