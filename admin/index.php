@@ -6,6 +6,7 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
 <html lang='en'>
 
 <head>
+    
     <?php include_once('.././head.php');
           include_once('dashboard/dash-cdn.php');    
     //    include_once('../config.php');
@@ -541,7 +542,7 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
     </div>
     </div>
     </main>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/js/mdb.min.js">
+    <!-- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/js/mdb.min.js"> -->
     </script>
     <?php include_once("..\script.php");
          
