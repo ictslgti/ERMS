@@ -41,6 +41,7 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
                                                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                                         <a class="dropdown-item" href="attendance_month.php">Month-wise</a>
                                                         <a class="dropdown-item" href="attendance_semester.php">Semester-wise</a>
+                                                        <a class="dropdown-item" href="attendance_all.php">Moudel-wise</a>
                                                     </div>
                                                 </div>
 
@@ -48,7 +49,7 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
 
                                             <div class="dropdown">
                                                 <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" value="show details" name="show_date">
-                                                Semester:
+                                                    Semester:
                                                 </button>
                                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                                     <a class="dropdown-item" href="#">Choose</a>
