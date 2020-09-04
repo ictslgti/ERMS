@@ -6,6 +6,8 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
 <html lang='en'>
 
 <head>
+
+
   <?php include_once('.././head.php');
   include_once('../config.php');
   $dat = null;
@@ -36,12 +38,24 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
                       <div class="col-md-3" align="right">
                         <button type="button" id="add_button" class="btn btn-info btn-sm">Chart</button>
                       </div>
-
-
-
                     </div>
+                    
+                    
+
                     <form action="" method="POST">
                       <input type="date" name="prese_date"><input type="submit" value="show details" name="show_date">
+
+                      
+                      <div class="dropdown">
+                                                    <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" value="show details" name="show_date">
+                                                        Attendance Review
+                                                    </button>
+                                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                                        <a class="dropdown-item" href="attendance_month.php">Month-wise</a>
+                                                        <a class="dropdown-item" href="attendance_semester.php">Semester-wise</a>
+                                                        <a class="dropdown-item" href="attendance.php">Date-wise</a>
+                                                    </div>
+                                                </div>
                     </form>
                   </div>
 
