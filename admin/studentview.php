@@ -72,6 +72,7 @@ $description = "Online Examination Result Management System (ERMS)-SLGTI";
                 $grelation = $row['guardian_relationship'];
                 $regno = $row['id'];
                 $cid = $row['course_code'];
+                $bid = $row['batch_no'];
                 $ayear = $row['academic_year'];
                 $mode = $row['course_mode'];
                 $status = $row['student_status'];
@@ -203,6 +204,11 @@ $description = "Online Examination Result Management System (ERMS)-SLGTI";
                                     <div class='row'>
                                         <div class='col-4'><label for="cid"> Course Code: </label></div>
                                         <div class='col-8'><input type="text" class="form-control" name="cid" value="<?php echo $cid; ?>" disabled></div>
+                                    </div>
+
+                                    <div class='row'>
+                                        <div class='col-4'><label for="bid"> Batch No: </label></div>
+                                        <div class='col-8'><input type="text" class="form-control" name="bid" value="<?php echo $bid; ?>" disabled></div>
                                     </div>
 
                                     <div class='row'>
