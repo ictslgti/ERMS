@@ -52,17 +52,13 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
                                                     ALL Moduels
                                                 </button>
                                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-
-
                                                     <a class="dropdown-item" href="./attendance.php">Selected Moduel </a>
                                                 </div>
                                             </div>
 
                                             <div class="col-3"></div>
 
-                                            <div class="col-3" align="right">
-                                                <button type="button" id="add_button" class="btn btn-info btn-sm">Chart</button>
-                                            </div>
+
                                         </div>
                                     </div>
 
@@ -98,7 +94,9 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
                                                             <?php
                                                             $sql = "select module, count(status) as take_session,count(status) as status FROM attendance where student_id='2018ictbit01'";
                                                             $result = mysqli_query($con, $sql);
-                                                            while ($row = mysqli_fetch_assoc($result)) {
+                                                            while ($row = mysqli_fetch_assoc($result)) 
+                                                            
+                                                            {
                                                                 $row1 = (($row['take_session'] / $row['status']) * 100)
                                                             ?>
                                                                 <tr>
@@ -112,7 +110,7 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
                                                                 ?>
                                                                 </tr>
                                                                 <?php
-                                                                $sql = "select count(status) as take_session,count(DISTINCT module) as module,status  FROM attendance WHERE student_id='2018ictbit01' order by module";
+                                                                $sql = "select count(status) as take_session,count(DISTINCT module) as module,status  FROM attendance WHERE student_id='2018ictbit01' groub by module";
                                                                 $result = mysqli_query($con, $sql);
                                                                 while ($row = mysqli_fetch_assoc($result)) {
 
