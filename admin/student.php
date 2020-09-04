@@ -581,13 +581,13 @@ $description = "Online Examination Result Management System (ERMS)-SLGTI";
                                             <option selected disabled> Choose</option>
                                             <?php
                                             if (isset($_GET['edit'])) {
-                                                echo '<option value="' . $row["course_code"] . '" selected>' . $row["course_code"] . '</option>';
-
+                                                echo '<option value="' . $cid . '" selected disabled>' . $cid . '</option>';
                                                 $sql = "SELECT DISTINCT * FROM `courses`";
+                                                // $sql = "SELECT `courses`.`code`,`student_enroll`.`course_code` FROM courses LEFT JOIN student_enroll ON `courses`.`code` = `student_enroll`.`course_code` GROUP BY CODE";
                                                 $result = mysqli_query($con, $sql);
                                                 if (mysqli_num_rows($result) > 0) {
                                                     while ($row = mysqli_fetch_assoc($result)) {
-                                                        echo '<option value="' . $row["code"] . '" required>' . $row["code"] . '</option>';
+                                                        echo '<option value="' . $row["code"] . '">' . $row["code"] . '</option>';
                                                     }
                                                 }
                                             } else {
@@ -595,16 +595,13 @@ $description = "Online Examination Result Management System (ERMS)-SLGTI";
                                                 $result = mysqli_query($con, $sql);
                                                 if (mysqli_num_rows($result) > 0) {
                                                     while ($row = mysqli_fetch_assoc($result)) {
-                                                        echo '<option value="' . $row["code"] . '" required>' . $row["code"] . '</option>';
+                                                        echo '<option value="' . $row["code"] . '">' . $row["code"] . '</option>';
                                                     }
                                                 } else {
                                                     echo '<option value="null" selected disabled>No Course</option>';
                                                 }
                                             }
                                             ?>
-
-                                        </select>
-
                                         </select>
                                     </div>
 
@@ -613,18 +610,28 @@ $description = "Online Examination Result Management System (ERMS)-SLGTI";
                                         <select name="bid" class="custom-select" value="<?php echo $bid; ?>" required>
                                             <option selected disabled> Choose</option>
                                             <?php
-                                            $sql = "SELECT DISTINCT * FROM `batch`";
-                                            $result = mysqli_query($con, $sql);
-                                            if (mysqli_num_rows($result) > 0) {
-                                                while ($row = mysqli_fetch_assoc($result)) {
-                                                    echo '<option value="' . $row["batch_no"] . '" required>' . $row["batch_no"] . '</option>';
+                                            if (isset($_GET['edit'])) {
+                                                echo '<option value="' . $bid . '" selected disabled>' . $bid . '</option>';
+                                                $sql = "SELECT DISTINCT * FROM `batch`";
+                                                // $sql = "SELECT `courses`.`code`,`student_enroll`.`course_code` FROM courses LEFT JOIN student_enroll ON `courses`.`code` = `student_enroll`.`course_code` GROUP BY CODE";
+                                                $result = mysqli_query($con, $sql);
+                                                if (mysqli_num_rows($result) > 0) {
+                                                    while ($row = mysqli_fetch_assoc($result)) {
+                                                        echo '<option value="' . $row["batch_no"] . '">' . $row["batch_no"] . '</option>';
+                                                    }
                                                 }
                                             } else {
-                                                echo '<option value="null" selected disabled>No Course</option>';
+                                                $sql = "SELECT DISTINCT * FROM `batch`";
+                                                $result = mysqli_query($con, $sql);
+                                                if (mysqli_num_rows($result) > 0) {
+                                                    while ($row = mysqli_fetch_assoc($result)) {
+                                                        echo '<option value="' . $row["batch_no"] . '">' . $row["batch_no"] . '</option>';
+                                                    }
+                                                } else {
+                                                    echo '<option value="null" selected disabled>No Course</option>';
+                                                }
                                             }
                                             ?>
-
-                                            <option value="01" <?php if ($bid == "01") echo 'selected'; ?>> 01 </option>
                                         </select>
                                     </div>
 
