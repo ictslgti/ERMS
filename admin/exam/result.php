@@ -105,10 +105,10 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                                 <select class='custom-select' name="batch" id='inputGroupSelect01' id='validationServer02' required>
                                     <option selected disabled value="">Choose Batch</option>
                                     <?php
-                                    $result = $con->query("select DISTINCT batch_no from student_enroll;");
+                                    $result = $con->query("select DISTINCT batch_name from student_enroll;");
                                     while ($row = $result->fetch_assoc()) {
                                         unset($dno);
-                                        $dno = $row['batch_no'];
+                                        $dno = $row['batch_name'];
                                         echo '<option value=" ' . $dno . '"  >' . $dno . '</option>';
                                     }
                                     ?>

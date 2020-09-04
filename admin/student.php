@@ -23,9 +23,9 @@ $description = "Online Examination Result Management System (ERMS)-SLGTI";
     </script>
     <style>
         #output_image {
-            width: 0px;
-            height: 0px;
-            border: 0px solid black;
+            width: 140px;
+            height: 10px;
+            /* border: 0px solid black; */
         }
     </style>
     <!-- Image-->
@@ -121,7 +121,7 @@ $description = "Online Examination Result Management System (ERMS)-SLGTI";
             $enrolldate = $_POST['enrolldate'];
             $exitdate = $_POST['exitdate'];
 
-            $sqlenroll = "INSERT INTO student_enroll (id, course_id, batch_no, academic_year, course_mode, student_status,
+            $sqlenroll = "INSERT INTO student_enroll (id, course_code, batch_no, academic_year, course_mode, student_status,
                     enroll_date, exit_date) VALUES ('$regno','$cid','$bid','$ayear','$mode','$status','$enrolldate','$exitdate')";
 
             if (mysqli_query($con, $sqlenroll)) {
@@ -136,7 +136,7 @@ $description = "Online Examination Result Management System (ERMS)-SLGTI";
             }
         }
 
-        $id = null;
+        $regno = null;
         $image = null;
         if (
             isset($_POST['add'])
@@ -157,13 +157,23 @@ $description = "Online Examination Result Management System (ERMS)-SLGTI";
                 if (in_array($fileType, $allowTypes)) {
                     $image = $_FILES['image']['tmp_name'];
                     $imgContent = addslashes(file_get_contents($image));
-                    $sql = "INSERT INTO images (id,image) VALUES ('$id','$imgContent')";
+                    $sql = "INSERT INTO student_image (id,image) VALUES ('$regno','$imgContent')";
 
                     if (mysqli_query($con, $sql)) {
-                        echo "";
+                        echo "<div class='alert alert-success' role='alert'>
+                        insert success fully 
+                        <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+                            <span aria-hidden='true'>&times;</span>
+                         </button>
+                       </div>";
                     } else {
 
-                        echo "";
+                        echo "<div class='alert alert-danger' role='alert'>
+                        This academic_year alredy submit 
+                        <a data-dismiss='alert' href='student.php'>dd</a>
+                         <span aria-hidden='true'>&times;</span>
+                         
+                       </div>";
                     }
                 } else {
                     $statusMsg = 'Sorry, only JPG, JPEG, PNG, & GIF files are allowed to upload.';
@@ -209,7 +219,7 @@ $description = "Online Examination Result Management System (ERMS)-SLGTI";
                 $gphone = $row['guardian_phone_no'];
                 $grelation = $row['guardian_relationship'];
                 $regno = $row['id'];
-                $cid = $row['course_id'];
+                $cid = $row['course_code'];
                 $bid = $row['batch_no'];
                 $ayear = $row['academic_year'];
                 $mode = $row['course_mode'];
@@ -301,7 +311,7 @@ $description = "Online Examination Result Management System (ERMS)-SLGTI";
             $enrolldate = $_POST['enrolldate'];
             $exitdate = $_POST['exitdate'];
 
-            $sqlenrolls = "UPDATE `student_enroll` SET `course_id` = '$cid', `batch_no` = '$bid', `academic_year` = '$ayear', `course_mode` = '$mode',
+            $sqlenrolls = "UPDATE `student_enroll` SET `course_code` = '$cid', `batch_no` = '$bid', `academic_year` = '$ayear', `course_mode` = '$mode',
             `student_status` = '$status', `enroll_date` = '$enrolldate', `exit_date` = '$exitdate'  WHERE `student_enroll`.`id` = '$student_id'";
 
             if (mysqli_query($con, $sqlenrolls)) {
@@ -546,7 +556,7 @@ $description = "Online Examination Result Management System (ERMS)-SLGTI";
                                         </div>
                                     </div>
                                 </div>
-                                
+
                                 <!-- 4th row end -->
 
                                 <br>
@@ -569,21 +579,59 @@ $description = "Online Examination Result Management System (ERMS)-SLGTI";
                                         <label for="cid"> Course Name: </label>
                                         <select name="cid" class="custom-select" value="<?php echo $cid; ?>" required>
                                             <option selected disabled> Choose</option>
-                                            <option value="A+" <?php if ($cid == "A+") echo 'selected'; ?>> A+ </option>
-                                            <option value="A-" <?php if ($cid == "A-") echo 'selected'; ?>> A- </option>
-                                            <option value="B+" <?php if ($cid == "B+") echo 'selected'; ?>> B+ </option>
-
+                                            <?php
+                                            if (isset($_GET['edit'])) {
+                                                echo '<option value="' . $cid . '" selected disabled>' . $cid . '</option>';
+                                                $sql = "SELECT DISTINCT * FROM `courses`";
+                                                // $sql = "SELECT `courses`.`code`,`student_enroll`.`course_code` FROM courses LEFT JOIN student_enroll ON `courses`.`code` = `student_enroll`.`course_code` GROUP BY CODE";
+                                                $result = mysqli_query($con, $sql);
+                                                if (mysqli_num_rows($result) > 0) {
+                                                    while ($row = mysqli_fetch_assoc($result)) {
+                                                        echo '<option value="' . $row["code"] . '">' . $row["code"] . '</option>';
+                                                    }
+                                                }
+                                            } else {
+                                                $sql = "SELECT DISTINCT * FROM `courses`";
+                                                $result = mysqli_query($con, $sql);
+                                                if (mysqli_num_rows($result) > 0) {
+                                                    while ($row = mysqli_fetch_assoc($result)) {
+                                                        echo '<option value="' . $row["code"] . '">' . $row["code"] . '</option>';
+                                                    }
+                                                } else {
+                                                    echo '<option value="null" selected disabled>No Course</option>';
+                                                }
+                                            }
+                                            ?>
                                         </select>
                                     </div>
 
                                     <div class="col-3">
                                         <label for="bid"> Batch No: </label>
-                                        <select name="bid" class="custom-select" value="<?php echo $cid; ?>" required>
+                                        <select name="bid" class="custom-select" value="<?php echo $bid; ?>" required>
                                             <option selected disabled> Choose</option>
-                                            <option value="01" <?php if ($bid == "01") echo 'selected'; ?>> 01 </option>
-                                            <option value="02" <?php if ($bid == "02") echo 'selected'; ?>> 02 </option>
-                                            <option value="03" <?php if ($bid == "03") echo 'selected'; ?>> 03 </option>
-
+                                            <?php
+                                            if (isset($_GET['edit'])) {
+                                                echo '<option value="' . $bid . '" selected disabled>' . $bid . '</option>';
+                                                $sql = "SELECT DISTINCT * FROM `batch`";
+                                                // $sql = "SELECT `courses`.`code`,`student_enroll`.`course_code` FROM courses LEFT JOIN student_enroll ON `courses`.`code` = `student_enroll`.`course_code` GROUP BY CODE";
+                                                $result = mysqli_query($con, $sql);
+                                                if (mysqli_num_rows($result) > 0) {
+                                                    while ($row = mysqli_fetch_assoc($result)) {
+                                                        echo '<option value="' . $row["batch_no"] . '">' . $row["batch_no"] . '</option>';
+                                                    }
+                                                }
+                                            } else {
+                                                $sql = "SELECT DISTINCT * FROM `batch`";
+                                                $result = mysqli_query($con, $sql);
+                                                if (mysqli_num_rows($result) > 0) {
+                                                    while ($row = mysqli_fetch_assoc($result)) {
+                                                        echo '<option value="' . $row["batch_no"] . '">' . $row["batch_no"] . '</option>';
+                                                    }
+                                                } else {
+                                                    echo '<option value="null" selected disabled>No Course</option>';
+                                                }
+                                            }
+                                            ?>
                                         </select>
                                     </div>
 

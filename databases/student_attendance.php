@@ -12,8 +12,6 @@ $sql = "CREATE TABLE attendance
     department VARCHAR(20) NOT NULL,
     level INT NOT NULL,
     SEMESTER VARCHAR(15) NOT NULL,
-    taken_session INT NOT NULL,
-    all_session INT NOT NULL,
     batch INT NUT NULL
 )";
 

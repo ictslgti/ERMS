@@ -6,112 +6,125 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
 <html lang='en'>
 
 <head>
-    <?php include_once('.././head.php');
-    include_once('../config.php');
-    $dat=null;
-    ?>
+
+
+  <?php include_once('.././head.php');
+  include_once('../config.php');
+  $dat = null;
+  ?>
 </head>
 
 <body>
-    <main class='page-content pt-2'>
-        <?php include_once('nav.php');
-        ?>
-        <div id='overlay' class='overlay'></div>
-        <div class='container-fluid p-5'>
-            <!-- #1 Insert Your Content-->
-            <div class='row'>
-                <div class="col">
-                    <div class="card">
-                        <div class="card-header">
-                            <h3> <?php echo " $title" ?></h3>
-                        </div>
-                        <div class="card-body">
+  <main class='page-content pt-2'>
+    <?php include_once('nav.php');
+    ?>
+    <div id='overlay' class='overlay'></div>
+    <div class='container-fluid p-5'>
+      <!-- #1 Insert Your Content-->
+      <div class='row'>
+        <div class="col">
+          <div class="card">
+            <div class="card-header">
+              <h3> <?php echo " $title" ?></h3>
+            </div>
+            <div class="card-body">
 
-                            <!-- #1 Insert Your Content-->
-<div class="container" style="margin-top:30px">
-  <div class="card">
-  	<div class="card-header">
-      <div class="row">
-        <div class="col-md-9">Attendance List</div>
-        <div class="col-md-3" align="right">
-          <button type="button" id="add_button" class="btn btn-info btn-sm">Chart</button>
-        </div>
+              <!-- #1 Insert Your Content-->
+              <div class="container" style="margin-top:30px">
+                <div class="card">
+                  <div class="card-header">
+                    <div class="row">
+                      <div class="col-md-9">Attendance List</div>
+                      <div class="col-md-3" align="right">
+                        <button type="button" id="add_button" class="btn btn-info btn-sm">Chart</button>
+                      </div>
+                    </div>
+                    
+                    
 
-        
+                    <form action="" method="POST">
+                      <input type="date" name="prese_date"><input type="submit" value="show details" name="show_date">
 
-      </div>
-      <form action="" method="POST">
-      <input type="date" name="prese_date"><input type="submit" value="show details" name="show_date">
-      </form>
-    </div>
-    
-  	<div class="card-body">
-    
-  		<div class="table-responsive">
-       
-        <span id="message_operation"></span>
-        <table class="table table-striped table-bordered" id="attendance_table">
-          <thead>
-            <tr>
-              <th>Student Name</th>
-              <th>Index Number</th>
-              <th>Batch</th>
-              <th>Attendance Status</th>
-              <th>Attendance Date</th>
-            </tr>
-            <tr>
-              
-            
-              
-              <?php 
-                        if(isset($_POST['show_date']))
-                        {
-                        $dat=$_POST['prese_date'];
-                        echo $dat."-"."attendance details";
-                        $sql="select  DISTINCT s.student_id,s.student_name,s.student_batch,a.status,date(a.attendance_date) as attendance_date from student s inner join 
+                      
+                      <div class="dropdown">
+                                                    <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" value="show details" name="show_date">
+                                                        Attendance Review
+                                                    </button>
+                                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                                        <a class="dropdown-item" href="attendance_month.php">Month-wise</a>
+                                                        <a class="dropdown-item" href="attendance_semester.php">Semester-wise</a>
+                                                        <a class="dropdown-item" href="attendance.php">Date-wise</a>
+                                                    </div>
+                                                </div>
+                    </form>
+                  </div>
+
+                  <div class="card-body">
+
+                    <div class="table-responsive">
+
+                      <span id="message_operation"></span>
+                      <table class="table table-striped table-bordered" id="attendance_table">
+                        <thead>
+                          <tr>
+                            <th>Student Name</th>
+                            <th>Index Number</th>
+                            <th>Batch</th>
+                            <th>Attendance Status</th>
+                            <th>Attendance Date</th>
+                          </tr>
+                          <tr>
+
+
+
+                            <?php
+                            if (isset($_POST['show_date'])) {
+                              $dat = $_POST['prese_date'];
+                              echo $dat . "-" . "attendance details";
+                              $sql = "select  DISTINCT s.student_id,s.student_name,s.student_batch,a.status,date(a.attendance_date) as attendance_date from student s inner join 
                         attendance a on s.student_id=a.student_id inner join batch b on s.student_batch=b.Batch_id and attendance_date='$dat';";
-                        }  
-                        else{
-                          $sql="select  DISTINCT s.student_id,s.student_name,s.student_batch,a.status,date(a.attendance_date) as attendance_date from student s inner join attendance a on s.student_id=a.student_id 
+                            } else {
+                              $sql = "select  DISTINCT s.student_id,s.student_name,s.student_batch,a.status,date(a.attendance_date) as attendance_date from student s inner join attendance a on s.student_id=a.student_id 
                           inner join batch b on s.student_batch=b.Batch_id and attendance_date=curdate();";
-                        }
-                    
+                            }
 
-                    $result = mysqli_query($con, $sql);
-                    while ($row = mysqli_fetch_assoc($result)) {
-                    ?>
-                     <tr>
-                    <td scope='col'>
-                       <?php echo $row['student_name']; ?>
-                    </td>
-                    <td scope='col'>
-                       <?php echo $row['student_id']; ?>
-                    </td>
-                     <td scope='col'>
-                         <?php echo $row['student_batch']; ?>
-                     </td>
-                     <td scope='col'>
-                       <?php echo $row['status']; ?>
-                    </td>
-                    <td scope='col'>
-                       <?php echo $row['attendance_date']; ?>
-                     </td>
-                    <?php 
-                    }
-                    ?>
-                    
-                  </tr>
-          </thead>
-          <tbody>
 
-          </tbody>
-        </table>
-  		</div>
-  	</div>
-  </div>
-</div>
+                            $result = mysqli_query($con, $sql);
+                            while ($row = mysqli_fetch_assoc($result)) {
+                            ?>
+                          <tr>
+                            <td scope='col'>
+                              <?php echo $row['student_name']; ?>
+                            </td>
+                            <td scope='col'>
+                              <?php echo $row['student_id']; ?>
+                            </td>
+                            <td scope='col'>
+                              <?php echo $row['student_batch']; ?>
+                            </td>
+                            <td scope='col'>
+                              <?php echo $row['status']; ?>
+                            </td>
+                            <td scope='col'>
+                              <?php echo $row['attendance_date']; ?>
+                            </td>
+                          <?php
+                            }
+                          ?>
+
+                          </tr>
+                        </thead>
+                        <tbody>
+
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
 
 </body>
+
 </html>
 
 <script type="text/javascript" src="js/bootstrap-datepicker.js"></script>
@@ -126,18 +139,19 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
           <h4 class="modal-title" id="modal_title"></h4>
           <button type="button" class="close" data-dismiss="modal">&times;</button>
         </div>
-            </div>
-          </div>
-          <div class="form-group" id="student_details">
-            <div class="table-responsive">
-              <table class="table table-striped table-bordered">
-              </table>
-            </div>
-          </div>
-        </div>
-        </main>
+      </div>
+  </div>
+  <div class="form-group" id="student_details">
+    <div class="table-responsive">
+      <table class="table table-striped table-bordered">
+      </table>
+    </div>
+  </div>
+</div>
+</main>
 
 <?php include_once("../script.php");
 ?>
 </body>
-</html>  
+
+</html>

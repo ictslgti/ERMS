@@ -18,131 +18,178 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
         <div id='overlay' class='overlay'></div>
         <div class='container-fluid p-5'>
             <!-- #1 Insert Your Content-->
-
-            <div class="container">
-
-                <!-- 1st row start -->
-                <div class="row">
-                    <div class="col-sm">
-                        <div class="border border-primary rounded text-center">
-                            <h2>Student's Attendence | SLGTI</h2>
+            <div class='row'>
+                <div class="col">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3> <?php echo " $title" ?></h3>
                         </div>
-                    </div>
-                </div>
-                <br>
-                <!-- 1st row end -->
+                        <div class="card-body">
 
-                <form method="POST" action="">
-                    <div class="row">
-                        <div class='col-7'>
-                            <div class='form-group col-md'>
-                                <ul class='nav nav-tabs'>
-                                    <li class='nav-item'>
-                                        <a class='nav-link' href='./attendance_all.php'>All Moduels</a>
-                                    </li>
-                                    <li class='nav-item'>
-                                        <a class='nav-link active' href='./attendance.php'>Selected Moduel</a>
-                                    </li>
-                                    <li class="nav-item dropdown">
-                                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" name="module" aria-expanded="false">Module</a>
-                                        <div class="dropdown-menu">
-                                            <?php
-                                                $sql = "select * from attendance GROUP BY module ";
-                                                $result = $con->query($sql);
-                                                if ($result->num_rows > 0) {
-                                                    while ($row = $result->fetch_assoc()) {
+                            <!-- #1 Insert Your Content-->
 
-                                                        echo '<a class="dropdown-item" href="#">', $row['module'], '</a>';
-                                                    }
-                                                } else {
-                                                    echo 'no rows';
-                                                }
-                                            ?>
+
+                            <div class="container" style="margin-top:10px">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <div class="row">
+                                            <div class="col-3">
+                                                <div class="dropdown">
+                                                    <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" value="show details" name="show_date">
+                                                        Attendance Review
+                                                    </button>
+                                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                                        <a class="dropdown-item" href="attendance_month.php">Month-wise</a>
+                                                        <a class="dropdown-item" href="attendance_semester.php">Semester-wise</a>
+                                                        <a class="dropdown-item" href="attendance_all.php">Moudel-wise</a>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+
+                                            <div class="dropdown">
+                                                <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" value="show details" name="show_date">
+                                                    Module
+                                                </button>
+                                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                                    
+                                                    <?php
+                                                                        $sql = "select * from attendance GROUP BY module ";
+                                                                        $result = $con->query($sql);
+                                                                        if ($result->num_rows > 0) {
+                                                                            while ($row = $result->fetch_assoc()) {
+
+                                                                                echo '<a class="dropdown-item" href="#">', $row['module'], '</a>';
+                                                                            }
+                                                                        } else {
+                                                                            echo 'no rows';
+                                                                        }
+                                                                        ?>
+
+
+                                                </div>
+                                            </div>
+
+                                            <div class="col-3"></div>
+
+                                            
+                                        </div>
+                                    </div>
+
+                                    <div class="card-body">
+
+                                        <div class="table-responsive">
+
+
+
                                             
 
+                                            <div class="row">
+                                                <div class="form-group col-md-12 table-responsive">
+                                                    <table class='table align-middle '>
+                                                        <thead class='thead-light'>
+                                                            <tr>
+                                                                <th scope='col'>DATE</th>
+                                                                <th scope='col'>TIME</th>
+                                                                <th scope='col'>STATUS</th>
+                                                            </tr>
+                                                            <?php
+                                                            $sql = " select date(date),time(date),status from attendance where student_id='2018ICTBIT01'";
+                                                            $result = mysqli_query($con, $sql);
+                                                            while ($row = mysqli_fetch_assoc($result)) {
+                                                            ?>
+
+
+                                                                <tr>
+                                                                    <td scope='col'><?php echo $row['date(date)']; ?></td>
+                                                                    <td scope='col'><?php echo $row['time(date)']; ?></td>
+                                                                    <td scope='col'><?php echo $row['status']; ?></td>
+
+                                                                <?php
+                                                            }
+                                                                ?>
+
+
+                                                                </tr>
+                                                                <table>
+                                                                    <?php
+                                                                    $sql = " select count(status) as take_session,session from attendance where student_id='2018ICTBIT01'";
+                                                                    $result = mysqli_query($con, $sql);
+                                                                    while ($row = mysqli_fetch_assoc($result)) {
+                                                                        $per = $row['take_session'];
+                                                                        +$row['session'];
+
+                                                                    ?>
+                                                                        <tr>
+                                                                            <td style="text-align: right">Points over taken sessions:</td>
+                                                                            <td> <?php echo $row['session']; ?><?php echo "/"; ?> <?php echo $row['take_session']; ?></td>
+
+                                                                        <?php
+                                                                    }
+                                                                        ?>
+                                                                        </tr>
+                                                                        <?php
+                                                                        $sql = " select count(status) as take_session,session from attendance where student_id='2018ICTBIT01' order by module";
+                                                                        $result = mysqli_query($con, $sql);
+                                                                        while ($row = mysqli_fetch_assoc($result)) {
+
+                                                                            $per = (($row['take_session'] / $row['session']) * 100) . "%";
+                                                                        ?>
+                                                                            <tr>
+                                                                                <td style="text-align: right">Percentage over taken sessions:</td>
+
+                                                                                <td><?php echo ($per); ?></td>
+
+                                                                            <?php
+                                                                        }
+                                                                            ?>
+                                                                            </tr>
+                                                                </table>
+                                                        </thead>
+                                                        <tbody>
+
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+
+
+
+
+
                                         </div>
-                                    </li>
+                                    </div>
+                                </div>
 
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </form>
+</body>
 
-                <div class="row">
-                    <div class="form-group col-md-12 table-responsive">
-                        <table class='table align-middle '>
-                            <thead class='thead-light'>
-                                <tr>
-                                    <th scope='col'>DATE</th>
-                                    <th scope='col'>TIME</th>
-                                    <th scope='col'>STATUS</th>
-                                </tr>
-                                <?php
-                                $sql = " select date(date),time(date),status from attendance where student_id='2018ICTBIT01'";
-                                $result = mysqli_query($con, $sql);
-                                while ($row = mysqli_fetch_assoc($result)) {
-                                ?>
+</html>
 
+<script type="text/javascript" src="js/bootstrap-datepicker.js"></script>
+<link rel="stylesheet" href="css/datepicker.css" />
 
-                                    <tr>
-                                        <td scope='col'><?php echo $row['date(date)']; ?></td>
-                                        <td scope='col'><?php echo $row['time(date)']; ?></td>
-                                        <td scope='col'><?php echo $row['status']; ?></td>
+<div class="modal" id="formModal">
+    <div class="modal-dialog">
+        <form method="post" id="attendance_form">
+            <div class="modal-content">
 
-                                    <?php
-                                }
-                                    ?>
-
-
-                                    </tr>
-                                    <table>
-                                        <?php
-                                        $sql = " select count(status) as take_session,session from attendance where student_id='2018ICTBIT01'";
-                                        $result = mysqli_query($con, $sql);
-                                        while ($row = mysqli_fetch_assoc($result)) {
-                                            $per = $row['take_session']; + $row['session'];
-
-                                        ?>
-                                            <tr>
-                                                <td style="text-align: right">Points over taken sessions:</td>
-                                                <td> <?php echo $row['session']; ?><?php echo "/"; ?> <?php echo $row['take_session']; ?></td>
-
-                                            <?php
-                                        }
-                                            ?>
-                                            </tr>
-                                            <?php
-                                            $sql = " select count(status) as take_session,session from attendance where student_id='2018ICTBIT01' order by module";
-                                            $result = mysqli_query($con, $sql);
-                                            while ($row = mysqli_fetch_assoc($result)) {
-
-                                                $per = (($row['take_session'] / $row['session']) * 100) . "%";
-                                            ?>
-                                                <tr>
-                                                    <td style="text-align: right">Percentage over taken sessions:</td>
-
-                                                    <td><?php echo ($per); ?></td>
-
-                                                <?php
-                                            }
-                                                ?>
-                                                </tr>
-                                    </table>
-                            </thead>
-                            <tbody>
-
-                            </tbody>
-                        </table>
-                    </div>
+                <div class="modal-header">
+                    <h4 class="modal-title" id="modal_title"></h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
-
-                <!-- #1 Insert Your Content" -->
             </div>
-    </main>
+    </div>
+    <div class="form-group" id="student_details">
+        <div class="table-responsive">
+            <table class="table table-striped table-bordered">
+            </table>
+        </div>
+    </div>
+</div>
+</main>
 
-    <?php include_once("../script.php");
-    ?>
+<?php include_once("../script.php");
+?>
 </body>
 
 </html>

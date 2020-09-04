@@ -24,6 +24,19 @@ $description = "Online Examination Result Management System (ERMS)-SLGTI";
                 reader.readAsDataURL(event.target.files[0]);
             }
         </script>
+        <style>
+            #wrapper {
+                text-align: center;
+                margin: 0 auto;
+                padding: 0px;
+            }
+
+            #output_image {
+                width: 230px;
+                height: 260px;
+                border: 1px solid black;
+            }
+        </style>
 
         <!-- view  start -->
         <?php
@@ -58,7 +71,8 @@ $description = "Online Examination Result Management System (ERMS)-SLGTI";
                 $gphone = $row['guardian_phone_no'];
                 $grelation = $row['guardian_relationship'];
                 $regno = $row['id'];
-                $cid = $row['course_id'];
+                $cid = $row['course_code'];
+                $bid = $row['batch_no'];
                 $ayear = $row['academic_year'];
                 $mode = $row['course_mode'];
                 $status = $row['student_status'];
@@ -98,8 +112,25 @@ $description = "Online Examination Result Management System (ERMS)-SLGTI";
                                 <div class='col-4'>
 
                                     <div style='text-align:center; margin:0 auto; padding:0px;'>
-                                        <img style='width:230px;height: 260px;border: 1px solid black;' id="simg">
-                                        <!-- <input type="file" accept="image/*" onchange="preview_image(event)"><br> -->
+                                        <?php
+                                        if (isset($_GET['view'])) {
+                                            $result = $con->query("SELECT * FROM `student_image` WHERE id = '$student_id'");
+                                            if ($result->num_rows > 0) {
+                                                while ($row = $result->fetch_assoc()) {
+                                        ?>
+                                                    <img id="output_image" src="data:image/jpg;charset=utf8;base64,<?php echo base64_encode($row['image']); ?>" />
+                                            <?php
+                                                }
+                                            }
+                                            ?>
+
+                                        <?php
+                                        } else {
+                                        ?>
+                                            <img id="output_image">
+                                        <?php
+                                        }
+                                        ?>
                                     </div>
 
                                 </div>
@@ -171,8 +202,13 @@ $description = "Online Examination Result Management System (ERMS)-SLGTI";
                                     </div>
 
                                     <div class='row'>
-                                        <div class='col-4'><label for="cid"> Course Name: </label></div>
+                                        <div class='col-4'><label for="cid"> Course Code: </label></div>
                                         <div class='col-8'><input type="text" class="form-control" name="cid" value="<?php echo $cid; ?>" disabled></div>
+                                    </div>
+
+                                    <div class='row'>
+                                        <div class='col-4'><label for="bid"> Batch No: </label></div>
+                                        <div class='col-8'><input type="text" class="form-control" name="bid" value="<?php echo $bid; ?>" disabled></div>
                                     </div>
 
                                     <div class='row'>
