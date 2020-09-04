@@ -44,21 +44,28 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
             $result =mysqli_query($con,$sql);
             if(mysqli_num_rows($result)==1){
                 $row = mysqli_fetch_assoc($result);
-                if($password == $row['password']){
+                $type=$row['user_type'];
+                if($password == $row['password'] && $type=="lecturer" ){
                     $_SESSION['username'] = $username;
                     header("Location: admin/index.php");
-                }else{
-                    echo  '<div class="alert alert-danger alert-dismissible fade show" role="alert">
-                    <strong>Password is wrong!</strong> check your password or user name then press the signin button.
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                      <span aria-hidden="true">&times;</span>
-                    </button>
-                  </div>';
                 }
-            }
+                else if($password == $row['password'] && $type=="student" ){
+                    $_SESSION['username'] = $username;
+                    header("Location: students/index.php");
+                }
+                else {
+                        echo  '<div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        <strong> Password is wrong!</strong> check your password or user name then press the signin button.
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>';
+                    }
+                    
+                }            
             else{
                 echo    '<div class="alert alert-info" role="alert">
-                            User not found!
+                user not found!
                         </div>';
             }
         }
@@ -122,14 +129,14 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                                             <input type="text" class="form-control" id="inputAddress2" name="user_name"
                                                 placeholder="User name">
                                         </div>
-                                        <div class="form-group">
+                                        <!-- <div class="form-group">
                                             <input type="email" class="form-control" id="inputAddress" name="email"
                                                 placeholder="Email">
                                         </div>
                                         <div class="form-group">
                                             <input type="text" class="form-control" id="inputAddress2" name="Verify"
                                                 placeholder="Verification code">
-                                        </div>
+                                        </div> -->
                                         <div class="form-row">
                                             <div class="form-group col-md-6">
                                                 <input type="password" class="form-control" id=""
