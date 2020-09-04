@@ -1,4 +1,10 @@
 <?php
+session_start();
+if (!isset($_SESSION['username'])) {
+    header('Location: .././index.php');
+}
+?>
+<?php
 $title = 'Dashboard';
 $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
 ?>
@@ -14,11 +20,29 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
     <link rel="stylesheet" href="dashboard/css/prograss-bar-main.css">
     <link rel="stylesheet" href="dashboard/css/profile.css">
 </head>
+<?php 
+if (isset($_GET['logout']) && isset($_SESSION['username']) ) {
+    unset($_SESSION['username']);  
+    header('Location: .././index.php');         
+}
+?>
 
 <body>
     <main class='page-content pt-1'>
         <?php include_once('nav.php');
         ?>
+         <!-- LOGOUT BUTTON -->
+         <?php
+        if (isset($_SESSION['username'])) {           
+        }
+        ?>
+        <div class="row">
+            <div class="col-11"></div>            
+            <div class="col-1">              
+                <spam style="text-transform:capitalize;"><?php echo $_SESSION['username']; ?></spam>
+                <a class="btn btn-success" href="?logout">Logout</a>
+            </div>
+<!-- end logout button -->
         <div id='overlay' class='overlay'></div>
         <div class='container-fluid p-1'>
             <!-- #1 Insert Your Content-->
