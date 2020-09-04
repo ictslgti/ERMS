@@ -37,8 +37,8 @@ if (isset($_GET['logout']) && isset($_SESSION['username']) ) {
         ?>
         <div class="row">
             <div class="col-11"></div>            
-            <div class="col-1">                
-                <spam><?php echo $_SESSION['username']; ?></spam>
+            <div class="col-1">              
+                <spam style="text-transform:capitalize;"><?php echo $_SESSION['username']; ?></spam>
                 <a class="btn btn-success" href="?logout">Logout</a>
             </div>
 <!-- end logout button -->
