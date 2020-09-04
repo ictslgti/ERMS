@@ -72,9 +72,7 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
 
                                             <div class="col-3"></div>
 
-                                            <div class="col-3" align="right">
-                                                <button type="button" id="add_button" class="btn btn-info btn-sm">Chart</button>
-                                            </div>
+                                            
                                         </div>
                                     </div>
 
