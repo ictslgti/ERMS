@@ -35,7 +35,7 @@ if ( mysqli_query( $con, $sql ) ) {
 $sql = "CREATE TABLE student_enroll
 ( 
 id varchar (15) NOT NULL PRIMARY KEY,
-course_id varchar(3) NOT NULL ,
+course_code varchar(3) NOT NULL ,
 batch_no  varchar(15) NOT NULL ,
 academic_year varchar(10) NOT NULL ,
 course_mode varchar(10),
