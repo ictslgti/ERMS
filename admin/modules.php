@@ -23,7 +23,7 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
 
 if(isset($_GET['delete'])){
     $id = $_GET['delete'];
-    $sql = "DELETE FROM `modules` WHERE `modules`.`code` = $id";
+    $sql = "DELETE FROM `modules` WHERE `modules`.`code` = '$id'";
     if(mysqli_query($con,$sql)){
         echo "
        <div class='alert alert-success' role='alert'>
@@ -66,7 +66,7 @@ if(isset($_GET['delete'])){
                                 <th scope='col'>Name</th>
                                 <th scope='col'>Semester_Id</th>
                                 <th scope='col'>Course_Name</th>
-                                <th scope='col'>Options</th>
+                                <th scope='col'></th>
 
                             </tr>
                             
@@ -76,7 +76,7 @@ if(isset($_GET['delete'])){
 if(isset($_GET['view']))
 {
     $view=$_GET['view'];
-    $sql = "select * from modules where course_name=(select code from courses where id=$view);";
+    $sql = "SELECT * FROM `modules` where course_code='$view'";
 }
 else
 {
@@ -87,17 +87,22 @@ if(mysqli_num_rows($result)>0){
     while($row = mysqli_fetch_assoc($result)){
         echo '<tr>
             <td>',$row['code'],'</td>
-            <td>',$row['Name'],'</td>
-            <td>',$row['Semester_Id'],'</td>
-            <td>',$row['Course_Name'],'</td>
+            <td>',$row['name'],'</td>
+            <td>',$row['semester_id'],'</td>
+            <td>',$row['course_code'],'</td>
             
 
             
             <td>
+            <div class="row">
+            <div class="col"></div>
+            <div class="col-auto">
             <div class="btn-group btn-sm" role="group" aria-label="Basic example">
-            <a href="module.php?edit=',$row['code'],'" class="btn btn-warning" > Edit </a> 
-            <a href="?delete=',$row['code'],'" class="btn btn-danger"> Delete </a>
+            <a href="module.php?edit=', $row['code'], '" class="btn btn-warning" > <img src="https://img.icons8.com/android/18/000000/edit.png"/> </a> 
+            <a href="?delete=', $row['code'], '" class="btn btn-danger"><img src="https://img.icons8.com/windows/18/000000/delete-forever.png"/> </a>
             
+            </div>
+            </div>
           </div>
             </td>
         </tr>';
