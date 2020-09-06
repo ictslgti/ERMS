@@ -28,7 +28,9 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
 <?php
 if(isset($_GET['delete'])){
     $id = $_GET['delete'];
-    $sql = "DELETE FROM `batch` WHERE `batch`.`batch_no` = '$id'";
+    $nv=$_GET['nvq'];
+    $de=$_GET['dep'];
+    $sql = "DELETE FROM `batch` WHERE `batch`.`batch_no` = '$id' and `batch`.`department_code` = '$de' and `batch`.`NVQ_level` = '$nv'";
     if(mysqli_query($con,$sql)){
         echo "
        <div class='alert alert-success' role='alert'>
@@ -80,7 +82,7 @@ if(mysqli_num_rows($result)>0){
             <td>
             <div class="btn-group btn-sm" role="group" aria-label="Basic example">
             <a href="batch.php?edit=',$row['batch_no'],'" class="btn btn-warning" > <img src="https://img.icons8.com/android/18/000000/edit.png"/> </a> 
-            <a href="?delete=',$row['batch_no'],'" class="btn btn-danger"> <img src="https://img.icons8.com/windows/18/000000/delete-forever.png"/> </a>
+            <a href="?delete=',$row['batch_no'],'& dep=',$row['department_code'],'& nvq=',$row['NVQ_level'],'" class="btn btn-danger"> <img src="https://img.icons8.com/windows/18/000000/delete-forever.png"/> </a>
             <a href="students.php?view=',$row['batch_no'],'" class="btn btn-success"> view studnts </a>
           </div>
             </td>
