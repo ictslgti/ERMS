@@ -110,7 +110,7 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
                                 <th scope='col'>Total Lec</th>
                             </tr>
                             <?php
-                            $sql = " select student_id,status from attendance group by student_id";
+                            $sql = " select student_id,status from student_attendance group by student_id";
                                             $result = mysqli_query($con, $sql);
                                             while ($row = mysqli_fetch_assoc($result)) {
                                  ?>
