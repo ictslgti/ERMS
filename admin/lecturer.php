@@ -482,11 +482,12 @@ This academic_year alredy submit
                                                         <?php echo $department;?></option>
                                                     <option disabled value="">Choose Department</option>
                                                     <?php
-                            $result = $con->query("SELECT `department_code` FROM `departments` ORDER BY `departments`.`department_code` ASC");
+                            $result = $con->query("SELECT * FROM `departments` ");
                             while ($row = $result->fetch_assoc()) {
                               unset($dno);
-                              $dno = $row['department_code'];
-                              echo '<option value=" '.$dno.'"  >'.$dno.'</option>';
+                              $dno = $row['code'];
+                              $dd=$row['name'];
+                              echo '<option value=" '.$dno.'"  >'.$dd.'</option>';
                             }
                           }
                           else
@@ -494,11 +495,12 @@ This academic_year alredy submit
                             ?>
                                                     <option selected disabled value="">Choose Department</option>
                                                     <?php
-                          $result = $con->query("SELECT `department_code` FROM `departments` ORDER BY `departments`.`department_code` ASC");
+                          $result = $con->query("SELECT * FROM `departments` C");
                           while ($row = $result->fetch_assoc()) {
                             unset($dno);
-                            $dno = $row['department_code'];
-                            echo '<option value=" '.$dno.'"  >'.$dno.'</option>';
+                            $dno = $row['code'];
+                            $dd=$row['name'];
+                            echo '<option value=" '.$dno.'"  >'.$dd.'</option>';
                           }
                             }
                             ?>
