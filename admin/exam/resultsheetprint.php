@@ -9,10 +9,11 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="print.css" media="print">
     <?php include_once("../../head.php"); ?>
     <?php include_once("../../config.php"); ?>
     <style>
-    th {
+        th {
             font-size: 12px;
             border: 1px solid black;
         }
@@ -21,9 +22,7 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
             font-size: 12px;
             border: 1px solid black;
         }
-
     </style>
-    
 </head>
 
 <body>
@@ -126,10 +125,10 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
 
             </tbody>
         </table>
-        <div class="text-center">
-            <a href="resultsheetprint.php" class="btn btn-primary">Print</a>
-        </div>
 
+        <div class="text-center">
+            <button onclick="window.print();" class="btn btn-primary" id="print-btn">Print</button>
+        </div>
 
     </div>
     <?php include_once("../../script.php"); ?>
