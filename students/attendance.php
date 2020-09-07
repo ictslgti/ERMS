@@ -94,15 +94,16 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
                                                                 <th scope='col'>STATUS</th>
                                                             </tr>
                                                             <?php
-                                                            $sql = " select date(date),time(date),status from attendance where student_id='2018ICTBIT01'";
+                                                            //$sql = " select date(date),time(date),status from attendance where student_id='2018ICTBIT01'";
+                                                            $sql =  " SELECT attendance.attendance_date, attendance.attendance_time, student_attendance.status FROM attendance INNER JOIN student_attendance ON attendance.attendance_id=student_attendance.id where student_id='2018ICTBIT01'";
                                                             $result = mysqli_query($con, $sql);
                                                             while ($row = mysqli_fetch_assoc($result)) {
                                                             ?>
 
 
                                                                 <tr>
-                                                                    <td scope='col'><?php echo $row['date(date)']; ?></td>
-                                                                    <td scope='col'><?php echo $row['time(date)']; ?></td>
+                                                                    <td scope='col'><?php echo $row['attendance_date']; ?></td>
+                                                                    <td scope='col'><?php echo $row['attendance_time']; ?></td>
                                                                     <td scope='col'><?php echo $row['status']; ?></td>
 
                                                                 <?php
@@ -113,7 +114,7 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
                                                                 </tr>
                                                                 <table>
                                                                     <?php
-                                                                    $sql = " select count(status) as take_session,session from attendance where student_id='2018ICTBIT01'";
+                                                                    $sql = " SELECT count(status) as take_session, session from attendance where student_id='2018ICTBIT01'";
                                                                     $result = mysqli_query($con, $sql);
                                                                     while ($row = mysqli_fetch_assoc($result)) {
                                                                         $per = $row['take_session'];
@@ -129,7 +130,7 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
                                                                         ?>
                                                                         </tr>
                                                                         <?php
-                                                                        $sql = " select count(status) as take_session,session from attendance where student_id='2018ICTBIT01' order by module";
+                                                                        $sql = " SELECT count(status) as take_session,session from attendance where student_id='2018ICTBIT01' order by module";
                                                                         $result = mysqli_query($con, $sql);
                                                                         while ($row = mysqli_fetch_assoc($result)) {
 
