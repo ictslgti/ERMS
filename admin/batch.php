@@ -162,7 +162,7 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                                                             unset($dno);
                                                             $dno = $row['code'];
                                                             $na = $row['name'];
-                                                            echo '<option value=" ' . $dno . '"  >' . $na . '</option>';
+                                                            echo '<option value=" '. $dno .'"  >' . $na . '</option>';
                                                         }
                                                     } else {
                                                         ?>
@@ -173,7 +173,7 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                                                             unset($dno);
                                                             $na = $row['name'];
                                                             $dno = $row['code'];
-                                                            echo '<option value=" ' . $dno . '"  >' . $na . '</option>';
+                                                            echo '<option value=" '. $dno .'"  >' . $na . '</option>';
                                                         }
                                                     }
                                                     ?>
@@ -240,7 +240,7 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                                                         while ($row = $result->fetch_assoc()) {
                                                             unset($year);
                                                             $year = $row['academic_year'];
-                                                            echo '<option value=" ' . $year . '"  >' . $year . '</option>';
+                                                            echo '<option value=" '. $year .'"  >' . $year . '</option>';
                                                         }
                                                         ?>
                                                     <?php
@@ -252,7 +252,7 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                                                         while ($row = $result->fetch_assoc()) {
                                                             unset($year);
                                                             $year = $row['academic_year'];
-                                                            echo '<option value=" ' . $year . '"  >' . $year . '</option>';
+                                                            echo '<option value=" '. $year .'"  >' . $year . '</option>';
                                                         }
                                                         ?>
 
