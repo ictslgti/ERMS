@@ -138,7 +138,7 @@ if(isset($_POST['submit'])
         </button>
       </div>";
    } else {
-       
+    echo "Error: " . $sql . "<br>" . mysqli_error($con);
        echo "
        <div class='alert alert-danger' role='alert'>
        This academic_year alredy submit 
@@ -150,10 +150,10 @@ if(isset($_POST['submit'])
             
              
         }else{ 
-            $statusMsg = 'Sorry, only JPG, JPEG, PNG, & GIF files are allowed to upload.'; 
+           echo $statusMsg = 'Sorry, only JPG, JPEG, PNG, & GIF files are allowed to upload.'; 
         } 
     }else{ 
-        $statusMsg = 'Please select an image file to upload.'; 
+      echo  $statusMsg = 'Please select an image file to upload.'; 
     }       
 }
 ?>
@@ -487,7 +487,7 @@ This academic_year alredy submit
                               unset($dno);
                               $dno = $row['code'];
                               $dd=$row['name'];
-                              echo '<option value=" '.$dno.'"  >'.$dd.'</option>';
+                              echo '<option value="'.$dno.'"  >'.$dd.'</option>';
                             }
                           }
                           else
@@ -495,12 +495,12 @@ This academic_year alredy submit
                             ?>
                                                     <option selected disabled value="">Choose Department</option>
                                                     <?php
-                          $result = $con->query("SELECT * FROM `departments` C");
+                          $result = $con->query("SELECT * FROM `departments` ");
                           while ($row = $result->fetch_assoc()) {
                             unset($dno);
                             $dno = $row['code'];
                             $dd=$row['name'];
-                            echo '<option value=" '.$dno.'"  >'.$dd.'</option>';
+                            echo '<option value="'.$dno.'"  >'.$dd.'</option>';
                           }
                             }
                             ?>
