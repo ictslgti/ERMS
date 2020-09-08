@@ -1,3 +1,9 @@
+<?php 
+if (isset($_GET['logout']) && isset($_SESSION['username']) ) {
+    unset($_SESSION['username']);  
+    header('Location: .././index.php');         
+}
+?>
 <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm">
     <div class="container-fluid ">
         <a class="navbar-brand" href="#">ERMS</a>
@@ -96,7 +102,7 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 
-                        <span class="badge badge-secondary">Admin</span>
+                        <span class="badge badge-secondary"><?php echo $_SESSION['username']; ?></span>
                         <i class="fas fa-user-circle"></i>
 
                     </a>
@@ -105,7 +111,7 @@
 
                         </a>
                         <a class="dropdown-item" href="#">Profile</a>
-                        <a class="dropdown-item" href="#">Signout</a>
+                        <a class="dropdown-item" href="?logout">Signout</a>
                     </div>
                 </li>
             </ul>
