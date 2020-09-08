@@ -23,19 +23,19 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
     <head>
         <?php
           include_once("./head.php"); 
-        //   include_once("databases/config.php");
+          include_once("databases/config.php");
     ?>
         <?php
-            define( 'DB_HOST', 'tvec.achchuthan.org' );
-            define( 'DB_USER', 'ermsuser' );
-            define( 'DB_PASS', '!23$cfDSrt67' );
-            define( 'DB_NAME', 'erms' );
+            // define( 'DB_HOST', 'tvec.achchuthan.org' );
+            // define( 'DB_USER', 'ermsuser' );
+            // define( 'DB_PASS', '!23$cfDSrt67' );
+            // define( 'DB_NAME', 'erms' );
 
-            $con = mysqli_connect( 'tvec.achchuthan.org', 'ermsuser', '!23$cfDSrt67', 'erms' );
-            if ( mysqli_connect_errno() ) {
-                echo 'Failed to connect to MySQL: ' . mysqli_connect_error();
+            // $con = mysqli_connect( 'tvec.achchuthan.org', 'ermsuser', '!23$cfDSrt67', 'erms' );
+            // if ( mysqli_connect_errno() ) {
+            //     echo 'Failed to connect to MySQL: ' . mysqli_connect_error();
 
-            }  
+            // }  
         ?>
         
         <!-- #begin "login form online links @k-avin" -->
