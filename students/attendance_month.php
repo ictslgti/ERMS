@@ -106,6 +106,7 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
 
                                                     $result = mysqli_query($con, $sql);
                                                     while ($row = mysqli_fetch_assoc($result)) {
+                                                        $row1 = (($row['take_session'] / $row['status']) * 100)
                                                     ?>
                                                         <tr>
                                                             <td scope='col'>
@@ -118,7 +119,7 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
                                                                 <?php echo $row['total_session']; ?>
                                                             </td>
                                                             <td scope='col'>
-                                                                <?php echo $row['%']; ?>
+                                                                <?php echo $row1 ."%"; ?>
                                                             </td>
                                                         <?php
                                                     }
