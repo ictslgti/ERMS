@@ -164,7 +164,7 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                                             Name <br>
                                             <div class="form-group">
                                                 <div class="input-group input-group-sm mb-3">
-                                                    <input type="text" name="d_name" placeholder="Inotormation communication technology" value="<?php echo $d_name; ?>" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" id="validationServer01" required>
+                                                    <input type="text" name="d_name" placeholder="Information communication technology" value="<?php echo $d_name; ?>" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" id="validationServer01" required>
                                                 </div>
                                             </div>
                                         </div>
@@ -185,7 +185,7 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                                         ?>
                                         <button type="submit" name="save" class="btn btn-outline-success" data-toggle="modal" data-target="#exampleModal">
                                             save
-                                        </button>
+                                        </button> 
                                     <?php
                                 } else {
                                     ?>
