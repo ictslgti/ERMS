@@ -41,7 +41,7 @@ $description = "Online Examination Result Management System (ERMS)-SLGTI";
         <!-- view  start -->
         <?php
         $student_id = $stitle = $full_name = $ini_name = $gender = $civil = $email = $nic = $dob = $phone = $address = $ds =
-            $district = $province = $zip = $blood = $gname = $gaddress = $gphone = $grelation = $regno = $cid = $ayear =
+            $district = $province = $zip = $blood = $gname = $gaddress = $gphone = $grelation = $regno = $cid =
             $mode = $status = $enrolldate = $exitdate = null;
         if (isset($_GET['view'])) {
             $student_id = $_GET['view'];
@@ -73,7 +73,6 @@ $description = "Online Examination Result Management System (ERMS)-SLGTI";
                 $regno = $row['id'];
                 $cid = $row['course_code'];
                 $bid = $row['batch_no'];
-                $ayear = $row['academic_year'];
                 $mode = $row['course_mode'];
                 $status = $row['student_status'];
                 $enrolldate = $row['enroll_date'];
@@ -209,11 +208,6 @@ $description = "Online Examination Result Management System (ERMS)-SLGTI";
                                     <div class='row'>
                                         <div class='col-4'><label for="bid"> Batch No: </label></div>
                                         <div class='col-8'><input type="text" class="form-control" name="bid" value="<?php echo $bid; ?>" disabled></div>
-                                    </div>
-
-                                    <div class='row'>
-                                        <div class='col-4'><label for="ayear"> Academic Year: </label></div>
-                                        <div class='col-8'><input type="text" class="form-control" name="ayear" value="<?php echo $ayear; ?>" disabled></div>
                                     </div>
 
                                     <div class='row'>
