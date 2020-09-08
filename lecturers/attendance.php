@@ -10,7 +10,6 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
 
   <?php include_once('.././head.php');
   include_once('../config.php');
-  $dat = null;
   ?>
 </head>
 
@@ -38,25 +37,35 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
                       <div class="col-md-3" align="right">
                         <button type="button" id="add_button" class="btn btn-info btn-sm">Chart</button>
                       </div>
+
                     </div>
-                    
-                    
-
-                    <form action="" method="POST">
-                      <input type="date" name="prese_date"><input type="submit" value="show details" name="show_date">
-
-                      
                       <div class="dropdown">
-                                                    <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" value="show details" name="show_date">
-                                                        Attendance Review
-                                                    </button>
-                                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                                        <a class="dropdown-item" href="attendance_month.php">Month-wise</a>
-                                                        <a class="dropdown-item" href="attendance_semester.php">Semester-wise</a>
-                                                        <a class="dropdown-item" href="attendance.php">Date-wise</a>
-                                                    </div>
-                                                </div>
-                    </form>
+                        <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" value="show details" name="show_date">
+                          Attendance Review
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                          <a class="dropdown-item" href="attendance_month.php">Month-wise</a>
+                          <a class="dropdown-item" href="attendance_semester.php">Semester-wise</a>
+                          <a class="dropdown-item" href="attendance.php">Date-wise</a>
+                        </div>
+                      </div>
+                      <div class="dropdown">
+                      <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" value="show details" name="show_date">
+                        Batch:
+                      </button>
+                      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" href="#">Choose</a>
+                        <a class="dropdown-item" href="?Batch 01-BRIDGING">Batch 01-BRIDGING</a>
+                        <a class="dropdown-item" href="?Batch 01-NVQ-05">Batch 01-NVQ-05</a>
+                        <a class="dropdown-item" href="?Batch 02-BRIDGING">Batch 02-BRIDGING</a>
+                        <a class="dropdown-item" href="?Batch 02-NVQ-05">Batch 02-NVQ-05</a>
+                        <a class="dropdown-item" href="?Batch 03-BRIDGING">Batch 03-BRIDGING</a>
+                        <a class="dropdown-item" href="?Batch 03-NVQ-05">Batch 03-NVQ-05</a>
+                        <a class="dropdown-item" href="?Batch 04-BRIDGING">Batch 04-BRIDGING</a>
+                        <a class="dropdown-item" href="?Batch 04-NVQ-05">Batch 04-NVQ-05</a>
+
+                      </div>
+                    </div>
                   </div>
 
                   <div class="card-body">
@@ -69,50 +78,56 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
                           <tr>
                             <th>Student Name</th>
                             <th>Index Number</th>
-                            <th>Batch</th>
-                            <th>Attendance Status</th>
-                            <th>Attendance Date</th>
+                            <th>Module Code</th>
+                            <th>Percentage over taken sessions</th>
                           </tr>
-                          <tr>
 
 
 
-                            <?php
-                            if (isset($_POST['show_date'])) {
-                              $dat = $_POST['prese_date'];
-                              echo $dat . "-" . "attendance details";
-                              $sql = "select  DISTINCT s.student_id,s.student_name,s.student_batch,a.status,date(a.attendance_date) as attendance_date from student s inner join 
-                        attendance a on s.student_id=a.student_id inner join batch b on s.student_batch=b.Batch_id and attendance_date='$dat';";
-                            } else {
-                              $sql = "select  DISTINCT s.student_id,s.student_name,s.student_batch,a.status,date(a.attendance_date) as attendance_date from student s inner join attendance a on s.student_id=a.student_id 
-                          inner join batch b on s.student_batch=b.Batch_id and attendance_date=curdate();";
-                            }
 
-
-                            $result = mysqli_query($con, $sql);
-                            while ($row = mysqli_fetch_assoc($result)) {
-                            ?>
-                          <tr>
-                            <td scope='col'>
-                              <?php echo $row['student_name']; ?>
-                            </td>
-                            <td scope='col'>
-                              <?php echo $row['student_id']; ?>
-                            </td>
-                            <td scope='col'>
-                              <?php echo $row['student_batch']; ?>
-                            </td>
-                            <td scope='col'>
-                              <?php echo $row['status']; ?>
-                            </td>
-                            <td scope='col'>
-                              <?php echo $row['attendance_date']; ?>
-                            </td>
                           <?php
-                            }
-                          ?>
+                          // if (isset($_POST['show_date'])) {
+                          //   $dat = $_POST['prese_date'];
+                          //   echo $dat . "-" . "attendance details";
+                          //   $sql = "SELECT 
+                          //   `student`.`id`,`student`.`full_name`,`student_enroll`.`course_id`,
+                          //   `student_enroll`.`academic_year`,`student`.`phone_no`
+                          //   FROM student 
+                          //   LEFT JOIN student_enroll
+                          //   ON `student`.`id` = `student_enroll`.`id`
+                          //   ORDER BY `id` ASC";
+                          // } else {
 
-                          </tr>
+                          // "select s.name_with_initials,s.id,m.name from student s inner join modules m on s.id=sd.id 
+                          // inner join attendance a on s.id=a.student_id where attendance_date=curdate();";
+                          // }
+
+                          $sql = "SELECT `student`.`id`,`student`.`name_with_initials`,`student_enroll`.`batch_no`,`student_enroll`.`course_code`,`attendance`.`code` 
+                          FROM `student` LEFT JOIN `student_enroll` ON `student`.`id` = `student_enroll`.`id` LEFT JOIN `student_attendance` ON
+                          `student`.`id` = `student_attendance`.`student_id` LEFT JOIN `attendance` ON
+                          `student_attendance`.`id` = `attendance`.`attendance_id` ORDER BY `student`.`id` ASC ";
+
+                          $result = mysqli_query($con, $sql);
+                          while ($row = mysqli_fetch_assoc($result)) {
+                          ?>
+                            <tr>
+                              <td scope='col'>
+                                <?php echo $row['name_with_initials']; ?>
+                              </td>
+                              <td scope='col'>
+                                <?php echo $row['id']; ?>
+                              </td>
+                              <td scope='col'>
+                                <?php echo $row['code']; ?>
+                              </td>
+                              <td scope='col'>
+                                <?php echo $row['']; ?>
+                              </td>
+                            <?php
+                          }
+                            ?>
+
+                            </tr>
                         </thead>
                         <tbody>
 
