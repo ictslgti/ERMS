@@ -22,7 +22,7 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
 
     <head>
         <?php
-          include_once("./head.php"); 
+        //   include_once("./head.php"); 
           include_once("databases/config.php");
     ?>
         <?php
@@ -39,8 +39,7 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
         ?>
         
         <!-- #begin "login form online links @k-avin" -->
-        <link rel="stylesheet" type="text/
-	css" href="css/main-login.css">
+        <link rel="stylesheet" type="text/css" href="css/main-login.css">
         <link href="https://fonts.googleapis.com/css?family=Poppins:600&display=swap" rel="stylesheet">
         <!-- #end "login form online links @k-avin" -->
         <!-- login form online icon script @k-avin -->
@@ -114,7 +113,7 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                     <a href="#">About the application</a>
                     <div class="button">
                         <input type="submit" class="lbtn" value="Signin" name="signin">
-                        <input type="button" class="sbtn" value="Forgot" class="btn btn-primary" data-toggle="modal"
+                        <input type="button" class="sbtn" value="Reset" class="btn btn-primary" data-toggle="modal"
                             data-target="#staticBackdrop">
                     </div>
                     <p>All Rights Reserved. Designed and Developed by Department of Information and Communication
@@ -128,7 +127,7 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                             <form method="post">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h5 class="modal-title" id="staticBackdropLabel">Forgot</h5>
+                                        <h5 class="modal-title" id="staticBackdropLabel">Reset password</h5>
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                             <span aria-hidden="true">&times;</span>
                                         </button>
@@ -164,7 +163,7 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary"
                                             data-dismiss="modal">Close</button>
-                                        <button type="submit" class="btn btn-primary" name="forgot">Forgot</button>
+                                        <button type="submit" class="btn btn-primary" name="forgot">Reset</button>
                                     </div>
                                 </div>
                             </form>
