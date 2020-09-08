@@ -12,6 +12,12 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
 </head>
 
 <body>
+    <?php
+    $semester = null;
+    if (isset($_GET['semester'])) {
+        $semester = $_GET['semester'];
+    }
+    ?>
     <main class='page-content pt-2'>
         <?php include_once('nav.php');
         ?>
@@ -52,9 +58,9 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
                                                     Semester:
                                                 </button>
                                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                                    <a class="dropdown-item" href="#">Choose</a>
-                                                    <a class="dropdown-item" href="#">1 st Semester </a>
-                                                    <a class="dropdown-item" href="#">2 nd Semester</a>
+                                                    <a class="dropdown-item" href="?close">Choose</a>
+                                                    <a class="dropdown-item" href="?semester=1">1 st Semester </a>
+                                                    <a class="dropdown-item" href="?semester=2">2 nd Semester</a>
                                                 </div>
                                             </div>
 
@@ -62,6 +68,7 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
 
                                             <div class="col-3" align="right">
                                                 <button type="button" id="add_button" class="btn btn-info btn-sm">Chart</button>
+                                                <?php echo $semester; ?>
                                             </div>
                                         </div>
                                     </div>
@@ -77,8 +84,7 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
                                                         <th>Course</th>
                                                         <th>Take session</th>
                                                         <th>points</th>
-                                                        <th>remarks</th>
-                                                        <th>Attendance Date</th>
+                                                        <th>Percentage over taken sessions</th>
                                                     </tr>
 
                                                     <?php
@@ -103,16 +109,13 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
                                                                 <?php echo $row['Course']; ?>
                                                             </td>
                                                             <td scope='col'>
-                                                                <?php echo $row['student_id']; ?>
+                                                                <?php echo $row['']; ?>
                                                             </td>
                                                             <td scope='col'>
-                                                                <?php echo $row['student_batch']; ?>
+                                                                <?php echo $row['']; ?>
                                                             </td>
                                                             <td scope='col'>
-                                                                <?php echo $row['status']; ?>
-                                                            </td>
-                                                            <td scope='col'>
-                                                                <?php echo $row['attendance_date']; ?>
+                                                                <?php echo $row['']; ?>
                                                             </td>
                                                         <?php
                                                     }
