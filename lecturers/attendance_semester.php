@@ -12,6 +12,12 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
 </head>
 
 <body>
+    <?php
+    $semester = null;
+    if (isset($_GET['semester'])) {
+        $semester = $_GET['semester'];
+    }
+    ?>
     <main class='page-content pt-2'>
         <?php include_once('nav.php');
         ?>
@@ -53,8 +59,8 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
                                                 </button>
                                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                                     <a class="dropdown-item" href="#">Choose</a>
-                                                    <a class="dropdown-item" href="#">1 st Semester </a>
-                                                    <a class="dropdown-item" href="#">2 nd Semester</a>
+                                                    <a class="dropdown-item" href="?semester=1">1 st Semester </a>
+                                                    <a class="dropdown-item" href="?semester=2">2 nd Semester</a>
                                                 </div>
                                             </div>
 
@@ -62,6 +68,7 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
 
                                             <div class="col-3" align="right">
                                                 <button type="button" id="add_button" class="btn btn-info btn-sm">Chart</button>
+                                                <?php echo $semester; ?>
                                             </div>
                                         </div>
                                     </div>
@@ -74,50 +81,23 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
                                             <table class="table table-striped table-bordered" id="attendance_table">
                                                 <thead>
                                                     <tr>
-                                                        <th>Course</th>
+                                                        <th>student Id</th>
                                                         <th>Take session</th>
-                                                        <th>points</th>
-                                                        <th>remarks</th>
-                                                        <th>Attendance Date</th>
+                                                        <th>Percentage over taken sessions</th>
                                                     </tr>
 
-                                                    <?php
-                                                    if (isset($_POST['show_date'])) {
-                                                        $dat = $_POST['prese_date'];
-                                                        $sql = "SELECT 
-                        FROM attendance
-                        LEFT JOIN student_enroll
-                        ON `student`.`id` = `student_enroll`.`id`
-                        ORDER BY `id` ASC;";
-                                                    } else {
-                                                        $sql = "select  DISTINCT s.student_id,s.student_name,s.student_batch,a.status,date(a.attendance_date) as attendance_date from student s inner join attendance a on s.student_id=a.student_id 
-                          inner join batch b on s.student_batch=b.Batch_id and attendance_date=curdate();";
-                                                    }
+                                                    <tr>
+                                                        <td scope='col'>
 
+                                                        </td>
+                                                        <td scope='col'>
 
-                                                    $result = mysqli_query($con, $sql);
-                                                    while ($row = mysqli_fetch_assoc($result)) {
-                                                    ?>
-                                                        <tr>
-                                                            <td scope='col'>
-                                                                <?php echo $row['Course']; ?>
-                                                            </td>
-                                                            <td scope='col'>
-                                                                <?php echo $row['student_id']; ?>
-                                                            </td>
-                                                            <td scope='col'>
-                                                                <?php echo $row['student_batch']; ?>
-                                                            </td>
-                                                            <td scope='col'>
-                                                                <?php echo $row['status']; ?>
-                                                            </td>
-                                                            <td scope='col'>
-                                                                <?php echo $row['attendance_date']; ?>
-                                                            </td>
-                                                        <?php
-                                                    }
-                                                        ?>
-                                                        </tr>
+                                                        </td>
+                                                        <td scope='col'>
+
+                                                        </td>
+
+                                                    </tr>
                                                 </thead>
                                                 <tbody>
 
