@@ -277,9 +277,9 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                                                                 unset($dno);
                                                                 $dno = $row['name'];
                                                                 $cod = $row['code']
-                                                                ?>
-                                                                <option value="<?php echo $cod ?>"> <?php echo $dno ?></option>
-                                                            <?php
+                                                                
+                                                                echo '<option value="'. $cod .'"  >' . $dno . '</option>';
+                                                            
                                                         }
                                                     } else {
                                                         ?>
@@ -290,7 +290,7 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                                                                 unset($dno);
                                                                 $dno = $row['name'];
                                                                 $cod = $row['code'];
-                                                                echo '<option value=" ' . $cod . '"  >' . $dno . '</option>';
+                                                                echo '<option value="'. $cod .'"  >' . $dno . '</option>';
                                                             }
                                                         }
                                                         ?>
