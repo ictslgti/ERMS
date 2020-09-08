@@ -36,7 +36,7 @@ if(isset($_GET['delete'])){
         </button>
       </div>
         <?php
-    }
+    }  
     else{
     $sql = "DELETE FROM `departments` WHERE `departments`.`code` = '$id'";
     if(mysqli_query($con,$sql)){
