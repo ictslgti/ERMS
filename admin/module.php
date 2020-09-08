@@ -262,24 +262,22 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                                                             $result1 = $con->query("select c.name,c.code from courses c inner join modules m on c.code=m.course_code and m.code='$id'; ");
                                                             if ($row1 = $result1->fetch_assoc()) {
                                                                 unset($dno);
-                                                                $dno = $row1['name'];
-                                                                $cod = $row1['code']
-                                                                ?>
-                                                                <option selected value="<?php echo $cod ?>"> <?php echo $dno ?></option>
-                                                            <?php
+                                                                $dno = $row1['c.name'];
+                                                                $cod = $row1['c.code'];
+                                                                echo '<option value="'.$cod.'" >'.$dno.'</option>';
                                                         }
                                                         ?>
 
                                                             <option disabled value="">Choose course</option>
                                                             <?php
-                                                            $result = $con->query("SELECT * FROM `courses`  ");
+                                                            $result = $con->query("SELECT * FROM `courses`");
                                                             while ($row = $result->fetch_assoc()) {
                                                                 unset($dno);
                                                                 $dno = $row['name'];
-                                                                $cod = $row['code']
+                                                                $cod = $row['code'];
                                                                 
-                                                                echo '<option value="'. $cod .'"  >' . $dno . '</option>';
-                                                            
+                                                                echo '<option value="'.$cod.'"  >'.$dno.'</option>';
+                                                              
                                                         }
                                                     } else {
                                                         ?>
