@@ -5,10 +5,20 @@ $description = "Online Examination Result Management System (ERMS)-SLGTI";
 
 <!DOCTYPE html>
 <html lang="en">
+<?php include_once("../head.php"); ?>
+<?php include_once('../databases/config.php'); ?>
+<?php
+$course_name = '';
+$query = "SELECT * FROM courses";
+$result = mysqli_query($con, $query);
+while ($row = mysqli_fetch_array($result)) {
+    $course_name .= '<option value="' . $row["code"] . '">' . $row["code"] . '</option>';
+}
+?>
+
 
 <head>
-    <?php include_once("../head.php"); ?>
-    <?php include_once('../databases/config.php'); ?>
+
 
     <!-- Image-->
     <script type='text/javascript'>
@@ -23,8 +33,8 @@ $description = "Online Examination Result Management System (ERMS)-SLGTI";
     </script>
     <style>
         #output_image {
-            width: 140px;
-            height: 10px;
+            width: 100px;
+            /* height: 50px; */
             /* border: 0px solid black; */
         }
     </style>
@@ -95,9 +105,9 @@ $description = "Online Examination Result Management System (ERMS)-SLGTI";
 
             if (mysqli_query($con, $sqlstudent)) {
                 echo '<div class="alert alert-success" role="alert">
-                New record created successfully';
+                New record created successfully ';
             } else {
-                echo '<div class="alert alert-warning" role="alert">insert  ' . $sqlstudent . "<br>" . mysqli_error($con);
+                echo '<div class="alert alert-warning" role="alert"> Insert  ' . $sqlstudent . "<br>" . mysqli_error($con);
             }
         }
 
@@ -106,7 +116,6 @@ $description = "Online Examination Result Management System (ERMS)-SLGTI";
             && !empty($_POST['regno'])
             && !empty($_POST['cid'])
             && !empty($_POST['bid'])
-            && !empty($_POST['ayear'])
             && !empty($_POST['mode'])
             && !empty($_POST['status'])
             && !empty($_POST['enrolldate'])
@@ -115,37 +124,30 @@ $description = "Online Examination Result Management System (ERMS)-SLGTI";
             $regno = $_POST['regno'];
             $cid = $_POST['cid'];
             $bid = $_POST['bid'];
-            $ayear = $_POST['ayear'];
             $mode = $_POST['mode'];
             $status = $_POST['status'];
             $enrolldate = $_POST['enrolldate'];
             $exitdate = $_POST['exitdate'];
 
-            $sqlenroll = "INSERT INTO student_enroll (id, course_code, batch_no, academic_year, course_mode, student_status,
-                    enroll_date, exit_date) VALUES ('$regno','$cid','$bid','$ayear','$mode','$status','$enrolldate','$exitdate')";
+            $sqlenroll = "INSERT INTO student_enroll (id, course_code, batch_no, course_mode, student_status,
+                    enroll_date, exit_date) VALUES ('$regno','$cid','$bid','$mode','$status','$enrolldate','$exitdate')";
 
             if (mysqli_query($con, $sqlenroll)) {
-                echo 'And Insert Successfully
-                    </div><button type="button" class="close" href="student.php" data-dismiss="alert" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                 </button>';
+                echo ' And Insert Successfully
+                    </div>';
             } else {
-                echo 'Error: </div> <button type="button" class="close" href="student.php" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-             </button></div>' . $sqlenroll . "<br>" . mysqli_error($con);
+                echo 'Error </div>' . $sqlenroll . "<br>" . mysqli_error($con);
             }
         }
 
         $regno = null;
         $image = null;
+
         if (
             isset($_POST['add'])
             && !empty($_POST['regno'])
         ) {
-
             $regno = $_POST['regno'];
-            $sta = $statusMsg = '';
-            $sta = 'error';
 
             if (!empty($_FILES["image"]["name"])) {
                 // Get file info 
@@ -161,25 +163,28 @@ $description = "Online Examination Result Management System (ERMS)-SLGTI";
 
                     if (mysqli_query($con, $sql)) {
                         echo "<div class='alert alert-success' role='alert'>
-                        insert success fully 
-                        <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+                                insert success fully 
+                            <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
                             <span aria-hidden='true'>&times;</span>
-                         </button>
-                       </div>";
+                            </button>
+                            </div>";
                     } else {
 
                         echo "<div class='alert alert-danger' role='alert'>
-                        This academic_year alredy submit 
-                        <a data-dismiss='alert' href='student.php'>dd</a>
-                         <span aria-hidden='true'>&times;</span>
-                         
-                       </div>";
+                                This academic_year alredy submit 
+                                <a data-dismiss='alert' href='student.php'>dd</a>
+                                    <span aria-hidden='true'>&times;</span></div>" . "<br>" . mysqli_error($con);
                     }
                 } else {
-                    $statusMsg = 'Sorry, only JPG, JPEG, PNG, & GIF files are allowed to upload.';
+                    echo '<div class="alert alert-danger" role="alert"> Sorry, only JPG, JPEG, PNG, & GIF files are allowed to upload.
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button></div>';
                 }
             } else {
-                $statusMsg = 'Please select an image file to upload.';
+                echo '<div class="alert alert-danger" role="alert"> Please select an image file to upload.<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button></div>';
             }
         }
 
@@ -221,7 +226,6 @@ $description = "Online Examination Result Management System (ERMS)-SLGTI";
                 $regno = $row['id'];
                 $cid = $row['course_code'];
                 $bid = $row['batch_no'];
-                $ayear = $row['academic_year'];
                 $mode = $row['course_mode'];
                 $status = $row['student_status'];
                 $enrolldate = $row['enroll_date'];
@@ -297,7 +301,6 @@ $description = "Online Examination Result Management System (ERMS)-SLGTI";
             isset($_POST['update'])
             && !empty($_POST['cid'])
             && !empty($_POST['bid'])
-            && !empty($_POST['ayear'])
             && !empty($_POST['mode'])
             && !empty($_POST['status'])
             && !empty($_POST['enrolldate'])
@@ -305,13 +308,12 @@ $description = "Online Examination Result Management System (ERMS)-SLGTI";
         ) {
             $cid = $_POST['cid'];
             $bid = $_POST['bid'];
-            $ayear = $_POST['ayear'];
             $mode = $_POST['mode'];
             $status = $_POST['status'];
             $enrolldate = $_POST['enrolldate'];
             $exitdate = $_POST['exitdate'];
 
-            $sqlenrolls = "UPDATE `student_enroll` SET `course_code` = '$cid', `batch_no` = '$bid', `academic_year` = '$ayear', `course_mode` = '$mode',
+            $sqlenrolls = "UPDATE `student_enroll` SET `course_code` = '$cid', `batch_no` = '$bid', `course_mode` = '$mode',
             `student_status` = '$status', `enroll_date` = '$enrolldate', `exit_date` = '$exitdate'  WHERE `student_enroll`.`id` = '$student_id'";
 
             if (mysqli_query($con, $sqlenrolls)) {
@@ -552,7 +554,7 @@ $description = "Online Examination Result Management System (ERMS)-SLGTI";
                                         <div class="custom-file">
                                             <input type="file" name="image" class="custom-file-input" id="customFile" accept="image/*" onchange="preview_image(event)">
                                             <label class="custom-file-label" for="customFile"> Choose</label>
-                                            <img id="output_image" />
+                                            <!-- <img id="output_image" /> -->
                                         </div>
                                     </div>
                                 </div>
@@ -577,71 +579,41 @@ $description = "Online Examination Result Management System (ERMS)-SLGTI";
 
                                     <div class="col-3">
                                         <label for="cid"> Course Name: </label>
-                                        <select name="cid" class="custom-select" value="<?php echo $cid; ?>" required>
-                                            <option selected disabled> Choose</option>
+                                        <select name="cid" id="cid" class="custom-select action">
                                             <?php
                                             if (isset($_GET['edit'])) {
-                                                echo '<option value="' . $cid . '" selected disabled>' . $cid . '</option>';
-                                                $sql = "SELECT DISTINCT * FROM `courses`";
-                                                // $sql = "SELECT `courses`.`code`,`student_enroll`.`course_code` FROM courses LEFT JOIN student_enroll ON `courses`.`code` = `student_enroll`.`course_code` GROUP BY CODE";
-                                                $result = mysqli_query($con, $sql);
-                                                if (mysqli_num_rows($result) > 0) {
-                                                    while ($row = mysqli_fetch_assoc($result)) {
-                                                        echo '<option value="' . $row["code"] . '">' . $row["code"] . '</option>';
-                                                    }
-                                                }
+                                            ?>
+                                                <option value="<?php echo $cid; ?>" selected disabled><?php echo $cid; ?></option>
+                                                <option value="">Choose</option>
+                                                <?php echo $course_name; ?>
+                                            <?php
                                             } else {
-                                                $sql = "SELECT DISTINCT * FROM `courses`";
-                                                $result = mysqli_query($con, $sql);
-                                                if (mysqli_num_rows($result) > 0) {
-                                                    while ($row = mysqli_fetch_assoc($result)) {
-                                                        echo '<option value="' . $row["code"] . '">' . $row["code"] . '</option>';
-                                                    }
-                                                } else {
-                                                    echo '<option value="null" selected disabled>No Course</option>';
-                                                }
+                                            ?>
+                                                <option value="">Choose</option>
+                                                <?php echo $course_name; ?>
+                                            <?php
                                             }
                                             ?>
+
+
                                         </select>
                                     </div>
 
                                     <div class="col-3">
                                         <label for="bid"> Batch No: </label>
-                                        <select name="bid" class="custom-select" value="<?php echo $bid; ?>" required>
-                                            <option selected disabled> Choose</option>
+                                        <select name="batch" id="batch" class="custom-select action">
+
                                             <?php
                                             if (isset($_GET['edit'])) {
-                                                echo '<option value="' . $bid . '" selected disabled>' . $bid . '</option>';
-                                                $sql = "SELECT DISTINCT * FROM `batch`";
-                                                // $sql = "SELECT `courses`.`code`,`student_enroll`.`course_code` FROM courses LEFT JOIN student_enroll ON `courses`.`code` = `student_enroll`.`course_code` GROUP BY CODE";
-                                                $result = mysqli_query($con, $sql);
-                                                if (mysqli_num_rows($result) > 0) {
-                                                    while ($row = mysqli_fetch_assoc($result)) {
-                                                        echo '<option value="' . $row["batch_no"] . '">' . $row["batch_no"] . '</option>';
-                                                    }
-                                                }
+                                            ?>
+                                                <option value="<?php echo $bid; ?>" selected disabled><?php echo $bid; ?></option>
+                                            <?php
                                             } else {
-                                                $sql = "SELECT DISTINCT * FROM `batch`";
-                                                $result = mysqli_query($con, $sql);
-                                                if (mysqli_num_rows($result) > 0) {
-                                                    while ($row = mysqli_fetch_assoc($result)) {
-                                                        echo '<option value="' . $row["batch_no"] . '">' . $row["batch_no"] . '</option>';
-                                                    }
-                                                } else {
-                                                    echo '<option value="null" selected disabled>No Course</option>';
-                                                }
+                                            ?>
+                                                <option value="" selected disabled>Choose</option>
+                                            <?php
                                             }
                                             ?>
-                                        </select>
-                                    </div>
-
-                                    <div class="col-3">
-                                        <label for="ayear"> Academic Year: </label>
-                                        <select name="ayear" class="custom-select" data-live-search="true" data-width="100%" value="<?php echo $ayear; ?>" required>
-                                            <option selected disabled> Choose</option>
-                                            <option value="A+" <?php if ($ayear == "A+") echo 'selected'; ?>> A+ </option>
-                                            <option value="A-" <?php if ($ayear == "A-") echo 'selected'; ?>> A- </option>
-                                            <option value="B+" <?php if ($ayear == "B+") echo 'selected'; ?>> B+ </option>
 
                                         </select>
                                     </div>
@@ -654,6 +626,11 @@ $description = "Online Examination Result Management System (ERMS)-SLGTI";
                                             <option value="Part" <?php if ($mode == "Part") echo 'selected'; ?>>Part Time</option>
                                             <option value="sort" <?php if ($mode == "Sort") echo 'selected'; ?>>Sort Time</option>
                                         </select>
+                                    </div>
+
+                                    <div class="col-3">
+                                        <label for="regno"> Registration No: </label>
+                                        <input type="text" name="regno" class="form-control" placeholder="2018SLGTIBIT04" value="<?php echo $regno; ?>" required>
                                     </div>
 
                                 </div>
@@ -684,10 +661,9 @@ $description = "Online Examination Result Management System (ERMS)-SLGTI";
                                     </div>
 
                                     <div class="col-3">
-                                        <label for="regno"> Registration No: </label>
-                                        <input type="text" name="regno" class="form-control" placeholder="2018SLGTIBIT04" value="<?php echo $regno; ?>" required>
+                                        <label for="image"> Image Preview: </label>
+                                        <div><img id="output_image" /></div>
                                     </div>
-
                                 </div>
                                 <!-- 2nd row end -->
                                 <br>
@@ -771,3 +747,47 @@ $description = "Online Examination Result Management System (ERMS)-SLGTI";
 </body>
 
 </html>
+
+<script>
+    $(document).ready(function() {
+        $('.action').change(function() {
+            if ($(this).val() != '') {
+                var action = $(this).attr("id");
+                var query = $(this).val();
+                var result = '';
+                if (action == "cid") {
+                    result = 'batch';
+                }
+                $.ajax({
+                    url: "student.php",
+                    method: "POST",
+                    data: {
+                        action: action,
+                        query: query
+                    },
+                    success: function(data) {
+                        $('#' + result).html(data);
+                    }
+                })
+            }
+        });
+    });
+</script>
+
+<?php
+//fetch.php
+if (isset($_POST["action"])) {
+    $connect = mysqli_connect("localhost", "root", "", "erms");
+    $output = '';
+    if ($_POST["action"] == "cid") {
+        $query = "SELECT `batches`.`batch_no` FROM `batches` LEFT JOIN `courses` ON `batches`.`NVQ_level` = `courses`.`NVQ_level` AND 
+  `batches`.`department_code` = `courses`.`department_code` WHERE `courses`.`code`='" . $_POST["query"] . "'";
+        $result = mysqli_query($connect, $query);
+        $output .= '<option value="" disabled selected>Choose</option>';
+        while ($row = mysqli_fetch_array($result)) {
+            $output .= '<option value="' . $row["batch_no"] . '">' . $row["batch_no"] . '</option>';
+        }
+    }
+    echo $output;
+}
+?>
