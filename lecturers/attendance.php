@@ -105,7 +105,7 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
                           $sql = "SELECT `student`.`id`,`student`.`name_with_initials`,`student_enroll`.`batch_no`,`student_enroll`.`course_code`,`attendance`.`code` 
                           FROM `student` LEFT JOIN `student_enroll` ON `student`.`id` = `student_enroll`.`id` LEFT JOIN `student_attendance` ON
                           `student`.`id` = `student_attendance`.`student_id` LEFT JOIN `attendance` ON
-                          `student_attendance`.`id` = `attendance`.`attendance_id` ORDER BY `student`.`id` ASC ";
+                          `student_attendance`.`id` = `attendance`.`attendance_id`group by name_with_initials ORDER BY `student`.`id` ASC ";
 
                           $result = mysqli_query($con, $sql);
                           while ($row = mysqli_fetch_assoc($result)) {
