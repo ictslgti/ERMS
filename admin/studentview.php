@@ -41,7 +41,7 @@ $description = "Online Examination Result Management System (ERMS)-SLGTI";
         <!-- view  start -->
         <?php
         $student_id = $stitle = $full_name = $ini_name = $gender = $civil = $email = $nic = $dob = $phone = $address = $ds =
-            $district = $province = $zip = $blood = $gname = $gaddress = $gphone = $grelation = $regno = $cid =
+            $district = $province = $zip = $blood = $gname = $gaddress = $gphone = $grelation = $regno = $cid = $bid = $ayear =
             $mode = $status = $enrolldate = $exitdate = null;
         if (isset($_GET['view'])) {
             $student_id = $_GET['view'];
@@ -122,7 +122,6 @@ $description = "Online Examination Result Management System (ERMS)-SLGTI";
                                                 }
                                             }
                                             ?>
-
                                         <?php
                                         } else {
                                         ?>
@@ -208,6 +207,11 @@ $description = "Online Examination Result Management System (ERMS)-SLGTI";
                                     <div class='row'>
                                         <div class='col-4'><label for="bid"> Batch No: </label></div>
                                         <div class='col-8'><input type="text" class="form-control" name="bid" value="<?php echo $bid; ?>" disabled></div>
+                                    </div>
+
+                                    <div class='row'>
+                                        <div class='col-4'><label for="ayear"> Academic Year: </label></div>
+                                        <div class='col-8'><input type="text" class="form-control" name="ayear" value="<?php echo $ayear; ?>" disabled></div>
                                     </div>
 
                                     <div class='row'>
