@@ -95,7 +95,7 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
                                                             </tr>
                                                             <?php
                                                             //$sql = " select date(date),time(date),status from attendance where student_id='2018ICTBIT01'";
-                                                            $sql =  " SELECT attendance.attendance_date, attendance.attendance_time, student_attendance.status FROM attendance INNER JOIN student_attendance ON attendance.attendance_id=student_attendance.id where student_id='2018ICTBIT01'";
+                                                            $sql =  " SELECT attendance.attendance_date, attendance.attendance_time, student_attendance.status FROM attendance INNER JOIN student_attendance ON attendance.attendance_id=student_attendance.id where student_id='2018SLGTIBIT01'";
                                                             $result = mysqli_query($con, $sql);
                                                             while ($row = mysqli_fetch_assoc($result)) {
                                                             ?>
