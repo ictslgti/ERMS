@@ -67,7 +67,6 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
                                             <div class="col-3"></div>
 
                                             <div class="col-3" align="right">
-                                                <button type="button" id="add_button" class="btn btn-info btn-sm">Chart</button>
                                                 <?php echo $semester; ?>
                                             </div>
                                         </div>
@@ -84,38 +83,48 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
                                                         <th>Course</th>
                                                         <th>Take session</th>
                                                         <th>points</th>
-                                                        <th>Percentage over taken sessions</th>
+                                                        <th>Percentage over taken Semester </th>
                                                     </tr>
 
                                                     <?php
-                                                    if (isset($_POST['show_date'])) {
-                                                        $dat = $_POST['prese_date'];
-                                                        $sql = "SELECT 
-                        FROM attendance
-                        LEFT JOIN student_enroll
-                        ON `student`.`id` = `student_enroll`.`id`
-                        ORDER BY `id` ASC;";
-                                                    } else {
-                                                        $sql = "select  DISTINCT s.student_id,s.student_name,s.student_batch,a.status,date(a.attendance_date) as attendance_date from student s inner join attendance a on s.student_id=a.student_id 
-                          inner join batch b on s.student_batch=b.Batch_id and attendance_date=curdate();";
-                                                    }
+                                                //     if (isset($_POST['show_date'])) {
+                                                //         $dat = $_POST['prese_date'];
+                                                //         $sql = "SELECT 
+                                                //         FROM attendance
+                                                //         LEFT JOIN student_enroll
+                                                //         ON `student`.`id` = `student_enroll`.`id`
+                                                //         ORDER BY `id` ASC;";
+                                                //    } else {
+                                                //         $sql = "select  DISTINCT s.student_id,s.student_name,s.student_batch,a.status,date(a.attendance_date) as attendance_date from student s inner join attendance a on s.student_id=a.student_id 
+                                                //             inner join batch b on s.student_batch=b.Batch_id and attendance_date=curdate();";
+                                                //     }
 
+
+                                                //     $result = mysqli_query($con, $sql);
+                                                //     while ($row = mysqli_fetch_assoc($result)) {
+
+                                                    $sql = "select count(student_attendance.status) as total_session,(select count(student_attendance.status) from attendance,student_attendance 
+                                                     where student_attendance.id=attendance.attendance_id and student_attendance.status='present' AND student_id='2018slgtibit01' group by code,batch_no) 
+                                                     as take_session,attendance.code,attendance.batch_no from student_attendance,attendance where student_attendance.id=attendance.attendance_id 
+                                                     and student_id='2018slgtibit01' group by code,batch_no";
 
                                                     $result = mysqli_query($con, $sql);
                                                     while ($row = mysqli_fetch_assoc($result)) {
+
+                                                        $row1 = (($row['take_session'] / $row['total_session']) * 100)
                                                     ?>
                                                         <tr>
                                                             <td scope='col'>
-                                                                <?php echo $row['Course']; ?>
+                                                                <?php echo $row['code']; ?>
                                                             </td>
                                                             <td scope='col'>
-                                                                <?php echo $row['']; ?>
+                                                                <?php echo $row['take_session']; ?>
                                                             </td>
                                                             <td scope='col'>
-                                                                <?php echo $row['']; ?>
+                                                                <?php echo $row['total_session']; ?>
                                                             </td>
                                                             <td scope='col'>
-                                                                <?php echo $row['']; ?>
+                                                                <?php echo $row1 ."%";  ?>
                                                             </td>
                                                         <?php
                                                     }
