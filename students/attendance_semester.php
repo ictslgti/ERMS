@@ -67,7 +67,7 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
                                             <div class="col-3"></div>
 
                                             <div class="col-3" align="right">
-                                                <?php echo $semester; ?>
+                                                <?php  $semester; ?>
                                             </div>
                                         </div>
                                     </div>
@@ -102,11 +102,26 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
 
                                                 //     $result = mysqli_query($con, $sql);
                                                 //     while ($row = mysqli_fetch_assoc($result)) {
+                                            $sql=null;
+                                                    if(isset($_GET['semester']))
+                                                    {
+                                                        $no=$_GET['semester'];
 
-                                                    $sql = "select count(student_attendance.status) as total_session,(select count(student_attendance.status) from attendance,student_attendance 
-                                                     where student_attendance.id=attendance.attendance_id and student_attendance.status='present' AND student_id='2018slgtibit01' group by code,batch_no) 
-                                                     as take_session,attendance.code,attendance.batch_no from student_attendance,attendance where student_attendance.id=attendance.attendance_id 
-                                                     and student_id='2018slgtibit01' group by code,batch_no";
+                                                        if($no==1)
+                                                        {
+                                                            $sql = "select count(student_attendance.status) as total_session,(select count(student_attendance.status) from attendance,student_attendance where 
+                                                            student_attendance.id=attendance.attendance_id and student_attendance.status='present' AND student_id='2018slgtibit01' group by code,batch_no) as take_session,
+                                                            attendance.code,attendance.batch_no from student_attendance,attendance where student_attendance.id=attendance.attendance_id and student_id='2018slgtibit01' 
+                                                            and month(attendance.attendance_date) between 1 and 6 group by code,batch_no;";
+                                                        }
+                                                        else
+                                                        {
+                                                            $sql = "select count(student_attendance.status) as total_session,(select count(student_attendance.status) from attendance,student_attendance where 
+                                                            student_attendance.id=attendance.attendance_id and student_attendance.status='present' AND student_id='2018slgtibit01' group by code,batch_no) as take_session,
+                                                            attendance.code,attendance.batch_no from student_attendance,attendance where student_attendance.id=attendance.attendance_id and student_id='2018slgtibit01' 
+                                                            and month(attendance.attendance_date) between 7 and 12 group by code,batch_no;";
+                                                        }
+                                                    
 
                                                     $result = mysqli_query($con, $sql);
                                                     while ($row = mysqli_fetch_assoc($result)) {
@@ -128,6 +143,7 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
                                                             </td>
                                                         <?php
                                                     }
+                                                }
                                                         ?>
                                                         </tr>
                                                 </thead>
