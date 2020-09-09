@@ -2,32 +2,21 @@
 $title = " Add Assessment| Online Examination Result Management System | SLGTI";
 $description = "Online Examination Result  Management System (ERMS)-SLGTI";
 ?>
-
+<?php include_once("./head.php"); ?>
+<?php include_once("../config.php"); ?>
 <?php
 //index.php
-$connect = mysqli_connect("localhost", "root", "", "erms");
-$country = '';
+$departments = '';
 $query = "SELECT * FROM departments";
-$result = mysqli_query($connect, $query);
+$result = mysqli_query($con, $query);
 while ($row = mysqli_fetch_array($result)) {
-  $country .= '<option value="' . $row["code"] . '">' . $row["name"] . '</option>';
+  $departments .= '<option value="' . $row["code"] . '">' . $row["name"] . '</option>';
 }
 ?>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-  <?php include_once("./head.php"); ?>
-  <?php include_once("../config.php"); ?>
-  <style>
-    table,
-    th,
-    td {
-      padding: 5px;
-      border: 1px solid black;
-      text-align: center;
-    }
-  </style>
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js">
   </script>
   <script>
@@ -37,7 +26,37 @@ while ($row = mysqli_fetch_array($result)) {
       });
     });
   </script>
+  <script>
+    $(document).ready(function() {
+      $('.action').change(function() {
+        if ($(this).val() != '') {
+          var action = $(this).attr("id");
+          var query = $(this).val();
+          var result = '';
+          if (action == "department") {
+            result = 'course';
+          } else if (action == "course") {
+            result = 'module';
+          }
+          else if (action == "module") {
+            result = 'percenta';
+          }
 
+          $.ajax({
+            url: "assessment_ajax.php",
+            method: "POST",
+            data: {
+              action: action,
+              query: query
+            },
+            success: function(data) {
+              $('#' + result).html(data);
+            }
+          })
+        }
+      });
+    });
+  </script>
 </head>
 
 <body>
@@ -87,46 +106,45 @@ while ($row = mysqli_fetch_array($result)) {
 
       if (
         isset($_POST['submit'])
-        && !empty($_POST['name'])
+        && !empty($_POST['department'])
         && !empty($_POST['course'])
         && !empty($_POST['batch'])
         && !empty($_POST['module'])
         && !empty($_POST['type'])
         && !empty($_POST['per'])
       ) {
-          $department = $_POST['name'];
-          $batchno = $_POST['batch'];
-          $type = $_POST['type'];
-          $course = $_POST['course'];
-          $module = $_POST['module'];
-          $percen = $_POST['per'];
-          $assess = $_POST['assess'];
+        $department = $_POST['department'];
+        $batchno = $_POST['batch'];
+        $type = $_POST['type'];
+        $course = $_POST['course'];
+        $module = $_POST['module'];
+        $percen = $_POST['per'];
+        $assess = $_POST['assess'];
 
-          $sql = "INSERT INTO assessments (name,batch,module,type,Percentage)
+        $sql = "INSERT INTO assessments (name,batch,module,type,Percentage)
     VALUES 
     ('$assess','$batchno', '$module', '$type','$percen')
     ";
 
-          if (mysqli_query($con, $sql)) {
-            echo "
+        if (mysqli_query($con, $sql)) {
+          echo "
        <div class='alert alert-success' role='alert'>
        insert success fully 
        <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
            <span aria-hidden='true'>&times;</span>
         </button>
       </div>";
-          } else {
-            echo "Error: " . $sql . "<br>" . mysqli_error($con);
-            echo "
+        } else {
+          echo "Error: " . $sql . "<br>" . mysqli_error($con);
+          echo "
        <div class='alert alert-danger' role='alert'>
        This academic_year alredy submit 
        <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
            <span aria-hidden='true'>&times;</span>
         </button>
       </div>";
-          }
         }
-
+      }
       ?>
       <!-- insert end -->
 
@@ -153,9 +171,9 @@ while ($row = mysqli_fetch_array($result)) {
                     <div class="form-group">
                       Department <br>
                       <div class="input-group input-group-sm mb-3">
-                        <select name="name" id="name" class="form-control action">
+                        <select name="department" id="department" class="form-control action">
                           <option value="">Select Department</option>
-                          <?php echo $country; ?>
+                          <?php echo $departments; ?>
                         </select>
                       </div>
                     </div>
@@ -184,7 +202,7 @@ while ($row = mysqli_fetch_array($result)) {
                     <div class="form-group">
                       Module <br>
                       <div class="input-group input-group-sm mb-3">
-                        <select name="module" id="module" class="form-control">
+                        <select name="module" id="module" class="form-control action">
                           <option value="">Select module</option>
                         </select>
                       </div>
@@ -218,7 +236,7 @@ while ($row = mysqli_fetch_array($result)) {
                         <select class="custom-select" id="inputGroupSelect01" id="validationCustom04" required>
                           <?php
                           if (isset($_GET['edit'])) {
-                            ?>
+                          ?>
                             <option selected value="<?php echo $name; ?>"><?php echo $name; ?>
                             </option>
                             <option disabled value="">Choose Academic_year</option>
@@ -231,7 +249,7 @@ while ($row = mysqli_fetch_array($result)) {
                             }
                             ?>
                           <?php
-                        } else {
+                          } else {
                           ?>
                             <option selected disabled value="">Choose Academic_year</option>
                             <?php
@@ -244,8 +262,8 @@ while ($row = mysqli_fetch_array($result)) {
                             ?>
 
                           <?php
-                        }
-                        ?>
+                          }
+                          ?>
                         </select>
                       </div>
                     </div>
@@ -261,7 +279,7 @@ while ($row = mysqli_fetch_array($result)) {
                         <select class="custom-select" name="batch" id="inputGroupSelect01" id="validationCustom04" required>
                           <?php
                           if (isset($_GET['edit'])) {
-                            ?>
+                          ?>
                             <option selected value="<?php echo $name; ?>"><?php echo $name; ?>
                             </option>
                             <option disabled value="">Choose batch</option>
@@ -274,11 +292,11 @@ while ($row = mysqli_fetch_array($result)) {
                             }
                             ?>
                           <?php
-                        } else {
+                          } else {
                           ?>
                             <option selected disabled value="">Choose batch</option>
                             <?php
-                            $result = $con->query("SELECT `batch_no` FROM `batch`");
+                            $result = $con->query("SELECT `batch_no` FROM `batches`");
                             while ($row = $result->fetch_assoc()) {
                               unset($name);
                               $name = $row['batch_no'];
@@ -287,8 +305,8 @@ while ($row = mysqli_fetch_array($result)) {
                             ?>
 
                           <?php
-                        }
-                        ?>
+                          }
+                          ?>
 
                         </select>
                       </div>
@@ -341,9 +359,10 @@ while ($row = mysqli_fetch_array($result)) {
 
                 <div class="row">
                   <div class="col-3"></div>
-                  <div class="col-9">
-
+                  <div class="col-6">
+                      <table name="percenta" id="percenta"></table>
                   </div>
+                  <div class="col-3"></div>
                 </div>
 
 
@@ -359,33 +378,13 @@ while ($row = mysqli_fetch_array($result)) {
 
 
       </form>
-      <script>
-        $(document).ready(function() {
-          $('.action').change(function() {
-            if ($(this).val() != '') {
-              var action = $(this).attr("id");
-              var query = $(this).val();
-              var result = '';
-              if (action == "name") {
-                result = 'course';
-              } else {
-                result = 'module';
-              }
-              $.ajax({
-                url: "assessment_fetch.php",
-                method: "POST",
-                data: {
-                  action: action,
-                  query: query
-                },
-                success: function(data) {
-                  $('#' + result).html(data);
-                }
-              })
-            }
-          });
-        });
-      </script>
+
+
+
+
+
+
+
 </body>
 
 </html>
