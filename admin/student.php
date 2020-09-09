@@ -16,10 +16,7 @@ while ($row = mysqli_fetch_array($result)) {
 }
 ?>
 
-
 <head>
-
-
     <!-- Image-->
     <script type='text/javascript'>
         function preview_image(event) {
@@ -34,8 +31,8 @@ while ($row = mysqli_fetch_array($result)) {
     <style>
         #output_image {
             width: 100px;
-            /* height: 50px; */
-            /* border: 0px solid black; */
+            /* height: 0px;
+            border: 0px solid black; */
         }
     </style>
     <!-- Image-->
@@ -53,6 +50,7 @@ while ($row = mysqli_fetch_array($result)) {
 
         <!-- insert  start-->
         <?php
+        //insert Student Table 
         if (
             isset($_POST['add'])
             && !empty($_POST['regno'])
@@ -110,7 +108,9 @@ while ($row = mysqli_fetch_array($result)) {
                 echo '<div class="alert alert-warning" role="alert"> Insert  ' . $sqlstudent . "<br>" . mysqli_error($con);
             }
         }
+        //insert Student Table 
 
+        //insert Student_enroll Table
         if (
             isset($_POST['add'])
             && !empty($_POST['regno'])
@@ -134,12 +134,19 @@ while ($row = mysqli_fetch_array($result)) {
 
             if (mysqli_query($con, $sqlenroll)) {
                 echo ' And Insert Successfully
-                    </div>';
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button></div>';
             } else {
-                echo 'Error </div>' . $sqlenroll . "<br>" . mysqli_error($con);
+                echo 'Error <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button></div>' . $sqlenroll . "<br>" . mysqli_error($con);
             }
         }
-
+        //insert Student_enroll Table 
+        ?>
+        <!-- insert Student_Image Table -->
+        <?php
         $regno = null;
         $image = null;
 
@@ -169,11 +176,11 @@ while ($row = mysqli_fetch_array($result)) {
                             </button>
                             </div>";
                     } else {
-
                         echo "<div class='alert alert-danger' role='alert'>
                                 This academic_year alredy submit 
-                                <a data-dismiss='alert' href='student.php'>dd</a>
-                                    <span aria-hidden='true'>&times;</span></div>" . "<br>" . mysqli_error($con);
+                                <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+                            <span aria-hidden='true'>&times;</span>
+                            </button></div>" . "<br>" . mysqli_error($con);
                     }
                 } else {
                     echo '<div class="alert alert-danger" role="alert"> Sorry, only JPG, JPEG, PNG, & GIF files are allowed to upload.
@@ -187,20 +194,20 @@ while ($row = mysqli_fetch_array($result)) {
                     </button></div>';
             }
         }
-
         ?>
+        <!-- insert Student_Image Table -->
         <!-- insert  end -->
 
         <!-- edit  start -->
         <?php
         $student_id = $stitle = $full_name = $ini_name = $gender = $civil = $email = $nic = $dob = $phone = $address = $ds =
-            $district = $province = $zip = $blood = $gname = $gaddress = $gphone = $grelation = $regno = $bid = $cid = $ayear =
+            $district = $province = $zip = $blood = $gname = $gaddress = $gphone = $grelation = $regno = $cid = $bid =
             $mode = $status = $enrolldate = $exitdate = null;
         if (isset($_GET['edit'])) {
             $student_id = $_GET['edit'];
             $sql_student = "SELECT * FROM student LEFT JOIN student_enroll
-                ON `student`.`id` = `student_enroll`.`id`
-                WHERE `student`.`id` = '$student_id'";
+            ON `student`.`id` = `student_enroll`.`id`
+            WHERE `student`.`id` = '$student_id'";
             $result_student = mysqli_query($con, $sql_student);
             $row = mysqli_fetch_assoc($result_student);
             if (mysqli_num_rows($result_student) == 1) {
@@ -232,7 +239,7 @@ while ($row = mysqli_fetch_array($result)) {
                 $exitdate = $row['exit_date'];
             }
         }
-        //update
+        //update Student Table
         if (
             isset($_POST['update'])
             && !empty($_POST['stitle'])
@@ -250,7 +257,6 @@ while ($row = mysqli_fetch_array($result)) {
             && !empty($_POST['province'])
             && !empty($_POST['zip'])
             && !empty($_POST['blood'])
-            && !empty($_POST['img'])
             && !empty($_POST['gname'])
             && !empty($_POST['gaddress'])
             && !empty($_POST['gphone'])
@@ -271,7 +277,6 @@ while ($row = mysqli_fetch_array($result)) {
             $province = $_POST['province'];
             $zip = $_POST['zip'];
             $blood = $_POST['blood'];
-            $img = $_POST['img'];
             $gname = $_POST['gname'];
             $gaddress = $_POST['gaddress'];
             $gphone = $_POST['gphone'];
@@ -287,16 +292,15 @@ while ($row = mysqli_fetch_array($result)) {
 
             if (mysqli_query($con, $sql_students)) {
                 echo '<div class="alert alert-success" role="alert">
-                                    Successfully Updated!
-                                    </div> <button type="button" class="close" href="student.php" data-dismiss="alert" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                 </button></div>';
+                Successfully Updated! ';
             } else {
-                echo '<div class="alert alert-warning" role="alert"> Error updating record:' . $sql_students
+                echo '<div class="alert alert-warning" role="alert"> Error updating record: ' . $sql_students
                     . mysqli_error($con);
             }
         }
+        //update Student Table
 
+        //update Student_enroll Table
         if (
             isset($_POST['update'])
             && !empty($_POST['cid'])
@@ -317,13 +321,63 @@ while ($row = mysqli_fetch_array($result)) {
             `student_status` = '$status', `enroll_date` = '$enrolldate', `exit_date` = '$exitdate'  WHERE `student_enroll`.`id` = '$student_id'";
 
             if (mysqli_query($con, $sqlenrolls)) {
-                // echo $sqlenrolls.'<div class="alert alert-success" role="alert">
-                // And Insert Successfully
-                // </div>';
-
+                echo ' And Insert Successfully
+                <button type="button" class="close" href="student.php" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button></div>';
             } else {
-                echo ' And Failed: </div>' . $sqlenrolls
+                echo ' And Failed: <button type="button" class="close" href="student.php" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button></div>' . $sqlenrolls
                     . mysqli_error($con);
+            }
+        }
+        //update Student_enroll Table
+
+        //update Student_Image Table
+        if (
+            isset($_POST['update'])
+            // && !empty($_POST['first'])
+        ) {
+
+            if (!empty($_FILES["image"]["name"])) {
+                // Get file info 
+                $fileName = basename($_FILES["image"]["name"]);
+                $fileType = pathinfo($fileName, PATHINFO_EXTENSION);
+
+                // Allow certain file formats 
+                $allowTypes = array('jpg', 'png', 'jpeg', 'gif');
+                if (in_array($fileType, $allowTypes)) {
+                    $image = $_FILES['image']['tmp_name'];
+                    $imgContent = addslashes(file_get_contents($image));
+                    $sql = "UPDATE `erms`.`student_image` SET 
+                    `image` = '$imgContent'
+                    WHERE `student_image`.`id` ='$student_id'";
+
+
+                    if (mysqli_query($con, $sql)) {
+                        echo "<div class='alert alert-success' role='alert'>Image Inserted 
+                    <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+                    <span aria-hidden='true'>&times;</span>
+                    </button>
+                    </div>";
+                    } else {
+
+                        echo "<div class='alert alert-danger' role='alert'>Image Insert Error  
+                        <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+                    <span aria-hidden='true'>&times;</span>
+                    </button></div>";
+                    }
+                } else {
+                    echo '<div class="alert alert-danger" role="alert"> Sorry, only JPG, JPEG, PNG, & GIF files are allowed to upload.
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button></div>';
+                }
+            } else {
+                echo '<div class="alert alert-danger" role="alert"> Old image uploaded.<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button></div>';
             }
         }
 
@@ -357,7 +411,7 @@ while ($row = mysqli_fetch_array($result)) {
 
                             <!-- 1st row end -->
 
-                            <form method="POST" action="">
+                            <form method="POST" action="" enctype="multipart/form-data">
                                 <!-- 2 row start -->
                                 <div class="row">
                                     <div class="col-sm">
@@ -464,7 +518,7 @@ while ($row = mysqli_fetch_array($result)) {
                                             <option value=""> Choose</option>
                                             <option value="Central" <?php if ($province == "Central")  echo 'selected'; ?>> Central </option>
                                             <option value="Eastern" <?php if ($province == "Eastern")  echo 'selected'; ?>> Eastern </option>
-                                            <option value="Northern" <?php if ($province == "Northen")  echo 'selected'; ?>> Northern </option>
+                                            <option value="Northern" <?php if ($province == "Northern")  echo 'selected'; ?>> Northern </option>
                                             <option value="Southern" <?php if ($province == "Southern")  echo 'selected'; ?>> Southern </option>
                                             <option value="Western" <?php if ($province == "Western")  echo 'selected'; ?>> Western </option>
                                             <option value="North Western" <?php if ($province == "North Western")  echo 'selected'; ?>> North Western </option>
@@ -506,29 +560,6 @@ while ($row = mysqli_fetch_array($result)) {
                                         </select>
                                     </div>
 
-                                    <!-- for province ditrict filter-->
-                                    <script type="text/javascript">
-                                        // get first dropdown and bind change event handler
-                                        $('#province').change(function() {
-                                            // get optios of second dropdown and cache it
-                                            var $options = $('#district')
-                                                // update the dropdown value if necessary
-                                                .val('')
-                                                // get options
-                                                .find('option')
-                                                // show all of the initially
-                                                .show();
-                                            // check current value is not 0
-                                            if (this.value != '0')
-                                                $options
-                                                // filter out options which is not corresponds to the first option
-                                                .not('[data-val="' + this.value + '"],[data-val=""]')
-                                                // hide them
-                                                .hide();
-                                        })
-                                    </script>
-                                    <!-- for province ditrict filter-->
-
                                     <div class="col-2">
                                         <label for="zip"> ZIP-Code:</label>
                                         <input type="text" class="form-control" name="zip" placeholder="32420" value="<?php echo $zip; ?>">
@@ -552,8 +583,33 @@ while ($row = mysqli_fetch_array($result)) {
                                     <div class="col-2">
                                         <label for="image"> Image: </label>
                                         <div class="custom-file">
-                                            <input type="file" name="image" class="custom-file-input" id="customFile" accept="image/*" onchange="preview_image(event)">
+                                            <input type="file" name="image" class="custom-file-input" id="customFile" accept="image/*" onchange="preview_image(event)"><br>
                                             <label class="custom-file-label" for="customFile"> Choose</label>
+                                            <?php
+                                            if (isset($_GET['edit'])) {
+                                                if (isset($_POST['update'])) {
+                                                    $result = $con->query("SELECT * FROM `student_image` WHERE `id` = '$student_id'");
+                                                    if ($result->num_rows > 0) {
+                                                        while ($row = $result->fetch_assoc()) {
+                                            ?>
+                                                            <img id="output_image" src="data:image/jpg;charset=utf8;base64,<?php echo base64_encode($row['image']); ?>" />
+                                                    <?php
+                                                        }
+                                                    }
+                                                } else {
+                                                    ?>
+                                                    <img id="output_image" src="data:image/jpg;charset=utf8;base64,<?php echo base64_encode($row['image']); ?>" />
+                                                <?php
+                                                }
+                                                ?>
+                                            <?php
+                                            } else {
+                                            ?>
+                                                <img id="output_image" />
+                                            <?php
+                                            }
+                                            ?>
+
                                             <!-- <img id="output_image" /> -->
                                         </div>
                                     </div>
@@ -583,7 +639,7 @@ while ($row = mysqli_fetch_array($result)) {
                                             <?php
                                             if (isset($_GET['edit'])) {
                                             ?>
-                                                <option value="<?php echo $cid; ?>" selected disabled><?php echo $cid; ?></option>
+                                                <option value="<?php echo $cid; ?>" selected><?php echo $cid; ?></option>
                                                 <option value="">Choose</option>
                                                 <?php echo $course_name; ?>
                                             <?php
@@ -601,12 +657,12 @@ while ($row = mysqli_fetch_array($result)) {
 
                                     <div class="col-3">
                                         <label for="bid"> Batch No: </label>
-                                        <select name="batch" id="batch" class="custom-select action">
+                                        <select name="bid" id="bid" class="custom-select action">
 
                                             <?php
                                             if (isset($_GET['edit'])) {
                                             ?>
-                                                <option value="<?php echo $bid; ?>" selected disabled><?php echo $bid; ?></option>
+                                                <option value="<?php echo $bid; ?>" selected><?php echo $bid; ?></option>
                                             <?php
                                             } else {
                                             ?>
@@ -660,10 +716,10 @@ while ($row = mysqli_fetch_array($result)) {
                                         <input type="date" class="form-control" name="exitdate" value="<?php echo $exitdate; ?>">
                                     </div>
 
-                                    <div class="col-3">
+                                    <!-- <div class="col-3">
                                         <label for="image"> Image Preview: </label>
                                         <div><img id="output_image" /></div>
-                                    </div>
+                                    </div> -->
                                 </div>
                                 <!-- 2nd row end -->
                                 <br>
@@ -677,8 +733,6 @@ while ($row = mysqli_fetch_array($result)) {
                                         </div>
                                     </div>
                                 </div><br>
-
-
 
                                 <div class="form-row">
 
@@ -722,7 +776,8 @@ while ($row = mysqli_fetch_array($result)) {
                                     <div class="col-1">
                                         <?php
                                         if (isset($_GET['edit'])) {
-                                            echo '<button type="submit" name="update" class="btn btn-outline-success">Update</button>';
+                                            echo '
+                                            <button type="submit" name="update" class="btn btn-outline-success">Update</button>';
                                         } else {
                                             echo '<button type="submit" name="add" class="btn btn-outline-success">Add</button>';
                                         }
@@ -743,11 +798,36 @@ while ($row = mysqli_fetch_array($result)) {
                 </div>
         </main>
     </div>
+
     <?php include_once("../script.php"); ?>
 </body>
 
 </html>
 
+<!-- for province ditrict filter-->
+<script type="text/javascript">
+    // get first dropdown and bind change event handler
+    $('#province').change(function() {
+        // get optios of second dropdown and cache it
+        var $options = $('#district')
+            // update the dropdown value if necessary
+            .val('')
+            // get options
+            .find('option')
+            // show all of the initially
+            .show();
+        // check current value is not 0
+        if (this.value != '0')
+            $options
+            // filter out options which is not corresponds to the first option
+            .not('[data-val="' + this.value + '"],[data-val=""]')
+            // hide them
+            .hide();
+    })
+</script>
+<!-- for province ditrict filter-->
+
+<!-- course filter -->
 <script>
     $(document).ready(function() {
         $('.action').change(function() {
@@ -756,7 +836,7 @@ while ($row = mysqli_fetch_array($result)) {
                 var query = $(this).val();
                 var result = '';
                 if (action == "cid") {
-                    result = 'batch';
+                    result = 'bid';
                 }
                 $.ajax({
                     url: "student.php",
@@ -791,3 +871,5 @@ if (isset($_POST["action"])) {
     echo $output;
 }
 ?>
+
+<!-- course filter -->
