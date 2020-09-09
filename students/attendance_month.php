@@ -76,7 +76,7 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
                                             <div class="col-3"></div>
 
                                             <div class="col-3" align="right">
-                                                <?php echo $month; ?>
+                                                <?php $month; ?>
                                             </div>
                                         </div>
                                     </div>
@@ -97,12 +97,20 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
 
 
                                                     <?php
-
-                                                     $sql = "select count(student_attendance.status) as total_session,(select count(student_attendance.status) from attendance,student_attendance 
-                                                     where student_attendance.id=attendance.attendance_id and student_attendance.status='present' AND student_id='2018slgtibit01' group by code,batch_no) 
-                                                     as take_session,attendance.code,attendance.batch_no from student_attendance,attendance where student_attendance.id=attendance.attendance_id 
-                                                     and student_id='2018slgtibit01' group by code,batch_no";
-
+                                                    if(isset($_GET['month']))
+                                                    {
+                                                     $sql = "select count(student_attendance.status) as total_session,(select count(student_attendance.status) from attendance,student_attendance where student_attendance.
+                                                     id=attendance.attendance_id and student_attendance.status='present' AND student_id='2018slgtibit01' group by code,batch_no) as take_session,attendance.code,attendance.batch_no 
+                                                     from student_attendance,attendance 
+                                                     where student_attendance.id=attendance.attendance_id and student_id='2018slgtibit01' and month(attendance.attendance_date)=$month group by code,batch_no;";
+                                                    }
+                                                    else
+                                                    {
+                                                        $sql = "select count(student_attendance.status) as total_session,(select count(student_attendance.status) from attendance,student_attendance where student_attendance.
+                                                     id=attendance.attendance_id and student_attendance.status='present' AND student_id='2018slgtibit01' group by code,batch_no) as take_session,attendance.code,attendance.batch_no 
+                                                     from student_attendance,attendance 
+                                                     where student_attendance.id=attendance.attendance_id and student_id='2018slgtibit01' and month(attendance.attendance_date)=month(curdate()) group by code,batch_no;";
+                                                    }
                                                     $result = mysqli_query($con, $sql);
                                                     while ($row = mysqli_fetch_assoc($result)) {
                                                       
@@ -123,6 +131,7 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
                                                             </td>
                                                         <?php
                                                     }
+                                                
                                                         ?>
                                                         </tr>
                                                 </thead>
