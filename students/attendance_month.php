@@ -76,7 +76,6 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
                                             <div class="col-3"></div>
 
                                             <div class="col-3" align="right">
-                                                <button type="button" id="add_button" class="btn btn-info btn-sm">Chart</button>
                                                 <?php echo $month; ?>
                                             </div>
                                         </div>
@@ -93,20 +92,21 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
                                                         <th>module</th>
                                                         <th>Take session</th>
                                                         <th>points</th>
-                                                        <th>Percentage over taken sessions</th>
+                                                        <th>Percentage over taken Month</th>
                                                     </tr>
 
 
                                                     <?php
 
                                                      $sql = "select count(student_attendance.status) as total_session,(select count(student_attendance.status) from attendance,student_attendance 
-                                                     where student_attendance.id=attendance.attendance_id and student_attendance.status='present' AND student_id='2018ICTBIT01' group by code,batch_no) 
+                                                     where student_attendance.id=attendance.attendance_id and student_attendance.status='present' AND student_id='2018slgtibit01' group by code,batch_no) 
                                                      as take_session,attendance.code,attendance.batch_no from student_attendance,attendance where student_attendance.id=attendance.attendance_id 
-                                                     and student_id='2018ICTBIT01' group by code,batch_no";
+                                                     and student_id='2018slgtibit01' group by code,batch_no";
 
                                                     $result = mysqli_query($con, $sql);
                                                     while ($row = mysqli_fetch_assoc($result)) {
-                                                        $row1 = (($row['take_session'] / $row['status']) * 100)
+                                                      
+                                                        $row1 = (($row['take_session'] / $row['total_session']) * 100)
                                                     ?>
                                                         <tr>
                                                             <td scope='col'>
