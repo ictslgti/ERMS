@@ -150,7 +150,7 @@ $('#batch').on('click', function () {
         $percen = $_POST['per'];
         $assess = $_POST['assess'];
         $academ=$_POST['academic'];
-        $sql = "INSERT INTO assessments (name,batch,module,type,Percentage,Academic_year,department_code)
+        $sql = "INSERT INTO assessments (names,batch,module,type,Percentage,Academic_year,department_code)
     VALUES 
     ('$assess','$batchno', '$module', '$type','$percen','$academ','$department')
     ";
