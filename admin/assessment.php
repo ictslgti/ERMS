@@ -10,9 +10,11 @@ $departments = '';
 $query = "SELECT * FROM departments";
 $result = mysqli_query($con, $query);
 while ($row = mysqli_fetch_array($result)) {
-  $departments .= '<option value="' . $row["code"] . '">' . $row["name"] . '</option>';
+  $departments .= '<option value="' .$row["code"] . '">' . $row["name"] . '</option>';
+ 
 }
 ?>
+
 <?php
 //academic
 $academic = '';
@@ -28,13 +30,7 @@ while ($row = mysqli_fetch_array($result)) {
 <head>
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js">
   </script>
-  <script>
-    $(document).ready(function() {
-      $('#bonus').change(function() {
-        document.write($("#bonus option:selected").text());
-      });
-    });
-  </script>
+  <!-- department.course,module -->
   <script>
     $(document).ready(function() {
       $('.action').change(function() {
@@ -58,6 +54,7 @@ while ($row = mysqli_fetch_array($result)) {
           $.ajax({
             url: "assessment_ajax.php",
             method: "POST",
+            
             data: {
               action: action,
               query: query
@@ -69,6 +66,25 @@ while ($row = mysqli_fetch_array($result)) {
         }
       });
     });
+  </script>
+
+
+<!-- batch -->
+<script>
+    var course_id = 0;
+var postBodyElement = null;
+$('#batch').on('click', function () {
+  $.ajax({
+    method: 'POST',
+    url:"assessment_ajax.php",
+    data: {
+      course_id: course_id,
+      module: $('#module').val(),
+      batch: $('#batch').val(),
+      _token: token
+    }
+  })
+});
   </script>
 </head>
 
@@ -319,7 +335,7 @@ while ($row = mysqli_fetch_array($result)) {
                   </div>
                   <div class="col-3"></div>
                 </div>
-
+                   
 
             </div>
           </div>
