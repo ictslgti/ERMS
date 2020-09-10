@@ -55,28 +55,35 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                                 <th scope='col'>Name</th>
                                 <th scope='col'>Module</th>
                                 <th scope='col'>Batch</th>
-                                <th scope='col'>Options</th>
+                                <th scope='col'></th>
                                 
 
                             </tr>
                         </thead>
                         <tbody>
                             <?php
-            $sql = ' SELECT * FROM `assessments`';
+            $sql = 'select a.department_code, a.type,a.id,a.names,m.name,a.batch,b.NVQ_level from assessments a inner join modules m on a.module=m.id inner join batches b on b.id=a.batch';
             $result = mysqli_query($con,$sql);
             if(mysqli_num_rows($result)>0){
                 while($row = mysqli_fetch_assoc($result)){
             echo '<tr>
+            <td>',$row['names']." "."<span class='badge badge-dark'>".$row['type']."</span>",'</td>
             <td>',$row['name'],'</td>
-            <td>',$row['module'],'</td>
-            <td>',$row['batch'],'</td>
+            <td>',$row['NVQ_level'].'-batch-'.$row['batch']."<span class='badge badge-dark'>".$row['department_code']."</span>",'</td>
             
             <td>
-            <div class="btn-group btn-sm" role="group" aria-label="Basic example">
-            <a href="batch.php?edit=',$row['id'],'" class="btn btn-warning" > Edit </a> 
-            <a href="?delete=',$row['id'],'" class="btn btn-danger"> Delete </a>
-            <a href="assessment_result.php?id=',$row['id'],'" class="btn btn-success"> Add result </a>
+<div class="row">
+<div class="col"></div>
+<div class="col-auto">
+<div class="btn-group btn-sm" role="group" aria-label="Basic example">
+            <a href="batch.php?edit=',$row['id'],'" class="btn btn-warning btn btn-sm" ><img src="https://img.icons8.com/android/18/000000/edit.png"/> </a> 
+            <a href="?delete=',$row['id'],'" class="btn btn-danger btn btn-sm"> <img src="https://img.icons8.com/windows/18/000000/delete-forever.png"/> </a>
+            <a href="assessment_result.php?id=',$row['id'],'" class="btn btn-success btn btn-sm"> Add result </a>
           </div>
+</div>
+</div>
+
+            
             </td>
         </tr>';
     }
