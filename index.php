@@ -92,7 +92,7 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                         <input type="password" class="input" name="password">
                     </div>
                 </div>
-                <a href="forgot-mail.php">Forgot password</a>
+                <a href="forgot/forgot-password.php">Forgot password</a>
                 <div class="buttonfor">
                     <input type="submit" class="lbtnfor" value="Signin" name="signin">
                     <!-- <input type="button" class="sbtn" value="Reset" class="btn btn-primary" data-toggle="modal"
