@@ -55,7 +55,7 @@ include_once("../config.php");
           $output .= '<tr> <th> Name </th> <th> Percentage </th> </tr>';
           while ($row = mysqli_fetch_array($result)) {
             $output .= '<tr>';
-            $output .= '<td>'.$row['name'].'</td>';
+            $output .= '<td>'.$row['names'].'</td>';
             $output .= '<td>'.$row['percentage'].'</td>';
             $output .= '</tr>';
           }
