@@ -54,7 +54,7 @@ form{
 
 .login-content h2{
 	margin: 15px 0;
-	color: rgb(85, 85, 85);	
+	color:rgb(109, 107, 107);	
 	font-size: 37px;
 }
 
@@ -181,7 +181,7 @@ a:hover{
 	font-size: 1.2rem;
 	color: #fff;
 	font-family: 'Questrial', sans-serif;
-	text-transform: uppercase;
+	text-transform: capitalize;
 	margin: 1rem 0;
 	cursor: pointer;
 	transition: .5s;
@@ -202,7 +202,7 @@ a:hover{
 	font-size: 1.2rem;
 	color: #007ccf;
 	font-family: 'Questrial', sans-serif;
-	text-transform: uppercase;
+	text-transform: capitalize;
 	margin: 1rem 0;
 	cursor: pointer;
 	transition: .5s;
@@ -221,6 +221,35 @@ a:hover{
 .button{
 	margin-top: 30px;
 }
+/* forgot page */
+.lbtnfor{
+	display: block;
+	width: 45%;
+	height: 50px;
+	border-radius: 25px;
+	outline: none;
+	border: none;
+	background-image: linear-gradient(to right,  #007ccf, #0099ff,  #007ccf);
+	background-size: 200%;
+	font-size: 1.2rem;
+	color: #fff;
+	font-family: 'Questrial', sans-serif;
+	text-transform: initial;
+	margin: 1rem 0;
+	cursor: pointer;
+	transition: .5s;
+}
+.lbtnfor:hover{
+	background-position: right;
+}
+.buttonfor .lbtnfor{
+	width: 100%;
+}
+
+.buttonfor{
+	margin-top: 20px;
+}
+
 
 
 @media screen and (max-width: 1050px){

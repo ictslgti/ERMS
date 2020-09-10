@@ -5,12 +5,21 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
 <?php include_once("./head.php"); ?>
 <?php include_once("../config.php"); ?>
 <?php
-//index.php
+//departments
 $departments = '';
 $query = "SELECT * FROM departments";
 $result = mysqli_query($con, $query);
 while ($row = mysqli_fetch_array($result)) {
   $departments .= '<option value="' . $row["code"] . '">' . $row["name"] . '</option>';
+}
+?>
+<?php
+//academic
+$academic = '';
+$query = "select distinct Academic_year from batches";
+$result = mysqli_query($con, $query);
+while ($row = mysqli_fetch_array($result)) {
+  $academic .= '<option value="' . $row["Academic_year"] . '">' . $row["Academic_year"] . '</option>';
 }
 ?>
 <!DOCTYPE html>
@@ -41,6 +50,10 @@ while ($row = mysqli_fetch_array($result)) {
           else if (action == "module") {
             result = 'percenta';
           }
+          else if (action == "academic") {
+            result = 'batch';
+          }
+          
 
           $.ajax({
             url: "assessment_ajax.php",
@@ -120,10 +133,10 @@ while ($row = mysqli_fetch_array($result)) {
         $module = $_POST['module'];
         $percen = $_POST['per'];
         $assess = $_POST['assess'];
-
-        $sql = "INSERT INTO assessments (name,batch,module,type,Percentage)
+        $academ=$_POST['academic'];
+        $sql = "INSERT INTO assessments (name,batch,module,type,Percentage,Academic_year,department_code)
     VALUES 
-    ('$assess','$batchno', '$module', '$type','$percen')
+    ('$assess','$batchno', '$module', '$type','$percen','$academ','$department')
     ";
 
         if (mysqli_query($con, $sql)) {
@@ -232,38 +245,9 @@ while ($row = mysqli_fetch_array($result)) {
                     <div class="form-group">
                       Academic_year <br>
                       <div class="input-group input-group-sm mb-3">
-
-                        <select class="custom-select" id="inputGroupSelect01" id="validationCustom04" required>
-                          <?php
-                          if (isset($_GET['edit'])) {
-                          ?>
-                            <option selected value="<?php echo $name; ?>"><?php echo $name; ?>
-                            </option>
-                            <option disabled value="">Choose Academic_year</option>
-                            <?php
-                            $result = $con->query("SELECT `academic_year` FROM `academic_year`");
-                            while ($row = $result->fetch_assoc()) {
-                              unset($name);
-                              $name = $row['academic_year'];
-                              echo '<option value=" ' . $name . '"  >' . $name . '</option>';
-                            }
-                            ?>
-                          <?php
-                          } else {
-                          ?>
-                            <option selected disabled value="">Choose Academic_year</option>
-                            <?php
-                            $result = $con->query("SELECT `academic_year` FROM `academic_year`");
-                            while ($row = $result->fetch_assoc()) {
-                              unset($name);
-                              $name = $row['academic_year'];
-                              echo '<option value=" ' . $name . '"  >' . $name . '</option>';
-                            }
-                            ?>
-
-                          <?php
-                          }
-                          ?>
+                        <select class="form-control action" name="academic" id="academic" id="inputGroupSelect01" id="validationCustom04" required>
+                        <option value="">Select Academic_year</option>
+                          <?php echo $academic; ?>
                         </select>
                       </div>
                     </div>
@@ -276,38 +260,9 @@ while ($row = mysqli_fetch_array($result)) {
                       Batch <br>
                       <div class="input-group input-group-sm mb-3">
 
-                        <select class="custom-select" name="batch" id="inputGroupSelect01" id="validationCustom04" required>
-                          <?php
-                          if (isset($_GET['edit'])) {
-                          ?>
-                            <option selected value="<?php echo $name; ?>"><?php echo $name; ?>
-                            </option>
-                            <option disabled value="">Choose batch</option>
-                            <?php
-                            $result = $con->query("SELECT `batch_no` FROM `batch`");
-                            while ($row = $result->fetch_assoc()) {
-                              unset($name);
-                              $name = $row['batch_no'];
-                              echo '<option value=" ' . $name . '"  >' . $name . '</option>';
-                            }
-                            ?>
-                          <?php
-                          } else {
-                          ?>
-                            <option selected disabled value="">Choose batch</option>
-                            <?php
-                            $result = $con->query("SELECT `batch_no` FROM `batches`");
-                            while ($row = $result->fetch_assoc()) {
-                              unset($name);
-                              $name = $row['batch_no'];
-                              echo '<option value=" ' . $name . '"  >' . $name . '</option>';
-                            }
-                            ?>
-
-                          <?php
-                          }
-                          ?>
-
+                        <select class="custom-select" name="batch" id="batch" id="inputGroupSelect01" id="validationCustom04" required>
+                          
+                        <option value="">Select Batch</option>
                         </select>
                       </div>
                     </div>
