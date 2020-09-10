@@ -94,12 +94,15 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
                                                             <?php
                                                             //$sql = "select module, count(status) as take_session,count(status) as status FROM attendance where student_id='2018ictbit01'";
                                                             //$sql =  " SELECT attendance.code, count(student_attendance.status) as status, count(student_attendance.status) as all_status FROM attendance INNER JOIN student_attendance ON attendance.attendance_id=student_attendance.id group by code";
-                                                            $sql="SELECT count(student_attendance.status) as total_session,(select count(student_attendance.status)as status from attendance,student_attendance where student_attendance.id=attendance.attendance_id and student_attendance.status='present' AND student_id='2018ICTBIT01' group by code,batch_no) as take_session,attendance.code,attendance.batch_no from student_attendance,attendance where student_attendance.id=attendance.attendance_id and student_id='2018ICTBIT01' group by code,batch_no";
+                                                            $sql="SELECT count(student_attendance.status) as total_session,(select count(student_attendance.status) from attendance,student_attendance where 
+                                                            student_attendance.id=attendance.attendance_id and student_attendance.status='present' AND student_id='2018slgtibit01' group by code,batch_no) as take_session,
+                                                            attendance.code,attendance.batch_no from student_attendance,attendance where student_attendance.id=attendance.attendance_id and student_id='2018slgtibit01' 
+                                                            group by code,batch_no";
                                                             $result = mysqli_query($con, $sql);
                                                             while ($row = mysqli_fetch_assoc($result)) 
-                                                            
-                                                            {
-                                                                $row1 = (($row['total_session'] / $row['take_session']) * 100)
+                                                                    {
+                                                                
+                                                                $row1 = (($row['take_session'] / $row['total_session']) * 100)
                                                             ?>
                                                                 <tr>
                                                                     <td scope='col'><?php echo $row['code']; ?></td>
@@ -107,29 +110,41 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
                                                                     <td scope='col'><?php echo $row['total_session']; ?></td>
                                                                     <td scope="col"><?php echo $row1 . "%"; ?></td>
 
-                                                                <?php
-                                                            }
-                                                                ?>
+                                                            <?php
+                                                                    }
+                                                            ?>
                                                                 </tr>
+
+
+
                                                                 <?php
                                                                 //$sql = "select count(status) as take_session,count(DISTINCT module) as module,status  FROM attendance WHERE student_id='2018ictbit01' groub by module";
-                                                                $sql =  "select code,status from attendance inner join student_attendance on attendance.code=student_attendance.status";
+                                                                //$sql =  "select code,status from attendance inner join student_attendance on attendance.code=student_attendance.status";
+                                                                $sql="SELECT count(student_attendance.status) as total_session,(select count(student_attendance.status) from attendance,student_attendance where 
+                                                                student_attendance.id=attendance.attendance_id and student_attendance.status='present' AND student_id='2018slgtibit01' group by batch_no) as take_session,
+                                                                attendance.code from student_attendance,attendance where student_attendance.id=attendance.attendance_id and student_id='2018slgtibit01' 
+                                                                group by batch_no";
                                                                 $result = mysqli_query($con, $sql);
+                                                                
+                                                                
+                                                                
                                                                 while ($row = mysqli_fetch_assoc($result)) {
-
-                                                                    $row1 = (($row['take_session'] / $row['status']) * 100)
+                                                                $row1 = (($row['take_session'] / $row['total_session']) * 100)
                                                                 ?>
 
                                                                     <tr>
                                                                         <td scope='col'>Average attendance</td>
                                                                         <td scope='col'></td>
-                                                                        <td scope='col'><?php echo $row['module'] ?></td>
+                                                                        <td scope='col'></td>
                                                                         <td scope='col'><?php echo $row1 . '%' ?></td>
+                                                                        
 
 
                                                                     <?php
                                                                 }
+                                                                
                                                                     ?>
+                                                                   
 
                                                                     </tr>
 
