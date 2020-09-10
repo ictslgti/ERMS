@@ -128,6 +128,8 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
                                                                         <?php
                                                                     }
                                                                         ?>
+
+                                                                        
                                                                         </tr>
                                                                         <?php
                                                                         $sql = " SELECT count(status) as take_session,session from attendance where student_id='2018ICTBIT01' order by module";
