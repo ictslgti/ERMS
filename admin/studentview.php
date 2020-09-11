@@ -18,7 +18,7 @@ $description = "Online Examination Result Management System (ERMS)-SLGTI";
             function preview_image(event) {
                 var reader = new FileReader();
                 reader.onload = function() {
-                    var output = document.getElementById('simg');
+                    var output = document.getElementById('output_image');
                     output.src = reader.result;
                 }
                 reader.readAsDataURL(event.target.files[0]);
@@ -79,6 +79,20 @@ $description = "Online Examination Result Management System (ERMS)-SLGTI";
                 $exitdate = $row['exit_date'];
             }
         }
+
+        if (isset($_GET['view'])) {
+            $student_id = $_GET['view'];
+            $sql_st = "SELECT * FROM student_enroll LEFT JOIN batches
+                ON `student_enroll`.`batch_no` = `batches`.`batch_no`
+                WHERE `student_enroll`.`id` = '$student_id'";
+            $result_st = mysqli_query($con, $sql_st);
+            $row = mysqli_fetch_assoc($result_st);
+            if (mysqli_num_rows($result_st) == 1) {
+                $ayear = $row['Academic_year'];
+            }
+        }
+
+        
         ?>
         <!-- view  end -->
 
