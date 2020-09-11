@@ -26,7 +26,7 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
             if (isset($_GET['edit'])) {
                 $id = $_GET['edit'];
 
-                $sql = "SELECT * FROM `batch` WHERE `batch_no`= '$id' ";
+                $sql = "SELECT * FROM `batches` WHERE `id`= '$id' ";
                 $result = mysqli_query($con, $sql);
                 if (mysqli_num_rows($result) == 1) {
                     $row = mysqli_fetch_assoc($result);
@@ -52,7 +52,7 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                 $batchno = $_POST['batchno'];
 
 
-                $sql = "INSERT INTO batch (batch_no,department_code,NVQ_level,Academic_year)
+                $sql = "INSERT INTO batches (batch_no,department_code,NVQ_level,Academic_year)
     VALUES 
     ('$batchno','$department', 
     '$nvq', 
@@ -68,7 +68,7 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
         </button>
       </div>";
                 } else {
-
+                    echo "Error: " . $sql . "<br>" . mysqli_error($con);
                     echo "
        <div class='alert alert-danger' role='alert'>
        This academic_year alredy submit 
@@ -98,7 +98,7 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                 $year = $_POST['year'];
                 $batchno = $_POST['batchno'];
 
-                $sql = "UPDATE `batch` SET `department_code` = '$department',`Academic_year` = '$year',`NVQ_level` = '$nvq' WHERE `batch`.`batch_no` = '$id';";
+                $sql = "UPDATE `batches` SET `department_code` = '$department',`Academic_year` = '$year',`NVQ_level` = '$nvq' WHERE `batches`.`id` = '$id';";
 
                 if (mysqli_query($con, $sql)) {
                     echo "
@@ -162,7 +162,7 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                                                             unset($dno);
                                                             $dno = $row['code'];
                                                             $na = $row['name'];
-                                                            echo '<option value=" '. $dno .'"  >' . $na . '</option>';
+                                                            echo '<option value="'.$dno .'"  >' . $na . '</option>';
                                                         }
                                                     } else {
                                                         ?>
@@ -173,7 +173,7 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                                                             unset($dno);
                                                             $na = $row['name'];
                                                             $dno = $row['code'];
-                                                            echo '<option value=" '. $dno .'"  >' . $na . '</option>';
+                                                            echo '<option value="'.$dno.'"  >' . $na . '</option>';
                                                         }
                                                     }
                                                     ?>
@@ -197,7 +197,7 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                                                         </option>
                                                         <option disabled value="">Choose NVQ Level</option>
                                                         <option value="NVQ-04">NVQ-04</option>
-                                                        <option value="BRIDGING">BRIDGING</option>
+                                                        <option value="NVQ-05 Bridging">NVQ-05 Bridging</option>
                                                         <option value="NVQ-05">NVQ-05</option>
                                                         <option value="NVQ-06">NVQ-06</option>
                                                         <option value="NVQ-07">NVQ-07</option>
@@ -206,7 +206,7 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                                                     ?>
                                                         <option selected disabled value="">Choose NVQ Level</option>
                                                         <option value="NVQ-04">NVQ-04</option>
-                                                        <option value="BRIDGING">BRIDGING</option>
+                                                        <option value="NVQ-05 Bridging">NVQ-05 Bridging</option>
                                                         <option value="NVQ-05">NVQ-05</option>
                                                         <option value="NVQ-06">NVQ-06</option>
                                                         <option value="NVQ-07">NVQ-07</option>
@@ -240,7 +240,7 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                                                         while ($row = $result->fetch_assoc()) {
                                                             unset($year);
                                                             $year = $row['academic_year'];
-                                                            echo '<option value=" '. $year .'"  >' . $year . '</option>';
+                                                            echo '<option value="'.$year.'"  >' . $year . '</option>';
                                                         }
                                                         ?>
                                                     <?php
@@ -252,7 +252,7 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                                                         while ($row = $result->fetch_assoc()) {
                                                             unset($year);
                                                             $year = $row['academic_year'];
-                                                            echo '<option value=" '. $year .'"  >' . $year . '</option>';
+                                                            echo '<option value="'.$year.'"  >' . $year . '</option>';
                                                         }
                                                         ?>
 
