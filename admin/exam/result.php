@@ -15,16 +15,16 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
     <div class="container">
         <?php
         if (isset($_POST['submit'])) {
-            ?>
-           <div class='alert alert-success' role='alert'>
-       Details available
-       <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
-           <span aria-hidden='true'>&times;</span>
-        </button>
-      </div>
+        ?>
+            <div class='alert alert-success' role='alert'>
+                Details available
+                <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+                    <span aria-hidden='true'>&times;</span>
+                </button>
+            </div>
         <?php
-    }
-    ?>
+        }
+        ?>
         <div class="card border-light mb-3">
             <div class="card-header">
                 <h3> <?php echo " $title" ?></h3>
@@ -52,15 +52,13 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                                 <select class='custom-select' name="department" id='inputGroupSelect01' id='validationServer02' required>
 
                                     <option selected disabled value="">Choose Department</option>
-                                    <?php
-                                    $result = $con->query("SELECT `dept_id` FROM `departments`");
-                                    while ($row = $result->fetch_assoc()) {
-                                        unset($dno);
-                                        $dno = $row['dept_id'];
-                                        echo '<option value=" ' . $dno . '"  >' . $dno . '</option>';
-                                    }
-
-                                    ?>
+                                    <option value=''>Select Department</option>
+                                    <option value='1'>Information Communication Technology</option>
+                                    <option value='2'>Automotive & Technology</option>
+                                    <option value='3'>Construction Technology</option>
+                                    <option value='4'>Electrical Technology</option>
+                                    <option value='5'>Food Technology</option>
+                                    <option value='6'>Mechanical Technology</option>
                                 </select>
                             </div>
                         </div>
@@ -71,11 +69,10 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                                 </div>
                                 <select class='custom-select' name="nvq" id='inputGroupSelect01' id='validationServer02' required>
                                     <option selected disabled value="">Choose NVQ Level</option>
-                                    <option value="NVQ LEVEL 4">NVQ LEVEL 4</option>
-                                    <option value="BRIDGING LEVEL 5">BRIDGING LEVEL 5</option>
-                                    <option value="NVQ LEVEL 5">NVQ LEVEL 5</option>
-                                    <option value="NVQ LEVEL 6">NVQ LEVEL 6</option>
-                                    <option value="NVQ LEVEL 7">NVQ LEVEL 7</option>
+
+                                    <option value='1'>NVQ Level-4</option>
+                                    <option value='2'>NVQ Level-5</option>
+                                    <option value='3'>Bridging</option>
                                 </select>
                             </div>
                         </div>
@@ -92,8 +89,8 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                                 </div>
                                 <select class='custom-select' name="type" id='inputGroupSelect01' id='validationServer0' required>
                                     <option selected disabled>Select Exams</option>
-                                    <option value='INSTITUT'>INSTITUT</option>
-                                    <option value='TVEC'>TVEC</option>
+                                    <option value='1'>INSTITUTE</option>
+                                    <option value='2'>TVEC</option>
                                 </select>
                             </div>
                         </div>
@@ -104,14 +101,9 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                                 </div>
                                 <select class='custom-select' name="batch" id='inputGroupSelect01' id='validationServer02' required>
                                     <option selected disabled value="">Choose Batch</option>
-                                    <?php
-                                    $result = $con->query("select DISTINCT batch_name from student_enroll;");
-                                    while ($row = $result->fetch_assoc()) {
-                                        unset($dno);
-                                        $dno = $row['batch_name'];
-                                        echo '<option value=" ' . $dno . '"  >' . $dno . '</option>';
-                                    }
-                                    ?>
+                                    <option value='1'>batch 1</option>
+                                    <option value='2'>batch 2</option>
+                                    <option value='3'>batch 3</option>
                                 </select>
                             </div>
                         </div>
@@ -124,16 +116,15 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                     <div class="col-auto">
                         <?php
                         if (isset($_POST['submit'])) {
-                            ?>
-                            <a href="resultsheet.php?dno=<?php echo ("$department"); ?>& nvq=<?php echo ("$nvq"); ?> & type=<?php echo ("$type"); ?> & batch=<?php echo ("$batch"); ?>" 
-                            class="btn btn-primary">View Result</a>
+                        ?>
+                            <a href="resultsheet.php?dno=<?php echo ("$department"); ?>& nvq=<?php echo ("$nvq"); ?> & type=<?php echo ("$type"); ?> & batch=<?php echo ("$batch"); ?>" class="btn btn-primary">View Result</a>
                         <?php
-                    } else {
+                        } else {
                         ?>
                             <button type="submit" name="submit" class="btn btn-primary">Check Details </button>
                         <?php
-                    }
-                    ?>
+                        }
+                        ?>
 
                     </div>
                 </div>
