@@ -33,9 +33,8 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
                 <div class="card">
                   <div class="card-header">
                     <div class="row">
-                      <div class="col-md-9">Attendance List</div>
+                      <div class="col-md-9"></div>
                       <div class="col-md-3" align="right">
-                        <button type="button" id="add_button" class="btn btn-info btn-sm">Chart</button>
                       </div>
 
                     </div>
@@ -107,8 +106,12 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
                           `student`.`id` = `student_attendance`.`student_id` LEFT JOIN `attendance` ON
                           `student_attendance`.`id` = `attendance`.`attendance_id`group by name_with_initials ORDER BY `student`.`id` ASC ";
 
+                          
+
                           $result = mysqli_query($con, $sql);
                           while ($row = mysqli_fetch_assoc($result)) {
+
+                           
                           ?>
                             <tr>
                               <td scope='col'>
@@ -120,8 +123,14 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
                               <td scope='col'>
                                 <?php echo $row['code']; ?>
                               </td>
+
+                           
+
+
+                              
+
                               <td scope='col'>
-                                <?php echo $row['']; ?>
+                                <?php echo number_format(($row['Take'] / $row['Total']) * 100, 2) . "%" ?>
                               </td>
                             <?php
                           }
