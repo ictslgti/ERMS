@@ -12,6 +12,7 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
 </head>
 
 <body>
+
     <main class='page-content pt-2'>
         <?php include_once('nav.php');
         ?>
@@ -52,14 +53,15 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
                                                     Module
                                                 </button>
                                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                                    
-                                                    <?php
-                                                                        $sql = "select * from attendance GROUP BY module ";
+                                                
+   
+                                                            <?php
+                                                                        $sql = "select * from attendance GROUP BY code ";
                                                                         $result = $con->query($sql);
                                                                         if ($result->num_rows > 0) {
                                                                             while ($row = $result->fetch_assoc()) {
 
-                                                                                echo '<a class="dropdown-item" href="#">', $row['module'], '</a>';
+                                                                                echo '<a class="dropdown-item" href="#">', $row['code'], '</a>';
                                                                             }
                                                                         } else {
                                                                             echo 'no rows';
@@ -86,7 +88,7 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
 
                                             <div class="row">
                                                 <div class="form-group col-md-12 table-responsive">
-                                                    <table class='table align-middle '>
+                                                    <table class="table align-middle table-striped">
                                                         <thead class='thead-light'>
                                                             <tr>
                                                                 <th scope='col'>DATE</th>
@@ -114,16 +116,18 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
                                                                 </tr>
                                                                 <table>
                                                                     <?php
-                                                                    $sql = " SELECT count(status) as take_session, session from attendance where student_id='2018ICTBIT01'";
+                                                                    $sql="SELECT count(student_attendance.status) as total_session,(select count(student_attendance.status) from attendance,student_attendance where 
+                                                                    student_attendance.id=attendance.attendance_id and student_attendance.status='present' AND student_id='2018slgtibit01' group by batch_no) as take_session,
+                                                                    attendance.code from student_attendance,attendance where student_attendance.id=attendance.attendance_id and student_id='2018slgtibit01'";
+                                                                    //$sql = " SELECT count(status) as take_session, session from attendance where student_id='2018ICTBIT01' and ";
                                                                     $result = mysqli_query($con, $sql);
                                                                     while ($row = mysqli_fetch_assoc($result)) {
-                                                                        $per = $row['take_session'];
-                                                                        +$row['session'];
+                                                                        $per = $row['take_session'] +$row['total_session'];
 
                                                                     ?>
                                                                         <tr>
                                                                             <td style="text-align: right">Points over taken sessions:</td>
-                                                                            <td> <?php echo $row['session']; ?><?php echo "/"; ?> <?php echo $row['take_session']; ?></td>
+                                                                            <td> <?php echo $row['take_session']; ?><?php echo "/"; ?> <?php echo $row['total_session']; ?></td>
 
                                                                         <?php
                                                                     }
@@ -132,16 +136,20 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
                                                                         
                                                                         </tr>
                                                                         <?php
-                                                                        $sql = " SELECT count(status) as take_session,session from attendance where student_id='2018ICTBIT01' order by module";
+                                                                        $sql="SELECT count(student_attendance.status) as total_session,(select count(student_attendance.status) from attendance,student_attendance where 
+                                                                        student_attendance.id=attendance.attendance_id and student_attendance.status='present' AND student_id='2018slgtibit01' group by batch_no) as take_session
+                                                                        from student_attendance,attendance where student_attendance.id=attendance.attendance_id and student_id='2018slgtibit01'";
+                                                                        // $sql = " SELECT count(status) as take_session,session from attendance where student_id='2018ICTBIT01' order by code";
                                                                         $result = mysqli_query($con, $sql);
                                                                         while ($row = mysqli_fetch_assoc($result)) {
 
-                                                                            $per = (($row['take_session'] / $row['session']) * 100) . "%";
+                                                                           //$per = (($row['take_session'] / $row['total_session']) * 100) . "%";
+                                                                            $per = number_format(($row['take_session'] / $row['total_session']) * 100, 2)."%"
                                                                         ?>
                                                                             <tr>
                                                                                 <td style="text-align: right">Percentage over taken sessions:</td>
 
-                                                                                <td><?php echo ($per); ?></td>
+                                                                                <td><?php echo $per ?></td>
 
                                                                             <?php
                                                                         }
