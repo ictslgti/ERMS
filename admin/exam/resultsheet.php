@@ -49,7 +49,7 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
         <!-- id array -->
         <?php
 
-        $sql = mysqli_query($con, "SELECT DISTINCT student_id FROM exam_result");
+        $sql = mysqli_query($con, "SELECT DISTINCT student_id FROM exams_result");
 
         while ($row = mysqli_fetch_array($sql)) {
             $s_ids[] = $row['student_id'];
@@ -63,7 +63,7 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
 
         <!-- subject array -->
         <?php
-        $sql1 = mysqli_query($con, "SELECT DISTINCT module_name FROM exam_result");
+        $sql1 = mysqli_query($con, "SELECT DISTINCT module_name FROM exams_result");
 
         while ($row1 = mysqli_fetch_array($sql1)) {
             $subjects[] = $row1['module_name'];
@@ -109,7 +109,7 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                         for ($s = 0; $s < $length1; $s++) {
                             $s_ids_val = $s_ids[$i];
                             $subjects_val = $subjects[$s];
-                            $sql3 = "select  status from student s inner join exam_result e on s.id=e.student_id and student_id='$s_ids_val' and module_name='$subjects_val';";
+                            $sql3 = "select  status from student s inner join exams_result e on s.id=e.student_id and student_id='$s_ids_val' and module_name='$subjects_val';";
                             $result = mysqli_query($con, $sql3);
                             if (mysqli_num_rows($result) > 0) {
                                 if ($row = mysqli_fetch_assoc($result)) {

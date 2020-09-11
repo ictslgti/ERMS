@@ -17,6 +17,7 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
     <link rel="stylesheet" type="text/css" href="css/main-login.css">
     <link href="https://fonts.googleapis.com/css?family=Poppins:600&display=swap" rel="stylesheet">
     <!-- #end "login form online links @k-avin" -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
     <!-- login form online icon script @k-avin -->
     <script src="https://kit.fontawesome.com/a81368914c.js"></script>
     <!-- end @k-avin script -->
@@ -39,7 +40,7 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                     $_SESSION['username'] = $username;
                     header("Location: forgot-mail.php");
 
-                }else if($password == $row['password'] && $status=="reset" && $usertype=="lecturer"){                    
+                }else if($password == $row['password'] && $status=="reset" && $usertype=="lecturer"){                               
                     $_SESSION['username'] = $username;
                     header("Location: admin/index.php");
 
@@ -47,20 +48,36 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                     $_SESSION['username'] = $username;
                     header("Location: students/index.php");
                     
-                }
-                else{
-                        echo  '<div class="alert alert-danger alert-dismissible fade show" role="alert">
-                        <strong> Password is wrong!</strong> check your password or user name then press the signin button.
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                          <span aria-hidden="true">&times;</span>
-                        </button>
-                      </div>';
+                }if($password !== $row['password']){
+                     echo "<script>
+                                Swal.fire({
+                                    position: 'center',
+                                    icon: 'error',
+                                    title: 'Password is wrong!',
+                                    showConfirmButton: false,
+                                    timer: 1400
+                                }) 
+                            </script>";
+                    }else{
+                         echo  "<script>
+                                    Swal.fire({
+                                        position: 'center',
+                                        icon: 'error',
+                                        title: 'Your email is invalid!',
+                                        showConfirmButton: false,
+                                        timer: 1400
+                                    }) 
+                                </script>";
                     }
-                    
+                
                 }else{
-                echo    '<div class="alert alert-info" role="alert">
-                user not found!
-                        </div>';
+                echo   "<script>
+                            Swal.fire(
+                                'User not found',                         
+                                '',
+                                'info'
+                                )
+                        </script>";
             }
         }
     ?>
@@ -70,7 +87,7 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
         </div>
         <div class="login-content">
 
-            <form method="post">
+            <form method="post" name="login" onsubmit="return validateForm()">
                 <h2 class="title">Welcome to</h2>
                 <p class=" text-center mb-4 blockquote-footer"><?php echo $title ?></p>
                 <img class="user-img" src="img/user.jpg">
@@ -92,7 +109,7 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                         <input type="password" class="input" name="password">
                     </div>
                 </div>
-                <a href="forgot-mail.php">Forgot password</a>
+                <a href="forgot/forgot-password-mail.php">Forgot password</a>
                 <div class="buttonfor">
                     <input type="submit" class="lbtnfor" value="Signin" name="signin">
                     <!-- <input type="button" class="sbtn" value="Reset" class="btn btn-primary" data-toggle="modal"
@@ -148,12 +165,26 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                                 </div>
                             </div>
                         </form>
+                        <script>
+                        function validateForm() {
+                            var x = document.forms["login"]["username", "password"].value;
+                            if (x == "" || x == null) {
+                                Swal.fire(
+                                    'Plesee Enter your Username and password ',
+                                    '',
+                                    'warning'
+                                )
+                                return false;
+                            }
+                        }
+                        </script>
 
-   
-                        </div>
-    </div>
 
-    <?php include_once("script.php"); ?>
-    <script type="text/javascript" src="js/login/main.js"></script>
+                    </div>
+                </div>
+
+                <?php include_once("script.php"); ?>
+                <script type="text/javascript" src="js/login/main.js"></script>
 </body>
+
 </html>

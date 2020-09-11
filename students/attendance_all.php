@@ -63,17 +63,12 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
                                     </div>
 
                                     <div class="card-body">
-
                                         <div class="table-responsive">
-
                                             <span id="message_operation"></span>
-
-
-
 
                                             <div class="row">
                                                 <div class="form-group col-md-12 table-responsive">
-                                                    <table class="table align-middle">
+                                                    <table class="table align-middle table table-striped">
                                                         <thead class='thead-light'>
                                                             <tr>
                                                                 <th scope='col'>Moduels</th>
@@ -90,48 +85,118 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
                                                             // while ($row1 = mysql_fetch_array($query1)) {
                                                             ?>
 
+                                                            <?php
+
+                                                            $sql = mysqli_query($con, "SELECT `code` FROM `attendance` GROUP BY `code` ");
+
+                                                            while ($row = mysqli_fetch_array($sql)) {
+                                                                $modu[] = $row['code'];
+                                                            }
+
+                                                            ?>
 
                                                             <?php
-                                                            //$sql = "select module, count(status) as take_session,count(status) as status FROM attendance where student_id='2018ictbit01'";
-                                                            //$sql =  " SELECT attendance.code, count(student_attendance.status) as status, count(student_attendance.status) as all_status FROM attendance INNER JOIN student_attendance ON attendance.attendance_id=student_attendance.id group by code";
-                                                            $sql="SELECT count(student_attendance.status) as total_session,(select count(student_attendance.status)as status from attendance,student_attendance where student_attendance.id=attendance.attendance_id and student_attendance.status='present' AND student_id='2018ICTBIT01' group by code,batch_no) as take_session,attendance.code,attendance.batch_no from student_attendance,attendance where student_attendance.id=attendance.attendance_id and student_id='2018ICTBIT01' group by code,batch_no";
-                                                            $result = mysqli_query($con, $sql);
-                                                            while ($row = mysqli_fetch_assoc($result)) 
-                                                            
-                                                            {
-                                                                $row1 = (($row['total_session'] / $row['take_session']) * 100)
+                                                            $cont = count($modu);
+                                                            // array end
+                                                            if (isset($_GET['semester'])) {
+                                                                $sem = $_GET['semester'];
+
+                                                                $sql = "select count(student_attendance.status) as Total_session,(SELECT count(student_attendance.status) from attendance,student_attendance where 
+                                                                    student_attendance.id=attendance.attendance_id and student_attendance.status='present' AND student_id='2018slgtibit01' and code='" . $modu[$x] . "' group by batch_no) as Take_session ,
+                                                                    attendance.code from attendance,student_attendance where student_attendance.id=attendance.attendance_id 
+                                                                    AND student_id='2018slgtibit01' and code='" . $modu[$x] . "' group by CODE,batch_no";
+
+                                                                $result = mysqli_query($con, $sql);
+                                                                while ($row = mysqli_fetch_assoc($result)) {
                                                             ?>
+                                                                    <tr>
+                                                                        <td scope='col'>
+                                                                            <?php echo $row['code'];
+                                                                            ?>
+                                                                        </td>
+                                                                        <td scope='col'>
+
+                                                                            <?php
+                                                                            if ($row['Take_session'] == null) {
+                                                                                echo "0";
+                                                                            } else {
+                                                                                echo $row['Take_session'];
+                                                                            }
+                                                                            ?>
+                                                                        </td>
+                                                                        <td scope='col'>
+
+                                                                            <?php echo $row['Total_session']; ?>
+                                                                        </td>
+                                                                        <td scope='col'>
+                                                                            <?php echo number_format(($row['Take_session'] / $row['Total_session']) * 100, 2) . "%" ?>
+                                                                        </td>
+
+                                                                    </tr>
+                                                                    <?php
+                                                                }
+                                                            } else {
+                                                                for ($x = 0; $x < $cont; $x++) {
+                                                                    $sql = "select count(student_attendance.status) as Total,(SELECT count(student_attendance.status) from attendance,student_attendance where 
+                                                                            student_attendance.id=attendance.attendance_id and student_attendance.status='present' AND student_id='2018slgtibit01' and code='" . $modu[$x] . "' group by batch_no) as Take ,
+                                                                            attendance.code from attendance,student_attendance where student_attendance.id=attendance.attendance_id 
+                                                                            AND student_id='2018slgtibit01'  and code='" . $modu[$x] . "' group by CODE,batch_no";
+
+                                                                    $result = mysqli_query($con, $sql);
+                                                                    while ($row = mysqli_fetch_assoc($result)) {
+                                                                    ?>
+                                                                        <tr>
+                                                                            <td scope='col'>
+                                                                                <?php echo $row['code'];
+                                                                                ?>
+                                                                            </td>
+                                                                            <td scope='col'>
+
+                                                                                <?php
+                                                                                if ($row['Take'] == null) {
+                                                                                    echo "0";
+                                                                                } else {
+                                                                                    echo $row['Take'];
+                                                                                }
+                                                                                ?>
+                                                                            </td>
+                                                                            <td scope='col'>
+
+                                                                                <?php echo $row['Total'];
+                                                                                ?>
+                                                                            </td>
+                                                                            <td scope='col'>
+                                                                                <?php echo number_format(($row['Take'] / $row['Total']) * 100, 2) . "%" ?>
+                                                                            </td>
+
+                                                                        </tr>
+                                                            <?php
+                                                                    }
+                                                                }
+                                                            }
+                                                            ?>
+
+                                                            <?php
+                                                            $sql = "SELECT count(student_attendance.status) as total_session,count(attendance.code) as count_code,(select count(student_attendance.status) from attendance,student_attendance where 
+                                                            student_attendance.id=attendance.attendance_id and student_attendance.status='present' AND student_id='2018slgtibit01' group by batch_no) as take_session,
+                                                            attendance.code from student_attendance,attendance where student_attendance.id=attendance.attendance_id and student_id='2018slgtibit01'";
+                                                            $result = mysqli_query($con, $sql);
+                                                            while ($row = mysqli_fetch_assoc($result)) {
+                                                                $row1 = number_format(($row['take_session'] / $row['total_session']) * 100, 2)
+                                                            ?>
+
                                                                 <tr>
-                                                                    <td scope='col'><?php echo $row['code']; ?></td>
-                                                                    <td scope='col'><?php echo $row['take_session']; ?></td>
-                                                                    <td scope='col'><?php echo $row['total_session']; ?></td>
-                                                                    <td scope="col"><?php echo $row1 . "%"; ?></td>
+                                                                    <td scope='col'>Average attendance</td>
+                                                                    <td scope='col'></td>
+                                                                    <td scope='col'></td>
+                                                                    <td scope='col'><?php echo $row1 . "%" ?></td>
 
                                                                 <?php
                                                             }
+
                                                                 ?>
+
                                                                 </tr>
-                                                                <?php
-                                                                //$sql = "select count(status) as take_session,count(DISTINCT module) as module,status  FROM attendance WHERE student_id='2018ictbit01' groub by module";
-                                                                $sql =  "select code,status from attendance inner join student_attendance on attendance.code=student_attendance.status";
-                                                                $result = mysqli_query($con, $sql);
-                                                                while ($row = mysqli_fetch_assoc($result)) {
-
-                                                                    $row1 = (($row['take_session'] / $row['status']) * 100)
-                                                                ?>
-
-                                                                    <tr>
-                                                                        <td scope='col'>Average attendance</td>
-                                                                        <td scope='col'></td>
-                                                                        <td scope='col'><?php echo $row['module'] ?></td>
-                                                                        <td scope='col'><?php echo $row1 . '%' ?></td>
-
-
-                                                                    <?php
-                                                                }
-                                                                    ?>
-
-                                                                    </tr>
 
                                                         </thead>
                                                         <tbody>

@@ -30,7 +30,7 @@ if(isset($_GET['delete'])){
     $id = $_GET['delete'];
     $nv=$_GET['nvq'];
     $de=$_GET['dep'];
-    $sql = "DELETE FROM `batch` WHERE `batch`.`batch_no` = '$id' and `batch`.`department_code` = '$de' and `batch`.`NVQ_level` = '$nv'";
+    $sql = "DELETE FROM `batches` WHERE `batches`.`batch_no` = '$id' and `batches`.`department_code` = '$de' and `batches`.`NVQ_level` = '$nv'";
     if(mysqli_query($con,$sql)){
         echo "
        <div class='alert alert-success' role='alert'>
@@ -65,26 +65,31 @@ if(isset($_GET['delete'])){
         <th scope="col">Department</th>
         <th scope="col">NVQ_level</th>
         <th scope="col">Academic_year</th>
-        <th scope="col">Options</th>
+        <th scope="col"></th>
       </tr>
     </thead>
     <tbody>
     <?php
-$sql = 'SELECT * FROM `batch`';
+$sql = 'SELECT * FROM `batches`';
 $result = mysqli_query($con,$sql);
 if(mysqli_num_rows($result)>0){
     while($row = mysqli_fetch_assoc($result)){
         echo '<tr>
-            <td>',"batch".$row['batch_no'],'</td>
+            <td>',"batches".$row['batch_no'],'</td>
             <td>',$row['department_code'],'</td>
             <td>',$row['NVQ_level'],'</td>
             <td>',$row['Academic_year'],'</td>
             <td>
-            <div class="btn-group btn-sm" role="group" aria-label="Basic example">
-            <a href="batch.php?edit=',$row['batch_no'],'" class="btn btn-warning" > <img src="https://img.icons8.com/android/18/000000/edit.png"/> </a> 
-            <a href="?delete=',$row['batch_no'],'& dep=',$row['department_code'],'& nvq=',$row['NVQ_level'],'" class="btn btn-danger"> <img src="https://img.icons8.com/windows/18/000000/delete-forever.png"/> </a>
-            <a href="students.php?view=',$row['batch_no'],'" class="btn btn-success"> view studnts </a>
+            <div class="row">
+<div class="col"></div>
+<div class="col-auto">
+<div class="btn-group btn-sm" role="group" aria-label="Basic example">
+            <a href="batch.php?edit=', $row['id'], '" class=" btn btn-sm" style="background-color: #ffaa00 ;" ><i class="far fa-edit" style="color: #ffffff;"></i> </a> 
+            <a href="?delete=', $row['id'], '" class="btn btn-sm" style="background-color: #bf0502;"> <i class="far fa-trash-alt" style="color: #ffffff;"></i> </a>
+            <a href="assessment_result.php?id=', $row['id'], '" class="btn btn-sm" style="background-color: #0097c4 ; color: #ffffff;" > Add result </a>
           </div>
+</div>
+</div>
             </td>
         </tr>';
     }
@@ -101,10 +106,7 @@ else{
                   
 
 
-                
-      
-     
-
+        
     </div>
        <!-- card end  -->
     </div>
