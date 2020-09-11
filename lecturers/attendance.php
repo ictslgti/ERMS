@@ -38,17 +38,17 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
                       </div>
 
                     </div>
-                      <div class="dropdown">
-                        <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" value="show details" name="show_date">
-                          Attendance Review
-                        </button>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                          <a class="dropdown-item" href="attendance_month.php">Month-wise</a>
-                          <a class="dropdown-item" href="attendance_semester.php">Semester-wise</a>
-                          <a class="dropdown-item" href="attendance.php">Date-wise</a>
-                        </div>
+                    <div class="dropdown">
+                      <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" value="show details" name="show_date">
+                        Attendance Review
+                      </button>
+                      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" href="attendance_month.php">Month-wise</a>
+                        <a class="dropdown-item" href="attendance_semester.php">Semester-wise</a>
+                        <a class="dropdown-item" href="attendance.php">Date-wise</a>
                       </div>
-                      <div class="dropdown">
+                    </div>
+                    <div class="dropdown">
                       <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" value="show details" name="show_date">
                         Batch:
                       </button>
@@ -101,34 +101,33 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
                           // inner join attendance a on s.id=a.student_id where attendance_date=curdate();";
                           // }
 
-                          $sql = "SELECT `student`.`id`,`student`.`name_with_initials`,`student_enroll`.`batch_no`,`student_enroll`.`course_code`,`attendance`.`code` 
-                          FROM `student` LEFT JOIN `student_enroll` ON `student`.`id` = `student_enroll`.`id` LEFT JOIN `student_attendance` ON
-                          `student`.`id` = `student_attendance`.`student_id` LEFT JOIN `attendance` ON
-                          `student_attendance`.`id` = `attendance`.`attendance_id`group by name_with_initials ORDER BY `student`.`id` ASC ";
+                          // $sql = "SELECT `student`.`id`,`student`.`name_with_initials`,`student_enroll`.`batch_no`,`student_enroll`.`course_code`,`attendance`.`code` 
+                          // FROM `student` LEFT JOIN `student_enroll` ON `student`.`id` = `student_enroll`.`id` LEFT JOIN `student_attendance` ON
+                          // `student`.`id` = `student_attendance`.`student_id` LEFT JOIN `attendance` ON
+                          // `student_attendance`.`id` = `attendance`.`attendance_id` group by name_with_initials ORDER BY `student`.`id` ASC";
 
-                          
+                          $sql = "SELECT count(student_attendance.status) as Total,(SELECT count(student_attendance.status) from 
+                          attendance,student_attendance where student_attendance.id=attendance.attendance_id and 
+                          student_attendance.status='present' AND attendance.code=modules.code group by batch_no)
+                          as Take,attendance.code,student_attendance.student_id,student.name_with_initials from 
+                          attendance,student_attendance,modules,student where student_attendance.id=attendance.attendance_id
+                          and attendance.code=modules.code group by CODE,batch_no";
+
 
                           $result = mysqli_query($con, $sql);
                           while ($row = mysqli_fetch_assoc($result)) {
 
-                           
                           ?>
                             <tr>
                               <td scope='col'>
                                 <?php echo $row['name_with_initials']; ?>
                               </td>
                               <td scope='col'>
-                                <?php echo $row['id']; ?>
+                                <?php echo $row['student_id']; ?>
                               </td>
                               <td scope='col'>
                                 <?php echo $row['code']; ?>
                               </td>
-
-                           
-
-
-                              
-
                               <td scope='col'>
                                 <?php echo number_format(($row['Take'] / $row['Total']) * 100, 2) . "%" ?>
                               </td>
