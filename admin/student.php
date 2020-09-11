@@ -686,7 +686,15 @@ while ($row = mysqli_fetch_array($result)) {
 
                                     <div class="col-3">
                                         <label for="regno"> Registration No: </label>
-                                        <input type="text" name="regno" class="form-control" placeholder="2018SLGTIBIT04" value="<?php echo $regno; ?>" required>
+                                        <?php
+                                        if (isset($_GET['edit'])) {
+                                            echo '<input type="text" name="regno" class="form-control" value="' . $regno . '" disabled>';
+                                        } else {
+                                            echo '<input type="text" name="regno" class="form-control" placeholder="2018SLGTIBIT04" value="" required>';
+                                        }
+                                        ?>
+
+
                                     </div>
 
                                 </div>
@@ -716,10 +724,15 @@ while ($row = mysqli_fetch_array($result)) {
                                         <input type="date" class="form-control" name="exitdate" value="<?php echo $exitdate; ?>">
                                     </div>
 
-                                    <!-- <div class="col-3">
-                                        <label for="image"> Image Preview: </label>
-                                        <div><img id="output_image" /></div>
-                                    </div> -->
+                                    <div class="col-3">
+                                        <?php
+                                        if (isset($_GET['edit'])) {
+                                            echo '<label for="reenroll">Re Enroll:</label><br>
+                                            <button type="button" name="reenroll" class="btn btn-outline-secondary" data-toggle="modal" data-target="#staticBackdrop">Re Enroll</button>';
+                                        } else {
+                                        }
+                                        ?>
+                                    </div>
                                 </div>
                                 <!-- 2nd row end -->
                                 <br>
@@ -798,6 +811,81 @@ while ($row = mysqli_fetch_array($result)) {
                 </div>
         </main>
     </div>
+
+    <!-- Button trigger modal -->
+
+    <!-- Modal -->
+    <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="staticBackdropLabel">Re Enroll</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="form-row">
+
+                    <div class="col-3">
+                        <label for="cid"> Course Name: </label>
+                        <select name="cid" id="cid" class="custom-select action">
+                            <?php
+                            if (isset($_GET['edit'])) {
+                            ?>
+                                <option value="<?php echo $cid; ?>" selected><?php echo $cid; ?></option>
+                                <option value="">Choose</option>
+                                <?php echo $course_name; ?>
+                            <?php
+                            } else {
+                            ?>
+                                <option value="">Choose</option>
+                                <?php echo $course_name; ?>
+                            <?php
+                            }
+                            ?>
+
+
+                        </select>
+                    </div>
+
+                    <div class="col-3">
+                        <label for="bid"> Batch No: </label>
+                        <select name="bid" id="bid" class="custom-select action">
+                            <?php
+                            if (isset($_GET['edit'])) {
+                            ?>
+                                <option value="<?php echo $bid; ?>" selected><?php echo $bid; ?></option>
+                            <?php
+                            } else {
+                            ?>
+                                <option value="" selected disabled>Choose</option>
+                            <?php
+                            }
+                            ?>
+                        </select>
+                    </div>
+
+                    <div class="col-3">
+                        <label for="regno"> Registration No: </label>
+                        <?php
+                        if (isset($_GET['edit'])) {
+                            echo '<input type="text" name="regno" class="form-control" value="' . $regno . '" disabled>';
+                        }
+                        ?>
+
+
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Understood</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Button trigger modal -->
 
     <?php include_once("../script.php"); ?>
 </body>
