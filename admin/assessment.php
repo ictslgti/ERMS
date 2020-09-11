@@ -10,8 +10,7 @@ $departments = '';
 $query = "SELECT * FROM departments";
 $result = mysqli_query($con, $query);
 while ($row = mysqli_fetch_array($result)) {
-  $departments .= '<option value="' .$row["code"] . '">' . $row["name"] . '</option>';
- 
+  $departments .= '<option value="' . $row["code"] . '">' . $row["name"] . '</option>';
 }
 ?>
 
@@ -42,19 +41,17 @@ while ($row = mysqli_fetch_array($result)) {
             result = 'course';
           } else if (action == "course") {
             result = 'module';
-          }
-          else if (action == "module") {
+          } else if (action == "module") {
             result = 'percenta';
-          }
-          else if (action == "academic") {
+          } else if (action == "academic") {
             result = 'batch';
           }
-          
+
 
           $.ajax({
             url: "assessment_ajax.php",
             method: "POST",
-            
+
             data: {
               action: action,
               query: query
@@ -69,22 +66,21 @@ while ($row = mysqli_fetch_array($result)) {
   </script>
 
 
-<!-- batch -->
-<script>
-    var course_id = 0;
-var postBodyElement = null;
-$('#batch').on('click', function () {
-  $.ajax({
-    method: 'POST',
-    url:"assessment_ajax.php",
-    data: {
-      course_id: course_id,
-      module: $('#module').val(),
-      batch: $('#batch').val(),
-      _token: token
+  <!-- batch -->
+  <script>
+    function getselectvalue() {
+      var selectmodule = document.getElementById("module").value;
+      var selectbatch = document.getElementById("batch").value;
+
+      $.ajax({
+        url: 'assessment_ajax.php',
+        data: 'batch='+ selectbatch+'&'+'module='+ selectmodule,
+        success: function(data) {
+          $('#demo').html(data);
+        }
+
+      });
     }
-  })
-});
   </script>
 </head>
 
@@ -136,11 +132,7 @@ $('#batch').on('click', function () {
       if (
         isset($_POST['submit'])
         && !empty($_POST['department'])
-        && !empty($_POST['course'])
-        && !empty($_POST['batch'])
-        && !empty($_POST['module'])
-        && !empty($_POST['type'])
-        && !empty($_POST['per'])
+
       ) {
         $department = $_POST['department'];
         $batchno = $_POST['batch'];
@@ -149,7 +141,7 @@ $('#batch').on('click', function () {
         $module = $_POST['module'];
         $percen = $_POST['per'];
         $assess = $_POST['assess'];
-        $academ=$_POST['academic'];
+        $academ = $_POST['academic'];
         $sql = "INSERT INTO assessments (names,batch,module,type,Percentage,Academic_year,department_code)
     VALUES 
     ('$assess','$batchno', '$module', '$type','$percen','$academ','$department')
@@ -262,7 +254,7 @@ $('#batch').on('click', function () {
                       Academic_year <br>
                       <div class="input-group input-group-sm mb-3">
                         <select class="form-control action" name="academic" id="academic" id="inputGroupSelect01" id="validationCustom04" required>
-                        <option value="">Select Academic_year</option>
+                          <option value="">Select Academic_year</option>
                           <?php echo $academic; ?>
                         </select>
                       </div>
@@ -276,9 +268,9 @@ $('#batch').on('click', function () {
                       Batch <br>
                       <div class="input-group input-group-sm mb-3">
 
-                        <select class="custom-select" name="batch" id="batch" id="inputGroupSelect01" id="validationCustom04" required>
-                          
-                        <option value="">Select Batch</option>
+                        <select class="custom-select" name="batch" id="batch" id="inputGroupSelect01" id="validationCustom04" onchange="getselectvalue()" required>
+
+                          <option value="">Select Batch</option>
                         </select>
                       </div>
                     </div>
@@ -327,15 +319,15 @@ $('#batch').on('click', function () {
                     </div>
                   </div>
                 </div>
-
-                <div class="row">
-                  <div class="col-3"></div>
-                  <div class="col-6">
-                      <table name="percenta" id="percenta"></table>
-                  </div>
-                  <div class="col-3"></div>
+              </form>
+              <div class="row">
+                <div class="col-3"></div>
+                <div class="col-6">
+                <p id="demo"></p>
                 </div>
-                   
+                <div class="col-3"></div>
+              </div>
+
 
             </div>
           </div>
@@ -346,15 +338,6 @@ $('#batch').on('click', function () {
       <?php include_once("../script.php");
 
       ?>
-
-
-      </form>
-
-
-
-
-
-
 
 </body>
 
