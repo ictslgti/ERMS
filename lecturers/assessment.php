@@ -68,13 +68,30 @@ while ($row = mysqli_fetch_array($result)) {
 
   <!-- batch -->
   <script>
+    function getbatch() {
+      var selectcourse = document.getElementById("course").value;
+      $.ajax({
+        url: 'assessment_ajax.php',
+        data: 'cou=' + selectcourse,
+        success: function(data) {
+          $('#batch').html(data);
+        }
+
+      });
+    }
+  </script>
+  <!-- batch -->
+
+
+
+  <script>
     function getselectvalue() {
       var selectmodule = document.getElementById("module").value;
       var selectbatch = document.getElementById("batch").value;
 
       $.ajax({
         url: 'assessment_ajax.php',
-        data: 'batch='+ selectbatch+'&'+'module='+ selectmodule,
+        data: 'batch=' + selectbatch + '&' + 'module=' + selectmodule,
         success: function(data) {
           $('#demo').html(data);
         }
@@ -99,12 +116,6 @@ while ($row = mysqli_fetch_array($result)) {
 
     <div class="container">
       <?php
-
-      ?>
-
-      <!-- insert start -->
-      <?php
-
       $department = null;
       $type = null;
       $batchno = null;
@@ -116,19 +127,32 @@ while ($row = mysqli_fetch_array($result)) {
       $id = null;
       if (isset($_GET['edit'])) {
         $id = $_GET['edit'];
-
-        $sql = "SELECT * FROM `assessments` WHERE `batch`= '$id' ";
+        $sql = "select names,batch as batch_no,module as module_no,department_code as dept_no,(select batch_no from batches where id in(select batch from assessments where id='$id')) 
+as batch,(select name from modules where id in(select module from assessments where id='$id')) as module,
+(select name from courses where code in (select course_code from modules where id in 
+(select module from assessments where id='$id'))) as course,(select name from departments where code in 
+(select department_code from assessments where id='$id')) 
+as department,type,percentage from assessments where id='$id'; ";
         $result = mysqli_query($con, $sql);
         if (mysqli_num_rows($result) == 1) {
           $row = mysqli_fetch_assoc($result);
-          $department = $row['department_code'];
-          $year = $row['Academic_year'];
-          $batchno = $row['batch_no'];
-          $nvq = $row['NVQ_level'];
+          $names = $row['names'];
+          $batch = $row['batch'];
+          $batch_no=$row['batch_no'];
+          $course = $row['course'];
+          $module = $row['module'];
+          $dept_no = $row['dept_no'];
+          $module_no = $row['module_no'];
+          $type = $row['type'];
+          $percen = $row['percentage'];
+          $department = $row['department'];
         }
       }
 
 
+
+
+      //  insert start 
       if (
         isset($_POST['submit'])
         && !empty($_POST['department'])
@@ -141,12 +165,11 @@ while ($row = mysqli_fetch_array($result)) {
         $module = $_POST['module'];
         $percen = $_POST['per'];
         $assess = $_POST['assess'];
-        $academ = $_POST['academic'];
-        $sql = "INSERT INTO assessments (names,batch,module,type,Percentage,Academic_year,department_code)
-    VALUES 
-    ('$assess','$batchno', '$module', '$type','$percen','$academ','$department')
-    ";
 
+        $sql = "INSERT INTO assessments (names,batch,module,type,Percentage,department_code)
+    VALUES 
+    ('$assess','$batchno', '$module', '$type','$percen','$department')
+    ";
         if (mysqli_query($con, $sql)) {
           echo "
        <div class='alert alert-success' role='alert'>
@@ -168,6 +191,44 @@ while ($row = mysqli_fetch_array($result)) {
       }
       ?>
       <!-- insert end -->
+
+
+      <?php
+      //  update start 
+      if (
+        isset($_POST['save'])
+      ) {
+        $department = $_POST['department'];
+        $batchno = $_POST['batch'];
+        $type = $_POST['type'];
+        $course = $_POST['course'];
+        $module = $_POST['module'];
+        $percen = $_POST['per'];
+        $assess = $_POST['assess'];
+
+        $sql = "update assessments set names='$assess',batch='$batch',module='$module',type='$type',percentage='$percen',department_code='$department' where id='$id'; ";
+
+        if (mysqli_query($con, $sql)) {
+          echo "
+       <div class='alert alert-success' role='alert'>
+       update success fully 
+       <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+           <span aria-hidden='true'>&times;</span>
+        </button>
+      </div>";
+        } else {
+          echo "Error: " . $sql . "<br>" . mysqli_error($con);
+          echo "
+       <div class='alert alert-danger' role='alert'>
+       This academic_year alredy submit 
+       <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+           <span aria-hidden='true'>&times;</span>
+        </button>
+      </div>";
+        }
+      }
+      ?>
+      <!-- update end -->
 
       <div class="card  mb-3">
         <div class="card-header ">
@@ -192,9 +253,21 @@ while ($row = mysqli_fetch_array($result)) {
                     <div class="form-group">
                       Department <br>
                       <div class="input-group input-group-sm mb-3">
-                        <select name="department" id="department" class="form-control action">
-                          <option value="">Select Department</option>
-                          <?php echo $departments; ?>
+                        <select name="department" id="department" class="form-control action" required>
+                          <?php
+                          if (isset($_GET['edit'])) {
+                            ?>
+                            <option value="<?php echo $dept_no; ?>" selected><?php echo $department; ?></option>
+                            <option value="">Select Department</option>
+                            <?php echo $departments; ?>
+                          <?php
+                        } else {
+                          ?>
+                            <option value="">Select Department</option>
+                            <?php echo $departments; ?>
+                          <?php
+                        }
+                        ?>
                         </select>
                       </div>
                     </div>
@@ -205,8 +278,21 @@ while ($row = mysqli_fetch_array($result)) {
                     <div class="form-group">
                       Course <br>
                       <div class="input-group input-group-sm mb-3">
-                        <select name="course" id="course" class="form-control action">
-                          <option value="">Select course</option>
+                        <select name="course" id="course" class="form-control action" required>
+                          <?php
+                          if (isset($_GET['edit'])) {
+                            ?>
+                            <option value="<?php echo $course; ?>" selected><?php echo $course; ?></option>
+                            <option value="">Select course</option>
+
+                          <?php
+                        } else {
+                          ?>
+                            <option value="">Select course</option>
+
+                          <?php
+                        }
+                        ?>
                         </select>
                       </div>
                     </div>
@@ -223,8 +309,19 @@ while ($row = mysqli_fetch_array($result)) {
                     <div class="form-group">
                       Module <br>
                       <div class="input-group input-group-sm mb-3">
-                        <select name="module" id="module" class="form-control action">
-                          <option value="">Select module</option>
+                        <select name="module" id="module" class="form-control action" onchange="getbatch()" required>
+                          <?php
+                          if (isset($_GET['edit'])) {
+                            ?>
+                            <option value="<?php echo $module_no; ?>" selected><?php echo $module; ?></option>
+                            <option value="">Select module</option>
+                          <?php
+                        } else {
+                          ?>
+                            <option value="">Select module</option>
+                          <?php
+                        }
+                        ?>
                         </select>
                       </div>
                     </div>
@@ -237,8 +334,20 @@ while ($row = mysqli_fetch_array($result)) {
                     <div class="form-group">
                       Assessment_name <br>
                       <div class="input-group input-group-sm mb-3">
+                        <?php
+                        if (isset($_GET['edit'])) {
+                          ?>
 
-                        <input type="text" name="assess" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" id="validationServer01" required>
+                          <input type="text" value="<?php echo $names; ?>" name="assess" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" id="validationServer01" required>
+                        <?php
+                      } else {
+                        ?>
+                          <input type="text" name="assess" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" id="validationServer01" required>
+                        <?php
+                      }
+                      ?>
+
+
                       </div>
                     </div>
                   </div>
@@ -248,21 +357,6 @@ while ($row = mysqli_fetch_array($result)) {
 
                 <!-- 4 row start   -->
                 <div class="row">
-
-                  <div class="col-md-6 col-sm-6 col-xs-6">
-                    <div class="form-group">
-                      Academic_year <br>
-                      <div class="input-group input-group-sm mb-3">
-                        <select class="form-control action" name="academic" id="academic" id="inputGroupSelect01" id="validationCustom04" required>
-                          <option value="">Select Academic_year</option>
-                          <?php echo $academic; ?>
-                        </select>
-                      </div>
-                    </div>
-                  </div>
-
-
-
                   <div class="col-md-6 col-sm-6 col-xs-6">
                     <div class="form-group">
                       Batch <br>
@@ -270,7 +364,18 @@ while ($row = mysqli_fetch_array($result)) {
 
                         <select class="custom-select" name="batch" id="batch" id="inputGroupSelect01" id="validationCustom04" onchange="getselectvalue()" required>
 
-                          <option value="">Select Batch</option>
+                          <<?php
+                            if (isset($_GET['edit'])) {
+                              ?> <option value="<?php echo $batch_no; ?>" selected><?php echo $batch; ?></option>
+                              <option value="">Select batch</option>
+
+                            <?php
+                          } else {
+                            ?>
+                              <option value="">Select batch</option>
+                            <?php
+                          }
+                          ?>
                         </select>
                       </div>
                     </div>
@@ -289,9 +394,26 @@ while ($row = mysqli_fetch_array($result)) {
                       <div class="input-group input-group-sm mb-3">
 
                         <select class="custom-select" name="type" id="inputGroupSelect01" id="validationCustom04" required>
-                          <option selected disabled value="">Choose Type </option>
-                          <option value="Practical">Practical</option>
-                          <option value="Theroy">Theroy</option>
+                          <?php
+                          if (isset($_GET['edit'])) {
+                            ?>
+                            <option selected value="<?php echo $type; ?>"><?php echo $type; ?> </option>
+                            <option disabled value="">Choose Type </option>
+                            <option value="Practical">Practical</option>
+                            <option value="Theroy">Theroy</option>
+
+                          <?php
+                        } else {
+                          ?>
+                            <option selected disabled value="">Choose Type </option>
+                            <option value="Practical">Practical</option>
+                            <option value="Theroy">Theroy</option>
+
+                          <?php
+                        }
+                        ?>
+
+
 
                         </select>
                       </div>
@@ -303,7 +425,19 @@ while ($row = mysqli_fetch_array($result)) {
                     Percentage <br>
                     <div class="form-group">
                       <div class="input-group input-group-sm mb-3">
-                        <input type="number" name="per" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" id="validationServer01" required>
+                        <?php
+                        if (isset($_GET['edit'])) {
+                          ?>
+
+                          <input type="number" value="<?php echo $percen; ?>" name="per" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" id="validationServer01" required>
+                        <?php
+                      } else {
+                        ?>
+                          <input type="number" name="per" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" id="validationServer01" required>
+                        <?php
+                      }
+                      ?>
+
                       </div>
                     </div>
                   </div>
@@ -313,9 +447,23 @@ while ($row = mysqli_fetch_array($result)) {
                   <div class="row">
                     <div class="col-11 "></div>
                     <div class="col-1">
-                      <button type="submit" name="submit" class="btn btn-outline-success" data-toggle="modal" data-target="#exampleModal">
-                        Add
-                      </button>
+
+                      <?php
+                      if (isset($_GET['edit'])) {
+                        ?>
+                        <button type="submit" name="save" class="btn btn-outline-success" data-toggle="modal" data-target="#exampleModal">
+                          Save
+                        </button>
+                      <?php
+                    } else {
+                      ?>
+                        <button type="submit" name="submit" class="btn btn-outline-success" data-toggle="modal" data-target="#exampleModal">
+                          Add
+                        </button>
+                      <?php
+                    }
+                    ?>
+
                     </div>
                   </div>
                 </div>
@@ -323,7 +471,7 @@ while ($row = mysqli_fetch_array($result)) {
               <div class="row">
                 <div class="col-3"></div>
                 <div class="col-6">
-                <p id="demo"></p>
+                  <p id="demo"></p>
                 </div>
                 <div class="col-3"></div>
               </div>
