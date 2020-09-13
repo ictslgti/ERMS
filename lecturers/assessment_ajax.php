@@ -52,8 +52,8 @@ if (isset($_POST["action"])) {
 
 if (isset($_GET['batch'])) {
    $output = '';
-   echo $_GET['batch'];
-   echo $_GET['module'];
+    $_GET['batch'];
+    $_GET['module'];
    $query = "select * from assessments where module='".$_GET['module']."' and batch='".$_GET['batch']."';";
    $result = mysqli_query($con, $query);
    $output .= '<table>';
@@ -68,4 +68,17 @@ if (isset($_GET['batch'])) {
    
    echo $output;
 }
+
+
+if (isset($_GET['cou'])) {
+  $_GET['cou'];
+  $query = 'select * from batches where department_code=(select department_code from courses where code="'.$_GET['cou'].'") and NVQ_level=(select NVQ_level from courses where code="'.$_GET['cou'].'") order by batch_no desc;';
+  $result = mysqli_query($con, $query);
+  $output .= '<option selected disabled value="">Choose Batch</option>';
+  while ($row = mysqli_fetch_array($result)) {
+    $output .= '<option value="' . $row["id"] . '">' . $row["batch_no"] . '</option>';
+  }
+  echo $output;
+}
+
 ?>
