@@ -166,27 +166,42 @@ as department,type,percentage from assessments where id='$id'; ";
         $percen = $_POST['per'];
         $assess = $_POST['assess'];
 
-        $sql = "INSERT INTO assessments (names,batch,module,type,Percentage,department_code)
-    VALUES 
-    ('$assess','$batchno', '$module', '$type','$percen','$department')
-    ";
-        if (mysqli_query($con, $sql)) {
-          echo "
-       <div class='alert alert-success' role='alert'>
-       insert success fully 
-       <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
-           <span aria-hidden='true'>&times;</span>
-        </button>
-      </div>";
-        } else {
-          echo "Error: " . $sql . "<br>" . mysqli_error($con);
-          echo "
-       <div class='alert alert-danger' role='alert'>
-       This academic_year alredy submit 
-       <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
-           <span aria-hidden='true'>&times;</span>
-        </button>
-      </div>";
+        $query = "select sum(percentage) from assessments where batch='$batchno' and module='$module'";
+        $result = mysqli_query($con, $query);
+        if($row = mysqli_fetch_array($result)) {
+          $sum =  $row["sum(percentage)"] ;
+          $total=$sum+$percen;
+          if($total>101)
+          {
+            echo '<script language="javascript">';
+            echo 'alert("You insert percentage is this module already 100 above")';
+            echo '</script>';
+          }
+          else
+          {
+            $sql = "INSERT INTO assessments (names,batch,module,type,Percentage,department_code)
+            VALUES 
+            ('$assess','$batchno', '$module', '$type','$percen','$department')
+            ";
+                if (mysqli_query($con, $sql)) {
+                  echo "
+               <div class='alert alert-success' role='alert'>
+               insert success fully 
+               <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+                   <span aria-hidden='true'>&times;</span>
+                </button>
+              </div>";
+                } else {
+                  echo "Error: " . $sql . "<br>" . mysqli_error($con);
+                  echo "
+               <div class='alert alert-danger' role='alert'>
+               This academic_year alredy submit 
+               <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+                   <span aria-hidden='true'>&times;</span>
+                </button>
+              </div>";
+                }
+          }
         }
       }
       ?>
