@@ -25,9 +25,31 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
         <?php include_once("nav.php"); ?>
 
         <!-- <main class="page-content pt-2"> -->
+
+        <!-- delete -->
+
+<!-- delete -->
         <!-- 1st row start -->
 
         <div class="container">
+        <?php
+if(isset($_GET['delete'])){
+    $id = $_GET['delete'];
+   
+    $sql = "delete from assessments where id='$id'";
+    if(mysqli_query($con,$sql)){
+        echo "
+       <div class='alert alert-success' role='alert'>
+       delete success fully 
+       <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+           <span aria-hidden='true'>&times;</span>
+        </button>
+      </div>";
+    }else{
+        echo "Error: " . $sql . "<br>" . mysqli_error($con);
+    }
+}
+?>
             <br>
 
 
@@ -64,21 +86,21 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                                         </thead>
                                         <tbody>
                                             <?php
-                                            $sql = 'select a.department_code, a.type,a.id,a.names,m.name,a.batch,b.NVQ_level from assessments a inner join modules m on a.module=m.id inner join batches b on b.id=a.batch';
+                                            $sql = 'select a.department_code, a.type,a.id,a.names,m.name,b.batch_no,b.NVQ_level from assessments a inner join modules m on a.module=m.id inner join batches b on b.id=a.batch';
                                             $result = mysqli_query($con, $sql);
                                             if (mysqli_num_rows($result) > 0) {
                                                 while ($row = mysqli_fetch_assoc($result)) {
                                                     echo '<tr>
             <td>', $row['names'] . " " . "<span class='badge badge-dark'>" . $row['type'] . "</span>", '</td>
             <td>', $row['name'], '</td>
-            <td>', $row['NVQ_level'] . '-batch-' . $row['batch'] . "<span class='badge badge-dark'>" . $row['department_code'] . "</span>", '</td>
+            <td>', $row['NVQ_level'] . '-batch-' . $row['batch_no'] . "<span class='badge badge-dark'>" . $row['department_code'] . "</span>", '</td>
             
             <td>
 <div class="row">
 <div class="col"></div>
 <div class="col-auto">
 <div class="btn-group btn-sm" role="group" aria-label="Basic example">
-            <a href="batch.php?edit=', $row['id'], '" class=" btn btn-sm" style="background-color: #ffaa00 ;" ><i class="far fa-edit" style="color: #ffffff;"></i> </a> 
+            <a href="assessment.php?edit=', $row['id'], '" class=" btn btn-sm" style="background-color: #ffaa00 ;" ><i class="far fa-edit" style="color: #ffffff;"></i> </a> 
             <a href="?delete=', $row['id'], '" class="btn btn-sm" style="background-color: #bf0502;"> <i class="far fa-trash-alt" style="color: #ffffff;"></i> </a>
             <a href="assessment_result.php?id=', $row['id'], '" class="btn btn-sm" style="background-color: #0097c4 ; color: #ffffff;" > Add result </a>
           </div>
