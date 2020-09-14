@@ -9,6 +9,8 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
     <?php include_once('.././head.php');
     include_once('../config.php');
     ?>
+
+
 </head>
 
 <body>
@@ -30,7 +32,7 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
                                 <?php
                                 if (isset($_GET['results'])) {
                                     $batch_no = $_GET['results'];
-                                    $sql = "select * from exams,batches where exams.batch=batches.batch_no and batches.batch_no =$batch_no ";
+                                    $sql = "select * from exams,batches where exams.batch=batches.batch_no and batches.batch_no =$batch_no group by batches.department_code";
                                     $result = $con->query($sql);
                                     if ($result->num_rows > 0) {
                                         while ($row = $result->fetch_assoc()) {
@@ -48,11 +50,23 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
                                 </div>
                             </div>
                             <div class="row">
+                            <div class="col-md-4">
+                                <label for="exampleInputEmail1" name="course">Course :-<b>', $row['course'], '</b></label>
+                            </div>
+                            <div class="col-md-4">
+                                <label for="exampleInputEmail1" name="level">Level :-', $row['NVQ_level'], '</b></label>
+        
+                            </div>
+                            <div class="col-md-4">
+                                <label for="exampleInputEmail1" name="date">Exam Date :-<b>', $row['date'], '</b></label>
+                            </div>
+                        </div>
+                            <div class="row">
                                 <div class="col-md-4">
                                     <label for="exampleInputEmail1" name="module">Module Code :-<b>', $row['module'], '</b></label><span class="badge badge-pill badge-success" name="exam_type">', $row['exam_type'], '</span>
                                 </div>
                                  <div class="col-md-4">
-                                    <label for="exampleInputEmail1" name="exams">Exams Date :-<b>', $row['exams'], '</b></label>
+                                    <label for="exampleInputEmail1" name="exams">Exams Type :-<b>', $row['exams'], '</b></label>
                                 </div>
                                 <div class="col-md-4">
                                     <label for="exampleInputEmail1" name="semester">Semester :-<b>', $row['semester'], '</b></label>
@@ -88,7 +102,8 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
                                                 <?php
                                                 if (isset($_GET['results'])) {
                                                     $batch_no = $_GET['results'];
-                                                    $sql = "SELECT * FROM student LEFT JOIN student_enroll ON `student`.`id` = `student_enroll`.`id` WHERE `student_enroll`.`batch_no` = $batch_no";
+                                                    $course = $_GET['course'];
+                                                    $sql = "SELECT * FROM student , student_enroll  where `student`.`id` = `student_enroll`.`id` and`student_enroll`.`batch_no` =$batch_no  and `student_enroll`.`course_code` = '$course'";
                                                     $result = $con->query($sql);
                                                     if ($result->num_rows > 0) {
                                                         while ($row = $result->fetch_assoc()) {
@@ -97,7 +112,7 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
                                             <td><input name="reg', $row['id'], '" value="', $row['id'], '" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" style="width: 50%;"></td>
                                             <td> ', $row['id'], '</td>
                                             <td> ', $row['full_name'], '</td>
-                                            <td><input name="res', $row['id'], '" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" style="width: 20%;"></td>
+                                            <td><input type="number" name="res', $row['id'], '" value="0" min="0" max="100" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" style="width: 20%;" ></td>
                                             <td>
                                                 <div class="form-group">
                                                     <select class="form-control" id="exampleFormControlSelect1" style="width: 50%;" name="att', $row['id'], '" >
@@ -135,9 +150,9 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
             //start
             if (isset($_GET['results'])) {
                 $batch_no = $_GET['results'];
-                $sql = "SELECT * FROM `student`,student_enroll,batches,exams WHERE student.id=student_enroll.id 
-                and batches.batch_no=student_enroll.batch_no and batches.batch_no=exams.batch and batches.batch_no=$batch_no group by student_enroll.id";
-                $sql2 = null;
+                $course = $_GET['course'];
+                $sql = "SELECT * FROM `student`,student_enroll,batches,exams WHERE student.id=student_enroll.id and batches.batch_no=student_enroll.batch_no and batches.batch_no=exams.batch and batches.batch_no=$batch_no and student_enroll.course_code = $course group by student_enroll.id";
+                $sql_multi = null;
                 $result = $con->query($sql);
                 if ($result->num_rows > 0) {
                     while ($row = $result->fetch_assoc()) {
@@ -157,15 +172,15 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
                         // $semester = $_POST[$semester];
                         // $exams = $_POST[$exams];
                         // $exam_type = $_POST[$exam_type];
-                        $sql2 .= "INSERT INTO  `exams_result`(`exams`,`batch_no`,`student_id`,`index_no`,`semester`, `module`, `exam_type`, `attempt`,`marks`) 
+                        echo  $sql_multi .= "INSERT INTO  `exams_result`(`exams`,`batch_no`,`student_id`,`index_no`,`semester`, `module`, `exam_type`, `attempt`,`marks`) 
                                                      VALUES ('$exams','$batch_no','$value','$value','$semester','$module','$exam_type','$value3','$value2');";
                     }
                 }
             }
-            echo $sql2;
+            echo $sql_multi;
             //end
 
-            if (mysqli_multi_query($con, $sql2)) {
+            if (mysqli_multi_query($con, $sql_multi)) {
                 echo '
     <div class="alert alert-success alert-dismissible fade show" role="alert">
     <strong></strong> Assessment Type details inserted!
@@ -178,7 +193,7 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
 
                 echo '
   <div class="alert alert-danger alert-dismissible fade show" role="alert">
-  <strong></strong> echo "Error".$sql."<br>".mysqli_error($con);
+  <strong></strong> echo "Error".$sql_multi."<br>".mysqli_multi_query($con);
   <button type="button" class="close" data-dismiss="alert" aria-label="Close">
   <span aria-hidden="true">&times;</span>
   </button>

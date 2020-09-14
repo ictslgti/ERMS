@@ -94,7 +94,7 @@ while ($row = mysqli_fetch_array($result)) {
                                                                 <!-- <label class='input-group-text' for='inputGroupSelect01'>Department</label> -->
                                                                 <label for='exampleInputEmail1'>Department</label>
                                                             </div>
-                                                            <select name="department" id="department" class="form-control action">
+                                                            <select name="department" id="department" class="form-control action" required id='inputGroupSelect01' id='validationServer01'>
                                                                 <option disabled value="">Choose Department</option>
                                                                 <?php echo $country; ?>
                                                             </select>
@@ -107,7 +107,7 @@ while ($row = mysqli_fetch_array($result)) {
                                                                 <!-- <label class='input-group-text' for='inputGroupSelect01'>Course</label> -->
                                                                 <label for='exampleInputEmail1'>Course</label>
                                                             </div>
-                                                            <select name="course" id="course" class="form-control action">
+                                                            <select name="course" id="course" class="form-control action" required id='inputGroupSelect01' id='validationServer01'>
                                                                 <!-- <option value="">Select course</option> -->
                                                             </select>
                                                         </div>
@@ -123,7 +123,7 @@ while ($row = mysqli_fetch_array($result)) {
                                                                 <!-- <label class='input-group-text' for='inputGroupSelect01'>Semester</label> -->
                                                                 <label for='exampleInputEmail1'>Module</label>
                                                             </div>
-                                                            <select name="module" id="module" class="form-control action">
+                                                            <select name="module" id="module" class="form-control action" required id='inputGroupSelect01' id='validationServer01'>
                                                                 <option disabled value="">Select module</option>
                                                             </select>
                                                         </div>
@@ -135,7 +135,7 @@ while ($row = mysqli_fetch_array($result)) {
                                                                 <!-- <label class='input-group-text' for='inputGroupSelect01'>Module</label> -->
                                                                 <label for='exampleInputEmail1'>Semester</label>
                                                             </div>
-                                                            <select name="semester" id="semester" class="form-control action">
+                                                            <select name="semester" id="semester" class="form-control action" required id='inputGroupSelect01' id='validationServer01'>
                                                                 <option disabled value="">Select Semester</option>
 
                                                                 <!-- <option value='Semester 01'>Semester 01</option>
@@ -149,7 +149,7 @@ while ($row = mysqli_fetch_array($result)) {
                                                                 <!-- <label class='input-group-text' for='inputGroupSelect01'>Type</label> -->
                                                                 <label for='exampleInputEmail1'>Batch</label>
                                                             </div>
-                                                            <select name="batch" id="batch" class="form-control action">
+                                                            <select name="batch" id="batch" class="form-control action" required id='inputGroupSelect01' id='validationServer01'>
                                                                 <option disabled value=''>Select Batch</option>
                                                             </select>
                                                         </div>
@@ -164,7 +164,7 @@ while ($row = mysqli_fetch_array($result)) {
                                                                 <!-- <label class='input-group-text' for='inputGroupSelect01'>Semester</label> -->
                                                                 <label for='exampleInputEmail1'>Exam Type</label>
                                                             </div>
-                                                            <select class='custom-select' id='inputGroupSelect01' id='validationServer04' required name='exam_type'>
+                                                            <select class='custom-select' id='inputGroupSelect01' id='validationServer04' required name='exam_type' required id='inputGroupSelect01' id='validationServer01'>
                                                                 <option disabled value=''>Select Type</option>
                                                                 <option value='T'>THEORY</option>
                                                                 <option value='P'>PRACTICAL</option>
@@ -178,7 +178,7 @@ while ($row = mysqli_fetch_array($result)) {
                                                                 <!-- <label class='input-group-text' for='inputGroupSelect01'>Module</label> -->
                                                                 <label for='exampleInputEmail1'>Exams Date</label>
                                                             </div>
-                                                            <input type="date" class="form-control" aria-label="Small" name="date" aria-describedby="inputGroup-sizing-sm">
+                                                            <input type="date" class="form-control" aria-label="Small" name="date" aria-describedby="inputGroup-sizing-sm" required id='inputGroupSelect01' id='validationServer01'>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -240,7 +240,7 @@ while ($row = mysqli_fetch_array($result)) {
                   ';
                                 } else {
                                     echo '
-            <div class="row">
+                <div class="row">
                   <div class="col-sm alert alert-danger alert-dismissible fade show " role="alert">
                   "Error: " . $sql . "<br>" . mysqli_error($con);..........
                   
@@ -310,8 +310,10 @@ while ($row = mysqli_fetch_array($result)) {
                                     View
                                      </a>
                                     <a class = "btn btn-danger btn-group btn btn-sm " href="?delete=', $row['exam_id'], '"> Delete </a>
-                                    <a class = "btn btn-info btn-group btn btn-sm " href="exams_results.php?results=', $row['batch'], '"> Results </a>
-                                    </td>
+                                    <a class = "btn btn-info btn-group btn btn-sm "href="exams_results.php?results=', $row['batch'], '& course=', $row['course'], '">
+                                    
+                                    Results </a>
+                                   </td>
                                     </tr>';
                                                 }
                                             } else {
