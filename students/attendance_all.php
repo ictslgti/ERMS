@@ -39,9 +39,9 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
                                                         Attendance Review
                                                     </button>
                                                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                                        <a class="dropdown-item" href="attendance_month.php">Month-wise</a>
-                                                        <a class="dropdown-item" href="attendance_semester.php">Semester-wise</a>
-                                                        <a class="dropdown-item" href="attendance_all.php">Moudel-wise</a>
+                                                        <a class="dropdown-item" href="attendance_month.php">Month-Wise</a>
+                                                        <a class="dropdown-item" href="attendance_semester.php">Semester-Wise</a>
+                                                        <a class="dropdown-item" href="attendance_all.php">Moudel-Wise</a>
                                                     </div>
                                                 </div>
 
@@ -72,9 +72,9 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
                                                         <thead class='thead-light'>
                                                             <tr>
                                                                 <th scope='col'>Moduels</th>
-                                                                <th scope='col'>Points over taken session</th>
-                                                                <th scope='col'>All session</th>
-                                                                <th scope='col'>Percentage over taken session</th>
+                                                                <th scope='col'>Points Over Taken Session</th>
+                                                                <th scope='col'>All Session</th>
+                                                                <th scope='col'>Percentage Sver Taken Session</th>
                                                                 <th></th>
                                                             </tr>
 
@@ -186,7 +186,7 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
                                                             ?>
 
                                                                 <tr>
-                                                                    <td scope='col'>Average attendance</td>
+                                                                    <td scope='col'>Average Attendance</td>
                                                                     <td scope='col'></td>
                                                                     <td scope='col'></td>
                                                                     <td scope='col'><?php echo $row1 . "%" ?></td>
