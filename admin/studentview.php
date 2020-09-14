@@ -45,9 +45,14 @@ $description = "Online Examination Result Management System (ERMS)-SLGTI";
             $mode = $status = $enrolldate = $exitdate = null;
         if (isset($_GET['view'])) {
             $student_id = $_GET['view'];
-            $sql_student = "SELECT * FROM student LEFT JOIN student_enroll
-                ON `student`.`id` = `student_enroll`.`id`
-                WHERE `student`.`id` = '$student_id'";
+
+            $sql_student = "SELECT * FROM `student` LEFT JOIN `student_enroll`
+            ON `student`.`id` = `student_enroll`.`id` LEFT JOIN `batches` ON 
+            `student_enroll`.`batch_no` = `batches`.`batch_no` LEFT JOIN `courses` ON
+             `student_enroll`.`course_code` = `courses`.`code` WHERE 
+             `batches`.`department_code`=`courses`.`department_code` AND 
+             `batches`.`NVQ_level`=`courses`.`NVQ_level` AND `student_enroll`.`id` = '$student_id'";
+
             $result_student = mysqli_query($con, $sql_student);
             $row = mysqli_fetch_assoc($result_student);
             if (mysqli_num_rows($result_student) == 1) {
@@ -77,22 +82,9 @@ $description = "Online Examination Result Management System (ERMS)-SLGTI";
                 $status = $row['student_status'];
                 $enrolldate = $row['enroll_date'];
                 $exitdate = $row['exit_date'];
-            }
-        }
-
-        if (isset($_GET['view'])) {
-            $student_id = $_GET['view'];
-            $sql_st = "SELECT * FROM student_enroll LEFT JOIN batches
-                ON `student_enroll`.`batch_no` = `batches`.`batch_no`
-                WHERE `student_enroll`.`id` = '$student_id'";
-            $result_st = mysqli_query($con, $sql_st);
-            $row = mysqli_fetch_assoc($result_st);
-            if (mysqli_num_rows($result_st) == 1) {
                 $ayear = $row['Academic_year'];
             }
         }
-
-        
         ?>
         <!-- view  end -->
 
@@ -109,7 +101,9 @@ $description = "Online Examination Result Management System (ERMS)-SLGTI";
                                 <div class='col-8'>
                                     <h5><?php echo "$title" ?></h5>
                                 </div>
-                                <div class='col-2'></div>
+                                <div class='col-2'>
+                                    <a class='btn btn-outline-warning' href="student.php?edit=<?php echo $student_id; ?>">Edit</a>
+                                </div>
                                 <div class='col-1-sm'>
                                     <a class='btn btn-outline-primary' href='./student.php'>Add New</a>
                                 </div>
