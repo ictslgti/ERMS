@@ -183,9 +183,6 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
                                                         }
                                                     }
                                                     ?>
-                                                <tbody>
-
-                                                </tbody>
                                             </table>
                                         </div>
                                     </div>
