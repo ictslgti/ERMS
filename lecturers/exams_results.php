@@ -32,7 +32,8 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
                                 <?php
                                 if (isset($_GET['results'])) {
                                     $batch_no = $_GET['results'];
-                                    $sql = "select * from exams,batches where exams.batch=batches.batch_no and batches.batch_no =$batch_no group by batches.department_code";
+                                   echo $course = $_GET['course'];
+                                    $sql = "select * from exams,batches where exams.batch=batches.batch_no and batches.batch_no =$batch_no and exams.course = '$course' group by batches.department_code";
                                     $result = $con->query($sql);
                                     if ($result->num_rows > 0) {
                                         while ($row = $result->fetch_assoc()) {
@@ -151,7 +152,7 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
             if (isset($_GET['results'])) {
                 $batch_no = $_GET['results'];
                 $course = $_GET['course'];
-                $sql = "SELECT * FROM `student`,student_enroll,batches,exams WHERE student.id=student_enroll.id and batches.batch_no=student_enroll.batch_no and batches.batch_no=exams.batch and batches.batch_no=$batch_no and student_enroll.course_code = $course group by student_enroll.id";
+                $sql = "SELECT * FROM `student`,student_enroll,batches,exams WHERE student.id=student_enroll.id and batches.batch_no=student_enroll.batch_no and batches.batch_no=exams.batch and batches.batch_no=$batch_no and student_enroll.course_code = '$course' group by student_enroll.id";
                 $sql_multi = null;
                 $result = $con->query($sql);
                 if ($result->num_rows > 0) {
