@@ -1,5 +1,5 @@
 <?php
-$title = ' ERMS | SLGTI(page Title)';
+$title = ' ERMS | SLGTI Attendance';
 $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
 ?>
 <!DOCTYPE html>
@@ -25,142 +25,126 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
 
                 <!-- 1st row start -->
                 <div class="row">
-                     <div class="col-sm">
+                    <div class="col-sm">
                         <div class="border border-primary rounded text-center">
                             <h2>Student's Attendence | SLGTI</h2>
                         </div>
                     </div>
                 </div>
-                    <br>
+                <br>
                 <!-- 1st row end -->
 
                 <form method="POST" action="">
                     <div class="row">
                         <div class='col-7'>
                             <div class='form-group col-md'>
-                                
-                            <div class='form-group col-md'>
-                                <h4>ALL Students</h4>
-                            </div>
 
-                            <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
-                                <h5>CHOOSE LEVEL</h5>
-                                        <div class="btn-group" role="group">
-                                            <button id="btnGroupDrop1" type="button" class="btn btn-light dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <div class='form-group col-md'>
+                                    <h4>ALL Students</h4>
+                                </div>
+
+                                <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
+                                    <h5>CHOOSE LEVEL</h5>
+                                    <div class="btn-group" role="group">
+                                        <button id="btnGroupDrop1" type="button" class="btn btn-light dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                             LEVEL
-                                            </button>
-                                            <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                                        </button>
+                                        <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
                                             <a class="dropdown-item" href="#">LEVEL 04</a>
                                             <a class="dropdown-item" href="#">LEVEL 05</a>
                                             <a class="dropdown-item" href="#">LEVEL 06</a>
-                                            
-                                            </div>
+
                                         </div>
-                            </div>
-                            <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
-                                
-                                    <h5>CHOOSE BATCH</h5>
-                                            <div class="btn-group" role="group">
-                                                <button id="btnGroupDrop1" type="button" class="btn btn-light dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                BATCH
-                                                </button>
-                                                <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-                                                <a class="dropdown-item" href="#">BATCH 01</a>
-                                                
-                                                </div>
-                                            </div>
-                                            
-                                        
                                     </div>
+                                </div>
+                                <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
+
+                                    <h5>CHOOSE BATCH</h5>
+                                    <div class="btn-group" role="group">
+                                        <button id="btnGroupDrop1" type="button" class="btn btn-light dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            BATCH
+                                        </button>
+                                        <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                                            <a class="dropdown-item" href="#">BATCH 01</a>
+
+                                        </div>
+                                    </div>
+
+
+                                </div>
                             </div>
-                            
+
                         </div>
                     </div>
                 </form>
-                
+
                 <div class="row">
                     <div class="form-group col-md-12 table-responsive">
-                    <table class="table align-middle">
-                        <thead class='thead-light'>
+                        <table class="table align-middle">
+                            <thead class='thead-light'>
 
-                       
-                            <tr>
-                              
-                                <th scope='col'>Reg No.</th>
-                                <th scope='col'>1st Lec</th>
-                                <th scope='col'>2nd Lec</th>
-                                <th scope='col'>3rd Lec</th>
-                                <th scope='col'>4th Lec</th>
-                                <th scope='col'>5th Lec</th>
-                                <th scope='col'>6th Lec</th>
-                                <th scope='col'>7th Lec</th>
-                                <th scope='col'>8th Lec</th>
-                                <th scope='col'>9th Lec</th>
-                                <th scope='col'>10th Lec</th>
-                                <th scope='col'>11th Lec</th>
-                                <th scope='col'>12th Lec</th>
-                                <th scope='col'>13th Lec</th>
-                                <th scope='col'>14th Lec</th>
-                                <th scope='col'>15th Lec</th>
-                                <th scope='col'>16th Lec</th>
-                                <th scope='col'>17th Lec</th>
-                                <th scope='col'>18th Lec</th>
-                                <th scope='col'>19th Lec</th>
-                                <th scope='col'>20th Lec</th>
-                                <th scope='col'>Total Lec</th>
-                            </tr>
-                            <?php
-                            $sql = " select student_id,status from student_attendance group by student_id";
-                                            $result = mysqli_query($con, $sql);
-                                            while ($row = mysqli_fetch_assoc($result)) {
-                                 ?>
+
+                                <tr>
+
+                                    <th scope='col'>Reg No.</th>
+                                    <th scope='col'>1st Lec</th>
+                                    <th scope='col'>2nd Lec</th>
+                                    <th scope='col'>3rd Lec</th>
+                                    <th scope='col'>4th Lec</th>
+                                    <th scope='col'>5th Lec</th>
+                                    <th scope='col'>6th Lec</th>
+                                    <th scope='col'>7th Lec</th>
+                                    <th scope='col'>8th Lec</th>
+                                    <th scope='col'>9th Lec</th>
+                                    <th scope='col'>10th Lec</th>
+
+                                    <th scope='col'>Total Lec</th>
+                                </tr>
+                                <?php
+                                $sql = " select student_id,status from student_attendance group by student_id";
+                                $result = mysqli_query($con, $sql);
+                                while ($row = mysqli_fetch_assoc($result)) {
+                                ?>
                                     <tr>
-                                    <td><?php echo $row['student_id'] ?></td>
-                               
-                               <td><?php echo $row['status'] ?></td>
-                                
-                               <?php
-                                    }
-                               ?>
-                            </tr>
-                           
-                            
-                            <tr>
-                                <td>Total attendance</td>
-                                <td>05</td>
-                                <td>04</td>
-                                <td>01</td>
-                                <td>05</td>
-                                <td>04</td>
-                                <td>04</td>
-                                <td>04</td>
-                                <td>04</td>
-                                <td>05</td>
-                                <td>05</td>
-                                <td>00</td>
-                                <td>05</td>
-                                <td>05</td>
-                                <td>05</td>
-                                <td>03</td>
-                                <td>05</td>
-                                <td>05</td>
-                                <td>04</td>
-                                <td>05</td>
-                                <td>05</td>
-                                <td>25</td>
-                            </tr>
-                        </thead>
-                    <tbody>
-                     
-                    </tbody>
-                </table>
+                                        <td><?php echo $row['student_id'] ?></td>
+                                        <?php
+                                        while ($row = mysqli_fetch_assoc($result)) { ?>
+                                            <td scope="row"><?php echo $row['status'] ?></td>
+                                        <?php
+                                        }
+                                        ?>
+                                    </tr>
+                                <?php
+                                }
+                                ?>
+                                <tr>
+                                    <td>Total attendance</td>
+                                    <td>05</td>
+                                    <td>04</td>
+                                    <td>01</td>
+                                    <td>05</td>
+                                    <td>04</td>
+                                    <td>04</td>
+                                    <td>04</td>
+                                    <td>04</td>
+                                    <td>05</td>
+                                    <td>05</td>
+
+
+                                    <td>25</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                            </tbody>
+                        </table>
                     </div>
                 </div>
 
 
 
-             <!-- #1 Insert Your Content" -->
-        </div>
+                <!-- #1 Insert Your Content" -->
+            </div>
     </main>
 
     <?php include_once("../script.php");

@@ -18,7 +18,7 @@ $description = "Online Examination Result Management System (ERMS)-SLGTI";
             function preview_image(event) {
                 var reader = new FileReader();
                 reader.onload = function() {
-                    var output = document.getElementById('simg');
+                    var output = document.getElementById('output_image');
                     output.src = reader.result;
                 }
                 reader.readAsDataURL(event.target.files[0]);
@@ -41,13 +41,18 @@ $description = "Online Examination Result Management System (ERMS)-SLGTI";
         <!-- view  start -->
         <?php
         $student_id = $stitle = $full_name = $ini_name = $gender = $civil = $email = $nic = $dob = $phone = $address = $ds =
-            $district = $province = $zip = $blood = $gname = $gaddress = $gphone = $grelation = $regno = $cid =
+            $district = $province = $zip = $blood = $gname = $gaddress = $gphone = $grelation = $regno = $cid = $bid = $ayear =
             $mode = $status = $enrolldate = $exitdate = null;
         if (isset($_GET['view'])) {
             $student_id = $_GET['view'];
-            $sql_student = "SELECT * FROM student LEFT JOIN student_enroll
-                ON `student`.`id` = `student_enroll`.`id`
-                WHERE `student`.`id` = '$student_id'";
+
+            $sql_student = "SELECT * FROM `student` LEFT JOIN `student_enroll`
+            ON `student`.`id` = `student_enroll`.`id` LEFT JOIN `batches` ON 
+            `student_enroll`.`batch_no` = `batches`.`batch_no` LEFT JOIN `courses` ON
+             `student_enroll`.`course_code` = `courses`.`code` WHERE 
+             `batches`.`department_code`=`courses`.`department_code` AND 
+             `batches`.`NVQ_level`=`courses`.`NVQ_level` AND `student_enroll`.`id` = '$student_id'";
+
             $result_student = mysqli_query($con, $sql_student);
             $row = mysqli_fetch_assoc($result_student);
             if (mysqli_num_rows($result_student) == 1) {
@@ -77,6 +82,7 @@ $description = "Online Examination Result Management System (ERMS)-SLGTI";
                 $status = $row['student_status'];
                 $enrolldate = $row['enroll_date'];
                 $exitdate = $row['exit_date'];
+                $ayear = $row['Academic_year'];
             }
         }
         ?>
@@ -95,7 +101,9 @@ $description = "Online Examination Result Management System (ERMS)-SLGTI";
                                 <div class='col-8'>
                                     <h5><?php echo "$title" ?></h5>
                                 </div>
-                                <div class='col-2'></div>
+                                <div class='col-2'>
+                                    <a class='btn btn-outline-warning' href="student.php?edit=<?php echo $student_id; ?>">Edit</a>
+                                </div>
                                 <div class='col-1-sm'>
                                     <a class='btn btn-outline-primary' href='./student.php'>Add New</a>
                                 </div>
@@ -122,7 +130,6 @@ $description = "Online Examination Result Management System (ERMS)-SLGTI";
                                                 }
                                             }
                                             ?>
-
                                         <?php
                                         } else {
                                         ?>
@@ -208,6 +215,11 @@ $description = "Online Examination Result Management System (ERMS)-SLGTI";
                                     <div class='row'>
                                         <div class='col-4'><label for="bid"> Batch No: </label></div>
                                         <div class='col-8'><input type="text" class="form-control" name="bid" value="<?php echo $bid; ?>" disabled></div>
+                                    </div>
+
+                                    <div class='row'>
+                                        <div class='col-4'><label for="ayear"> Academic Year: </label></div>
+                                        <div class='col-8'><input type="text" class="form-control" name="ayear" value="<?php echo $ayear; ?>" disabled></div>
                                     </div>
 
                                     <div class='row'>

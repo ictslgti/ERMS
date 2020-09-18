@@ -1,49 +1,43 @@
-<style>
-    table
-     {
-      width: 100%;
-      border: 1px solid skyblue;
-    }
-    tr,th{
-      border: 1px solid skyblue;
-    }
-  </style>
-
+<?php include_once("../config.php"); ?>
 <?php
-include_once("../config.php");
-      
-      if (isset($_POST["action"])) {
-        $output = '';
-        if ($_POST["action"] == "department") {
-          $query = "SELECT * FROM courses WHERE department_code = '" . $_POST["query"] . "'";
-          $result = mysqli_query($con, $query);
-          $output .= '<option value="" disabled selected>Select course </option>';
-          while ($row = mysqli_fetch_array($result)) {
-            $output .= '<option value="' . $row["code"] . '">' . $row["name"] . '</option>';
-          }
-        }
-        else if ($_POST["action"] == "course") {
-          $query = "SELECT * FROM modules WHERE course_code = '" . $_POST["query"] . "'";
-          $result = mysqli_query($con, $query);
-          $output .= '<option value="" disabled selected>Select module</option>';
-          while ($row = mysqli_fetch_array($result)) {
-            $output .= '<option value="' . $row["code"] . '">' . $row["code"] . '</option>';
-          }
-        }
+$output = "";
+// course
+if (isset($_GET['department'])) {
+    echo $_GET['department'];
+    $query = 'select * from courses where department_code="' . $_GET['department'] . '";';
+    $result = mysqli_query($con, $query);
+    $output .= '<option selected disabled value="">Choose Course</option>';
+    while ($row = mysqli_fetch_array($result)) {
+      $output .= '<option value="' . $row["code"] . '">' . $row["name"] . '</option>';
+    }
+    echo $output;
+  }
+// course
 
-        else if ($_POST["action"] == "module") {
-          $query = "SELECT * FROM `assessments` WHERE module ='" . $_POST["query"] . "'";
-          $result = mysqli_query($con, $query);
-          $output .= '<table>';
-          $output .= '<tr> <th> Name </th> <th> Percentage </th> </tr>';
-          while ($row = mysqli_fetch_array($result)) {
-            $output .= '<tr>';
-            $output .= '<td>'.$row['name'].'</td>';
-            $output .= '<td>'.$row['percentage'].'</td>';
-            $output .= '</tr>';
-          }
-          $output .= '</table>';
-        }
-        echo $output;
-      }
-      ?>
+
+// module
+if (isset($_GET['course'])) {
+  echo $_GET['course'];
+  $query = 'select * from modules where course_code="' . $_GET['course'] . '";';
+  $result = mysqli_query($con, $query);
+  $output .= '<option selected disabled value="">Choose Module</option>';
+  while ($row = mysqli_fetch_array($result)) {
+    $output .= '<option value="' . $row["id"] . '">' . $row["name"] . '</option>';
+  }
+  echo $output;
+}
+// module
+
+//batch
+if (isset($_GET['cou'])) {
+  echo $_GET['cou'];
+  $query = 'select * from batches where department_code=(select department_code from courses where code="'.$_GET['cou'].'") and NVQ_level=(select NVQ_level from courses where code="'.$_GET['cou'].'") order by batch_no desc;';
+  $result = mysqli_query($con, $query);
+  $output .= '<option selected disabled value="">Choose Batch</option>';
+  while ($row = mysqli_fetch_array($result)) {
+    $output .= '<option value="' . $row["id"] . '">' . $row["batch_no"] . '</option>';
+  }
+  echo $output;
+}
+
+//batch
