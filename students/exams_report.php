@@ -108,20 +108,20 @@
                               <div class="row">
                                  <div class="col-md-4">
                                  <td>
-                                 '?>
-                                  <label for="exampleInputEmail1"><?php echo $code; ?></label>
-                                  <?php
-                                  echo '
+                                 ' ?>
+                              <label for="exampleInputEmail1"><?php echo $code; ?></label>
+                              <?php
+                              echo '
                                   </td>
                               </div>
                                  <div class="col-md-4">
                                  <td>
-                                 '?>
+                                 ' ?>
 
-                                   <label for="exampleInputEmail1"><?php echo $name; ?></label>
+                              <label for="exampleInputEmail1"><?php echo $name; ?></label>
 
-                                   <?php
-                                   echo '
+                          <?php
+                              echo '
                                    </td>
                                  </div>
   
@@ -132,7 +132,7 @@
 
                           ?>
 
-                          
+
 
                         </tbody>
                       </table>
