@@ -35,6 +35,24 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
             <div class="card-header bg-transparent border-success">View Result</div>
             <div class="card-body ">
                 <div class="table-responsive">
+                <?php
+                      $sql = "SELECT * FROM student";
+                      $result = $con->query($sql);
+                      if ($result->num_rows > 1) {
+                        while ($row = $result->fetch_assoc()) {
+
+                          $full_name = $row['full_name'];
+                          $name_with_initials = $row['name_with_initials'];
+                          $id = $row['id'];
+                          $nic = $row['nic'];
+                          // $semester = $row['semester'];
+                          // $module = $row['module'];
+                          // $exam_type = $row['exam_type'];
+                          // $attempt = $row['attempt'];
+                          // $marks = $row['marks'];
+                        }
+                      }
+                      ?>
 
                     <div class="row">
                         <div class="col-3">Module Code :- </div>
@@ -108,8 +126,9 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
                             <th>Avarage</th>
 
                             <th>prograss Review</th>
-                            <th>Avarage</th>
-                            <
+                            
+                            <th colspan="2" >Avarage</th>
+                            <td></td>
 
                         </tr>
 
@@ -134,8 +153,8 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
                             <th>56</th>
                             <th>65</th>
                             <th>58</th>
-
                             
+                             
 
                         </tr>
 
