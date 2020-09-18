@@ -78,7 +78,7 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
                             <th>Student Name</th>
                             <th>Index Number</th>
                             <th>Module Code</th>
-                            <th>Percentage over taken sessions</th>
+                            <th>Taken sessions</th>
                           </tr>
 
 
@@ -126,7 +126,12 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
                                 <?php echo $row['student_id']; ?>
                               </td>
                               <td scope='col'>
-                                <?php echo $row['code']; ?>
+                                <?php echo $row['code'];
+                                echo '<br>';
+                                echo $row['Take'];
+                                echo '<br>';
+                                echo $row['Total'];
+                                 ?>
                               </td>
                               <td scope='col'>
                                 <?php echo number_format(($row['Take'] / $row['Total']) * 100, 2) . "%" ?>

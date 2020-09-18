@@ -194,8 +194,12 @@ while ($row = mysqli_fetch_array($result)) {
                                         <div class="col-11 "></div>
                                         <div class="col-1">
                                             <button type="submit" class="btn btn-outline-success" data-toggle="modal" data-target="#exampleModal">
-                                                view
-                                            </button>
+                                               
+                                           
+                                            
+                                <a href="viewresult.php" >view</a>
+                                </button>
+                           
                                         </div>
                                     </div>
                                 </div>
