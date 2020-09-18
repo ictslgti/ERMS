@@ -115,7 +115,7 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
 
                       </div>
 
-                      <div class="col-9">
+                      <div class="col-8">
 
                         <div class="row">
                           <div class="col-6"> <label for="exampleInputEmail1" name="department">Full Name :-<b><?php echo $full_name; ?></b></label></div>
@@ -253,7 +253,7 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
                   <!-- <div class="text-center">
                   <a href="student_transcript_print.php" class="btn btn-primary">print</a>
                 </div> -->
-                  <div class="text-center" >
+                  <div class="text-center">
                     <button onclick="window.print();" class="btn btn-primary" id="print-btn">Print</button>
                   </div>
                   <!-- #1 Insert Your Content-->
