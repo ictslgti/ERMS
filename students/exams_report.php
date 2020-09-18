@@ -1,162 +1,155 @@
- <?php
+  <?php
   $title = ' ERMS | SLGTI(Exams Result Report)';
   $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
   ?>
- <!DOCTYPE html>
- <html lang='en'>
+  <!DOCTYPE html>
+  <html lang='en'>
 
- <head>
-   <?php include_once('../head.php');
-    //include_once('../config.php');
+  <head>
+    <?php include_once('../head.php');
+    include_once('../config.php');
     ?>
- </head>
+  </head>
 
- <body>
-   <main class='page-content pt-2'>
-     <?php include_once('nav.php');
+  <body>
+    <main class='page-content pt-2'>
+      <?php //include_once('nav.php');
       ?>
-     <div id='overlay' class='overlay'></div>
-     <div class='container-fluid p-5'>
-       <!-- #1 Insert Your Content-->
+      <div id='overlay' class='overlay'></div>
+      <div class='container-fluid p-5'>
+        <!-- #1 Insert Your Content-->
 
-       <div class='row'>
-         <div class="col">
-           <div class="card">
-             <div class="card-header">
-               <h3> <?php echo " $title" ?> </h3>
-             </div>
-             <div class="card-body">
-               <div class='row'>
-                 <div class="col-md-6">
-                   <div>
-                     <select class="custom-select" name="batch" id="inputGroupSelect01" id="validationCustom04" required>
-                       <option value="0">Examination Method </option>
-                       <option value="1">TVEC Examination</option>
-                       <option value="2">INSTITUTE Examination</option>
-                     </select>
-                   </div>
-                 </div>
-                 <div class="col-md-6">
-                   <div>
-                     <select class="custom-select" name="batch" id="inputGroupSelect01" id="validationCustom04" required>
-                       <option value="0">Select Semester </option>
-                       <option value="1">Semi 1</option>
-                       <option value="2">Semi 2</option>
-                     </select>
-                   </div>
-                 </div>
+        <div class='row'>
+          <div class="col">
+            <div class="card">
+              <div class="card-header">
+                <h3> <?php echo " $title" ?> </h3>
+              </div>
+              <div class="card-body">
 
-                 <div class="card-body">
+                <div class='row'>
+                  <div class="col-md-6">
 
 
-                   <div class='row'>
-                     <div class="col-md-4">
-                       <label for="exampleInputEmail1"><b>Full Name :- </b>Ameerdeen Haseena</label>
+
+                    <div class="card-body">
+
+                      <?php
+                      $sql = "SELECT * FROM student";
+                      $result = $con->query($sql);
+                      if ($result->num_rows > 1) {
+                        while ($row = $result->fetch_assoc()) {
+
+                          $full_name = $row['full_name'];
+                          $name_with_initials = $row['name_with_initials'];
+                          $id = $row['id'];
+                          $nic = $row['nic'];
+                          // $semester = $row['semester'];
+                          // $module = $row['module'];
+                          // $exam_type = $row['exam_type'];
+                          // $attempt = $row['attempt'];
+                          // $marks = $row['marks'];
+                        }
+                      }
+                      ?>
+                      <div class="row">
+                        <div class="col-md-4">
+                          <label for="exampleInputEmail1"><b>Full Name :- </b><?php echo $full_name; ?></label>
+                        </div>
+                        <div class="col-md-4">
+                          <label for="exampleInputEmail1"><b>Name with Initial :- </b><?php echo $name_with_initials; ?></label>
+                        </div>
+                        <div class="col-md-4">
+                          <label for="exampleInputEmail1"><b> Student Id :- </b><?php echo $id; ?></label>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-4">
+                          <label for="exampleInputEmail1"><b> NIC Number :- </b><?php echo $nic; ?></label>
+                        </div>
+                        <!-- <div class="col-md-4">
+                       <label for="exampleInputEmail1"><b>Course :- </b></label>
                      </div>
                      <div class="col-md-4">
-                       <label for="exampleInputEmail1"><b>Name with Initial :- </b>A.Haseena</label>
+                       <label for="exampleInputEmail1"><b>Batch :- </b></label>
                      </div>
-                     <div class='col-md-4'>
-                       <label for="exampleInputEmail1"><b> Student Id :- </b>2018/Ict/Bit17</label>
-                     </div>
-                   </div>
-                   <div class='row'>
-                     <div class='col-md-4'>
-                       <label for="exampleInputEmail1"><b> NIC Number :- </b>966962550v</label>
-                     </div>
-                     <div class='col-md-4'>
-                       <label for="exampleInputEmail1"><b>Course :- </b>Information and Communication Technology</label>
-                     </div>
-                     <div class='col-md-4'>
-                       <label for="exampleInputEmail1"><b>Batch :- </b>04</label>
-                     </div>
-                     <div class='col-md-4'>
-                       <label for="exampleInputEmail1"><b>Academic Year :- </b>2018/2020</label>
-                     </div>
-                   </div>
-                   <!-- #1 Insert Your Content-->
+                     <div class="col-md-4">
+                       <label for="exampleInputEmail1"><b>Academic Year :- </b></label>
+                     </div> -->
+                      </div>
+
+                      <!-- #1 Insert Your Content-->
+
+                      <table class="table">
+                        <thead class="thead-light">
+                          <tr>
+                            <th scope="col">NO</th>
+                            <th scope="col">MODULE_CODE</th>
+                            <th scope="col">MODULE_NAME</th>
+                            <th scope="col">EXAM_TYPE</th>
+                            <th scope="col">ATTEMPT</th>
+                            <th scope="col">RESULT</th>
+                          </tr>
+                        </thead>
+
+                        <tbody>
+
+                          <?php
+                          $sql = "SELECT * FROM modules";
+                          $result = $con->query($sql);
+                          if ($result->num_rows > 1) {
+                            while ($row = $result->fetch_assoc()) {
+
+                              $code = $row['code'];
+                              $name = $row['name'];
+                              echo '
+                              <tr>
+                              <td></td>
+                              <div class="row">
+                                 <div class="col-md-4">
+                                 <td>
+                                 ' ?>
+                              <label for="exampleInputEmail1"><?php echo $code; ?></label>
+                              <?php
+                              echo '
+                                  </td>
+                              </div>
+                                 <div class="col-md-4">
+                                 <td>
+                                 ' ?>
+
+                              <label for="exampleInputEmail1"><?php echo $name; ?></label>
+
+                          <?php
+                              echo '
+                                   </td>
+                                 </div>
+  
+                            </div>
+                            </tr>';
+                            }
+                          }
+
+                          ?>
 
 
 
+                        </tbody>
+                      </table>
 
-                   <table class="table">
-                     <thead class="thead-light">
-                       <tr>
-                         <th scope="col">No</th>
-                         <th scope="col">Module Code</th>
-                         <th scope="col">Module Name</th>
-                         <th scope="col">Attempt</th>
-                         <th scope="col">Result</th>
+                      <!-- #1 Insert Your Content-->
+                    </div>
 
-                       </tr>
-                     </thead>
-                     <tbody>
-                       <tr>
-                         <th scope="row">1</th>
-                         <td>MO6</td>
-                         <td>Database system</td>
-                         <td>1st</td>
-                         <td>Fail</td>
+                    <button onclick="window.print();" class="btn btn-primary" id="print-btn">Print</button>
 
+                  </div>
+                </div>
+              </div> <!-- #1 Insert Your Content" -->
+            </div>
+    </main>
 
-                       </tr>
-                       <tr>
-                         <th scope="row">2</th>
-                         <td>MO6</td>
-                         <td>Local Area Network</td>
-                         <td>2nd</td>
-                         <td>Pass</td>
-
-                       </tr>
-                       <tr>
-                         <th scope="row">3</th>
-                         <td>MO7</td>
-                         <td>Web Programming</td>
-                         <td>3rd</td>
-                         <td>Pass</td>
-
-                       </tr>
-                       <tr>
-                         <th scope="row">4</th>
-                         <td>MO6</td>
-                         <td>Software Testing</td>
-                         <td>1st</td>
-                         <td>Pass</td>
-
-                       </tr>
-
-                       <tr>
-                         <th scope="row">5</th>
-                         <td>MO6</td>
-                         <td>Planning and Scheduling Work at Workplace</td>
-                         <td>1st</td>
-                         <td>Fail</td>
-
-                       </tr>
-
-                       <tr>
-                         <th scope="row">6</th>
-                         <td>MO1</td>
-                         <td>Manage Workplace Communication</td>
-                         <td>1st</td>
-                         <td>Fail</td>
-
-                       </tr>
-                     </tbody>
-                   </table>
-                   <button onclick="window.print();" class="btn btn-primary" id="print-btn">Print</button>
-
-                   <!-- #1 Insert Your Content-->
-                 </div>
-
-             </div>
-           </div>
-         </div> <!-- #1 Insert Your Content" -->
-       </div>
-   </main>
-
-   <?php include_once("../script.php");
+    <?php include_once("../script.php");
     ?>
- </body>
+  </body>
 
- </html>
+  </html>
