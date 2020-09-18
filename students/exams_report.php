@@ -2,39 +2,39 @@
   $title = ' ERMS | SLGTI(Exams Result Report)';
   $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
   ?>
- <!DOCTYPE html>
- <html lang='en'>
+  <!DOCTYPE html>
+  <html lang='en'>
 
- <head>
-   <?php include_once('../head.php');
+  <head>
+    <?php include_once('../head.php');
     include_once('../config.php');
     ?>
- </head>
+  </head>
 
- <body>
-   <main class='page-content pt-2'>
-     <?php //include_once('nav.php');
+  <body>
+    <main class='page-content pt-2'>
+      <?php //include_once('nav.php');
       ?>
-     <div id='overlay' class='overlay'></div>
-     <div class='container-fluid p-5'>
-       <!-- #1 Insert Your Content-->
+      <div id='overlay' class='overlay'></div>
+      <div class='container-fluid p-5'>
+        <!-- #1 Insert Your Content-->
 
-       <div class='row'>
-         <div class="col">
-           <div class="card">
-             <div class="card-header">
-               <h3> <?php echo " $title" ?> </h3>
-             </div>
-             <div class="card-body">
+        <div class='row'>
+          <div class="col">
+            <div class="card">
+              <div class="card-header">
+                <h3> <?php echo " $title" ?> </h3>
+              </div>
+              <div class="card-body">
 
-               <div class='row'>
-                 <div class="col-md-6">
+                <div class='row'>
+                  <div class="col-md-6">
 
 
 
-                   <div class="card-body">
+                    <div class="card-body">
 
-                     <?php
+                      <?php
                       $sql = "SELECT * FROM student";
                       $result = $con->query($sql);
                       if ($result->num_rows > 1) {
@@ -52,22 +52,22 @@
                         }
                       }
                       ?>
-                     <div class="row">
-                       <div class="col-md-4">
-                         <label for="exampleInputEmail1"><b>Full Name :- </b><?php echo $full_name; ?></label>
-                       </div>
-                       <div class="col-md-4">
-                         <label for="exampleInputEmail1"><b>Name with Initial :- </b><?php echo $name_with_initials; ?></label>
-                       </div>
-                       <div class="col-md-4">
-                         <label for="exampleInputEmail1"><b> Student Id :- </b><?php echo $id; ?></label>
-                       </div>
-                     </div>
-                     <div class="row">
-                       <div class="col-md-4">
-                         <label for="exampleInputEmail1"><b> NIC Number :- </b><?php echo $nic; ?></label>
-                       </div>
-                       <!-- <div class="col-md-4">
+                      <div class="row">
+                        <div class="col-md-4">
+                          <label for="exampleInputEmail1"><b>Full Name :- </b><?php echo $full_name; ?></label>
+                        </div>
+                        <div class="col-md-4">
+                          <label for="exampleInputEmail1"><b>Name with Initial :- </b><?php echo $name_with_initials; ?></label>
+                        </div>
+                        <div class="col-md-4">
+                          <label for="exampleInputEmail1"><b> Student Id :- </b><?php echo $id; ?></label>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-4">
+                          <label for="exampleInputEmail1"><b> NIC Number :- </b><?php echo $nic; ?></label>
+                        </div>
+                        <!-- <div class="col-md-4">
                        <label for="exampleInputEmail1"><b>Course :- </b></label>
                      </div>
                      <div class="col-md-4">
@@ -76,55 +76,80 @@
                      <div class="col-md-4">
                        <label for="exampleInputEmail1"><b>Academic Year :- </b></label>
                      </div> -->
-                     </div>
+                      </div>
 
-                     <!-- #1 Insert Your Content-->
+                      <!-- #1 Insert Your Content-->
 
-                     <table class="table">
-                       <thead class="thead-light">
-                         <tr>
-                           <th scope="col">NO</th>
-                           <th scope="col">MODULE_CODE</th>
-                           <th scope="col">MODULE_NAME</th>
-                           <th scope="col">EXAM_TYPE</th>
-                           <th scope="col">ATTEMPT</th>
-                           <th scope="col">RESULT</th>
+                      <table class="table">
+                        <thead class="thead-light">
+                          <tr>
+                            <th scope="col">NO</th>
+                            <th scope="col">MODULE_CODE</th>
+                            <th scope="col">MODULE_NAME</th>
+                            <th scope="col">EXAM_TYPE</th>
+                            <th scope="col">ATTEMPT</th>
+                            <th scope="col">RESULT</th>
+                          </tr>
+                        </thead>
 
-                         </tr>
-                       </thead>
+                        <tbody>
 
-                       <tbody>
-                         <?php
-                          $sql = "SELECT * FROM exams_result";
+                          <?php
+                          $sql = "SELECT * FROM modules";
                           $result = $con->query($sql);
                           if ($result->num_rows > 1) {
                             while ($row = $result->fetch_assoc()) {
 
+                              $code = $row['code'];
+                              $name = $row['name'];
                               echo '
-                       <tr>
-                         
-                       </tr>';
+                              <tr>
+                              <td></td>
+                              <div class="row">
+                                 <div class="col-md-4">
+                                 <td>
+                                 '?>
+                                  <label for="exampleInputEmail1"><?php echo $code; ?></label>
+                                  <?php
+                                  echo '
+                                  </td>
+                              </div>
+                                 <div class="col-md-4">
+                                 <td>
+                                 '?>
+
+                                   <label for="exampleInputEmail1"><?php echo $name; ?></label>
+
+                                   <?php
+                                   echo '
+                                   </td>
+                                 </div>
+  
+                            </div>
+                            </tr>';
                             }
-                          } else {
-                            echo 'no rows';
-                          } ?>
+                          }
 
-                       </tbody>
-                     </table>
+                          ?>
 
-                     <!-- #1 Insert Your Content-->
-                   </div>
+                          
 
-                   <button onclick="window.print();" class="btn btn-primary" id="print-btn">Print</button>
+                        </tbody>
+                      </table>
 
-                 </div>
-               </div>
-             </div> <!-- #1 Insert Your Content" -->
-           </div>
-   </main>
+                      <!-- #1 Insert Your Content-->
+                    </div>
 
-   <?php include_once("../script.php");
+                    <button onclick="window.print();" class="btn btn-primary" id="print-btn">Print</button>
+
+                  </div>
+                </div>
+              </div> <!-- #1 Insert Your Content" -->
+            </div>
+    </main>
+
+    <?php include_once("../script.php");
     ?>
- </body>
+  </body>
 
- </html>
+  </html>
