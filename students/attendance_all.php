@@ -1,5 +1,5 @@
 <?php
-$title = ' ERMS | SLGTI(page Title)';
+$title = ' ERMS | SLGTI Attendance';
 $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
 ?>
 <!DOCTYPE html>
@@ -97,7 +97,7 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
 
                                                             <?php
                                                             $cont = count($modu);
-                                                            // array end
+                                                            
                                                             if (isset($_GET['semester'])) {
                                                                 $sem = $_GET['semester'];
 

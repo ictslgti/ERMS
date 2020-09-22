@@ -7,14 +7,6 @@ $description = "Online Examination Result Management System (ERMS)-SLGTI";
 <html lang="en">
 <?php include_once("../head.php"); ?>
 <?php include_once('../databases/config.php'); ?>
-<?php
-$course_name = '';
-$query = "SELECT * FROM courses";
-$result = mysqli_query($con, $query);
-while ($row = mysqli_fetch_array($result)) {
-    $course_name .= '<option value="' . $row["code"] . '">' . $row["code"] . '</option>';
-}
-?>
 
 <head>
     <!-- Image-->
@@ -189,9 +181,9 @@ while ($row = mysqli_fetch_array($result)) {
                         </button></div>';
                 }
             } else {
-                echo '<div class="alert alert-danger" role="alert"> Please select an image file to upload.<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                    </button></div>';
+                // echo '<div class="alert alert-danger" role="alert"> Please select an image file to upload.<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                //     <span aria-hidden="true">&times;</span>
+                //     </button></div>';
             }
         }
         ?>
@@ -205,9 +197,12 @@ while ($row = mysqli_fetch_array($result)) {
             $mode = $status = $enrolldate = $exitdate = null;
         if (isset($_GET['edit'])) {
             $student_id = $_GET['edit'];
-            $sql_student = "SELECT * FROM student LEFT JOIN student_enroll
-            ON `student`.`id` = `student_enroll`.`id`
+
+            $sql_student = "SELECT * FROM student 
+            -- LEFT JOIN student_enroll
+            -- ON `student`.`id` = `student_enroll`.`id`
             WHERE `student`.`id` = '$student_id'";
+
             $result_student = mysqli_query($con, $sql_student);
             $row = mysqli_fetch_assoc($result_student);
             if (mysqli_num_rows($result_student) == 1) {
@@ -231,12 +226,12 @@ while ($row = mysqli_fetch_array($result)) {
                 $gphone = $row['guardian_phone_no'];
                 $grelation = $row['guardian_relationship'];
                 $regno = $row['id'];
-                $cid = $row['course_code'];
-                $bid = $row['batch_no'];
-                $mode = $row['course_mode'];
-                $status = $row['student_status'];
-                $enrolldate = $row['enroll_date'];
-                $exitdate = $row['exit_date'];
+                // $cid = $row['course_code'];
+                // $bid = $row['batch_no'];
+                // $mode = $row['course_mode'];
+                // $status = $row['student_status'];
+                // $enrolldate = $row['enroll_date'];
+                // $exitdate = $row['exit_date'];
             }
         }
         //update Student Table
@@ -292,9 +287,15 @@ while ($row = mysqli_fetch_array($result)) {
 
             if (mysqli_query($con, $sql_students)) {
                 echo '<div class="alert alert-success" role="alert">
-                Successfully Updated! ';
+                Successfully Updated! 
+                <button type="button" class="close" href="student.php" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button></div>';
             } else {
-                echo '<div class="alert alert-warning" role="alert"> Error updating record: ' . $sql_students
+                echo '<div class="alert alert-warning" role="alert"> Error updating record: 
+                <button type="button" class="close" href="student.php" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button></div>' . $sql_students
                     . mysqli_error($con);
             }
         }
@@ -302,7 +303,7 @@ while ($row = mysqli_fetch_array($result)) {
 
         //update Student_enroll Table
         if (
-            isset($_POST['update'])
+            isset($_POST['eupdate'])
             && !empty($_POST['cid'])
             && !empty($_POST['bid'])
             && !empty($_POST['mode'])
@@ -321,12 +322,12 @@ while ($row = mysqli_fetch_array($result)) {
             `student_status` = '$status', `enroll_date` = '$enrolldate', `exit_date` = '$exitdate'  WHERE `student_enroll`.`id` = '$student_id'";
 
             if (mysqli_query($con, $sqlenrolls)) {
-                echo ' And Insert Successfully
+                echo '<div class="alert alert-success" role="alert"> And Insert Successfully
                 <button type="button" class="close" href="student.php" data-dismiss="alert" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
                 </button></div>';
             } else {
-                echo ' And Failed: <button type="button" class="close" href="student.php" data-dismiss="alert" aria-label="Close">
+                echo '<div class="alert alert-warning" role="alert"> And Failed: <button type="button" class="close" href="student.php" data-dismiss="alert" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
                 </button></div>' . $sqlenrolls
                     . mysqli_error($con);
@@ -614,9 +615,7 @@ while ($row = mysqli_fetch_array($result)) {
                                         </div>
                                     </div>
                                 </div>
-
                                 <!-- 4th row end -->
-
                                 <br>
                                 <!-- 2 row end -->
 
@@ -629,111 +628,332 @@ while ($row = mysqli_fetch_array($result)) {
                                     </div>
                                 </div><br>
 
-
-
-                                <div class="form-row">
-
-                                    <div class="col-3">
-                                        <label for="cid"> Course Name: </label>
-                                        <select name="cid" id="cid" class="custom-select action">
-                                            <?php
-                                            if (isset($_GET['edit'])) {
-                                            ?>
-                                                <option value="<?php echo $cid; ?>" selected><?php echo $cid; ?></option>
-                                                <option value="">Choose</option>
-                                                <?php echo $course_name; ?>
-                                            <?php
-                                            } else {
-                                            ?>
-                                                <option value="">Choose</option>
-                                                <?php echo $course_name; ?>
-                                            <?php
-                                            }
-                                            ?>
-
-
-                                        </select>
+                                <?php
+                                if (isset($_GET['edit'])) {
+                                ?>
+                                    <!-- 1st row start -->
+                                    <div class="row">
+                                        <div class="form-group col-md-12 table-responsive">
+                                            <table class='table align-middle'>
+                                                <thead class='thead-light'>
+                                                    <tr>
+                                                        <td scope='col'>Course</td>
+                                                        <td scope='col'>Batch</td>
+                                                        <td scope='col'>Course Mode</td>
+                                                        <td scope='col'>Status</td>
+                                                        <td scope='col'>Enroll Date</td>
+                                                        <td scope='col'>Exit Date</td>
+                                                        <td scope='col'>ACTIONS</td>
+                                                    </tr>
+                                                    <?php
+                                                    $sql = "SELECT * FROM student_enroll WHERE id = '$student_id' ORDER BY course_code desc";
+                                                    $result = mysqli_query($con, $sql);
+                                                    while ($row = mysqli_fetch_assoc($result)) {
+                                                    ?>
+                                                        <tr>
+                                                            <td scope='col'>
+                                                                <?php echo $row['course_code']; ?>
+                                                            </td>
+                                                            <td scope='col'>
+                                                                <?php echo $row['batch_no']; ?>
+                                                            </td>
+                                                            <td scope='col'>
+                                                                <?php echo $row['course_mode']; ?>
+                                                            </td>
+                                                            <td scope='col'>
+                                                                <?php echo $row['student_status']; ?>
+                                                            </td>
+                                                            <td scope='col'>
+                                                                <?php echo $row['enroll_date']; ?>
+                                                            </td>
+                                                            <td scope='col'>
+                                                                <?php echo $row['exit_date']; ?>
+                                                            </td>
+                                                            <td scope='col'>
+                                                                <a class="btn btn-outline-warning btn-sm" data-toggle="modal" data-target="#staticBackdrop" href="student.php?eedit=<?php echo $row['id']; ?>">Edit</a>
+                                                                <a class="btn btn-outline-danger btn-sm disabled" href="?edelete=<?php echo $row['id']; ?>">Delete</a>
+                                                            </td>
+                                                        <?php
+                                                    }
+                                                        ?>
+                                                        </tr>
+                                                </thead>
+                                                <tbody>
+                                                </tbody>
+                                            </table>
+                                        </div>
                                     </div>
 
-                                    <div class="col-3">
-                                        <label for="bid"> Batch No: </label>
-                                        <select name="bid" id="bid" class="custom-select action">
 
-                                            <?php
-                                            if (isset($_GET['edit'])) {
-                                            ?>
-                                                <option value="<?php echo $bid; ?>" selected><?php echo $bid; ?></option>
-                                            <?php
-                                            } else {
-                                            ?>
+                                    <!-- Button trigger modal -->
+                                    <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#staticBackdrop">
+                                        Launch static backdrop modal
+                                    </button> -->
+
+                                    <!-- Modal -->
+                                    <div class="modal fade" id="staticBackdrop" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="staticBackdropLabel">Edit Enroll</h5>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <form action="">
+                                                        <div class="form-row">
+
+                                                            <div class="col-3">
+                                                                <label for="cid"> Course Name: </label>
+                                                                <select name="cid" id="cid" class="custom-select action">
+                                                                    <?php
+                                                                    $course_name = '';
+                                                                    $query = "SELECT * FROM courses";
+                                                                    $result = mysqli_query($con, $query);
+                                                                    while ($row = mysqli_fetch_array($result)) {
+                                                                        $course_name .= '<option value="' . $row["code"] . '">' . $row["code"] . '</option>';
+                                                                    }
+                                                                    ?>
+                                                                    <option value="">Choose</option>
+                                                                    <?php echo $course_name; ?>
+                                                                </select>
+                                                            </div>
+
+                                                            <div class="col-3">
+                                                                <label for="bid"> Batch No: </label>
+                                                                <select name="bid" id="bid" class="custom-select action">
+                                                                    <option value="" selected disabled>Choose</option>
+                                                                </select>
+                                                            </div>
+
+                                                            <div class="col-3">
+                                                                <label for="mode"> Course Mode: </label>
+                                                                <select name="mode" class="custom-select" value="" required>
+                                                                    <option selected disabled> Choose</option>
+                                                                    <option value="Full">Full Time</option>
+                                                                    <option value="Part">Part Time</option>
+                                                                    <option value="sort">Sort Time</option>
+                                                                </select>
+                                                            </div>
+
+                                                            <div class="col-3">
+                                                                <label for="regno"> Registration No: </label>
+                                                                <input type="text" name="regno" class="form-control" placeholder="2018SLGTIBIT04" value="<?php echo $regno; ?>" required>
+                                                            </div>
+
+                                                        </div>
+                                                        <!-- 1st row end -->
+
+                                                        <!-- 2nd row start -->
+                                                        <div class="form-row">
+
+                                                            <div class="col-3">
+                                                                <label for="status"> Status:</label>
+                                                                <select name="status" class="custom-select" value="" required>
+                                                                    <option selected disabled>Choose</option>
+                                                                    <option value="Following">Following</option>
+                                                                    <option value="Completed">Completed</option>
+                                                                    <option value="Dropout">Dropout</option>
+                                                                    <option value="Long Absent">Long Absent</option>
+                                                                </select>
+                                                            </div>
+
+                                                            <div class="col-3">
+                                                                <label for="enrolldate"> Enroll Date:</label>
+                                                                <input type="date" class="form-control" name="enrolldate" value="" required>
+                                                            </div>
+
+                                                            <div class="col-3">
+                                                                <label for="exitdate"> Exit Date:</label>
+                                                                <input type="date" class="form-control" name="exitdate" value="">
+                                                            </div>
+
+                                                            <div class="col-3">
+                                                            </div>
+                                                        </div>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Close</button>
+                                                    <button type="button" class="btn btn-outline-success">Update</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- 1st row end -->
+
+                                    <div class="form-row">
+                                        <p>
+                                            <button class="btn btn-outline-secondary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                                                Re Enroll
+                                            </button>
+                                        </p>
+                                        <div class="col-12">
+
+                                            <div class="collapse" id="collapseExample">
+                                                <div class="card card-body">
+
+                                                    <form action="">
+                                                        <div class="form-row">
+
+                                                            <div class="col-3">
+                                                                <label for="cid"> Course Name: </label>
+                                                                <select name="cid" id="cid" class="custom-select action">
+                                                                    <?php
+                                                                    $course_name = '';
+                                                                    $query = "SELECT * FROM courses";
+                                                                    $result = mysqli_query($con, $query);
+                                                                    while ($row = mysqli_fetch_array($result)) {
+                                                                        $course_name .= '<option value="' . $row["code"] . '">' . $row["code"] . '</option>';
+                                                                    }
+                                                                    ?>
+                                                                    <option value="">Choose</option>
+                                                                    <?php echo $course_name; ?>
+                                                                </select>
+                                                            </div>
+
+                                                            <div class="col-3">
+                                                                <label for="bid"> Batch No: </label>
+                                                                <select name="bid" id="bid" class="custom-select action">
+                                                                    <option value="" selected disabled>Choose</option>
+                                                                </select>
+                                                            </div>
+
+                                                            <div class="col-3">
+                                                                <label for="mode"> Course Mode: </label>
+                                                                <select name="mode" class="custom-select" value="" required>
+                                                                    <option selected disabled> Choose</option>
+                                                                    <option value="Full">Full Time</option>
+                                                                    <option value="Part">Part Time</option>
+                                                                    <option value="sort">Sort Time</option>
+                                                                </select>
+                                                            </div>
+
+                                                            <div class="col-3">
+                                                                <label for="regno"> Registration No: </label>
+                                                                <input type="text" name="regno" class="form-control" placeholder="2018SLGTIBIT04" value="<?php echo $regno; ?>" required>
+                                                            </div>
+
+                                                        </div>
+                                                        <!-- 1st row end -->
+
+                                                        <!-- 2nd row start -->
+                                                        <div class="form-row">
+
+                                                            <div class="col-3">
+                                                                <label for="status"> Status:</label>
+                                                                <select name="status" class="custom-select" value="" required>
+                                                                    <option selected disabled>Choose</option>
+                                                                    <option value="Following">Following</option>
+                                                                    <option value="Completed">Completed</option>
+                                                                    <option value="Dropout">Dropout</option>
+                                                                    <option value="Long Absent">Long Absent</option>
+                                                                </select>
+                                                            </div>
+
+                                                            <div class="col-3">
+                                                                <label for="enrolldate"> Enroll Date:</label>
+                                                                <input type="date" class="form-control" name="enrolldate" value="" required>
+                                                            </div>
+
+                                                            <div class="col-3">
+                                                                <label for="exitdate"> Exit Date:</label>
+                                                                <input type="date" class="form-control" name="exitdate" value="">
+                                                            </div>
+
+                                                            <div class="col-3">
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="modal-footer">
+                                                            <button class="btn btn-outline-secondary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                                                                Close
+                                                            </button>
+                                                            <button type="submit" name="add" class="btn btn-outline-success">Add</button>
+                                                        </div>
+
+                                                    </form>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                <?php
+                                } else {
+                                ?>
+                                    <div class="form-row">
+
+                                        <div class="col-3">
+                                            <label for="cid"> Course Name: </label>
+                                            <select name="cid" id="cid" class="custom-select action">
+                                                <?php
+                                                $course_name = '';
+                                                $query = "SELECT * FROM courses";
+                                                $result = mysqli_query($con, $query);
+                                                while ($row = mysqli_fetch_array($result)) {
+                                                    $course_name .= '<option value="' . $row["code"] . '">' . $row["code"] . '</option>';
+                                                }
+                                                ?>
+                                                <option value="">Choose</option>
+                                                <?php echo $course_name; ?>
+                                            </select>
+                                        </div>
+
+                                        <div class="col-3">
+                                            <label for="bid"> Batch No: </label>
+                                            <select name="bid" id="bid" class="custom-select action">
                                                 <option value="" selected disabled>Choose</option>
-                                            <?php
-                                            }
-                                            ?>
+                                            </select>
+                                        </div>
 
-                                        </select>
-                                    </div>
+                                        <div class="col-3">
+                                            <label for="mode"> Course Mode: </label>
+                                            <select name="mode" class="custom-select" value="" required>
+                                                <option selected disabled> Choose</option>
+                                                <option value="Full">Full Time</option>
+                                                <option value="Part">Part Time</option>
+                                                <option value="sort">Sort Time</option>
+                                            </select>
+                                        </div>
 
-                                    <div class="col-3">
-                                        <label for="mode"> Course Mode: </label>
-                                        <select name="mode" class="custom-select" value="<?php echo $mode; ?>" required>
-                                            <option selected disabled> Choose</option>
-                                            <option value="Full" <?php if ($mode == "Full") echo 'selected'; ?>>Full Time</option>
-                                            <option value="Part" <?php if ($mode == "Part") echo 'selected'; ?>>Part Time</option>
-                                            <option value="sort" <?php if ($mode == "Sort") echo 'selected'; ?>>Sort Time</option>
-                                        </select>
-                                    </div>
-
-                                    <div class="col-3">
-                                        <label for="regno"> Registration No: </label>
-                                        <?php
-                                        if (isset($_GET['edit'])) {
-                                            echo '<input type="text" name="regno" class="form-control" value="' . $regno . '" disabled>';
-                                        } else {
-                                            echo '<input type="text" name="regno" class="form-control" placeholder="2018SLGTIBIT04" value="" required>';
-                                        }
-                                        ?>
-
+                                        <div class="col-3">
+                                            <label for="regno"> Registration No: </label>
+                                            <input type="text" name="regno" class="form-control" placeholder="2018SLGTIBIT04" value="" required>
+                                        </div>
 
                                     </div>
+                                    <!-- 1st row end -->
 
-                                </div>
-                                <!-- 1st row end -->
+                                    <!-- 2nd row start -->
+                                    <div class="form-row">
 
-                                <!-- 2nd row start -->
-                                <div class="form-row">
+                                        <div class="col-3">
+                                            <label for="status"> Status:</label>
+                                            <select name="status" class="custom-select" value="" required>
+                                                <option selected disabled>Choose</option>
+                                                <option value="Following">Following</option>
+                                                <option value="Completed">Completed</option>
+                                                <option value="Dropout">Dropout</option>
+                                                <option value="Long Absent">Long Absent</option>
+                                            </select>
+                                        </div>
 
-                                    <div class="col-3">
-                                        <label for="status"> Status:</label>
-                                        <select name="status" class="custom-select" value="<?php echo $status; ?>" required>
-                                            <option selected disabled>Choose</option>
-                                            <option value="Following" <?php if ($status == "Following")  echo 'selected'; ?>>Following</option>
-                                            <option value="Completed" <?php if ($status == "Completed")  echo 'selected'; ?>>Completed</option>
-                                            <option value="Dropout" <?php if ($status == "Dropout")  echo 'selected'; ?>>Dropout</option>
-                                            <option value="Long Absent" <?php if ($status == "Long Absent")  echo 'selected'; ?>>Long Absent</option>
-                                        </select>
+                                        <div class="col-3">
+                                            <label for="enrolldate"> Enroll Date:</label>
+                                            <input type="date" class="form-control" name="enrolldate" value="" required>
+                                        </div>
+
+                                        <div class="col-3">
+                                            <label for="exitdate"> Exit Date:</label>
+                                            <input type="date" class="form-control" name="exitdate" value="">
+                                        </div>
+
+                                        <div class="col-3">
+                                        </div>
                                     </div>
 
-                                    <div class="col-3">
-                                        <label for="enrolldate"> Enroll Date:</label>
-                                        <input type="date" class="form-control" name="enrolldate" value="<?php echo $enrolldate; ?>" required>
-                                    </div>
-
-                                    <div class="col-3">
-                                        <label for="exitdate"> Exit Date:</label>
-                                        <input type="date" class="form-control" name="exitdate" value="<?php echo $exitdate; ?>">
-                                    </div>
-
-                                    <div class="col-3">
-                                        <?php
-                                        if (isset($_GET['edit'])) {
-                                            echo '<label for="reenroll">Re Enroll:</label><br>
-                                            <button type="button" name="reenroll" class="btn btn-outline-secondary" data-toggle="modal" data-target="#staticBackdrop">Re Enroll</button>';
-                                        } else {
-                                        }
-                                        ?>
-                                    </div>
-                                </div>
+                                <?php
+                                } ?>
                                 <!-- 2nd row end -->
                                 <br>
                                 <!-- 3 row end -->
@@ -784,13 +1004,12 @@ while ($row = mysqli_fetch_array($result)) {
 
                                 </div>
 
-                                <div class="row">
+                                <div class="form-row">
                                     <div class="col-11 "></div>
                                     <div class="col-1">
                                         <?php
                                         if (isset($_GET['edit'])) {
-                                            echo '
-                                            <button type="submit" name="update" class="btn btn-outline-success">Update</button>';
+                                            echo '<button type="submit" name="update" class="btn btn-outline-success">Update</button>';
                                         } else {
                                             echo '<button type="submit" name="add" class="btn btn-outline-success">Add</button>';
                                         }
@@ -811,82 +1030,6 @@ while ($row = mysqli_fetch_array($result)) {
                 </div>
         </main>
     </div>
-
-    <!-- Button trigger modal -->
-
-    <!-- Modal -->
-    <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="staticBackdropLabel">Re Enroll</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="form-row">
-
-                    <div class="col-3">
-                        <label for="cid"> Course Name: </label>
-                        <select name="cid" id="cid" class="custom-select action">
-                            <?php
-                            if (isset($_GET['edit'])) {
-                            ?>
-                                <option value="<?php echo $cid; ?>" selected><?php echo $cid; ?></option>
-                                <option value="">Choose</option>
-                                <?php echo $course_name; ?>
-                            <?php
-                            } else {
-                            ?>
-                                <option value="">Choose</option>
-                                <?php echo $course_name; ?>
-                            <?php
-                            }
-                            ?>
-
-
-                        </select>
-                    </div>
-
-                    <div class="col-3">
-                        <label for="bid"> Batch No: </label>
-                        <select name="bid" id="bid" class="custom-select action">
-                            <?php
-                            if (isset($_GET['edit'])) {
-                            ?>
-                                <option value="<?php echo $bid; ?>" selected><?php echo $bid; ?></option>
-                            <?php
-                            } else {
-                            ?>
-                                <option value="" selected disabled>Choose</option>
-                            <?php
-                            }
-                            ?>
-                        </select>
-                    </div>
-
-                    <div class="col-3">
-                        <label for="regno"> Registration No: </label>
-                        <?php
-                        if (isset($_GET['edit'])) {
-                            echo '<input type="text" name="regno" class="form-control" value="' . $regno . '" disabled>';
-                        }
-                        ?>
-
-
-                    </div>
-
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Understood</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Button trigger modal -->
-
     <?php include_once("../script.php"); ?>
 </body>
 
