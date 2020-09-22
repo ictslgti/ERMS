@@ -306,11 +306,10 @@ while ($row = mysqli_fetch_array($result)) {
                                     <td> ', $row['batch'], '</td>
                                     <td> ', $row['date'], '</td>
                                     <td class="btn-group "role="group" > 
-                                    <a href="?View=', $row['exam_id'], '" class = "btn btn-warning btn-group btn btn-sm " >   
-                                    View
-                                     </a>
+                                    
+                                     <a class = "btn btn-warning btn-group btn btn-sm "href="result_report.php?view=', $row['batch'], '& course=', $row['course'], '"> View</a>
                                     <a class = "btn btn-danger btn-group btn btn-sm " href="?delete=', $row['exam_id'], '"> Delete </a>
-                                    <a class = "btn btn-info btn-group btn btn-sm "href="exams_results.php?results=', $row['batch'], '& course=', $row['course'], '">
+                                    <a class = "btn btn-info btn-group btn btn-sm "href="exams_results.php?results=', $row['batch'], '& course=', $row['course'], '& module=', $row['module'], '">
                                     
                                     Results </a>
                                    </td>
