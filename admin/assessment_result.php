@@ -22,13 +22,12 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
 
 if(isset($_GET['id'])){
     $id=$_GET['id'];
-    $query = "select b.batch_no,m.name as module,a.names ,a.academic_year,c.name as course,a.type from assessments a inner join batches b on a.batch=b.id inner join modules m on m.id=a.module inner join courses c on m.course_code=c.code and a.id='$id';";
+    $query = "select b.batch_no,m.name as module,a.names ,c.name as course,a.type from assessments a inner join batches b on a.batch=b.id inner join modules m on m.id=a.module inner join courses c on m.course_code=c.code and a.id='$id';";
     $result = mysqli_query($con, $query);
     while ($row = mysqli_fetch_array($result)) {
         $batch=$row['batch_no'];
         $module=$row['module'];
         $name=$row['names'];
-        $academic=$row['academic_year'];
         $course=$row['course'];
         $type=$row['type'];
     }
@@ -70,7 +69,7 @@ if(isset($_GET['id'])){
                         <h6>Batch</h6>
                     </div>
                     <div class="col-md-4 col-sm-12">
-                        <h6 class="text-muted"><?php echo $batch;?> <span class="badge badge-dark"><?php echo $academic;?></span></h6>
+                        <h6 class="text-muted"><?php echo $batch;?> <span class="badge badge-dark"></span></h6>
                     </div>
 
                     <div class="col-md-2 col-sm-12">
