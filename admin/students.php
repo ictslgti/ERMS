@@ -7,7 +7,8 @@ $description = "Online Examination Result Management System (ERMS)-SLGTI";
 
 <head>
     <?php include_once("../head.php"); ?>
-    <?php include_once('../databases/config.php'); ?>
+    <?php// include_once('../databases/config.php'); ?>
+    <?php include_once('../databases/config1.php'); ?>
 </head>
 
 <body>
