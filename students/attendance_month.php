@@ -3,7 +3,7 @@
 // if (!isset($_SESSION['username'])) {
 //     header('Location: .././index.php');
 // }
-$user ='nufailniyas98@gmail.com';
+$user = 'nufailniyas98@gmail.com';
 ?>
 <?php
 $title = ' ERMS | SLGTI(page Title)';
@@ -19,15 +19,15 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
 </head>
 
 <body>
-<?php
-//session
-$student_id = '';
-$query = "SELECT * FROM student where email='$user'";
-$result = mysqli_query($con, $query);
-while($row = mysqli_fetch_assoc($result)) {
- echo $student_id = $row['id'];
-}
-?>
+    <?php
+    //session
+    $student_id = '';
+    $query = "SELECT * FROM student where email='$user'";
+    $result = mysqli_query($con, $query);
+    while ($row = mysqli_fetch_assoc($result)) {
+        echo $student_id = $row['id'];
+    }
+    ?>
     <?php
     $month = null;
     if (isset($_GET['month'])) {
@@ -135,9 +135,14 @@ while($row = mysqli_fetch_assoc($result)) {
                                                             $result = mysqli_query($con, $sql);
                                                             while ($row = mysqli_fetch_assoc($result)) {
                                                     ?>
-                                                                <tr>
+                                                                    <tr>
                                                                     <td scope='col'>
                                                                         <?php echo $row['code'];
+                                                                        ?>
+                                                                    </td>
+                                                                    <td scope='col'>
+
+                                                                        <?php echo $row['Total'];
                                                                         ?>
                                                                     </td>
                                                                     <td scope='col'>
@@ -150,11 +155,7 @@ while($row = mysqli_fetch_assoc($result)) {
                                                                         }
                                                                         ?>
                                                                     </td>
-                                                                    <td scope='col'>
-
-                                                                        <?php echo $row['Total'];
-                                                                        ?>
-                                                                    </td>
+                                                                    
                                                                     <td scope='col'>
                                                                         <?php echo number_format(($row['Take'] / $row['Total']) * 100, 2) . "%" ?>
                                                                     </td>
@@ -180,6 +181,11 @@ while($row = mysqli_fetch_assoc($result)) {
                                                                     </td>
                                                                     <td scope='col'>
 
+                                                                        <?php echo $row['Total'];
+                                                                        ?>
+                                                                    </td>
+                                                                    <td scope='col'>
+
                                                                         <?php
                                                                         if ($row['Take'] == null) {
                                                                             echo "0";
@@ -188,11 +194,7 @@ while($row = mysqli_fetch_assoc($result)) {
                                                                         }
                                                                         ?>
                                                                     </td>
-                                                                    <td scope='col'>
-
-                                                                        <?php echo $row['Total'];
-                                                                        ?>
-                                                                    </td>
+                                                                    
                                                                     <td scope='col'>
                                                                         <?php echo number_format(($row['Take'] / $row['Total']) * 100, 2) . "%" ?>
                                                                     </td>
