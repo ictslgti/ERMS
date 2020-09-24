@@ -91,7 +91,8 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
                                                 <thead>
                                                     <tr>
                                                         <th>Student id</th>
-                                                        <th>Student Name</th>
+                                                        <th>code</th>
+                                                        <!-- <th>Student Name</th> -->
                                                         <th>Take session</th>
                                                         <th>Total session</th>
                                                         <th>persantage</th>
@@ -113,20 +114,19 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
                                                     if (isset($_GET['month'])) {
                                                         $mon = $_GET['month'];
                                                         for ($x = 0; $x < $cont; $x++) {
-                                                            $sql = "select count(student_attendance.status) as Total,(SELECT count(student_attendance.status) from attendance,student_attendance where 
-                                                                    student_attendance.id=attendance.attendance_id and student_attendance.status='present' AND student_id='2018slgtibit01' and code='" . $modu[$x] . "' group by batch_no) as Take ,
-                                                                    attendance.code from attendance,student_attendance where student_attendance.id=attendance.attendance_id 
-                                                                    AND student_id='2018slgtibit01' and month(`attendance`.`attendance_date`)=$mon and code='" . $modu[$x] . "' group by CODE,batch_no";
+                                                            $sql = "select student_attendance.student_id,count(student_attendance.status) as Total,(SELECT count(student_attendance.status) from attendance,student_attendance where 
+                                                                    student_attendance.id=attendance.attendance_id and student_attendance.status='present' and code='" . $modu[$x] . "' group by batch_no) as Take from attendance,student_attendance where student_attendance.id=attendance.attendance_id 
+                                                                    and month(`attendance`.`attendance_date`)=$mon and code='" . $modu[$x] . "' group by CODE,batch_no";
 
                                                             $result = mysqli_query($con, $sql);
                                                             while ($row = mysqli_fetch_assoc($result)) {
                                                     ?>
                                                                 <tr>
                                                                     <td scope='col'>
-                                                                        <?php echo $row['code'];?>
+                                                                        <?php echo $row['student_id']; ?>
                                                                     </td>
                                                                     <td scope='col'>
-                                                                        <?php echo $row[''];?>
+                                                                        <?php echo $row['code']; ?>
                                                                     </td>
                                                                     <td scope='col'>
 
@@ -138,8 +138,9 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
                                                                         }
                                                                         ?>
                                                                     </td>
+
                                                                     <td scope='col'>
-                                                                        <?php echo $row['Total'];?>
+                                                                        <?php echo $row['Total']; ?>
                                                                     </td>
                                                                     <td scope='col'>
                                                                         <?php echo number_format(($row['Take'] / $row['Total']) * 100, 2) . "%" ?>
@@ -151,16 +152,21 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
                                                         }
                                                     } else {
                                                         for ($x = 0; $x < $cont; $x++) {
-                                                            $sql = "select count(student_attendance.status) as Total,(SELECT count(student_attendance.status) from attendance,student_attendance where 
-                                                                    student_attendance.id=attendance.attendance_id and student_attendance.status='present' AND student_id='2018slgtibit01' and code='" . $modu[$x] . "' group by batch_no) as Take ,
-                                                                    attendance.code from attendance,student_attendance where student_attendance.id=attendance.attendance_id 
-                                                                    AND student_id='2018slgtibit01'  and code='" . $modu[$x] . "' group by CODE,batch_no";
+                                                            $sql = "select student_attendance.student_id,attendance.code,count(student_attendance.status) as Total,(SELECT count(student_attendance.status) from attendance,student_attendance where 
+                                                                    student_attendance.id=attendance.attendance_id and student_attendance.status='present' and code='" . $modu[$x] . "' group by batch_no) as Take
+                                                                    from attendance,student_attendance where student_attendance.id=attendance.attendance_id 
+                                                                      and code='" . $modu[$x] . "' group by CODE,batch_no";
 
                                                             $result = mysqli_query($con, $sql);
                                                             while ($row = mysqli_fetch_assoc($result)) {
                                                             ?>
                                                                 <tr>
                                                                     <td scope='col'>
+                                                                        <?php echo $row['student_id'];
+                                                                        ?>
+                                                                    </td>
+                                                                    <td scope='col'>
+
                                                                         <?php echo $row['code'];
                                                                         ?>
                                                                     </td>
@@ -174,10 +180,9 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
                                                                         }
                                                                         ?>
                                                                     </td>
-                                                                    <td scope='col'>
 
-                                                                        <?php echo $row['Total'];
-                                                                        ?>
+                                                                    <td scope='col'>
+                                                                        <?php echo $row['Total']; ?>
                                                                     </td>
                                                                     <td scope='col'>
                                                                         <?php echo number_format(($row['Take'] / $row['Total']) * 100, 2) . "%" ?>
