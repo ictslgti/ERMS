@@ -12,7 +12,7 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
     <?php include_once("../../head.php"); ?>
     <?php include_once("../../config.php"); ?>
     <style>
-    th {
+        th {
             font-size: 12px;
             border: 1px solid black;
         }
@@ -21,12 +21,12 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
             font-size: 12px;
             border: 1px solid black;
         }
-
     </style>
-    
+
 </head>
 
 <body>
+
 
     <?php
     $d_id = null;
@@ -45,6 +45,7 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
     }
     ?>
     <div class="page-wrapper toggled bg2 border-radius-on light-theme">
+
         <?php include_once("../nav.php"); ?>
         <!-- id array -->
         <?php
@@ -63,13 +64,18 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
 
         <!-- subject array -->
         <?php
-        $sql1 = mysqli_query($con, "SELECT DISTINCT module_name FROM exams_result");
+        $sql1 = mysqli_query($con, "SELECT DISTINCT module FROM exams_result");
 
         while ($row1 = mysqli_fetch_array($sql1)) {
-            $subjects[] = $row1['module_name'];
+            $subjects[] = $row1['module'];
         }
         ?>
         <!-- subject array  -->
+        <div> <p></p>  </div>
+        <div>
+            <p style="text-align: center; font-size: 30px;"> SLGTI-KILLINOCHI</p>
+
+        </div>
 
         <table class="table">
             <thead class="thead-dark">
@@ -109,11 +115,14 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                         for ($s = 0; $s < $length1; $s++) {
                             $s_ids_val = $s_ids[$i];
                             $subjects_val = $subjects[$s];
-                            $sql3 = "select  status from student s inner join exams_result e on s.id=e.student_id and student_id='$s_ids_val' and module_name='$subjects_val';";
+                            $sql3 = "select e.marks from student_enroll s inner join exams_result e on s.id=e.student_id and e.student_id='$s_ids_val' and e.module='$subjects_val'";
                             $result = mysqli_query($con, $sql3);
                             if (mysqli_num_rows($result) > 0) {
                                 if ($row = mysqli_fetch_assoc($result)) {
-                                    echo '<td>', $row['status'], '</td>';
+
+
+                                    // echo $row['marks'];
+                                    echo '<td>', $row['marks'], '</td>';
                                 }
                             }
                         }

@@ -38,7 +38,7 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
             
                 if($password == $row['password'] && $status=="unreset"){                    
                     $_SESSION['username'] = $username;
-                    header("Location: forgot-mail.php");
+                    header("Location: Forgot/reset-mail.php");
 
                 }else if($password == $row['password'] && $status=="reset" && $usertype=="lecturer"){                               
                     $_SESSION['username'] = $username;
