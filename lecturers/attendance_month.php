@@ -1,4 +1,10 @@
 <?php
+// session_start();
+// if (!isset($_SESSION['username'])) {
+//     header('Location: .././index.php');
+// }
+?>
+<?php
 $title = ' ERMS | SLGTI( Attendance)';
 $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
 ?>
