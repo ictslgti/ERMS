@@ -12,7 +12,7 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
 </head>
 
 <body>
-<?php
+    <?php
     $semester = null;
     if (isset($_GET['semester'])) {
         $semester = $_GET['semester'];
@@ -67,8 +67,8 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
                                             <div class="col-3"></div>
 
                                             <div class="col-3" align="right">
-                                     
-                                            <?php $semester; ?>
+
+                                                <?php $semester; ?>
                                             </div>
                                         </div>
                                     </div>
@@ -99,10 +99,10 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
 
                                                     <?php
                                                     $cont = count($modu);
-                                                
+
                                                     if (isset($_GET['semester'])) {
                                                         $sem = $_GET['semester'];
-                                                       
+
                                                         $sql = "select count(student_attendance.status) as Total,(SELECT count(student_attendance.status) from 
                                                                 attendance,student_attendance where student_attendance.id=attendance.attendance_id and 
                                                                 student_attendance.status='present' AND student_id='2018slgtibit01' AND attendance.code=modules.code group by batch_no)
