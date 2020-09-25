@@ -93,7 +93,7 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                                                     <p><i class="fa fa-home fa-fw w3-margin-right w3-large w3-text-teal"></i><?php echo ($row['address']); ?></p>
                                                     <p><i class="fa fa-envelope fa-fw w3-margin-right w3-large w3-text-teal"></i><?php echo ($row['email']); ?></p>
                                                     <p><i class="fa fa-phone fa-fw w3-margin-right w3-large w3-text-teal"></i><?php echo ($row['telephone']); ?></p>
-                                                    <hr>
+
 
                                                     <br>
                                                 </div>
@@ -234,15 +234,27 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                                                             <p><?php echo ($row['status']); ?></p>
                                                         </div>
                                                     </div>
-                                                    <h6><u>lecturing modules</u></h6>
-                                                    <hr>
-                                                    <?php
-                                                                $result1 = $con->query("select m.name,b.batch_no from lecturer_enroll le inner join modules m on le.module=m.id inner join batches b on b.id=le.batch and le.lecturer=$id;");
 
-                                                                if ($result1->num_rows > 0) {
-                                                                    while ($row1 = $result1->fetch_assoc()) {
-                                                                        $row1['name'];
-                                                                        $row1['batch_no'];
+
+                                                </div>
+
+                                    <?php
+                                                            }
+                                                        }
+                                                    }
+                                    ?>
+                                            </div>
+                                        </div>
+                                        <footer>
+                                            <div class="card">
+                                                <div class="card-body">
+                                                    <?php
+                                                    $result1 = $con->query("select m.name,b.batch_no from lecturer_enroll le inner join modules m on le.module=m.id inner join batches b on b.id=le.batch and le.lecturer=$id;");
+
+                                                    if ($result1->num_rows > 0) {
+                                                        while ($row1 = $result1->fetch_assoc()) {
+                                                            $row1['name'];
+                                                            $row1['batch_no'];
                                                     ?>
 
 
@@ -251,38 +263,21 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                                                                     <label><?php echo ($row1['name']); ?></label>
                                                                 </div>
                                                                 <div class="col">
-                                                                    <p><?php echo ($row1['batch_no']); ?></p>
+                                                                    <p><?php echo "batch" . " " . ($row1['batch_no']); ?></p>
                                                                 </div>
                                                             </div>
 
                                                     <?php
-                                                                    }
-                                                                }
-
-                                                    ?>
-
-                                                </div>
-
-
-                                    <?php
-                                                            }
                                                         }
                                                     }
-                                    ?>
-
-
+                                                    ?>
+                                                </div>
                                             </div>
-
-
-                                        </div>
-
                                     </div>
-
-                                    <footer>
-                                        <div class=" row p-3 mb-2 bg-primary text-white  h6">
-                                            <div class="col">Powered by Srinlanka German Training Institue</div>
-                                            <div class="col-auto"> </div>
-                                        </div>
+                                    <div class=" row p-3 mb-2 bg-primary text-white  h6">
+                                        <div class="col">Powered by Srinlanka German Training Institue</div>
+                                        <div class="col-auto"> </div>
+                                    </div>
                                     </footer>
                                 </div>
                             </div>
