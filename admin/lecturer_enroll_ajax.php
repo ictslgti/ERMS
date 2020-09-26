@@ -1,15 +1,4 @@
-<style>
-  table {
-    width: 100%;
-    border: 1px solid skyblue;
-  }
 
-  tr,
-  th,
-  td {
-    border: 1px solid skyblue;
-  }
-</style>
 <?php include_once("../config.php"); ?>
 <?php
 // module
