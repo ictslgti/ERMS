@@ -78,7 +78,8 @@ $description = "Online Examination Result Management System (ERMS)-SLGTI";
                                             FROM student 
                                             LEFT JOIN student_enroll
                                             ON `student`.`id` = `student_enroll`.`id`
-                                            ORDER BY `id` ASC";
+                                            -- ORDER BY `id` ASC
+                                            GROUP BY `id`";
                                             $result = mysqli_query($con, $sql);
                                             while ($row = mysqli_fetch_assoc($result)) {
                                             ?>
@@ -114,13 +115,14 @@ $description = "Online Examination Result Management System (ERMS)-SLGTI";
                                 </div>
                             </div>
                         </div>
+                        
                         <div class="card-footer text-muted">
                         </div>
+                        
                     </div>
                     <!-- 1st row end -->
-
-                    <!-- #1 Insert Your Content" -->
                 </div>
+                <!-- #1 Insert Your Content" -->
         </main>
     </div>
 
