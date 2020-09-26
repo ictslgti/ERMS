@@ -101,7 +101,7 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
                                                         <th>student Id</th>
                                                         <th>Taken sessions</th>
                                                         <th> Take session</th>
-                                                        <th>Points in persantage</th>
+                                                        <th>persantage</th>
                                                     </tr>
 
                                                     <?php
