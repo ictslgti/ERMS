@@ -158,6 +158,13 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
                                                         }
                                                     } else {
                                                         for ($x = 0; $x < $cont; $x++) {
+
+                                                            $sql = "SELECT student_attendance.student_id,student.name_with_initials,COUNT(status) as Total,
+                                                            SUM(`status` = 'present') as Take 
+                                                            FROM student_enroll INNER JOIN student ON student_enroll.id=student.id INNER JOIN 
+                                                            student_attendance ON student_enroll.id=student_attendance.student_id GROUP BY student_enroll.id";
+
+
                                                             $sql = "select count(student_attendance.status) as Total,(SELECT count(student_attendance.status) from attendance,student_attendance where 
                                                                     student_attendance.id=attendance.attendance_id and student_attendance.status='present' AND student_id='2018slgtibit01' and code='" . $modu[$x] . "' group by batch_no) as Take ,
                                                                     attendance.code from attendance,student_attendance where student_attendance.id=attendance.attendance_id 

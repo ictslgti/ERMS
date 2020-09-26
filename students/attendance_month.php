@@ -106,8 +106,8 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
                                                 <thead>
                                                     <tr>
                                                         <th>module</th>
-                                                        <th>Take session</th>
                                                         <th>Total session</th>
+                                                        <th>Take session</th>     
                                                         <th>Percentage over taken Month</th>
                                                     </tr>
                                                     <!-- array start -->
@@ -127,7 +127,7 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
                                                     if (isset($_GET['month'])) {
                                                         $mon = $_GET['month'];
                                                         for ($x = 0; $x < $cont; $x++) {
-                                                            $sql = "select count(student_attendance.status) as Total,(SELECT count(student_attendance.status) from attendance,student_attendance where 
+                                                            $sql = "SELECT count(student_attendance.status) as Total,(SELECT count(student_attendance.status) from attendance,student_attendance where 
                                                                     student_attendance.id=attendance.attendance_id and student_attendance.status='present' AND student_id='$student_id' and code='" . $modu[$x] . "' group by batch_no) as Take ,
                                                                     attendance.code from attendance,student_attendance where student_attendance.id=attendance.attendance_id 
                                                                     AND student_id='$student_id' and month(`attendance`.`attendance_date`)=$mon and code='" . $modu[$x] . "' group by CODE,batch_no";

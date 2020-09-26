@@ -109,17 +109,14 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
                                                     <tr>
                                                         <th>Student id</th>
                                                         <th>Student Name</th>
-                                                        <th>Take session</th>
                                                         <th>Total session</th>
+                                                        <th>Take session</th>
                                                         <th>persantage</th>
                                                     </tr>
                                                     <!-- array start -->
                                                     <?php
 
                                                     $sql = mysqli_query($con, "SELECT `code` FROM `attendance` GROUP BY `code` ");
-
-
-                                                    // SELECT student_id,COUNT(status)from student_attendance WHERE student_attendance.student_id='2018slgtibit01'
 
 
                                                     ?>
@@ -130,19 +127,18 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
                                                     if (isset($_GET['month'])) {
                                                         $mon = $_GET['month'];
 
-                                                        $sql = "SELECT student_enroll.id,student.name_with_initials FROM 
-                                                            student_enroll INNER JOIN student ON student_enroll.id=student.id 
-                                                            INNER JOIN student_attendance ON student_enroll.id=student_attendance.student_id 
-                                                            GROUP BY student_enroll.id";
+                                                        $sql = "SELECT student_attendance.student_id,student.name_with_initials,COUNT(status) as Total,
+                                                        SUM(`status` = 'present') as Take 
+                                                        FROM student_enroll INNER JOIN student ON student_enroll.id=student.id INNER JOIN 
+                                                        student_attendance ON student_enroll.id=student_attendance.student_id INNER JOIN attendance on
+                                                         attendance.attendance_id=student_attendance.id where month(`attendance`.`attendance_date`)=$mon GROUP BY student_enroll.id";
 
-                                                        $sql2 = "SELECT COUNT(status) as Take from student_attendance WHERE student_attendance.student_id='2018slgtibit01'";
-
-                                                        $result = mysqli_query($con, $sql, $sql2);
+                                                        $result = mysqli_query($con, $sql);
                                                         while ($row = mysqli_fetch_assoc($result)) {
                                                     ?>
                                                             <tr>
                                                                 <td scope='col'>
-                                                                    <?php echo $row['id']; ?>
+                                                                    <?php echo $row['student_id']; ?>
                                                                 </td>
                                                                 <td scope='col'>
                                                                     <?php echo $row['name_with_initials']; ?>
@@ -159,7 +155,7 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
                                                                 </td>
 
                                                                 <td scope='col'>
-                                                                    <?php echo $row['Total']; ?>
+                                                                    <?php echo $row['Take']; ?>
                                                                 </td>
                                                                 <td scope='col'>
                                                                     <?php echo number_format(($row['Take'] / $row['Total']) * 100, 2) . "%" ?>
@@ -169,26 +165,17 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
                                                         <?php
                                                         }
                                                     } else {
-
-                                                        // $sql = "SELECT student_enroll.id,student.name_with_initials FROM 
-                                                        //     student_enroll INNER JOIN student ON student_enroll.id=student.id 
-                                                        //     INNER JOIN student_attendance ON student_enroll.id=student_attendance.student_id 
-                                                        //     GROUP BY student_enroll.id";
-
-                                                        // $sql = "SELECT count(student_attendance.status), student_enroll.id,student.name_with_initials,student_attendance.status FROM \n"
-                                                        //     . "student_enroll INNER JOIN student ON student_enroll.id=student.id \n"
-                                                        //     . "INNER JOIN student_attendance ON student_enroll.id=student_attendance.student_id";
-                                                        $sql = "SELECT count(student_attendance.status) as total, student_enroll.id,student.name_with_initials,student_attendance.status
- FROM student_enroll,student,student_attendance,attendance where student_enroll.id=student.id and 
- student_attendance.student_id=student_enroll.id AND attendance.attendance_id=student_attendance.id AND 
- attendance.code='EMPM03' GROUP by student_attendance.student_id,student_attendance.status ";
+                                                        $sql = "SELECT student_attendance.student_id,student.name_with_initials,COUNT(status) as Total,
+                                                        SUM(`status` = 'present') as Take 
+                                                        FROM student_enroll INNER JOIN student ON student_enroll.id=student.id INNER JOIN 
+                                                        student_attendance ON student_enroll.id=student_attendance.student_id GROUP BY student_enroll.id";
 
                                                         $result = mysqli_query($con, $sql);
                                                         while ($row = mysqli_fetch_assoc($result)) {
                                                         ?>
                                                             <tr>
                                                                 <td scope='col'>
-                                                                    <?php echo $row['id'];
+                                                                    <?php echo $row['student_id'];
                                                                     ?>
                                                                 </td>
                                                                 <td scope='col'>
@@ -199,18 +186,16 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
                                                                 <td scope='col'>
 
                                                                     <?php
-                                                                    // $sql2 = "SELECT COUNT(status) as Take from student_attendance WHERE student_attendance.student_id='2018slgtibit01'";
-                                                                    if ($row['status'] == null) {
+                                                                    if ($row['Total'] == null) {
                                                                         echo "0";
                                                                     } else {
-                                                                        $count = $row['count(status)'];
+                                                                        $count = $row['Total'];
                                                                         echo $count;
                                                                     }
-                                                                    ?> 
+                                                                    ?>
                                                                 </td>
-
                                                                 <td scope='col'>
-                                                                    <?php echo $row['Total']; ?>
+                                                                    <?php echo $row['Take']; ?>
                                                                 </td>
                                                                 <td scope='col'>
                                                                     <?php echo number_format(($row['Take'] / $row['Total']) * 100, 2) . "%" ?>

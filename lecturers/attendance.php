@@ -3,6 +3,7 @@
 // if (!isset($_SESSION['username'])) {
 //     header('Location: .././index.php');
 // }
+$user = 'nufailniyas98@gmail.com';
 ?>
 <?php
 $title = 'Attendance List';
@@ -20,6 +21,15 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
 </head>
 
 <body>
+  <?php
+  //session
+  $lecturers_id = '';
+  $query = "SELECT * FROM student where email='$user'";
+  $result = mysqli_query($con, $query);
+  while ($row = mysqli_fetch_assoc($result)) {
+    echo $lecturers_id = $row['id'];
+  }
+  ?>
   <main class='page-content pt-2'>
     <?php include_once('nav.php');
     ?>
@@ -54,23 +64,6 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
                         <a class="dropdown-item" href="attendance.php">Date-wise</a>
                       </div>
                     </div>
-                    <!-- <div class="dropdown">
-                      <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" value="show details" name="show_date">
-                        Batch:
-                      </button>
-                      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <a class="dropdown-item" href="#">Choose</a>
-                        <a class="dropdown-item" href="?Batch 01-BRIDGING">Batch 01-BRIDGING</a>
-                        <a class="dropdown-item" href="?Batch 01-NVQ-05">Batch 01-NVQ-05</a>
-                        <a class="dropdown-item" href="?Batch 02-BRIDGING">Batch 02-BRIDGING</a>
-                        <a class="dropdown-item" href="?Batch 02-NVQ-05">Batch 02-NVQ-05</a>
-                        <a class="dropdown-item" href="?Batch 03-BRIDGING">Batch 03-BRIDGING</a>
-                        <a class="dropdown-item" href="?Batch 03-NVQ-05">Batch 03-NVQ-05</a>
-                        <a class="dropdown-item" href="?Batch 04-BRIDGING">Batch 04-BRIDGING</a>
-                        <a class="dropdown-item" href="?Batch 04-NVQ-05">Batch 04-NVQ-05</a>
-
-                      </div>
-                    </div> -->
                   </div>
 
                   <div class="card-body">
@@ -90,12 +83,12 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
 
                           <?php
 
-                          $sql = "SELECT count(student_attendance.status) as Total,(SELECT count(student_attendance.status) from 
-                          attendance,student_attendance where student_attendance.id=attendance.attendance_id and 
-                          student_attendance.status='present' AND attendance.code=modules.code group by batch_no)
-                          as Take,attendance.code,student_attendance.student_id,student.name_with_initials from 
-                          attendance,student_attendance,modules,student where student_attendance.id=attendance.attendance_id
-                          and attendance.code=modules.code group by CODE,batch_no";
+                          // $sql = "SELECT count(student_attendance.status) as Total,(SELECT count(student_attendance.status) from 
+                          // attendance,student_attendance where student_attendance.id=attendance.attendance_id and 
+                          // student_attendance.status='present' AND attendance.code=modules.code group by batch_no)
+                          // as Take,attendance.code,student_attendance.student_id,student.name_with_initials from 
+                          // attendance,student_attendance,modules,student where student_attendance.id=attendance.attendance_id
+                          // and attendance.code=modules.code group by CODE,batch_no";
 
 
                           $result = mysqli_query($con, $sql);
