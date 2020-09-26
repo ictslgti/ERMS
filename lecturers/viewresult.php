@@ -88,11 +88,11 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
 
                         </thead>
 
-                        <tr>
+                        
 
                                 <th>No</th>
-                                <th>Index No</th>
                                 <th>Name</th>
+                                <th>Index No</th>
 
                                 <th colspan="6" style="text-align: center;">writting test (30%)</th>
 
@@ -100,9 +100,10 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
 
                                 <th colspan="2" style="text-align: center;"> Assignment<br> (Individual)(15%)</th>
 
-                                <th colspan="3" style="text-align: center;">project (Individual)(40%)</th>
+                                <!-- <th colspan="3" style="text-align: center;">project (Individual)(40%)</th>
 
-                                <th style="text-align: center;">Average(%)</th>
+                                <th style="text-align: center;">Average(%)</th> -->
+                                <th>States</th>
 
                             </tr>
 
@@ -124,11 +125,12 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
 
                             <th>Test plan</th>
                             <th>Avarage</th>
+                           <td></td>
 
-                            <th>prograss Review</th>
+                            <!-- <th>prograss Review</th>
                             
                             <th colspan="2" >Avarage</th>
-                            <td></td>
+                            <td></td> -->
 
                         </tr>
 
@@ -151,8 +153,9 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
                             <th>98</th>
 
                             <th>56</th>
-                            <th>65</th>
-                            <th>58</th>
+                            <th>pass</th>
+                            <!-- <th>65</th>
+                            <th>58</th> -->
                             
                              
 
@@ -177,8 +180,9 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
                             <th>98</th>
 
                             <th>56</th>
-                            <th>65</th>
-                            <th>58</th>
+                            <th>pass</th>
+                            <!-- <th>65</th>
+                            <th>58</th> -->
 
                             
 
@@ -200,8 +204,9 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
                             <th>85</th>
                             <th>98</th>
                             <th>56</th>
-                            <th>65</th>
-                            <th>58</th>
+                            <th>pass</th>
+                            <!-- <th>65</th>
+                            <th>58</th> -->
 
                         </tr>
 
@@ -220,8 +225,9 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
                             <th>85</th>
                             <th>98</th>
                             <th>56</th>
-                            <th>65</th>
-                            <th>58</th>
+                            <th>pass</th>
+                            <!-- <th>65</th>
+                            <th>58</th> -->
 
                         </tr>
 
@@ -240,8 +246,9 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
                             <th>85</th>
                             <th>98</th>
                             <th>56</th>
-                            <th>65</th>
-                            <th>58</th>
+                            <th>faill</th>
+                            <!-- <th>65</th>
+                            <th>58</th> -->
 
                         </tr>
 
@@ -260,8 +267,9 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
                             <th>85</th>
                             <th>98</th>
                             <th>56</th>
-                            <th>65</th>
-                            <th>58</th>
+                            <th>pass</th>
+                            <!-- <th>65</th>
+                            <th>58</th> -->
 
                         </tr>
 
@@ -321,12 +329,15 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
         <div class="row">
             <div class="col-11 "></div>
             <div class="col-1">
-                <button type="submit" class="btn btn-outline-success" data-toggle="modal" data-target="#exampleModal">
+                <!-- <button type="submit" class="btn btn-outline-success" data-toggle="modal" data-target="#exampleModal"> -->
 
 
 
-                    <a href="viewresult.php">print</a>
-                </button>
+                    <!-- <a href="viewresult.php">print</a> -->
+                    <div class="text-center">
+            <button onclick="window.print();" class="btn btn-primary" id="print-btn">Print</button>
+        </div>
+               
 
 
 
