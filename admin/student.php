@@ -807,13 +807,113 @@ $description = "Online Examination Result Management System (ERMS)-SLGTI";
                                     <?php
 
                                     if (isset($_GET['course'])) {
-
+                                        $student_id = $_GET['edit'];
                                         $ccode = $_GET['course'];
 
                                         // echo $ccode;
 
                                         $sql_student = "SELECT * FROM student_enroll
                                         WHERE `student_enroll`.`id` = '$student_id' AND `student_enroll`.`course_code` = '$ccode'";
+                                        $result = mysqli_query($con, $sql);
+                                        while ($row = mysqli_fetch_assoc($result)) {
+
+
+
+                                    ?>
+
+
+                                            <!-- edii form -->
+                                            <form action="">
+                                                <!-- 1 row start -->
+                                                <div class="form-row">
+
+                                                    <div class="col-3">
+                                                        <label for="cid"> Course Name: </label>
+                                                        <select name="cid" id="cid" class="custom-select action">
+                                                            <?php
+                                                            $course_name = '';
+                                                            $query = "SELECT * FROM courses";
+                                                            $result = mysqli_query($con, $query);
+                                                            while ($row = mysqli_fetch_array($result)) {
+                                                                $course_name .= '<option value="' . $row["code"] . '">' . $row["code"] . '</option>';
+                                                            }
+                                                            ?>
+                                                            <option value="">Choose</option>
+                                                            <?php echo $course_name; ?>
+
+                                                        </select>
+                                                    </div>
+
+                                                    <div class="col-3">
+                                                        <label for="bid"> Batch No: </label>
+                                                        <select name="bid" id="bid" class="custom-select action">
+                                                            <option value="" selected disabled>Choose</option>
+                                                        </select>
+                                                    </div>
+
+                                                    <div class="col-3">
+                                                        <label for="mode"> Course Mode: </label>
+                                                        <select name="mode" class="custom-select" value="" required>
+                                                            <option selected disabled> Choose</option>
+                                                            <option value="Full">Full Time</option>
+                                                            <option value="Part">Part Time</option>
+                                                            <option value="sort">Sort Time</option>
+                                                        </select>
+                                                    </div>
+
+                                                    <div class="col-3">
+                                                        <label for="regno"> Registration No: </label>
+                                                        <input type="text" name="regno" class="form-control" placeholder="2018SLGTIBIT04" value="<?php echo $regno; ?>" required disabled>
+                                                    </div>
+
+                                                </div>
+                                                <!-- 1 row end -->
+
+                                                <!-- 2 row start -->
+                                                <div class="form-row">
+
+                                                    <div class="col-3">
+                                                        <label for="status"> Status:</label>
+                                                        <select name="status" class="custom-select" value="" required>
+                                                            <option selected disabled>Choose</option>
+                                                            <option value="Following">Following</option>
+                                                            <option value="Completed">Completed</option>
+                                                            <option value="Dropout">Dropout</option>
+                                                            <option value="Long Absent">Long Absent</option>
+                                                        </select>
+                                                    </div>
+
+                                                    <div class="col-3">
+                                                        <label for="enrolldate"> Enroll Date:</label>
+                                                        <input type="date" class="form-control" name="enrolldate" value="<?php echo $_GET['course'];; ?>" required>
+                                                    </div>
+
+                                                    <div class="col-3">
+                                                        <label for="exitdate"> Exit Date:</label>
+                                                        <input type="date" class="form-control" name="exitdate" value="<?php echo $row['exit_date']; ?>">
+                                                    </div>
+
+                                                    <div class="col-3">
+                                                    </div>
+
+                                                </div>
+                                                <!-- 2 row end -->
+
+                                                <div class="modal-footer">
+                                                    <button class="btn btn-outline-secondary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                                                        Close
+                                                    </button>
+                                                    <button type="submit" name="addre" class="btn btn-outline-success">Add</button>
+                                                </div>
+
+                                            </form>
+
+                                            <!-- edii form -->
+
+
+
+                                    <?php
+                                        }
                                     }
                                     ?>
 
