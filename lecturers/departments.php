@@ -57,7 +57,7 @@ if(isset($_GET['delete'])){
                                 <h4>Department</h4>
                             </div>
                             <div class="col-auto">
-                                <a href="department.php" class="btn btn-outline-primary">New</a>
+                                
                             </div>
 
                         </div>
