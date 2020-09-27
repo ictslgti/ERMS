@@ -26,7 +26,7 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
     $query = "SELECT * FROM student where email='$user'";
     $result = mysqli_query($con, $query);
     while ($row = mysqli_fetch_assoc($result)) {
-        echo $lecturers_id = $row['id'];
+        // echo $lecturers_id = $row['id'];
     }
     ?>
     <?php
@@ -101,7 +101,7 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
                                                         <th>student Id</th>
                                                         <th>Taken sessions</th>
                                                         <th> Take session</th>
-                                                        <th>Points in persantage</th>
+                                                        <th>persantage</th>
                                                     </tr>
 
                                                     <?php
