@@ -75,13 +75,13 @@ $description = "Online Examination Result Management System (ERMS)-SLGTI";
                                             if (isset($_GET['batch'])) {
                                                 $b = $_GET['batch'];
                                                 $sql = "SELECT 
-                                            `student`.`id`,`student`.`full_name`,`student_enroll`.`course_code`,
-                                            `student_enroll`.`batch_no`,`student`.`phone_no`
-                                            FROM student 
-                                            LEFT JOIN student_enroll
-                                            ON `student`.`id` = `student_enroll`.`id` and `student_enroll`.`batch_no`=$b
-                                            -- ORDER BY `id` ASC
-                                            GROUP BY `id`";
+                                                `student`.`id`,`student`.`full_name`,`student_enroll`.`course_code`,
+                                                `student_enroll`.`batch_no`,`student`.`phone_no`
+                                                FROM student 
+                                                LEFT JOIN student_enroll
+                                                ON `student`.`id` = `student_enroll`.`id` and `student_enroll`.`batch_no`=$b
+                                                -- ORDER BY `id` ASC
+                                                GROUP BY `id`";
                                             } else {
                                                 $sql = "SELECT 
                                                 `student`.`id`,`student`.`full_name`,`student_enroll`.`course_code`,
