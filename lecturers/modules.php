@@ -45,7 +45,7 @@ if(isset($_GET['delete'])){
                 <div class="row">
                 <div class="col"><h4>Modules</h4></div>
                 <div class="col-auto">
-                <a href="module.php" class="btn btn-outline-primary">New</a>
+                
                 </div>
 
                 </div>
