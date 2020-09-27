@@ -3,7 +3,7 @@
 // if (!isset($_SESSION['username'])) {
 //     header('Location: .././index.php');
 // }
-$user = 'nufailniyas98@gmail.com';
+$user = 'achchu@slgti.com';
 ?>
 <?php
 $title = ' ERMS | SLGTI(Attendance)';
@@ -23,10 +23,10 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
     <?php
     //session
     $lecturers_id = '';
-    $query = "SELECT * FROM student where email='$user'";
+    $query = "SELECT * FROM lecturer where email='$user'";
     $result = mysqli_query($con, $query);
     while ($row = mysqli_fetch_assoc($result)) {
-        // echo $lecturers_id = $row['id'];
+        echo $lecturers_id = $row['id'];
     }
     ?>
     <?php
@@ -120,12 +120,24 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
                                                     if (isset($_GET['semester'])) {
                                                         $sem = $_GET['semester'];
 
-                                                        $sql = "SELECT count(student_attendance.status) as Total,(SELECT count(student_attendance.status) from 
-                                                                attendance,student_attendance where student_attendance.id=attendance.attendance_id and 
-                                                                student_attendance.status='present' AND student_id='2018slgtibit01' AND attendance.code=modules.code group by batch_no)
-                                                                as Take,attendance.code from attendance,student_attendance,modules where student_attendance.id=attendance.attendance_id AND
-                                                                student_id='2018slgtibit01' and attendance.code=modules.code and modules.semester_id='" . $sem . "' group by CODE,batch_no";
 
+                                                        $sql = "SELECT student_attendance.student_id,student.name_with_initials,COUNT(status) as Total,
+                                                        SUM(`status` = 'present') as Take 
+                                                        FROM student_enroll INNER JOIN student ON student_enroll.id=student.id INNER JOIN 
+                                                        student_attendance ON student_enroll.id=student_attendance.student_id GROUP BY student_enroll.id ";
+
+                                                        // $sql = "SELECT count(student_attendance.status) as Total,(SELECT count(student_attendance.status) from 
+                                                        //         attendance,student_attendance where student_attendance.id=attendance.attendance_id and 
+                                                        //         student_attendance.status='present' AND student_id='2018slgtibit01' AND attendance.code=modules.code group by batch_no)
+                                                        //         as Take,attendance.code from attendance,student_attendance,modules where student_attendance.id=attendance.attendance_id AND
+                                                        //         student_id='2018slgtibit01' and attendance.code=modules.code and modules.semester_id='" . $sem . "' group by CODE,batch_no";
+                                                       
+                                                        // $sql = "SELECT student_attendance.student_id,student.name_with_initials,COUNT(status) as Total,
+                                                        // SUM(`status` = 'present') as Take 
+                                                        // FROM student_enroll INNER JOIN student ON student_enroll.id=student.id INNER JOIN 
+                                                        // student_attendance ON student_enroll.id=student_attendance.student_id INNER JOIN attendance on
+                                                        //  attendance.attendance_id=student_attendance.id where modules.semester_id='" . $sem . "' GROUP BY student_enroll.id";
+                                                        
                                                         $result = mysqli_query($con, $sql);
                                                         while ($row = mysqli_fetch_assoc($result)) {
                                                     ?>
@@ -156,8 +168,7 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
                                                             </tr>
                                                             <?php
                                                         }
-                                                    } 
-                                                    else {
+                                                    } else {
                                                         for ($x = 0; $x < $cont; $x++) {
 
                                                             $sql = "SELECT student_attendance.student_id,student.name_with_initials,COUNT(status) as Total,
@@ -166,17 +177,23 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
                                                             student_attendance ON student_enroll.id=student_attendance.student_id GROUP BY student_enroll.id";
 
 
-                                                            $sql = "select count(student_attendance.status) as Total,(SELECT count(student_attendance.status) from attendance,student_attendance where 
-                                                                    student_attendance.id=attendance.attendance_id and student_attendance.status='present' AND student_id='2018slgtibit01' and code='" . $modu[$x] . "' group by batch_no) as Take ,
-                                                                    attendance.code from attendance,student_attendance where student_attendance.id=attendance.attendance_id 
-                                                                    AND student_id='2018slgtibit01'  and code='" . $modu[$x] . "' group by CODE,batch_no";
+                                                            // $sql = "SELECT count(student_attendance.status) as Total,(SELECT count(student_attendance.status) from attendance,student_attendance where 
+                                                            //         student_attendance.id=attendance.attendance_id and student_attendance.status='present' AND student_id='2018slgtibit01' and code='" . $modu[$x] . "' group by batch_no) as Take ,
+                                                            //         attendance.code from attendance,student_attendance where student_attendance.id=attendance.attendance_id 
+                                                            //         AND student_id='2018slgtibit01'  and code='" . $modu[$x] . "' group by CODE,batch_no";
+
+                                                            // $sql = "SELECT student_attendance.student_id,student.name_with_initials,COUNT(status) as Total,
+                                                            //         SUM(`status` = 'present') as Take 
+                                                            //         FROM student_enroll INNER JOIN student ON student_enroll.id=student.id INNER JOIN 
+                                                            //         student_attendance ON student_enroll.id=student_attendance.student_id INNER JOIN attendance on
+                                                            //         attendance.attendance_id=student_attendance.id  GROUP BY student_enroll.id";
 
                                                             $result = mysqli_query($con, $sql);
                                                             while ($row = mysqli_fetch_assoc($result)) {
                                                             ?>
                                                                 <tr>
                                                                     <td scope='col'>
-                                                                        <?php echo $row['code'];
+                                                                        <?php echo $row['student_id'];
                                                                         ?>
                                                                     </td>
                                                                     <td scope='col'>
