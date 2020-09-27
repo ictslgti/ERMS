@@ -98,8 +98,7 @@ if(mysqli_num_rows($result)>0){
             <div class="col"></div>
             <div class="col-auto">
             <div class="btn-group btn-sm" role="group" aria-label="Basic example">
-            <a href="module.php?edit=', $row['code'], '" class="btn btn-warning" > <img src="https://img.icons8.com/android/18/000000/edit.png"/> </a> 
-            <a href="?delete=', $row['code'], '" class="btn btn-danger"><img src="https://img.icons8.com/windows/18/000000/delete-forever.png"/> </a>
+           
             
             </div>
             </div>
