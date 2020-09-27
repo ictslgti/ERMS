@@ -94,8 +94,7 @@ if(isset($_GET['delete'])){
             <div class="col"></div>
             <div class="col-auto">
             <div class="btn-group btn-sm" role="group" aria-label="Basic example">
-            <a href="department.php?edit=', $row['id'], '" class="btn btn-warning" > <img src="https://img.icons8.com/android/18/000000/edit.png"/> </a> 
-            <a href="?delete=', $row['code'], '" class="btn btn-danger"><img src="https://img.icons8.com/windows/18/000000/delete-forever.png"/> </a>
+            
             <a href="courses.php?view=', $row['code'], '" class="btn btn-success"><b>courses</b> </a>
             </div>
             </div>
