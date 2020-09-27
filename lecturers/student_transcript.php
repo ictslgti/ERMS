@@ -33,8 +33,8 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
     }
 
     #output_image {
-      width: 230px;
-      height: 260px;
+      width: 200px;
+      height: 250px;
       border: 1px solid black;
 
     }
@@ -46,9 +46,18 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
     $mode = $status = $enrolldate = $exitdate = null;
   if (isset($_GET['id'])) {
     $id = $_GET['id'];
-    $sql_student = "SELECT * FROM student LEFT JOIN student_enroll
-                ON `student`.`id` = `student_enroll`.`id`
-                WHERE `student`.`id` = '$id'";
+    // $sql_student = "SELECT * FROM student LEFT JOIN student_enroll
+    //             ON `student`.`id` = `student_enroll`.`id`
+    //             WHERE `student`.`id` = '$id'";
+
+    $sql_student = "SELECT * FROM `student` LEFT JOIN `student_enroll`
+    ON `student`.`id` = `student_enroll`.`id` LEFT JOIN `batches` ON 
+    `student_enroll`.`batch_no` = `batches`.`batch_no` LEFT JOIN `courses` ON
+    `student_enroll`.`course_code` = `courses`.`code` WHERE 
+    `batches`.`department_code`=`courses`.`department_code` AND 
+    `batches`.`NVQ_level`=`courses`.`NVQ_level` AND `student_enroll`.`id` = '$id'";
+
+
     $result_student = mysqli_query($con, $sql_student);
     $row = mysqli_fetch_assoc($result_student);
     if (mysqli_num_rows($result_student) == 1) {
@@ -58,13 +67,14 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
       $regno = $row['id'];
       $cid = $row['course_code'];
       $bid = $row['batch_no'];
+      $ayear = $row['Academic_year'];
     }
   }
   ?>
   <!-- view  end -->
 
   <main class='page-content pt-2'>
-    <?php include_once('nav.php');?>
+    <?php include_once('nav.php'); ?>
 
     <div class='container-fluid p-5'>
       <!-- #1 Insert Your Content-->
@@ -124,13 +134,30 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
                           <div class="col-6"> <label for="exampleInputEmail1" name="batch">NIC Number :-<b><?php echo $nic; ?></b></label></div>
                           <div class="col-6"> <label for="exampleInputEmail1" name="batch">Course :-<b><?php echo $cid; ?></b></label></div>
                           <div class="col-6"> <label for="exampleInputEmail1" name="batch">Batch :-<b><?php echo $bid; ?></b></label></div>
-                          <div class="col-6"> <label for="exampleInputEmail1" name="batch">Academic Year :-<b>2018/2020</b></label></div>
+                          <div class="col-6"> <label for="exampleInputEmail1" name="batch">Academic Year :-<b><?php echo $ayear; ?></b></label></div>
                         </div>
 
                       </div>
 
 
                     </div>
+
+                    <?php
+
+
+                    if (isset($_GET['view'])) {
+                      $id = $_GET['view'];
+                      $sql = "DELETE FROM `modules,exams_result` WHERE `id` = $id";
+                      if (mysqli_query($con, $sql)) {
+                        echo 'Record was view';
+                      } else {
+                        echo 'Try again';
+                      }
+                    }
+                    ?>
+
+
+
 
 
                     <!-- <div class="row">
@@ -181,6 +208,8 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
                   </form>
                   <!-- #1 Insert Your Content-->
 
+
+
                   <table class="table">
                     <thead class="thead-light">
 
@@ -192,71 +221,45 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
                         <th scope="col">Result</th>
 
                       </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <th scope="row">1</th>
-                        <td>MO6</td>
-                        <td>Database system</td>
-                        <td>1st</td>
-                        <td>Fail</td>
+                      <?php
 
-
-                      </tr>
-                      <tr>
-                        <th scope="row">2</th>
-                        <td>MO6</td>
-                        <td>Local Area Network</td>
-                        <td>2nd</td>
-                        <td>Pass</td>
-
-                      </tr>
-                      <tr>
-                        <th scope="row">3</th>
-                        <td>MO7</td>
-                        <td>Web Programming</td>
-                        <td>3rd</td>
-                        <td>Pass</td>
-
-                      </tr>
-                      <tr>
-                        <th scope="row">4</th>
-                        <td>MO6</td>
-                        <td>Software Testing</td>
-                        <td>1st</td>
-                        <td>Pass</td>
-
-                      </tr>
-
-                      <tr>
-                        <th scope="row">5</th>
-                        <td>MO6</td>
-                        <td>Planning and Scheduling Work at Workplace</td>
-                        <td>1st</td>
-                        <td>Fail</td>
-
-                      </tr>
-
-                      <tr>
-                        <th scope="row">6</th>
-                        <td>MO1</td>
-                        <td>Manage Workplace Communication</td>
-                        <td>1st</td>
-                        <td>Fail</td>
-
-                      </tr>
-                    </tbody>
+                      $sql = "SELECT modules.id,modules.Code,modules.Name,exams_result.Attempt,exams_result.marks 
+                  FROM modules,exams_result 
+                  WHERE exams_result.course = modules.course_code";
+                      $result = mysqli_query($con, $sql);
+                      if (mysqli_num_rows($result) > 0) {
+                        while ($row = mysqli_fetch_assoc($result)) {
+                          echo '<tr>
+          <td>', $row['id'], '</td>
+          <td>', $row['Code'], '</td>
+          <td>', $row['Name'], '</td>
+          <td>', $row['Attempt'], '</td>
+          <td>', $row['marks'], '</td>
+          <td>
+             
+          </td>
+      </tr>';
+                        }
+                      } else {
+                        echo 'no rows';
+                      }
+                      ?>
                   </table>
-
 
                   <!-- <button onclick="window.print();" class="btn btn-primary" id="print-btn">Print</button> -->
                   <!-- <div class="text-center">
                   <a href="student_transcript_print.php" class="btn btn-primary">print</a>
                 </div> -->
-                  <div class="text-center">
+
+
+                  <!-- #1 Insert Your Content-->
+                </div>
+                <div class="row">
+                  <div class="col-4"></div>
+                  <div class="text-center col-4">
                     <button onclick="window.print();" class="btn btn-primary" id="print-btn">Print</button>
                   </div>
-                  <!-- #1 Insert Your Content-->
+                  <div class="col-4"></div>
                 </div>
 
               </div>
