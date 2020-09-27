@@ -168,7 +168,28 @@ if(mysqli_num_rows($result)>0){
     }
 }
 else{
-    echo 'no rows';
+   $sql1 = '';
+   $result1= mysqli_query($con,$sql);
+   if(mysqli_num_rows($result)>0)
+   {
+    while($row = mysqli_fetch_assoc($result))
+    {
+        echo '<tr>
+            <td>',$row['student_id'],'</td>
+            <td>',$row['name_with_initials'],'</td>
+            <td>sumanan</td>
+            <td>sumanan</td>
+            <td>
+            <div class="row">
+            <div class="col"></div>
+            <div class="col-auto">
+            <a href="studentview.php?view='. $row['student_id']. '" class="btn btn-sm" style="background-color: #0097c4 ; color: #ffffff;" > student info </a>
+        </div>
+        <div>
+        </td>
+            </tr>';
+    } 
+   }
 }
 ?>  
                 </tbody>
