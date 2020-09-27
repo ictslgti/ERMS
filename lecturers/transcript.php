@@ -7,14 +7,14 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
 
 <head>
     <?php include_once('.././head.php');
-   include_once('../databases/config.php');
+    include_once('../databases/config.php');
     ?>
-    
+
 </head>
 
 <body>
     <main class='page-content pt-2'>
-        <?php include_once('nav.php');  
+        <?php include_once('nav.php');
         ?>
         <div id='overlay' class='overlay'></div>
         <div class='container-fluid p-5'>
@@ -29,64 +29,73 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
 
                             <!-- #1 Insert Your Content-->
 
-                            
-                <div class="form-group col-md-12 table-responsive">
-                                    <table class='table align-middle ' id="myTable">
-                                        <thead class='thead-light'>
-                                            <tr>
-                                                <th scope='col'>Registration No</th>
-                                                <th scope='col'>Student Name</th>
-                                                <th scope='col'>Enrolled Course</th>
-                                                <th scope='col'>Batch</th>
-                                                <th scope='col'>ACTIONS</th> 
-                                            </tr>
-                                            <?php
-                                            $sql = "SELECT 
+
+                            <div class="form-group col-md-12 table-responsive">
+                                <table class='table align-middle ' id="myTable">
+                                    <thead class='thead-light'>
+                                        <tr>
+                                            <th scope='col'>Registration No</th>
+                                            <th scope='col'>Student Name</th>
+                                            <th scope='col'>Enrolled Course</th>
+                                            <th scope='col'>Batch</th>
+                                            <th scope='col'>ACTIONS</th>
+                                        </tr>
+                                        <?php
+                                        $sql = "SELECT 
                                             `student`.`id`,`student`.`full_name`,
                                             `student`.`phone_no`,student_enroll.course_code,student_enroll.batch_no
                                             FROM student 
                                             LEFT JOIN student_enroll
                                             ON `student`.`id` = `student_enroll`.`id`
                                             ORDER BY `id` ASC";
-                                            $result = mysqli_query($con, $sql);
-                                            while ($row = mysqli_fetch_assoc($result)) {
-                                            ?>
-                                                <tr>
-                                                    <td scope='col'>
-                                                        <?php echo $row['id']; ?>
-                                                    </td>
-                                                    <td scope='col'>
-                                                        <?php echo $row['full_name']; ?>
-                                                    </td>
-                                                    <td scope='col'>
+                                        $result = mysqli_query($con, $sql);
+                                        while ($row = mysqli_fetch_assoc($result)) {
+                                        ?>
+                                            <tr>
+                                                <td scope='col'>
+                                                    <?php echo $row['id']; ?>
+                                                </td>
+                                                <td scope='col'>
+                                                    <?php echo $row['full_name']; ?>
+                                                </td>
+                                                <td scope='col'>
                                                     <?php echo $row['course_code']; ?>
-                                                    </td>
-                                                    <td scope='col'>
+                                                </td>
+                                                <td scope='col'>
                                                     <?php echo $row['batch_no']; ?>
-                                                    </td>
-                                                    <td scope='col'>
+                                                </td>
+                                                <td scope='col'>
                                                     <a class="btn btn-info" href="student_transcript.php?id=<?php echo $row['id']; ?>">View Transcript</a>
-                                                    </td>
-                                                <?php
-                                            }
-                                                ?>
-                                                </tr>
-                                        </thead>
-                                        <tbody>
-                                        </tbody>
-                                    </table>
-                                </div>
-                               
+                                                </td>
+                                            </tr>
+                                    </thead>
+                                <?php
+                                        }
+                                ?>
 
-</div>
+                                </thead>
+                                <tbody>
+                                </tbody>
+                                </table>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div> <!-- #1 Insert Your Content" -->
         </div>
     </main>
-
     <?php include_once("../script.php");
     ?>
+
+
+
+
+    
+    </table>
+
+
+
+
 </body>
 
 </html>
