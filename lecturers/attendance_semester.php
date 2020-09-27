@@ -1,4 +1,11 @@
 <?php
+// session_start();
+// if (!isset($_SESSION['username'])) {
+//     header('Location: .././index.php');
+// }
+$user = 'nufailniyas98@gmail.com';
+?>
+<?php
 $title = ' ERMS | SLGTI(Attendance)';
 $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
 ?>
@@ -12,7 +19,17 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
 </head>
 
 <body>
-<?php
+
+    <?php
+    //session
+    $lecturers_id = '';
+    $query = "SELECT * FROM student where email='$user'";
+    $result = mysqli_query($con, $query);
+    while ($row = mysqli_fetch_assoc($result)) {
+        // echo $lecturers_id = $row['id'];
+    }
+    ?>
+    <?php
     $semester = null;
     if (isset($_GET['semester'])) {
         $semester = $_GET['semester'];
@@ -67,8 +84,8 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
                                             <div class="col-3"></div>
 
                                             <div class="col-3" align="right">
-                                     
-                                            <?php $semester; ?>
+
+                                                <?php $semester; ?>
                                             </div>
                                         </div>
                                     </div>
@@ -84,7 +101,7 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
                                                         <th>student Id</th>
                                                         <th>Taken sessions</th>
                                                         <th> Take session</th>
-                                                        <th>Points in persantage</th>
+                                                        <th>persantage</th>
                                                     </tr>
 
                                                     <?php
@@ -99,11 +116,11 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
 
                                                     <?php
                                                     $cont = count($modu);
-                                                
+
                                                     if (isset($_GET['semester'])) {
                                                         $sem = $_GET['semester'];
-                                                       
-                                                        $sql = "select count(student_attendance.status) as Total,(SELECT count(student_attendance.status) from 
+
+                                                        $sql = "SELECT count(student_attendance.status) as Total,(SELECT count(student_attendance.status) from 
                                                                 attendance,student_attendance where student_attendance.id=attendance.attendance_id and 
                                                                 student_attendance.status='present' AND student_id='2018slgtibit01' AND attendance.code=modules.code group by batch_no)
                                                                 as Take,attendance.code from attendance,student_attendance,modules where student_attendance.id=attendance.attendance_id AND
@@ -139,8 +156,16 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
                                                             </tr>
                                                             <?php
                                                         }
-                                                    } else {
+                                                    } 
+                                                    else {
                                                         for ($x = 0; $x < $cont; $x++) {
+
+                                                            $sql = "SELECT student_attendance.student_id,student.name_with_initials,COUNT(status) as Total,
+                                                            SUM(`status` = 'present') as Take 
+                                                            FROM student_enroll INNER JOIN student ON student_enroll.id=student.id INNER JOIN 
+                                                            student_attendance ON student_enroll.id=student_attendance.student_id GROUP BY student_enroll.id";
+
+
                                                             $sql = "select count(student_attendance.status) as Total,(SELECT count(student_attendance.status) from attendance,student_attendance where 
                                                                     student_attendance.id=attendance.attendance_id and student_attendance.status='present' AND student_id='2018slgtibit01' and code='" . $modu[$x] . "' group by batch_no) as Take ,
                                                                     attendance.code from attendance,student_attendance where student_attendance.id=attendance.attendance_id 

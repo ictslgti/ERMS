@@ -95,11 +95,16 @@ if(mysqli_num_rows($result)>0){
             <td>',$row['2semi_startdate'],'</td>
             <td>',$row['2semi_enddate'],'</td>
             <td>
-            <div class="btn-group btn-sm" role="group" aria-label="Basic example">
-            <a href="Academicyear.php?edit=',$row['academic_year'],'" class="btn btn-warning" ><img src="https://img.icons8.com/android/18/000000/edit.png"/ ></a> 
-            <a href="?delete=',$row['academic_year'],'" class="btn btn-danger"><img src="https://img.icons8.com/windows/18/000000/delete-forever.png"/></a>
-            <a href="batches.php?batch=',$row['academic_year'],'" class="btn btn-success">batches</a>
+            <div class="row">
+<div class="col"></div>
+<div class="col-auto">
+<div class="btn-group btn-sm" role="group" aria-label="Basic example">
+            <a href="batch.php?edit=', $row['academic_year'], '" class=" btn btn-sm" style="background-color: #ffaa00 ;" ><i class="far fa-edit" style="color: #ffffff;"></i> </a> 
+            <a href="?delete=', $row['academic_year'], '" class="btn btn-sm" style="background-color: #bf0502;"> <i class="far fa-trash-alt" style="color: #ffffff;"></i> </a>
+            <a href="batches.php?id=', $row['academic_year'], '" class="btn btn-sm" style="background-color: #0097c4 ; color: #ffffff;" > batches</a>
           </div>
+</div>
+</div>
             </td>
         </tr>';
     }

@@ -18,15 +18,15 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
     <?php 
         if (isset($_GET['logout']) && isset($_SESSION['username']) ) {
             unset($_SESSION['username']);  
-            header('Location: index.php');         
+            header('Location: ../index.php');         
     }
     ?>
     <?php
-          include_once("./head.php"); 
-          include_once("databases/config.php");
+          include_once("../head.php"); 
+          include_once("../databases/config.php");
     ?>
     <!-- #begin "login form online links @k-avin" -->
-    <link rel="stylesheet" type="text/css" href="css/main-login.css">
+    <link rel="stylesheet" type="text/css" href="../css/main-login.css">
     <link href="https://fonts.googleapis.com/css?family=Poppins:600&display=swap" rel="stylesheet">
     <!-- #end "login form online links @k-avin" -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
@@ -289,7 +289,7 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
         <?php if(isset($errormsg)){ echo $errormsg;} ?>
     <div class="container">        
         <div class="img">
-            <img src="img/main-cover.svg">
+            <img src="../img/main-cover.svg">
         </div>
         <div class="login-content">
             <form method="post">
@@ -318,8 +318,8 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
     </div>
     </main>
     </div>
-    <script type="text/javascript" src="js/login/main.js"></script>
-    <?php include_once("script.php"); ?>
+    <script type="text/javascript" src="../js/login/main.js"></script>
+    <?php include_once("../script.php"); ?>
 </body>
 
 </html>

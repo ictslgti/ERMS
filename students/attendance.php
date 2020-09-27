@@ -1,4 +1,10 @@
 <?php
+// session_start();
+// if (!isset($_SESSION['username'])) {
+//     header('Location: .././index.php');
+// }
+?>
+<?php
 $title = ' ERMS | SLGTI Attendance';
 $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
 ?>
@@ -53,20 +59,19 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
                                                     Module
                                                 </button>
                                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                                
-   
-                                                            <?php
-                                                                        $sql = "select * from attendance GROUP BY code ";
-                                                                        $result = $con->query($sql);
-                                                                        if ($result->num_rows > 0) {
-                                                                            while ($row = $result->fetch_assoc()) {
 
-                                                                                echo '<a class="dropdown-item" href="#">', $row['code'], '</a>';
-                                                                            }
-                                                                        } else {
-                                                                            echo 'no rows';
-                                                                        }
-                                                                        ?>
+
+                                                    <?php
+                                                    $sql = "select * from attendance GROUP BY code ";
+                                                    $result = $con->query($sql);
+                                                    if ($result->num_rows > 0) {
+                                                        while ($row = $result->fetch_assoc()) {
+                                                            echo '<a href="?module=' . $row['code'] . '">' . $row['code'] . '</a> ';
+                                                        }
+                                                    } else {
+                                                        echo 'no rows';
+                                                    }
+                                                    ?>
 
 
                                                 </div>
@@ -74,7 +79,7 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
 
                                             <div class="col-3"></div>
 
-                                            
+
                                         </div>
                                     </div>
 
@@ -84,7 +89,7 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
 
 
 
-                                            
+
 
                                             <div class="row">
                                                 <div class="form-group col-md-12 table-responsive">
@@ -95,67 +100,102 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
                                                                 <th scope='col'>TIME</th>
                                                                 <th scope='col'>STATUS</th>
                                                             </tr>
+                                                            <!-- dropdown start -->
                                                             <?php
-                                                            //$sql = " select date(date),time(date),status from attendance where student_id='2018ICTBIT01'";
-                                                            $sql =  " SELECT attendance.attendance_date, attendance.attendance_time, student_attendance.status FROM attendance INNER JOIN student_attendance ON attendance.attendance_id=student_attendance.id where student_id='2018SLGTIBIT01'";
-                                                            $result = mysqli_query($con, $sql);
-                                                            while ($row = mysqli_fetch_assoc($result)) {
+
+
+                                                            if (isset($_GET['module'])) {
+                                                                $mon = $_GET['module'];
+
+                                                                //$sql = " select date(date),time(date),status from attendance where student_id='2018ICTBIT01'";
+                                                                $sql = "SELECT attendance.attendance_date, attendance.attendance_time, student_attendance.status FROM attendance INNER JOIN 
+                                                            student_attendance ON attendance.attendance_id=student_attendance.id where student_id='2018SLGTIBIT01' and code='" . $mon . "' ";
+
+                                                                $result = mysqli_query($con, $sql);
+                                                                while ($row = mysqli_fetch_assoc($result)) {
                                                             ?>
 
 
-                                                                <tr>
-                                                                    <td scope='col'><?php echo $row['attendance_date']; ?></td>
-                                                                    <td scope='col'><?php echo $row['attendance_time']; ?></td>
-                                                                    <td scope='col'><?php echo $row['status']; ?></td>
+                                                                    <tr>
+                                                                        <td scope='col'><?php echo $row['attendance_date']; ?></td>
+                                                                        <td scope='col'><?php echo $row['attendance_time']; ?></td>
+                                                                        <td scope='col'><?php echo $row['status']; ?></td>
+
+                                                                    <?php
+                                                                }
+                                                            } else {
+                                                                $sql = "SELECT attendance.attendance_date, attendance.attendance_time, student_attendance.status FROM attendance INNER JOIN 
+                                                            student_attendance ON attendance.attendance_id=student_attendance.id where student_id='2018SLGTIBIT01'";
+
+                                                                $result = mysqli_query($con, $sql);
+                                                                while ($row = mysqli_fetch_assoc($result)) {
+                                                                    ?>
+
+
+                                                                    <tr>
+                                                                        <td scope='col'><?php echo $row['attendance_date']; ?></td>
+                                                                        <td scope='col'><?php echo $row['attendance_time']; ?></td>
+                                                                        <td scope='col'><?php echo $row['status']; ?></td>
 
                                                                 <?php
+                                                                }
                                                             }
+
+
                                                                 ?>
+                                                                <!-- dropdown end -->
 
+                                                                    </tr>
+                                                                    <table>
+                                                                        <?php
+                                                                        if (isset($_GET['module'])) {
+                                                                            $mon = $_GET['module'];
 
-                                                                </tr>
-                                                                <table>
-                                                                    <?php
-                                                                    $sql="SELECT count(student_attendance.status) as total_session,(select count(student_attendance.status) from attendance,student_attendance where 
+                                                                            $sql = "SELECT count(student_attendance.status) as total_session,(select count(student_attendance.status) from attendance,student_attendance where 
                                                                     student_attendance.id=attendance.attendance_id and student_attendance.status='present' AND student_id='2018slgtibit01' group by batch_no) as take_session,
-                                                                    attendance.code from student_attendance,attendance where student_attendance.id=attendance.attendance_id and student_id='2018slgtibit01'";
-                                                                    //$sql = " SELECT count(status) as take_session, session from attendance where student_id='2018ICTBIT01' and ";
-                                                                    $result = mysqli_query($con, $sql);
-                                                                    while ($row = mysqli_fetch_assoc($result)) {
-                                                                        $per = $row['take_session'] +$row['total_session'];
+                                                                    attendance.code from student_attendance,attendance where student_attendance.id=attendance.attendance_id and student_id='2018slgtibit01' and code='" . $mon . "'";
+                                                                            //$sql = " SELECT count(status) as take_session, session from attendance where student_id='2018ICTBIT01' and ";
+                                                                            $result = mysqli_query($con, $sql);
+                                                                            while ($row = mysqli_fetch_assoc($result)) {
+                                                                                $per = $row['take_session'] + $row['total_session'];
 
-                                                                    ?>
-                                                                        <tr>
-                                                                            <td style="text-align: right">Points over taken sessions:</td>
-                                                                            <td> <?php echo $row['take_session']; ?><?php echo "/"; ?> <?php echo $row['total_session']; ?></td>
-
-                                                                        <?php
-                                                                    }
                                                                         ?>
-
-                                                                        
-                                                                        </tr>
-                                                                        <?php
-                                                                        $sql="SELECT count(student_attendance.status) as total_session,(select count(student_attendance.status) from attendance,student_attendance where 
-                                                                        student_attendance.id=attendance.attendance_id and student_attendance.status='present' AND student_id='2018slgtibit01' group by batch_no) as take_session
-                                                                        from student_attendance,attendance where student_attendance.id=attendance.attendance_id and student_id='2018slgtibit01'";
-                                                                        // $sql = " SELECT count(status) as take_session,session from attendance where student_id='2018ICTBIT01' order by code";
-                                                                        $result = mysqli_query($con, $sql);
-                                                                        while ($row = mysqli_fetch_assoc($result)) {
-
-                                                                           //$per = (($row['take_session'] / $row['total_session']) * 100) . "%";
-                                                                            $per = number_format(($row['take_session'] / $row['total_session']) * 100, 2)."%"
-                                                                        ?>
-                                                                            <tr>
-                                                                                <td style="text-align: right">Percentage over taken sessions:</td>
-
-                                                                                <td><?php echo $per ?></td>
+                                                                                <tr>
+                                                                                    <td style="text-align: right">Points over taken sessions:</td>
+                                                                                    <td> <?php echo $row['take_session']; ?><?php echo "/"; ?> <?php echo $row['total_session']; ?></td>
 
                                                                             <?php
+                                                                            }
                                                                         }
                                                                             ?>
-                                                                            </tr>
-                                                                </table>
+
+
+                                                                                </tr>
+                                                                                <?php
+                                                                                if (isset($_GET['module'])) {
+                                                                                    $mon = $_GET['module'];
+
+                                                                                    $sql = "SELECT count(student_attendance.status) as total_session,(select count(student_attendance.status) from attendance,student_attendance where 
+                                                                        student_attendance.id=attendance.attendance_id and student_attendance.status='present' AND student_id='2018slgtibit01' group by batch_no) as take_session
+                                                                        from student_attendance,attendance where student_attendance.id=attendance.attendance_id and student_id='2018slgtibit01' and code='" . $mon . "'";
+                                                                                    // $sql = " SELECT count(status) as take_session,session from attendance where student_id='2018ICTBIT01' order by code";
+                                                                                    $result = mysqli_query($con, $sql);
+                                                                                    while ($row = mysqli_fetch_assoc($result)) {
+
+                                                                                        //$per = (($row['take_session'] / $row['total_session']) * 100) . "%";
+                                                                                        $per = number_format(($row['take_session'] / $row['total_session']) * 100, 2) . "%"
+                                                                                ?>
+                                                                                        <tr>
+                                                                                            <td style="text-align: right">Percentage over taken sessions:</td>
+
+                                                                                            <td><?php echo $per ?></td>
+
+                                                                                    <?php
+                                                                                    }
+                                                                                }
+                                                                                    ?>
+                                                                                        </tr>
+                                                                    </table>
                                                         </thead>
                                                         <tbody>
 

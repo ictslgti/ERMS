@@ -46,12 +46,17 @@ $description = "Online Examination Result Management System (ERMS)-SLGTI";
         if (isset($_GET['view'])) {
             $student_id = $_GET['view'];
 
-            $sql_student = "SELECT * FROM `student` LEFT JOIN `student_enroll`
-            ON `student`.`id` = `student_enroll`.`id` LEFT JOIN `batches` ON 
-            `student_enroll`.`batch_no` = `batches`.`batch_no` LEFT JOIN `courses` ON
-             `student_enroll`.`course_code` = `courses`.`code` WHERE 
-             `batches`.`department_code`=`courses`.`department_code` AND 
-             `batches`.`NVQ_level`=`courses`.`NVQ_level` AND `student_enroll`.`id` = '$student_id'";
+            // $sql_student = "SELECT * FROM `student` LEFT JOIN `student_enroll`
+            // ON `student`.`id` = `student_enroll`.`id` LEFT JOIN `batches` ON 
+            // `student_enroll`.`batch_no` = `batches`.`batch_no` LEFT JOIN `courses` ON
+            //  `student_enroll`.`course_code` = `courses`.`code` WHERE 
+            //  `batches`.`department_code`=`courses`.`department_code` AND 
+            //  `batches`.`NVQ_level`=`courses`.`NVQ_level` AND `student_enroll`.`id` = '$student_id'";
+
+            $sql_student = "SELECT * FROM student 
+            -- LEFT JOIN student_enroll
+            -- ON `student`.`id` = `student_enroll`.`id`
+            WHERE `student`.`id` = '$student_id'";
 
             $result_student = mysqli_query($con, $sql_student);
             $row = mysqli_fetch_assoc($result_student);
@@ -76,13 +81,13 @@ $description = "Online Examination Result Management System (ERMS)-SLGTI";
                 $gphone = $row['guardian_phone_no'];
                 $grelation = $row['guardian_relationship'];
                 $regno = $row['id'];
-                $cid = $row['course_code'];
-                $bid = $row['batch_no'];
-                $mode = $row['course_mode'];
-                $status = $row['student_status'];
-                $enrolldate = $row['enroll_date'];
-                $exitdate = $row['exit_date'];
-                $ayear = $row['Academic_year'];
+                // $cid = $row['course_code'];
+                // $bid = $row['batch_no'];
+                // $mode = $row['course_mode'];
+                // $status = $row['student_status'];
+                // $enrolldate = $row['enroll_date'];
+                // $exitdate = $row['exit_date'];
+                // $ayear = $row['Academic_year'];
             }
         }
         ?>
@@ -116,8 +121,8 @@ $description = "Online Examination Result Management System (ERMS)-SLGTI";
                         <div class="card-body">
                             <h6 class="card-title"></h6>
                             <div class='row'>
-                                <div class='col-4'>
 
+                                <div class='col-3'>
                                     <div style='text-align:center; margin:0 auto; padding:0px;'>
                                         <?php
                                         if (isset($_GET['view'])) {
@@ -139,133 +144,154 @@ $description = "Online Examination Result Management System (ERMS)-SLGTI";
                                         ?>
                                     </div>
 
+                                    <div>aefsdfs</div>
+                                    <div>aefsdfs</div>
+                                    <div>aefsdfs</div>
                                 </div>
-                                <div class='col-8'>
+                                
+                                <div class='col-9'>
 
-                                    <div class='row'>
-                                        <div class='col-4'><label for="fullname"> Full Name: </label></div>
-                                        <div class='col-8'><input type="text" class="form-control" name="fullname" value="<?php echo $full_name; ?>" disabled></div>
+                                    <div class="row">
+                                        <div class="col-sm">
+                                            <div class="border-bottom border-primary">
+                                                <h3>Personal Information</h3>
+                                            </div>
+                                        </div>
+                                    </div><br>
+
+                                    <div class='row border-bottom'>
+                                        <div class='col-3'><label for="fullname"> Full Name: </label></div>
+                                        <div class='col-9'><label for="fullname"><?php echo $full_name; ?></label></div>
                                     </div>
 
-                                    <div class='row'>
-                                        <div class='col-4'><label for="ini_name"> Name with Initials: </label></div>
-                                        <div class='col-8'><input type="text" class="form-control" name="ini_name" value="<?php echo $ini_name; ?>" disabled></div>
+                                    <div class='row border-bottom'>
+                                        <div class='col-3'><label for="ini_name"> Name with Initials: </label></div>
+                                        <div class='col-3'><label for="ini_name"><?php echo $ini_name; ?></label></div>
+                                        <div class='col-2'><label for="gender"> Gender: </label></div>
+                                        <div class='col-4'><label for="gender"><?php echo $gender; ?></label></div>
                                     </div>
 
-                                    <div class='row'>
-                                        <div class='col-4'><label for="gender"> Gender: </label></div>
-                                        <div class='col-8'><input type="text" class="form-control" name="gender" value="<?php echo $gender; ?>" disabled></div>
+                                    <div class='row border-bottom'>
+                                        <div class='col-3'><label for="civil"> Civil Status: </label></div>
+                                        <div class='col-3'><label for="civil"><?php echo $civil; ?></label></div>
+                                        <div class='col-2'><label for="email"> Email: </label></div>
+                                        <div class='col-4'><label for="email"><?php echo $email; ?></label></div>
                                     </div>
 
-                                    <div class='row'>
-                                        <div class='col-4'><label for="civil"> Civil Status: </label></div>
-                                        <div class='col-8'><input type="text" class="form-control" name="civil" value="<?php echo $civil; ?>" disabled></div>
+                                    <div class='row border-bottom'>
+                                        <div class='col-3'><label for="dob"> Date of Birth: </label></div>
+                                        <div class='col-3'><label for="dob"><?php echo $dob; ?></label></div>
+                                        <div class='col-3'><label for="phone"> Phone No: </label></div>
+                                        <div class='col-3'><label for="phone"><?php echo $phone; ?></label></div>
                                     </div>
 
-                                    <div class='row'>
-                                        <div class='col-4'><label for="email"> Email: </label></div>
-                                        <div class='col-8'><input type="email" class="form-control" name="email" value="<?php echo $email; ?>" disabled></div>
+                                    <div class='row border-bottom'>
+                                        <div class='col-3'><label for="address"> Address: </label></div>
+                                        <div class='col-9'><label for="address"><?php echo $address; ?></label></div>
                                     </div>
 
-                                    <div class='row'>
-                                        <div class='col-4'><label for="dob"> Date of Birth: </label></div>
-                                        <div class='col-8'><input type="text" class="form-control" name="dob" value="<?php echo $dob; ?>" disabled></div>
+                                    <div class='row border-bottom'>
+                                        <div class='col-3'><label for="ds"> Divisional Secretariat: </label></div>
+                                        <div class='col-3'><label for="ds"><?php echo $ds; ?></label></div>
+                                        <div class='col-3'><label for="province"> Province: </label></div>
+                                        <div class='col-3'><label for="province"><?php echo $province; ?></label></div>
                                     </div>
 
-                                    <div class='row'>
-                                        <div class='col-4'><label for="phone"> Phone No: </label></div>
-                                        <div class='col-8'><input type="text" class="form-control" name="phone" value="<?php echo $phone; ?>" disabled></div>
+                                    <div class='row border-bottom'>
+                                        <div class='col-2'><label for="district"> District: </label></div>
+                                        <div class='col-2'><label for="district"><?php echo $district; ?></label></div>
+                                        <div class='col-2'><label for="zip"> ZIP-Code: </label></div>
+                                        <div class='col-2'><label for="zip"><?php echo $zip; ?></label></div>
+                                        <div class='col-2'><label for="blood"> Blood Group: </label></div>
+                                        <div class='col-2'><label for="blood"><?php echo $blood; ?></label></div>
                                     </div>
 
-                                    <div class='row'>
-                                        <div class='col-4'><label for="address"> Address: </label></div>
-                                        <div class='col-8'><input type="text" class="form-control" name="address" value="<?php echo $address; ?>" disabled></div>
+                                    <div class="row">
+                                        <div class="col-sm">
+                                            <div class="border-bottom border-primary">
+                                                <h3>Emergency Contact Information</h3>
+                                            </div>
+                                        </div>
+                                    </div><br>
+
+                                    <div class='row border-bottom'>
+                                        <div class='col-3 '><label for="gname">Guardian Name :</label></div>
+                                        <div class='col-3'><label for="gname"><?php echo $gname; ?></label></div>                
                                     </div>
 
-                                    <div class='row'>
-                                        <div class='col-4'><label for="ds"> Divisional Secretariat: </label></div>
-                                        <div class='col-8'><input type="text" class="form-control" name="ds" value="<?php echo $ds; ?>" disabled></div>
+                                    <div class='row border-bottom'>
+                                        <div class='col-3'><label for="grelation">Guardian Relationship :</label></div>
+                                        <div class='col-3'><label for="grelation"><?php echo $grelation; ?></label></div>
+                                        <div class='col-3'><label for="gphone">Guardian Phone No :</label></div>
+                                        <div class='col-3'><label for="gphone"><?php echo $gphone; ?></label></div>
                                     </div>
 
-                                    <div class='row'>
-                                        <div class='col-4'><label for="province"> Province: </label></div>
-                                        <div class='col-8'><input type="text" class="form-control" name="province" value="<?php echo $province; ?>" disabled></div>
+                                    <div class='row border-bottom'>
+                                        <div class='col-3'><label for="gaddress">Guardian Address :</label></div>
+                                        <div class='col-9'><label for="gaddress"><?php echo $gaddress; ?></label></div>
                                     </div>
 
-                                    <div class='row'>
-                                        <div class='col-4'><label for="district"> District: </label></div>
-                                        <div class='col-8'><input type="text" class="form-control" name="district" value="<?php echo $district; ?>" disabled></div>
-                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm">
+                                            <div class="border-bottom border-primary">
+                                                <h3>Enroll Information</h3>
+                                            </div>
+                                        </div>
+                                    </div><br>
 
-                                    <div class='row'>
-                                        <div class='col-4'><label for="zip"> ZIP-Code: </label></div>
-                                        <div class='col-8'><input type="text" class="form-control" name="zip" value="<?php echo $zip; ?>" disabled></div>
+                                    <!-- 1st row start -->
+                                    <div class="row">
+                                        <div class="form-group col-md-12 table-responsive">
+                                            <table class='table align-middle'>
+                                                <thead class='thead-light'>
+                                                    <tr>
+                                                        <td scope='col'>Course</td>
+                                                        <td scope='col'>Batch</td>
+                                                        <td scope='col'>Course Mode</td>
+                                                        <td scope='col'>Status</td>
+                                                        <td scope='col'>Enroll Date</td>
+                                                        <td scope='col'>Exit Date</td>
+                                                        <!-- <td scope='col'>ACTIONS</td> -->
+                                                    </tr>
+                                                    <?php
+                                                    $sql = "SELECT * FROM student_enroll WHERE id = '$student_id' ORDER BY course_code desc";
+                                                    $result = mysqli_query($con, $sql);
+                                                    while ($row = mysqli_fetch_assoc($result)) {
+                                                    ?>
+                                                        <tr>
+                                                            <td scope='col'>
+                                                                <?php echo $row['course_code']; ?>
+                                                            </td>
+                                                            <td scope='col'>
+                                                                <?php echo $row['batch_no']; ?>
+                                                            </td>
+                                                            <td scope='col'>
+                                                                <?php echo $row['course_mode']; ?>
+                                                            </td>
+                                                            <td scope='col'>
+                                                                <?php echo $row['student_status']; ?>
+                                                            </td>
+                                                            <td scope='col'>
+                                                                <?php echo $row['enroll_date']; ?>
+                                                            </td>
+                                                            <td scope='col'>
+                                                                <?php echo $row['exit_date']; ?>
+                                                            </td>
+                                                            <!-- <td scope='col'>
+                                                                <a class="btn btn-outline-warning btn-sm" href="student.php?eedit=<?php echo $row['id']; ?>">Edit</a>
+                                                                <a class="btn btn-outline-danger btn-sm disabled" href="?edelete=<?php echo $row['id']; ?>">Delete</a>
+                                                            </td> -->
+                                                        <?php
+                                                    }
+                                                        ?>
+                                                        </tr>
+                                                </thead>
+                                                <tbody>
+                                                </tbody>
+                                            </table>
+                                        </div>
                                     </div>
-
-                                    <div class='row'>
-                                        <div class='col-4'><label for="blood"> Blood Group: </label></div>
-                                        <div class='col-8'><input type="text" class="form-control" name="blood" value="<?php echo $blood; ?>" disabled></div>
-                                    </div>
-
-                                    <div class='row'>
-                                        <div class='col-4'><label for="cid"> Course Code: </label></div>
-                                        <div class='col-8'><input type="text" class="form-control" name="cid" value="<?php echo $cid; ?>" disabled></div>
-                                    </div>
-
-                                    <div class='row'>
-                                        <div class='col-4'><label for="bid"> Batch No: </label></div>
-                                        <div class='col-8'><input type="text" class="form-control" name="bid" value="<?php echo $bid; ?>" disabled></div>
-                                    </div>
-
-                                    <div class='row'>
-                                        <div class='col-4'><label for="ayear"> Academic Year: </label></div>
-                                        <div class='col-8'><input type="text" class="form-control" name="ayear" value="<?php echo $ayear; ?>" disabled></div>
-                                    </div>
-
-                                    <div class='row'>
-                                        <div class='col-4'><label for="mode"> Course Mode: </label></div>
-                                        <div class='col-8'><input type="text" class="form-control" name="mode" value="<?php echo $mode; ?>" disabled></div>
-                                    </div>
-
-                                    <div class='row'>
-                                        <div class='col-4'><label for="regno"> Registration No: </label></div>
-                                        <div class='col-8'><input type="text" class="form-control" name="regno" value="<?php echo $regno; ?>" disabled></div>
-                                    </div>
-
-                                    <div class='row'>
-                                        <div class='col-4'><label for="status"> Status:</label></div>
-                                        <div class='col-8'><input type="text" class="form-control" name="status" value="<?php echo $status; ?>" disabled></div>
-                                    </div>
-
-                                    <div class='row'>
-                                        <div class='col-4'><label for="enrolldate"> Enroll Date:</label></div>
-                                        <div class='col-8'><input type="text" class="form-control" name="enrolldate" value="<?php echo $enrolldate; ?>" disabled></div>
-                                    </div>
-
-                                    <div class='row'>
-                                        <div class='col-4'><label for="exitdate"> Exit Date:</label></div>
-                                        <div class='col-8'><input type="text" class="form-control" name="exitdate" value="<?php echo $exitdate; ?>" disabled></div>
-                                    </div>
-
-                                    <div class='row'>
-                                        <div class='col-4'><label for="gname">Guardian Name :</label></div>
-                                        <div class='col-8'><input type="text" class="form-control" name="gname" value="<?php echo $gname; ?>" disabled></div>
-                                    </div>
-
-                                    <div class='row'>
-                                        <div class='col-4'><label for="gaddress">Guardian Address :</label></div>
-                                        <div class='col-8'><input type="text" class="form-control" name="gaddress" value="<?php echo $gaddress; ?>" disabled></div>
-                                    </div>
-
-                                    <div class='row'>
-                                        <div class='col-4'><label for="gphone">Guardian Phone No :</label></div>
-                                        <div class='col-8'><input type="text" class="form-control" name="gphone" value="<?php echo $gphone; ?>" disabled></div>
-                                    </div>
-
-                                    <div class='row'>
-                                        <div class='col-4'><label for="grelation">Guardian Relationship :</label></div>
-                                        <div class='col-8'><input type="text" class="form-control" name="grelation" value="<?php echo $grelation; ?>" disabled></div>
-                                    </div>
+                                    <!-- 1st row end -->
 
                                 </div>
                             </div><br>
