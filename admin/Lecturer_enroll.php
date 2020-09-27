@@ -8,6 +8,7 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
 <head>
     <?php include_once("./head.php"); ?>
     <?php include_once("../config.php"); ?>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- course -->
     <script>
         function getcourse() {
@@ -103,19 +104,21 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
             $last = null;
             $course = null;
             if (isset($_GET['edit'])) {
-                    $id = $_GET['edit'];
-                    $query = "select c.name as course,m.name,m.id as module,b.id as batch,l.id as lec,b.batch_no,l.first_name,l.last_name from batches b,modules m,lecturer l,lecturer_enroll le,courses c where c.code=m.course_code 
+                $id = $_GET['edit'];
+                $query = "select c.name as course,m.name,m.id as module,b.id as batch,l.id as lec,b.batch_no,l.first_name,l.last_name from batches b,modules m,lecturer l,lecturer_enroll le,courses c where c.code=m.course_code 
                             and le.module=m.id and le.batch=b.id and le.lecturer=l.id and le.id=$id;";
-                    $result = mysqli_query($con, $query);
-                    while ($row = mysqli_fetch_array($result)) {
-                        $course = $row['course'];
-                        $module_name = $row['name'];
-                        $module = $row['module'];
-                        $batch_no = $row['batch_no'];
-                        $batch = $row['batch'];
-                        $lecturer = $row['lec'];
-                    }
+                $result = mysqli_query($con, $query);
+                while ($row = mysqli_fetch_array($result)) {
+                    $course = $row['course'];
+                    $module_name = $row['name'];
+                    $module = $row['module'];
+                    $batch_no = $row['batch_no'];
+                    $batch = $row['batch'];
+                    $lecturer = $row['lec'];
+                    $first = $row['first_name'];
+                    $last = $row['last_name'];
                 }
+            }
             ?>
 
             <?php
@@ -184,22 +187,19 @@ This course alredy submit
                                                     <div class="input-group input-group-sm mb-3">
 
                                                         <select class="custom-select" id="course" name="course" id="inputGroupSelect01" id="validationCustom04" onchange="getcourse()" required>
-                                                        <?php
-                                                        if(isset($_GET['edit']))
-                                                        {
-                                                            ?>
-                                                            <option value="" selected disabled><?php echo $course;?></option>
                                                             <?php
-                                                             echo $courses; 
-                                                        }
-                                                        else
-                                                        {
+                                                            if (isset($_GET['edit'])) {
                                                             ?>
-                                                            <option value="" selected disabled> select Course</option>
-                                                            <?php echo $courses; ?>
+                                                                <option value="" selected disabled><?php echo $course; ?></option>
                                                             <?php
-                                                        }
-                                                        ?>
+                                                                echo $courses;
+                                                            } else {
+                                                            ?>
+                                                                <option value="" selected disabled> select Course</option>
+                                                                <?php echo $courses; ?>
+                                                            <?php
+                                                            }
+                                                            ?>
                                                         </select>
                                                     </div>
                                                 </div>
@@ -213,7 +213,19 @@ This course alredy submit
                                                     <div class="input-group input-group-sm mb-3">
 
                                                         <select class="custom-select" id="module" name="module" id="inputGroupSelect01" id="validationCustom04" onchange="getbatch(),getselectvalue()" required>
-                                                            <option value=""> select module</option>
+                                                            <?php
+                                                            if (isset($_GET['edit'])) {
+                                                            ?>
+                                                                <option value="" selected disabled><?php echo $module_name; ?></option>
+                                                            <?php
+
+                                                            } else {
+                                                            ?>
+                                                                <option value="" selected disabled> select module</option>
+
+                                                            <?php
+                                                            }
+                                                            ?>
                                                         </select>
                                                     </div>
                                                 </div>
@@ -236,7 +248,19 @@ This course alredy submit
                                                 <div class="input-group input-group-sm mb-3">
 
                                                     <select class="custom-select" id="batch" name="batch" onchange="getlecturer()" id="inputGroupSelect01" id="validationCustom04" required>
-                                                        <option value=""> select batch</option>
+                                                        <?php
+                                                        if (isset($_GET['edit'])) {
+                                                        ?>
+                                                            <option value="" selected disabled><?php echo $batch_no; ?></option>
+                                                        <?php
+
+                                                        } else {
+                                                        ?>
+                                                            <option value="" selected disabled> select Batch</option>
+
+                                                        <?php
+                                                        }
+                                                        ?>
                                                     </select>
                                                 </div>
                                             </div>
@@ -251,32 +275,44 @@ This course alredy submit
                                                 <div class="input-group input-group-sm mb-3">
 
                                                     <select class="custom-select" id="lecturer" name="lecturer" id="inputGroupSelect01" id="validationCustom04" required>
+                                                        <?php
+                                                        if (isset($_GET['edit'])) {
+                                                        ?>
+                                                            <option value="" selected disabled><?php echo $first . $last; ?></option>
+                                                        <?php
 
+                                                        } else {
+                                                        ?>
+                                                            <option value="" selected disabled> select lecturer</option>
+
+                                                        <?php
+                                                        }
+                                                        ?>
                                                     </select>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                             </div>
-                           
+
                             <div class="card-footer ">
                                 <div class="row">
                                     <div class="col-11 "></div>
                                     <div class="col-1">
                                         <?php if (isset($_GET['edit'])) {
-                                                ?>
-                                            <button type="submit" name="submit" class="btn btn-outline-success" data-toggle="modal" data-target="#exampleModal">
+                                        ?>
+                                            <button type="submit" name="save" class="btn btn-outline-success" data-toggle="modal" data-target="#exampleModal">
                                                 Save
                                             </button>
                                         <?php
-                                    } else {
+                                        } else {
                                         ?>
                                             <button type="submit" name="submit" class="btn btn-outline-success" data-toggle="modal" data-target="#exampleModal">
                                                 Add
                                             </button>
                                         <?php
-                                    }
-                                ?>
+                                        }
+                                        ?>
 
                                     </div>
                                 </div>
@@ -291,7 +327,24 @@ This course alredy submit
                             <th scope="col">batch</th>
                             <th scope="col">lecturer</th>
 
-                            <th scope="col"></th>
+                            <th scope="col">
+                                <div class="row">
+                                    <div class="col"></div>
+                                    <div class="col-auto"><a href="Lecturer_enroll.php">
+                                            <?php
+                                            if (isset($_GET['edit'])) {
+                                            ?>
+                                                <i class="fa fa-plus-square-o" style="font-size:24px;color:red"></i>
+                                            <?php
+                                            } else {
+                                            ?>
+                                            <?php
+                                            }
+                                            ?>
+
+                                        </a></div>
+                                </div>
+                            </th>
                         </tr>
                     </thead>
                     <tbody>
