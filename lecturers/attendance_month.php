@@ -3,7 +3,7 @@
 // if (!isset($_SESSION['username'])) {
 //     header('Location: .././index.php');
 // }
-$user = 'nufailniyas98@gmail.com';
+$user = 'achchu@slgti.com';
 ?>
 <?php
 $title = ' ERMS | SLGTI( Attendance)';
@@ -23,7 +23,7 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
     <?php
     //session
     $lecturers_id = '';
-    $query = "SELECT * FROM student where email='$user'";
+    $query = "SELECT * FROM lecturer where email='$user'";
     $result = mysqli_query($con, $query);
     while ($row = mysqli_fetch_assoc($result)) {
         // echo $lecturers_id = $row['id'];
