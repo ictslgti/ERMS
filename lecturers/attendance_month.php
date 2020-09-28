@@ -1,9 +1,16 @@
 <?php
-// session_start();
-// if (!isset($_SESSION['username'])) {
-//     header('Location: .././index.php');
-// }
-$user = 'achchu@slgti.com';
+session_start();
+if (!isset($_SESSION['username'])) {
+    header('Location: .././index.php');
+}
+$user = $_SESSION['username'];
+?>
+<?php 
+
+if (isset($_GET['logout']) && isset($_SESSION['username']) ) {
+    unset($_SESSION['username']);  
+    header('Location: .././index.php');         
+}
 ?>
 <?php
 $title = ' ERMS | SLGTI( Attendance)';
@@ -26,7 +33,7 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
     $query = "SELECT * FROM lecturer where email='$user'";
     $result = mysqli_query($con, $query);
     while ($row = mysqli_fetch_assoc($result)) {
-         echo $lecturers_id = $row['id'];
+        $lecturers_id = $row['id'];
     }
     ?>
     <?php
@@ -127,11 +134,19 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
                                                     if (isset($_GET['month'])) {
                                                         $mon = $_GET['month'];
 
+                                                        // $sql = "SELECT student_attendance.student_id,student.name_with_initials,COUNT(status) as Total,
+                                                        // SUM(`status` = 'present') as Take 
+                                                        // FROM student_enroll INNER JOIN student ON student_enroll.id=student.id INNER JOIN 
+                                                        // student_attendance ON student_enroll.id=student_attendance.student_id INNER JOIN attendance on
+                                                        //  attendance.attendance_id=student_attendance.id where month(`attendance`.`attendance_date`)=$mon GROUP BY student_enroll.id";
+
                                                         $sql = "SELECT student_attendance.student_id,student.name_with_initials,COUNT(status) as Total,
-                                                        SUM(`status` = 'present') as Take 
-                                                        FROM student_enroll INNER JOIN student ON student_enroll.id=student.id INNER JOIN 
-                                                        student_attendance ON student_enroll.id=student_attendance.student_id INNER JOIN attendance on
-                                                         attendance.attendance_id=student_attendance.id where month(`attendance`.`attendance_date`)=$mon GROUP BY student_enroll.id";
+                                                        SUM(`status` = 'present') as Take , attendance.code , attendance.attendance_date
+                                                        FROM student_enroll INNER JOIN student ON student_enroll.id=student.id 
+                                                        INNER JOIN student_attendance ON student_enroll.id=student_attendance.student_id 
+                                                        INNER JOIN attendance ON attendance_id=student_attendance.id 
+                                                        inner join modules on attendance.code=modules.code
+                                                        AND attendance.lecturer_id = '$lecturers_id' and month(`attendance`.`attendance_date`)=$mon GROUP BY student_enroll.id";
 
                                                         $result = mysqli_query($con, $sql);
                                                         while ($row = mysqli_fetch_assoc($result)) {
@@ -166,9 +181,12 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
                                                         }
                                                     } else {
                                                         $sql = "SELECT student_attendance.student_id,student.name_with_initials,COUNT(status) as Total,
-                                                        SUM(`status` = 'present') as Take 
-                                                        FROM student_enroll INNER JOIN student ON student_enroll.id=student.id INNER JOIN 
-                                                        student_attendance ON student_enroll.id=student_attendance.student_id GROUP BY student_enroll.id";
+                                                        SUM(`status` = 'present') as Take , attendance.code , attendance.attendance_date
+                                                        FROM student_enroll INNER JOIN student ON student_enroll.id=student.id 
+                                                        INNER JOIN student_attendance ON student_enroll.id=student_attendance.student_id 
+                                                        INNER JOIN attendance ON attendance_id=student_attendance.id 
+                                                        inner join modules on attendance.code=modules.code
+                                                        AND attendance.lecturer_id = '$lecturers_id' GROUP BY student_enroll.id";
 
                                                         $result = mysqli_query($con, $sql);
                                                         while ($row = mysqli_fetch_assoc($result)) {

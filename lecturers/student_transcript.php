@@ -11,6 +11,7 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
 
   ?>
   <?php include_once('../databases/config.php'); ?>
+
 </head>
 
 <body>
@@ -83,8 +84,17 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
         <div class="col">
           <div class="card">
             <div class="card-header">
-              <h3> <?php echo " $title" ?> </h3>
+              <div class="row">
+                <div class="col-2">
+                <h3> <?php echo " $title" ?> </h3>
+                </div>
+                <div class="col-9"></div>
+                <div class='col-1'>
+                  <a class='btn btn-outline-primary' href='./transcript.php'>ALL</a>
+                </div>
+              </div>
             </div>
+
             <div class="card-body">
               <div class='row'>
                 <div class="col-md-6">
@@ -225,20 +235,21 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
 
                       $sql = "SELECT modules.id,modules.Code,modules.Name,exams_result.Attempt,exams_result.marks 
                   FROM modules,exams_result 
-                  WHERE exams_result.course = modules.course_code";
+                  WHERE exams_result.course = modules.course_code group by modules.Code";
                       $result = mysqli_query($con, $sql);
+                      $i = 1;
                       if (mysqli_num_rows($result) > 0) {
                         while ($row = mysqli_fetch_assoc($result)) {
                           echo '<tr>
-          <td>', $row['id'], '</td>
-          <td>', $row['Code'], '</td>
-          <td>', $row['Name'], '</td>
-          <td>', $row['Attempt'], '</td>
-          <td>', $row['marks'], '</td>
-          <td>
-             
-          </td>
-      </tr>';
+                          <td type = "1">', $i++, '</td>  
+                          <td>', $row['Code'], '</td>
+                          <td>', $row['Name'], '</td>
+                          <td>', $row['Attempt'], '</td>
+                          <td>', $row['marks'], '</td>
+                          <td>
+                            
+                          </td>
+                      </tr>';
                         }
                       } else {
                         echo 'no rows';
