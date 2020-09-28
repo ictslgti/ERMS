@@ -28,28 +28,28 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
 
         <!-- delete -->
 
-<!-- delete -->
+        <!-- delete -->
         <!-- 1st row start -->
 
         <div class="container">
-        <?php
-if(isset($_GET['delete'])){
-    $id = $_GET['delete'];
-   
-    $sql = "delete from assessments where id='$id'";
-    if(mysqli_query($con,$sql)){
-        echo "
+            <?php
+            if (isset($_GET['delete'])) {
+                $id = $_GET['delete'];
+
+                $sql = "delete from assessments where id='$id'";
+                if (mysqli_query($con, $sql)) {
+                    echo "
        <div class='alert alert-success' role='alert'>
        delete success fully 
        <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
            <span aria-hidden='true'>&times;</span>
         </button>
       </div>";
-    }else{
-        echo "Error: " . $sql . "<br>" . mysqli_error($con);
-    }
-}
-?>
+                } else {
+                    echo "Error: " . $sql . "<br>" . mysqli_error($con);
+                }
+            }
+            ?>
             <br>
 
 
@@ -91,25 +91,45 @@ if(isset($_GET['delete'])){
                                             if (mysqli_num_rows($result) > 0) {
                                                 while ($row = mysqli_fetch_assoc($result)) {
                                                     echo '<tr>
-            <td>', $row['names'] . " " . "<span class='badge badge-dark'>" . $row['type'] . "</span>", '</td>
-            <td>', $row['name'], '</td>
-            <td>', $row['NVQ_level'] . '-batch-' . $row['batch_no'] . "<span class='badge badge-dark'>" . $row['department_code'] . "</span>", '</td>
-            
-            <td>
-<div class="row">
-<div class="col"></div>
-<div class="col-auto">
-<div class="btn-group btn-sm" role="group" aria-label="Basic example">
-            <a href="assessment.php?edit=', $row['id'], '" class=" btn btn-sm" style="background-color: #ffaa00 ;" ><i class="far fa-edit" style="color: #ffffff;"></i> </a> 
-            <a href="?delete=', $row['id'], '" class="btn btn-sm" style="background-color: #bf0502;"> <i class="far fa-trash-alt" style="color: #ffffff;"></i> </a>
-            <a href="assessment_result.php?id=', $row['id'], '" class="btn btn-sm" style="background-color: #0097c4 ; color: #ffffff;" > Add result </a>
-          </div>
-</div>
-</div>
+                                            <td>', $row['names'] . " " . "<span class='badge badge-dark'>" . $row['type'] . "</span>", '</td>
+                                            <td>', $row['name'], '</td>
+                                            <td>', $row['NVQ_level'] . '-batch-' . $row['batch_no'] . "<span class='badge badge-dark'>" . $row['department_code'] . "</span>", '</td>';
 
-            
-            </td>
-        </tr>';
+                                                    $sql1 = 'select assessment_id from student_assessments where assessment_id="' . $row['id'] . '"';
+                                                    $result1 = mysqli_query($con, $sql1);
+                                                    if (mysqli_num_rows($result1) > 0) {
+                                                            echo '<td>
+                                                <div class="row">
+                                                <div class="col"></div>
+                                                <div class="col-auto">
+                                                <div class="btn-group btn-sm" role="group" aria-label="Basic example">
+                                                            <a href="assessment.php?edit=', $row['id'], '" class=" btn btn-sm" style="background-color: #ffaa00 ;" ><i class="far fa-edit" style="color: #ffffff;"></i> </a> 
+                                                            <a href="?delete=', $row['id'], '" class="btn btn-sm" style="background-color: #bf0502;"> <i class="far fa-trash-alt" style="color: #ffffff;"></i> </a>
+                                                            <a href="assessment_resultview.php?id=', $row['id'], '" class="btn btn-sm" style="background-color: #0097c4 ; color: #ffffff;" > view result </a>
+                                                        </div>
+                                                </div>
+                                                </div>
+        
+                                                            
+                                                            </td>
+                                                        </tr>';
+                                                        } else {
+                                                            echo '<td>
+                                        <div class="row">
+                                        <div class="col"></div>
+                                        <div class="col-auto">
+                                        <div class="btn-group btn-sm" role="group" aria-label="Basic example">
+                                                    <a href="assessment.php?edit=', $row['id'], '" class=" btn btn-sm" style="background-color: #ffaa00 ;" ><i class="far fa-edit" style="color: #ffffff;"></i> </a> 
+                                                    <a href="?delete=', $row['id'], '" class="btn btn-sm" style="background-color: #bf0502;"> <i class="far fa-trash-alt" style="color: #ffffff;"></i> </a>
+                                                    <a href="assessment_result.php?id=', $row['id'], '" class="btn btn-sm" style="background-color: #0097c4 ; color: #ffffff;" > Add result </a>
+                                                </div>
+                                        </div>
+                                        </div>
+
+                                                    
+                                                    </td>
+                                                </tr>';
+                                                        }
                                                 }
                                             } else {
                                                 echo 'no rows';
