@@ -6,9 +6,9 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
 <html lang="en">
 
 <head>
-    <?php include_once("../../head.php"); ?>
-    <?php include_once("../../config.php"); ?>
-    <?php include_once("../nav.php"); ?>
+    <?php include_once("../head.php"); ?>
+    <?php include_once("../config.php"); ?>
+    <?php include_once("nav.php"); ?>
     <script>
         function getdepartment() {
             var selectdepartment = document.getElementById("department").value;
@@ -160,7 +160,7 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
             </form>
         </div>
 
-        <?php include_once("../../script.php"); ?>
+        <?php include_once("../script.php"); ?>
 </body>
 
 </html>
