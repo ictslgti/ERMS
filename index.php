@@ -50,7 +50,8 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                     
                 }else if($password == $row['password'] && $status=="reset" && $usertype=="admin"){                    
                     $_SESSION['username'] = $username;
-                    header("Location: admin/index.php");                
+                    header("Location: admin/index.php");
+
                 }if($password !== $row['password']){
                      echo "<script>
                                 Swal.fire({

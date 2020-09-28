@@ -9,11 +9,11 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
     <?php include_once("../head.php"); ?>
     <?php include_once("../config.php"); ?>
     <style>
-        .c{
-           margin-top: 10px;
-           margin-bottom: 10px;
-           margin-right: 15px;
-           margin-left: 15px;
+        .c {
+            margin-top: 10px;
+            margin-bottom: 10px;
+            margin-right: 15px;
+            margin-left: 15px;
         }
     </style>
 </head>
@@ -39,17 +39,17 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                             ?>
 
                                 <div class="card col-2 c">
-                                    
-                                    <div class="card-header"><?php echo $row['date']."<br>" ?>
-                                    <?php echo "Time".$row['time'] ?>
-                                </div>
+
+                                    <div class="card-header"><?php echo $row['date'] . "<br>" ?>
+                                        <?php echo "Time" . $row['time'] ?>
+                                    </div>
                                     <div class="card-body ">
-                                    <?php echo $row['module_id']."<br>" ?>
-                                    <?php echo "Achchuthan" ?>
+                                        <?php echo $row['module_id'] . "<br>" ?>
+                                        <?php echo "Achchuthan" ?>
                                     </div>
                                     <div class="card-footer bg-transparent border-success">
                                         <div class="btn-group btn-sm" role="group" aria-label="Basic example">
-                                            <a href="batch.php?edit=',$row['batch_no'],'" class="btn btn-outline-warning"> <i class="far fa-edit"></i> </a>
+                                            <a href="attendance.php?edit=<?php echo $row['id'] ?>" class="btn btn-outline-warning"> <i class="far fa-edit"></i> </a>
                                             <a href="?delete=',$row['batch_no'],'" class="btn btn-outline-danger"><i class="far fa-trash-alt"></i> </a>
                                             <a href="?delete=',$row['batch_no'],'" class="btn btn-outline-success"><i class="fas fa-user-plus"></i> </a>
                                         </div>
@@ -61,6 +61,27 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                             echo 'no rows';
                         }
                         ?>
+                        <!-- delete -->
+                        <?php
+                        if (isset($_GET['delete'])) {
+                            $id = $_GET['delete'];
+                            $sql = "DELETE FROM `attendance` WHERE `batches`.`id` = '$id'";
+                            if (mysqli_query($con, $sql)) {
+                                echo "
+                                <div class='alert alert-success' role='alert'>
+                                delete success fully 
+                                <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+                                    <span aria-hidden='true'>&times;</span>
+                                    </button>
+                                </div>";
+                            } else {
+                                echo "Error: " . $sql . "<br>" . mysqli_error($con);
+                            }
+                        }
+                        ?>
+                        <!-- delete -->
+
+
                         </div>
                 </div>
                 <!-- #1 Insert Your Content" -->
