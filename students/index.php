@@ -26,23 +26,11 @@ if (isset($_GET['logout']) && isset($_SESSION['username']) ) {
     header('Location: .././index.php');         
 }
 ?>
-
 <body>
     <main class='page-content pt-1'>
         <?php include_once('nav.php');
         ?>
-         <!-- LOGOUT BUTTON -->
-         <?php
-        if (isset($_SESSION['username'])) {           
-        }
-        ?>
-        <div class="row">
-            <div class="col-11"></div>            
-            <div class="col-1">              
-                <spam style="text-transform:capitalize;"><?php echo $_SESSION['username']; ?></spam>
-                <a class="btn btn-success" href="?logout">Logout</a>
-            </div>
-<!-- end logout button -->
+        
         <div id='overlay' class='overlay'></div>
         <div class='container-fluid p-1'>
             <!-- #1 Insert Your Content-->
@@ -210,7 +198,7 @@ if (isset($_GET['logout']) && isset($_SESSION['username']) ) {
                                         <div class="card-body">
                                             <div class="row">
                                                 <div class="col-12 col-lg-8 col-md-6">
-                                                    <h3 class="mb-0 text-truncated">Kavi</h3>
+                                                    <h3 class="mb-0 text-truncated"><?php echo $_SESSION['username']; ?></h3>
                                                     <p class="lead">Student @SLGTI</p>
                                                     <p>
                                                         I love to read, hang out with friends, watch football,
@@ -230,7 +218,7 @@ if (isset($_GET['logout']) && isset($_SESSION['username']) ) {
                                                     <h3 class="mb-0">Subjects</h3>
                                                     <small>View Subjects</small>
                                                     <button class="btn btn-block btn-outline-success"><span
-                                                            class="fa fa-plus-circle">&nbsp;</span>Subject</button>
+                                                            class="fa fa-plus-circle" href = "students/attendance_all.php">&nbsp;</span>Subject</button>
                                                 </div>
 
                                                 <div class="col-12 col-lg-3">
