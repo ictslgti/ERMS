@@ -4,7 +4,20 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
 ?>
 <!DOCTYPE html>
 <html lang='en'>
+<?php
+session_start();
+if (!isset($_SESSION['username'])) {
+    header('Location: .././index.php');
+}
+?>
 
+<?php 
+
+if (isset($_GET['logout']) && isset($_SESSION['username']) ) {
+    unset($_SESSION['username']);  
+    header('Location: .././index.php');         
+}
+?>
 <head>
     <?php include_once('.././head.php');
     include_once('../config.php');
@@ -138,7 +151,7 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
                                             </tbody>
                                         </table>
                                         <div class='modal-footer'>
-                                            <button type='button' class='btn btn-warning btn btn-sm '>Close</button>
+                                            <!-- <button type='button' class='btn btn-warning btn btn-sm '>Close</button> -->
                                             <button type='submit' name='Update' class='btn btn-primary btn btn-sm '>
                                                 Update
                                             </button>
@@ -172,29 +185,37 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
                         $value = $_POST[$name];
                         $value2 = $_POST[$res];
                         $value3 = $_POST[$att];
-                        echo  $sql_multi .= "INSERT INTO  `exams_result`(`exams`,`batch_no`,`student_id`,`index_no`,`course`,`semester`, `module`, `exam_type`, `attempt`,`marks`) 
+                          $sql_multi .= "INSERT INTO  `exams_result`(`exams`,`batch_no`,`student_id`,`index_no`,`course`,`semester`, `module`, `exam_type`, `attempt`,`marks`) 
                                                      VALUES ('$exams','$batch_no','$value','$value','$course','$semester','$module','$exam_type','$value3','$value2');";
                     }
                 }
             }
-            echo $sql_multi;
+             $sql_multi;
             //end
 
             if (mysqli_multi_query($con, $sql_multi)) {
                 echo '
-    <div class="alert alert-success alert-dismissible fade show" role="alert">
-    <strong></strong> Assessment Type details inserted!
-    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-    <span aria-hidden="true">&times;</span>
-    </button>
-    </div>   
-  ';
-            } else {
-
-                echo "Error: " . $sql . "<br>" . mysqli_error($con);
-            }
-        }
-
+                <div class="row">
+                <div class="col-sm alert alert-success alert-dismissible fade show " role="alert">
+                Succesfully Created..........
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+                </div>
+                </div>
+                ';
+                              } else {
+                                  echo '
+              <div class="row">
+                <div class="col-sm alert alert-danger alert-dismissible fade show " role="alert">
+                "Error: " . $sql . "<br>" . mysqli_error($con);..........
+                
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+                </div>
+                </div>';}
+                              }
 
         ?>
         <!-- #1 Insert Your Content-->
