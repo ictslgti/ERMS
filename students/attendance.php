@@ -1,11 +1,4 @@
 <?php
-session_start();
-if (!isset($_SESSION['username'])) {
-    header('Location: .././index.php');
-}
-$user = $_SESSION['username'];
-?>
-<?php
 $title = ' ERMS | SLGTI Attendance';
 $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
 ?>
@@ -16,16 +9,24 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
     <?php include_once('.././head.php');
     include_once('../config.php');
     ?>
+    <?php
+session_start();
+if (!isset($_SESSION['username'])) {
+    header('Location: .././index.php');
+}
+
+?>
 </head>
 
 <body>
-<?php
+    <?php
+    $user = $_SESSION['username'];
     //session
     $student_id = '';
     $query = "SELECT * FROM student where email='$user'";
     $result = mysqli_query($con, $query);
     while ($row = mysqli_fetch_assoc($result)) {
-     $student_id = $row['id'];
+        $student_id = $row['id'];
     }
     ?>
     <main class='page-content pt-2'>
@@ -55,9 +56,9 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
                                                         Attendance Review
                                                     </button>
                                                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                                        <a class="dropdown-item" href="attendance_all.php">Moudel-wise</a>
                                                         <a class="dropdown-item" href="attendance_month.php">Month-wise</a>
                                                         <a class="dropdown-item" href="attendance_semester.php">Semester-wise</a>
-                                                        <a class="dropdown-item" href="attendance_all.php">Moudel-wise</a>
                                                     </div>
                                                 </div>
 
