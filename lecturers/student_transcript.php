@@ -11,7 +11,7 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
 
   ?>
   <?php include_once('../databases/config.php'); ?>
-  
+
 </head>
 
 <body>
@@ -84,8 +84,17 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
         <div class="col">
           <div class="card">
             <div class="card-header">
-              <h3> <?php echo " $title" ?> </h3>
+              <div class="row">
+                <div class="col-2">
+                <h3> <?php echo " $title" ?> </h3>
+                </div>
+                <div class="col-9"></div>
+                <div class='col-1'>
+                  <a class='btn btn-outline-primary' href='./transcript.php'>ALL</a>
+                </div>
+              </div>
             </div>
+
             <div class="card-body">
               <div class='row'>
                 <div class="col-md-6">
@@ -232,7 +241,7 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
                       if (mysqli_num_rows($result) > 0) {
                         while ($row = mysqli_fetch_assoc($result)) {
                           echo '<tr>
-                          <td type = "1">',$i++,'</td>  
+                          <td type = "1">', $i++, '</td>  
                           <td>', $row['Code'], '</td>
                           <td>', $row['Name'], '</td>
                           <td>', $row['Attempt'], '</td>
