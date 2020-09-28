@@ -61,7 +61,7 @@ if (isset($_GET['logout']) && isset($_SESSION['username']) ) {
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="student.php"> Add Student</a>
                         <a class="dropdown-item" href="students.php">Students View</a>
-                        <a class="dropdown-item" href="studentview.php">Student Report</a>
+                        <!-- <a class="dropdown-item" href="studentview.php">Student Report</a> -->
                     </div>
                 </li>
                 <li class="nav-item dropdown">
@@ -80,8 +80,8 @@ if (isset($_GET['logout']) && isset($_SESSION['username']) ) {
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <!-- <a class="dropdown-item" href="attendance.php">Attendance</a> -->
-                        <a class="dropdown-item" href="attendances.php">Attendance Update</a>
-                        <a class="dropdown-item" href="attendance_alert.php">Attendance Report</a>
+                        <a class="dropdown-item" href="attendances.php">Add Attendance </a>
+                        <!-- <a class="dropdown-item" href="attendance_alert.php">Attendance Report</a> -->
                     </div>
                 </li>
                 <li class="nav-item dropdown">
