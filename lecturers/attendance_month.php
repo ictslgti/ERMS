@@ -69,9 +69,9 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
                                                         Attendance Review
                                                     </button>
                                                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                                    <a class="dropdown-item" href="attendance.php">Class-wise</a>
                                                         <a class="dropdown-item" href="attendance_month.php">Month-wise</a>
                                                         <a class="dropdown-item" href="attendance_semester.php">Semester-wise</a>
-                                                        <a class="dropdown-item" href="attendance.php">Date-wise</a>
                                                     </div>
                                                 </div>
 
