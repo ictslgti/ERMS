@@ -10,12 +10,12 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
     include_once('../config.php');
     ?>
     <?php
-session_start();
-if (!isset($_SESSION['username'])) {
-    header('Location: .././index.php');
-}
+    session_start();
+    if (!isset($_SESSION['username'])) {
+        header('Location: .././index.php');
+    }
 
-?>
+    ?>
 </head>
 
 <body>
@@ -72,11 +72,11 @@ if (!isset($_SESSION['username'])) {
 
 
                                                     <?php
-                                                    $sql = "select * from attendance GROUP BY code ";
+                                                    $sql = "SELECT * from attendance GROUP BY code ";
                                                     $result = $con->query($sql);
                                                     if ($result->num_rows > 0) {
                                                         while ($row = $result->fetch_assoc()) {
-                                                            echo '<a href="?module=' . $row['code'] . '">' . $row['code'] . '</a> ';
+                                                            echo '<a href="?module=' . $row['code'] . '">' . $row['code'] . '</a><br> ';
                                                         }
                                                     } else {
                                                         echo 'no rows';
@@ -123,6 +123,13 @@ if (!isset($_SESSION['username'])) {
 
                                                                 $result = mysqli_query($con, $sql);
                                                                 while ($row = mysqli_fetch_assoc($result)) {
+                                                                    if(! $row) 
+                                                                    {
+                                                                        echo "NO DATA";
+                                                                    }
+
+                                                                    else
+                                                                    {
                                                             ?>
 
 
@@ -132,7 +139,8 @@ if (!isset($_SESSION['username'])) {
                                                                         <td scope='col'><?php echo $row['status']; ?></td>
 
                                                                     <?php
-                                                                }
+                                                                }}
+                                                                
                                                             } else {
                                                                 $sql = "SELECT attendance.attendance_date, attendance.attendance_time, student_attendance.status FROM attendance INNER JOIN 
                                                             student_attendance ON attendance.attendance_id=student_attendance.id where student_id='$student_id'";
@@ -157,12 +165,14 @@ if (!isset($_SESSION['username'])) {
 
                                                                     </tr>
                                                                     <table>
+
                                                                         <?php
                                                                         if (isset($_GET['module'])) {
                                                                             $mon = $_GET['module'];
 
                                                                             $sql = "SELECT count(student_attendance.status) as total_session,SUM(`status` = 'present') as take_session,
-                                                                                    attendance.code from student_attendance,attendance where student_attendance.id=attendance.attendance_id and student_id='$student_id' and code='" . $mon . "'";
+                                                                                    attendance.code from student_attendance,attendance where student_attendance.id=attendance.attendance_id and
+                                                                                     student_id='$student_id' and code='" . $mon . "'";
 
                                                                             $result = mysqli_query($con, $sql);
                                                                             while ($row = mysqli_fetch_assoc($result)) {
@@ -179,10 +189,12 @@ if (!isset($_SESSION['username'])) {
                                                                                     <td style="text-align: right">Percentage over taken sessions:</td>
 
                                                                                     <td><?php echo $per1 ?></td>
-
                                                                             <?php
                                                                             }
+                                                                        } else {
+                                                                            echo "no datas";
                                                                         }
+
                                                                             ?>
                                                                                 </tr>
                                                                     </table>
