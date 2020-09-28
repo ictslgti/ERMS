@@ -1,13 +1,12 @@
+<?php
+if (!isset($_SESSION['username'])) {
+    header('Location: .././index.php');
+}
+?>
 <?php 
 if (isset($_GET['logout']) && isset($_SESSION['username']) ) {
     unset($_SESSION['username']);  
     header('Location: .././index.php');         
-}
-?>
-<?php
-
-if (!isset($_SESSION['username'])) {
-    header('Location: .././index.php');
 }
 ?>
 <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm">
