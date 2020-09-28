@@ -5,7 +5,7 @@ if (isset($_GET['logout']) && isset($_SESSION['username']) ) {
 }
 ?>
 <?php
-session_start();
+
 if (!isset($_SESSION['username'])) {
     header('Location: .././index.php');
 }
@@ -55,8 +55,8 @@ if (!isset($_SESSION['username'])) {
                         <i class="fas fa-user-graduate"></i> Students
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="students.php">Students</a>
-                        <a class="dropdown-item" href="studentview.php">Student View</a>
+                    <a class="dropdown-item" href="students.php">Students View</a>
+                        <!-- <a class="dropdown-item" href="studentview.php">Student Report</a> -->
                     </div>
                 </li>
                 <li class="nav-item dropdown">
@@ -64,10 +64,10 @@ if (!isset($_SESSION['username'])) {
                         <i class="fas fa-book"></i> Assessment
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="assessment.php">Assessment</a>
+                        <a class="dropdown-item" href="assessment.php">Add Assessment</a>
                         <a class="dropdown-item" href="assessments.php">Assessments</a>
-                        <a class="dropdown-item" href="assessment_result.php">Assessments</a>
-                        <a class="dropdown-item" href="assessment_resultview.php">Assessment Results</a>
+                        <!-- <a class="dropdown-item" href="assessment_result.php">Assessments</a>
+                        <a class="dropdown-item" href="assessment_resultview.php">Assessment Results</a> -->
                         <a class="dropdown-item" href="result.php">Assessment View Results</a>
                     </div>
                 </li>
@@ -77,8 +77,8 @@ if (!isset($_SESSION['username'])) {
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="attendance.php">Attendance</a>
-                        <a class="dropdown-item" href="attendance_month.php">Attendance Month</a>
-                        <a class="dropdown-item" href="attendance_semester.php">Attendance semester</a>
+                        <!-- <a class="dropdown-item" href="attendance_month.php">Attendance Month</a>
+                        <a class="dropdown-item" href="attendance_semester.php">Attendance semester</a> -->
                     </div>
                 </li>
                 <li class="nav-item dropdown">
