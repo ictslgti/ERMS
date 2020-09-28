@@ -35,39 +35,54 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
             <div class="card-header bg-transparent border-success">View Result</div>
             <div class="card-body ">
                 <div class="table-responsive">
-                <?php
-                      $sql = "SELECT * FROM student";
-                      $result = $con->query($sql);
-                      if ($result->num_rows > 1) {
+                    <?php
+                    $sql = "SELECT * FROM student";
+                    $result = $con->query($sql);
+                    if ($result->num_rows > 1) {
                         while ($row = $result->fetch_assoc()) {
 
-                          $full_name = $row['full_name'];
-                          $name_with_initials = $row['name_with_initials'];
-                          $id = $row['id'];
-                          $nic = $row['nic'];
-                          // $semester = $row['semester'];
-                          // $module = $row['module'];
-                          // $exam_type = $row['exam_type'];
-                          // $attempt = $row['attempt'];
-                          // $marks = $row['marks'];
+                            $full_name = $row['full_name'];
+                            $name_with_initials = $row['name_with_initials'];
+                            $id = $row['id'];
+                            $nic = $row['nic'];
+                            // $semester = $row['semester'];
+                            // $module = $row['module'];
+                            // $exam_type = $row['exam_type'];
+                            // $attempt = $row['attempt'];
+                            // $marks = $row['marks'];
                         }
-                      }
-                      ?>
-
-                    <div class="row">
-                        <div class="col-3">Module Code :- </div>
-                        <div class="col-3">Batch :- </div>
+                    }
+                    ?>
+ <?php
+                                            $sql = "SELECT * FROM student_assessments,assessments,modules WHERE student_assessments.id=assessments.id 
+                                            and modules.id=assessments.module AND assessments.department_code='ICT' and assessments.module=5 and assessments.batch=6 GROUP BY assessments.batch  ";
+                                            $result = $con->query($sql);
+                                            if ($result->num_rows > 0) {
+                                                while ($row = $result->fetch_assoc()) {
+                                                   
+echo '
+ <div class="row">
+                        <div class="col-3">Departmet Code :-<b>', $row['department_code'], ' </b></div>
+                        <div class="col-3">Batch :-<b>Batch-', $row['batch'], ' </b> </div>
                     </div>
 
                     <div class="row">
-                        <div class="col-3">Deparment :- </div>
-                        <div class="col-3">NVQ Level :- </div>
+                        <div class="col-3">Module Code :-<b>', $row['code'], ' </b>  </div>
+                        <div class="col-3">Course  :-<b>', $row['course_code'], ' </b>  </div>
                     </div>
+                    <div class="row">
+                    <div class="col-3">Module  Name :-<b>', $row['name'], ' </b>  </div>
+                    <div class="col-3">Semester  :-<b>', $row['semester_id'], ' </b>  </div>
+                </div>
 
-
-                    <table border="1px black" class='table align-middle'>
-                        <thead class='thead-dark text-light'>
-
+                    <table border="1px black" class="table align-middle">
+                        <thead class="thead-dark text-light">';
+                        
+                    }
+                } else {
+                    echo 'no rows';
+                }
+                ?>
                             <!-- <tr>
 
                                 <th>No</th>
@@ -87,226 +102,52 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
                             </tr> -->
 
                         </thead>
-
+                        <tr>
+                            <th>No</th>
+                            <th>Name</th>
+                            <th>Index No</th>
+                            <th>Asessment </th>
+                            <th>Asessment Type </th>
+                            <th colspan="6" style="text-align: center;">writting test </th>
+                            <th>States</th>
+                        </tr>
+                        <?php
+                        $department = $_GET['department'];
+                                            $sql = "SELECT * FROM student_assessments,assessments,student WHERE student_assessments.id=assessments.id and
+                                             student.id=student_assessments.student_id AND assessments.department_code=$department and assessments.module=5 and assessments.batch=6 GROUP BY student.id  ";
+                                            $result = $con->query($sql);
+                                            if ($result->num_rows > 0) {
+                                                while ($row = $result->fetch_assoc()) {
+                                                   
+?>
+                                                    
+                                                    <tr>
+                                                    <td><?php echo $row['id']; ?></td>
+                                                    <td><?php echo  $row['full_name'] ?></td>
+                                                    <td><?php echo  $row['id'] ?></td>
+                                                    <td><?php echo  $row['names'] ?></td>
+                                                    <td><?php echo  $row['type'] ?></td>
+                                                    <td colspan="6" style="text-align: center;"><?php echo  $row['marks']?></td>
+                                                    <td><?php 
+                                                    if(( $row['marks']) >= 50 ) 
+                                                    {
+                                                        echo'Pass';
+                                                    } 
+                                                    else{
+                                                        echo'Fail';
+                                                    }
+                                                    ?> </td>
+                                                    
+                                                </tr>
                         
-
-                                <th>No</th>
-                                <th>Name</th>
-                                <th>Index No</th>
-
-                                <th colspan="6" style="text-align: center;">writting test (30%)</th>
-
-                                <th colspan="2" style="text-align: center;">presentation(15%)</th>
-
-                                <th colspan="2" style="text-align: center;"> Assignment<br> (Individual)(15%)</th>
-
-                                <!-- <th colspan="3" style="text-align: center;">project (Individual)(40%)</th>
-
-                                <th style="text-align: center;">Average(%)</th> -->
-                                <th>States</th>
-
-                            </tr>
-
-                        <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-
-                            <th style="transform: rotate(90deg),">Assessment1</th>
-                            <th style="transform: rotate(90deg),">Assessment2</th>
-                            <th style="transform: rotate(90deg),">Assessment3</th>
-                            <th style="transform: rotate(90deg),">Assessment4</th>
-                            <th style="transform: rotate(90deg),">Assessment5</th>
-                            <th style="transform: rotate(90deg),">Average</th>
-
-                           
-                            <th>presentation</th>
-                            <th>Avarage</th>
-
-                            <th>Test plan</th>
-                            <th>Avarage</th>
-                           <td></td>
-
-                            <!-- <th>prograss Review</th>
-                            
-                            <th colspan="2" >Avarage</th>
-                            <td></td> -->
-
-                        </tr>
-
-                        <tr>
-
-                            <th>01</th>
-                            <th>Nufail</th>
-                            <th>2018ictbit30</th>
-
-                            <th>90</th>
-                            <th>50</th>
-                            <th>40</th>
-                            <th>25</th>
-                            <th>35</th>
-
-                            <th>10</th>
-                            <th>68</th>
-
-                            <th>85</th>
-                            <th>98</th>
-
-                            <th>56</th>
-                            <th>pass</th>
-                            <!-- <th>65</th>
-                            <th>58</th> -->
-                            
-                             
-
-                        </tr>
-
-                        <tr>
-
-                            <th>02</th>
-                            <th>Sathursan</th>
-                            <th>2018ictbit30</th>
-
-                            <th>90</th>
-                            <th>50</th>
-                            <th>40</th>
-                            <th>25</th>
-                            <th>35</th>
-
-                            <th>10</th>
-                            <th>68</th>
-
-                            <th>85</th>
-                            <th>98</th>
-
-                            <th>56</th>
-                            <th>pass</th>
-                            <!-- <th>65</th>
-                            <th>58</th> -->
-
-                            
-
-                        </tr>
-
-                        <tr>
-
-                            <th>03</th>
-                            <th>kokila</th>
-                            <th>2018ictbit30</th>
-                            
-                            <th>90</th>
-                            <th>50</th>
-                            <th>40</th>
-                            <th>25</th>
-                            <th>35</th>
-                            <th>10</th>
-                            <th>68</th>
-                            <th>85</th>
-                            <th>98</th>
-                            <th>56</th>
-                            <th>pass</th>
-                            <!-- <th>65</th>
-                            <th>58</th> -->
-
-                        </tr>
-
-                        <tr>
-
-                            <th>04</th>
-                            <th>Loshani</th>
-                            <th>2018ictbit30</th>
-                            <th>90</th>
-                            <th>50</th>
-                            <th>40</th>
-                            <th>25</th>
-                            <th>35</th>
-                            <th>10</th>
-                            <th>68</th>
-                            <th>85</th>
-                            <th>98</th>
-                            <th>56</th>
-                            <th>pass</th>
-                            <!-- <th>65</th>
-                            <th>58</th> -->
-
-                        </tr>
-
-                        <tr>
-
-                            <th>05</th>
-                            <th>sumanan</th>
-                            <th>2018ictbit30</th>
-                            <th>90</th>
-                            <th>50</th>
-                            <th>40</th>
-                            <th>25</th>
-                            <th>35</th>
-                            <th>10</th>
-                            <th>68</th>
-                            <th>85</th>
-                            <th>98</th>
-                            <th>56</th>
-                            <th>faill</th>
-                            <!-- <th>65</th>
-                            <th>58</th> -->
-
-                        </tr>
-
-                        <tr>
-
-                            <th>06</th>
-                            <th>godwin</th>
-                            <th>2018ictbit30</th>
-                            <th>90</th>
-                            <th>50</th>
-                            <th>40</th>
-                            <th>25</th>
-                            <th>35</th>
-                            <th>10</th>
-                            <th>68</th>
-                            <th>85</th>
-                            <th>98</th>
-                            <th>56</th>
-                            <th>pass</th>
-                            <!-- <th>65</th>
-                            <th>58</th> -->
-
-                        </tr>
-
-
-
-
-
-                        <!-- <tr class="h5">
-                                <th scope='col'>Index No</th>
-                                <th scope='col'>Name</th>
-                                <th scope='col'>Nic</th>
-                                <th scope='col'>Assesment1<span class="badge badge-pill badge-dark m-1">T</span></th>
-                                <th scope='col'>Assesment2<span class="badge badge-pill badge-dark m-1">P</span></th>
-                                <th scope='col'>Total</th>
-                                <th scope='col'>percentage%</th>
-
-                            </tr>
-                            
-                        </thead>
-                        <tbody>
-                        <tr>
-                        <td><h6>2018/ICT/BIT22</h6></td>
-                        <td><h6>B.Kiriya</h6></td>
-                        <td><h6>966683007V</h6></td>
-                        <td><h6>58</h6></td>
-                        <td><h6>78</h6></td>
-                        <td class="alig">
-                        <h2></h2> -->
-
-                        <!-- <div class="w3-dropdown-hover">
-                <a class="">...</a>
-                <div class="w3-dropdown-content w3-bar-block w3-border">
-                <a class="dropdown-item" href="#"><img src="https://img.icons8.com/android/18/000000/edit.png"/>  Edit</a>
-                <a class="dropdown-item" href="#"><img src="https://img.icons8.com/windows/18/000000/delete-forever.png"/>Delete</a>
-                </div>
-            </div> -->
-
+                        
+                        
+                        <?php
+                    }
+                } else {
+                    echo 'no rows';
+                }
+                ?>
                         </tbody>
                     </table>
 
@@ -333,11 +174,11 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
 
 
 
-                    <!-- <a href="viewresult.php">print</a> -->
-                    <div class="text-center">
-            <button onclick="window.print();" class="btn btn-primary" id="print-btn">Print</button>
-        </div>
-               
+                <!-- <a href="viewresult.php">print</a> -->
+                <div class="text-center">
+                    <button onclick="window.print();" class="btn btn-primary" id="print-btn">Print</button>
+                </div>
+
 
 
 
