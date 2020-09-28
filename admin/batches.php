@@ -83,7 +83,16 @@ if(isset($_GET['delete'])){
     </thead>
     <tbody>
     <?php
-$sql = 'SELECT * FROM `batches`';
+    if(isset($_GET['id']))
+    {
+        $academic=$_GET['id'];
+        $sql = 'SELECT * FROM `batches` where Academic_year="'.$academic.'"';
+    }
+    else
+    {
+        $sql = 'SELECT * FROM `batches`';
+    }
+
 $result = mysqli_query($con,$sql);
 if(mysqli_num_rows($result)>0){
     while($row = mysqli_fetch_assoc($result)){
