@@ -6,6 +6,9 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
 <html lang='en'>
 
 <head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <?php include_once('../head.php');
     include_once('../config.php');
     ?>
@@ -53,14 +56,18 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
                         }
                     }
                     ?>
- <?php
-                                            $sql = "SELECT * FROM student_assessments,assessments,modules WHERE student_assessments.id=assessments.id 
-                                            and modules.id=assessments.module AND assessments.department_code='ICT' and assessments.module=5 and assessments.batch=6 GROUP BY assessments.batch  ";
-                                            $result = $con->query($sql);
-                                            if ($result->num_rows > 0) {
-                                                while ($row = $result->fetch_assoc()) {
-                                                   
-echo '
+                    <?php
+                    $department = $_GET['department'];
+                    $course = $_GET['course'];
+                    $module = $_GET['module'];
+                    $batch = $_GET['batch'];
+                    $sql = "SELECT * FROM student_assessments,assessments,modules WHERE student_assessments.id=assessments.id 
+                                            and modules.id=assessments.module AND assessments.department_code='$department' and assessments.module=$module and assessments.batch=$batch GROUP BY assessments.batch  ";
+                    $result = $con->query($sql);
+                    if ($result->num_rows > 0) {
+                        while ($row = $result->fetch_assoc()) {
+
+                            echo '
  <div class="row">
                         <div class="col-3">Departmet Code :-<b>', $row['department_code'], ' </b></div>
                         <div class="col-3">Batch :-<b>Batch-', $row['batch'], ' </b> </div>
@@ -77,13 +84,12 @@ echo '
 
                     <table border="1px black" class="table align-middle">
                         <thead class="thead-dark text-light">';
-                        
+                        }
+                    } else {
+                        echo 'no rows';
                     }
-                } else {
-                    echo 'no rows';
-                }
-                ?>
-                            <!-- <tr>
+                    ?>
+                    <!-- <tr>
 
                                 <th>No</th>
                                 <th>Index</th>
@@ -101,54 +107,55 @@ echo '
 
                             </tr> -->
 
-                        </thead>
-                        <tr>
-                            <th>No</th>
-                            <th>Name</th>
-                            <th>Index No</th>
-                            <th>Asessment </th>
-                            <th>Asessment Type </th>
-                            <th colspan="6" style="text-align: center;">writting test </th>
-                            <th>States</th>
-                        </tr>
-                        <?php
-                        $department = $_GET['department'];
-                                            $sql = "SELECT * FROM student_assessments,assessments,student WHERE student_assessments.id=assessments.id and
-                                             student.id=student_assessments.student_id AND assessments.department_code=$department and assessments.module=5 and assessments.batch=6 GROUP BY student.id  ";
-                                            $result = $con->query($sql);
-                                            if ($result->num_rows > 0) {
-                                                while ($row = $result->fetch_assoc()) {
-                                                   
-?>
-                                                    
-                                                    <tr>
-                                                    <td><?php echo $row['id']; ?></td>
-                                                    <td><?php echo  $row['full_name'] ?></td>
-                                                    <td><?php echo  $row['id'] ?></td>
-                                                    <td><?php echo  $row['names'] ?></td>
-                                                    <td><?php echo  $row['type'] ?></td>
-                                                    <td colspan="6" style="text-align: center;"><?php echo  $row['marks']?></td>
-                                                    <td><?php 
-                                                    if(( $row['marks']) >= 50 ) 
-                                                    {
-                                                        echo'Pass';
-                                                    } 
-                                                    else{
-                                                        echo'Fail';
-                                                    }
-                                                    ?> </td>
-                                                    
-                                                </tr>
-                        
-                        
-                        
-                        <?php
+                    </thead>
+                    <tr>
+                        <th>No</th>
+                        <th>Name</th>
+                        <th>Index No</th>
+                        <th>Asessment </th>
+                        <th>Asessment Type </th>
+                        <th colspan="6" style="text-align: center;">marks </th>
+                        <th>States</th>
+                    </tr>
+                    <?php
+                    $department = $_GET['department'];
+                    $module = $_GET['module'];
+                    $batch = $_GET['batch'];
+
+                    $sql = "SELECT * FROM student_assessments,assessments,student WHERE student_assessments.id=assessments.id and
+                                             student.id=student_assessments.student_id AND assessments.department_code='$department' and assessments.module=$module and assessments.batch=$batch GROUP BY student.id  ";
+                    $result = $con->query($sql);
+                    if ($result->num_rows > 0) {
+                        while ($row = $result->fetch_assoc()) {
+
+                    ?>
+
+                            <tr>
+                                <td><?php echo $row['id']; ?></td>
+                                <td><?php echo  $row['full_name'] ?></td>
+                                <td><?php echo  $row['id'] ?></td>
+                                <td><?php echo  $row['names'] ?></td>
+                                <td><?php echo  $row['type'] ?></td>
+                                <td colspan="6" style="text-align: center;"><?php echo  $row['marks'] ?></td>
+                                <td><?php
+                                    if (($row['marks']) >= 50) {
+                                        echo 'Pass';
+                                    } else {
+                                        echo 'Fail';
+                                    }
+                                    ?> </td>
+
+                            </tr>
+
+
+
+                    <?php
+                        }
+                    } else {
+                        echo 'no rows';
                     }
-                } else {
-                    echo 'no rows';
-                }
-                ?>
-                        </tbody>
+                    ?>
+                    </tbody>
                     </table>
 
 
@@ -176,7 +183,7 @@ echo '
 
                 <!-- <a href="viewresult.php">print</a> -->
                 <div class="text-center">
-                    <button onclick="window.print();" class="btn btn-primary" id="print-btn">Print</button>
+                    <a href="viewresultprint.php?department=<?php echo $department; ?> & course=<?php echo $course; ?> & module=<?php echo $module; ?> & batch=<?php echo $batch; ?>" class="btn btn-primary">Print</a>
                 </div>
 
 
