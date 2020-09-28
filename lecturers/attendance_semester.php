@@ -5,17 +5,15 @@ if (!isset($_SESSION['username'])) {
 }
 $user = $_SESSION['username'];
 ?>
+<?php 
 
-<?php
-
-if (isset($_GET['logout']) && isset($_SESSION['username'])) {
-    unset($_SESSION['username']);
-    header('Location: .././index.php');
+if (isset($_GET['logout']) && isset($_SESSION['username']) ) {
+    unset($_SESSION['username']);  
+    header('Location: .././index.php');         
 }
 ?>
-
 <?php
-$title = ' ERMS | SLGTI Attendance';
+$title = ' ERMS | SLGTI(Attendance)';
 $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
 ?>
 <!DOCTYPE html>
