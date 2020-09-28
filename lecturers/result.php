@@ -121,8 +121,8 @@ while ($row = mysqli_fetch_array($result)) {
                                         <div class="form-group">
                                             Department <br>
                                             <div class="input-group input-group-sm mb-3">
-                                                <select name="department" id="department" class="form-control action">
-                                                    <option value="">Select Department</option>
+                                                <select name="department" id="department" class="form-control action" required>
+                                                    <option value="" disabled selected>Select Department</option>
                                                     <?php echo $departments; ?>
                                                 </select>
                                             </div>
@@ -134,8 +134,8 @@ while ($row = mysqli_fetch_array($result)) {
                                         <div class="form-group">
                                             Course <br>
                                             <div class="input-group input-group-sm mb-3">
-                                                <select name="course" id="course" class="form-control action">
-                                                    <option value="">Select course</option>
+                                                <select name="course" id="course" class="form-control action" required>
+                                                    <option value="" disabled selected>Select course</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -152,8 +152,8 @@ while ($row = mysqli_fetch_array($result)) {
                                         <div class="form-group">
                                             Module <br>
                                             <div class="input-group input-group-sm mb-3">
-                                                <select name="module" id="module" class="form-control action">
-                                                    <option value="">Select module</option>
+                                                <select name="module" id="module" class="form-control action" required>
+                                                    <option value="" selected disabled>Select module</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -163,7 +163,7 @@ while ($row = mysqli_fetch_array($result)) {
                                             Academic_year <br>
                                             <div class="input-group input-group-sm mb-3">
                                                 <select class="form-control action" name="academic" id="academic" id="inputGroupSelect01" id="validationCustom04" required>
-                                                    <option value="">Select Academic_year</option>
+                                                    <option value="" disabled selected>Select Academic_year</option>
                                                     <?php echo $academic; ?>
                                                 </select>
                                             </div>
@@ -182,7 +182,7 @@ while ($row = mysqli_fetch_array($result)) {
 
                                                 <select class="custom-select" name="batch" id="batch" id="inputGroupSelect01" id="validationCustom04" required>
 
-                                                    <option value="">Select Batch</option>
+                                                    <option value="" disabled selected>Select Batch</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -193,13 +193,25 @@ while ($row = mysqli_fetch_array($result)) {
                                     <div class="row">
                                         <div class="col-11 "></div>
                                         <div class="col-1">
-                                            <button type="submit" class="btn btn-outline-success" data-toggle="modal" data-target="#exampleModal">
-                                               
-                                           
-                                            
-                                <a href="viewresult.php" >view</a>
-                                </button>
-                           
+                                            <?php
+                                            $department=null;
+                                            $module=null;
+                                            if (isset($_POST['submit'])) {
+                                               $department=$_POST['department'];
+                                               $course=$_POST['course'];
+                                               $module=$_POST['module'];
+                                               $academic_year=$_POST['academic'];
+                                               $batch=$_POST['batch'];
+                                                echo '<a href="viewresult.php?department='.$department.' && course='.$course.'&& department='.$department.'&& course='.$course.'&& module='.$module.'&& academic_year='.$academic.'&& batch='.$batch.', "class="btn btn-outline-success"  color: #ffffff;" > view </a>';
+                                            } else {
+
+                                            ?>
+                                                <input type="submit" name="submit" value="check" class="btn btn-outline-success">
+                                            <?php
+                                            }
+                                            ?>
+
+
                                         </div>
                                     </div>
                                 </div>
@@ -214,6 +226,14 @@ while ($row = mysqli_fetch_array($result)) {
 
             ?>
 
+
+
+
 </body>
 
 </html>
+
+
+<?php
+// echo '<a href="viewresult.php?id=sumanan', '"class="btn btn-outline-success"  color: #ffffff;" > view </a>';
+?>

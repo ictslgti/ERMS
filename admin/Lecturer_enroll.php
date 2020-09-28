@@ -1,4 +1,17 @@
 <?php
+session_start();
+if (!isset($_SESSION['username'])) {
+    header('Location: .././index.php');
+}
+?>
+<?php 
+
+if (isset($_GET['logout']) && isset($_SESSION['username']) ) {
+    unset($_SESSION['username']);  
+    header('Location: .././index.php');         
+}
+?>
+<?php
 $title = "Lec_Enrolement | Online Examination Result Management System | SLGTI";
 $description = "Online Examination Result  Management System (ERMS)-SLGTI";
 ?>
@@ -24,6 +37,23 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
         }
     </script>
     <!-- course -->
+
+
+    <!-- courseteble -->
+    <script>
+        function getcoursetable() {
+            var selectcourse = document.getElementById("course").value;
+            $.ajax({
+                url: 'lecturer_enroll_ajax.php',
+                data: 'course=' + selectcourse,
+                success: function(data) {
+                    $('#demo').html(data);
+                }
+
+            });
+        }
+    </script>
+    <!-- coursetable -->
 
     <!-- batch -->
     <script>
@@ -186,7 +216,7 @@ This course alredy submit
                                                 <div class="form-group">
                                                     <div class="input-group input-group-sm mb-3">
 
-                                                        <select class="custom-select" id="course" name="course" id="inputGroupSelect01" id="validationCustom04" onchange="getcourse()" required>
+                                                        <select class="custom-select" id="course" name="course" id="inputGroupSelect01" id="validationCustom04" onchange="getcourse(),getcoursetable()" required>
                                                             <?php
                                                             if (isset($_GET['edit'])) {
                                                             ?>
@@ -320,7 +350,7 @@ This course alredy submit
             </form>
 
             <div class="table-responsive-sm">
-                <table class="table ">
+                <table class="table" name="demo" id="demo">
                     <thead class="p-3 mb-2 bg-primary text-white">
                         <tr>
                             <th scope="col">module</th>

@@ -1,4 +1,17 @@
 <?php
+session_start();
+if (!isset($_SESSION['username'])) {
+    header('Location: .././index.php');
+}
+?>
+<?php 
+
+if (isset($_GET['logout']) && isset($_SESSION['username']) ) {
+    unset($_SESSION['username']);  
+    header('Location: .././index.php');         
+}
+?>
+<?php
 $title = "Academicyear | Online Examination Result Management System | SLGTI";
 $description = "Online Examination Result  Management System (ERMS)-SLGTI";
 ?>
@@ -79,46 +92,7 @@ if(isset($_GET['id'])){
                         <h6 class="text-muted"><?php echo $course;?></h6>
                     </div>
 
-                    <div class="col-md-2 col-sm-12">
-                        <h6>Attempt </h6>
-                    </div>
-                    <div class="col-md-4 col-sm-12">
-                        <h6 class="text-muted">01</h6>
-                    </div>
-
-                    <div class="col-md-2 col-sm-12">
-                        <h6>Date </h6>
-                    </div>
-                    <div class="col-md-4 col-sm-12">
-                        <h6 class="text-muted"><input type='date'disabled value="2020-02-02"></h6>
-                    </div>
-
-                    <div class="col-md-2 col-sm-12">
-                        <h6>Attempt </h6>
-                    </div>
-                    <div class="col-md-4 col-sm-12">
-                        <h6 class="text-muted">02</h6>
-                    </div>
-
-                    <div class="col-md-2 col-sm-12">
-                        <h6>Date </h6>
-                    </div>
-                    <div class="col-md-4 col-sm-12">
-                        <h6 class="text-muted"><input type='date'disabled value="2020-02-15"></h6>
-                    </div>
-                    <div class="col-md-2 col-sm-12">
-                        <h6>Attempt </h6>
-                    </div>
-                    <div class="col-md-4 col-sm-12">
-                        <h6 class="text-muted">03</h6>
-                    </div>
-
-                    <div class="col-md-2 col-sm-12">
-                        <h6>Date </h6>
-                    </div>
-                    <div class="col-md-4 col-sm-12">
-                        <h6 class="text-muted"><input type='date'></h6>
-                    </div>
+                    
                 </div>
                 
                 
