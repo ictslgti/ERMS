@@ -1,25 +1,24 @@
-<?php
 
-if (!isset($_SESSION['username'])) {
-    header('Location: .././index.php');
-}
-$user = $_SESSION['username'];
-?>
-
-<?php
-
-if (isset($_GET['logout']) && isset($_SESSION['username'])) {
-    unset($_SESSION['username']);
-    header('Location: .././index.php');
-}
-?>
 <?php
 $title = ' ERMS | SLGTI Attendance';
 $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
 ?>
 <!DOCTYPE html>
 <html lang='en'>
+<?php
+session_start();
+if (!isset($_SESSION['username'])) {
+    header('Location: .././index.php');
+}
+?>
 
+<?php 
+
+if (isset($_GET['logout']) && isset($_SESSION['username']) ) {
+    unset($_SESSION['username']);  
+    header('Location: .././index.php');         
+}
+?>
 <head>
     <?php include_once('.././head.php');
     include_once('../config.php');
@@ -28,6 +27,7 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
 
 <body>
     <?php
+    $user = $_SESSION['username'];
     //session
     $lecturers_id = '';
     $query = "SELECT * FROM lecturer where email='$user'";

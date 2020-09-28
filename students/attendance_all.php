@@ -1,10 +1,4 @@
-<?php
-session_start();
-if (!isset($_SESSION['username'])) {
-    header('Location: .././index.php');
-}
-$user = $_SESSION['username'];
-?>
+
 <?php
 $title = ' ERMS | SLGTI(page Title)';
 $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
@@ -16,10 +10,18 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
     <?php include_once('.././head.php');
     include_once('../config.php');
     ?>
+    <?php
+session_start();
+if (!isset($_SESSION['username'])) {
+    header('Location: .././index.php');
+}
+
+?>
 </head>
 
 <body>
     <?php
+    $user = $_SESSION['username'];
     //session
     $student_id = '';
     $query = "SELECT * FROM student where email='$user'";
@@ -55,9 +57,9 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
                                                         Attendance Review
                                                     </button>
                                                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                                    <a class="dropdown-item" href="attendance_all.php">Moudel-Wise</a>
                                                         <a class="dropdown-item" href="attendance_month.php">Month-Wise</a>
                                                         <a class="dropdown-item" href="attendance_semester.php">Semester-Wise</a>
-                                                        <a class="dropdown-item" href="attendance_all.php">Moudel-Wise</a>
                                                     </div>
                                                 </div>
 
