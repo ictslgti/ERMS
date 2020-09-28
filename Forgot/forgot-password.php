@@ -23,7 +23,11 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
 
 <body>        
 <?php 
-         if(isset($_POST['reset'])){
+         if(isset($_POST['reset'])
+         && !empty($_POST['password'])
+         && !empty($_POST['re_password'])
+         ){
+            
             $uid = $_GET['id'];
             $vemail = $_GET['email'];
             
@@ -98,7 +102,8 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
 
                 <div class="button">
                     <button type="submit" class="lbtnfor" value="Reset" name="reset">Reset</button>
-                    <input type="button" class="sbtn" value="Signin">
+                    <div><a href="../index.php" style="text-decoration: none;"><input type="button" class="sbtn" value="Signin"></a></div>
+                    
                 </div>                               
             </form>
             
