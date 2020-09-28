@@ -16,15 +16,15 @@ if (isset($_GET['logout']) && isset($_SESSION['username']) ) {
                 <li class="nav-item">
                     <a class="nav-link" href=""><i class="fas fa-home"></i> Dashboard</a>
                 </li>
-                <li class="nav-item dropdown">
+                <!-- <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <i class="fas fa-university"></i> Department
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="#"> Departments</a>
                     </div>
-                </li>
-                <li class="nav-item dropdown">
+                </li> -->
+                <!-- <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <i class="fas fa-book-open"></i> Course
                     </a>
@@ -33,13 +33,13 @@ if (isset($_GET['logout']) && isset($_SESSION['username']) ) {
                         <a class="dropdown-item" href="#">Modules</a>
 
                     </div>
-                </li>
+                </li> -->
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <i class="fas fa-user-graduate"></i> Students
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">Students Report</a>
+                        <a class="dropdown-item" href="studentview.php">Students Report</a>
                     </div>
                 </li>
                 <li class="nav-item dropdown">
@@ -47,7 +47,7 @@ if (isset($_GET['logout']) && isset($_SESSION['username']) ) {
                         <i class="fas fa-book"></i> Assessment
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">Assessment Results</a>
+                        <a class="dropdown-item" href="assessment.php">Assessment Results</a>
                     </div>
                 </li>
                 <li class="nav-item dropdown">
@@ -55,7 +55,7 @@ if (isset($_GET['logout']) && isset($_SESSION['username']) ) {
                         <i class="fas fa-calendar-alt"></i> Attendance
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">Attendance Report</a>
+                        <a class="dropdown-item" href="attendance_all.php">Attendance Report</a>
                     </div>
                 </li>
                 <li class="nav-item dropdown">
@@ -63,7 +63,7 @@ if (isset($_GET['logout']) && isset($_SESSION['username']) ) {
                         <i class="fas fa-graduation-cap"></i> Examinations
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="exams_results.php">Examinations Reports</a>
+                        <a class="dropdown-item" href="result_view.php">Examinations Results</a>
                     </div>
                 </li>
 
