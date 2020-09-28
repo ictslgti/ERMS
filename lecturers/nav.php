@@ -5,7 +5,7 @@ if (isset($_GET['logout']) && isset($_SESSION['username']) ) {
 }
 ?>
 <?php
-session_start();
+
 if (!isset($_SESSION['username'])) {
     header('Location: .././index.php');
 }
@@ -56,7 +56,7 @@ if (!isset($_SESSION['username'])) {
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <a class="dropdown-item" href="students.php">Students View</a>
-                        <a class="dropdown-item" href="studentview.php">Student Report</a>
+                        <!-- <a class="dropdown-item" href="studentview.php">Student Report</a> -->
                     </div>
                 </li>
                 <li class="nav-item dropdown">
