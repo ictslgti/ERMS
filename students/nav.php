@@ -55,7 +55,7 @@ if (isset($_GET['logout']) && isset($_SESSION['username']) ) {
                         <i class="fas fa-calendar-alt"></i> Attendance
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="attendance_all.php">Attendance Report</a>
+                        <a class="dropdown-item" href="attendance_all.php">Attendance View</a>
                     </div>
                 </li>
                 <li class="nav-item dropdown">
