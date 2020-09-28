@@ -203,7 +203,7 @@ while ($row = mysqli_fetch_array($result)) {
                                                 $academic_year = $_POST['academic'];
                                                 $batch = $_POST['batch'];
 
-                                                echo'<a   href="viewresult.php?department='. $department . '&& course=' . $course . '&& module=' . $module . '&& batch=' . $batch . ', " class="btn btn-outline-success"> view </a>'
+                                                echo'<a   href="viewresult.php?department=',$department,'& course=',$course,'& module=',$module,' &batch=',$batch ,'" class="btn btn-outline-success"> view </a>'
                                 
                                             ?>
 
