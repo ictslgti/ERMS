@@ -1,8 +1,17 @@
 <?php
-// session_start();
-// if (!isset($_SESSION['username'])) {
-//     header('Location: .././index.php');
-// }
+
+if (!isset($_SESSION['username'])) {
+    header('Location: .././index.php');
+}
+$user = $_SESSION['username'];
+?>
+
+<?php
+
+if (isset($_GET['logout']) && isset($_SESSION['username'])) {
+    unset($_SESSION['username']);
+    header('Location: .././index.php');
+}
 ?>
 <?php
 $title = ' ERMS | SLGTI Attendance';
@@ -18,7 +27,21 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
 </head>
 
 <body>
-
+    <?php
+    //session
+    $lecturers_id = '';
+    $query = "SELECT * FROM lecturer where email='$user'";
+    $result = mysqli_query($con, $query);
+    while ($row = mysqli_fetch_assoc($result)) {
+        $lecturers_id = $row['id'];
+    }
+    ?>
+    <?php
+    $semester = null;
+    if (isset($_GET['semester'])) {
+        $semester = $_GET['semester'];
+    }
+    ?>
     <main class='page-content pt-2'>
         <?php include_once('nav.php');
         ?>
@@ -36,13 +59,22 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
                             <!-- #1 Insert Your Content-->
 
 
-                            <div class="container" style="margin-top:10px">
+                            <div class="container" style="margin-top:10px; overflow: hidden;">
                                 <div class="card">
                                     <div class="card-header">
 
                                         <form action="" method="POST">
                                             <div class="row">
-
+                                            <div class="dropdown">
+                                                    <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" value="show details" name="show_date">
+                                                        Attendance Review
+                                                    </button>
+                                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                                    <a class="dropdown-item" href="attendance.php">Class-wise</a>
+                                                        <a class="dropdown-item" href="attendance_month.php">Month-wise</a>
+                                                        <a class="dropdown-item" href="attendance_semester.php">Semester-wise</a>
+                                                    </div>
+                                                </div>
                                                 <div class="col-2">
                                                     <select name="cid" id="cid" class="custom-select action">
                                                         <?php
@@ -66,7 +98,7 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
                                                 </div>
 
                                                 <div class="col-2">
-                                                    <button type="submit" class="btn btn-primary mb-2">Find</button>
+                                                    <button type="submit" class="btn btn-primary mb-2" id="">Find</button>
                                                 </div>
 
                                             </div>
@@ -88,56 +120,107 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
                                                                 <table class="table align-middle">
                                                                     <thead class='thead-light'>
 
-
                                                                         <tr>
-                                                                            <th scope='col'>Reg No.</th>
-                                                                            <th scope='col'>1st Lec</th>
-                                                                            <th scope='col'>2nd Lec</th>
-                                                                            <th scope='col'>3rd Lec</th>
-                                                                            <th scope='col'>4th Lec</th>
-                                                                            <th scope='col'>5th Lec</th>
-                                                                            <th scope='col'>6th Lec</th>
-                                                                            <th scope='col'>7th Lec</th>
-                                                                            <th scope='col'>8th Lec</th>
-                                                                            <!-- <th scope='col'>9th Lec</th> -->
-                                                                            <!-- <th scope='col'>10th Lec</th> -->
+                                                                            <?php
+                                                                            $lec = null;
 
-                                                                            <th scope='col'>Total Lec</th>
+                                                                            ?>
+
+                                                                            <th scope='col'>Reg No.</th>
+                                                                            <?php
+                                                                            for ($x = 1; $x <= 20; $x += 1) {
+                                                                            ?>
+                                                                                <th scope='col'><?php echo "$x"; ?></th>
+                                                                            <?php } ?>
+                                                                            <th scope='col'>Total</th>
                                                                         </tr>
 
+
+
+                                                                        <!-- if -->
                                                                         <?php
-                                                                        $sql = " select student_id,status from student_attendance group by student_id";
-                                                                        $result = mysqli_query($con, $sql);
-                                                                        while ($row = mysqli_fetch_assoc($result)) {
+                                                                        if (isset($_GET['submit'])) {
+
                                                                         ?>
-                                                                            <tr>
-                                                                                <td><?php echo $row['student_id'] ?></td>
-                                                                                <?php
-                                                                                while ($row = mysqli_fetch_assoc($result)) { ?>
-                                                                                    <td scope="row"><?php echo $row['status'] ?></td>
-                                                                                <?php
-                                                                                }
-                                                                                ?>
-                                                                            </tr>
+
+                                                                            <!-- array -->
+                                                                            <?php
+                                                                            $student_id = null;
+                                                                            $status = null;
+
+                                                                            if (isset($_GET['student_id'])) {
+                                                                                $student_id = $_GET['student_id'];
+                                                                                $status = $_GET['status'];
+                                                                            }
+                                                                            ?>
+                                                                            <!-- array -->
+
+                                                                            <!-- student_id array -->
+                                                                            <?php
+
+                                                                            $sql = mysqli_query($con, "SELECT DISTINCT student_id FROM student_attendance");
+
+                                                                            while ($row = mysqli_fetch_array($sql)) {
+                                                                                $s_ids[] = $row['student_id'];
+                                                                            }
+                                                                            foreach ($s_ids as $idss) {
+                                                                                // echo "$idss";
+                                                                            }
+                                                                            ?>
+                                                                            <!-- student_id array  -->
+
+                                                                            <!-- status array -->
+                                                                            <?php
+
+                                                                            $sql = mysqli_query($con, "SELECT DISTINCT status FROM student_attendance");
+
+                                                                            while ($row = mysqli_fetch_array($sql)) {
+                                                                                $s_ids[] = $row['status'];
+                                                                            }
+                                                                            foreach ($s_ids as $idss) {
+                                                                                // echo "$idss";
+                                                                            }
+                                                                            ?>
+                                                                            <!-- status array  -->
+
                                                                         <?php
                                                                         }
+                                                                        else {
+                                                                        ?>
+
+
+                                                                            
+
+                                                                            <?php
+                                                                            $sql = " SELECT student_id,status from student_attendance";
+                                                                            $result = mysqli_query($con, $sql);
+                                                                            while ($row = mysqli_fetch_assoc($result)) {
+                                                                            ?>
+                                                                            <tr>
+                                                                                <td><?php echo $row['student_id'] 
+                                                                                            ?></td>
+
+                                                                                <td>
+                                                                                    <?php
+                                                                                    if ($row['status'] == 'present') {
+                                                                                        echo "P";
+                                                                                    } else {
+                                                                                        echo 'AB';
+                                                                                    }
+                                                                                    ?>
+                                                                                </td>
+
+                                                                            </tr>
+                                                                        <?php
+                                                                        } }
                                                                         ?>
 
                                                                         <tr>
                                                                             <td>Total attendance</td>
-                                                                            <td>05</td>
-                                                                            <td>04</td>
-                                                                            <td>01</td>
-                                                                            <td>05</td>
-                                                                            <td>04</td>
-                                                                            <td>04</td>
-                                                                            <td>04</td>
-                                                                            <td>04</td>
-                                                                            <!-- <td>05</td> -->
-                                                                            <!-- <td>05</td> -->
 
 
-                                                                            <td>25</td>
+
+
                                                                         </tr>
 
                                                                     </thead>
@@ -149,10 +232,6 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
                                                     </table>
                                                 </div>
                                             </div>
-
-
-
-
 
                                         </div>
                                     </div>
@@ -217,6 +296,14 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
         });
     });
 </script>
+
+<!-- script -->
+<script>
+    function myFunction() {
+        document.getElementById("demo").style.color = "red";
+    }
+</script>
+<!-- script -->
 
 <?php
 //fetch.php
