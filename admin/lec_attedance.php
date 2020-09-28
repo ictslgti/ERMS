@@ -126,8 +126,8 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                         <div class="card-footer bg-transparent border-secondary">
                             <div class="row">
                                 <div class="col"><input type="submit" name="submit" value="ADD" class="btn btn-outline-primary"></div>
-                                <div class="col"><input type="edite" value="Edit" class="btn btn-outline-primary"></div>
-                                <!-- <div class="col-auto">click all select<input type='checkbox' name='checkall' onclick='checkedAll(frm1);'></div> -->
+                               <!-- <div class="col"><input type="edite" value="Edit" class="btn btn-outline-primary"></div>
+                                <div class="col-auto">click all select<input type='checkbox' name='checkall' onclick='checkedAll(frm1);'></div> -->
 
                             </div>
                     </form>
@@ -163,7 +163,7 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                         if (mysqli_multi_query($con, $sql_multi)) {
                             echo '
     <div class="alert alert-success alert-dismissible fade show" role="alert">
-    <strong></strong> Assessment Type details inserted!
+    <strong></strong> Attendance  Succesfully Added
     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
     <span aria-hidden="true">&times;</span>
     </button>
