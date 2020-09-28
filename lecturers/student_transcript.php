@@ -1,5 +1,5 @@
 <?php
-$title = ' ERMS | SLGTI(Transcript)';
+$title ='STUDENT TRANSCRIPT';
 $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
 ?>
 <!DOCTYPE html>
@@ -90,7 +90,7 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
                 </div>
                 <div class="col-9"></div>
                 <div class='col-1'>
-                  <a class='btn btn-outline-primary' href='./transcript.php'>ALL</a>
+                  <a class='btn btn-outline-primary' href='./transcript.php' id="print-btn">ALL</a>
                 </div>
               </div>
             </div>
@@ -270,11 +270,13 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
                   <div class="text-center col-4">
                     <button onclick="window.print();" class="btn btn-primary" id="print-btn">Print</button>
                   </div>
-                  <div class="col-4"></div>
+                  <div  class="col-4"></div>
+                  
                 </div>
 
               </div>
             </div>
+            <p style="text-align: center;" type="hidden"> <b>This Is Computer sample Copy Transcript Do Not use others</b></p>
           </div> <!-- #1 Insert Your Content" -->
         </div>
   </main>
