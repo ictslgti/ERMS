@@ -382,7 +382,7 @@ This academic_year alredy submit
                      <div class="form-group">
                      NIC <br>
                      <div class="input-group input-group-sm mb-3">
-                        <input type="text" name="nic" value="<?php echo $nic;?>" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm"id="validationServer01" required>
+                        <input type="text" name="nic" value="<?php echo $nic;?>" maxlength="13" size="13" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm"id="validationServer01" required>
                         </div>
                      </div>
                      </div>
@@ -397,7 +397,7 @@ This academic_year alredy submit
                      <div class="form-group">
                      Phone number <br>
                      <div class="input-group input-group-sm mb-3">
-                        <input type="number" name="phoneno" value="<?php echo $phoneno;?>" class="form-control"  aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm"id="validationServer01" required>
+                        <input type="text" onkeypress="return (event.charCode !=8 && event.charCode ==0 || (event.charCode >= 48 && event.charCode <= 57))" name="phoneno" value="<?php echo $phoneno;?>" class="form-control"  aria-label="Sizing example input"maxlength="10" size="10" aria-describedby="inputGroup-sizing-sm"id="validationServer01" required>
                         </div>
                          </div>
                      </div>
