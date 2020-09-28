@@ -58,12 +58,9 @@ if (isset($_GET['logout']) && isset($_SESSION['username']) ) {
                                     <h5><?php echo "$title" ?></h5>
                                 </div>
                                 <div class='col-1-sm'>
-                                    <a class='btn btn-outline-primary' href='./student.php'>Add New</a>
                                 </div>
-                                <div class='col-2'>
+                                <div class='col-3'>
                                     <input class="form-control" id="myInput" onkeyup="myFunction()" type="search" placeholder="Registration No." aria-label="Search">
-                                </div>
-                                <div class='col-1-sm'>
                                 </div>
                                 <button class="btn btn-outline-success" type="submit">Search</button>
                             </div>

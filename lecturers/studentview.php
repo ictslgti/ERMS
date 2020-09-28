@@ -123,12 +123,10 @@ if (isset($_GET['logout']) && isset($_SESSION['username']) ) {
                                     <h5><?php echo "$title" ?></h5>
                                 </div>
                                 <div class='col-2'>
-                                    <a class='btn btn-outline-warning' href="student.php?edit=<?php echo $student_id; ?>">Edit</a>
                                 </div>
-                                <div class='col-1-sm'>
-                                    <a class='btn btn-outline-primary' href='./student.php'>Add New</a>
+                                <div class='col-1'>
                                 </div>
-                                <div class='col'>
+                                <div class='col-1'>
                                     <a class='btn btn-outline-primary' href='./students.php'>ALL</a>
                                 </div>
                             </div>
