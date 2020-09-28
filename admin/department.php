@@ -1,4 +1,17 @@
 <?php
+session_start();
+if (!isset($_SESSION['username'])) {
+    header('Location: .././index.php');
+}
+?>
+<?php 
+
+if (isset($_GET['logout']) && isset($_SESSION['username']) ) {
+    unset($_SESSION['username']);  
+    header('Location: .././index.php');         
+}
+?>
+<?php
 $title = "Add Department | Online Examination Result Management System | SLGTI";
 $description = "Online Examination Result  Management System (ERMS)-SLGTI";
 ?>

@@ -1,3 +1,15 @@
+<?php 
+if (isset($_GET['logout']) && isset($_SESSION['username']) ) {
+    unset($_SESSION['username']);  
+    header('Location: .././index.php');         
+}
+?>
+<?php
+session_start();
+if (!isset($_SESSION['username'])) {
+    header('Location: .././index.php');
+}
+?>
 <?php
 $title = ' ERMS | Result Sheet';
 $description = "Online Examination Result  Management System (ERMS)-SLGTI";
@@ -6,12 +18,46 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
 <html lang="en">
 
 <head>
-    <?php include_once("../../head.php"); ?>
-    <?php include_once("../../config.php"); ?>
-    <?php include_once("../nav.php"); ?>
+    <?php include_once("../head.php"); ?>
+    <?php include_once("../config.php"); ?>
+    <?php include_once("nav.php"); ?>
+    <script>
+        function getdepartment() {
+            var selectdepartment = document.getElementById("department").value;
+            $.ajax({
+                url: 'result_ajax.php',
+                data: 'department=' + selectdepartment,
+                success: function(data) {
+                    $('#batch').html(data);
+                }
+
+            });
+        }
+
+        function getexametype() {
+            var selectdepartment = document.getElementById("exametype").value;
+            $.ajax({
+                url: 'result_ajax.php',
+                data: 'exametype=' + selectdepartment,
+                success: function(data) {
+                    $('#Exams_type').html(data);
+                }
+
+            });
+        }
+    </script>
 </head>
 
 <body>
+<?php
+    //departments
+    $departments = '';
+    $query = "SELECT * FROM departments";
+    $result = mysqli_query($con, $query);
+    while ($row = mysqli_fetch_array($result)) {
+        $departments .= '<option value="' . $row["code"] . '">' . $row["name"] . '</option>';
+    }
+    ?>
     <div class="container">
         <?php
         if (isset($_POST['submit'])) {
@@ -49,19 +95,29 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                                 <div class='input-group-prepend'>
                                     <label for='exampleInput'>Department</label>
                                 </div>
-                                <select class='custom-select' name="department" id='inputGroupSelect01' id='validationServer02' required>
-
-                                    <option selected disabled value="">Choose Department</option>
-                                    <option value=''>Select Department</option>
-                                    <option value='1'>Information Communication Technology</option>
-                                    <option value='2'>Automotive & Technology</option>
-                                    <option value='3'>Construction Technology</option>
-                                    <option value='4'>Electrical Technology</option>
-                                    <option value='5'>Food Technology</option>
-                                    <option value='6'>Mechanical Technology</option>
+                                <select class='custom-select' name="department" id="department" id='inputGroupSelect01' id='validationServer02' onchange="getdepartment()" required>
+                                    <?php echo $departments;?>
                                 </select>
                             </div>
                         </div>
+
+                        <div class="col">
+                            <div class='input-group-sm mb-3'>
+                                <div class='input-group-prepend'>
+                                    <label for='exampleInput'>Batch</label>
+                                </div>
+                                <select class='custom-select' name="batch" id="batch" id='inputGroupSelect01' id='validationServer02' required>
+                                    <option selected disabled value="">Choose Batch</option>
+                                </select>
+                            </div>
+                        </div>
+
+                    </div>
+                    <!-- 1st row -->
+
+                    <!-- 2nd row -->
+                    <div class="row">
+                        
                         <div class="col">
                             <div class='input-group-sm mb-3'>
                                 <div class='input-group-prepend'>
@@ -76,37 +132,21 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                                 </select>
                             </div>
                         </div>
-                    </div>
-                    <!-- 1st row -->
 
-                    <!-- 2nd row -->
-                    <div class="row">
                         <div class="col">
                             <div class='input-group-sm mb-3'>
                                 <div class='input-group-prepend'>
 
                                     <label for='exampleInputEmail1'>Exams type</label>
                                 </div>
-                                <select class='custom-select' name="type" id='inputGroupSelect01' id='validationServer0' required>
+                                <select class='custom-select' name="type" id="Exams_type" id='inputGroupSelect01' id='validationServer0' required>
                                     <option selected disabled>Select Exams</option>
                                     <option value='1'>INSTITUTE</option>
                                     <option value='2'>TVEC</option>
                                 </select>
                             </div>
                         </div>
-                        <div class="col">
-                            <div class='input-group-sm mb-3'>
-                                <div class='input-group-prepend'>
-                                    <label for='exampleInput'>Batch</label>
-                                </div>
-                                <select class='custom-select' name="batch" id='inputGroupSelect01' id='validationServer02' required>
-                                    <option selected disabled value="">Choose Batch</option>
-                                    <option value='1'>batch 1</option>
-                                    <option value='2'>batch 2</option>
-                                    <option value='3'>batch 3</option>
-                                </select>
-                            </div>
-                        </div>
+
                     </div>
                     <!-- 2nd row -->
             </div>
@@ -132,7 +172,7 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
             </form>
         </div>
 
-        <?php include_once("../../script.php"); ?>
+        <?php include_once("../script.php"); ?>
 </body>
 
 </html>

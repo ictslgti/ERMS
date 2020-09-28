@@ -1,12 +1,19 @@
 <?php
-// session_start();
-// if (!isset($_SESSION['username'])) {
-//     header('Location: .././index.php');
-// }
-$user = 'nufailniyas98@gmail.com';
+session_start();
+if (!isset($_SESSION['username'])) {
+    header('Location: .././index.php');
+}
+$user = $_SESSION['username'];
 ?>
 <?php
-$title = ' ERMS | SLGTI(page Title)';
+
+if (isset($_GET['logout']) && isset($_SESSION['username'])) {
+    unset($_SESSION['username']);
+    header('Location: .././index.php');
+}
+?>
+<?php
+$title = ' ERMS | SLGTI Attendance';
 $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
 ?>
 <!DOCTYPE html>
@@ -25,7 +32,7 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
     $query = "SELECT * FROM student where email='$user'";
     $result = mysqli_query($con, $query);
     while ($row = mysqli_fetch_assoc($result)) {
-        echo $student_id = $row['id'];
+        $student_id = $row['id'];
     }
     ?>
     <?php
@@ -61,9 +68,9 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
                                                         Attendance Review
                                                     </button>
                                                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                                        <a class="dropdown-item" href="attendance_all.php">Moudel-wise</a>
                                                         <a class="dropdown-item" href="attendance_month.php">Month-wise</a>
                                                         <a class="dropdown-item" href="attendance_semester.php">Semester-wise</a>
-                                                        <a class="dropdown-item" href="attendance_all.php">Moudel-wise</a>
                                                     </div>
                                                 </div>
 
@@ -107,7 +114,7 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
                                                     <tr>
                                                         <th>module</th>
                                                         <th>Total session</th>
-                                                        <th>Take session</th>     
+                                                        <th>Take session</th>
                                                         <th>Percentage over taken Month</th>
                                                     </tr>
                                                     <!-- array start -->
@@ -135,7 +142,7 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
                                                             $result = mysqli_query($con, $sql);
                                                             while ($row = mysqli_fetch_assoc($result)) {
                                                     ?>
-                                                                    <tr>
+                                                                <tr>
                                                                     <td scope='col'>
                                                                         <?php echo $row['code'];
                                                                         ?>
@@ -155,7 +162,7 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
                                                                         }
                                                                         ?>
                                                                     </td>
-                                                                    
+
                                                                     <td scope='col'>
                                                                         <?php echo number_format(($row['Take'] / $row['Total']) * 100, 2) . "%" ?>
                                                                     </td>
@@ -194,7 +201,7 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
                                                                         }
                                                                         ?>
                                                                     </td>
-                                                                    
+
                                                                     <td scope='col'>
                                                                         <?php echo number_format(($row['Take'] / $row['Total']) * 100, 2) . "%" ?>
                                                                     </td>

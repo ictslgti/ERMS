@@ -1,3 +1,15 @@
+<?php 
+if (isset($_GET['logout']) && isset($_SESSION['username']) ) {
+    unset($_SESSION['username']);  
+    header('Location: .././index.php');         
+}
+?>
+<?php
+session_start();
+if (!isset($_SESSION['username'])) {
+    header('Location: .././index.php');
+}
+?>
 <?php
 $title = "kishok | Online Examination Result Management System | SLGTI";
 $description = "Online Examination Result  Management System (ERMS)-SLGTI";
@@ -9,9 +21,8 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="print.css" media="print">
-    <?php include_once("../../head.php"); ?>
-    <?php include_once("../../config.php"); ?>
+    <?php include_once("../head.php"); ?>
+    <?php include_once("../config.php"); ?>
     <style>
         th {
             font-size: 12px;
@@ -47,7 +58,7 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
     ?>
     <div class="page-wrapper toggled bg2 border-radius-on light-theme">
 
-        <?php include_once("../nav.php"); ?>
+        <?php include_once("nav.php"); ?>
         <!-- id array -->
         <?php
 
@@ -136,13 +147,13 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
 
             </tbody>
         </table>
-
         <div class="text-center">
-            <button onclick="window.print();" class="btn btn-primary" id="print-btn">Print</button>
+            <a href="resultsheetprint.php" class="btn btn-primary">Print</a>
         </div>
 
+
     </div>
-    <?php include_once("../../script.php"); ?>
+    <?php include_once("../script.php"); ?>
 </body>
 
 </html>

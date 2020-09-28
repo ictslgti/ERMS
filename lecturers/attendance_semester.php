@@ -1,9 +1,16 @@
 <?php
-// session_start();
-// if (!isset($_SESSION['username'])) {
-//     header('Location: .././index.php');
-// }
-$user = 'nufailniyas98@gmail.com';
+session_start();
+if (!isset($_SESSION['username'])) {
+    header('Location: .././index.php');
+}
+$user = $_SESSION['username'];
+?>
+<?php 
+
+if (isset($_GET['logout']) && isset($_SESSION['username']) ) {
+    unset($_SESSION['username']);  
+    header('Location: .././index.php');         
+}
 ?>
 <?php
 $title = ' ERMS | SLGTI(Attendance)';
@@ -23,10 +30,10 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
     <?php
     //session
     $lecturers_id = '';
-    $query = "SELECT * FROM student where email='$user'";
+    $query = "SELECT * FROM lecturer where email='$user'";
     $result = mysqli_query($con, $query);
     while ($row = mysqli_fetch_assoc($result)) {
-        echo $lecturers_id = $row['id'];
+        $lecturers_id = $row['id'];
     }
     ?>
     <?php
@@ -62,9 +69,9 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
                                                         Attendance Review
                                                     </button>
                                                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                                    <a class="dropdown-item" href="attendance.php">Class-wise</a>
                                                         <a class="dropdown-item" href="attendance_month.php">Month-wise</a>
                                                         <a class="dropdown-item" href="attendance_semester.php">Semester-wise</a>
-                                                        <a class="dropdown-item" href="attendance.php">Date-wise</a>
                                                     </div>
                                                 </div>
 
@@ -99,9 +106,11 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
                                                 <thead>
                                                     <tr>
                                                         <th>student Id</th>
+                                                        <th>code</th>
                                                         <th>Taken sessions</th>
-                                                        <th> Take session</th>
-                                                        <th>Points in persantage</th>
+                                                        <th>Total session</th>
+                                                        <th>persantage</th>
+                                                        <th>date</th>
                                                     </tr>
 
                                                     <?php
@@ -120,20 +129,42 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
                                                     if (isset($_GET['semester'])) {
                                                         $sem = $_GET['semester'];
 
-                                                        $sql = "select count(student_attendance.status) as Total,(SELECT count(student_attendance.status) from 
-                                                                attendance,student_attendance where student_attendance.id=attendance.attendance_id and 
-                                                                student_attendance.status='present' AND student_id='2018slgtibit01' AND attendance.code=modules.code group by batch_no)
-                                                                as Take,attendance.code from attendance,student_attendance,modules where student_attendance.id=attendance.attendance_id AND
-                                                                student_id='2018slgtibit01' and attendance.code=modules.code and modules.semester_id='" . $sem . "' group by CODE,batch_no";
+
+                                                        $sql = "SELECT student_attendance.student_id,student.name_with_initials,COUNT(status) as Total,
+                                                        SUM(`status` = 'present') as Take , attendance.code ,attendance.attendance_date
+                                                        FROM student_enroll INNER JOIN student ON student_enroll.id=student.id INNER JOIN 
+                                                        student_attendance ON student_enroll.id=student_attendance.student_id  inner join attendance ON attendance_id=student_attendance.id
+                                                        inner join modules on attendance.code=modules.code and modules.semester_id='$sem'
+                                                        AND attendance.lecturer_id = '$lecturers_id'  GROUP BY student_enroll.id";
+
+                                                        // $sql = "SELECT count(student_attendance.status) as Total,(SELECT count(student_attendance.status) from 
+                                                        //         attendance,student_attendance where student_attendance.id=attendance.attendance_id and 
+                                                        //         student_attendance.status='present' AND student_id='2018slgtibit01' AND attendance.code=modules.code group by batch_no)
+                                                        //         as Take,attendance.code from attendance,student_attendance,modules where student_attendance.id=attendance.attendance_id AND
+                                                        //         student_id='2018slgtibit01' and attendance.code=modules.code and modules.semester_id='" . $sem . "' group by CODE,batch_no";
+
+                                                        // $sql = "SELECT student_attendance.student_id,student.name_with_initials,COUNT(status) as Total,
+                                                        // SUM(`status` = 'present') as Take 
+                                                        // FROM student_enroll INNER JOIN student ON student_enroll.id=student.id INNER JOIN 
+                                                        // student_attendance ON student_enroll.id=student_attendance.student_id INNER JOIN attendance on
+                                                        //  attendance.attendance_id=student_attendance.id where modules.semester_id='" . $sem . "' GROUP BY student_enroll.id";
+
+                                                        // $sql = "SELECT student_attendance.student_id,student.name_with_initials,COUNT(status) as Total,
+                                                        // SUM(`status` = 'present') as Take 
+                                                        // FROM student_enroll INNER JOIN student ON student_enroll.id=student.id INNER JOIN 
+                                                        // student_attendance ON student_enroll.id=student_attendance.student_id INNER JOIN attendance on
+                                                        //  attendance.attendance_id=student_attendance.id where modules.semester_id='" . $sem . "' GROUP BY student_enroll.id";
 
                                                         $result = mysqli_query($con, $sql);
                                                         while ($row = mysqli_fetch_assoc($result)) {
                                                     ?>
                                                             <tr>
                                                                 <td scope='col'>
-                                                                    <?php echo $row['code'];
+                                                                    <?php echo $row['student_id'];
                                                                     ?>
                                                                 </td>
+                                                                <td><?php echo $row['code'];
+                                                                    ?></td>
                                                                 <td scope='col'>
 
                                                                     <?php
@@ -152,56 +183,78 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
                                                                 <td scope='col'>
                                                                     <?php echo number_format(($row['Take'] / $row['Total']) * 100, 2) . "%" ?>
                                                                 </td>
+                                                                <td><?php echo $row['attendance_date'];
+                                                                    ?>
+                                                                </td>
 
                                                             </tr>
-                                                            <?php
+                                                        <?php
                                                         }
                                                     } else {
-                                                        for ($x = 0; $x < $cont; $x++) {
+                                                        // for ($x = 0; $x < $cont; $x++) {
 
-                                                            $sql = "SELECT student_attendance.student_id,student.name_with_initials,COUNT(status) as Total,
-                                                            SUM(`status` = 'present') as Take 
-                                                            FROM student_enroll INNER JOIN student ON student_enroll.id=student.id INNER JOIN 
-                                                            student_attendance ON student_enroll.id=student_attendance.student_id GROUP BY student_enroll.id";
+                                                        $sql = "SELECT student_attendance.student_id,student.name_with_initials,COUNT(status) as Total,
+                                                        SUM(`status` = 'present') as Take , attendance.code , attendance.attendance_date
+                                                        FROM student_enroll INNER JOIN student ON student_enroll.id=student.id 
+                                                        INNER JOIN student_attendance ON student_enroll.id=student_attendance.student_id 
+                                                        INNER JOIN attendance ON attendance_id=student_attendance.id 
+                                                        inner join modules on attendance.code=modules.code
+                                                        AND attendance.lecturer_id = '$lecturers_id' GROUP BY student_enroll.id";
 
 
-                                                            $sql = "select count(student_attendance.status) as Total,(SELECT count(student_attendance.status) from attendance,student_attendance where 
-                                                                    student_attendance.id=attendance.attendance_id and student_attendance.status='present' AND student_id='2018slgtibit01' and code='" . $modu[$x] . "' group by batch_no) as Take ,
-                                                                    attendance.code from attendance,student_attendance where student_attendance.id=attendance.attendance_id 
-                                                                    AND student_id='2018slgtibit01'  and code='" . $modu[$x] . "' group by CODE,batch_no";
+                                                        // $sql = "SELECT count(student_attendance.status) as Total,(SELECT count(student_attendance.status) from attendance,student_attendance where 
+                                                        //         student_attendance.id=attendance.attendance_id and student_attendance.status='present' AND student_id='2018slgtibit01' and code='" . $modu[$x] . "' group by batch_no) as Take ,
+                                                        //         attendance.code from attendance,student_attendance where student_attendance.id=attendance.attendance_id 
+                                                        //         AND student_id='2018slgtibit01'  and code='" . $modu[$x] . "' group by CODE,batch_no";
 
-                                                            $result = mysqli_query($con, $sql);
-                                                            while ($row = mysqli_fetch_assoc($result)) {
-                                                            ?>
-                                                                <tr>
-                                                                    <td scope='col'>
-                                                                        <?php echo $row['code'];
-                                                                        ?>
-                                                                    </td>
-                                                                    <td scope='col'>
+                                                        // $sql = "SELECT student_attendance.student_id,student.name_with_initials,COUNT(status) as Total,
+                                                        //         SUM(`status` = 'present') as Take 
+                                                        //         FROM student_enroll INNER JOIN student ON student_enroll.id=student.id INNER JOIN 
+                                                        //         student_attendance ON student_enroll.id=student_attendance.student_id INNER JOIN attendance on
+                                                        //         attendance.attendance_id=student_attendance.id  GROUP BY student_enroll.id";
 
-                                                                        <?php
-                                                                        if ($row['Take'] == null) {
-                                                                            echo "0";
-                                                                        } else {
-                                                                            echo $row['Take'];
-                                                                        }
-                                                                        ?>
-                                                                    </td>
-                                                                    <td scope='col'>
+                                                        // $sql = "SELECT student_attendance.student_id,student.name_with_initials,COUNT(status) as Total,
+                                                        // SUM(`status` = 'present') as Take 
+                                                        // FROM student_enroll INNER JOIN student ON student_enroll.id=student.id INNER JOIN 
+                                                        // student_attendance ON student_enroll.id=student_attendance.student_id INNER JOIN attendance on
+                                                        //  attendance.attendance_id=student_attendance.id where modules.semester_id='" . $sem . "' GROUP BY student_enroll.id";
 
-                                                                        <?php echo $row['Total'];
-                                                                        ?>
-                                                                    </td>
-                                                                    <td scope='col'>
-                                                                        <?php echo number_format(($row['Take'] / $row['Total']) * 100, 2) . "%" ?>
-                                                                    </td>
+                                                        $result = mysqli_query($con, $sql);
+                                                        while ($row = mysqli_fetch_assoc($result)) {
+                                                        ?>
+                                                            <tr>
+                                                                <td scope='col'>
+                                                                    <?php echo $row['student_id'];
+                                                                    ?>
+                                                                </td>
+                                                                <td><?php echo $row['code'];
+                                                                    ?></td>
+                                                                <td scope='col'>
 
-                                                                </tr>
+                                                                    <?php
+                                                                    if ($row['Take'] == null) {
+                                                                        echo "0";
+                                                                    } else {
+                                                                        echo $row['Take'];
+                                                                    }
+                                                                    ?>
+                                                                </td>
+                                                                <td scope='col'>
+
+                                                                    <?php echo $row['Total'];
+                                                                    ?>
+                                                                </td>
+                                                                <td scope='col'>
+                                                                    <?php echo number_format(($row['Take'] / $row['Total']) * 100, 2) . "%" ?>
+                                                                </td>
+                                                                <td><?php echo $row['attendance_date'];
+                                                                    ?></td>
+
+                                                            </tr>
                                                     <?php
-                                                            }
                                                         }
                                                     }
+                                                    // }
                                                     ?>
 
                                             </table>

@@ -10,6 +10,33 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
     <?php include_once("../config.php"); ?>
 </head>
 
+<?php
+$student_id = $stitle = $full_name = $ini_name = $gender = $civil = $email = $nic = $dob = $phone = $address = $ds =
+$district = $province = $zip = $blood = $gname = $gaddress = $gphone = $grelation = $regno = $cid = $bid =
+$mode = $status = $enrolldate = $exitdate = $ccode = null;
+if (isset($_GET['edit'])) {
+$id = $_GET['edit'];
+
+$sql_attendance = "SELECT * FROM attendance 
+-- LEFT JOIN student_enroll
+-- ON `student`.`id` = `student_enroll`.`id`
+WHERE `attendance`.`id` = '$id'";
+
+$result_attendance = mysqli_query($con, $sql_attendance);
+$row = mysqli_fetch_assoc($result_attendance);
+if (mysqli_num_rows($result_attendance) == 1) {
+    // $id = $row['title'];
+    $module_id = $row['module_id'];
+    $Lecturer_id = $row['Lecturer_id'];
+    $date1 = $row['date'];
+    $time = $row['time'];
+    $ho = $row['time'];
+    $batchno = $row['batch'];
+    $cou = $row['Course'];
+}
+}
+?>
+
 <body>
 
     <div class="page-wrapper toggled bg2 border-radius-on light-theme">
@@ -103,10 +130,10 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                                             <select class="custom-select" id="inputGroupSelect01" name="department">
                                                 <option selected disabled value="">Choose Department</option>
                                                 <?php
-                                                $result = $con->query("SELECT `department_code` FROM `departments` ORDER BY `departments`.`department_code` ASC");
+                                                $result = $con->query("SELECT `code` FROM `departments` ORDER BY `departments`.`code` ASC");
                                                 while ($row = $result->fetch_assoc()) {
                                                     unset($dno);
-                                                    $dno = $row['department_code'];
+                                                    $dno = $row['code'];
                                                     echo '<option value=" ' . $dno . '"  >' . $dno . '</option>';
                                                 }
                                                 ?>
@@ -125,7 +152,9 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                                                     $dno = $row['code'];
                                                     echo '<option value=" ' . $dno . '"  >' . $dno . '</option>';
                                                 }
+                                                echo '<option value=" ' . $cou . '"  selected>' . $cou . '</option>';
                                                 ?>
+                                                <?php //echo $stitle; ?>
                                             </select>
                                         </div>
                                     </div>
@@ -144,6 +173,7 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                                                     $dno = $row['code'];
                                                     echo '<option value=" ' . $dno . '"  >' . $dno . '</option>';
                                                 }
+                                                echo '<option value=" ' . $module_id . '"  selected>' . $module_id . '</option>';
                                                 ?>
                                             </select>
                                         </div>
@@ -154,12 +184,13 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                                             <select class="custom-select" id="inputGroupSelect01" name="batch">
                                                 <option selected disabled value="">Choose batch</option>
                                                 <?php
-                                                $result = $con->query("SELECT `batch_no` FROM `batch` ORDER BY `batch`.`batch_no` DESC");
+                                                $result = $con->query("SELECT `batch_no` FROM `batches` ORDER BY `batches`.`batch_no` DESC");
                                                 while ($row = $result->fetch_assoc()) {
                                                     unset($dno);
                                                     $dno = $row['batch_no'];
                                                     echo '<option value=" ' . $dno . '"  >' . $dno . '</option>';
                                                 }
+                                                echo '<option value=" ' . $batchno . '"  selected>' . $batchno . '</option>';
                                                 ?>
                                             </select>
                                         </div>
@@ -182,34 +213,37 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                                                     $dno = $row['id'];
                                                     echo '<option value=" ' . $dno . '"  >' . $dno . '</option>';
                                                 }
+                                                echo '<option value=" ' . $Lecturer_id . '"  selected>' . $Lecturer_id . '</option>';
                                                 ?>
                                             </select>
                                         </div>
                                     </div>
                                     <div class="col">
                                         <div class="input-group input-group-sm mb-3">
-                                            <input type="date" class="form-control" name=date aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" id="validationServer01" required>
-                                            <select class="custom-select" id="inputGroupSelect01" name="hour">
+                                            <input type="date" class="form-control" name=date value="<?php echo $date1; ?>" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" id="validationServer01" required>
+                                            <input type="time" class="form-control" name=date value="<?php echo $ho; ?>" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" id="validationServer01" required>
+                                            <!-- <select class="custom-select" id="inputGroupSelect01" name="hour">
                                                 <option selected disabled value="">Choose hour</option>
                                                 <?php
-                                                for ($x = 0; $x < 13; $x++) {
+                                               // echo '<option value=" ' . $ho . '"  selected>' . $ho . '</option>';
+                                               // for ($x = 0; $x < 13; $x++) {
                                                 ?>
-                                                    <option value="<?php echo $x; ?>"><?php echo $x; ?></option>
+                                                    <option value="<?php //echo $x; ?>"><?php //echo $x; ?></option>
                                                 <?php
-                                                }
+                                               // }
                                                 ?>
                                             </select>
 
                                             <select class="custom-select" id="inputGroupSelect01" name="min">
                                                 <option selected disabled value="">Choose mintue</option>
                                                 <?php
-                                                for ($x = 0; $x < 61; $x++) {
+                                                //for ($x = 0; $x < 61; $x++) {
                                                 ?>
-                                                    <option value="<?php echo $x; ?>"><?php echo $x; ?></option>
+                                                    <option value="<?php //echo $x; ?>"><?php //echo $x; ?></option>
                                                 <?php
-                                                }
+                                                // }
                                                 ?>
-                                            </select>
+                                            </select> -->
                                             <input type="text" name="week" placeholder="weeks" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" id="validationServer01" required>
                                         </div>
                                     </div>

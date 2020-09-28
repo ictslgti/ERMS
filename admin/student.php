@@ -3,6 +3,21 @@ $title = "Add Student | Online Examination Result Management System | SLGTI";
 $description = "Online Examination Result Management System (ERMS)-SLGTI";
 ?>
 
+<?php
+session_start();
+if (!isset($_SESSION['username'])) {
+    header('Location: .././index.php');
+}
+?>
+
+<?php 
+
+if (isset($_GET['logout']) && isset($_SESSION['username']) ) {
+    unset($_SESSION['username']);  
+    header('Location: .././index.php');         
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <?php include_once("../head.php"); ?>
@@ -20,6 +35,7 @@ $description = "Online Examination Result Management System (ERMS)-SLGTI";
             reader.readAsDataURL(event.target.files[0]);
         }
     </script>
+
     <style>
         #output_image {
             width: 100px;
@@ -38,8 +54,7 @@ $description = "Online Examination Result Management System (ERMS)-SLGTI";
 
 <body>
     <div class="page-wrapper toggled bg2 border-radius-on light-theme">
-        <?php //include_once("nav.php"); 
-        ?>
+        <?php include_once("nav.php"); ?>
 
         <!-- insert  start-->
         <?php
@@ -232,7 +247,7 @@ $description = "Online Examination Result Management System (ERMS)-SLGTI";
         <?php
         $student_id = $stitle = $full_name = $ini_name = $gender = $civil = $email = $nic = $dob = $phone = $address = $ds =
             $district = $province = $zip = $blood = $gname = $gaddress = $gphone = $grelation = $regno = $cid = $bid =
-            $mode = $status = $enrolldate = $exitdate = null;
+            $mode = $status = $enrolldate = $exitdate = $ccode = null;
         if (isset($_GET['edit'])) {
             $student_id = $_GET['edit'];
 
@@ -264,12 +279,6 @@ $description = "Online Examination Result Management System (ERMS)-SLGTI";
                 $gphone = $row['guardian_phone_no'];
                 $grelation = $row['guardian_relationship'];
                 $regno = $row['id'];
-                // $cid = $row['course_code'];
-                // $bid = $row['batch_no'];
-                // $mode = $row['course_mode'];
-                // $status = $row['student_status'];
-                // $enrolldate = $row['enroll_date'];
-                // $exitdate = $row['exit_date'];
             }
         }
         //update Student Table
@@ -325,13 +334,13 @@ $description = "Online Examination Result Management System (ERMS)-SLGTI";
 
             if (mysqli_query($con, $sql_students)) {
                 echo '<div class="alert alert-success" role="alert">
-                Successfully Updated! 
-                <button type="button" class="close" href="student.php" data-dismiss="alert" aria-label="Close">
+                Student Update Successfully! 
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
                 </button></div>';
             } else {
-                echo '<div class="alert alert-warning" role="alert"> Error updating record: 
-                <button type="button" class="close" href="student.php" data-dismiss="alert" aria-label="Close">
+                echo '<div class="alert alert-warning" role="alert"> Student Update Failed : 
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
                 </button></div>' . $sql_students
                     . mysqli_error($con);
@@ -340,32 +349,36 @@ $description = "Online Examination Result Management System (ERMS)-SLGTI";
         //update Student Table
 
         //update Student_enroll Table
+        if (isset($_GET['course'])) {
+            $ccode = $_GET['course'];
+        }
         if (
             isset($_POST['eupdate'])
-            && !empty($_POST['cid'])
-            && !empty($_POST['bid'])
-            && !empty($_POST['mode'])
-            && !empty($_POST['status'])
-            && !empty($_POST['enrolldate'])
-            && !empty($_POST['exitdate'])
+            && !empty($_POST['ecid'])
+            && !empty($_POST['ebid'])
+            && !empty($_POST['emode'])
+            && !empty($_POST['estatus'])
+            && !empty($_POST['eenrolldate'])
+            && !empty($_POST['eexitdate'])
         ) {
-            $cid = $_POST['cid'];
-            $bid = $_POST['bid'];
-            $mode = $_POST['mode'];
-            $status = $_POST['status'];
-            $enrolldate = $_POST['enrolldate'];
-            $exitdate = $_POST['exitdate'];
+            $ecid = $_POST['ecid'];
+            $ebid = $_POST['ebid'];
+            $emode = $_POST['emode'];
+            $estatus = $_POST['estatus'];
+            $eenrolldate = $_POST['eenrolldate'];
+            $eexitdate = $_POST['eexitdate'];
 
-            $sqlenrolls = "UPDATE `student_enroll` SET `course_code` = '$cid', `batch_no` = '$bid', `course_mode` = '$mode',
-            `student_status` = '$status', `enroll_date` = '$enrolldate', `exit_date` = '$exitdate'  WHERE `student_enroll`.`id` = '$student_id'";
+            $sqlenrolls = "UPDATE `student_enroll` SET `course_code` = '$ecid', `batch_no` = '$ebid', `course_mode` = '$emode',
+            `student_status` = '$estatus', `enroll_date` = '$eenrolldate', `exit_date` = '$eexitdate' 
+            WHERE `student_enroll`.`id` = '$student_id' AND `student_enroll`.`course_code` = '$ccode'";
 
             if (mysqli_query($con, $sqlenrolls)) {
-                echo '<div class="alert alert-success" role="alert"> And Insert Successfully
-                <button type="button" class="close" href="student.php" data-dismiss="alert" aria-label="Close">
+                echo '<div class="alert alert-success" role="alert"> Student Enroll Update Successfully!
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
                 </button></div>';
             } else {
-                echo '<div class="alert alert-warning" role="alert"> And Failed: <button type="button" class="close" href="student.php" data-dismiss="alert" aria-label="Close">
+                echo '<div class="alert alert-warning" role="alert"> Student Enroll Update Failed : <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
                 </button></div>' . $sqlenrolls
                     . mysqli_error($con);
@@ -789,7 +802,7 @@ $description = "Online Examination Result Management System (ERMS)-SLGTI";
                                                                 <?php echo $row['exit_date']; ?>
                                                             </td>
                                                             <td scope='col'>
-                                                                <a class="btn btn-outline-warning btn-sm" href="student.php?edit=<?php echo $row['id'] ?>& course=<?php echo $row['course_code']; ?>">Edit</a>
+                                                                <a class="btn btn-outline-warning btn-sm" href="student.php?edit=<?php echo $row['id']; ?> & course=<?php echo $row['course_code']; ?>">Edit</a>
                                                                 <a class="btn btn-outline-danger btn-sm disabled" href="?edelete=<?php echo $row['id']; ?>">Delete</a>
                                                                 <!-- data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample"  -->
                                                             </td>
@@ -805,15 +818,117 @@ $description = "Online Examination Result Management System (ERMS)-SLGTI";
                                     </div>
                                     <!-- 11 row end -->
                                     <?php
-
+                                    $student_id = $eregno = $ecid = $ebid = $emode = $estatus =
+                                        $eenrolldate = $eexitdate = null;
                                     if (isset($_GET['course'])) {
-
+                                        $student_id = $_GET['edit'];
                                         $ccode = $_GET['course'];
 
-                                        // echo $ccode;
-
-                                        $sql_student = "SELECT * FROM student_enroll
+                                        $sql_s = "SELECT * FROM student_enroll
                                         WHERE `student_enroll`.`id` = '$student_id' AND `student_enroll`.`course_code` = '$ccode'";
+
+                                        $result_s = mysqli_query($con, $sql_s);
+                                        $row = mysqli_fetch_assoc($result_s);
+                                        if (mysqli_num_rows($result_s) == 1) {
+                                            $eregno = $row['id'];
+                                            $ecid = $row['course_code'];
+                                            $ebid = $row['batch_no'];
+                                            $emode = $row['course_mode'];
+                                            $estatus = $row['student_status'];
+                                            $eenrolldate = $row['enroll_date'];
+                                            $eexitdate = $row['exit_date'];
+                                        }
+                                    ?>
+                                        <!-- edii form -->
+                                        <form method="POST" action="">
+                                            <!-- 1 row start -->
+                                            <div class="form-row">
+
+                                                <div class="col-3">
+                                                    <label for="ecid"> Course Name: </label>
+                                                    <select name="ecid" id="ecid" class="custom-select action">
+                                                        <?php
+                                                        $course_name = '';
+                                                        $query = "SELECT * FROM courses";
+                                                        $result = mysqli_query($con, $query);
+                                                        while ($row = mysqli_fetch_array($result)) {
+                                                            $course_name .= '<option value="' . $row["code"] . '">' . $row["code"] . '</option>';
+                                                        }
+                                                        echo '<option value="' . $ecid . '" selected>' . $ecid . '</option>';
+                                                        ?>
+                                                        <option value="">Choose</option>
+                                                        <?php echo $course_name; ?>
+
+                                                    </select>
+                                                </div>
+
+                                                <div class="col-3">
+                                                    <label for="ebid"> Batch No: </label>
+                                                    <select name="ebid" id="ebid" class="custom-select action">
+                                                        <?php
+                                                        echo '<option value="' . $ebid . '" selected>' . $ebid . '</option>';
+                                                        ?>
+                                                        <option value="" disabled>Choose</option>
+                                                    </select>
+                                                </div>
+
+                                                <div class="col-3">
+                                                    <label for="emode"> Course Mode: </label>
+                                                    <select name="emode" class="custom-select" value="" required>
+                                                        <option disabled> Choose</option>
+                                                        <option value="Full" <?php if ($emode == "Full") echo 'selected'; ?>>Full Time</option>
+                                                        <option value="Part" <?php if ($emode == "Part") echo 'selected'; ?>>Part Time</option>
+                                                        <option value="sort" <?php if ($emode == "sort") echo 'selected'; ?>>Sort Time</option>
+                                                    </select>
+                                                </div>
+
+                                                <div class="col-3">
+                                                    <label for="eregno"> Registration No: </label>
+                                                    <input type="text" name="eregno" class="form-control" placeholder="2018SLGTIBIT04" value="<?php echo $regno; ?>" required disabled>
+                                                </div>
+
+                                            </div>
+                                            <!-- 1 row end -->
+
+                                            <!-- 2 row start -->
+                                            <div class="form-row">
+
+                                                <div class="col-3">
+                                                    <label for="estatus"> Status:</label>
+                                                    <select name="estatus" class="custom-select" value="" required>
+                                                        <option disabled>Choose</option>
+                                                        <option value="Following" <?php if ($estatus == "Full") echo 'selected'; ?>>Following</option>
+                                                        <option value="Completed" <?php if ($estatus == "Completed") echo 'selected'; ?>>Completed</option>
+                                                        <option value="Dropout" <?php if ($estatus == "Dropout") echo 'selected'; ?>>Dropout</option>
+                                                        <option value="Long Absent" <?php if ($estatus == "Long Absent") echo 'selected'; ?>>Long Absent</option>
+                                                    </select>
+                                                </div>
+
+                                                <div class="col-3">
+                                                    <label for="eenrolldate"> Enroll Date:</label>
+                                                    <input type="date" class="form-control" name="eenrolldate" value="<?php echo $eenrolldate; ?>" required>
+                                                </div>
+
+                                                <div class="col-3">
+                                                    <label for="exitdate"> Exit Date:</label>
+                                                    <input type="date" class="form-control" name="eexitdate" value="<?php echo $eexitdate; ?>">
+                                                </div>
+
+                                                <div class="col-3">
+                                                </div>
+
+                                            </div>
+                                            <!-- 2 row end -->
+
+                                            <div class="modal-footer">
+                                                <a class="btn btn-outline-secondary" href="student.php?edit=<?php echo $eregno; ?>">Close</a>
+                                                <button type="submit" name="eupdate" class="btn btn-outline-success">Update</button>
+                                            </div>
+
+                                        </form>
+                                        <!-- edit form -->
+
+                                    <?php
                                     }
                                     ?>
 
@@ -1112,3 +1227,50 @@ if (isset($_POST["action"])) {
 ?>
 
 <!-- course filter -->
+
+<!-- edit course filter -->
+<script>
+    $(document).ready(function() {
+        $('.action').change(function() {
+            if ($(this).val() != '') {
+                var action = $(this).attr("id");
+                var query = $(this).val();
+                var result = '';
+                if (action == "ecid") {
+                    result = 'ebid';
+                }
+                $.ajax({
+                    url: "student.php",
+                    method: "POST",
+                    data: {
+                        action: action,
+                        query: query
+                    },
+                    success: function(data) {
+                        $('#' + result).html(data);
+                    }
+                })
+            }
+        });
+    });
+</script>
+
+<?php
+//fetch.php
+if (isset($_POST["action"])) {
+    $connect = mysqli_connect("localhost", "root", "", "erms");
+    $output = '';
+    if ($_POST["action"] == "ecid") {
+        $query = "SELECT `batches`.`batch_no` FROM `batches` LEFT JOIN `courses` ON `batches`.`NVQ_level` = `courses`.`NVQ_level` AND 
+  `batches`.`department_code` = `courses`.`department_code` WHERE `courses`.`code`='" . $_POST["query"] . "'";
+        $result = mysqli_query($connect, $query);
+        $output .= '<option value="" disabled selected>Choose</option>';
+        while ($row = mysqli_fetch_array($result)) {
+            $output .= '<option value="' . $row["batch_no"] . '">' . $row["batch_no"] . '</option>';
+        }
+    }
+    echo $output;
+}
+?>
+
+<!-- edit course filter -->

@@ -2,6 +2,22 @@
 $title = "View Students | Online Examination Result Management System | SLGTI";
 $description = "Online Examination Result Management System (ERMS)-SLGTI";
 ?>
+
+<?php
+session_start();
+if (!isset($_SESSION['username'])) {
+    header('Location: .././index.php');
+}
+?>
+
+<?php 
+
+if (isset($_GET['logout']) && isset($_SESSION['username']) ) {
+    unset($_SESSION['username']);  
+    header('Location: .././index.php');         
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -144,9 +160,9 @@ $description = "Online Examination Result Management System (ERMS)-SLGTI";
                                         ?>
                                     </div>
 
+                                    <!-- <div>aefsdfs</div>
                                     <div>aefsdfs</div>
-                                    <div>aefsdfs</div>
-                                    <div>aefsdfs</div>
+                                    <div>aefsdfs</div> -->
                                 </div>
                                 
                                 <div class='col-9'>
