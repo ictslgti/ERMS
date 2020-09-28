@@ -6,11 +6,11 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
 <?php include_once("../config.php"); ?>
 <?php
 //departments
-$departments = '';
+$department = '';
 $query = "SELECT * FROM departments";
 $result = mysqli_query($con, $query);
 while ($row = mysqli_fetch_array($result)) {
-    $departments .= '<option value="' . $row["code"] . '">' . $row["name"] . '</option>';
+    $department .= '<option value="' . $row["code"] . '">' . $row["name"] . '</option>';
 }
 ?>
 
@@ -123,7 +123,7 @@ while ($row = mysqli_fetch_array($result)) {
                                             <div class="input-group input-group-sm mb-3">
                                                 <select name="department" id="department" class="form-control action" required>
                                                     <option value="" disabled selected>Select Department</option>
-                                                    <?php echo $departments; ?>
+                                                    <?php echo $department; ?>
                                                 </select>
                                             </div>
                                         </div>
@@ -194,27 +194,37 @@ while ($row = mysqli_fetch_array($result)) {
                                         <div class="col-11 "></div>
                                         <div class="col-1">
                                             <?php
-                                            $department=null;
-                                            $module=null;
+                                            $department = null;
+                                            $module = null;
                                             if (isset($_POST['submit'])) {
-                                               $department=$_POST['department'];
-                                               $course=$_POST['course'];
-                                               $module=$_POST['module'];
-                                               $academic_year=$_POST['academic'];
-                                               $batch=$_POST['batch'];
-                                                echo '<a href="viewresult.php?department='.$department.' && course='.$course.'&& department='.$department.'&& course='.$course.'&& module='.$module.'&& academic_year='.$academic.'&& batch='.$batch.', "class="btn btn-outline-success"  color: #ffffff;" > view </a>';
-                                            } else {
+                                                $department = $_POST['department'];
+                                                $course = $_POST['course'];
+                                                $module = $_POST['module'];
+                                                $academic_year = $_POST['academic'];
+                                                $batch = $_POST['batch'];
 
+                                                echo'<a   href="viewresult.php?department='. $department . '&& course=' . $course . '&& module=' . $module . '&& batch=' . $batch . ', " class="btn btn-outline-success"> view </a>'
+                                
                                             ?>
-                                                <input type="submit" name="submit" value="check" class="btn btn-outline-success">
+
+
+                                                <!-- <a  href="viewresult.php?department=' . $departments . ' && course=' . $course . '&& department=' . $department . '&& course=' . $course . '&& module=' . $module . '&& academic_year=' . $academic . '&& batch=' . $batch . ', " class="btn btn-outline-success"> view </a> 
+                                                <input type="submit" name="submit" value="check" class="btn btn-outline-success">  -->
+                                            
+
+                                            <!-- <input type="submit" name="submit" value="check" class="btn btn-outline-success">  -->
+                                            <!-- <input type="submit" href="viewresult.php?department=' . $departments . ' && course=' . $course . '&& department=' . $department . '&& course=' . $course . '&& module=' . $module . '&& academic_year=' . $academic . '&& batch=' . $batch . ', "  name="submit" value="check" class="btn btn-outline-success"> 
+                                            
+                                            <a  href="viewresult.php?department=' . $departments . ' && course=' . $course . '&& department=' . $department . '&& course=' . $course . '&& module=' . $module . '&& academic_year=' . $academic . '&& batch=' . $batch . ', " class="btn btn-outline-success"> view </a>   -->
                                             <?php
-                                            }
-                                            ?>
-
-
+                                            } ?>
                                         </div>
                                     </div>
                                 </div>
+                                <!-- <a href="viewresult.php?department='.<?php  echo' $departments '?>. '&& course=' . $course . '&& department=' . $department . '&& course=' . $course . '&& module=' . $module . '&& academic_year=' . $academic . '&& batch=' . $batch . ', " class="btn btn-outline-success"> view </a>
+                                 -->
+                                <input type="submit" name="submit" value="check" class="btn btn-outline-success">
+                                
                             </form>
                         </div>
                     </div>
