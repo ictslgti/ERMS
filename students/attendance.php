@@ -123,81 +123,94 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
 
                                                                 $result = mysqli_query($con, $sql);
                                                                 while ($row = mysqli_fetch_assoc($result)) {
-                                                                    if(! $row) 
-                                                                    {
-                                                                        echo "NO DATA";
-                                                                    }
-
-                                                                    else
-                                                                    {
+                                                                    if (!$row) {
+                                                                        echo "ZERO DATA";
+                                                                    } else {
                                                             ?>
 
 
-                                                                    <tr>
-                                                                        <td scope='col'><?php echo $row['attendance_date']; ?></td>
-                                                                        <td scope='col'><?php echo $row['attendance_time']; ?></td>
-                                                                        <td scope='col'><?php echo $row['status']; ?></td>
+                                                                        <tr>
+                                                                            <td scope='col'><?php echo $row['attendance_date']; ?></td>
+                                                                            <td scope='col'><?php echo $row['attendance_time']; ?></td>
+                                                                            <td scope='col'><?php echo $row['status']; ?></td>
 
-                                                                    <?php
-                                                                }}
-                                                                
+                                                                        <?php
+                                                                    }
+                                                                }
                                                             } else {
                                                                 $sql = "SELECT attendance.attendance_date, attendance.attendance_time, student_attendance.status FROM attendance INNER JOIN 
                                                             student_attendance ON attendance.attendance_id=student_attendance.id where student_id='$student_id'";
 
                                                                 $result = mysqli_query($con, $sql);
                                                                 while ($row = mysqli_fetch_assoc($result)) {
-                                                                    ?>
+                                                                        ?>
 
 
-                                                                    <tr>
-                                                                        <td scope='col'><?php echo $row['attendance_date']; ?></td>
-                                                                        <td scope='col'><?php echo $row['attendance_time']; ?></td>
-                                                                        <td scope='col'><?php echo $row['status']; ?></td>
+                                                                        <tr>
+                                                                            <td scope='col'><?php echo $row['attendance_date']; ?></td>
+                                                                            <td scope='col'><?php echo $row['attendance_time']; ?></td>
+                                                                            <td scope='col'><?php echo $row['status']; ?></td>
 
-                                                                <?php
+                                                                    <?php
                                                                 }
                                                             }
 
 
-                                                                ?>
-                                                                <!-- dropdown end -->
+                                                                    ?>
+                                                                    <!-- dropdown end -->
 
-                                                                    </tr>
-                                                                    <table>
+                                                                        </tr>
+                                                                        <table>
 
-                                                                        <?php
-                                                                        if (isset($_GET['module'])) {
-                                                                            $mon = $_GET['module'];
+                                                                            <?php
+                                                                            if (isset($_GET['module'])) {
+                                                                                $mon = $_GET['module'];
 
-                                                                            $sql = "SELECT count(student_attendance.status) as total_session,SUM(`status` = 'present') as take_session,
+                                                                                $sql = "SELECT count(student_attendance.status) as total_session,SUM(`status` = 'present') as take_session,
                                                                                     attendance.code from student_attendance,attendance where student_attendance.id=attendance.attendance_id and
                                                                                      student_id='$student_id' and code='" . $mon . "'";
 
-                                                                            $result = mysqli_query($con, $sql);
-                                                                            while ($row = mysqli_fetch_assoc($result)) {
-                                                                                $per = $row['take_session'] + $row['total_session'];
-                                                                                $per1 = number_format(($row['take_session'] / $row['total_session']) * 100, 2) . "%"
+                                                                                $result = mysqli_query($con, $sql);
+                                                                                while ($row = mysqli_fetch_assoc($result)) {
+                                                                                    $per = $row['take_session'] + $row['total_session'];
+                                                                                    if ($row['take_session'] == 0) {
+                                                                                        echo 'ZERO DATA';
+                                                                                    } else {
+                                                                                        $per1 = number_format(($row['take_session'] / $row['total_session']) * 100, 2) . "%";
+                                                                                    }
 
-                                                                        ?>
-                                                                                <tr>
-                                                                                    <td style="text-align: right">Points over taken sessions:</td>
-                                                                                    <td> <?php echo $row['take_session']; ?><?php echo "/"; ?> <?php echo $row['total_session']; ?></td>
 
-                                                                                </tr>
-                                                                                <tr>
-                                                                                    <td style="text-align: right">Percentage over taken sessions:</td>
-
-                                                                                    <td><?php echo $per1 ?></td>
-                                                                            <?php
-                                                                            }
-                                                                        } else {
-                                                                            echo "no datas";
-                                                                        }
 
                                                                             ?>
-                                                                                </tr>
-                                                                    </table>
+                                                                                    <tr>
+                                                                                        <td style="text-align: right">Points over taken sessions:</td>
+                                                                                        <td> <?php
+                                                                                                if ($row['take_session'] == 0) {
+                                                                                                    echo '0';
+                                                                                                } else {
+                                                                                                    $per1 = number_format(($row['take_session'] / $row['total_session']) * 100, 2) . "%";
+                                                                                                }
+
+                                                                                                echo $row['take_session']; ?><?php echo "/"; ?> <?php echo $row['total_session']; ?></td>
+
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td style="text-align: right">Percentage over taken sessions:</td>
+
+                                                                                        <td><?php
+                                                                                            if ($row['take_session'] == 0) {
+                                                                                                echo '0%';
+                                                                                            } else {
+                                                                                                echo $per1;
+                                                                                            }
+                                                                                            ?></td>
+                                                                                <?php
+                                                                                }
+                                                                            } 
+
+                                                                                ?>
+                                                                                    </tr>
+                                                                        </table>
                                                         </thead>
                                                         <tbody>
 

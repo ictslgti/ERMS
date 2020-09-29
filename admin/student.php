@@ -222,7 +222,7 @@ if (isset($_GET['logout']) && isset($_SESSION['username']) ) {
                             </div>";
                     } else {
                         echo "<div class='alert alert-danger' role='alert'>
-                                This academic_year alredy submit 
+                                image not inserted 
                                 <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
                             <span aria-hidden='true'>&times;</span>
                             </button></div>" . "<br>" . mysqli_error($con);
@@ -839,7 +839,7 @@ if (isset($_GET['logout']) && isset($_SESSION['username']) ) {
                                             $eexitdate = $row['exit_date'];
                                         }
                                     ?>
-                                        <!-- edii form -->
+                                        <!-- edit form -->
                                         <form method="POST" action="">
                                             <!-- 1 row start -->
                                             <div class="form-row">
@@ -910,7 +910,7 @@ if (isset($_GET['logout']) && isset($_SESSION['username']) ) {
                                                 </div>
 
                                                 <div class="col-3">
-                                                    <label for="exitdate"> Exit Date:</label>
+                                                    <label for="eexitdate"> Exit Date:</label>
                                                     <input type="date" class="form-control" name="eexitdate" value="<?php echo $eexitdate; ?>">
                                                 </div>
 
@@ -947,7 +947,7 @@ if (isset($_GET['logout']) && isset($_SESSION['username']) ) {
                                                 <div class="card card-body">
 
                                                     <!-- collapse form start -->
-                                                    <form action="">
+                                                    <form method="POST" action="">
                                                         <!-- 1 row start -->
                                                         <div class="form-row">
 
