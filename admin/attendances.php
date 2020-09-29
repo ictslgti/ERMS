@@ -51,7 +51,9 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                                         <div class="btn-group btn-sm" role="group" aria-label="Basic example">
                                             <a href="attendance.php?edit=<?php echo $row['id'] ?>" class="btn btn-outline-warning"> <i class="far fa-edit"></i> </a>
                                             <a href="?delete=',$row['batch_no'],'" class="btn btn-outline-danger"><i class="far fa-trash-alt"></i> </a>
-                                            <a href="?delete=',$row['batch_no'],'" class="btn btn-outline-success"><i class="fas fa-user-plus"></i> </a>
+                                            <a href="lec_attedance.php?code='<?php echo $row['code'] ?> & date='<?php echo $row['attendance_date'] ?> 
+                                            & time='<?php echo $row['attendance_time'] ?>& batch_no='<?php echo $row['batch_no'] ?>'" class="btn btn-outline-success"><i class="fas fa-user-plus"></i> </a>
+                                            <!-- <a href="?delete=',$row['batch_no'],'" class="btn btn-outline-success"><i class="fas fa-user-plus"></i> </a> -->
                                         </div>
                                     </div>
                                 </div>
