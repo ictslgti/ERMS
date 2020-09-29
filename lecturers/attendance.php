@@ -1,4 +1,3 @@
-
 <?php
 $title = ' ERMS | SLGTI Attendance';
 $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
@@ -10,15 +9,17 @@ session_start();
 if (!isset($_SESSION['username'])) {
     header('Location: .././index.php');
 }
+$user = $_SESSION['username'];
 ?>
 
-<?php 
+<?php
 
-if (isset($_GET['logout']) && isset($_SESSION['username']) ) {
-    unset($_SESSION['username']);  
-    header('Location: .././index.php');         
+if (isset($_GET['logout']) && isset($_SESSION['username'])) {
+    unset($_SESSION['username']);
+    header('Location: .././index.php');
 }
 ?>
+
 <head>
     <?php include_once('.././head.php');
     include_once('../config.php');
@@ -65,12 +66,12 @@ if (isset($_GET['logout']) && isset($_SESSION['username']) ) {
 
                                         <form action="" method="POST">
                                             <div class="row">
-                                            <div class="dropdown">
+                                                <div class="dropdown">
                                                     <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" value="show details" name="show_date">
                                                         Attendance Review
                                                     </button>
                                                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                                    <a class="dropdown-item" href="attendance.php">Class-wise</a>
+                                                        <a class="dropdown-item" href="attendance.php">Class-wise</a>
                                                         <a class="dropdown-item" href="attendance_month.php">Month-wise</a>
                                                         <a class="dropdown-item" href="attendance_semester.php">Semester-wise</a>
                                                     </div>
@@ -158,7 +159,7 @@ if (isset($_GET['logout']) && isset($_SESSION['username']) ) {
                                                                             <!-- student_id array -->
                                                                             <?php
 
-                                                                            $sql = mysqli_query($con, "SELECT DISTINCT student_id FROM student_attendance");
+                                                                            $sql = mysqli_query($con, "SELECT DISTINCT student_id FROM student_attendance group by student_id");
 
                                                                             while ($row = mysqli_fetch_array($sql)) {
                                                                                 $s_ids[] = $row['student_id'];
@@ -172,7 +173,7 @@ if (isset($_GET['logout']) && isset($_SESSION['username']) ) {
                                                                             <!-- status array -->
                                                                             <?php
 
-                                                                            $sql = mysqli_query($con, "SELECT DISTINCT status FROM student_attendance");
+                                                                            $sql = mysqli_query($con, "SELECT DISTINCT status FROM student_attendance group by student_id");
 
                                                                             while ($row = mysqli_fetch_array($sql)) {
                                                                                 $s_ids[] = $row['status'];
@@ -184,35 +185,72 @@ if (isset($_GET['logout']) && isset($_SESSION['username']) ) {
                                                                             <!-- status array  -->
 
                                                                         <?php
-                                                                        }
-                                                                        else {
+                                                                        } else {
                                                                         ?>
 
+                                                                            <?php
+                                                                            $student_id = null;
+                                                                            $status = null;
 
-                                                                            
+                                                                            if (isset($_GET['student_id'])) {
+                                                                                $student_id = $_GET['student_id'];
+                                                                                $status = $_GET['status'];
+                                                                            }
+                                                                            ?>
+                                                                            <!-- array -->
+
+                                                                            <!-- student_id array -->
+                                                                            <?php
+
+                                                                            $sql = mysqli_query($con, "SELECT DISTINCT student_id FROM student_attendance group by student_id");
+
+                                                                            while ($row = mysqli_fetch_array($sql)) {
+                                                                                $s_ids[] = $row['student_id'];
+                                                                            }
+                                                                            foreach ($s_ids as $idss) {
+                                                                                // echo "$idss";
+                                                                            }
+                                                                            ?>
+                                                                            <!-- student_id array  -->
+
+                                                                            <!-- status array -->
+                                                                            <?php
+
+                                                                            $sql = mysqli_query($con, "SELECT DISTINCT status FROM student_attendance group by student_id");
+
+                                                                            while ($row = mysqli_fetch_array($sql)) {
+                                                                                $s_ids[] = $row['status'];
+                                                                            }
+                                                                            foreach ($s_ids as $idss) {
+                                                                                // echo "$idss";
+                                                                            }
+                                                                            ?>
+                                                                            <!-- status array  -->
+
 
                                                                             <?php
-                                                                            $sql = " SELECT student_id,status from student_attendance";
-                                                                            $result = mysqli_query($con, $sql);
-                                                                            while ($row = mysqli_fetch_assoc($result)) {
+                                                                            // $sql = " SELECT student_id,status from student_attendance group by student_id";
+                                                                            // $result = mysqli_query($con, $sql);
+                                                                            // while ($row = mysqli_fetch_assoc($result)) {
                                                                             ?>
-                                                                            <tr>
-                                                                                <td><?php echo $row['student_id'] 
-                                                                                            ?></td>
+                                                                            <!-- <tr>
+                                                                                <td><?php //echo $row['student_id'] 
+                                                                                    ?></td>
 
                                                                                 <td>
                                                                                     <?php
-                                                                                    if ($row['status'] == 'present') {
-                                                                                        echo "P";
-                                                                                    } else {
-                                                                                        echo 'AB';
-                                                                                    }
+                                                                                    // if ($row['status'] == 'present') {
+                                                                                    //     echo "P";
+                                                                                    // } else {
+                                                                                    //     echo 'AB';
+                                                                                    // }
                                                                                     ?>
                                                                                 </td>
 
-                                                                            </tr>
+                                                                            </tr> -->
                                                                         <?php
-                                                                        } }
+                                                                            // } 
+                                                                        }
                                                                         ?>
 
                                                                         <tr>
