@@ -1,7 +1,7 @@
-<?php 
-if (isset($_GET['logout']) && isset($_SESSION['username']) ) {
-    unset($_SESSION['username']);  
-    header('Location: .././index.php');         
+<?php
+if (isset($_GET['logout']) && isset($_SESSION['username'])) {
+    unset($_SESSION['username']);
+    header('Location: .././index.php');
 }
 ?>
 <?php
@@ -59,11 +59,14 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
     ?>
     <div class="page-wrapper toggled bg2 border-radius-on light-theme">
 
-        <?php include_once("../nav.php"); ?>
+        <?php include_once("nav.php"); ?>
         <!-- id array -->
         <?php
-
-        $sql = mysqli_query($con, "SELECT DISTINCT student_id FROM exams_result");
+        $course = $_GET['course'];
+        $batch = $_GET['batch'];
+        $type = $_GET['type'];
+        $sql = mysqli_query($con, "SELECT DISTINCT student_id FROM exams_result where course ='$course' and
+        batch_no='$batch' and exams='$type'");
 
         while ($row = mysqli_fetch_array($sql)) {
             $s_ids[] = $row['student_id'];
@@ -77,14 +80,20 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
 
         <!-- subject array -->
         <?php
-        $sql1 = mysqli_query($con, "SELECT DISTINCT module FROM exams_result");
+        $course = $_GET['course'];
+        $batch = $_GET['batch'];
+        $type = $_GET['type'];
+        $sql1 = mysqli_query($con, "SELECT DISTINCT module FROM exams_result where course ='$course' and
+        batch_no='$batch' and exams='$type'");
 
         while ($row1 = mysqli_fetch_array($sql1)) {
             $subjects[] = $row1['module'];
         }
         ?>
         <!-- subject array  -->
-        <div> <p></p>  </div>
+        <div>
+            <p></p>
+        </div>
         <div>
             <p style="text-align: center; font-size: 30px;"> SLGTI-KILLINOCHI</p>
 
@@ -98,6 +107,7 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                     <th>Nic</th>
                     <?php
                     foreach ($subjects as $subject) {
+
                         echo "<th>$subject</th>";
                     }
                     ?>
@@ -106,18 +116,21 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
             <tbody>
                 <tr>
                     <?php
-
+                    $course = $_GET['course'];
+                    $batch = $_GET['batch'];
+                    $type = $_GET['type'];
                     $length = count($s_ids);
                     // echo $length;
                     $length1 = count($subjects);
                     // echo $length1;
                     for ($i = 0; $i < $length; $i++) {
                         $s_ids_val = $s_ids[$i];
-                        $sql4 = " select id,name_with_initials,nic from student where id='$s_ids_val';";
+                        $sql4 = "select * from student,exams_result where student.id=exams_result.student_id and exams_result.student_id='$s_ids_val' 
+                        and exams_result.course='$course' and exams_result.batch_no=$batch and exams_result.exams='$type' group by student.id";
                         $result = mysqli_query($con, $sql4);
                         if (mysqli_num_rows($result) > 0) {
                             while ($row = mysqli_fetch_assoc($result)) {
-                                echo '<td>', $row['id'], '</td>';
+                                echo '<td>', $row['student_id'], '</td>';
                                 echo '<td>', $row['name_with_initials'], '</td>';
                                 echo '<td>', $row['nic'], '</td>';
                             }
@@ -125,21 +138,31 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                     ?>
 
                         <?php
+                        $course = $_GET['course'];
+                        $batch = $_GET['batch'];
+                        $type = $_GET['type'];
+
                         for ($s = 0; $s < $length1; $s++) {
                             $s_ids_val = $s_ids[$i];
                             $subjects_val = $subjects[$s];
-                            $sql3 = "select e.marks from student_enroll s inner join exams_result e on s.id=e.student_id and e.student_id='$s_ids_val' and e.module='$subjects_val'";
+                            $sql3 = "SELECT * from exams_result WHERE student_id='$s_ids_val' 
+                            and module='$subjects_val' AND course='$course' AND batch_no=$batch AND exams='$type'";
                             $result = mysqli_query($con, $sql3);
                             if (mysqli_num_rows($result) > 0) {
-                                if ($row = mysqli_fetch_assoc($result)) {
-
+                                while ($rows = mysqli_fetch_assoc($result)) {
+                                    echo '<td name="mar">',  $rows['marks'], '</td>';
 
                                     // echo $row['marks'];
-                                    echo '<td>', $row['marks'], '</td>';
+
                                 }
                             }
                         }
+                        // if(isset($_GET['mar'])==null)
+                        //                 {
+                        //                     echo '<td <td name="mar">','ab','</td>';
+                        //                 }
                         ?>
+
                 </tr>
             <?php
                     }
