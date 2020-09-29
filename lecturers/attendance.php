@@ -1,366 +1,308 @@
 <?php
-$title = ' ERMS | SLGTI Attendance';
-$description = 'Online Examination Result  Management System (ERMS)-SLGTI';
-?>
-<!DOCTYPE html>
-<html lang='en'>
-<?php
 session_start();
 if (!isset($_SESSION['username'])) {
     header('Location: .././index.php');
 }
-$user = $_SESSION['username'];
 ?>
+<?php 
+
+if (isset($_GET['logout']) && isset($_SESSION['username']) ) {
+    unset($_SESSION['username']);  
+    header('Location: .././index.php');         
+}
+?>
+<?php
+$title = "Dashboard | Online Examination Result Management System | SLGTI";
+$description = "Online Examination Result  Management System (ERMS)-SLGTI";
+?>
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+    <?php include_once("../head.php"); ?>
+    <?php include_once("../config.php"); ?>
+</head>
 
 <?php
+$student_id = $stitle = $full_name = $ini_name = $gender = $civil = $email = $nic = $dob = $phone = $address = $ds =
+    $district = $province = $zip = $blood = $gname = $gaddress = $gphone = $grelation = $regno = $cid = $bid =
+    $mode = $status = $enrolldate = $exitdate = $ccode = null;
+if (isset($_GET['edit'])) {
+    $id = $_GET['edit'];
 
-if (isset($_GET['logout']) && isset($_SESSION['username'])) {
-    unset($_SESSION['username']);
-    header('Location: .././index.php');
+    $sql_attendance = "SELECT * FROM attendance 
+-- LEFT JOIN student_enroll
+-- ON `student`.`id` = `student_enroll`.`id`
+WHERE `attendance`.`id` = '$id'";
+
+    $result_attendance = mysqli_query($con, $sql_attendance);
+    $row = mysqli_fetch_assoc($result_attendance);
+    if (mysqli_num_rows($result_attendance) == 1) {
+        // $id = $row['title'];
+        $module_id = $row['module_id'];
+        $Lecturer_id = $row['Lecturer_id'];
+        $date1 = $row['date'];
+        $time = $row['time'];
+        $ho = $row['time'];
+        $batchno = $row['batch'];
+        $cou = $row['Course'];
+    }
 }
 ?>
 
-<head>
-    <?php include_once('.././head.php');
-    include_once('../config.php');
-    ?>
-</head>
-
 <body>
-    <?php
-    $user = $_SESSION['username'];
-    //session
-    $lecturers_id = '';
-    $query = "SELECT * FROM lecturer where email='$user'";
-    $result = mysqli_query($con, $query);
-    while ($row = mysqli_fetch_assoc($result)) {
-        $lecturers_id = $row['id'];
-    }
-    ?>
-    <?php
-    $semester = null;
-    if (isset($_GET['semester'])) {
-        $semester = $_GET['semester'];
-    }
-    ?>
-    <main class='page-content pt-2'>
-        <?php include_once('nav.php');
-        ?>
-        <div id='overlay' class='overlay'></div>
-        <div class='container-fluid p-5'>
-            <!-- #1 Insert Your Content-->
-            <div class='row'>
-                <div class="col">
-                    <div class="card">
-                        <div class="card-header">
-                            <h3> <?php echo " $title" ?></h3>
+
+    <div class="page-wrapper toggled bg2 border-radius-on light-theme">
+        <nav id="sidebar" class="sidebar-wrapper">
+            <?php include_once("nav.php"); ?>
+        </nav>
+        <main class="page-content pt-2">
+            <div id="overlay" class="overlay"></div>
+            <div class="container-fluid p-5">
+                <!-- #1 Insert Your Content-->
+                <div class="container">
+
+
+
+                    <?php
+                    $deparment = null;
+                    $course = null;
+                    $module = null;
+                    $lecturer = null;
+                    $batch = null;
+                    $hour = null;
+                    $date = null;
+                    $min = null;
+                    $week = null;
+                    if (isset($_POST['submit'])) {
+                        $date = $_POST['date'];
+                        $week = $_POST['week'];
+                        $lecturer = $_POST['lecturer'];
+                        $module = $_POST['module'];
+
+                        $course = $_POST['course'];
+
+                        $sql = "INSERT INTO attendance (module_id,Lecturer_id,date,time,batch,course)
+                        VALUES 
+                        ('$module','$lecturer', 
+                        '$date', 
+                        '$hour|$min','$batch','$course')
+                        ";
+
+                        if (mysqli_query($con, $sql)) {
+                            echo "
+                        <div class='alert alert-success' role='alert'>
+                        insert success fully 
+                        <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+                            <span aria-hidden='true'>&times;</span>
+                         </button>
+                       </div>";
+                        } else {
+                            echo "Error: " . $sql . "<br>" . mysqli_error($con);
+                            echo "
+                        <div class='alert alert-danger' role='alert'>
+                        This academic_year alredy submit 
+                        <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+                            <span aria-hidden='true'>&times;</span>
+                         </button>
+                       </div>";
+                        }
+                    }
+
+
+                    for ($y = 1; $y <= $week; $y++) {
+                        $date1 = date('Y-m-d', strtotime('+7 day', strtotime($date)));
+                        $sql = "INSERT INTO attendance (module_id,Lecturer_id,date,time,batch,course)
+                        VALUES 
+                        ('$module','$lecturer', 
+                        '$date', 
+                        '$hour|$min','$batch','$course')
+                        ";
+
+                        if (mysqli_query($con, $sql)) {
+                            echo "";
+                        }
+                        $date = $date1;
+                    }
+
+                    ?>
+
+
+                    <div class="">
+                        <div class="card-header ">
+                            <h2>Attendance</h2>
                         </div>
-                        <div class="card-body">
+                        <div class="card-body ">
+                            <!-- content -->
+                            <form action="" method="POST">
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="input-group input-group-sm mb-3">
 
-                            <!-- #1 Insert Your Content-->
-
-
-                            <div class="container" style="margin-top:10px; overflow: hidden;">
-                                <div class="card">
-                                    <div class="card-header">
-
-                                        <form action="" method="POST">
-                                            <div class="row">
-                                                <div class="dropdown">
-                                                    <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" value="show details" name="show_date">
-                                                        Attendance Review
-                                                    </button>
-                                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                                        <a class="dropdown-item" href="attendance.php">Class-wise</a>
-                                                        <a class="dropdown-item" href="attendance_month.php">Month-wise</a>
-                                                        <a class="dropdown-item" href="attendance_semester.php">Semester-wise</a>
-                                                    </div>
-                                                </div>
-                                                <div class="col-2">
-                                                    <select name="cid" id="cid" class="custom-select action">
-                                                        <?php
-                                                        $course_name = '';
-                                                        $query = "SELECT * FROM courses";
-                                                        $result = mysqli_query($con, $query);
-                                                        while ($row = mysqli_fetch_array($result)) {
-                                                            $course_name .= '<option value="' . $row["code"] . '">' . $row["code"] . '</option>';
-                                                        }
-                                                        ?>
-                                                        <option value="" selected disabled>Choose Level</option>
-                                                        <?php echo $course_name; ?>
-                                                    </select>
-                                                </div>
-
-
-                                                <div class="col-2">
-                                                    <select name="bid" id="bid" class="custom-select action mr-sm-2">
-                                                        <option value="" selected disabled>Choose Batch</option>
-                                                    </select>
-                                                </div>
-
-                                                <div class="col-2">
-                                                    <button type="submit" class="btn btn-primary mb-2" id="">Find</button>
-                                                </div>
-
-                                            </div>
-                                        </form>
+                                            <select class="custom-select" id="inputGroupSelect01" name="department">
+                                                <option selected disabled value="">Choose Department</option>
+                                                <?php
+                                                $result = $con->query("SELECT `code` FROM `departments` ORDER BY `departments`.`code` ASC");
+                                                while ($row = $result->fetch_assoc()) {
+                                                    unset($dno);
+                                                    $dno = $row['code'];
+                                                    echo '<option value=" ' . $dno . '"  >' . $dno . '</option>';
+                                                }
+                                                ?>
+                                            </select>
+                                        </div>
                                     </div>
+                                    <div class="col">
+                                        <div class="input-group input-group-sm mb-3">
 
-                                    <div class="card-body">
+                                            <select class="custom-select" id="inputGroupSelect01" name="course">
+                                                <option selected disabled value="">Choose Course</option>
+                                                <?php
+                                                $result = $con->query("SELECT `code` FROM `courses` ORDER BY `courses`.`code` ASC");
+                                                while ($row = $result->fetch_assoc()) {
+                                                    unset($dno);
+                                                    $dno = $row['code'];
+                                                    echo '<option value=" ' . $dno . '"  >' . $dno . '</option>';
+                                                }
+                                                echo '<option value=" ' . $cou . '"  selected>' . $cou . '</option>';
+                                                ?>
+                                                <?php //echo $stitle; 
+                                                ?>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <br>
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="input-group input-group-sm mb-3">
 
-                                        <div class="table-responsive">
+                                            <select class="custom-select" id="inputGroupSelect01" name="module">
+                                                <option selected disabled value="">Choose Module</option>
+                                                <?php
+                                                $result = $con->query("SELECT `code` FROM `modules` ORDER BY `modules`.`code` ASC");
+                                                while ($row = $result->fetch_assoc()) {
+                                                    unset($dno);
+                                                    $dno = $row['code'];
+                                                    echo '<option value=" ' . $dno . '"  >' . $dno . '</option>';
+                                                }
+                                                echo '<option value=" ' . $module_id . '"  selected>' . $module_id . '</option>';
+                                                ?>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="input-group input-group-sm mb-3">
 
-
-                                            <div class="row">
-                                                <div class="form-group col-md-12 table-responsive">
-                                                    <table class="table align-middle table-striped">
-
-
-                                                        <div class="row">
-                                                            <div class="form-group col-md-12 table-responsive">
-                                                                <table class="table align-middle">
-                                                                    <thead class='thead-light'>
-
-                                                                        <tr>
-                                                                            <?php
-                                                                            $lec = null;
-
-                                                                            ?>
-
-                                                                            <th scope='col'>Reg No.</th>
-                                                                            <?php
-                                                                            for ($x = 1; $x <= 20; $x += 1) {
-                                                                            ?>
-                                                                                <th scope='col'><?php echo "$x"; ?></th>
-                                                                            <?php } ?>
-                                                                            <th scope='col'>Total</th>
-                                                                        </tr>
-
-
-
-                                                                        <!-- if -->
-                                                                        <?php
-                                                                        if (isset($_GET['submit'])) {
-
-                                                                        ?>
-
-                                                                            <!-- array -->
-                                                                            <?php
-                                                                            $student_id = null;
-                                                                            $status = null;
-
-                                                                            if (isset($_GET['student_id'])) {
-                                                                                $student_id = $_GET['student_id'];
-                                                                                $status = $_GET['status'];
-                                                                            }
-                                                                            ?>
-                                                                            <!-- array -->
-
-                                                                            <!-- student_id array -->
-                                                                            <?php
-
-                                                                            $sql = mysqli_query($con, "SELECT DISTINCT student_id FROM student_attendance group by student_id");
-
-                                                                            while ($row = mysqli_fetch_array($sql)) {
-                                                                                $s_ids[] = $row['student_id'];
-                                                                            }
-                                                                            foreach ($s_ids as $idss) {
-                                                                                // echo "$idss";
-                                                                            }
-                                                                            ?>
-                                                                            <!-- student_id array  -->
-
-                                                                            <!-- status array -->
-                                                                            <?php
-
-                                                                            $sql = mysqli_query($con, "SELECT DISTINCT status FROM student_attendance group by student_id");
-
-                                                                            while ($row = mysqli_fetch_array($sql)) {
-                                                                                $s_ids[] = $row['status'];
-                                                                            }
-                                                                            foreach ($s_ids as $idss) {
-                                                                                // echo "$idss";
-                                                                            }
-                                                                            ?>
-                                                                            <!-- status array  -->
-
-                                                                        <?php
-                                                                        } else {
-                                                                        ?>
-
-                                                                            <?php
-                                                                            $student_id = null;
-                                                                            $status = null;
-
-                                                                            if (isset($_GET['student_id'])) {
-                                                                                $student_id = $_GET['student_id'];
-                                                                                $status = $_GET['status'];
-                                                                            }
-                                                                            ?>
-                                                                            <!-- array -->
-
-                                                                            <!-- student_id array -->
-                                                                            <?php
-
-                                                                            $sql = mysqli_query($con, "SELECT DISTINCT student_id FROM student_attendance group by student_id");
-
-                                                                            while ($row = mysqli_fetch_array($sql)) {
-                                                                                $s_ids[] = $row['student_id'];
-                                                                            }
-                                                                            foreach ($s_ids as $idss) {
-                                                                                // echo "$idss";
-                                                                            }
-                                                                            ?>
-                                                                            <!-- student_id array  -->
-
-                                                                            <!-- status array -->
-                                                                            <?php
-
-                                                                            $sql = mysqli_query($con, "SELECT DISTINCT status FROM student_attendance group by student_id");
-
-                                                                            while ($row = mysqli_fetch_array($sql)) {
-                                                                                $s_ids[] = $row['status'];
-                                                                            }
-                                                                            foreach ($s_ids as $idss) {
-                                                                                // echo "$idss";
-                                                                            }
-                                                                            ?>
-                                                                            <!-- status array  -->
-
-
-                                                                            <?php
-                                                                            // $sql = " SELECT student_id,status from student_attendance group by student_id";
-                                                                            // $result = mysqli_query($con, $sql);
-                                                                            // while ($row = mysqli_fetch_assoc($result)) {
-                                                                            ?>
-                                                                            <!-- <tr>
-                                                                                <td><?php //echo $row['student_id'] 
-                                                                                    ?></td>
-
-                                                                                <td>
-                                                                                    <?php
-                                                                                    // if ($row['status'] == 'present') {
-                                                                                    //     echo "P";
-                                                                                    // } else {
-                                                                                    //     echo 'AB';
-                                                                                    // }
-                                                                                    ?>
-                                                                                </td>
-
-                                                                            </tr> -->
-                                                                        <?php
-                                                                            // } 
-                                                                        }
-                                                                        ?>
-
-                                                                        <tr>
-                                                                            <td>Total attendance</td>
-
-
-
-
-                                                                        </tr>
-
-                                                                    </thead>
-
-                                                                </table>
-                                                            </div>
-                                                        </div>
-                                                        <!-- end        -->
-                                                    </table>
-                                                </div>
-                                            </div>
-
+                                            <select class="custom-select" id="inputGroupSelect01" name="batch">
+                                                <option selected disabled value="">Choose batch</option>
+                                                <?php
+                                                $result = $con->query("SELECT `batch_no` FROM `batches` ORDER BY `batches`.`batch_no` DESC");
+                                                while ($row = $result->fetch_assoc()) {
+                                                    unset($dno);
+                                                    $dno = $row['batch_no'];
+                                                    echo '<option value=" ' . $dno . '"  >' . $dno . '</option>';
+                                                }
+                                                echo '<option value=" ' . $batchno . '"  selected>' . $batchno . '</option>';
+                                                ?>
+                                            </select>
                                         </div>
                                     </div>
                                 </div>
 
-</body>
 
-</html>
+                                <br>
 
-<script type="text/javascript" src="js/bootstrap-datepicker.js"></script>
-<link rel="stylesheet" href="css/datepicker.css" />
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="input-group input-group-sm mb-3">
 
-<div class="modal" id="formModal">
-    <div class="modal-dialog">
-        <form method="post" id="attendance_form">
-            <div class="modal-content">
+                                            <select class="custom-select" id="inputGroupSelect01" name="lecturer">
+                                                <option selected disabled value="">Choose lecturer</option>
+                                                <?php
+                                                $result = $con->query("SELECT `id` FROM `lecturer` ");
+                                                while ($row = $result->fetch_assoc()) {
+                                                    unset($dno);
+                                                    $dno = $row['id'];
+                                                    echo '<option value=" ' . $dno . '"  >' . $dno . '</option>';
+                                                }
+                                                echo '<option value=" ' . $Lecturer_id . '"  selected>' . $Lecturer_id . '</option>';
+                                                ?>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="input-group input-group-sm mb-3">
+                                            <input type="date" class="form-control" name=date value="<?php echo $date1; ?>" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" id="validationServer01" required>
+                                            <input type="time" class="form-control" name=date value="<?php echo $ho; ?>" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" id="validationServer01" required>
+                                            <!-- <select class="custom-select" id="inputGroupSelect01" name="hour">
+                                                <option selected disabled value="">Choose hour</option>
+                                                <?php
+                                                // echo '<option value=" ' . $ho . '"  selected>' . $ho . '</option>';
+                                                // for ($x = 0; $x < 13; $x++) {
+                                                ?>
+                                                    <option value="<?php //echo $x; 
+                                                                    ?>"><?php //echo $x; 
+                                                                                        ?></option>
+                                                <?php
+                                                // }
+                                                ?>
+                                            </select>
 
-                <div class="modal-header">
-                    <h4 class="modal-title" id="modal_title"></h4>
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                            <select class="custom-select" id="inputGroupSelect01" name="min">
+                                                <option selected disabled value="">Choose mintue</option>
+                                                <?php
+                                                //for ($x = 0; $x < 61; $x++) {
+                                                ?>
+                                                    <option value="<?php //echo $x; 
+                                                                    ?>"><?php //echo $x; 
+                                                                                        ?></option>
+                                                <?php
+                                                // }
+                                                ?>
+                                            </select> -->
+                                            <input type="text" name="week" placeholder="weeks" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" id="validationServer01" required>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- content -->
+                        </div>
+                        <div class="card-footer ">
+                            <div class="row">
+                                <div class="col"></div>
+                                <div class="col-auto">
+                                    <?php
+                                    if (isset($_GET['edit'])) {
+                                    ?>
+                                        <input type="submit" name="submit" class="btn btn-primary" value="save ">
+                                    <?php
+                                    } else {
+                                    ?>
+                                        <input type="submit" name="submit" class="btn btn-primary" value="ADD ">
+                                    <?php
+                                    }
+                                    ?>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    </form>
+
+
+
                 </div>
+                <!-- #1 Insert Your Content" -->
             </div>
+        </main>
     </div>
-    <div class="form-group" id="student_details">
-        <div class="table-responsive">
-            <table class="table table-striped table-bordered">
-            </table>
-        </div>
-    </div>
-</div>
-</main>
+    <?php include_once("../script.php"); ?>
+    <script>
 
-<?php include_once("../script.php");
-?>
+    </script>
 </body>
 
 </html>
-
-<!-- course filter -->
-<script>
-    $(document).ready(function() {
-        $('.action').change(function() {
-            if ($(this).val() != '') {
-                var action = $(this).attr("id");
-                var query = $(this).val();
-                var result = '';
-                if (action == "cid") {
-                    result = 'bid';
-                }
-                $.ajax({
-                    url: "sample.php",
-                    method: "POST",
-                    data: {
-                        action: action,
-                        query: query
-                    },
-                    success: function(data) {
-                        $('#' + result).html(data);
-                    }
-                })
-            }
-        });
-    });
-</script>
-
-<!-- script -->
-<script>
-    function myFunction() {
-        document.getElementById("demo").style.color = "red";
-    }
-</script>
-<!-- script -->
-
-<?php
-//fetch.php
-if (isset($_POST["action"])) {
-    $connect = mysqli_connect("localhost", "root", "", "erms");
-    $output = '';
-    if ($_POST["action"] == "cid") {
-        $query = "SELECT `batches`.`batch_no` FROM `batches` LEFT JOIN `courses` ON `batches`.`NVQ_level` = `courses`.`NVQ_level` AND 
-  `batches`.`department_code` = `courses`.`department_code` WHERE `courses`.`code`='" . $_POST["query"] . "'";
-        $result = mysqli_query($connect, $query);
-        $output .= '<option value="" disabled selected>Choose Batch</option>';
-        // $output .= '<a href="" disabled selected> Choose</a><br>';
-        while ($row = mysqli_fetch_array($result)) {
-            $output .= '<option value="' . $row["batch_no"] . '">' . $row["batch_no"] . '</option>';
-            // $output .= '<a href="?module=' . $row['batch_no'] . '">' . $row['batch_no'] . '</a><br>';
-        }
-    }
-    echo $output;
-}
-?>
-
-<!-- course filter -->
