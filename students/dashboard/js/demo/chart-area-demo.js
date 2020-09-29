@@ -141,10 +141,10 @@ $(document).ready(function() {
             }
 
             //get canvas
-            var ctx = $("#myAreaChart");
+            var ctx = $("#myAreaChartst");
 
             var data = {
-                labels: ["Batch 1", "Batch 2", "Batch 3", "Batch 4", "Batch 5"],
+                labels: ["Assessments", "Assignments", "Attendance ", "institute exams"],
                 datasets: [{
                         label: "Fail",
                         data: score.TeamA,
