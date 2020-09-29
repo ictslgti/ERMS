@@ -4,11 +4,26 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
 ?>
 <!DOCTYPE html>
 <html lang="en">
+<?php
+session_start();
+if (!isset($_SESSION['username'])) {
+    header('Location: .././index.php');
+}
+?>
+
+<?php 
+
+if (isset($_GET['logout']) && isset($_SESSION['username']) ) {
+    unset($_SESSION['username']);  
+    header('Location: .././index.php');         
+}
+?>
 
 <head>
     <?php include_once("../head.php"); ?>
     <?php include_once("../config.php"); ?>
 </head>
+
 
 <?php
 $student_id = $stitle = $full_name = $ini_name = $gender = $civil = $email = $nic = $dob = $phone = $address = $ds =
@@ -66,8 +81,7 @@ if (mysqli_num_rows($result_attendance) == 1) {
                         $week = $_POST['week'];
                         $lecturer = $_POST['lecturer'];
                         $module = $_POST['module'];
-                        $hour = $_POST['hour'];
-                        $min = $_POST['min'];
+                      
                         $course = $_POST['course'];
 
                         $sql = "INSERT INTO attendance (module_id,Lecturer_id,date,time,batch,course)
