@@ -31,6 +31,7 @@ if (isset($_POST["action"])) {
     $output .= '<option value="" disabled selected>Select Batch</option>';
     while ($row = mysqli_fetch_array($result)) {
       $output .= '<option value="' . $row["id"] . '">' . $row["NVQ_level"] . "-Batch-" . $row["batch_no"] . '</option>';
+      
     }
   }
   echo $output;
