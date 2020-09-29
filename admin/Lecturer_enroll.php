@@ -116,6 +116,17 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
     //  course  
     ?>
 
+<?php
+    //course
+    $lecturers = '';
+    $query = "SELECT * FROM lecturer";
+    $result = mysqli_query($con, $query);
+    while ($row = mysqli_fetch_array($result)) {
+        $lecturers .= '<option value="' . $row["id"] . '">' . $row["first_name"] .$row["last_name"]."|". $row["department_code"].'</option>';
+    }
+    //  course  
+    ?>
+
     <div class="page-wrapper toggled bg2 border-radius-on light-theme">
 
         <?php include_once("nav.php"); ?>
@@ -133,6 +144,7 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
             $first = null;
             $last = null;
             $course = null;
+            $id=null;
             if (isset($_GET['edit'])) {
                 $id = $_GET['edit'];
                 $query = "select c.name as course,m.name,m.id as module,b.id as batch,l.id as lec,b.batch_no,l.first_name,l.last_name from batches b,modules m,lecturer l,lecturer_enroll le,courses c where c.code=m.course_code 
@@ -150,6 +162,46 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
                 }
             }
             ?>
+
+<?php
+            if (
+                isset($_POST['save'])
+                && !empty($_POST['module'])
+                && !empty($_POST['batch'])
+                && !empty($_POST['lecturer'])
+            ) {
+
+                $module = $_POST['module'];
+                $batch = $_POST['batch'];
+                $lecturer = $_POST['lecturer'];
+
+                $sql = "UPDATE `lecturer_enroll` SET module='$module',batch='$batch',lecturer='$lecturer' WHERE id=$id;";
+
+                if (mysqli_query($con, $sql)) {
+                    echo "
+<div class='alert alert-success' role='alert'>
+update success fully 
+
+<button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+    <span aria-hidden='true'>&times;</span>
+</button>
+</div>";
+                } else {
+                    echo "
+<div class='alert alert-danger' role='alert'>
+This course alredy submit 
+<button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+    <span aria-hidden='true'>&times;</span>
+</button>
+</div>";
+                }
+            }
+            ?>
+
+
+
+
+
 
             <?php
             if (
@@ -216,11 +268,11 @@ This course alredy submit
                                                 <div class="form-group">
                                                     <div class="input-group input-group-sm mb-3">
 
-                                                        <select class="custom-select" id="course" name="course" id="inputGroupSelect01" id="validationCustom04" onchange="getcourse(),getcoursetable()" required>
+                                                        <select class="custom-select" id="course" name="course" id="inputGroupSelect01" id="validationCustom04" onchange="getcourse()" required>
                                                             <?php
                                                             if (isset($_GET['edit'])) {
                                                             ?>
-                                                                <option value="" selected disabled><?php echo $course; ?></option>
+                                                                <option value="<?php echo $course; ?>" selected ><?php echo $course; ?></option>
                                                             <?php
                                                                 echo $courses;
                                                             } else {
@@ -242,11 +294,11 @@ This course alredy submit
                                                 <div class="form-group">
                                                     <div class="input-group input-group-sm mb-3">
 
-                                                        <select class="custom-select" id="module" name="module" id="inputGroupSelect01" id="validationCustom04" onchange="getbatch(),getselectvalue()" required>
+                                                        <select class="custom-select" id="module" name="module" id="inputGroupSelect01" id="validationCustom04" onchange="getbatch()" required>
                                                             <?php
                                                             if (isset($_GET['edit'])) {
                                                             ?>
-                                                                <option value="" selected disabled><?php echo $module_name; ?></option>
+                                                                <option value="<?php echo $module; ?>" selected ><?php echo $module_name; ?></option>
                                                             <?php
 
                                                             } else {
@@ -277,11 +329,11 @@ This course alredy submit
                                             <div class="form-group">
                                                 <div class="input-group input-group-sm mb-3">
 
-                                                    <select class="custom-select" id="batch" name="batch" onchange="getlecturer()" id="inputGroupSelect01" id="validationCustom04" required>
+                                                    <select class="custom-select" id="batch" name="batch"  id="inputGroupSelect01" id="validationCustom04" required>
                                                         <?php
                                                         if (isset($_GET['edit'])) {
                                                         ?>
-                                                            <option value="" selected disabled><?php echo $batch_no; ?></option>
+                                                            <option value="<?php echo $batch; ?>" selected ><?php echo $batch_no; ?></option>
                                                         <?php
 
                                                         } else {
@@ -308,14 +360,15 @@ This course alredy submit
                                                         <?php
                                                         if (isset($_GET['edit'])) {
                                                         ?>
-                                                            <option value="" selected disabled><?php echo $first . $last; ?></option>
+                                                            <option value="<?php echo $lecturer; ?>" selected ><?php echo $first . $last; ?></option>
                                                         <?php
-
+ echo $lecturers;
                                                         } else {
                                                         ?>
                                                             <option value="" selected disabled> select lecturer</option>
 
                                                         <?php
+                                                         echo $lecturers;
                                                         }
                                                         ?>
                                                     </select>

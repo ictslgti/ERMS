@@ -112,7 +112,7 @@ if(mysqli_num_rows($result)>0){
 <div class="col"></div>
 <div class="col-auto">
 <div class="btn-group btn-sm" role="group" aria-label="Basic example">
-            <a href="batch.php?edit=', $row['academic_year'], '" class=" btn btn-sm" style="background-color: #ffaa00 ;" ><i class="far fa-edit" style="color: #ffffff;"></i> </a> 
+            <a href="Academicyear.php?edit=', $row['academic_year'], '" class=" btn btn-sm" style="background-color: #ffaa00 ;" ><i class="far fa-edit" style="color: #ffffff;"></i> </a> 
             <a href="?delete=', $row['academic_year'], '" class="btn btn-sm" style="background-color: #bf0502;"> <i class="far fa-trash-alt" style="color: #ffffff;"></i> </a>
             <a href="batches.php?id=', $row['academic_year'], '" class="btn btn-sm" style="background-color: #0097c4 ; color: #ffffff;" > batches</a>
           </div>

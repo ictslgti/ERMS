@@ -83,7 +83,16 @@ if(isset($_GET['delete'])){
     </thead>
     <tbody>
     <?php
-$sql = 'SELECT * FROM `batches`';
+    if(isset($_GET['id']))
+    {
+        $academic=$_GET['id'];
+        $sql = 'SELECT * FROM `batches` where Academic_year="'.$academic.'"';
+    }
+    else
+    {
+        $sql = 'SELECT * FROM `batches`';
+    }
+
 $result = mysqli_query($con,$sql);
 if(mysqli_num_rows($result)>0){
     while($row = mysqli_fetch_assoc($result)){
@@ -99,7 +108,7 @@ if(mysqli_num_rows($result)>0){
 <div class="btn-group btn-sm" role="group" aria-label="Basic example">
             <a href="batch.php?edit=', $row['id'], '" class=" btn btn-sm" style="background-color: #ffaa00 ;" ><i class="far fa-edit" style="color: #ffffff;"></i> </a> 
             <a href="?delete=', $row['id'], '" class="btn btn-sm" style="background-color: #bf0502;"> <i class="far fa-trash-alt" style="color: #ffffff;"></i> </a>
-            <a href="assessment_result.php?id=', $row['id'], '" class="btn btn-sm" style="background-color: #0097c4 ; color: #ffffff;" > Add result </a>
+            <a href="students.php?batch=', $row['batch_no'], '" class="btn btn-sm" style="background-color: #0097c4 ; color: #ffffff;" > student info </a>
           </div>
 </div>
 </div>
