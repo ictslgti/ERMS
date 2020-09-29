@@ -14,7 +14,20 @@ while ($row = mysqli_fetch_array($result)) {
 ?>
 <!DOCTYPE html>
 <html lang='en'>
+<?php
+session_start();
+if (!isset($_SESSION['username'])) {
+    header('Location: .././index.php');
+}
+?>
 
+<?php 
+
+if (isset($_GET['logout']) && isset($_SESSION['username']) ) {
+    unset($_SESSION['username']);  
+    header('Location: .././index.php');         
+}
+?>
 <head>
     <?php
     include_once('.././head.php');
@@ -307,7 +320,7 @@ while ($row = mysqli_fetch_array($result)) {
                                     <td> ', $row['date'], '</td>
                                     <td class="btn-group "role="group" > 
                                     
-                                     <a class = "btn btn-warning btn-group btn btn-sm "href="result_report.php?view=', $row['batch'], '& course=', $row['course'], '"> View</a>
+                                     <a class = "btn btn-warning btn-group btn btn-sm "href="result_report.php?results=', $row['batch'], '& course=', $row['course'], '& module=', $row['module'],'"> View</a>
                                     <a class = "btn btn-danger btn-group btn btn-sm " href="?delete=', $row['exam_id'], '"> Delete </a>
                                     <a class = "btn btn-info btn-group btn btn-sm "href="exams_results.php?results=', $row['batch'], '& course=', $row['course'], '& module=', $row['module'], '">
                                     

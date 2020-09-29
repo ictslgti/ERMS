@@ -3,6 +3,21 @@ $title = "Add Student | Online Examination Result Management System | SLGTI";
 $description = "Online Examination Result Management System (ERMS)-SLGTI";
 ?>
 
+<?php
+session_start();
+if (!isset($_SESSION['username'])) {
+    header('Location: .././index.php');
+}
+?>
+
+<?php 
+
+if (isset($_GET['logout']) && isset($_SESSION['username']) ) {
+    unset($_SESSION['username']);  
+    header('Location: .././index.php');         
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <?php include_once("../head.php"); ?>
@@ -39,8 +54,7 @@ $description = "Online Examination Result Management System (ERMS)-SLGTI";
 
 <body>
     <div class="page-wrapper toggled bg2 border-radius-on light-theme">
-        <?php //include_once("nav.php"); 
-        ?>
+        <?php include_once("nav.php"); ?>
 
         <!-- insert  start-->
         <?php
@@ -208,7 +222,7 @@ $description = "Online Examination Result Management System (ERMS)-SLGTI";
                             </div>";
                     } else {
                         echo "<div class='alert alert-danger' role='alert'>
-                                This academic_year alredy submit 
+                                image not inserted 
                                 <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
                             <span aria-hidden='true'>&times;</span>
                             </button></div>" . "<br>" . mysqli_error($con);
@@ -825,7 +839,7 @@ $description = "Online Examination Result Management System (ERMS)-SLGTI";
                                             $eexitdate = $row['exit_date'];
                                         }
                                     ?>
-                                        <!-- edii form -->
+                                        <!-- edit form -->
                                         <form method="POST" action="">
                                             <!-- 1 row start -->
                                             <div class="form-row">
@@ -896,7 +910,7 @@ $description = "Online Examination Result Management System (ERMS)-SLGTI";
                                                 </div>
 
                                                 <div class="col-3">
-                                                    <label for="exitdate"> Exit Date:</label>
+                                                    <label for="eexitdate"> Exit Date:</label>
                                                     <input type="date" class="form-control" name="eexitdate" value="<?php echo $eexitdate; ?>">
                                                 </div>
 
@@ -933,7 +947,7 @@ $description = "Online Examination Result Management System (ERMS)-SLGTI";
                                                 <div class="card card-body">
 
                                                     <!-- collapse form start -->
-                                                    <form action="">
+                                                    <form method="POST" action="">
                                                         <!-- 1 row start -->
                                                         <div class="form-row">
 

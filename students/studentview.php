@@ -10,11 +10,11 @@ if (!isset($_SESSION['username'])) {
 }
 ?>
 
-<?php 
+<?php
 
-if (isset($_GET['logout']) && isset($_SESSION['username']) ) {
-    unset($_SESSION['username']);  
-    header('Location: .././index.php');         
+if (isset($_GET['logout']) && isset($_SESSION['username'])) {
+    unset($_SESSION['username']);
+    header('Location: .././index.php');
 }
 ?>
 
@@ -59,9 +59,15 @@ if (isset($_GET['logout']) && isset($_SESSION['username']) ) {
         $student_id = $stitle = $full_name = $ini_name = $gender = $civil = $email = $nic = $dob = $phone = $address = $ds =
             $district = $province = $zip = $blood = $gname = $gaddress = $gphone = $grelation = $regno = $cid = $bid = $ayear =
             $mode = $status = $enrolldate = $exitdate = null;
-        if (isset($_GET['view'])) {
-            $student_id = $_GET['view'];
+        if (isset($_SESSION['username'])) {
+            $s = $_SESSION['username'];
 
+            $student = "SELECT id FROM `student` WHERE email='$s'";
+            $result_student = mysqli_query($con, $student);
+            $row = mysqli_fetch_assoc($result_student);
+            if (mysqli_num_rows($result_student) == 1) {
+                $student_id = $row['id'];
+            }
             // $sql_student = "SELECT * FROM `student` LEFT JOIN `student_enroll`
             // ON `student`.`id` = `student_enroll`.`id` LEFT JOIN `batches` ON 
             // `student_enroll`.`batch_no` = `batches`.`batch_no` LEFT JOIN `courses` ON
@@ -122,15 +128,6 @@ if (isset($_GET['logout']) && isset($_SESSION['username']) ) {
                                 <div class='col-8'>
                                     <h5><?php echo "$title" ?></h5>
                                 </div>
-                                <div class='col-2'>
-                                    <a class='btn btn-outline-warning' href="student.php?edit=<?php echo $student_id; ?>">Edit</a>
-                                </div>
-                                <div class='col-1-sm'>
-                                    <a class='btn btn-outline-primary' href='./student.php'>Add New</a>
-                                </div>
-                                <div class='col'>
-                                    <a class='btn btn-outline-primary' href='./students.php'>ALL</a>
-                                </div>
                             </div>
                         </div>
 
@@ -141,7 +138,7 @@ if (isset($_GET['logout']) && isset($_SESSION['username']) ) {
                                 <div class='col-3'>
                                     <div style='text-align:center; margin:0 auto; padding:0px;'>
                                         <?php
-                                        if (isset($_GET['view'])) {
+                                        if (isset($_SESSION['username'])) {
                                             $result = $con->query("SELECT * FROM `student_image` WHERE id = '$student_id'");
                                             if ($result->num_rows > 0) {
                                                 while ($row = $result->fetch_assoc()) {
@@ -164,7 +161,7 @@ if (isset($_GET['logout']) && isset($_SESSION['username']) ) {
                                     <div>aefsdfs</div>
                                     <div>aefsdfs</div> -->
                                 </div>
-                                
+
                                 <div class='col-9'>
 
                                     <div class="row">
@@ -232,7 +229,7 @@ if (isset($_GET['logout']) && isset($_SESSION['username']) ) {
 
                                     <div class='row border-bottom'>
                                         <div class='col-3 '><label for="gname">Guardian Name :</label></div>
-                                        <div class='col-3'><label for="gname"><?php echo $gname; ?></label></div>                
+                                        <div class='col-3'><label for="gname"><?php echo $gname; ?></label></div>
                                     </div>
 
                                     <div class='row border-bottom'>

@@ -462,24 +462,24 @@ if (isset($_GET['logout']) && isset($_SESSION['username']) ) {
                                     <!-- Project Card Example -->
                                     <div class="card shadow mb-4">
                                         <div class="card-header py-3">
-                                            <h6 class="m-0 font-weight-bold text-primary">Projects</h6>
+                                            <h6 class="m-0 font-weight-bold text-primary">Exams</h6>
                                         </div>
                                         <div class="card-body">
-                                            <h4 class="small font-weight-bold">Server Migration <span
+                                            <h4 class="small font-weight-bold">Assesments<span
                                                     class="float-right">29%</span></h4>
                                             <div class="progress mb-4">
                                                 <div class="progress-bar bg-danger " role="progressbar"
                                                     style="width: 20%" aria-valuenow="20" aria-valuemin="0"
                                                     aria-valuemax="100"></div>
                                             </div>
-                                            <h4 class="small font-weight-bold">Sales Tracking <span
+                                            <h4 class="small font-weight-bold">Assesments<span
                                                     class="float-right">40%</span></h4>
                                             <div class="progress mb-4">
                                                 <div class="progress-bar skill-per bg-warning" role="progressbar"
                                                     style="width: 40%" aria-valuenow="40" aria-valuemin="0"
                                                     aria-valuemax="100"></div>
                                             </div>
-                                            <h4 class="small font-weight-bold">Customer Database <span
+                                            <h4 class="small font-weight-bold">TVC Exams<span
                                                     class="float-right">60%</span></h4>
                                             <div class="progress mb-4">
                                                 <div class="progress-bar" role="progressbar" style="width: 60%"

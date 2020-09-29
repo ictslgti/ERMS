@@ -1,12 +1,5 @@
 <?php
-session_start();
-if (!isset($_SESSION['username'])) {
-    header('Location: .././index.php');
-}
-$user = $_SESSION['username'];
-?>
-<?php
-$title = ' ERMS | SLGTI(page Title)';
+$title = ' ERMS | SLGTI Attendance';
 $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
 ?>
 <!DOCTYPE html>
@@ -16,10 +9,18 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
     <?php include_once('.././head.php');
     include_once('../config.php');
     ?>
+    <?php
+session_start();
+if (!isset($_SESSION['username'])) {
+    header('Location: .././index.php');
+}
+
+?>
 </head>
 
 <body>
     <?php
+    $user = $_SESSION['username'];
     //session
     $student_id = '';
     $query = "SELECT * FROM student where email='$user'";
@@ -55,9 +56,9 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
                                                         Attendance Review
                                                     </button>
                                                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                                    <a class="dropdown-item" href="attendance_all.php">Moudel-Wise</a>
                                                         <a class="dropdown-item" href="attendance_month.php">Month-Wise</a>
                                                         <a class="dropdown-item" href="attendance_semester.php">Semester-Wise</a>
-                                                        <a class="dropdown-item" href="attendance_all.php">Moudel-Wise</a>
                                                     </div>
                                                 </div>
 
@@ -90,7 +91,7 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
                                                                 <th scope='col'>Moduels</th>
                                                                 <th scope='col'>Points Over Taken Session</th>
                                                                 <th scope='col'>All Session</th>
-                                                                <th scope='col'>Percentage Sver Taken Session</th>
+                                                                <th scope='col'>Percentage Over Taken Session</th>
                                                                 <th></th>
                                                             </tr>
 
@@ -103,7 +104,7 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
 
                                                             <?php
 
-                                                            $sql = mysqli_query($con, "SELECT `code` FROM `attendance` GROUP BY `code` ");
+                                                            $sql = mysqli_query($con, "SELECT code FROM attendance GROUP BY code ");
 
                                                             while ($row = mysqli_fetch_array($sql)) {
                                                                 $modu[] = $row['code'];
@@ -115,14 +116,7 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
                                                             $cont = count($modu);
 
                                                             for ($x = 0; $x < $cont; $x++) {
-                                                                // $sql = "SELECT count(student_attendance.status) as Total,(SELECT count(student_attendance.status) from attendance,student_attendance where 
-                                                                //             student_attendance.id=attendance.attendance_id and student_attendance.status='present' AND student_id=$student_id and code='" 
-                                                                //             . $modu[$x] . "' group by batch_no) as Take ,
-                                                                //             attendance.code from attendance,student_attendance where student_attendance.id=attendance.attendance_id 
-                                                                //             AND student_id=$student_id  and code='" . $modu[$x] . "' group by CODE,batch_no";
-
-                                                                $sql = "SELECT count(student_attendance.status) as Total,(SELECT count(student_attendance.status) from attendance,student_attendance where 
-                                                                    student_attendance.id=attendance.attendance_id and student_attendance.status='present' AND student_id='$student_id' and code='" . $modu[$x] . "' group by batch_no) as Take ,
+                                                                $sql = "SELECT count(student_attendance.status) as total_session,SUM(`status` = 'present') as take_session,
                                                                     attendance.code from attendance,student_attendance where student_attendance.id=attendance.attendance_id 
                                                                     AND student_id='$student_id'  and code='" . $modu[$x] . "' group by CODE,batch_no";
 
@@ -137,20 +131,20 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
                                                                         <td scope='col'>
 
                                                                             <?php
-                                                                            if ($row['Take'] == null) {
+                                                                            if ($row['take_session'] == null) {
                                                                                 echo "0";
                                                                             } else {
-                                                                                echo $row['Take'];
+                                                                                echo $row['take_session'];
                                                                             }
                                                                             ?>
                                                                         </td>
                                                                         <td scope='col'>
 
-                                                                            <?php echo $row['Total'];
+                                                                            <?php echo $row['total_session'];
                                                                             ?>
                                                                         </td>
                                                                         <td scope='col'>
-                                                                            <?php echo number_format(($row['Take'] / $row['Total']) * 100, 2) . "%" ?>
+                                                                            <?php echo number_format(($row['take_session'] / $row['total_session']) * 100, 2) . "%" ?>
                                                                         </td>
 
                                                                     </tr>
@@ -165,13 +159,12 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
                                                             // student_attendance.id=attendance.attendance_id and student_attendance.status='present' AND student_id=$student_id group by batch_no) as take_session,
                                                             // attendance.code from student_attendance,attendance where student_attendance.id=attendance.attendance_id and student_id=$student_id";
 
-                                                            $sql = "SELECT count(student_attendance.status) as Total,(SELECT count(student_attendance.status) from attendance,student_attendance where  
-                                                            student_attendance.id=attendance.attendance_id and student_attendance.status='present' AND student_id='$student_id' group by batch_no) as Take 
-                                                            from  attendance,student_attendance where student_attendance.id=attendance.attendance_id AND student_id='$student_id' ";
+                                                            $sql = "SELECT count(student_attendance.status) as total_session ,SUM(`status` = 'present') as take_session from attendance,student_attendance where 
+                                                            student_attendance.id=attendance.attendance_id AND student_id='$student_id'"; 
 
                                                             $result = mysqli_query($con, $sql);
                                                             while ($row = mysqli_fetch_assoc($result)) {
-                                                                $row1 = number_format(($row['Take'] / $row['Total']) * 100, 2)
+                                                                $row1 = number_format(($row['take_session'] / $row['total_session']) * 100, 2)
                                                             ?>
 
                                                                 <tr>

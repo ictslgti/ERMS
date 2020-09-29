@@ -43,49 +43,40 @@ if (isset($_GET['logout']) && isset($_SESSION['username']) ) {
                             <div class="card-body">
                                 <!-- #1 Insert Your Content-->
                                 <?php
-                                if (isset($_GET['results'])) {
-                                    $batch_no = $_GET['results'];
-                                   echo $course = $_GET['course'];
-                                   $module = $_GET['module'];
-                                    $sql = "select * from exams,batches where exams.batch=batches.batch_no and batches.batch_no =$batch_no and exams.course = '$course' and exams.module='$module' group by batches.department_code";
+                                if (isset($_GET['reg'])) {
+                                    $reg = $_GET['reg'];
+                                    $sql = "SELECT * FROM exams_result,student where student.id = exams_result.student_id and exams_result.student_id='$reg'group by student.id";
+
+                                    // $sql = "SELECT * FROM `student`,student_enroll,batches,exams_result WHERE student.id=student_enroll.id and batches.batch_no=student_enroll.batch_no and batches.batch_no=exams_result.batch_no and batches.batch_no=$batch_no and student_enroll.course_code = '$course' and exams_result.module='$module' group by student_enroll.id";
                                     $result = $con->query($sql);
                                     if ($result->num_rows > 0) {
                                         while ($row = $result->fetch_assoc()) {
                                             echo '       
                             <div class="row">
                                 <div class="col-md-4">
-                                    <label for="exampleInputEmail1" name="department">Department :-<b>', $row['department'], '</b></label>
+                                    <label for="exampleInputEmail1" name="Exams">Name :-<b>', $row['title'], '.', $row['full_name'], '</b></label>
                                 </div>
                                 <div class="col-md-4">
-                                    <label for="exampleInputEmail1" name="batch">Betch :-<b>', $row['batch'], '</b></label>
+                                    <label for="exampleInputEmail1" name="batch">Gender :-', $row['gender'], '</b></label>
             
                                 </div>
                                 <div class="col-md-4">
-                                    <label for="exampleInputEmail1" name="Academic_year">Academic Year :-<b>', $row['Academic_year'], '</b></label>
+                                    <label for="exampleInputEmail1" name="studentid">E-mail  :-<b>', $row['email'], '</b></label>
                                 </div>
                             </div>
                             <div class="row">
                             <div class="col-md-4">
-                                <label for="exampleInputEmail1" name="course">Course :-<b>', $row['course'], '</b></label>
+                                <label for="exampleInputEmail1" name="course">Semester  :-<b>', $row['semester'], '</b></label>
                             </div>
                             <div class="col-md-4">
-                                <label for="exampleInputEmail1" name="level">Level :-<b>', $row['NVQ_level'], '</b></label>
+                            <label for="exampleInputEmail1" name="module">Module Code :-<b>', $row['module'], '</b></label><span class="badge badge-pill badge-success" name="exam_type">', $row['exam_type'], '</span>
         
                             </div>
                             <div class="col-md-4">
-                                <label for="exampleInputEmail1" name="date">Exam Date :-<b>', $row['date'], '</b></label>
+                            <label for="exampleInputEmail1" name="exams">Exams Type :-<b>', $row['exams'], '</b></label>
                             </div>
                         </div>
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <label for="exampleInputEmail1" name="module">Module Code :-<b>', $row['module'], '</b></label><span class="badge badge-pill badge-success" name="exam_type">', $row['exam_type'], '</span>
-                                </div>
-                                 <div class="col-md-4">
-                                    <label for="exampleInputEmail1" name="exams">Exams Type :-<b>', $row['exams'], '</b></label>
-                                </div>
-                                <div class="col-md-4">
-                                    <label for="exampleInputEmail1" name="semester">Semester :-<b>', $row['semester'], '</b></label>
-                                </div>
+                      
                             </div>';
                                         }
                                     }
@@ -106,40 +97,38 @@ if (isset($_GET['logout']) && isset($_SESSION['username']) ) {
                                                     <th scope='col'>NO</th>
                                                     <th scope='col'>INDEX NO</th>
                                                     <th scope='col'>REG NO</th>
-                                                    <th scope='col'>STUDENTS NAME</th>
                                                     <th scope='col'>RESULT</th>
                                                     <th scope='col'>ATTEMPT</th>
                                                     <th scope='col'>ACTIONS</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <input name="results" value="<?php echo $_GET['results'] ?>" type="hidden">
+                                                <input name="results" value="<?php echo $_GET['results'] ?> " type="hidden">
                                                 <?php
-                                                if (isset($_GET['results'])) {
-                                                    $batch_no = $_GET['results'];
-                                                    $course = $_GET['course'];
-                                                    $module = $_GET['module'];
-                                                    $sql = "SELECT * FROM student , student_enroll ,exams where `student`.`id` = `student_enroll`.`id` and`student_enroll`.`batch_no` =$batch_no  and `student_enroll`.`course_code` = '$course' and exams.module='$module' GROUP by student_enroll.id";
+                                                if (isset($_GET['reg'])) {
+                                                    $reg = $_GET['reg'];
+
+                                                    $sql = "SELECT * FROM `exams_result` where student_id='$reg' group by student_id ";
+                                                    // $sql = "SELECT * FROM `student`,student_enroll,batches,exams_result WHERE student.id=student_enroll.id and batches.batch_no=student_enroll.batch_no and batches.batch_no=exams_result.batch_no and batches.batch_no=$batch_no and student_enroll.course_code = '$course' and exams_result.module='$module' group by student_enroll.id";
                                                     $result = $con->query($sql);
                                                     if ($result->num_rows > 0) {
                                                         while ($row = $result->fetch_assoc()) {
                                                             echo '<tr>
                                             <td> </td>
-                                            <td><input name="reg', $row['id'], '" value="', $row['id'], '" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" style="width: 50%;"></td>
-                                            <td> ', $row['id'], '</td>
-                                            <td> ', $row['full_name'], '</td>
-                                            <td><input type="number" name="res', $row['id'], '" value="0" min="0" max="100" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" style="width: 20%;" ></td>
+                                            <td>', $row['student_id'], '</td>
+                                            <td> ', $row['index_no'], '</td>
+                                            <td><input type="number" name="marks" value=', $row['marks'], ' min="0" max="100" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" style="width: 20%;" ></td>
                                             <td>
-                                                <div class="form-group">
-                                                    <select class="form-control" id="exampleFormControlSelect1" style="width: 50%;" name="att', $row['id'], '" >
-                                                        <option value="1">1 st</option>
+                                           
+                                            <select class="form-control" id="exampleFormControlSelect1" style="width: 50%;" name="attempt" >
+                                            <option value="', $row['attempt'], '" >', $row['attempt'], '</option>            
+                                                        <option value="1" >1 st</option>
                                                         <option  value="2">2 nd</option>
                                                         <option  value="3">3 rd</option>
                                                     </select>
-                                                </div>
                                             </td>
                                             <td>
-                                                <a href="../admin/studentview.php?view=', $row['id'], '" class="btn btn-warning btn-group btn btn-sm "> View </td>
+                                                <a href="../admin/studentview.php?view=', $row['student_id'], '" class="btn btn-warning btn-group btn btn-sm "> View  
                                         </tr>';
                                                         }
                                                     }
@@ -152,7 +141,7 @@ if (isset($_GET['logout']) && isset($_SESSION['username']) ) {
                                         </table>
                                         <div class='modal-footer'>
                                             <!-- <button type='button' class='btn btn-warning btn btn-sm '>Close</button> -->
-                                            <button type='submit' name='Update' class='btn btn-primary btn btn-sm '>
+                                            <button type='submit' name='submit' class='btn btn-primary btn btn-sm '>
                                                 Update
                                             </button>
 
@@ -162,38 +151,13 @@ if (isset($_GET['logout']) && isset($_SESSION['username']) ) {
         </div>
         </div>
         <?php
-        if (isset($_POST['Update'])) {
-            //start
-            if (isset($_GET['results'])) {
-                $batch_no = $_GET['results'];
-                $course = $_GET['course'];
-                $module = $_GET['module'];
-                $sql = "SELECT * FROM `student`,student_enroll,batches,exams WHERE student.id=student_enroll.id and batches.batch_no=student_enroll.batch_no and batches.batch_no=exams.batch and batches.batch_no=$batch_no and student_enroll.course_code = '$course' and exams.module='$module' group by student_enroll.id";
-                $sql_multi = null;
-                $result = $con->query($sql);
-                if ($result->num_rows > 0) {
-                    while ($row = $result->fetch_assoc()) {
-                        $name = 'reg' . $row['id'];
-                        $res = 'res' . $row['id'];
-                        $att = 'att' . $row['id'];
-                        $exams =  $row['exams'];
-                        $module = $row['module'];
-                        $semester = $row['semester'];
-                        $exam_type = $row['exam_type'];
-                        $course = $row['course'];
+        if (isset($_POST['submit'])) {
+            echo $reg = $_GET['reg'];
+            echo $marks = $_POST['marks'];
+            echo $attempt = $_POST['attempt'];
 
-                        $value = $_POST[$name];
-                        $value2 = $_POST[$res];
-                        $value3 = $_POST[$att];
-                          $sql_multi .= "INSERT INTO  `exams_result`(`exams`,`batch_no`,`student_id`,`index_no`,`course`,`semester`, `module`, `exam_type`, `attempt`,`marks`) 
-                                                     VALUES ('$exams','$batch_no','$value','$value','$course','$semester','$module','$exam_type','$value3','$value2');";
-                    }
-                }
-            }
-             $sql_multi;
-            //end
-
-            if (mysqli_multi_query($con, $sql_multi)) {
+            $sql = "UPDATE exams_result SET marks= '$marks', attempt= '$attempt' WHERE student_id='$reg'";
+            if (mysqli_query($con,$sql)) {
                 echo '
                 <div class="row">
                 <div class="col-sm alert alert-success alert-dismissible fade show " role="alert">
@@ -214,10 +178,11 @@ if (isset($_GET['logout']) && isset($_SESSION['username']) ) {
                 <span aria-hidden="true">&times;</span>
                 </button>
                 </div>
-                </div>';}
-                              }
-
+                </div>';
+            }
+        }
         ?>
+
         <!-- #1 Insert Your Content-->
         </div>
         <div class="card-footer text-muted">
