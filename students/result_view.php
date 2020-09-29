@@ -4,10 +4,10 @@ if (!isset($_SESSION['username'])) {
     header('Location: .././index.php');
 }
 ?>
-<?php 
-if (isset($_GET['logout']) && isset($_SESSION['username']) ) {
-    unset($_SESSION['username']);  
-    header('Location: .././index.php');         
+<?php
+if (isset($_GET['logout']) && isset($_SESSION['username'])) {
+    unset($_SESSION['username']);
+    header('Location: .././index.php');
 }
 ?>
 <?php
@@ -43,10 +43,10 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
                                 <!-- #1 Insert Your Content-->
                                 <?php
                                 // if (isset($_GET['reg'])) {
-                                 $reg = $_SESSION['username'];
-                               
-                               $sql ="SELECT * FROM exams_result ,student where student.id IN (select id from student where email='$reg' ) GROUP BY student.id";
-                                        // $sql = "SELECT * FROM exams_result,student where student.id = exams_result.student_id and exams_result.student_id='$sql1'";
+                                $reg = $_SESSION['username'];
+
+                                $sql = "SELECT * FROM exams_result ,student where student.id IN (select id from student where email='$reg' ) GROUP BY student.id";
+                                // $sql = "SELECT * FROM exams_result,student where student.id = exams_result.student_id and exams_result.student_id='$sql1'";
                                 // $sql = "SELECT * FROM `student`,student_enroll,batches,exams_result WHERE student.id=student_enroll.id and batches.batch_no=student_enroll.batch_no and batches.batch_no=exams_result.batch_no and batches.batch_no=$batch_no and student_enroll.course_code = '$course' and exams_result.module='$module' group by student_enroll.id";
                                 $result = $con->query($sql);
                                 if ($result->num_rows > 0) {
@@ -54,26 +54,26 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
                                         echo '       
                             <div class="row">
                                 <div class="col-md-4">
-                                    <label for="exampleInputEmail1" name="Exams">Name :-<b>', $row['title'], '.', $row['full_name'], '</b></label>
+                                    <label for="exampleInputEmail1" name="Exams"><b>Name</b> :-', $row['title'], '.', $row['full_name'], '</label>
                                 </div>
                                 <div class="col-md-4">
-                                    <label for="exampleInputEmail1" name="batch">I   d :-<b>', $row['student_id'], '</b></label>
+                                    <label for="exampleInputEmail1" name="batch"><b>Id</b> :-', $row['student_id'], '</label>
             
                                 </div>
                                 <div class="col-md-4">
-                                    <label for="exampleInputEmail1" name="studentid">E-mail  :-<b>', $row['email'], '</b></label>
+                                    <label for="exampleInputEmail1" name="studentid"><b>E-mail</b>  :-', $row['email'], '</label>
                                 </div>
                             </div>
                             <div class="row">
                             <div class="col-md-4">
-                                <label for="exampleInputEmail1" name="course">NIC  :-<b>', $row['nic'], '</b></label>
+                                <label for="exampleInputEmail1" name="course"><b>NIC </b> :-', $row['nic'], '</label>
                             </div>
                           
                             <div class="col-md-4">
-                            <label for="exampleInputEmail1" name="exams">Batch No :-<b>Batch -', $row['batch_no'], '</b></label>
+                            <label for="exampleInputEmail1" name="exams"><b>Batch No</b> :-Batch -', $row['batch_no'], '</label>
                             </div>
                             <div class="col-md-4">
-                            <label for="exampleInputEmail1" name="exams">Batch No :-<b>', $row['course'], '</b></label>
+                            <label for="exampleInputEmail1" name="exams"><b>Course</b>:-', $row['course'], '</label>
                             </div>
                         </div>
                       
@@ -98,19 +98,19 @@ $description = 'Online Examination Result  Management System (ERMS)-SLGTI';
                                                     <th scope='col'>EXAMS</th>
                                                     <th scope='col'>MODULE CODE</th>
                                                     <th scope='col'>SEMESTER</th>
-                                                    <th scope='col'>RESULT</th>
+                                                    <th scope='col'>MARKS</th>
                                                     <th scope='col'>ATTEMPT</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                            
+
                                                 <?php
                                                 // if (isset($_GET['reg'])) {
                                                 //     $reg = $_GET['reg'];
                                                 $reg = $_SESSION['username'];
-                               
-                                                $sql ="SELECT * FROM exams_result where student_id IN(select id from student where email='$reg') ";
-                                               // $sql = "SELECT * FROM `exams_result` where student_id='2018slgtibit01' ORDER BY `marks` ASC";
+
+                                                $sql = "SELECT * FROM exams_result where student_id IN(select id from student where email='$reg') ";
+                                                // $sql = "SELECT * FROM `exams_result` where student_id='2018slgtibit01' ORDER BY `marks` ASC";
                                                 // $sql = "SELECT * FROM `student`,student_enroll,batches,exams_result WHERE student.id=student_enroll.id and batches.batch_no=student_enroll.batch_no and batches.batch_no=exams_result.batch_no and batches.batch_no=$batch_no and student_enroll.course_code = '$course' and exams_result.module='$module' group by student_enroll.id";
                                                 $result = $con->query($sql);
                                                 if ($result->num_rows > 0) {
