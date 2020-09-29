@@ -239,7 +239,7 @@ if (isset($_GET['logout']) && isset($_SESSION['username']) ) {
                                         <!-- Card Body -->
                                         <div class="card-body">
                                             <div class="chart-area">
-                                                <canvas id="myAreaChart"></canvas>
+                                                <canvas id="myAreaChartst"></canvas>
                                             </div>
                                         </div>
                                     </div>
