@@ -95,7 +95,7 @@ $description = "Online Examination Result  Management System (ERMS)-SLGTI";
             <p></p>
         </div>
         <div>
-            <p style="text-align: center; font-size: 30px;"> SLGTI-KILLINOCHI</p>
+            <p style="text-align: center; font-size: 30px;"> Student Result Sheet</p>
 
         </div>
 
