@@ -1,16 +1,9 @@
 <?php
-$title = "Dashboard | Online Examination Result Management System | SLGTI";
-$description = "Online Examination Result  Management System (ERMS)-SLGTI";
-?>
-<!DOCTYPE html>
-<html lang="en">
-<?php
 session_start();
 if (!isset($_SESSION['username'])) {
     header('Location: .././index.php');
 }
 ?>
-
 <?php 
 
 if (isset($_GET['logout']) && isset($_SESSION['username']) ) {
@@ -18,37 +11,43 @@ if (isset($_GET['logout']) && isset($_SESSION['username']) ) {
     header('Location: .././index.php');         
 }
 ?>
+<?php
+$title = "Dashboard | Online Examination Result Management System | SLGTI";
+$description = "Online Examination Result  Management System (ERMS)-SLGTI";
+?>
+<!DOCTYPE html>
+<html lang="en">
+
 
 <head>
     <?php include_once("../head.php"); ?>
     <?php include_once("../config.php"); ?>
 </head>
 
-
 <?php
 $student_id = $stitle = $full_name = $ini_name = $gender = $civil = $email = $nic = $dob = $phone = $address = $ds =
-$district = $province = $zip = $blood = $gname = $gaddress = $gphone = $grelation = $regno = $cid = $bid =
-$mode = $status = $enrolldate = $exitdate = $ccode = null;
+    $district = $province = $zip = $blood = $gname = $gaddress = $gphone = $grelation = $regno = $cid = $bid =
+    $mode = $status = $enrolldate = $exitdate = $ccode = null;
 if (isset($_GET['edit'])) {
-$id = $_GET['edit'];
+    $id = $_GET['edit'];
 
-$sql_attendance = "SELECT * FROM attendance 
+    $sql_attendance = "SELECT * FROM attendance 
 -- LEFT JOIN student_enroll
 -- ON `student`.`id` = `student_enroll`.`id`
 WHERE `attendance`.`id` = '$id'";
 
-$result_attendance = mysqli_query($con, $sql_attendance);
-$row = mysqli_fetch_assoc($result_attendance);
-if (mysqli_num_rows($result_attendance) == 1) {
-    // $id = $row['title'];
-    $module_id = $row['module_id'];
-    $Lecturer_id = $row['Lecturer_id'];
-    $date1 = $row['date'];
-    $time = $row['time'];
-    $ho = $row['time'];
-    $batchno = $row['batch'];
-    $cou = $row['Course'];
-}
+    $result_attendance = mysqli_query($con, $sql_attendance);
+    $row = mysqli_fetch_assoc($result_attendance);
+    if (mysqli_num_rows($result_attendance) == 1) {
+        // $id = $row['title'];
+        $module_id = $row['module_id'];
+        $Lecturer_id = $row['Lecturer_id'];
+        $date1 = $row['date'];
+        $time = $row['time'];
+        $ho = $row['time'];
+        $batchno = $row['batch'];
+        $cou = $row['Course'];
+    }
 }
 ?>
 
@@ -81,7 +80,7 @@ if (mysqli_num_rows($result_attendance) == 1) {
                         $week = $_POST['week'];
                         $lecturer = $_POST['lecturer'];
                         $module = $_POST['module'];
-                      
+
                         $course = $_POST['course'];
 
                         $sql = "INSERT INTO attendance (module_id,Lecturer_id,date,time,batch,course)
@@ -168,7 +167,8 @@ if (mysqli_num_rows($result_attendance) == 1) {
                                                 }
                                                 echo '<option value=" ' . $cou . '"  selected>' . $cou . '</option>';
                                                 ?>
-                                                <?php //echo $stitle; ?>
+                                                <?php //echo $stitle; 
+                                                ?>
                                             </select>
                                         </div>
                                     </div>
@@ -239,12 +239,14 @@ if (mysqli_num_rows($result_attendance) == 1) {
                                             <!-- <select class="custom-select" id="inputGroupSelect01" name="hour">
                                                 <option selected disabled value="">Choose hour</option>
                                                 <?php
-                                               // echo '<option value=" ' . $ho . '"  selected>' . $ho . '</option>';
-                                               // for ($x = 0; $x < 13; $x++) {
+                                                // echo '<option value=" ' . $ho . '"  selected>' . $ho . '</option>';
+                                                // for ($x = 0; $x < 13; $x++) {
                                                 ?>
-                                                    <option value="<?php //echo $x; ?>"><?php //echo $x; ?></option>
+                                                    <option value="<?php //echo $x; 
+                                                                    ?>"><?php //echo $x; 
+                                                                                        ?></option>
                                                 <?php
-                                               // }
+                                                // }
                                                 ?>
                                             </select>
 
@@ -253,7 +255,9 @@ if (mysqli_num_rows($result_attendance) == 1) {
                                                 <?php
                                                 //for ($x = 0; $x < 61; $x++) {
                                                 ?>
-                                                    <option value="<?php //echo $x; ?>"><?php //echo $x; ?></option>
+                                                    <option value="<?php //echo $x; 
+                                                                    ?>"><?php //echo $x; 
+                                                                                        ?></option>
                                                 <?php
                                                 // }
                                                 ?>
@@ -269,7 +273,18 @@ if (mysqli_num_rows($result_attendance) == 1) {
                             <div class="row">
                                 <div class="col"></div>
                                 <div class="col-auto">
-                                    <input type="submit" name="submit" class="btn btn-primary" value="ADD ">
+                                    <?php
+                                    if (isset($_GET['edit'])) {
+                                    ?>
+                                        <input type="submit" name="submit" class="btn btn-primary" value="save ">
+                                    <?php
+                                    } else {
+                                    ?>
+                                        <input type="submit" name="submit" class="btn btn-primary" value="ADD ">
+                                    <?php
+                                    }
+                                    ?>
+
                                 </div>
                             </div>
                         </div>
